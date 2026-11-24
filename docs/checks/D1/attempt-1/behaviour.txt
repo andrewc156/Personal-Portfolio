@@ -1,0 +1,39 @@
+OK   hero animates (frames 32->122, progress 0.035->0.142, state playing)
+OK   hero canvas not blank (luminance variance 2418.0)
+OK   settings slider changes output (1.5× -> 1.7×)
+OK   settings panel closes on Escape
+OK   theme toggle persists across pages (dark/dark/dark)
+OK   theme toggles back to light
+OK   nav mission -> http://localhost:4321/Personal-Portfolio/#mission target top 16
+OK   nav research -> http://localhost:4321/Personal-Portfolio/#research target top 61
+OK   nav work -> http://localhost:4321/Personal-Portfolio/#work target top 16
+FAIL nav open-science -> http://localhost:4321/Personal-Portfolio/#open-science target top 512
+OK   nav hrefs all based: /Personal-Portfolio/#mission /Personal-Portfolio/#research /Personal-Portfolio/#work /Personal-Portfolio/#open-science /Personal-Portfolio/rising-water/ /Personal-Portfolio/cv/
+OK   CV nav aria-current=page under base
+OK   wordmark -> base home, aria-current=page
+OK   tag chip -> http://localhost:4321/Personal-Portfolio/garden/?tag=water-quality rows 0/2
+OK   type chip combined -> http://localhost:4321/Personal-Portfolio/garden/?type=poster&tag=water-quality
+OK   chip hrefs updated client-side stay under base/garden/
+OK   back -> http://localhost:4321/Personal-Portfolio/garden/?tag=water-quality rows 0
+OK   back -> http://localhost:4321/Personal-Portfolio/garden/ rows 2
+OK   forward -> http://localhost:4321/Personal-Portfolio/garden/?tag=water-quality rows 0
+OK   deep link ?type&tag restores state
+OK   All chips -> http://localhost:4321/Personal-Portfolio/garden/
+OK   garden row links based (/Personal-Portfolio/rising-water/ /Personal-Portfolio/research/spectral-fractals/)
+OK   explorer data verified: match=true status="Computed in your browser in 18 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+OK   hillshade img loaded from /Personal-Portfolio/data/colorado/hillshade.webp
+OK   bar click selects lake (selected=120103, card="Lake 15 · birth cell 120103")
+OK   lakes table has 21 rows
+OK   table button fills card: "Born at 2,710.8 m near 37.7204° N, 107.0692° W, merged at 3,177.1 m at 37.9454° …"
+OK   unknown path -> 404 status 404 custom page
+OK   404 links based: /Personal-Portfolio/ /Personal-Portfolio/#mission /Personal-Portfolio/#research /Personal-Portfolio/#work /Personal-Portfolio/#open-science /Personal-Portfolio/rising-water/ /Personal-Portfolio/cv/ /Personal-Portfolio/ /Personal-Portfolio/about/
+OK   404 at deep path has stylesheets (2)
+OK   404 deep path fonts loaded (IBM Plex Sans,IBM Plex Sans,IBM Plex Mono)
+OK   404 home link -> http://localhost:4321/Personal-Portfolio/
+OK   404 nav link Rising water works
+OK   console errors other than the 404 document: 0
+   http://localhost:4321/Personal-Portfolio/no/such/page/: Failed to load resource: the server responded with a status of 404 (Not Found)
+   http://localhost:4321/Personal-Portfolio/no/such/page/: Failed to load resource: the server responded with a status of 404 (Not Found)
+OK   third-party requests: 0
+
+BEHAVIOUR FAILS=1

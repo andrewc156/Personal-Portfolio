@@ -1,0 +1,66 @@
+OK   every same-origin DOM URL under /Personal-Portfolio/ (0 bad)
+OK   every same-origin request under base and <400 (189 responses, 0 bad)
+OK   0 third-party requests (0)
+pages visited (28):
+   200 http://localhost:4321/Personal-Portfolio/
+   200 http://localhost:4321/Personal-Portfolio/404.html
+   200 http://localhost:4321/Personal-Portfolio/robots.txt
+   200 http://localhost:4321/Personal-Portfolio/sitemap-index.xml
+   200 http://localhost:4321/Personal-Portfolio/sitemap-0.xml
+   200 http://localhost:4321/Personal-Portfolio/rising-water/
+   200 http://localhost:4321/Personal-Portfolio/cv/
+   200 http://localhost:4321/Personal-Portfolio/garden/
+   200 http://localhost:4321/Personal-Portfolio/research/water-quality/
+   200 http://localhost:4321/Personal-Portfolio/garden/?tag=water-quality
+   200 http://localhost:4321/Personal-Portfolio/research/tda-rivernets/
+   200 http://localhost:4321/Personal-Portfolio/garden/?tag=tda-rivernets
+   200 http://localhost:4321/Personal-Portfolio/research/number-theory/
+   200 http://localhost:4321/Personal-Portfolio/garden/?tag=number-theory
+   200 http://localhost:4321/Personal-Portfolio/research/spectral-fractals/
+   200 http://localhost:4321/Personal-Portfolio/garden/?tag=spectral-fractals
+   200 http://localhost:4321/Personal-Portfolio/about/
+   200 http://localhost:4321/Personal-Portfolio/research/
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=poster
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=project
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=poster&tag=water-quality
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=project&tag=water-quality
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=poster&tag=tda-rivernets
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=project&tag=tda-rivernets
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=poster&tag=number-theory
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=project&tag=number-theory
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=poster&tag=spectral-fractals
+   200 http://localhost:4321/Personal-Portfolio/garden/?type=project&tag=spectral-fractals
+console errors:
+distinct same-origin paths fetched: 30
+   /Personal-Portfolio/
+   /Personal-Portfolio/404.html
+   /Personal-Portfolio/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D9dQdpBk.js
+   /Personal-Portfolio/_astro/BaseLayout.dXtnFqf9.css
+   /Personal-Portfolio/_astro/Explorer.astro_astro_type_script_index_0_lang.BGdCbVui.js
+   /Personal-Portfolio/_astro/Hero.astro_astro_type_script_index_0_lang.DZwt66Vn.js
+   /Personal-Portfolio/_astro/color.Cn6RgLQP.js
+   /Personal-Portfolio/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2
+   /Personal-Portfolio/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2
+   /Personal-Portfolio/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2
+   /Personal-Portfolio/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2
+   /Personal-Portfolio/_astro/index.4bPVCvSY.css
+   /Personal-Portfolio/_astro/index.CF4m3zkg.css
+   /Personal-Portfolio/_astro/settings.MF3Jv1PA.js
+   /Personal-Portfolio/about/
+   /Personal-Portfolio/cv/
+   /Personal-Portfolio/data/colorado/barcode.json
+   /Personal-Portfolio/data/colorado/grid.f32
+   /Personal-Portfolio/data/colorado/hillshade.webp
+   /Personal-Portfolio/data/colorado/meta.json
+   /Personal-Portfolio/garden/
+   /Personal-Portfolio/research/
+   /Personal-Portfolio/research/number-theory/
+   /Personal-Portfolio/research/spectral-fractals/
+   /Personal-Portfolio/research/tda-rivernets/
+   /Personal-Portfolio/research/water-quality/
+   /Personal-Portfolio/rising-water/
+   /Personal-Portfolio/robots.txt
+   /Personal-Portfolio/sitemap-0.xml
+   /Personal-Portfolio/sitemap-index.xml
+
+CRAWL FAILS=0

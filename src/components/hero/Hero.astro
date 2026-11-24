@@ -7,6 +7,7 @@
  */
 import TerrainArt from '../site/TerrainArt.astro';
 import { displayName, profile } from '../site/profile';
+import { withBase } from '../../lib/url';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -71,7 +72,8 @@ import { displayName, profile } from '../site/profile';
       </div>
       <figcaption class="hero__caption">
         Water rises over a random landscape. Lakes are born, then merge, and the barcode records
-        each lake's lifetime. <a href="/rising-water/">See it on the Colorado River Basin →</a>
+        each lake's lifetime.{' '}
+        <a href={withBase('/rising-water/')}>See it on the Colorado River Basin →</a>
       </figcaption>
     </figure>
   </div>

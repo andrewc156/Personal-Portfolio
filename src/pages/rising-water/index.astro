@@ -12,6 +12,7 @@ import AboutData from '../../components/explorer/AboutData.astro';
 import { readAttribution, readBarcode, readMeta } from '../../components/explorer/build-data';
 import { profile } from '../../components/site/profile';
 import reposRaw from '../../data/open-science.yaml?raw';
+import { withBase } from '../../lib/url';
 
 const meta = readMeta();
 const barcode = readBarcode();
@@ -37,7 +38,7 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
     slot="head"
     rel="preload"
     as="image"
-    href={`/data/colorado/${meta.hillshade.file}`}
+    href={withBase(`/data/colorado/${meta.hillshade.file}`)}
     type="image/webp"
     fetchpriority="high"
   />

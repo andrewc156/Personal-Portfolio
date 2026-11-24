@@ -8,6 +8,7 @@ import WorkRow from '../../components/content/WorkRow.astro';
 import { TYPE_PLURALS, WORK_TYPES, RESEARCH_SLUGS } from '../../components/content/constants';
 import { getResearch, getWork } from '../../components/content/work';
 import { displayName } from '../../components/site/profile';
+import { withBase } from '../../lib/url';
 
 const items = await getWork();
 const areas = await getResearch();
@@ -48,13 +49,24 @@ const description = typeList
         </span>
         <ul class="chips">
           <li>
-            <a class="chip" href="/garden/" data-filter="type" data-value="" aria-current="true">
+            <a
+              class="chip"
+              href={withBase('/garden/')}
+              data-filter="type"
+              data-value=""
+              aria-current="true"
+            >
               All types
             </a>
           </li>
           {presentTypes.map((t) => (
             <li>
-              <a class="chip" href={`/garden/?type=${t}`} data-filter="type" data-value={t}>
+              <a
+                class="chip"
+                href={withBase(`/garden/?type=${t}`)}
+                data-filter="type"
+                data-value={t}
+              >
                 {TYPE_PLURALS[t]}
               </a>
             </li>
@@ -67,13 +79,24 @@ const description = typeList
         </span>
         <ul class="chips">
           <li>
-            <a class="chip" href="/garden/" data-filter="tag" data-value="" aria-current="true">
+            <a
+              class="chip"
+              href={withBase('/garden/')}
+              data-filter="tag"
+              data-value=""
+              aria-current="true"
+            >
               All areas
             </a>
           </li>
           {areas.map((a) => (
             <li>
-              <a class="chip" href={`/garden/?tag=${a.id}`} data-filter="tag" data-value={a.id}>
+              <a
+                class="chip"
+                href={withBase(`/garden/?tag=${a.id}`)}
+                data-filter="tag"
+                data-value={a.id}
+              >
                 {a.data.title}
               </a>
             </li>
@@ -98,7 +121,7 @@ const description = typeList
 
     <p class="garden__empty" data-garden-empty hidden>
       Nothing matches these filters yet.{' '}
-      <a href="/garden/" data-garden-reset>
+      <a href={withBase('/garden/')} data-garden-reset>
         Show all work
       </a>
     </p>

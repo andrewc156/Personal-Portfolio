@@ -1,13 +1,14 @@
 import { isEssential } from '../../tda/index.ts';
 import type { Bar, H0Result } from '../../tda/index.ts';
 import type { BarcodeFile, ColoradoMeta } from './types.ts';
+import { withBase } from '../../url.ts';
 
 /**
  * Loading and verification of the Colorado data (spec §6.4, docs/data.md). Pure functions apart
  * from `sha256Hex`, which uses Web Crypto (browser and Node ≥ 20).
  */
 
-export const DATA_BASE = '/data/colorado/';
+export const DATA_BASE = withBase('/data/colorado/');
 
 /** Problems found while checking the grid file against meta.json / barcode.json. */
 export interface GridCheck {

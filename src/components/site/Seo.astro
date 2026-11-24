@@ -8,6 +8,7 @@
  * `noindex`: the HTTP 404 status keeps it out of indexes (DECISIONS #53).
  */
 import { displayName } from './profile';
+import { stripBase, withBase } from '../../lib/url';
 
 interface Props {
   /** Full document title, as rendered in <title>. */
@@ -35,16 +36,19 @@ function clampDescription(text: string): string {
 }
 
 const site = Astro.site ?? new URL('http://localhost:4321');
-const isNotFound = Astro.routePattern === '/404' || /^\/404(\.html|\/)?$/.test(Astro.url.pathname);
+const isNotFound =
+  Astro.routePattern === '/404' || /^\/404(\.html|\/)?$/.test(stripBase(Astro.url.pathname));
 
-const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+// Astro.url.pathname already includes `base`; withBase is idempotent, so this never double-prefixes.
+const pathname = withBase(Astro.url.pathname);
+const path = pathname.endsWith('/') ? pathname : `${pathname}/`;
 const canonical = new URL(path, site).href;
 
 const desc = clampDescription(description);
 
 /** Social card: a static frame of the home-page hero (scripts/og-image.mjs). */
 const image = {
-  url: new URL('/og/social-card.png', site).href,
+  url: new URL(withBase('/og/social-card.png'), site).href,
   width: 1200,
   height: 630,
   alt: `${displayName}: water rising over a generated landscape, with each lake in its own color.`,

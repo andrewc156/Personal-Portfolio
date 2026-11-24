@@ -10,6 +10,7 @@ import { displayAspect, gridGeo } from '../../lib/viz/explorer/geo';
 import { IDENTITY, NEUTRAL_WATER } from '../../lib/viz/explorer/palette';
 import type { ColoradoMeta } from '../../lib/viz/explorer/types';
 import { length } from '../../lib/viz/explorer/text';
+import { withBase } from '../../lib/url';
 
 interface Props {
   meta: ColoradoMeta;
@@ -51,7 +52,7 @@ const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
       <div class="ex-map" style={`aspect-ratio: ${aspect.toFixed(5)}`}>
         <img
           class="ex-map__shade"
-          src={`/data/colorado/${hs.file}`}
+          src={withBase(`/data/colorado/${hs.file}`)}
           width={hs.width}
           height={hs.height}
           style={`width: ${hsW.toFixed(4)}%; height: ${hsH.toFixed(4)}%`}

@@ -1,3 +1,5 @@
+import { withBase } from '../../lib/url';
+
 /** Home-page section anchors, in spec §4.3 order. index.astro passes these ids to the stubs. */
 export const SECTION_IDS = {
   mission: 'mission',
@@ -15,10 +17,10 @@ export interface NavItem {
 
 /** Header nav (spec §4.3): Mission · Research · Work · Open science · Rising water · CV. */
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: 'Mission', href: `/#${SECTION_IDS.mission}` },
-  { label: 'Research', href: `/#${SECTION_IDS.research}` },
-  { label: 'Work', href: `/#${SECTION_IDS.work}` },
-  { label: 'Open science', href: `/#${SECTION_IDS.openScience}` },
-  { label: 'Rising water', href: '/rising-water/' },
-  { label: 'CV', href: '/cv/' },
+  { label: 'Mission', href: withBase(`/#${SECTION_IDS.mission}`) },
+  { label: 'Research', href: withBase(`/#${SECTION_IDS.research}`) },
+  { label: 'Work', href: withBase(`/#${SECTION_IDS.work}`) },
+  { label: 'Open science', href: withBase(`/#${SECTION_IDS.openScience}`) },
+  { label: 'Rising water', href: withBase('/rising-water/') },
+  { label: 'CV', href: withBase('/cv/') },
 ];

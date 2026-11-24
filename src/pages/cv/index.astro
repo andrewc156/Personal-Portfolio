@@ -10,6 +10,7 @@ import Citation from '../../components/content/Citation.astro';
 import { getResearch, getWork, researchHref } from '../../components/content/work';
 import { displayName, profile } from '../../components/site/profile';
 import '../../components/content/content.css';
+import { withBase } from '../../lib/url';
 
 const work = await getWork();
 const areas = await getResearch();
@@ -23,7 +24,7 @@ function cvPdfHref(value: string): string {
   if (!value) return '';
   if (/^https?:\/\//.test(value)) return value;
   const rel = value.replace(/^\/+/, '');
-  return existsSync(join(process.cwd(), 'public', rel)) ? `/${rel}` : '';
+  return existsSync(join(process.cwd(), 'public', rel)) ? withBase(`/${rel}`) : '';
 }
 const pdf = cvPdfHref(profile.cv_pdf);
 

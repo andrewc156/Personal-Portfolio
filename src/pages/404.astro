@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import TerrainArt from '../components/site/TerrainArt.astro';
+import { withBase } from '../lib/url';
 ---
 
 <BaseLayout title="Page not found" description="This page could not be found.">
@@ -9,7 +10,7 @@ import TerrainArt from '../components/site/TerrainArt.astro';
     <h1 id="nf-title">This page has gone under water.</h1>
     <p>The address may be mistyped, or the page may have moved.</p>
     <p>
-      <a href="/">Go to the home page</a>
+      <a href={withBase('/')}>Go to the home page</a>
     </p>
     <figure class="not-found__art">
       <TerrainArt label="Illustration: ridges of a landscape with water filling the low ground." />

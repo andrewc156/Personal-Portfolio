@@ -9,6 +9,7 @@ import DraftBadge from './DraftBadge.astro';
 import { LINK_BUTTONS, TYPE_LABELS } from './constants';
 import { formatMonth, isoDate, isAndrewName } from './format';
 import type { WorkEntry } from './work';
+import { withBase } from '../../lib/url';
 import { displayName, profile } from '../site/profile';
 
 interface Props {
@@ -23,7 +24,7 @@ const andrew = [displayName, profile.full_name].filter(Boolean);
 const when = formatMonth(d.date);
 const buttons = LINK_BUTTONS.flatMap(([key, label]) => {
   const href = d.links[key];
-  return href ? [{ href, label }] : [];
+  return href ? [{ href: withBase(href), label }] : [];
 });
 const titleText = d.title || (d.draft ? 'Title needed' : '');
 ---
@@ -51,7 +52,7 @@ const titleText = d.title || (d.draft ? 'Title needed' : '');
       <>
         {' '}
         {d.links.site ? (
-          <a class="citation__title" href={d.links.site}>
+          <a class="citation__title" href={withBase(d.links.site)}>
             {titleText}
           </a>
         ) : (

@@ -2,6 +2,7 @@
 import { NAV_ITEMS } from './nav';
 import { displayName } from './profile';
 import ThemeToggle from './ThemeToggle.astro';
+import { withBase } from '../../lib/url';
 
 interface Props {
   /** Show the gear button. BaseLayout sets this when the page fills the `settings` slot. */
@@ -10,12 +11,13 @@ interface Props {
 
 const { hasSettings = false } = Astro.props;
 const path = Astro.url.pathname;
+const home = withBase('/');
 const isCurrent = (href: string) => !href.includes('#') && path === href;
 ---
 
 <header class="site-header">
   <div class="container site-header__inner">
-    <a class="wordmark" href="/" aria-current={path === '/' ? 'page' : undefined}>
+    <a class="wordmark" href={home} aria-current={path === home ? 'page' : undefined}>
       {displayName}
     </a>
     <nav class="site-nav" aria-label="Main">

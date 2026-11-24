@@ -5,6 +5,7 @@ import ContactLinks from '../../components/content/ContactLinks.astro';
 import { contactLinks } from '../../components/content/contact';
 import { getCopy } from '../../components/content/work';
 import { displayName } from '../../components/site/profile';
+import { withBase } from '../../lib/url';
 
 const bio = await getCopy('about_bio');
 const links = contactLinks();
@@ -19,8 +20,8 @@ const links = contactLinks();
       </p>
     )}
     <p>
-      See the <a href="/#research">research areas</a>, the <a href="/garden/">Garden</a> of work, or
-      the <a href="/cv/">CV</a>.
+      See the <a href={withBase('/#research')}>research areas</a>, the{' '}
+      <a href={withBase('/garden/')}>Garden</a> of work, or the <a href={withBase('/cv/')}>CV</a>.
     </p>
     {links.length > 0 && (
       <section class="about__contact" aria-labelledby="about-contact">

@@ -1,0 +1,4 @@
+/Personal-Portfolio/           n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=1051 tbt=0 fails=- 3p=0 og=false
+/Personal-Portfolio/garden/    n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=901 tbt=0 fails=- 3p=0 og=false
+/Personal-Portfolio/rising-water/ n=4 warmup=94/100/96/100 judged perf=[94,78,94] med perf=94 a11y=100 bp=96 seo=100 cls=0.0001 maxCLS=0.0001 lcp=3002 tbt=0 fails=image-aspect-ratio 3p=0 og=false
+/Personal-Portfolio/rising-water/ n=4 warmup=78/100/96/100 judged perf=[94,94,94] med perf=94 a11y=100 bp=96 seo=100 cls=0.0001 maxCLS=0.0001 lcp=3002 tbt=0 fails=image-aspect-ratio 3p=0 og=false

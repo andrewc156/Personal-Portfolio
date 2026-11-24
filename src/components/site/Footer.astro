@@ -1,5 +1,6 @@
 ---
 import { displayName, profile } from './profile';
+import { withBase } from '../../lib/url';
 
 const year = new Date().getFullYear();
 const { source_url: sourceUrl, show_claude_code_credit: showCredit } = profile.site;
@@ -12,7 +13,7 @@ const { source_url: sourceUrl, show_claude_code_credit: showCredit } = profile.s
         © {year} {displayName}
       </span>
       <span aria-hidden="true"> · </span>
-      <a href="/about/">About</a>
+      <a href={withBase('/about/')}>About</a>
       {sourceUrl && (
         <>
           <span aria-hidden="true"> · </span>

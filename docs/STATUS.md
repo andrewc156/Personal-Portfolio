@@ -11,7 +11,8 @@
 | F5 Synthetic hero | viz-builder | done | 2 | docs/checks/F5/attempt-2.md | PASS_WITH_NOTES: pass diamond can cover pit ring when adjacent; "17 / m" wrap (use NBSP); destroy() leaves timers; hidden tab only emulated |
 | F6 Colorado explorer | viz-builder | done | 2 | docs/checks/F6/attempt-2.md | PASS_WITH_NOTES: first-run Lighthouse cold-start outlier (58; 14/15 runs = 97) — consider Worker for computeH0; e2e covers only hash-path corruption; map hint shown in error state |
 | F7 Polish / SEO / perf / a11y | site-builder | done | 1 | docs/checks/F7/attempt-1.md | PASS_WITH_NOTES: footer wraps at 375 (clean); social card bakes in draft name/tagline — rerun scripts/og-image.mjs after confirming; home description is just the tagline |
-| F8 Cloudflare Pages setup | site-builder | todo | 0 | — | |
+| F8 Cloudflare Pages setup | site-builder | built, waiting for checker | 1 | docs/builds/F8/attempt-1.md | after D1 check |
+| D1 GitHub Pages base path | site-builder | done | 1 | docs/checks/D1/attempt-1.md | PASS_WITH_NOTES; workflow actions bumped to current majors, cancel-in-progress false |
 | F9 Final audit | checker | todo | 0 | — | |
 
 States: todo · building · checking · done · blocked

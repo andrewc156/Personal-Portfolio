@@ -3,6 +3,7 @@
 import Citation from '../content/Citation.astro';
 import { getWork } from '../content/work';
 import '../content/content.css';
+import { withBase } from '../../lib/url';
 
 interface Props {
   id: string;
@@ -26,7 +27,7 @@ const items = (await getWork()).slice(0, 5);
       </ul>
     )}
     <p class="more-link">
-      <a href="/garden/">
+      <a href={withBase('/garden/')}>
         All work <span aria-hidden="true">→</span>
       </a>
     </p>

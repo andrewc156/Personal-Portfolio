@@ -57,7 +57,9 @@ try {
     reducedMotion: 'reduce',
   });
   const page = await ctx.newPage();
-  await page.goto(new URL(`/?seed=${seed}`, base).href, { waitUntil: 'networkidle' });
+  // Relative to --base, so a sub-path server (e.g. http://localhost:4409/Personal-Portfolio/) works too.
+  const home = new URL(base.endsWith('/') ? base : `${base}/`);
+  await page.goto(new URL(`?seed=${seed}`, home).href, { waitUntil: 'networkidle' });
   await page.evaluate(() => localStorage.setItem('theme', 'light'));
   await page.reload({ waitUntil: 'networkidle' });
   await page.waitForFunction(() => Boolean(document.querySelector('[data-hero]')?.__hero));

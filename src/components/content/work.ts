@@ -5,6 +5,7 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { compareWork } from './format';
 import type { ResearchSlug } from './constants';
+import { withBase } from '../../lib/url';
 
 export type WorkEntry = CollectionEntry<'work'>;
 export type ResearchEntry = CollectionEntry<'research'>;
@@ -22,18 +23,18 @@ export async function getResearch(): Promise<ResearchEntry[]> {
 }
 
 export function researchHref(slug: string): string {
-  return `/research/${slug}/`;
+  return withBase(`/research/${slug}/`);
 }
 
 export function gardenTagHref(slug: string): string {
-  return `/garden/?tag=${encodeURIComponent(slug)}`;
+  return withBase(`/garden/?tag=${encodeURIComponent(slug)}`);
 }
 
 /** Where a Garden row goes: the item's own page if it has one, else its first topic page. */
 export function primaryHref(item: WorkEntry): string | undefined {
   const l = item.data.links;
   const own = l.site ?? l.preprint ?? l.pdf ?? l.doi ?? l.poster ?? l.slides ?? l.code ?? l.data;
-  if (own) return own;
+  if (own) return withBase(own);
   const tag = item.data.tags[0] as ResearchSlug | undefined;
   return tag ? researchHref(tag) : undefined;
 }

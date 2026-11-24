@@ -78,3 +78,20 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 52. F7 extra owned files (Control-listed fixes): src/layouts/BaseLayout.astro (include Seo.astro in <head>), src/components/site/Footer.astro (/about/ link), src/pages/garden/index.astro (meta description), e2e/shell.spec.ts (anchor test: target top near viewport top), src/content/work/project-rising-water.yaml (date 2026-11), new e2e/seo.spec.ts.
 53. 404 page: no `noindex` (Control's earlier instruction reversed). §7 requires SEO ≥ 95 on every page; noindex scores ~69. The HTTP 404 status Cloudflare Pages returns already keeps it out of indexes. lighthouserc unchanged.
 54. F7 PASS_WITH_NOTES. Footer wrap at 375 and home description deferred to F9 fix round (site-builder) if the auditor flags them.
+
+## F8
+55. CSP hashes are computed from the built HTML, not typed by hand: F8 adds scripts/write-headers.mjs (F8-owned) that reads public/_headers and fills in sha256 hashes for every inline <script>/<style> found in dist/, writing dist/_headers. Control will change `build` to `astro build && node scripts/write-headers.mjs` when F8 reports.
+56. For F8 self-checks only, the site-builder may run the header script against the existing dist/ and `npx wrangler pages dev dist --port 4408` (local, no login). The checker still does the authoritative build and verification on 4321.
+
+## GitHub Pages test deploy (Andrew's explicit request)
+57. Andrew turned on GitHub Pages (source: GitHub Actions) as a test host before Cloudflare, and asked for the site to deploy there. This is his explicit OK to deploy to GitHub Pages only (not Cloudflare). Control added `.github/workflows/deploy-gh-pages.yml` (push to main → build with SITE_URL=https://andrewc156.github.io, BASE_PATH=/Personal-Portfolio/ → actions/deploy-pages). Site URL: https://andrewc156.github.io/Personal-Portfolio/.
+58. `astro.config.mjs` reads `base` from BASE_PATH (default '/'), so Cloudflare and local builds are unchanged. Task D1 (site-builder) makes every internal link, asset path and fetch base-aware. The workflow is pushed only after a checker passes D1, so the first deploy isn't a broken site.
+59. GitHub Pages limits (documented, accepted for a test host): `_headers` is ignored (no CSP/caching headers there); robots.txt under a sub-path is not read by crawlers; canonical URLs point at the github.io sub-path while it's the host.
+
+## F8
+60. `build` = `astro build && node scripts/write-headers.mjs` (F8 request 1): dist/_headers gets CSP hashes for every inline script/style from the built HTML.
+61. `.nvmrc` pinned to the full version 26.13.0 (F8 request 2) so Cloudflare's build image and actions/setup-node both resolve it unambiguously.
+62. CSP uses `'unsafe-hashes'` with exact hashes only because Explorer.astro has `style=""` attributes and one `onsubmit="return false"`; injected code is still blocked. F9 fix round (viz-builder): replace the inline handler with addEventListener and move style attributes to CSS/CSSOM (keep the map aspect-ratio in CSS to protect CLS), which drops 'unsafe-hashes' automatically.
+63. Check order: D1 (GitHub Pages base path) check first, then F8 check, because both build the site and D1 is still editing src/.
+64. tests/unit/url.test.ts added (D1 builder's helper test, placed by Control). D1 check runs before F8's.
+65. D1 PASS_WITH_NOTES. Control bumped the Pages workflow to checkout@v7, setup-node@v7, upload-pages-artifact@v5, deploy-pages@v5 (current majors; inputs verified in each action.yml) and set cancel-in-progress: false. The D1 commit excludes package.json's build-script change and all F8 files (unchecked); they ship with F8.
