@@ -1,0 +1,43 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+
+RESEARCH
+
+Water-quality prediction on river networks
+About
+
+Predicting hourly water quality at river stations with no data, using graph-Laplacian regression on the river network.
+
+RiverNets, a project in the TDA Lab at Kennesaw State University, predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH and turbidity) at river stations with no data, using a smoothness penalty along the river network.
+
+Position
+Undergraduate Research Assistant – RiverNets (TDA Lab), Kennesaw State University · Aug 2026 – Present
+Advisor
+Dr. Mehmet Aktas
+
+The Rising water explorer on this site is built from elevation data for the Colorado River Basin study area (RiverNets coverage).
+
+Methods
+Graph-Laplacian regression with a smoothness penalty along the river network.
+Hourly USGS continuous water-quality records from 28 Colorado River Basin stations, cleaned and audited for completeness by station and variable.
+River-network graphs built in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), plus graphs for the Chattahoochee basin.
+Kron (Schur-complement) reduction that collapses the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.
+Benchmarks against OLS, Ridge, Elastic Net, a spline GAM, random forest and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts.
+Results
+At unseen stations the graph model reached R² = 0.38 for specific conductance and 0.12 for pH, versus 0.02 for the best alternative.
+ERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).
+Related work
+
+POSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.
+
+PROJECTAndrew Chincea (Nov 2026). Rising water.
+
+See this area in the Garden →
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

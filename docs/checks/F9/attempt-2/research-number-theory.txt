@@ -1,0 +1,34 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+
+RESEARCH
+
+Analytic number theory
+About
+
+The largest kth-power divisor of a random integer, the subject of a submitted manuscript.
+
+The submitted manuscript Largest kth-Power Divisor of a Random Integer establishes an asymptotic formula with an O(log x) error term for every integer k ≥ 2.
+
+Position
+Undergraduate Researcher – Analytic Number Theory, Kennesaw State University · Aug 2025 – Present
+Advisor
+Dr. Tsz Ho Chan
+Methods
+Asymptotic analysis of the largest kth-power divisor of a random integer.
+Python experiments on integers up to 10⁸, calculating empirical averages, growth constants and relative errors to validate the theoretical results.
+Related work
+
+PAPERTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.
+
+TALKAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.
+
+See this area in the Garden →
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

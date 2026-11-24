@@ -1,0 +1,128 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+CV
+
+Andrew Dumitru Chincea
+
+Contact
+Email
+achincea@students.kennesaw.edu
+GitHub
+github.com/andrewc156
+LinkedIn
+www.linkedin.com/in/andrewchincea
+Education
+
+Kennesaw State University
+Marietta, GA
+
+B.S. in Mathematics (Statistics concentration); B.S. in Data Science and Analytics
+Expected May 2028
+
+Junior in the 2026–27 academic year.
+
+Mathematics
+Calculus I–III, Linear Algebra, Ordinary Differential Equations, Real Analysis, Topology
+Statistics & Data Science
+Statistical Methods I & II, Programming in R, Data Visualization
+Computing
+Programming and Problem Solving I & II
+Research interests
+
+Analytic number theory; topological and graph-based data analysis; statistics and machine learning for scientific data.
+
+Publications and preprints
+
+Tsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.
+
+Research experience
+Undergraduate Research Assistant – RiverNets (TDA Lab)
+Aug 2026 – Present
+
+Kennesaw State University · Advisor: Dr. Mehmet Aktas
+
+Developed a graph-Laplacian regression model that predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH, turbidity) at river stations with no data, using a smoothness penalty along the river network.
+Downloaded, cleaned, and audited hourly USGS continuous water-quality records from 28 Colorado River Basin stations, tracking data completeness by station and variable.
+Built river-network graphs in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), along with graphs for the Chattahoochee basin.
+Applied Kron (Schur-complement) reduction to collapse the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.
+Benchmarked against OLS, Ridge, Elastic Net, a spline GAM, random forest, and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts; the graph model reached R² = 0.38 for specific conductance and 0.12 for pH at unseen stations, versus 0.02 for the best alternative.
+Found feature-selection leakage that had overstated R² by up to 0.13 and moved all selection inside the inner validation loop.
+Ran paired, station-bootstrapped experiments on six new features and models; ERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).
+Built an interactive river-network map site with 28 automated tests, and wrote technical reports for the lab.
+
+Research area: Water-quality prediction on river networks
+
+Undergraduate Researcher – Analytic Number Theory
+Aug 2025 – Present
+
+Kennesaw State University · Advisor: Dr. Tsz Ho Chan
+
+Coauthored the submitted manuscript Largest kth-Power Divisor of a Random Integer, establishing an asymptotic formula with an O(log x) error term for every integer k ≥ 2.
+Developed all Python code for experiments on integers up to 10⁸, calculating empirical averages, growth constants, and relative errors to validate the theoretical results.
+Co-presented the square-divisor case (k = 2) at the 105th MAA Southeastern Section Meeting.
+
+Research area: Analytic number theory
+
+First-Year Scholar Undergraduate Researcher
+Aug 2024 – May 2025
+
+Kennesaw State University
+
+Formulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.
+Computed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum, and extended the analysis to two dimensions using separation of variables.
+Presented the results as a poster at the 104th MAA Southeastern Section Meeting (see Presentations).
+
+Research area: Spectral analysis on fractals
+
+Presentations
+
+POSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.
+
+TALKAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.
+
+POSTERAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point University, High Point, NC.
+
+Projects
+
+Andrew Chincea (Nov 2026 – Present). OwlPath.
+
+An interactive prerequisite map for three KSU majors; students mark completed courses and see which classes they can take next term.
+
+Andrew Chincea (Nov 2026). Rising water.
+
+This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
+
+Andrew Chincea (Jan 2026 – May 2026). NYC Subway Incident Modeling.
+
+Regression models in R and Quarto relating weather and ridership to NYC subway disruptions, using MTA major-incident records for 2015–2024.
+
+Andrew Chincea (Aug 2024 – Dec 2024). AskScrappy.
+
+A local RAG academic-advising assistant built with LangChain, Ollama and LLaMA 3.1 that runs entirely on local hardware.
+
+Technical skills
+Languages
+Python, R, TypeScript, Java, C++, LaTeX
+Data analysis & machine learning
+Pandas, NumPy, SciPy, Scikit-learn, XGBoost, TensorFlow, NetworkX, Matplotlib, ggplot2, dplyr
+Methods
+Regression, regularization, graph Laplacians, cross-validation, feature engineering, numerical experiments, data visualization
+Tools & platforms
+Git, GitHub Actions, pytest, React, Docker, Google Cloud Platform, Quarto, Jupyter, LangChain, Ollama, pdfplumber
+Work experience
+Graduation Services Student Assistant (Federal Work-Study)
+Aug 2026 – Present
+
+Kennesaw State University, Office of the Registrar
+
+Respond to diploma-related inquiries through the Office of the Registrar's shared email inbox.
+Research student records using Banner, OnBase and DegreeWorks to support diploma inquiries and graduation services.
+Compare scanned historical records from Southern Technical Institute and Kennesaw College with physical originals to verify readability before the originals are shredded.
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

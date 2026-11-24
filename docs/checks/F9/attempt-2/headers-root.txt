@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Date: Tue, 24 Nov 2026 22:56:39 GMT
+Content-Type: text/html; charset=utf-8
+Access-Control-Allow-Origin: *
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "7fb237a0e938929371d7f21a8b936d19"
+content-security-policy: default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-ZEDHzOrCvMrDL4Zdvhw+BSnD6o0HSJmiDfYJzas/P7E=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-piWIwEpsH8zbBYHrFwSG9ixYCd1baskR3KZoWFmakig=' 'sha256-prkAs2L5QACyuqec5EBkygG2AtaXtx+0WUUMC5hljwM=' 'sha256-tQIKpoa5JdVrNYH3vdd3Obyx+aMBPW7uyTmiZP7J2WI=' 'sha256-zIPk6ARilCTzh5j4Ii8eqbontMp8+tLThl0pOTI0VHI='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+cross-origin-opener-policy: same-origin
+permissions-policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+x-server-env: dev

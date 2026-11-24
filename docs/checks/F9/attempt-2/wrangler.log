@@ -1,0 +1,26 @@
+
+ ⛅️ wrangler 4.167.0 (update available 4.168.0)
+───────────────────────────────────────────────
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNo compatibility_date was specified. Using the default compatibility date: 2026-11-23.[0m
+
+  ❯❯ Add one to your Wrangler configuration file: compatibility_date = "2026-11-23", or
+  ❯❯ Pass it in your terminal: wrangler pages dev [<DIRECTORY>] --compatibility-date=2026-11-23
+
+  See [4mhttps://developers.cloudflare.com/workers/platform/compatibility-dates/[0m for more information.
+
+
+No Functions. Shimming...
+✨ Parsed 5 valid header rules.
+Your Worker has access to the following bindings:
+Binding                                                                   Resource                  Mode
+env.CF_PAGES ("1")                                                        Environment Variable      local
+env.CF_PAGES_BRANCH ("main")                                              Environment Variable      local
+env.CF_PAGES_COMMIT_SHA ("f8061b3efd2dae4883d118811cdbb23bab86a...")      Environment Variable      local
+env.CF_PAGES_URL ("https://f8061b3.personalPortfolio.pag...")             Environment Variable      local
+
+⎔ Starting local server...
+[wrangler:info] Ready on http://localhost:4321
+[wrangler:info] HEAD / 200 OK (137ms)
+[wrangler:info] HEAD /unknown-f9-route/ 404 Not Found (4ms)
+[wrangler:info] GET /unknown-f9-route/ 404 Not Found (6ms)
+[wrangler:info] GET / 200 OK (73ms)

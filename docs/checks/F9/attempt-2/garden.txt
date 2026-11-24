@@ -1,0 +1,60 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+Garden
+
+All of Andrew Chincea's work. Submitted work, which has no date yet, comes first; everything else is newest first.
+
+TYPE
+All types
+Papers
+Posters
+Talks
+Projects
+RESEARCH AREA
+All areas
+Water-quality prediction on river networks
+Analytic number theory
+Spectral analysis on fractals
+
+8 items
+
+PAPER
+Largest kth-Power Divisor of a Random Integer
+An asymptotic formula with an O(log x) error term for every integer k ≥ 2.
+Submitted
+POSTER
+RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin
+Graph-Laplacian regression that predicts water quality at unmonitored river stations in the Colorado River Basin. · KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA
+Dec 2026
+PROJECT
+OwlPath
+An interactive prerequisite map for three KSU majors; students mark completed courses and see which classes they can take next term.
+Nov 2026 – Present
+PROJECT
+Rising water
+This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
+Nov 2026
+TALK
+Largest Square Divisor of a Random Integer
+The square-divisor case (k = 2) of the largest kth-power divisor of a random integer. · Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL
+Mar 2026
+PROJECT
+NYC Subway Incident Modeling
+Regression models in R and Quarto relating weather and ridership to NYC subway disruptions, using MTA major-incident records for 2015–2024.
+Jan 2026 – May 2026
+POSTER
+Properties of Eigenvalues of Fractal Laplacian
+First-Year Scholar research on eigenvalues of the fractal Laplacian. · 104th MAA Southeastern Section Meeting, High Point University, High Point, NC
+Mar 2025
+PROJECT
+AskScrappy
+A local RAG academic-advising assistant built with LangChain, Ollama and LLaMA 3.1 that runs entirely on local hardware.
+Aug 2024 – Dec 2024
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

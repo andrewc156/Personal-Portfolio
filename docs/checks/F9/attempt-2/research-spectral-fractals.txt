@@ -1,0 +1,31 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+
+RESEARCH
+
+Spectral analysis on fractals
+About
+
+First-Year Scholar research on eigenvalues of the fractal Laplacian.
+
+How fractal geometry shapes the spectrum of the fractal Laplacian, from the one-dimensional Dirichlet eigenvalue problem to two dimensions.
+
+Position
+First-Year Scholar Undergraduate Researcher, Kennesaw State University · Aug 2024 – May 2025
+Methods
+Formulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.
+Computed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum.
+Extended the analysis to two dimensions using separation of variables.
+Related work
+
+POSTERAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point University, High Point, NC.
+
+See this area in the Garden →
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

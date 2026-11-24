@@ -1,0 +1,303 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+
+RISING WATER
+
+Colorado River Basin study area (RiverNets coverage)
+
+Water rises over the study area. Lakes are born, then merge, and the barcode records each lake’s lifetime. The water on the map and the barcode are computed in your browser from the same 326 × 414 elevation grid; the shaded relief under the water is precomputed.
+
+Point at or tap the map to read a cell’s elevation and coordinates.
+
+The lowest lake and the 11 longest-lived lakes each have their own colour and a label at their pit (“lowest”, 1–11). All other lakes share one colour.
+
+Computed in your browser in 25 ms: the live barcode matches barcode.json (600 of 600 bars identical).
+
+Water level
+1,603.0 m5,259 ft
+Percentile
+45.0
+Lakes
+13
+Area flooded
+45.7 %
+
+No lake selected
+
+Click a bar, or use a button in the “Longest-lived lakes” table, to see where a lake is born and where it spills.
+
+Play
+Speed
+0.25×
+0.5×
+1×
+2×
+4×
+Pacing
+Percentile
+Linear (metres)
+Water level
+1,603.0 m (5,259 ft)
+Min persistence
+10.0 m
+Top bars
+40 bars (40 shown)
+Units
+m
+ft
+View
+Barcode
+Diagram
+
+With the map focused: Space plays or pauses, Left and Right arrows move the water level (with Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the previous or next bar, and Escape clears the selection.
+
+Paused. Water level 1,603.0 m (5,259 ft), percentile 45.0. 13 lakes; 45.7 % of the area flooded. Barcode showing 40 lakes, paced by percentile.
+
+Longest-lived lakes
+
+The lowest lake and the 20 lakes with the longest bars (persistence = death level − birth level), from barcode.json. Positions are cell centres. “Show” selects the lake, as clicking its bar does.
+
+6 of the 10 longest-lived lakes are born on the edge of the rectangle. Water cannot leave the grid across its edges, so a valley that drains out across an edge becomes a closed basin in the grid (see About the data).
+
+Lake	Persistence	Born at	Spills at	Merges into	Birth cell
+Select
+
+Lowest lake	infinite	−2.9 m
+31.9454° N, 114.7646° W
+	never	–	133025	Show
+lowest lake on the map
+
+Lake 1	466.2 m	2,710.8 m
+37.7204° N, 107.0692° W
+	3,177.1 m
+37.9454° N, 107.1896° W
+	the lowest lake (cell 133025)	58027
+east edge
+	Show
+lake 1 on the map
+
+Lake 2	397.5 m	1,560.2 m
+34.8954° N, 107.0692° W
+	1,957.7 m
+33.9704° N, 107.0692° W
+	the lowest lake (cell 133025)	94865
+east edge
+	Show
+lake 2 on the map
+
+Lake 3	395.8 m	1,275.7 m
+40.7704° N, 113.6646° W
+	1,671.5 m
+37.5704° N, 113.1896° W
+	the lowest lake (cell 133025)	17991	Show
+lake 3 on the map
+
+Lake 4	336.6 m	1,428.0 m
+42.1454° N, 113.9396° W
+	1,764.6 m
+41.7704° N, 114.3146° W
+	the lowest lake (cell 133025)	50
+north edge
+	Show
+lake 4 on the map
+
+Lake 5	314.2 m	249.0 m
+33.1704° N, 110.9896° W
+	563.2 m
+33.1454° N, 110.9646° W
+	the lowest lake (cell 133025)	117202	Show
+lake 5 on the map
+
+Lake 6	313.0 m	1,378.2 m
+40.5204° N, 112.1396° W
+	1,691.2 m
+40.5204° N, 112.1146° W
+	the lowest lake (cell 133025)	21312	Show
+lake 6 on the map
+
+Lake 7	303.3 m	749.5 m
+31.8704° N, 111.1396° W
+	1,052.8 m
+31.8704° N, 111.0896° W
+	the lowest lake (cell 133025)	134148	Show
+lake 7 on the map
+
+Lake 8	268.8 m	2,633.2 m
+38.7704° N, 107.0692° W
+	2,902.0 m
+38.6704° N, 107.1146° W
+	the lowest lake (cell 133025)	44335
+east edge
+	Show
+lake 8 on the map
+
+Lake 9	264.5 m	2,917.5 m
+40.0454° N, 107.0692° W
+	3,182.0 m
+40.0954° N, 107.0692° W
+	the lowest lake (cell 133025)	27709
+east edge
+	Show
+lake 9 on the map
+
+Lake 10	263.6 m	1,520.0 m
+42.1454° N, 114.7396° W
+	1,783.6 m
+41.4954° N, 114.8146° W
+	the lowest lake (cell 133025)	18
+north edge
+	Show
+lake 10 on the map
+
+Lake 11	260.3 m	611.7 m
+31.9954° N, 111.0646° W
+	872.1 m
+32.0454° N, 111.0896° W
+	the lowest lake (cell 133025)	132521	Show
+lake 11 on the map
+
+Lake 12	260.0 m	1,578.9 m
+42.1454° N, 115.1896° W
+	1,838.9 m
+42.1454° N, 114.8146° W
+	the lowest lake (cell 133025)	0
+north-west edge
+	Show
+lake 12 on the map
+
+Lake 13	259.9 m	1,804.0 m
+42.1204° N, 111.3646° W
+	2,063.9 m
+41.2204° N, 111.1146° W
+	the lowest lake (cell 133025)	479	Show
+lake 13 on the map
+
+Lake 14	259.0 m	1,538.4 m
+32.7954° N, 108.0646° W
+	1,797.4 m
+32.7454° N, 108.0646° W
+	the lowest lake (cell 133025)	122209	Show
+lake 14 on the map
+
+Lake 15	247.4 m	159.0 m
+32.9454° N, 111.8146° W
+	406.4 m
+32.9204° N, 111.8146° W
+	the lowest lake (cell 133025)	120103	Show
+lake 15 on the map
+
+Lake 16	242.8 m	1,560.6 m
+34.3454° N, 107.0692° W
+	1,803.4 m
+34.4204° N, 107.1896° W
+	lake 2 (cell 94865)	102037
+east edge
+	Show
+lake 16 on the map
+
+Lake 17	236.2 m	976.4 m
+36.9704° N, 115.1896° W
+	1,212.6 m
+37.1454° N, 115.1896° W
+	the lowest lake (cell 133025)	67482
+west edge
+	Show
+lake 17 on the map
+
+Lake 18	224.7 m	610.6 m
+34.5954° N, 113.2146° W
+	835.3 m
+34.5954° N, 113.2396° W
+	the lowest lake (cell 133025)	98531	Show
+lake 18 on the map
+
+Lake 19	221.0 m	2,752.2 m
+38.0704° N, 107.0692° W
+	2,973.2 m
+38.0954° N, 107.0692° W
+	the lowest lake (cell 133025)	53463
+east edge
+	Show
+lake 19 on the map
+
+Lake 20	215.3 m	1,546.3 m
+38.6204° N, 113.6896° W
+	1,761.6 m
+38.7704° N, 113.6896° W
+	the lowest lake (cell 133025)	46026	Show
+lake 20 on the map
+How to read the barcode
+At water level t the flooded region is the sublevel set {x : h(x) ≤ t}. Its connected pieces are lakes.
+A lake is born when the water reaches a valley floor (a local minimum). It dies when it spills over a pass (a saddle) into an older lake. The older lake continues and keeps its colour. This is the elder rule.
+The barcode has one bar per lake, running from its birth level to its death level. This is 0-dimensional persistent homology of the sublevel-set filtration. In the diagram view each bar is a point, birth level across and death level up.
+A bar’s length (its persistence) is how deep its basin sits below its spill point. Long bars are distinct basins. Short bars are small dips that fill and spill almost immediately.
+The lowest lake never dies. Its bar is infinite, because it eventually holds all the water.
+Stability: if every height changes by at most ε, the barcode changes by at most ε in bottleneck distance. Only bars shorter than 2ε can appear or disappear.
+GIS “fill sinks” raises every depression to its spill point, which removes every finite bar. Dropping only the bars below a persistence threshold (the Min persistence control) is a gentler simplification.
+The barcode depends only on the order of the heights. Pacing the water by percentile instead of by metres changes the animation speed, not which lakes merge with which.
+Hydrologists call the filling and overflowing of depressions “fill and spill”.
+About the data
+
+Generated from meta.json and ATTRIBUTION.md in /data/colorado/.
+
+Study area
+Colorado River Basin study area (RiverNets coverage)
+Bounding box (W, S, E, N)
+-115.201667, 31.8175, -107.060833, 42.1575
+Source
+Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoTIFF
+Licence
+Copernicus DEM GLO-90 free licence (ESA / Copernicus)
+Citation DOI
+https://doi.org/10.5270/ESA-c5d3d65
+Grid
+326 × 414 = 134,964 cells of 0.025°, float32 m
+Coordinates
+EPSG:4326
+Vertical datum
+EGM2008 geoid (EPSG:3855), metres
+Connectivity
+4-neighbour
+Tie-break
+i precedes j iff (h[i], i) < (h[j], j) lexicographically
+Generated
+2026-11-24T10:01:08+00:00
+Attribution
+
+Elevation data: Copernicus DEM GLO-90 (90 m), adapted for this site (clipped, resampled to a 0.025° block-minimum grid, and hillshaded).
+
+Required notice (Copernicus DEM licence, "User Obligations", for adapted or modified data):
+
+produced using Copernicus WorldDEM-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved
+
+Licence and notice source: https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM
+
+Data access: Copernicus DEM on the Registry of Open Data on AWS, https://registry.opendata.aws/copernicus-dem/ (bucket https://copernicus-dem-90m.s3.amazonaws.com/). Citation DOI: https://doi.org/10.5270/ESA-c5d3d65
+
+Surface model note: Copernicus DEM is a Digital Surface Model (DSM): it represents the top-reflective surface of the Earth, including buildings, infrastructure and vegetation, not the bare ground.
+
+Processing steps
+Download the 108 GLO-90 tiles N31–N42 x W108–W116 from the AWS Open Data bucket (cached in pipeline/data/raw/; a tile may be absent only if it is all ocean).
+Check every tile: 1200 x 1200 px, WGS 84 lon/lat (EPSG:4326 equivalent), 3″ spacing, PixelIsPoint, origin at its SW-named integer corner, no nodata.
+Mosaic and clip to the bbox at native 3″: 9769 x 12408 px. Bbox edges snapped to the nearest pixel-centre line; west/north edge pixels kept, east/south dropped.
+TDA grid: minimum of each 30 x 30 block of native pixels (0.025°), partial edge blocks allowed -> 326 x 414 float32 m. Minimum, not mean, keeps narrow canyons connected.
+Hillshade: block mean of 10 x 10 native pixels (30″) -> 977 x 1241; Horn gradient with E–W spacing scaled by cos(latitude) per row (WGS84), azimuth 315°, altitude 45°, vertical exaggeration 2; grayscale WebP quality 85.
+Reference barcode: 0-dimensional sublevel-set persistence of grid.f32 (read back from disk) by pipeline/tda_ref.py, 4-connectivity, ties broken by (height, cell index), elder rule. barcode.json keeps the 599 bars with persistence >= 1 m plus the essential bar (600 of 1217 lakes); heights are exact float32 values, not rounded.
+Limitations
+Copernicus DEM is a Digital Surface Model (DSM): it represents the top-reflective surface of the Earth, including buildings, infrastructure and vegetation, not the bare ground.
+Resolution: the source is 3″ (about 90 m); the TDA grid is 0.025° (about 2.2 km x 2.8 km) and keeps each block's minimum, so it follows valley floors, under-represents peaks and ridges, and merges or loses features narrower than a cell.
+Rectangle, not basin: the study area is a lat/lon rectangle, not the Colorado River's hydrologic basin. Water cannot leave through the rectangle's edges, so a valley that drains out across an edge becomes a closed basin in the grid; several long-lived lakes are born on the edge for this reason.
+Open-pit mines are real depressions in a surface model, and a block minimum keeps their pit floors, so some deep lakes only a cell or two wide are mine pits (for example, one lies about 1 km from the published position of Utah's Bingham Canyon Mine).
+The Copernicus DEM Product Handbook (version 5.0, 2022, section 1.1, Table 1) gives an absolute vertical accuracy of < 4 m (90% linear error) as a global arithmetic mean, validated against ICESat GLAS reference points and excluding Antarctica and Greenland, and notes that local deviations can occur. This build does not assess accuracy locally.
+Code
+Data pipeline: pipeline/ (build_colorado.py, colorado_dem.py, barcode.py), with an independent Python reference engine in pipeline/tda_ref.py.Repository
+Persistence engine: src/lib/tda/ (TypeScript, computeH0 and Flood), which this page runs in your browser.Source
+Explorer: src/lib/viz/explorer/ and src/components/explorer/.
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

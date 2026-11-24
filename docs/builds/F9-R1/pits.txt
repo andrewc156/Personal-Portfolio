@@ -1,0 +1,6 @@
+#5 lake cells [117202, 117203] birth 249.0; native min 249.0 m at 33.17667, -110.99250 (cell 117202); Ray Mine 10210616 cell 116876 in lake: False; native min -> MRDS 0.72 km; birth-cell centre -> MRDS 1.44 km
+#6 lake cells [21311, 21312] birth 1378.2; native min 1378.2 m at 40.52167, -112.14917 (cell 21312); Bingham 10069296 cell 21312 in lake: True; native min -> MRDS 0.30 km; birth-cell centre -> MRDS 0.53 km
+#7 lake cells [134148, 134149] birth 749.5; native min 749.5 m at 31.87250, -111.14000 (cell 134148); Sierrita 10137918 cell 134148 in lake: True; native min -> MRDS 0.84 km; birth-cell centre -> MRDS 0.88 km
+#11 lake cells [132194, 132520, 132521, 132847] birth 611.7; native min 611.7 m at 32.00083, -111.07000 (cell 132521); Mission Mine 10111429 cell 132521 in lake: True; native min -> MRDS 1.09 km; birth-cell centre -> MRDS 0.34 km
+#14 lake cells [122208, 122209, 122535] birth 1538.4; native min 1538.4 m at 32.79500, -108.06333 (cell 122209); Chino Mine 10087992 cell 122209 in lake: True; native min -> MRDS 0.31 km; birth-cell centre -> MRDS 0.23 km
+#18 lake cells [98531, 98532, 98857] birth 610.6; native min 610.6 m at 34.58417, -113.20667 (cell 98531); Bagdad 10162326 cell 98531 in lake: True; native min -> MRDS 0.19 km; birth-cell centre -> MRDS 1.31 km

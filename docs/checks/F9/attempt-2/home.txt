@@ -1,0 +1,85 @@
+Skip to content
+Andrew Chincea
+Mission
+Research
+Work
+Open science
+Rising water
+CV
+Andrew Chincea
+
+What can the shape of a landscape tell us about the water that moves through it?
+
+water quality
+topological data analysis
+statistics
+number theory
+Play
+New terrain
+
+Level 450 m · 4 lakes
+
+With the animation focused: Space plays or pauses, Left and Right arrows move the water level, Home and End jump to the bottom and top, Up and Down pick a bar, Escape clears the picked bar, and N makes a new terrain.
+
+Paused. Terrain 817390. Water level 450 m, 45% of the way up. 4 lakes are present. The barcode shows 16 of 21 bars so far. The longest finite bar is Lake 5, persistence 93 m.
+
+Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →
+Mission
+
+Andrew Chincea studies mathematics (statistics concentration) and data science and analytics at Kennesaw State University. His primary research, on the RiverNets project in the KSU TDA Lab, uses graph-Laplacian regression to predict water quality at river stations with no data. He also works in analytic number theory and has studied eigenvalues of the fractal Laplacian.
+
+Recent work
+
+PAPERTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.
+
+POSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.
+
+PROJECTAndrew Chincea (Nov 2026 – Present). OwlPath.
+
+PROJECTAndrew Chincea (Nov 2026). Rising water.
+
+TALKAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.
+
+All work →
+
+Research
+Water-quality prediction on river networks
+
+Predicting hourly water quality at river stations with no data, using graph-Laplacian regression on the river network.
+
+Related work
+on Water-quality prediction on river networks
+ →
+
+Analytic number theory
+
+The largest kth-power divisor of a random integer, the subject of a submitted manuscript.
+
+Related work
+on Analytic number theory
+ →
+
+Spectral analysis on fractals
+
+First-Year Scholar research on eigenvalues of the fractal Laplacian.
+
+Related work
+on Spectral analysis on fractals
+ →
+
+Open science
+
+The source code for this site is public, including the data pipeline and the persistence engine behind the Rising water explorer.
+
+Source for this site
+Data pipeline
+Persistence engine
+Contact
+Email
+achincea@students.kennesaw.edu
+GitHub
+github.com/andrewc156
+LinkedIn
+www.linkedin.com/in/andrewchincea
+
+© 2026 Andrew Chincea · About · Source · Built with help from Claude Code

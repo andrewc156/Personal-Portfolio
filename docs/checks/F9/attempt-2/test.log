@@ -1,0 +1,15 @@
+
+> andrew-chincea-portfolio@0.0.1 test
+> vitest run
+
+
+ RUN  v5.1.1 /Users/andrewchincea/personalPortfolio
+
+
+ Test Files  18 passed (18)
+      Tests  462 passed (462)
+   Start at  17:36:41
+   Duration  5.63s (tests 93%, import 5%, transform 2%, worker 1%)
+
+    Isolate  18 workers spawned · ~217ms startup each (spawn + environment, per file)
+             at least ~341ms faster with isolate: false — reuses workers across files instead of one per file
