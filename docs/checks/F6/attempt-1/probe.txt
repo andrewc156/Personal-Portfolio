@@ -1,0 +1,95 @@
+OK   status: Computed in your browser in 18 ms: the live barcode matches barcode.json (600 of 600 bars identical).
+OK   data-match=true
+OK   h1 label exact
+OK   live bars 1010 = my ref 1010 (all positive + essential)
+OK   live == my ref, tuple-by-tuple in order: 1010/1010
+OK   live ≥1 m == barcode.json: 600/600 (exact b,d,bi,di,mi)
+OK   percentile slider 0: level -2.885 (exp -2.885) RO "−2.9 m / −9 ft / pct 0.0 / lakes 1 / 0.0 %" vs mine pct 0.0 lakes 1 area 0.0
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   percentile slider 37: level 228.633 (exp 228.633) RO "228.6 m / 750 ft / pct 3.7 / lakes 7 / 3.9 %" vs mine pct 3.7 lakes 7 area 3.9
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (7 comps)
+OK   percentile slider 150: level 816.502 (exp 816.502) RO "816.5 m / 2,679 ft / pct 15.0 / lakes 8 / 15.6 %" vs mine pct 15.0 lakes 8 area 15.6
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (8 comps)
+OK   percentile slider 333: level 1421.388 (exp 1421.388) RO "1,421.4 m / 4,663 ft / pct 33.3 / lakes 5 / 34.1 %" vs mine pct 33.3 lakes 5 area 34.1
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (5 comps)
+OK   percentile slider 500: level 1673.266 (exp 1673.266) RO "1,673.3 m / 5,490 ft / pct 50.0 / lakes 16 / 50.7 %" vs mine pct 50.0 lakes 16 area 50.7
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (16 comps)
+OK   percentile slider 641: level 1848.315 (exp 1848.315) RO "1,848.3 m / 6,064 ft / pct 64.1 / lakes 4 / 64.7 %" vs mine pct 64.1 lakes 4 area 64.7
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (4 comps)
+OK   percentile slider 777: level 2024.190 (exp 2024.190) RO "2,024.2 m / 6,641 ft / pct 77.7 / lakes 7 / 78.1 %" vs mine pct 77.7 lakes 7 area 78.1
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (7 comps)
+OK   percentile slider 900: level 2234.038 (exp 2234.038) RO "2,234.0 m / 7,330 ft / pct 90.0 / lakes 3 / 90.2 %" vs mine pct 90.0 lakes 3 area 90.2
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (3 comps)
+OK   percentile slider 999: level 3400.175 (exp 3400.175) RO "3,400.2 m / 11,155 ft / pct 99.9 / lakes 1 / 99.9 %" vs mine pct 99.9 lakes 1 area 99.9
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   percentile slider 1000: level 3697.834 (exp 3697.834) RO "3,697.8 m / 12,132 ft / pct 100.0 / lakes 1 / 100.0 %" vs mine pct 100.0 lakes 1 area 100.0
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   linear slider 0: level -2.885 (exp -2.885) RO "−2.9 m / −9 ft / pct 0.0 / lakes 1 / 0.0 %" vs mine pct 0.0 lakes 1 area 0.0
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   linear slider 37: level 134.041 (exp 134.041) RO "134.0 m / 440 ft / pct 2.0 / lakes 4 / 2.1 %" vs mine pct 2.0 lakes 4 area 2.1
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (4 comps)
+OK   linear slider 150: level 552.223 (exp 552.223) RO "552.2 m / 1,812 ft / pct 10.3 / lakes 6 / 10.7 %" vs mine pct 10.3 lakes 6 area 10.7
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (6 comps)
+OK   linear slider 333: level 1229.454 (exp 1229.454) RO "1,229.5 m / 4,034 ft / pct 21.7 / lakes 7 / 22.6 %" vs mine pct 21.7 lakes 7 area 22.6
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (7 comps)
+OK   linear slider 500: level 1847.475 (exp 1847.475) RO "1,847.5 m / 6,061 ft / pct 64.0 / lakes 4 / 64.6 %" vs mine pct 64.0 lakes 4 area 64.6
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (4 comps)
+OK   linear slider 641: level 2369.276 (exp 2369.276) RO "2,369.3 m / 7,773 ft / pct 93.8 / lakes 1 / 93.9 %" vs mine pct 93.8 lakes 1 area 93.9
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   linear slider 777: level 2872.574 (exp 2872.574) RO "2,872.6 m / 9,424 ft / pct 98.6 / lakes 6 / 98.6 %" vs mine pct 98.6 lakes 6 area 98.6
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (6 comps)
+OK   linear slider 900: level 3327.762 (exp 3327.762) RO "3,327.8 m / 10,918 ft / pct 99.8 / lakes 1 / 99.8 %" vs mine pct 99.8 lakes 1 area 99.8
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   linear slider 999: level 3694.134 (exp 3694.134) RO "3,694.1 m / 12,120 ft / pct 100.0 / lakes 1 / 100.0 %" vs mine pct 100.0 lakes 1 area 100.0
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   linear slider 1000: level 3697.834 (exp 3697.834) RO "3,697.8 m / 12,132 ft / pct 100.0 / lakes 1 / 100.0 %" vs mine pct 100.0 lakes 1 area 100.0
+OK     overlay: wet≠{h≤t} 0, multi-colour comps 0, slot/elder colour errors 0 (1 comps)
+OK   identity colours distinct per slot (11 slots seen) and ≠ neutral
+OK   drawn map canvas alpha at 3000 sampled cell centres vs {h≤t}: 0 mismatches (labels may cover a few dry cells)
+OK   table button lake rank 1 (bi 58027): level =nextDown(d), highlight 107 cells vs my BFS basin 107 identical; card matches
+OK     BFS component of pit at that level = 107 cells (basin 107)
+OK   table button lake rank 2 (bi 94865): level =nextDown(d), highlight 1060 cells vs my BFS basin 1060 identical; card matches
+OK     BFS component of pit at that level = 1060 cells (basin 1060)
+OK   table button lake rank 3 (bi 17991): level =nextDown(d), highlight 12278 cells vs my BFS basin 12278 identical; card matches
+OK     BFS component of pit at that level = 12278 cells (basin 12278)
+OK   table button lake rank 5 (bi 117202): level =nextDown(d), highlight 2 cells vs my BFS basin 2 identical; card matches
+OK     BFS component of pit at that level = 2 cells (basin 2)
+OK   table button lake rank 8 (bi 44335): level =nextDown(d), highlight 20 cells vs my BFS basin 20 identical; card matches
+OK     BFS component of pit at that level = 20 cells (basin 20)
+OK   table button lake rank 13 (bi 479): level =nextDown(d), highlight 674 cells vs my BFS basin 674 identical; card matches
+OK     BFS component of pit at that level = 674 cells (basin 674)
+OK   table button lake rank 17 (bi 67482): level =nextDown(d), highlight 21 cells vs my BFS basin 21 identical; card matches
+OK     BFS component of pit at that level = 21 cells (basin 21)
+OK   table button lake rank 20 (bi 46026): level =nextDown(d), highlight 125 cells vs my BFS basin 125 identical; card matches
+OK     BFS component of pit at that level = 125 cells (basin 125)
+OK   lowest lake button: level max 3697.83447265625, card "Born at −2.9 m near 31.9454° N, 114.7646° W. It never merges: its bar is infinite, because it eventually holds all the water."
+OK   bar click (row 19) lake rank 4 (bi 50): level =nextDown(d), highlight 192 cells vs my BFS basin 192 identical; card matches
+OK     BFS component of pit at that level = 192 cells (basin 192)
+OK   bar click (row 18) lake rank 6 (bi 21312): level =nextDown(d), highlight 2 cells vs my BFS basin 2 identical; card matches
+OK     BFS component of pit at that level = 2 cells (basin 2)
+OK   bar click (row 10) lake rank 7 (bi 134148): level =nextDown(d), highlight 2 cells vs my BFS basin 2 identical; card matches
+OK     BFS component of pit at that level = 2 cells (basin 2)
+OK   bar click (row 39) lake rank 9 (bi 27709): level =nextDown(d), highlight 9 cells vs my BFS basin 9 identical; card matches
+OK     BFS component of pit at that level = 9 cells (basin 9)
+OK   bar click (row 22) lake rank 10 (bi 18): level =nextDown(d), highlight 308 cells vs my BFS basin 308 identical; card matches
+OK     BFS component of pit at that level = 308 cells (basin 308)
+OK   bar click (row 7) lake rank 11 (bi 132521): level =nextDown(d), highlight 4 cells vs my BFS basin 4 identical; card matches
+OK     BFS component of pit at that level = 4 cells (basin 4)
+OK   bar click (row 23) lake rank 14 (bi 122209): level =nextDown(d), highlight 3 cells vs my BFS basin 3 identical; card matches
+OK     BFS component of pit at that level = 3 cells (basin 3)
+OK   bar click (row 4) lake rank 22 (bi 127885): level =nextDown(d), highlight 2 cells vs my BFS basin 2 identical; card matches
+OK     BFS component of pit at that level = 2 cells (basin 2)
+    hover 1: "Point at or tap the map to read a cell’s elevation and coordinates." want "Elevation 1,651.4 m (5,418 ft) at 42.1454° N, 115.1646° W…"
+    hover 977: "Point at or tap the map to read a cell’s elevation and coordinates." want "Elevation 2,089.7 m (6,856 ft) at 42.0954° N, 107.0692° W…"
+FAIL hover readout exact at 14 cells (incl. corners, min, max)
+OK   units ft: level "5,484 ft" alt "1,671.5 m"; card "Born at 4,185 ft near 40.7704° N, 113.6646° W, merged at 5,484 ft at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 1,299 ft."; table first cell "−9 ft"
+OK   minP 10 topN 40: rows 40 vs mine 40; output "40 bars (40 shown)"
+OK   minP 1 topN 600: rows 600 vs mine 600; output "600 bars (600 shown)"
+OK   minP 50 topN 600: rows 75 vs mine 75; output "600 bars (75 shown)"
+OK   minP 100 topN 5: rows 5 vs mine 5; output "5 bars (5 shown)"
+OK   minP 200 topN 100: rows 23 vs mine 23; output "100 bars (23 shown)"
+OK   minP 400 topN 600: rows 2 vs mine 2; output "600 bars (2 shown)"
+OK   minP 1 topN 5: rows 5 vs mine 5; output "5 bars (5 shown)"
+OK   console errors: 0 
+OK   third-party requests: 0
+FAILS 1

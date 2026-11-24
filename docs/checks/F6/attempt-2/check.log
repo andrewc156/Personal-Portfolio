@@ -1,0 +1,14 @@
+
+> andrew-chincea-portfolio@0.0.1 check
+> astro check
+
+10:28:38 [content] Syncing content
+10:28:38 [content] Synced content
+10:28:38 [types] Generated 182ms
+10:28:38 [check] Getting diagnostics for Astro files in /Users/andrewchincea/personalPortfolio...
+Result (106 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+check exit 0

@@ -1,0 +1,10 @@
+import { chromium } from '@playwright/test';
+const b = await chromium.launch(); const p = await (await b.newContext({ viewport: { width: 1280, height: 800 } })).newPage();
+await p.goto('http://localhost:4321/rising-water/');
+await p.waitForFunction(() => document.querySelector('[data-explorer]')?.dataset.ready === 'true');
+await p.evaluate(() => document.querySelector('[data-explorer]').__explorer.scrubTo(0.5));
+await p.focus('#ex-level'); const a = await p.evaluate(() => document.querySelector('[data-explorer]').__explorer.progress);
+await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowRight'); await p.keyboard.press('Space'); await p.waitForTimeout(Number(process.argv[2]||0));
+const r = await p.evaluate(() => { const e = document.querySelector('[data-explorer]').__explorer; return [e.progress, e.playing, document.querySelector('[data-ro-level]').textContent, e.level]; });
+console.log('slider: before', a, 'after 2×→ + Space', JSON.stringify(r));
+await b.close();

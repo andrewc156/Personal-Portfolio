@@ -1,0 +1,24 @@
+OK   percentile play: 21/21 readout updates equal my BFS at a level shown ≤ 15 ms earlier; after pause "1,800.2 m|60.2|6|60.8 %" = mine lakes 6 pct 60.2 area 60.8
+OK   percentile console errors 0
+OK   linear play: 21/21 readout updates equal my BFS at a level shown ≤ 14 ms earlier; after pause "2,223.7 m|89.6|5|89.8 %" = mine lakes 5 pct 89.6 area 89.8
+OK   linear console errors 0
+     corrupted (exponent byte of lake-3 pit): {"match":"false","ready":"false","kind":"error","role":"status","live":null,"text":"The elevation data failed its integrity check (the grid file’s SHA-256 checksum is not the published one), so the live map and barcode are not shown. The table and the sections below come from the published files.","vis":true,"hasEx":false,"lakes":"–","playDisabled":true}; painted map px 0; console.error: [rising-water] data check failed: the grid file’s SHA-256 checksum is not the published one [grid.f32 SHA-256 ≠ meta.jso
+OK   corrupted grid (exponent byte of lake-3 pit): visible polite error state + exactly 1 console.error
+OK   corrupted grid (exponent byte of lake-3 pit): explorer NOT started on unverified data (hasEx=false, play disabled=true, lakes readout "–", painted px 0)
+     corrupted (low mantissa bit of cell 70000): {"match":"false","ready":"false","kind":"error","role":"status","live":null,"text":"The elevation data failed its integrity check (the grid file’s SHA-256 checksum is not the published one), so the live map and barcode are not shown. The table and the sections below come from the published files.","vis":true,"hasEx":false,"lakes":"–","playDisabled":true}; painted map px 0; console.error: [rising-water] data check failed: the grid file’s SHA-256 checksum is not the published one [grid.f32 SHA-256 ≠ meta.jso
+OK   corrupted grid (low mantissa bit of cell 70000): visible polite error state + exactly 1 console.error
+OK   corrupted grid (low mantissa bit of cell 70000): explorer NOT started on unverified data (hasEx=false, play disabled=true, lakes readout "–", painted px 0)
+OK   Space on body: no play (playing=false), page scrolled 0→760
+OK   stage keys: Space play true, →0.0050, Shift+→ 0.050, ← -0.0050, End 1, Home 0, ↓ sel 133025, Esc null
+FAIL slider arrow scrubs (1→1)
+OK   Space on units button toggles units only (units ft, playing false)
+OK   keyboard console errors 0
+OK   summary cadence: during 2 s play +0, on pause +1, 5 scrubs → +0 within 100 ms, +1 after debounce; ["polite","visually-hidden","Paused. Water level 1,791 ft (545.8 m), percentile 10.1. 5 lakes; 10.6 % of the area flooded. Barcode showing 40 lakes, paced by percentile."]
+OK   off-screen: running false, frames 157→157 in 0.8 s, back on-screen running true frames 187
+OK   hidden tab (emulated): frames 187→187, running false
+FAIL reduced motion 1280: playing false, progress 0.45, frames 1→2, button "Play"
+FAIL reduced motion 375: playing false, progress 0.45, frames 1→2, button "Play"
+OK   DPR 3 @1280: canvas px/css 2.000, CLS through load+1.5 s 0.00013, map aspect 0.62889
+OK   DPR 3 @375: canvas px/css 2.000, CLS through load+1.5 s 0.00004, map aspect 0.62890
+OK   DPR 1 @768: canvas px/css 1.001, CLS through load+1.5 s 0.00012, map aspect 0.62888
+FAILS 3

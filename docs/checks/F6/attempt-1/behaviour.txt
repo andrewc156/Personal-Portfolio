@@ -1,0 +1,24 @@
+OK   percentile play: 21/21 readout updates equal my BFS at a level shown ≤ 15 ms earlier; after pause "1,804.0 m|60.5|8|61.1 %" = mine lakes 8 pct 60.5 area 61.1
+OK   percentile console errors 0
+OK   linear play: 21/21 readout updates equal my BFS at a level shown ≤ 15 ms earlier; after pause "2,229.8 m|89.8|4|90.0 %" = mine lakes 4 pct 89.8 area 90.0
+OK   linear console errors 0
+     corrupted (exponent byte of lake-3 pit): {"match":"false","ready":"true","kind":"error","role":"status","live":null,"text":"Check failed: the barcode computed in your browser does not match barcode.json (599 of 600 bars identical; 3 problems). The map shows the live computation.","vis":true,"hasEx":true,"lakes":"2","playDisabled":false}; painted map px 6361; console.error: [rising-water] live barcode does not match barcode.json [grid.f32 SHA-256 ≠ meta.json, grid.f32 SHA-256 ≠ barcode.json, 
+OK   corrupted grid (exponent byte of lake-3 pit): visible polite error state + exactly 1 console.error
+FAIL corrupted grid (exponent byte of lake-3 pit): explorer NOT started on unverified data (hasEx=true, play disabled=false, lakes readout "2", painted px 6361)
+     corrupted (low mantissa bit of cell 70000): {"match":"false","ready":"true","kind":"error","role":"status","live":null,"text":"Check failed: the barcode computed in your browser does not match barcode.json (600 of 600 bars identical; 2 problems). The map shows the live computation.","vis":true,"hasEx":true,"lakes":"1","playDisabled":false}; painted map px 6230; console.error: [rising-water] live barcode does not match barcode.json [grid.f32 SHA-256 ≠ meta.json, grid.f32 SHA-256 ≠ barcode.json]
+OK   corrupted grid (low mantissa bit of cell 70000): visible polite error state + exactly 1 console.error
+FAIL corrupted grid (low mantissa bit of cell 70000): explorer NOT started on unverified data (hasEx=true, play disabled=false, lakes readout "1", painted px 6230)
+OK   Space on body: no play (playing=false), page scrolled 0→760
+OK   stage keys: Space play true, →0.0050, Shift+→ 0.050, ← -0.0050, End 1, Home 0, ↓ sel 133025, Esc null
+FAIL slider arrow scrubs (1→1)
+OK   Space on units button toggles units only (units ft, playing false)
+OK   keyboard console errors 0
+OK   summary cadence: during 2 s play +0, on pause +1, 5 scrubs → +0 within 100 ms, +1 after debounce; ["polite","visually-hidden","Paused. Water level 1,798 ft (547.9 m), percentile 10.2. 5 lakes; 10.6 % of the area flooded. Barcode showing 40 lakes, paced by percentile."]
+OK   off-screen: running false, frames 159→159 in 0.8 s, back on-screen running true frames 190
+OK   hidden tab (emulated): frames 190→190, running false
+FAIL reduced motion 1280: playing false, progress 0.45, frames 1→2, button "Play"
+FAIL reduced motion 375: playing false, progress 0.45, frames 1→2, button "Play"
+OK   DPR 3 @1280: canvas px/css 2.000, CLS through load+1.5 s 0.00013, map aspect 0.62889
+OK   DPR 3 @375: canvas px/css 2.000, CLS through load+1.5 s 0.00004, map aspect 0.62890
+OK   DPR 1 @768: canvas px/css 1.001, CLS through load+1.5 s 0.00012, map aspect 0.62888
+FAILS 5

@@ -1,0 +1,5 @@
+
+> andrew-chincea-portfolio@0.0.1 preview
+> astro preview --port 4321 --ignore-lock
+
+{"message":" astro  v7.4.13 ready in 14 ms\n┃ Local    http://localhost:4321/\n┃ Network  use --host to expose","label":"SKIP_FORMAT","level":"info"}

@@ -1,0 +1,23 @@
+
+> andrew-chincea-portfolio@0.0.1 lhci
+> lhci autorun --config=./lighthouserc.cjs
+
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server on port 49611...
+Running Lighthouse 1 time(s) on http://localhost:49611/rising-water/
+Run #1...done.
+Done running Lighthouse!
+
+Checking assertions against 1 URL(s), 1 total run(s)
+
+All results processed!
+
+Dumping 1 reports to disk at /Users/andrewchincea/personalPortfolio/.lighthouseci...
+Done writing reports to disk.
+
+Done running autorun.

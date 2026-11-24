@@ -1,0 +1,159 @@
+---
+/**
+ * /rising-water/ — the Colorado River Basin explorer (spec §6.4, §10/F6). The explorer's controls
+ * live in the page (no settings panel). Everything about the data is generated from
+ * public/data/colorado/ at build time; the live barcode is computed in the browser.
+ */
+import { parse } from 'yaml';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Explorer from '../../components/explorer/Explorer.astro';
+import LakesTable from '../../components/explorer/LakesTable.astro';
+import AboutData from '../../components/explorer/AboutData.astro';
+import { readAttribution, readBarcode, readMeta } from '../../components/explorer/build-data';
+import { profile } from '../../components/site/profile';
+import reposRaw from '../../data/open-science.yaml?raw';
+
+const meta = readMeta();
+const barcode = readBarcode();
+const attribution = readAttribution();
+
+interface Repo {
+  id?: string;
+  label?: string;
+  url?: string;
+}
+const repos = ((parse(reposRaw) ?? []) as Repo[]).filter(
+  (r) => typeof r.url === 'string' && r.url.trim(),
+);
+const sourceUrl = profile.site.source_url || repos.find((r) => r.id === 'site-source')?.url || '';
+const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
+---
+
+<BaseLayout
+  title="Rising water"
+  description={`Water rises over the ${meta.label}. Lakes are born, then merge, and the barcode records each lake's lifetime.`}
+>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={`/data/colorado/${meta.hillshade.file}`}
+    type="image/webp"
+    fetchpriority="high"
+  />
+  <div class="container rw">
+    <header class="rw__head">
+      <p class="eyebrow">Rising water</p>
+      <h1>{meta.label}</h1>
+      <p class="rw__lede">
+        Water rises over the study area. Lakes are born, then merge, and the barcode records each
+        lake’s lifetime. The water on the map and the barcode are computed in your browser from the
+        same {`${meta.width} × ${meta.height}`} elevation grid; the shaded relief under the water is
+        precomputed.
+      </p>
+    </header>
+
+    <Explorer meta={meta} />
+
+    <LakesTable meta={meta} barcode={barcode} id="lakes" />
+
+    <section class="section" id="how-to-read" aria-labelledby="how-to-read-title">
+      <h2 id="how-to-read-title">How to read the barcode</h2>
+      <ul class="rw__facts">
+        <li>
+          At water level <var>t</var> the flooded region is the sublevel set{' '}
+          <span class="mono">&#123;x : h(x) ≤ t&#125;</span>. Its connected pieces are lakes.
+        </li>
+        <li>
+          A lake is born when the water reaches a valley floor (a local minimum). It dies when it
+          spills over a pass (a saddle) into an older lake. The older lake continues and keeps its
+          colour. This is the elder rule.
+        </li>
+        <li>
+          The barcode has one bar per lake, running from its birth level to its death level. This is
+          0-dimensional persistent homology of the sublevel-set filtration. In the diagram view each
+          bar is a point, birth level across and death level up.
+        </li>
+        <li>
+          A bar’s length (its persistence) is how deep its basin sits below its spill point. Long
+          bars are distinct basins. Short bars are small dips that fill and spill almost
+          immediately.
+        </li>
+        <li>
+          The lowest lake never dies. Its bar is infinite, because it eventually holds all the
+          water.
+        </li>
+        <li>
+          Stability: if every height changes by at most ε, the barcode changes by at most ε in
+          bottleneck distance. Only bars shorter than 2ε can appear or disappear.
+        </li>
+        <li>
+          GIS “fill sinks” raises every depression to its spill point, which removes every finite
+          bar. Dropping only the bars below a persistence threshold (the Min persistence control) is
+          a gentler simplification.
+        </li>
+        <li>
+          The barcode depends only on the order of the heights. Pacing the water by percentile
+          instead of by metres changes the animation speed, not which lakes merge with which.
+        </li>
+        <li>Hydrologists call the filling and overflowing of depressions “fill and spill”.</li>
+      </ul>
+    </section>
+
+    <AboutData meta={meta} attribution={attribution} id="about-data" />
+
+    <section class="section" id="code" aria-labelledby="code-title">
+      <h2 id="code-title">Code</h2>
+      <ul class="rw__code">
+        <li>
+          Data pipeline: <code>pipeline/</code> (<code>build_colorado.py</code>,{' '}
+          <code>colorado_dem.py</code>, <code>barcode.py</code>), with an independent Python
+          reference engine in <code>pipeline/tda_ref.py</code>.
+          {pipelineUrl && <a href={pipelineUrl}>Repository</a>}
+        </li>
+        <li>
+          Persistence engine: <code>src/lib/tda/</code> (TypeScript, <code>computeH0</code> and{' '}
+          <code>Flood</code>), which this page runs in your browser.
+          {sourceUrl && <a href={sourceUrl}>Source</a>}
+        </li>
+        <li>
+          Explorer: <code>src/lib/viz/explorer/</code> and <code>src/components/explorer/</code>.
+        </li>
+      </ul>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .rw {
+    padding-block: var(--space-6) var(--space-8);
+  }
+
+  .rw__head {
+    margin-bottom: var(--space-5);
+  }
+
+  .rw__head h1 {
+    font-size: var(--fs-h2);
+    margin-bottom: var(--space-3);
+  }
+
+  .rw__lede {
+    color: var(--color-text-muted);
+  }
+
+  .rw__facts li + li,
+  .rw__code li + li {
+    margin-top: var(--space-2);
+  }
+
+  .rw :global(.section) {
+    padding-block: var(--space-7) 0;
+    border-top: 0;
+  }
+
+  var {
+    font-family: var(--font-mono);
+    font-style: italic;
+  }
+</style>

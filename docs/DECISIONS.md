@@ -71,3 +71,7 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 45. F2 PASS_WITH_NOTES (attempt 2). For F7: tighten the anchor test (target top near viewport top), fix /garden/ meta description to match visible types, add /about/ footer link (#29).
 46. F5 attempt 1 FAIL (readout throttle/staleness, clipped highlight readout). Returned to the same viz-builder (context retained) as attempt 2 with notes: edge marker clipping, strip aria-label per view, aria-keyshortcuts completeness, e2e 500 ms timing from navigation.
 47. F5 PASS_WITH_NOTES (attempt 2). Notes 1–3 (pit/pass overlap, NBSP before units, destroy() timers) deferred to the viz-builder in the F9 fix round. Raw Lighthouse folders docs/checks/**/lh/ gitignored.
+48. F6 also owns tests/unit/viz/explorer/** (Control-assigned, for unit tests of explorer logic). F6 may import, not edit, src/lib/viz/common/**.
+49. F6 attempt 1 FAIL (explorer renders unverified data on mismatch). Returned to the same viz-builder as attempt 2, with notes: Lighthouse perf headroom (one 54 run from a long compute task + hillshade LCP), rounded corners clipping corner cells, lede overstatement.
+50. F6 PASS_WITH_NOTES (attempt 2). Lighthouse protocol for F7/F9: one discarded warm-up run, then judge on the median of ≥ 3 runs. F6 notes 2–3 (e2e for size/barcode rejection; hide map hint in error state) and the optional Worker go to the viz-builder in the F9 fix round.
+51. Rising water project date set to 2026-11 (the month F6 passed, per §3) — done as part of F7 by the site-builder (content file owner).

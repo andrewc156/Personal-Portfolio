@@ -1,0 +1,14 @@
+
+> andrew-chincea-portfolio@0.0.1 test
+> vitest run
+
+
+ RUN  v5.1.1 /Users/andrewchincea/personalPortfolio
+
+
+ Test Files  15 passed (15)
+      Tests  439 passed (439)
+   Start at  10:28:43
+   Duration  3.95s (tests 95%, import 3%, transform 1%, worker 1%)
+
+unit exit 0

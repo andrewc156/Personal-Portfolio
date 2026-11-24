@@ -1,0 +1,564 @@
+---
+/**
+ * The Colorado explorer (spec §6.4): portrait map (hillshade + live water overlay) beside a column
+ * with readouts, the barcode / diagram strip, the info card and the controls. Every box has its
+ * size before hydration so nothing shifts. Behaviour: explorer-client.ts →
+ * src/lib/viz/explorer/controller.ts. Controls start disabled until the data are verified.
+ */
+import { EXPLORER_DEFAULTS } from '../../lib/viz/explorer/controller';
+import { displayAspect, gridGeo } from '../../lib/viz/explorer/geo';
+import { IDENTITY, NEUTRAL_WATER } from '../../lib/viz/explorer/palette';
+import type { ColoradoMeta } from '../../lib/viz/explorer/types';
+import { length } from '../../lib/viz/explorer/text';
+
+interface Props {
+  meta: ColoradoMeta;
+}
+const { meta } = Astro.props;
+const geo = gridGeo(meta);
+const aspect = displayAspect(geo);
+// The hillshade's last column / row are partial 30″ blocks: scale it so its pixels line up with the
+// native footprint the grid covers (docs/data.md step 4).
+const hs = meta.hillshade;
+const hsBlock = Math.round(hs.cellDeg / meta.native.pixelDeg);
+const hsW = ((hs.width * hsBlock) / meta.native.width) * 100;
+const hsH = ((hs.height * hsBlock) / meta.native.height) * 100;
+const D = EXPLORER_DEFAULTS;
+const keys = 'Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape';
+const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
+---
+
+<section
+  class="explorer"
+  data-explorer
+  data-state="paused"
+  data-running="false"
+  data-ready="false"
+  data-match="pending"
+  data-aspect={aspect.toFixed(4)}
+  aria-label="Explorer"
+>
+  <div class="explorer__map-col">
+    <div
+      class="ex-stage"
+      data-ex-stage
+      tabindex="0"
+      role="group"
+      aria-label="Rising water map"
+      aria-describedby="ex-keys"
+      aria-keyshortcuts={keys}
+    >
+      <div class="ex-map" style={`aspect-ratio: ${aspect.toFixed(5)}`}>
+        <img
+          class="ex-map__shade"
+          src={`/data/colorado/${hs.file}`}
+          width={hs.width}
+          height={hs.height}
+          style={`width: ${hsW.toFixed(4)}%; height: ${hsH.toFixed(4)}%`}
+          alt={`Shaded relief of the ${meta.label}.`}
+          fetchpriority="high"
+          decoding="async"
+        />
+        <canvas
+          class="ex-map__water"
+          data-ex-map
+          role="img"
+          aria-label="Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers."
+        ></canvas>
+      </div>
+    </div>
+    <p
+      class="ex-hover"
+      data-ex-hover
+      data-default="Point at or tap the map to read a cell’s elevation and coordinates."
+    >
+      Point at or tap the map to read a cell’s elevation and coordinates.
+    </p>
+    <p class="ex-legend">
+      <span class="ex-swatches" aria-hidden="true">
+        {IDENTITY.light.map((_, k) => (
+          <span
+            class="ex-swatch"
+            style={`--sw-l: ${swatch('light', k)}; --sw-d: ${swatch('dark', k)}`}
+          />
+        ))}
+      </span>
+      The lowest lake and the 11 longest-lived lakes each have their own colour and a label at their
+      pit (“lowest”, 1–11).
+      <span
+        class="ex-swatch ex-swatch--neutral"
+        aria-hidden="true"
+        style={`--sw-l: ${NEUTRAL_WATER.light}; --sw-d: ${NEUTRAL_WATER.dark}`}
+      ></span>{' '}
+      All other lakes share one colour.
+    </p>
+  </div>
+
+  <div class="explorer__side">
+    <p class="ex-status" data-ex-status data-kind="loading" role="status">
+      Loading the elevation grid…
+    </p>
+
+    <dl class="ex-readouts">
+      <div class="ex-readout ex-readout--level">
+        <dt>Water level</dt>
+        <dd>
+          <span data-ro-level>–</span>
+          <span class="ex-readout__alt" data-ro-level-alt></span>
+        </dd>
+      </div>
+      <div class="ex-readout">
+        <dt>Percentile</dt>
+        <dd data-ro-pct>–</dd>
+      </div>
+      <div class="ex-readout">
+        <dt>Lakes</dt>
+        <dd data-ro-lakes>–</dd>
+      </div>
+      <div class="ex-readout">
+        <dt>Area flooded</dt>
+        <dd data-ro-area>–</dd>
+      </div>
+    </dl>
+
+    <div class="ex-strip">
+      <canvas
+        class="ex-strip__canvas"
+        data-ex-strip
+        role="img"
+        aria-label="Barcode: one bar per lake, from the water level where it is born to the level where it spills into an older lake. The lowest lake’s bar never ends."
+      ></canvas>
+    </div>
+
+    <div class="ex-card" data-ex-card>
+      <p class="ex-card__title" data-ex-card-title>
+        No lake selected
+      </p>
+      <p class="ex-card__text" data-ex-card-text>
+        Click a bar, or use a button in the “Longest-lived lakes” table, to see where a lake is born
+        and where it spills.
+      </p>
+    </div>
+
+    <form class="ex-controls" aria-label="Explorer controls" onsubmit="return false">
+      <div class="ex-row">
+        <button
+          type="button"
+          class="btn ex-play"
+          data-ex-play
+          data-ex-control
+          disabled
+          aria-pressed="false"
+        >
+          Play
+        </button>
+        <label class="ex-inline">
+          <span>Speed</span>
+          <select id="ex-speed" data-ex-control disabled>
+            {[0.25, 0.5, 1, 2, 4].map((v) => (
+              <option value={v} selected={v === D.speed}>
+                {v}×
+              </option>
+            ))}
+          </select>
+        </label>
+        <label class="ex-inline">
+          <span>Pacing</span>
+          <select id="ex-pacing" data-ex-control disabled>
+            <option value="percentile" selected={D.pacing === 'percentile'}>
+              Percentile
+            </option>
+            <option value="linear" selected={D.pacing === 'linear'}>
+              Linear (metres)
+            </option>
+          </select>
+        </label>
+      </div>
+
+      <div class="ex-slider">
+        <div class="ex-slider__top">
+          <label for="ex-level">Water level</label>
+          <output for="ex-level" data-ex-level-out>
+            –
+          </output>
+        </div>
+        <input
+          type="range"
+          id="ex-level"
+          min="0"
+          max="1000"
+          step="1"
+          value="0"
+          data-ex-control
+          disabled
+        />
+      </div>
+
+      <div class="ex-slider">
+        <div class="ex-slider__top">
+          <label for="ex-minp">Min persistence</label>
+          <output for="ex-minp" data-ex-minp-out>
+            {length(D.minPersistence, 'm')}
+          </output>
+        </div>
+        <input
+          type="range"
+          id="ex-minp"
+          min="1"
+          max="400"
+          step="1"
+          value={D.minPersistence}
+          data-ex-control
+          disabled
+        />
+      </div>
+
+      <div class="ex-slider">
+        <div class="ex-slider__top">
+          <label for="ex-topn">Top bars</label>
+          <output for="ex-topn" data-ex-topn-out>
+            {D.topN} bars
+          </output>
+        </div>
+        <input
+          type="range"
+          id="ex-topn"
+          min="5"
+          max="600"
+          step="5"
+          value={D.topN}
+          data-ex-control
+          disabled
+        />
+      </div>
+
+      <div class="ex-row">
+        <div class="ex-seg" role="group" aria-label="Units">
+          <span class="ex-seg__label" aria-hidden="true">
+            Units
+          </span>
+          <button
+            type="button"
+            class="btn"
+            data-ex-units="m"
+            data-ex-control
+            disabled
+            aria-pressed="true"
+          >
+            m
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-ex-units="ft"
+            data-ex-control
+            disabled
+            aria-pressed="false"
+          >
+            ft
+          </button>
+        </div>
+        <div class="ex-seg" role="group" aria-label="View">
+          <span class="ex-seg__label" aria-hidden="true">
+            View
+          </span>
+          <button
+            type="button"
+            class="btn"
+            data-ex-view="barcode"
+            data-ex-control
+            disabled
+            aria-pressed="true"
+          >
+            Barcode
+          </button>
+          <button
+            type="button"
+            class="btn"
+            data-ex-view="diagram"
+            data-ex-control
+            disabled
+            aria-pressed="false"
+          >
+            Diagram
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <p id="ex-keys" class="visually-hidden">
+    With the map focused: Space plays or pauses, Left and Right arrows move the water level (with
+    Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the
+    previous or next bar, and Escape clears the selection.
+  </p>
+  <p class="visually-hidden" aria-live="polite" data-ex-summary></p>
+</section>
+
+<script>
+  import './explorer-client';
+</script>
+
+<style>
+  .explorer {
+    display: grid;
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  @media (min-width: 56rem) {
+    .explorer {
+      grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+      gap: var(--space-6);
+    }
+  }
+
+  .explorer__map-col,
+  .explorer__side {
+    min-width: 0;
+  }
+
+  .ex-stage {
+    /* Square corners: a rounded clip would hide the corner cells (cell 0 is a lake's pit). */
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-sunken);
+  }
+
+  .ex-stage:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .ex-map {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .ex-map__shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: none;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  :global(:root[data-theme='dark']) .ex-map__shade {
+    filter: brightness(0.62) contrast(1.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .ex-map__shade {
+      filter: brightness(0.62) contrast(1.05);
+    }
+  }
+
+  .ex-map__water {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    touch-action: manipulation;
+  }
+
+  .ex-hover {
+    margin: var(--space-2) 0 0;
+    min-height: 2.8em;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ex-legend {
+    margin: var(--space-2) 0 0;
+    font-size: var(--fs-xsmall);
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  .ex-swatches {
+    display: inline-flex;
+    gap: 2px;
+    margin-right: var(--space-1);
+    vertical-align: -0.1em;
+  }
+
+  .ex-swatch {
+    display: inline-block;
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 2px;
+    background: var(--sw-l);
+    vertical-align: -0.1em;
+  }
+
+  :global(:root[data-theme='dark']) .ex-swatch {
+    background: var(--sw-d);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .ex-swatch {
+      background: var(--sw-d);
+    }
+  }
+
+  .ex-status {
+    margin: 0 0 var(--space-3);
+    min-height: 2.8em;
+    font-size: var(--fs-xsmall);
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  .ex-status[data-kind='error'] {
+    color: var(--color-text);
+    border-left: 3px solid var(--color-text);
+    padding-left: var(--space-2);
+  }
+
+  .ex-readouts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-4);
+    margin: 0 0 var(--space-3);
+  }
+
+  .ex-readout {
+    min-width: 0;
+  }
+
+  .ex-readout--level {
+    grid-column: 1 / -1;
+  }
+
+  .ex-readout dt {
+    font-size: var(--fs-xsmall);
+    color: var(--color-text-muted);
+  }
+
+  .ex-readout dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ex-readout__alt {
+    margin-left: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+
+  .ex-strip {
+    height: 17rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  @media (max-width: 40rem) {
+    .ex-strip {
+      height: 15rem;
+    }
+  }
+
+  .ex-strip__canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: manipulation;
+  }
+
+  .ex-card {
+    margin-top: var(--space-3);
+    padding: var(--space-3);
+    min-height: 8.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .ex-card__title {
+    margin: 0 0 var(--space-1);
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-small);
+  }
+
+  .ex-card__text {
+    margin: 0;
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ex-controls {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+    font-size: var(--fs-small);
+  }
+
+  .ex-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .ex-play {
+    min-width: 5rem;
+  }
+
+  .ex-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ex-controls select {
+    min-height: 2.25rem;
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--color-control);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    font-size: var(--fs-small);
+  }
+
+  .ex-slider__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+  }
+
+  .ex-slider output {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    color: var(--color-text-muted);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+
+  .ex-slider input[type='range'] {
+    width: 100%;
+    margin: var(--space-1) 0 0;
+    accent-color: var(--color-accent);
+  }
+
+  .ex-seg {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .ex-seg__label {
+    margin-right: var(--space-1);
+  }
+</style>

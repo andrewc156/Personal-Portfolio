@@ -1,0 +1,18 @@
+run1   rising-water/    perf  58 a11y 100 BP  96 SEO 100 LCP    5018 TBT   1192 CLS 0.0001 longest 1242 ms Explorer.astro_astro_type_script_index_0
+run1   /                perf 100 a11y 100 BP 100 SEO 100 LCP     902 TBT      0 CLS 0.0001 longest none
+run2   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run3   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2554 TBT      0 CLS 0.0001 longest 80 ms Unattributable
+run4   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 83 ms Unattributable
+run5   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run6   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run7   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run8   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2554 TBT      0 CLS 0.0001 longest 78 ms Unattributable
+run9   rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run10  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2553 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run11  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2554 TBT      0 CLS 0.0001 longest 78 ms Unattributable
+run12  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2554 TBT      0 CLS 0.0001 longest 79 ms Unattributable
+run13  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT      0 CLS 0.0001 longest 80 ms Unattributable
+run14  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2555 TBT     28 CLS 0.0001 longest 82 ms Unattributable
+run14  /                perf 100 a11y 100 BP 100 SEO 100 LCP     902 TBT      0 CLS 0.0001 longest none
+run15  rising-water/    perf  97 a11y 100 BP  96 SEO 100 LCP    2554 TBT      0 CLS 0.0001 longest 78 ms Unattributable
+run15  /                perf 100 a11y 100 BP 100 SEO 100 LCP     902 TBT      0 CLS 0.0001 longest none

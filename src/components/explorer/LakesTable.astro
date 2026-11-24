@@ -1,0 +1,171 @@
+---
+/**
+ * "Longest-lived lakes" (spec §6.4 text alternative): the lowest lake and the 20 longest-lived
+ * lakes from barcode.json, with buttons that select a lake exactly like clicking its bar. Every
+ * number comes from barcode.json and meta.json; the client reformats lengths when the units change
+ * (data-m holds the metre value).
+ */
+import { barsFromFile } from '../../lib/viz/explorer/data';
+import { edgeOf, gridGeo } from '../../lib/viz/explorer/geo';
+import { indexLakes } from '../../lib/viz/explorer/model';
+import { lakeRows, NBSP } from '../../lib/viz/explorer/text';
+import type { BarcodeFile, ColoradoMeta } from '../../lib/viz/explorer/types';
+
+interface Props {
+  meta: ColoradoMeta;
+  barcode: BarcodeFile;
+  id: string;
+}
+const { meta, barcode, id } = Astro.props;
+const geo = gridGeo(meta);
+const index = indexLakes(barsFromFile(barcode));
+const TOP = 20;
+const rows = lakeRows(index, geo, TOP, 'm');
+const barOf = index.barOf;
+const top10 = index.ranked.slice(0, 10);
+const edgeTop10 = top10.filter((b) => edgeOf(b.birthCell, geo.W, geo.H) !== '').length;
+---
+
+<section class="section lakes" id={id} aria-labelledby={`${id}-title`}>
+  <h2 id={`${id}-title`}>Longest-lived lakes</h2>
+  <p>
+    The lowest lake and the {TOP} lakes with the longest bars (persistence = death level − birth
+    level), from <code>barcode.json</code>. Positions are cell centres. “Show” selects the lake, as
+    clicking its bar does.
+  </p>
+  <p>
+    {edgeTop10} of the 10 longest-lived lakes are born on the edge of the rectangle. Water cannot
+    leave the grid across its edges, so a valley that drains out across an edge becomes a closed
+    basin in the grid (see <a href="#about-data">About the data</a>).
+  </p>
+  <div
+    class="lakes__scroll"
+    role="region"
+    aria-label="Table of the longest-lived lakes"
+    tabindex="0"
+  >
+    <table class="lakes__table">
+      <thead>
+        <tr>
+          <th scope="col">Lake</th>
+          <th scope="col">Persistence</th>
+          <th scope="col">Born at</th>
+          <th scope="col">Spills at</th>
+          <th scope="col">Merges into</th>
+          <th scope="col">Birth cell</th>
+          <th scope="col">
+            <span class="visually-hidden">Select</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((r) => {
+          const bar = barOf.get(r.birthCell)!;
+          const name = r.rank === 0 ? 'Lowest lake' : `Lake${NBSP}${r.rank}`;
+          const finite = Number.isFinite(bar.death);
+          return (
+            <tr data-lake-row={r.birthCell}>
+              <th scope="row">{name}</th>
+              <td class="num">
+                {finite ? <span data-m={bar.death - bar.birth}>{r.persistence}</span> : 'infinite'}
+              </td>
+              <td class="num">
+                <span data-m={bar.birth}>{r.birth}</span>
+                <span class="lakes__where">{r.birthWhere}</span>
+              </td>
+              <td class="num">
+                {finite ? (
+                  <>
+                    <span data-m={bar.death}>{r.death}</span>
+                    <span class="lakes__where">{r.deathWhere}</span>
+                  </>
+                ) : (
+                  'never'
+                )}
+              </td>
+              <td>{finite ? r.into : '–'}</td>
+              <td>
+                <span class="mono">{r.birthCell}</span>
+                {r.edge && <span class="lakes__where">{r.edge}</span>}
+              </td>
+              <td>
+                <button type="button" class="btn lakes__btn" data-lake-cell={r.birthCell} disabled>
+                  Show
+                  <span class="visually-hidden">
+                    {' '}
+                    {name.replace(NBSP, ' ').toLowerCase()} on the map
+                  </span>
+                </button>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<style>
+  .lakes__scroll {
+    /* Positioned so the visually hidden button text is clipped with the table, not the page. */
+    position: relative;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .lakes__scroll:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  .lakes__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--fs-small);
+    line-height: 1.4;
+  }
+
+  .lakes__table th,
+  .lakes__table td {
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .lakes__table thead th {
+    font-size: var(--fs-xsmall);
+    color: var(--color-text-muted);
+    font-weight: var(--fw-semibold);
+    white-space: nowrap;
+  }
+
+  .lakes__table tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  .lakes__table tbody th {
+    white-space: nowrap;
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .lakes__where {
+    display: block;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    white-space: nowrap;
+  }
+
+  .lakes__btn {
+    min-height: 2rem;
+  }
+</style>
