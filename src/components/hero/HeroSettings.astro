@@ -1,34 +1,138 @@
 ---
 /**
- * Hero art settings (spec §6.3). F1 stub so the panel shell can be exercised:
- * the controls only update their own readouts. F5 replaces this file.
+ * Hero art settings (spec §6.3), rendered inside F1's settings panel through the layout's
+ * `settings` slot. Groups: Terrain, Water, Barcode, Color. hero-client.ts wires every control
+ * to the hero controller; values here are the defaults (HERO_DEFAULTS in controller.ts).
  */
 import SettingsGroup from '../site/SettingsGroup.astro';
 import SliderRow from '../site/SliderRow.astro';
 import SelectRow from '../site/SelectRow.astro';
+import CheckboxRow from '../site/CheckboxRow.astro';
 import ButtonRow from '../site/ButtonRow.astro';
+import { PALETTES } from '../../lib/viz/common/palettes';
+import { MAX_SEED } from '../../lib/viz/common/rng';
+import { HERO_DEFAULTS as D } from '../../lib/viz/hero/controller';
+import { ROUGHNESS_RANGE, SCALE_RANGE } from '../../lib/viz/hero/terrain';
 
-const palettes = ['Delta', 'Canyon', 'Glacier', 'Estuary', 'Mono'].map((p) => ({
-  value: p.toLowerCase(),
-  label: p,
-}));
+const palettes = PALETTES.map((p) => ({ value: p.name, label: p.label }));
 ---
 
-<form class="hero-settings" aria-label="Hero art settings">
+<form class="hero-settings" aria-label="Hero art settings" data-hero-settings>
   <SettingsGroup title="Terrain">
+    <div class="number-row">
+      <label for="hero-seed">Seed</label>
+      <input
+        type="number"
+        id="hero-seed"
+        name="hero-seed"
+        min="0"
+        max={MAX_SEED}
+        step="1"
+        value="1"
+        inputmode="numeric"
+      />
+    </div>
+    <ButtonRow>
+      <button type="button" class="btn" data-hero-new>
+        New terrain
+      </button>
+    </ButtonRow>
     <SliderRow
       id="hero-scale"
       label="Scale"
-      min={0.5}
-      max={3}
-      step={0.1}
-      value={1.5}
+      min={SCALE_RANGE.min}
+      max={SCALE_RANGE.max}
+      step={SCALE_RANGE.step}
+      value={D.scale}
       decimals={1}
+      unit="×"
+    />
+    <SliderRow
+      id="hero-roughness"
+      label="Roughness"
+      min={ROUGHNESS_RANGE.min}
+      max={ROUGHNESS_RANGE.max}
+      step={ROUGHNESS_RANGE.step}
+      value={D.roughness}
+      decimals={2}
     />
   </SettingsGroup>
-  <SettingsGroup title="Color">
-    <SelectRow id="hero-palette" label="Palette" options={palettes} value="delta" />
+
+  <SettingsGroup title="Water">
+    <ButtonRow>
+      <button type="button" class="btn" data-hero-play>
+        Play
+      </button>
+    </ButtonRow>
+    <SliderRow
+      id="hero-speed"
+      label="Speed"
+      min={0.25}
+      max={3}
+      step={0.25}
+      value={D.speed}
+      decimals={2}
+      unit="×"
+    />
+    <SliderRow
+      id="hero-level"
+      label="Water level"
+      min={0}
+      max={100}
+      step={0.5}
+      value={0}
+      decimals={0}
+      unit="%"
+    />
+    <SelectRow
+      id="hero-pacing"
+      label="Pacing"
+      value={D.pacing}
+      options={[
+        { value: 'linear', label: 'Linear (metres)' },
+        { value: 'percentile', label: 'Percentile (area)' },
+      ]}
+    />
+    <CheckboxRow id="hero-loop" label="Loop with a new terrain" checked={D.loop} />
   </SettingsGroup>
+
+  <SettingsGroup title="Barcode">
+    <CheckboxRow id="hero-show-barcode" label="Show barcode" checked={D.showBarcode} />
+    <SliderRow
+      id="hero-min-persistence"
+      label="Min persistence"
+      min={0}
+      max={200}
+      step={5}
+      value={D.minPersistence}
+      unit=" m"
+    />
+    <SliderRow id="hero-max-bars" label="Max bars" min={5} max={60} step={1} value={D.maxBars} />
+    <SelectRow
+      id="hero-view"
+      label="View"
+      value={D.view}
+      options={[
+        { value: 'barcode', label: 'Barcode' },
+        { value: 'diagram', label: 'Persistence diagram' },
+      ]}
+    />
+  </SettingsGroup>
+
+  <SettingsGroup title="Color">
+    <SelectRow id="hero-palette" label="Palette" options={palettes} value={D.palette} />
+    <SelectRow
+      id="hero-color-by"
+      label="Color by"
+      value={D.colorBy}
+      options={[
+        { value: 'lake', label: 'Lake' },
+        { value: 'depth', label: 'Depth' },
+      ]}
+    />
+    <CheckboxRow id="hero-shoreline" label="Shoreline outlines" checked={D.shoreline} />
+  </SettingsGroup>
+
   <ButtonRow>
     <button type="reset" class="btn">
       Reset
@@ -41,5 +145,25 @@ const palettes = ['Delta', 'Canyon', 'Glacier', 'Estuary', 'Mono'].map((p) => ({
     display: flex;
     flex-direction: column;
     gap: var(--space-5);
+  }
+
+  .number-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--fs-small);
+  }
+
+  .number-row input {
+    width: 9rem;
+    min-height: 2.25rem;
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--color-control);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
   }
 </style>

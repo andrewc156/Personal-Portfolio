@@ -8,7 +8,7 @@
 | F3 Persistence engine | tda-engineer | done | 1 | docs/checks/F3/attempt-1.md | PASS_WITH_NOTES: advanceTo allocates a closure per call (doc says only event array); backward advanceTo replays all events from bottom — F5/F6 must handle; browser frame timing to confirm in F5/F6 |
 | F4a Colorado DEM → grid | data-engineer | done | 1 | docs/checks/F4a/attempt-1.md | PASS_WITH_NOTES: fix in F4b — half-pixel range "34–46 m", source "2021 release" unsourced, vertical-accuracy claim unsourced |
 | F4b Reference barcode | data-engineer | done | 1 | docs/checks/F4b/attempt-1.md | PASS_WITH_NOTES: switch LANDMARKS to USGS GNIS/MRDS coords (Ray Mine confirmed); unify "≈ 40 m" wording in data.md Limitations |
-| F5 Synthetic hero | viz-builder | building | 1 | — | |
+| F5 Synthetic hero | viz-builder | done | 2 | docs/checks/F5/attempt-2.md | PASS_WITH_NOTES: pass diamond can cover pit ring when adjacent; "17 / m" wrap (use NBSP); destroy() leaves timers; hidden tab only emulated |
 | F6 Colorado explorer | viz-builder | todo | 0 | — | needs F4b + F5 |
 | F7 Polish / SEO / perf / a11y | site-builder | todo | 0 | — | |
 | F8 Cloudflare Pages setup | site-builder | todo | 0 | — | |

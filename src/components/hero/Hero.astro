@@ -1,7 +1,9 @@
 ---
 /**
- * Hero (spec §4.3 item 1). F1 stub: name, hero question, keywords and a static
- * terrain frame where F5's Rising water canvas will go. F5 replaces this file.
+ * Home hero (spec §4.3 item 1, §6.3): name, hero question, keywords, and the synthetic Rising
+ * water canvas with its barcode strip. The static terrain illustration sits under the canvas
+ * as a no-JS fallback; every box has a fixed size before hydration so nothing shifts.
+ * Behaviour: hero-client.ts → src/lib/viz/hero/controller.ts. Settings: HeroSettings.astro.
  */
 import TerrainArt from '../site/TerrainArt.astro';
 import { displayName, profile } from '../site/profile';
@@ -20,11 +22,64 @@ import { displayName, profile } from '../site/profile';
         </ul>
       )}
     </div>
-    <div class="hero__frame">
-      <TerrainArt />
-    </div>
+    <figure class="hero__figure">
+      <div
+        class="hero__art"
+        data-hero
+        data-state="paused"
+        data-running="false"
+        tabindex="0"
+        role="group"
+        aria-label="Rising water animation"
+        aria-describedby="hero-keys"
+        aria-keyshortcuts="Space ArrowLeft ArrowRight ArrowUp ArrowDown Home End Escape N"
+      >
+        <div class="hero__map">
+          <TerrainArt class="hero__fallback" />
+          <canvas
+            class="hero__canvas"
+            data-hero-map
+            role="img"
+            aria-label="Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+          ></canvas>
+        </div>
+        <div class="hero__strip" data-hero-strip-box>
+          <canvas
+            class="hero__strip-canvas"
+            data-hero-strip
+            role="img"
+            aria-label="Barcode: one bar per lake, from the water level where it is born to the level where it spills into an older lake. The lowest lake's bar never ends."
+          ></canvas>
+        </div>
+        <div class="hero__bar">
+          <button type="button" class="btn hero__btn" data-hero-play>
+            Play
+          </button>
+          <button type="button" class="btn hero__btn" data-hero-new>
+            New terrain
+          </button>
+          <p class="hero__readout" data-hero-readout>
+            &nbsp;
+          </p>
+        </div>
+        <p id="hero-keys" class="visually-hidden">
+          With the animation focused: Space plays or pauses, Left and Right arrows move the water
+          level, Home and End jump to the bottom and top, Up and Down pick a bar, Escape clears the
+          picked bar, and N makes a new terrain.
+        </p>
+        <p class="visually-hidden" aria-live="polite" data-hero-summary></p>
+      </div>
+      <figcaption class="hero__caption">
+        Water rises over a random landscape. Lakes are born, then merge, and the barcode records
+        each lake's lifetime. <a href="/rising-water/">See it on the Colorado River Basin →</a>
+      </figcaption>
+    </figure>
   </div>
 </section>
+
+<script>
+  import '../hero/hero-client';
+</script>
 
 <style>
   .hero {
@@ -68,14 +123,106 @@ import { displayName, profile } from '../site/profile';
     color: var(--color-text-muted);
   }
 
-  .hero__frame {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--color-border);
-    aspect-ratio: 2 / 1;
+  .hero__figure {
+    margin: 0;
+    min-width: 0;
   }
 
-  .hero__frame :global(svg) {
+  .hero__art {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .hero__art:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  .hero__map {
+    position: relative;
+    aspect-ratio: 2 / 1;
+    background: var(--color-surface-sunken);
+  }
+
+  .hero__map :global(.hero__fallback) {
+    position: absolute;
+    inset: 0;
     height: 100%;
+  }
+
+  .hero__canvas,
+  .hero__strip-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__canvas {
+    position: absolute;
+    inset: 0;
+    cursor: crosshair;
+    touch-action: manipulation;
+  }
+
+  .hero__strip {
+    height: 7.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero__strip[hidden] {
+    display: none;
+  }
+
+  .hero__strip-canvas {
+    touch-action: manipulation;
+  }
+
+  .hero__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 3rem;
+    padding: var(--space-2) var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero__btn {
+    flex: none;
+    min-width: 4.5rem;
+  }
+
+  /* Own full-width line under the buttons, wrapping, with room for two lines reserved
+     (three on very narrow screens) so changing text never shifts the layout. */
+  .hero__readout {
+    flex: 1 0 100%;
+    min-width: 0;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    line-height: 1.4;
+    min-height: 2.8em;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 26rem) {
+    .hero__readout {
+      min-height: 4.2em;
+    }
+  }
+
+  .hero__caption {
+    margin-top: var(--space-3);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    max-width: var(--measure);
+  }
+
+  .hero__caption a {
+    white-space: nowrap;
   }
 </style>
