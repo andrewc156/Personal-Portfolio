@@ -1,0 +1,32 @@
+---
+/**
+ * A date or date range as "Mon YYYY", "Mon YYYY – Mon YYYY" or "Mon YYYY – Present", with
+ * machine-readable <time> elements. Renders nothing without a start date. Callers style it
+ * through a wrapping element (a child component doesn't receive the caller's scoped styles).
+ */
+import { formatRange, isoDate } from './format';
+
+interface Props {
+  date: string;
+  end?: string;
+  ongoing?: boolean;
+}
+const { date, end = '', ongoing = false } = Astro.props;
+const r = formatRange(date, end, ongoing);
+---
+
+{r.start && (
+  <span class="date-range" data-date-range>
+    <time datetime={isoDate(date)}>{r.start}</time>
+    {r.end && (
+      <>
+        {' – '}
+        {r.end === 'Present' ? (
+          <span data-present>Present</span>
+        ) : (
+          <time datetime={isoDate(end)}>{r.end}</time>
+        )}
+      </>
+    )}
+  </span>
+)}

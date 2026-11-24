@@ -21,7 +21,7 @@ import {
   type LakeTable,
   type Pacing,
 } from './model.ts';
-import { clampMarker, placeLabel, type Box } from './markers.ts';
+import { clampMarker, placeLabel, separatePass, type Box, type Point } from './markers.ts';
 import { MapPainter, type ColorBy } from './render-map.ts';
 import { generateTerrain, gridSize, heightRange, hillshade } from './terrain.ts';
 import { barReadout, cellReadout, levelReadout, metres, stripLabel, summaryText } from './text.ts';
@@ -154,6 +154,9 @@ export class HeroController {
   private stripCss = { w: 0, h: 0 };
   private resizeTimer = 0;
   private cleanup: (() => void)[] = [];
+  private destroyed = false;
+  /** Pass-marker position scratch (reused every highlight frame). */
+  private passPt: Point = { x: 0, y: 0 };
 
   constructor(els: HeroElements, settings: HeroSettings, opts: { reducedMotion: boolean }) {
     this.els = els;
@@ -299,9 +302,25 @@ export class HeroController {
     }
   }
 
+  /**
+   * Stop for good: cancel the frame and every timer this controller set (resize settle, readout
+   * trailing update, summary debounce), and remove all listeners and observers. Later calls into
+   * the controller don't schedule anything.
+   */
   destroy(): void {
+    if (this.destroyed) return;
+    this.destroyed = true;
     cancelAnimationFrame(this.raf);
-    this.cleanup.forEach((f) => f());
+    this.raf = 0;
+    clearTimeout(this.resizeTimer);
+    clearTimeout(this.readoutTimer);
+    clearTimeout(this.summaryTimer);
+    this.resizeTimer = 0;
+    this.readoutTimer = 0;
+    this.summaryTimer = 0;
+    for (const f of this.cleanup) f();
+    this.cleanup.length = 0;
+    this.setRunning(false);
   }
 
   /** Bars the barcode currently draws (engine objects), for tests and debugging. */
@@ -311,6 +330,11 @@ export class HeroController {
 
   get grid(): { W: number; H: number } {
     return { W: this.t.W, H: this.t.H };
+  }
+
+  /** Timers this controller has pending (resize, readout, summary); read by e2e after destroy(). */
+  get pendingTimers(): number {
+    return (this.resizeTimer ? 1 : 0) + (this.readoutTimer ? 1 : 0) + (this.summaryTimer ? 1 : 0);
   }
 
   get isRunning(): boolean {
@@ -470,11 +494,13 @@ export class HeroController {
   }
 
   private onResize = (): void => {
+    if (this.destroyed) return;
     this.measure();
     this.schedule();
     // Rebuild the grid (same seed) only once the size settles.
     clearTimeout(this.resizeTimer);
     this.resizeTimer = window.setTimeout(() => {
+      this.resizeTimer = 0;
       const { W, H } = gridSize(this.mapCss.w, this.mapCss.h);
       if (W !== this.t.W || H !== this.t.H) {
         this.build();
@@ -491,6 +517,7 @@ export class HeroController {
   }
 
   private schedule(): void {
+    if (this.destroyed) return;
     if (!this.raf && (this.dirty || this.shouldRun())) this.raf = requestAnimationFrame(this.frame);
   }
 
@@ -636,30 +663,25 @@ export class HeroController {
     const px = clampMarker(((bar.birthCell % t.W) + 0.5) * sx, cw, pitR, margin);
     const py = clampMarker((Math.floor(bar.birthCell / t.W) + 0.5) * sy, chh, pitR, margin);
     const hasPass = !isEssential(bar);
-    const qx = hasPass ? clampMarker(((bar.deathCell % t.W) + 0.5) * sx, cw, passR, margin) : 0;
-    const qy = hasPass
-      ? clampMarker((Math.floor(bar.deathCell / t.W) + 0.5) * sy, chh, passR, margin)
-      : 0;
+    let qx = 0;
+    let qy = 0;
+    if (hasPass) {
+      const rx = clampMarker(((bar.deathCell % t.W) + 0.5) * sx, cw, passR, margin);
+      const ry = clampMarker((Math.floor(bar.deathCell / t.W) + 0.5) * sy, chh, passR, margin);
+      // Adjacent pit and pass cells would put the markers on top of each other: move the
+      // diamond just clear of the pit ring (a 3 px gap) so both stay visible.
+      const q = separatePass(px, py, pitR, rx, ry, passR, 3 * d, cw, chh, margin, this.passPt);
+      qx = q.x;
+      qy = q.y;
+    }
 
     ctx.font = `600 ${12 * d}px "IBM Plex Sans", system-ui, sans-serif`;
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'left';
     ctx.lineJoin = 'round';
 
-    // Pit: ringed dot.
-    ctx.beginPath();
-    ctx.arc(px, py, pitR, 0, Math.PI * 2);
-    ctx.fillStyle = this.colors.bg;
-    ctx.fill();
-    ctx.lineWidth = 2 * d;
-    ctx.strokeStyle = this.colors.text;
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.arc(px, py, 2 * d, 0, Math.PI * 2);
-    ctx.fillStyle = this.colors.text;
-    ctx.fill();
     if (hasPass) {
-      // Pass: a diamond.
+      // Pass: a diamond, drawn first so the pit ring stays on top if they ever touch.
       ctx.beginPath();
       ctx.moveTo(qx, qy - passR);
       ctx.lineTo(qx + passR, qy);
@@ -672,6 +694,18 @@ export class HeroController {
       ctx.strokeStyle = this.colors.text;
       ctx.stroke();
     }
+    // Pit: ringed dot, drawn last.
+    ctx.beginPath();
+    ctx.arc(px, py, pitR, 0, Math.PI * 2);
+    ctx.fillStyle = this.colors.bg;
+    ctx.fill();
+    ctx.lineWidth = 2 * d;
+    ctx.strokeStyle = this.colors.text;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(px, py, 2 * d, 0, Math.PI * 2);
+    ctx.fillStyle = this.colors.text;
+    ctx.fill();
 
     // Labels: inside the canvas, clear of both markers and of each other.
     const lh = 16 * d;
@@ -705,7 +739,7 @@ export class HeroController {
     if (!force && this.playing) {
       const wait = 150 - (now - this.lastReadoutAt);
       if (wait > 0) {
-        if (!this.readoutTimer) {
+        if (!this.readoutTimer && !this.destroyed) {
           this.readoutTimer = window.setTimeout(() => {
             this.readoutTimer = 0;
             this.updateReadout(true);
@@ -750,7 +784,11 @@ export class HeroController {
 
   private queueSummary(delay: number): void {
     clearTimeout(this.summaryTimer);
-    this.summaryTimer = window.setTimeout(() => this.updateSummary(), delay);
+    if (this.destroyed) return;
+    this.summaryTimer = window.setTimeout(() => {
+      this.summaryTimer = 0;
+      this.updateSummary();
+    }, delay);
   }
 
   private updateSummary(): void {

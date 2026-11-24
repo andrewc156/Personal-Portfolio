@@ -11,7 +11,6 @@ const PAGES = [
   '/garden/',
   '/research/',
   '/research/water-quality/',
-  '/research/tda-rivernets/',
   '/research/number-theory/',
   '/research/spectral-fractals/',
   '/cv/',
@@ -112,6 +111,15 @@ test.describe('not found', () => {
   });
 });
 
+test.describe('merged research area', () => {
+  test('the old RiverNets slug is gone (merged into water-quality, DECISIONS #68)', async ({
+    page,
+  }) => {
+    const res = await page.goto('/research/tda-rivernets/');
+    expect(res?.status()).toBe(404);
+  });
+});
+
 test.describe('sitemap and robots.txt', () => {
   test('sitemap lists every public page on the site origin and no 404', async ({
     request,
@@ -126,6 +134,8 @@ test.describe('sitemap and robots.txt', () => {
       urls.push(...(await locs(request, origin, new URL(loc).pathname)));
     }
     for (const u of urls) expect(new URL(u).origin).toBe(origin);
+    // 9 public pages: home, Garden, research index, 3 research areas, CV, About, Rising water.
+    expect(urls).toHaveLength(9);
     expect([...urls].sort()).toEqual(PAGES.map((p) => new URL(p, origin).href).sort());
     expect(urls.some((u) => /404/.test(new URL(u).pathname))).toBe(false);
   });

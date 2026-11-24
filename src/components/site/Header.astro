@@ -137,10 +137,14 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     margin-inline-end: calc(-1 * var(--space-2));
   }
 
-  /* Mobile and tablet: nav moves to its own row and wraps. */
+  /* Mobile and tablet: nav moves to its own single row. The row never wraps, so
+     its height doesn't depend on which font has loaded (no shift when Plex swaps
+     in over a wider fallback). If the links don't fit they scroll sideways: a
+     focused link is scrolled into view, touch and trackpads swipe, and soft
+     edge shadows show there is more. */
   @media (max-width: 52rem) {
     .site-header__inner {
-      grid-template-columns: 1fr auto;
+      grid-template-columns: minmax(0, 1fr) auto;
       grid-template-areas:
         'mark tools'
         'nav nav';
@@ -148,14 +152,37 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     }
 
     .site-nav {
-      justify-self: start;
+      justify-self: stretch;
+      min-width: 0;
       border-top: 1px solid var(--color-border);
-      width: 100%;
-      padding-top: var(--space-1);
+      margin-inline: calc(-1 * var(--gutter));
     }
 
     .site-nav ul {
-      gap: 0 var(--space-4);
+      flex-wrap: nowrap;
+      gap: var(--space-4);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      /* Room for the 2px focus ring (offset 2px) inside the scroll box. */
+      padding: var(--space-1) var(--gutter);
+      background:
+        linear-gradient(to right, var(--color-bg) 40%, transparent) left / 1.5rem 100% no-repeat
+          local,
+        linear-gradient(to left, var(--color-bg) 40%, transparent) right / 1.5rem 100% no-repeat
+          local,
+        radial-gradient(farthest-side at 0 50%, var(--color-control), transparent) left / 0.625rem
+          100% no-repeat scroll,
+        radial-gradient(farthest-side at 100% 50%, var(--color-control), transparent) right /
+          0.625rem 100% no-repeat scroll;
+    }
+
+    .site-nav ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    .site-nav li {
+      flex: none;
     }
 
     .site-nav a {

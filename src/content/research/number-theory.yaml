@@ -1,6 +1,20 @@
-# Spec §3 research area 3. Titles, coauthors and links still to come from Andrew ([A]).
-title: Number theory
-order: 3
-summary: One preprint, with a second paper in progress.
-methods: []
-advisor: ''
+# Every fact is from Andrew's CV (DECISIONS #68). `$…$` marks inline math, rendered in italics.
+title: Analytic number theory
+order: 2
+summary: The largest $k$^th^-power divisor of a random integer, the subject of a submitted manuscript.
+description: >-
+  The submitted manuscript Largest $k$^th^-Power Divisor of a Random Integer establishes an
+  asymptotic formula with an $O$(log $x$) error term for every integer $k$ ≥ 2.
+methods:
+  - Asymptotic analysis of the largest $k$^th^-power divisor of a random integer.
+  - Python experiments on integers up to 10⁸, calculating empirical averages, growth constants and relative errors to validate the theoretical results.
+advisor: Dr. Tsz Ho Chan
+position:
+  role: Undergraduate Researcher – Analytic Number Theory
+  organization: Kennesaw State University
+  start: '2025-08'
+  ongoing: true
+  highlights:
+    - Coauthored the submitted manuscript Largest $k$^th^-Power Divisor of a Random Integer, establishing an asymptotic formula with an $O$(log $x$) error term for every integer $k$ ≥ 2.
+    - Developed all Python code for experiments on integers up to 10⁸, calculating empirical averages, growth constants, and relative errors to validate the theoretical results.
+    - Co-presented the square-divisor case ($k$ = 2) at the 105th MAA Southeastern Section Meeting.

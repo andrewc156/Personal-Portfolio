@@ -1,6 +1,34 @@
-# Spec §3 research area 1. Topic, advisor, data and methods are still to come from Andrew ([A]).
-title: Water quality
+# Water quality and RiverNets merged into one area (DECISIONS #68). Every fact is from
+# Andrew's CV.
+title: Water-quality prediction on river networks
 order: 1
-summary: Andrew's primary research focus as of fall 2026.
-methods: []
-advisor: ''
+summary: Predicting hourly water quality at river stations with no data, using graph-Laplacian regression on the river network.
+description: >-
+  RiverNets, a project in the TDA Lab at Kennesaw State University, predicts hourly water
+  quality (water temperature, dissolved oxygen, specific conductance, pH and turbidity) at
+  river stations with no data, using a smoothness penalty along the river network.
+methods:
+  - Graph-Laplacian regression with a smoothness penalty along the river network.
+  - Hourly USGS continuous water-quality records from 28 Colorado River Basin stations, cleaned and audited for completeness by station and variable.
+  - River-network graphs built in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), plus graphs for the Chattahoochee basin.
+  - Kron (Schur-complement) reduction that collapses the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.
+  - Benchmarks against OLS, Ridge, Elastic Net, a spline GAM, random forest and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts.
+results:
+  - At unseen stations the graph model reached R² = 0.38 for specific conductance and 0.12 for pH, versus 0.02 for the best alternative.
+  - ERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).
+advisor: Dr. Mehmet Aktas
+position:
+  role: Undergraduate Research Assistant – RiverNets (TDA Lab)
+  organization: Kennesaw State University
+  start: '2026-08'
+  ongoing: true
+  # CV wording (bullets are not shortened, so no fact is regrouped or reattributed).
+  highlights:
+    - Developed a graph-Laplacian regression model that predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH, turbidity) at river stations with no data, using a smoothness penalty along the river network.
+    - Downloaded, cleaned, and audited hourly USGS continuous water-quality records from 28 Colorado River Basin stations, tracking data completeness by station and variable.
+    - Built river-network graphs in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), along with graphs for the Chattahoochee basin.
+    - Applied Kron (Schur-complement) reduction to collapse the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.
+    - Benchmarked against OLS, Ridge, Elastic Net, a spline GAM, random forest, and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts; the graph model reached R² = 0.38 for specific conductance and 0.12 for pH at unseen stations, versus 0.02 for the best alternative.
+    - Found feature-selection leakage that had overstated R² by up to 0.13 and moved all selection inside the inner validation loop.
+    - Ran paired, station-bootstrapped experiments on six new features and models; ERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).
+    - Built an interactive river-network map site with 28 automated tests, and wrote technical reports for the lab.

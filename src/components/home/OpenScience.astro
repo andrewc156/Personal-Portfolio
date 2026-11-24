@@ -12,10 +12,13 @@ interface Props {
 }
 const { id } = Astro.props;
 const copy = await getCopy('open_science');
-const repos = await getRepos();
-if (profile.site.source_url && !repos.some((r) => r.url === profile.site.source_url)) {
-  repos.unshift({ label: 'Source for this site', url: profile.site.source_url });
-}
+const src = profile.site.source_url;
+const listed = await getRepos();
+// The site's own source comes first, whether it is listed in open-science.yaml or not.
+const own =
+  listed.find((r) => r.url === src) ??
+  (src ? { label: 'Source for this site', url: src } : undefined);
+const repos = [...(own ? [own] : []), ...listed.filter((r) => r !== own)];
 ---
 
 <section id={id} class="section" aria-labelledby={`${id}-title`}>

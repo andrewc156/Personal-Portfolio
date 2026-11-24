@@ -80,3 +80,77 @@ export function placeLabel(
   }
   return clampBox(candidates[mx + r + gap + w <= W - pad ? 0 : 1]);
 }
+
+/** Where to draw the pass diamond (written into by `separatePass`, so frames don't allocate). */
+export interface Point {
+  x: number;
+  y: number;
+}
+
+// Push directions tried in order when the natural one (pit → pass) is blocked by the canvas edge.
+const DIRS: readonly (readonly [number, number])[] = [
+  [1, 0],
+  [-1, 0],
+  [0, -1],
+  [0, 1],
+  [Math.SQRT1_2, -Math.SQRT1_2],
+  [-Math.SQRT1_2, -Math.SQRT1_2],
+  [Math.SQRT1_2, Math.SQRT1_2],
+  [-Math.SQRT1_2, Math.SQRT1_2],
+];
+
+function pushTo(
+  px: number,
+  py: number,
+  ux: number,
+  uy: number,
+  need: number,
+  passR: number,
+  W: number,
+  H: number,
+  margin: number,
+  out: Point,
+): boolean {
+  const x = clampMarker(px + ux * need, W, passR, margin);
+  const y = clampMarker(py + uy * need, H, passR, margin);
+  if (Math.hypot(x - px, y - py) < need - 1e-9) return false;
+  out.x = x;
+  out.y = y;
+  return true;
+}
+
+/**
+ * Keep the pass diamond (radius passR, centre qx, qy) clear of the pit ring (radius pitR, centre
+ * px, py) by at least `minGap`. Adjacent cells put the two markers on top of each other; then the
+ * diamond is moved just far enough away from the pit, along the pit → pass direction where
+ * possible, else the first direction that keeps it inside the canvas (same clamp as
+ * `clampMarker`). Markers already far enough apart are left exactly where they are. Writes the
+ * diamond's centre into `out` and returns it.
+ */
+export function separatePass(
+  px: number,
+  py: number,
+  pitR: number,
+  qx: number,
+  qy: number,
+  passR: number,
+  minGap: number,
+  W: number,
+  H: number,
+  margin: number,
+  out: Point,
+): Point {
+  const need = pitR + passR + minGap;
+  const dx = qx - px;
+  const dy = qy - py;
+  const dist = Math.hypot(dx, dy);
+  out.x = qx;
+  out.y = qy;
+  if (dist >= need) return out;
+  if (dist > 1e-9 && pushTo(px, py, dx / dist, dy / dist, need, passR, W, H, margin, out)) {
+    return out;
+  }
+  for (const [ux, uy] of DIRS)
+    if (pushTo(px, py, ux, uy, need, passR, W, H, margin, out)) return out;
+  return out; // A canvas too small for both: leave it (the pit is drawn on top).
+}

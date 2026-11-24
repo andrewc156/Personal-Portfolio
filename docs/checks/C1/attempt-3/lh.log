@@ -1,0 +1,42 @@
+Started a web server on port 55963...
+Running Lighthouse 4 time(s) on http://localhost:55963/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/garden/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/research/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/research/water-quality/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/research/number-theory/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/research/spectral-fractals/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/cv/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:55963/about/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Done running Lighthouse!

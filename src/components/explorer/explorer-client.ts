@@ -52,6 +52,23 @@ function yieldToMain(): Promise<void> {
   return new Promise<void>((r) => setTimeout(r, 0));
 }
 
+/**
+ * Error state: besides the status message, drop everything that implies the map is interactive:
+ * the "Point at or tap the map…" hint (emptied and hidden by CSS, keeping its box so nothing
+ * shifts), the crosshair cursor, and the map's focus stop and keyboard shortcuts.
+ */
+function markInert(root: HTMLElement): void {
+  const hint = root.querySelector<HTMLElement>('[data-ex-hover]');
+  if (hint) hint.textContent = '';
+  const stage = root.querySelector<HTMLElement>('[data-ex-stage]');
+  if (stage) {
+    stage.removeAttribute('tabindex');
+    stage.removeAttribute('aria-keyshortcuts');
+    stage.removeAttribute('aria-describedby');
+  }
+  root.dataset.inert = 'true';
+}
+
 function setStatus(root: HTMLElement, text: string, kind: 'loading' | 'ok' | 'error'): void {
   const el = root.querySelector<HTMLElement>('[data-ex-status]');
   if (!el) return;
@@ -145,6 +162,7 @@ async function load(root: HTMLElement): Promise<void> {
 function reject(root: HTMLElement, reason: string, problems: string[]): void {
   console.error(`${LOG} data check failed: ${reason}`, problems);
   root.dataset.match = 'false';
+  markInert(root);
   setStatus(
     root,
     `The elevation data failed its integrity check (${reason}), so the live map and barcode are not shown. The table and the sections below come from the published files.`,
@@ -295,6 +313,7 @@ function wire(root: HTMLElement, ex: ExplorerController): void {
 function fail(root: HTMLElement, err: unknown): void {
   console.error(`${LOG} could not start the explorer`, err);
   root.dataset.match = 'error';
+  markInert(root);
   setStatus(
     root,
     'The elevation data could not be loaded, so the live map and barcode are not shown. The table and the sections below come from the published files.',
@@ -305,6 +324,10 @@ function fail(root: HTMLElement, err: unknown): void {
 function init(): void {
   const root = document.querySelector<HTMLElement>('[data-explorer]');
   if (!root) return;
+  // The controls form never submits (no inline handler: the CSP has no 'unsafe-hashes', #62).
+  root
+    .querySelector<HTMLFormElement>('[data-ex-controls]')
+    ?.addEventListener('submit', (e) => e.preventDefault());
   const start = () => {
     load(root).catch((e) => fail(root, e));
   };

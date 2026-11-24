@@ -1,10 +1,13 @@
-# Spec §3. Status, link and date still to come from Andrew ([A]); stays a draft until supplied.
+# From Andrew's CV (Projects), Nov 2026 – Present. Built with Python, TypeScript, React and
+# React Flow. No public link supplied.
 type: project
 title: OwlPath
-description: A course-prerequisite chart for Kennesaw State, modeled on Georgia Tech's GradGT.
+date: '2026-11'
+ongoing: true
+description: An interactive prerequisite map for three KSU majors; students mark completed courses and see which classes they can take next term.
 authors:
   - Andrew Chincea
 links: {}
 tags: []
-draft: true
-confirmed: false
+draft: false
+confirmed: true

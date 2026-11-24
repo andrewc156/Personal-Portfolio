@@ -3,13 +3,16 @@ import { isEssential, persistence } from '../../tda/index.ts';
 
 /** Text for the hero's readout line and its screen-reader summary. Copy stays within spec §6.6. */
 
+/** U+00A0 between a number and its unit, so "17 m" never wraps between the two. */
+export const NBSP = '\u00a0';
+
 const metreCache: string[] = [];
 
-/** "412 m", cached by whole metre so frames don't build new strings. */
+/** "412 m" (no-break space), cached by whole metre so frames don't build new strings. */
 export function metres(v: number): string {
   const r = Math.round(v);
-  if (r >= 0 && r <= 5000) return (metreCache[r] ??= `${r} m`);
-  return `${r} m`;
+  if (r >= 0 && r <= 5000) return (metreCache[r] ??= `${r}${NBSP}m`);
+  return `${r}${NBSP}m`;
 }
 
 export function lakesText(n: number): string {

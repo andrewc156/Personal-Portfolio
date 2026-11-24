@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
@@ -15,6 +15,10 @@ interface WorkYaml {
   type: string;
   title?: string;
   date?: string;
+  end?: string;
+  ongoing?: boolean;
+  status?: string;
+  venue?: string;
   authors: string[];
   links?: Record<string, string>;
   tags?: string[];
@@ -37,15 +41,39 @@ function readYamlDir<T>(dir: string): { id: string; data: T }[] {
 const ALL_WORK = readYamlDir<WorkYaml>(WORK_DIR);
 const PUBLIC_WORK = ALL_WORK.filter((w) => !w.data.draft);
 const DRAFT_WORK = ALL_WORK.filter((w) => w.data.draft);
-const AREAS = readYamlDir<{ title: string; order: number }>(RESEARCH_DIR).sort(
+const AREAS = readYamlDir<{ title: string; order: number; advisor?: string }>(RESEARCH_DIR).sort(
   (a, b) => a.data.order - b.data.order,
 );
 const PROFILE = parse(readFileSync(join(ROOT, 'src/data/profile.yaml'), 'utf8')) as {
   cv_pdf?: string;
+  contact: { email: string; github: string; linkedin: string; orcid?: string };
 };
 
-const MON_YYYY = /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}$/;
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MON = `(${MONTHS.join('|')}) \\d{4}`;
+const MON_YYYY = new RegExp(`^${MON}$`);
+/** "Mon YYYY", "Mon YYYY – Mon YYYY" or "Mon YYYY – Present". */
+const DATE_TEXT = new RegExp(`^${MON}( – (${MON}|Present))?$`);
 const FORBIDDEN = /TODO|TBD|lorem|placeholder/i;
+/** Detect North American phone numbers without embedding private contact data. */
+const PHONE =
+  /(?<![\d,])(?:\+?1[ .-]?)?(?:\([2-9]\d{2}\)|[2-9]\d{2})[ .-]?[2-9]\d{2}[ .-]?\d{4}(?!\d)/;
+
+/**
+ * Titles and descriptions mark inline math as `$k$` and superscript as `^th^`; the page
+ * shows the bare letters (in <i> and <sup>).
+ */
+const plain = (s = '') => s.replace(/\$([^$\n]+)\$|\^([^^\s]+)\^/g, (_m, a, b) => a ?? b);
+
+/** Expected display text of an item's date (or status) in Garden rows and citations. */
+function dateText(w: WorkYaml): string {
+  if (w.status === 'submitted') return 'Submitted';
+  if (!w.date) return '';
+  const fmt = (d: string) => `${MONTHS[Number(d.slice(5, 7)) - 1]} ${d.slice(0, 4)}`;
+  if (w.ongoing) return `${fmt(w.date)} – Present`;
+  if (w.end && w.end.slice(0, 7) !== w.date.slice(0, 7)) return `${fmt(w.date)} – ${fmt(w.end)}`;
+  return fmt(w.date);
+}
 const PAGES = [
   '/',
   '/garden/',
@@ -54,6 +82,8 @@ const PAGES = [
   '/cv/',
   '/about/',
 ];
+/** Every page, for the site-wide phone and References checks. */
+const ALL_PAGES = [...PAGES, '/rising-water/', '/this-page-does-not-exist/'];
 
 async function expectNoSeriousAxe(page: Page, label: string): Promise<void> {
   // Let entry transitions finish before scanning.
@@ -68,36 +98,55 @@ async function expectNoSeriousAxe(page: Page, label: string): Promise<void> {
   ).toEqual([]);
 }
 
+/** Email (mailto), GitHub and LinkedIn from profile.yaml; no ORCID and no phone link. */
+async function expectContactLinks(scope: Locator): Promise<void> {
+  const c = PROFILE.contact;
+  await expect(scope.getByRole('link', { name: c.email, exact: true })).toHaveAttribute(
+    'href',
+    `mailto:${c.email}`,
+  );
+  for (const url of [c.github, c.linkedin]) {
+    await expect(scope.locator(`a[href="${url}"]`)).toHaveCount(1);
+    await expect(scope.locator(`a[href="${url}"]`)).toBeVisible();
+  }
+  await expect(scope.locator('a[href^="tel:"]')).toHaveCount(0);
+  await expect(scope.locator('a')).toHaveCount(3);
+}
+
 function visibleRows(page: Page) {
   return page.locator('[data-work-row]:visible');
 }
 
 test.describe('content files', () => {
-  test('the six §3 work items exist exactly once and drafts have empty [A] fields', () => {
-    expect(ALL_WORK).toHaveLength(6);
+  test('the CV work items exist exactly once and drafts have empty [A] fields', () => {
+    expect(ALL_WORK).toHaveLength(8);
     const byType = ALL_WORK.reduce<Record<string, number>>((acc, w) => {
       acc[w.data.type] = (acc[w.data.type] ?? 0) + 1;
       return acc;
     }, {});
-    expect(byType).toEqual({ poster: 2, talk: 1, preprint: 1, project: 2 });
+    expect(byType).toEqual({ paper: 1, poster: 2, talk: 1, project: 4 });
+    expect(DRAFT_WORK).toHaveLength(0);
     for (const w of ALL_WORK) {
       if (!w.data.draft) {
         expect(w.data.title, w.id).toBeTruthy();
-        if (['paper', 'preprint', 'poster', 'talk'].includes(w.data.type))
+        // A submitted paper is the only dated type allowed to have no date.
+        const submittedPaper = w.data.type === 'paper' && w.data.status === 'submitted';
+        if (['paper', 'preprint', 'poster', 'talk'].includes(w.data.type) && !submittedPaper)
           expect(w.data.date, w.id).toBeTruthy();
       }
     }
+    // The CV lists exactly one manuscript (submitted) and no second number-theory paper.
+    const papers = ALL_WORK.filter((w) => ['paper', 'preprint'].includes(w.data.type));
+    expect(papers.map((w) => w.data.status)).toEqual(['submitted']);
+    expect(papers[0].data.authors).toEqual(['Tsz Ho Chan', 'Andrew Chincea']);
     // Items whose title Andrew still has to supply are drafts with an empty title.
     for (const w of ALL_WORK.filter((x) => !x.data.title)) expect(w.data.draft, w.id).toBe(true);
   });
 
-  test('four research areas', () => {
-    expect(AREAS.map((a) => a.id)).toEqual([
-      'water-quality',
-      'tda-rivernets',
-      'number-theory',
-      'spectral-fractals',
-    ]);
+  test('three research areas (water quality and RiverNets merged, DECISIONS #68)', () => {
+    expect(AREAS.map((a) => a.id)).toEqual(['water-quality', 'number-theory', 'spectral-fractals']);
+    const rising = ALL_WORK.find((w) => w.id === 'project-rising-water');
+    expect(rising?.data.tags).toEqual(['water-quality']);
   });
 });
 
@@ -115,17 +164,19 @@ test.describe('garden', () => {
     for (const w of PUBLIC_WORK) {
       const row = page.locator(`[data-work-row][data-id="${w.id}"]`);
       await expect(row.locator('.work-row__type')).toBeVisible();
-      await expect(row.locator('.work-row__title')).toHaveText(w.data.title ?? '');
+      await expect(row.locator('.work-row__title')).toHaveText(plain(w.data.title));
       const typeFont = await row
         .locator('.work-row__type')
         .evaluate((e) => getComputedStyle(e).fontFamily);
       expect(typeFont).toMatch(/Plex Mono|monospace/);
-      const date = row.locator('time');
-      if (w.data.date) await expect(date).toHaveText(MON_YYYY);
-      else await expect(date).toHaveCount(0);
+      const expected = dateText(w.data);
+      if (expected) await expect(row.locator('.work-row__date')).toHaveText(expected);
+      else await expect(row.locator('.work-row__date')).toHaveCount(0);
+      if (w.data.status) await expect(row.locator('time')).toHaveCount(0);
+      for (const t of await row.locator('time').all()) await expect(t).toHaveText(MON_YYYY);
       // Order inside the row: type tag → title → description → date.
       const order = await row.evaluate((el) =>
-        ['.work-row__type', '.work-row__title', '.work-row__desc', 'time']
+        ['.work-row__type', '.work-row__title', '.work-row__desc', '.work-row__date']
           .map((s) => el.querySelector(s))
           .filter((n): n is Element => n !== null)
           .map((n) => Array.from(el.querySelectorAll('*')).indexOf(n)),
@@ -285,6 +336,19 @@ test.describe('research', () => {
     }
   });
 
+  test('topic pages name the advisor only when the CV gives one', async ({ page }) => {
+    for (const a of AREAS) {
+      await page.goto(`/research/${a.id}/`);
+      const advisor = page.locator('[data-advisor]');
+      if (a.data.advisor) await expect(advisor).toHaveText(a.data.advisor);
+      else await expect(advisor).toHaveCount(0);
+    }
+    expect(AREAS.filter((a) => a.data.advisor).map((a) => a.id)).toEqual([
+      'water-quality',
+      'number-theory',
+    ]);
+  });
+
   test('topic pages have description, related work, and no empty Methods section', async ({
     page,
   }) => {
@@ -310,8 +374,8 @@ test.describe('research', () => {
     }
   });
 
-  test('the TDA page links to /rising-water/', async ({ page }) => {
-    await page.goto('/research/tda-rivernets/');
+  test('the water-quality (RiverNets) page links to /rising-water/', async ({ page }) => {
+    await page.goto('/research/water-quality/');
     await expect(page.locator('[data-rising-water-link] a[href="/rising-water/"]')).toBeVisible();
   });
 });
@@ -338,7 +402,16 @@ test.describe('citations', () => {
           .first()
           .evaluate((e) => Number(getComputedStyle(e).fontWeight));
         expect(weight).toBeGreaterThanOrEqual(600);
-        if (w.data.date) await expect(c.locator('time')).toHaveText(MON_YYYY);
+        for (const t of await c.locator('time').all()) await expect(t).toHaveText(MON_YYYY);
+        if (w.data.status === 'submitted') {
+          // "Submitted" replaces the date and the venue.
+          await expect(c.locator('.citation__status')).toHaveText('Submitted');
+          await expect(c.locator('time')).toHaveCount(0);
+          await expect(c.locator('.citation__venue')).toHaveCount(0);
+        } else if (w.data.date) {
+          await expect(c.locator('[data-date-range]')).toHaveText(dateText(w.data));
+        }
+        await expect(c.locator('.citation__title')).toHaveText(plain(w.data.title));
         const venue = c.locator('.citation__venue');
         if ((await venue.count()) > 0) {
           expect(await venue.evaluate((e) => e.tagName)).toBe('EM');
@@ -367,21 +440,73 @@ test.describe('citations', () => {
 });
 
 test.describe('cv and about', () => {
-  test('CV is generated from content', async ({ page }) => {
+  test('CV is generated from content, in CV section order', async ({ page }) => {
     await page.goto('/cv/');
     await expect(page.getByRole('heading', { level: 1, name: 'CV', exact: true })).toBeVisible();
-    await expect(
-      page.getByRole('heading', { level: 2, name: 'Education', exact: true }),
-    ).toBeVisible();
-    await expect(
-      page.getByRole('heading', { level: 2, name: 'Research', exact: true }),
-    ).toBeVisible();
-    await expect(page.getByText('Kennesaw State University', { exact: true })).toBeVisible();
+    const h2s = await page
+      .locator('main h2')
+      .evaluateAll((els) => els.map((e) => (e.textContent ?? '').trim()));
+    expect(h2s).toEqual([
+      'Contact', // visually hidden, labels the contact links
+      'Education',
+      'Research interests',
+      'Publications and preprints',
+      'Research experience',
+      'Presentations',
+      'Projects',
+      'Technical skills',
+      'Work experience',
+    ]);
+    const edu = page.locator('[data-cv-education]');
+    await expect(edu.getByText('Kennesaw State University', { exact: true })).toBeVisible();
+    await expect(edu).toContainText('Marietta, GA');
+    await expect(edu).toContainText('Expected May 2028');
+    await expect(edu).toContainText('Real Analysis');
+
+    // Research experience: one entry per area, with dates, and the advisor where known.
+    const research = page.locator('[data-cv-research]');
+    await expect(research.locator('[data-cv-position]')).toHaveCount(AREAS.length);
     for (const a of AREAS) {
-      await expect(
-        page.locator('main').getByRole('link', { name: a.data.title, exact: true }),
-      ).toBeVisible();
+      const entry = research.locator(`[data-cv-position="${a.id}"]`);
+      await expect(entry.locator('h3 [data-date-range]')).toHaveText(DATE_TEXT);
+      await expect(entry.locator('li').first()).toBeVisible();
+      if (a.data.advisor) await expect(entry).toContainText(`Advisor: ${a.data.advisor}`);
+      else await expect(entry).not.toContainText('Advisor');
+      await expect(entry.getByRole('link', { name: a.data.title, exact: true })).toHaveAttribute(
+        'href',
+        `/research/${a.id}/`,
+      );
     }
+    await expect(research.locator('h3 [data-date-range]')).toHaveText([
+      'Aug 2026 – Present',
+      'Aug 2025 – Present',
+      'Aug 2024 – May 2025',
+    ]);
+
+    // The submitted manuscript, with "Submitted" in place of a date.
+    const pubs = page.locator('section:has(#cv-publications) [data-citation]');
+    await expect(pubs).toHaveCount(1);
+    await expect(pubs).toContainText(
+      'Tsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.',
+    );
+    // Typeset as in the CV: italic k, superscript "th".
+    await expect(pubs.locator('.citation__title i')).toHaveText('k');
+    await expect(pubs.locator('.citation__title sup')).toHaveText('th');
+
+    await expect(page.locator('section:has(#cv-presentations) [data-citation]')).toHaveCount(
+      PUBLIC_WORK.filter((w) => ['talk', 'poster'].includes(w.data.type)).length,
+    );
+    await expect(page.locator('section:has(#cv-projects) [data-citation]')).toHaveCount(
+      PUBLIC_WORK.filter((w) => w.data.type === 'project').length,
+    );
+    const job = page.locator('[data-cv-job]');
+    await expect(job).toHaveCount(1);
+    await expect(job.locator('h3')).toContainText(
+      'Graduation Services Student Assistant (Federal Work-Study)',
+    );
+    await expect(job.locator('[data-date-range]')).toHaveText('Aug 2026 – Present');
+    await expect(job).toContainText('Office of the Registrar');
+
     const hasPresentations = PUBLIC_WORK.some((w) => ['talk', 'poster'].includes(w.data.type));
     await expect(
       page.getByRole('heading', { level: 2, name: 'Presentations', exact: true }),
@@ -408,21 +533,29 @@ test.describe('cv and about', () => {
     await expect(page.locator('[data-cv-pdf]')).toHaveCount(exists || /^https?:/.test(pdf) ? 1 : 0);
   });
 
-  test('About shows the bio and no empty contact section', async ({ page }) => {
+  test('About shows the bio and the contact links', async ({ page }) => {
     await page.goto('/about/');
     await expect(page.getByRole('heading', { level: 1, name: 'About', exact: true })).toBeVisible();
     await expect(page.locator('.about__bio')).toContainText('Kennesaw State University');
-    const contact = page.getByRole('heading', { name: 'Contact', exact: true });
-    if ((await contact.count()) > 0)
-      await expect(page.locator('.contact-links a').first()).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 2, name: 'Contact', exact: true }),
+    ).toBeVisible();
+    await expectContactLinks(page.locator('.about__contact'));
   });
 
-  test('home hides Teaching and Contact when they have no content', async ({ page }) => {
+  test('home shows Contact with the profile links and hides empty Teaching', async ({ page }) => {
     await page.goto('/');
-    for (const id of ['teaching', 'contact']) {
-      const section = page.locator(`#${id}`);
-      if ((await section.count()) > 0) await expect(section.locator('li, a').first()).toBeVisible();
-    }
+    await expect(page.locator('#contact')).toBeVisible();
+    await expectContactLinks(page.locator('#contact'));
+    // No teaching content exists, so the section is not rendered at all.
+    await expect(page.locator('#teaching')).toHaveCount(0);
+  });
+
+  test('CV shows the contact links and no PDF link', async ({ page }) => {
+    await page.goto('/cv/');
+    await expectContactLinks(page.locator('[data-cv-contact]'));
+    expect((PROFILE.cv_pdf ?? '').trim()).toBe('');
+    await expect(page.locator('[data-cv-pdf]')).toHaveCount(0);
   });
 });
 
@@ -441,6 +574,35 @@ test.describe('production build hygiene', () => {
             expect(text, path).not.toContain(a);
         }
       }
+    }
+  });
+
+  test('OwlPath links to its published project from the Garden and CV', async ({ page }) => {
+    const url = 'https://andrewc156.github.io/OwlPath/';
+    for (const path of ['/garden/', '/cv/']) {
+      await page.goto(path);
+      const project = page.locator('[data-id="project-owlpath"]');
+      await expect(project.getByRole('link', { name: /OwlPath/ })).toHaveAttribute('href', url);
+    }
+  });
+
+  test('no phone number, tel: link or References section on any page (DECISIONS #68)', async ({
+    page,
+  }) => {
+    for (const path of ALL_PAGES) {
+      await page.goto(path);
+      // Visible text plus every link target and meta value (not script or asset hashes).
+      const text = [
+        await page.locator('body').innerText(),
+        ...(await page
+          .locator('[href], meta[content]')
+          .evaluateAll((els) =>
+            els.map((e) => e.getAttribute('href') ?? e.getAttribute('content') ?? ''),
+          )),
+      ].join('\n');
+      expect(PHONE.test(text), `${path}: phone number on the page`).toBe(false);
+      await expect(page.locator('a[href^="tel:"]')).toHaveCount(0);
+      await expect(page.getByRole('heading', { name: /references/i })).toHaveCount(0);
     }
   });
 

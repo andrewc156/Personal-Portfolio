@@ -15,6 +15,15 @@ const areas = await getResearch();
 const presentTypes = WORK_TYPES.filter((t) => items.some((i) => i.data.type === t));
 const noun = items.length === 1 ? 'item' : 'items';
 
+// Describe the sort order truthfully: undated items (e.g. submitted manuscripts) sort first.
+const undated = items.filter((i) => !i.data.date);
+const lede =
+  undated.length === 0
+    ? 'Newest first.'
+    : undated.every((i) => i.data.status === 'submitted')
+      ? 'Submitted work, which has no date yet, comes first; everything else is newest first.'
+      : 'Undated work comes first; everything else is newest first.';
+
 // Name only the types that are actually listed, so the description never promises
 // work that is still a draft (drafts are excluded from production builds).
 const typeWords = presentTypes.map((t) => TYPE_PLURALS[t].toLowerCase());
@@ -37,8 +46,7 @@ const description = typeList
     <header class="garden__head">
       <h1>Garden</h1>
       <p class="garden__lede">
-        All of {displayName}'s work. Ongoing projects come first, then everything else, newest
-        first.
+        All of {displayName}'s work. {lede}
       </p>
     </header>
 

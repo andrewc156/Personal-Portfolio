@@ -1,13 +1,15 @@
 ---
 /**
  * One Garden row (spec §4.1): type tag (mono, small caps) → title → one-line
- * description (plus venue) → date as "Mon YYYY". The whole row is one link when
- * the item has somewhere to go. Empty fields render nothing.
+ * description (plus venue) → date as "Mon YYYY" (a range for projects, or the status of
+ * a submitted item). The whole row is one link when the item has somewhere to go.
+ * Empty fields render nothing.
  */
 import './content.css';
+import DateRange from './DateRange.astro';
 import DraftBadge from './DraftBadge.astro';
-import { TYPE_LABELS } from './constants';
-import { formatMonth, isoDate } from './format';
+import MathText from './MathText.astro';
+import { STATUS_LABELS, TYPE_LABELS } from './constants';
 import { primaryHref, type WorkEntry } from './work';
 
 interface Props {
@@ -16,7 +18,7 @@ interface Props {
 const { item } = Astro.props;
 const d = item.data;
 const href = primaryHref(item);
-const when = formatMonth(d.date);
+const status = d.status ? STATUS_LABELS[d.status] : '';
 const title = d.title || (d.draft ? 'Title needed' : '');
 const Tag = href ? 'a' : 'div';
 ---
@@ -32,21 +34,27 @@ const Tag = href ? 'a' : 'div';
     <span class="type-tag work-row__type">{TYPE_LABELS[d.type]}</span>
     <span class="work-row__body">
       <span class="work-row__title">
-        {title}
+        <MathText text={title} />
         {d.draft && <DraftBadge />}
       </span>
       {(d.description || d.venue) && (
         <span class="work-row__desc">
-          {d.description}
+          {d.description && <MathText text={d.description} />}
           {d.description && d.venue && <span aria-hidden="true"> · </span>}
           {d.venue && <span class="work-row__venue">{d.venue}</span>}
         </span>
       )}
     </span>
-    {when && (
-      <time class="work-row__date" datetime={isoDate(d.date)}>
-        {when}
-      </time>
+    {status ? (
+      <span class="work-row__date" data-status={d.status}>
+        {status}
+      </span>
+    ) : (
+      d.date && (
+        <span class="work-row__date">
+          <DateRange date={d.date} end={d.end} ongoing={d.ongoing} />
+        </span>
+      )
     )}
   </Tag>
 </li>

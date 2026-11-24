@@ -8,22 +8,30 @@ const { source_url: sourceUrl, show_claude_code_credit: showCredit } = profile.s
 
 <footer class="site-footer">
   <div class="container">
+    {/* Each group is unbreakable and carries the separator after it, so the line
+        only wraps between groups and a wrapped line never starts with "·". */}
     <p>
-      <span>
+      <span class="grp">
         © {year} {displayName}
+        <span aria-hidden="true"> ·</span>
+      </span>{' '}
+      <span class="grp">
+        <a href={withBase('/about/')}>About</a>
+        {(sourceUrl || showCredit) && <span aria-hidden="true"> ·</span>}
       </span>
-      <span aria-hidden="true"> · </span>
-      <a href={withBase('/about/')}>About</a>
       {sourceUrl && (
         <>
-          <span aria-hidden="true"> · </span>
-          <a href={sourceUrl}>Source</a>
+          {' '}
+          <span class="grp">
+            <a href={sourceUrl}>Source</a>
+            {showCredit && <span aria-hidden="true"> ·</span>}
+          </span>
         </>
       )}
       {showCredit && (
         <>
-          <span aria-hidden="true"> · </span>
-          <span>Built with help from Claude Code</span>
+          {' '}
+          <span class="grp">Built with help from Claude Code</span>
         </>
       )}
     </p>
@@ -41,5 +49,9 @@ const { source_url: sourceUrl, show_claude_code_credit: showCredit } = profile.s
   .site-footer p {
     margin: 0;
     max-width: none;
+  }
+
+  .grp {
+    white-space: nowrap;
   }
 </style>

@@ -1,0 +1,9 @@
+url                                      n perf a11y bp seo  cls
+http://localhost:54318/                  3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/garden/           3  100  100 100 100 0.0031  all-perf=[100, 100, 100, 100]
+http://localhost:54318/research/         3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/research/water-quality/ 3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/research/number-theory/ 3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/research/spectral-fractals/ 3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/cv/               3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]
+http://localhost:54318/about/            3  100  100 100 100 0.0001  all-perf=[100, 100, 100, 100]

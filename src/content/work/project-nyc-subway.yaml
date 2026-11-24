@@ -1,0 +1,12 @@
+# From Andrew's CV (Projects), Jan 2026 – May 2026. R, ggplot2, dplyr and Quarto. No link.
+type: project
+title: NYC Subway Incident Modeling
+date: '2026-01'
+end: '2026-05'
+description: Regression models in R and Quarto relating weather and ridership to NYC subway disruptions, using MTA major-incident records for 2015–2024.
+authors:
+  - Andrew Chincea
+links: {}
+tags: []
+draft: false
+confirmed: true

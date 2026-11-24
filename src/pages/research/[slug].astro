@@ -1,12 +1,16 @@
 ---
 /**
- * Research topic page (spec §5): description, methods (only when known), related work.
- * The TDA page links to the Rising water explorer.
+ * Research topic page (spec §5): description, position and advisor, methods and results
+ * (only when known), related work. The water-quality page (RiverNets) links to the
+ * Rising water explorer, which uses the RiverNets study area.
  */
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Citation from '../../components/content/Citation.astro';
+import DateRange from '../../components/content/DateRange.astro';
+import MathText from '../../components/content/MathText.astro';
 import ResearchThumb from '../../components/content/ResearchThumb.astro';
+import { plainText } from '../../components/content/format';
 import {
   gardenTagHref,
   getResearch,
@@ -28,10 +32,11 @@ interface Props {
 const { area } = Astro.props;
 const d = area.data;
 const related = (await getWork()).filter((w) => (w.data.tags as string[]).includes(area.id));
-const isTda = area.id === 'tda-rivernets';
+const p = d.position;
+const linksRisingWater = area.id === 'water-quality';
 ---
 
-<BaseLayout title={d.title} description={d.summary}>
+<BaseLayout title={d.title} description={plainText(d.summary)}>
   <article class="container topic" data-topic={area.id}>
     <p class="eyebrow">
       <a href={withBase('/research/')}>Research</a>
@@ -43,10 +48,35 @@ const isTda = area.id === 'tda-rivernets';
 
     <section class="topic__section" aria-labelledby="topic-about">
       <h2 id="topic-about">About</h2>
-      <p>{d.summary}</p>
-      {d.description && <p>{d.description}</p>}
-      {d.advisor && <p>Advisor: {d.advisor}</p>}
-      {isTda && (
+      <p>
+        <MathText text={d.summary} />
+      </p>
+      {d.description && (
+        <p>
+          <MathText text={d.description} />
+        </p>
+      )}
+      {(p || d.advisor) && (
+        <dl class="topic__facts" data-position>
+          {p && (
+            <div>
+              <dt>Position</dt>
+              <dd>
+                {p.role}, {p.organization}
+                {' · '}
+                <DateRange date={p.start} end={p.end} ongoing={p.ongoing} />
+              </dd>
+            </div>
+          )}
+          {d.advisor && (
+            <div>
+              <dt>Advisor</dt>
+              <dd data-advisor>{d.advisor}</dd>
+            </div>
+          )}
+        </dl>
+      )}
+      {linksRisingWater && (
         <p data-rising-water-link>
           The <a href={withBase('/rising-water/')}>Rising water explorer</a> on this site is built
           from elevation data for the Colorado River Basin study area (RiverNets coverage).
@@ -59,7 +89,22 @@ const isTda = area.id === 'tda-rivernets';
         <h2 id="topic-methods">Methods</h2>
         <ul>
           {d.methods.map((m) => (
-            <li>{m}</li>
+            <li>
+              <MathText text={m} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {d.results.length > 0 && (
+      <section class="topic__section" aria-labelledby="topic-results">
+        <h2 id="topic-results">Results</h2>
+        <ul>
+          {d.results.map((r) => (
+            <li>
+              <MathText text={r} />
+            </li>
           ))}
         </ul>
       </section>
@@ -106,5 +151,33 @@ const isTda = area.id === 'tda-rivernets';
 
   .topic__section h2 {
     font-size: var(--fs-h3);
+  }
+
+  .topic__facts {
+    display: grid;
+    gap: var(--space-2);
+    max-width: var(--measure);
+    margin: 0 0 var(--space-4);
+  }
+
+  .topic__facts div {
+    display: grid;
+    gap: 0 var(--space-3);
+  }
+
+  @media (min-width: 40.0625rem) {
+    .topic__facts div {
+      grid-template-columns: 6rem minmax(0, 1fr);
+    }
+  }
+
+  .topic__facts dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+
+  .topic__facts dd {
+    margin: 0;
   }
 </style>

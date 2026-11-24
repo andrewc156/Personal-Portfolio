@@ -1,9 +1,11 @@
 # Repositories shown in the home "Open science" section. Links render only when a URL is set.
-# The site's own repository URL is not yet confirmed for display by Andrew (docs/QUESTIONS.md),
-# so it is empty here; profile.yaml site.source_url is used as a fallback when set.
+# The site's public repository (DECISIONS #68), plus its data pipeline and persistence engine.
 - id: site-source
   label: Source for this site
-  url: ''
+  url: https://github.com/andrewc156/Personal-Portfolio
 - id: data-pipeline
   label: Data pipeline
-  url: ''
+  url: https://github.com/andrewc156/Personal-Portfolio/tree/main/pipeline
+- id: persistence-engine
+  label: Persistence engine
+  url: https://github.com/andrewc156/Personal-Portfolio/tree/main/src/lib/tda

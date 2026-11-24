@@ -13,9 +13,13 @@ import OpenScience from '../components/home/OpenScience.astro';
 import Teaching from '../components/home/Teaching.astro';
 import Contact from '../components/home/Contact.astro';
 import { SECTION_IDS } from '../components/site/nav';
+import { displayName } from '../components/site/profile';
+
+// Page-specific meta description (≤ 160 chars) built from spec §3 facts.
+const description = `${displayName} studies mathematics and data science at Kennesaw State University. Research: water quality, topological data analysis and number theory.`;
 ---
 
-<BaseLayout>
+<BaseLayout description={description}>
   <Hero />
   <Mission id={SECTION_IDS.mission} />
   <RecentWork id={SECTION_IDS.work} />

@@ -1,0 +1,12 @@
+# From Andrew's CV (Projects), Aug 2024 – Dec 2024. Python, LangChain, NumPy and Ollama. No link.
+type: project
+title: AskScrappy
+date: '2024-08'
+end: '2024-12'
+description: A local RAG academic-advising assistant built with LangChain, Ollama and LLaMA 3.1 that runs entirely on local hardware.
+authors:
+  - Andrew Chincea
+links: {}
+tags: []
+draft: false
+confirmed: true

@@ -1,14 +1,14 @@
-# Spec §3. Title still to come from Andrew ([A]); stays a draft until supplied.
+# From Andrew's CV (Presentations). Co-presented with Michael Liu. `$k$` renders as an italic k.
 type: talk
-title: ''
+title: Largest Square Divisor of a Random Integer
 date: '2026-03'
-description: A co-presented number theory talk.
-venue: 105th MAA Southeastern Section Meeting
+description: The square-divisor case ($k$ = 2) of the largest $k$^th^-power divisor of a random integer.
+venue: Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL
 authors:
   - Andrew Chincea
   - Michael Liu
 links: {}
 tags:
   - number-theory
-draft: true
-confirmed: false
+draft: false
+confirmed: true

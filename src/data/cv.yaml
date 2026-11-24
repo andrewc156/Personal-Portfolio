@@ -1,0 +1,80 @@
+# CV-only sections, copied from Andrew's CV (DECISIONS #68). Degrees and the expected
+# graduation term live in profile.yaml; research positions live in src/content/research/.
+# No phone number and no references section (DECISIONS #68).
+
+education:
+  location: Marietta, GA
+  coursework:
+    - group: Mathematics
+      courses:
+        - Calculus I–III
+        - Linear Algebra
+        - Ordinary Differential Equations
+        - Real Analysis
+        - Topology
+    - group: Statistics & Data Science
+      courses:
+        - Statistical Methods I & II
+        - Programming in R
+        - Data Visualization
+    - group: Computing
+      courses:
+        - Programming and Problem Solving I & II
+
+research_interests: >-
+  Analytic number theory; topological and graph-based data analysis; statistics and machine
+  learning for scientific data.
+
+skills:
+  - group: Languages
+    items: [Python, R, TypeScript, Java, C++, LaTeX]
+  - group: Data analysis & machine learning
+    items:
+      [
+        Pandas,
+        NumPy,
+        SciPy,
+        Scikit-learn,
+        XGBoost,
+        TensorFlow,
+        NetworkX,
+        Matplotlib,
+        ggplot2,
+        dplyr,
+      ]
+  - group: Methods
+    items:
+      [
+        Regression,
+        regularization,
+        graph Laplacians,
+        cross-validation,
+        feature engineering,
+        numerical experiments,
+        data visualization,
+      ]
+  - group: Tools & platforms
+    items:
+      [
+        Git,
+        GitHub Actions,
+        pytest,
+        React,
+        Docker,
+        Google Cloud Platform,
+        Quarto,
+        Jupyter,
+        LangChain,
+        Ollama,
+        pdfplumber,
+      ]
+
+work_experience:
+  - role: Graduation Services Student Assistant (Federal Work-Study)
+    organization: Kennesaw State University, Office of the Registrar
+    start: '2026-08'
+    ongoing: true
+    highlights:
+      - Respond to diploma-related inquiries through the Office of the Registrar's shared email inbox.
+      - Research student records using Banner, OnBase and DegreeWorks to support diploma inquiries and graduation services.
+      - Compare scanned historical records from Southern Technical Institute and Kennesaw College with physical originals to verify readability before the originals are shredded.

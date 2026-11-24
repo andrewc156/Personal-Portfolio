@@ -1,5 +1,6 @@
 ---
 /** Research-area card (spec §4.3): thumbnail, linked heading, one-liner, "Related work →". */
+import MathText from './MathText.astro';
 import ResearchThumb from './ResearchThumb.astro';
 import { gardenTagHref, researchHref, type ResearchEntry } from './work';
 
@@ -18,7 +19,9 @@ const Heading = `h${headingLevel}` as 'h2' | 'h3';
   <Heading class="research-card__title">
     <a href={researchHref(area.id)}>{area.data.title}</a>
   </Heading>
-  <p class="research-card__summary">{area.data.summary}</p>
+  <p class="research-card__summary">
+    <MathText text={area.data.summary} />
+  </p>
   <p class="research-card__more">
     <a href={gardenTagHref(area.id)}>
       Related work<span class="visually-hidden"> on {area.data.title}</span>{' '}

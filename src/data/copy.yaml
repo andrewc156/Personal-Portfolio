@@ -1,19 +1,21 @@
-# Site copy written only from spec §3 facts. Draft copy stays `confirmed: false`
+# Site copy written only from spec §3 and Andrew's CV. Draft copy stays `confirmed: false`
 # until Andrew approves it (see docs/QUESTIONS.md).
 
 mission:
   text: >-
     Andrew Chincea studies mathematics (statistics concentration) and data science and
-    analytics at Kennesaw State University. Water quality is his primary research focus,
-    and his work also spans topological data analysis through the RiverNets project at
-    KSU, number theory, and spectral analysis on fractals.
+    analytics at Kennesaw State University. His primary research, on the RiverNets project
+    in the KSU TDA Lab, uses graph-Laplacian regression to predict water quality at river
+    stations with no data. He also works in analytic number theory and has studied
+    eigenvalues of the fractal Laplacian.
   confirmed: false
 
 about_bio:
   text: >-
     Andrew Chincea is an undergraduate at Kennesaw State University studying mathematics
-    (statistics concentration) and data science and analytics. His research spans water
-    quality, topological data analysis, and number theory.
+    (statistics concentration) and data science and analytics. His research spans
+    water-quality modeling on river networks, analytic number theory, and spectral analysis
+    on fractals.
   confirmed: false
 
 open_science:

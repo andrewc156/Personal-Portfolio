@@ -1,0 +1,15 @@
+
+> andrew-chincea-portfolio@0.0.1 check
+> astro check
+
+16:50:18 [vite] Re-optimizing dependencies because vite config has changed
+16:50:19 [content] Syncing content
+16:50:19 [content] Content config changed
+16:50:19 [content] Clearing content store
+16:50:19 [content] Synced content
+16:50:19 [types] Generated 441ms
+16:50:19 [check] Getting diagnostics for Astro files in /private/tmp/portfolio-c1.4vkGwI...
+Result (119 files):
+- 0 errors
+- 0 warnings
+- 0 hints

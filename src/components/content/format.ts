@@ -16,8 +16,65 @@ export function isoDate(date: string): string {
   return /^\d{4}-\d{2}(-\d{2})?$/.test(date) ? date : '';
 }
 
+export interface DateRange {
+  /** Start, as "Mon YYYY" (empty when the item has no date). */
+  start: string;
+  /** End, as "Mon YYYY", "Present" for ongoing work, or "" for a single date. */
+  end: string;
+}
+
 /**
- * Newest first. Undated items (ongoing projects) come first, then by date descending,
+ * Display parts of a date or date range: `("2026-01", "2026-05")` → Jan 2026 – May 2026,
+ * `("2026-11", "", true)` → Nov 2026 – Present, `("2025-03")` → Mar 2025.
+ * No start date → both parts empty (an end or "ongoing" alone is never shown).
+ */
+export function formatRange(date: string, end = '', ongoing = false): DateRange {
+  const start = formatMonth(date);
+  if (!start) return { start: '', end: '' };
+  if (ongoing) return { start, end: 'Present' };
+  const e = formatMonth(end);
+  return { start, end: e && e !== start ? e : '' };
+}
+
+/**
+ * One piece of content text. `math` pieces render in italics (<i>), `sup` pieces as
+ * superscript (<sup>); everything else is plain text.
+ */
+export interface TextSegment {
+  text: string;
+  math: boolean;
+  sup?: boolean;
+}
+
+/** `$…$` inline math, or `^…^` superscript (no spaces), e.g. "$k$^th^". */
+const MARKUP_RE = /\$([^$\n]+)\$|\^([^\^\s]+)\^/g;
+
+/**
+ * Split content text on `$…$` inline math and `^…^` superscript, e.g.
+ * "Largest $k$^th^-Power" → ["Largest ", k (math), th (sup), "-Power"].
+ * Text without markup is one plain segment.
+ */
+export function mathSegments(text: string): TextSegment[] {
+  const out: TextSegment[] = [];
+  let last = 0;
+  for (const m of text.matchAll(MARKUP_RE)) {
+    const i = m.index ?? 0;
+    if (i > last) out.push({ text: text.slice(last, i), math: false });
+    if (m[1] !== undefined) out.push({ text: m[1], math: true });
+    else out.push({ text: m[2], math: false, sup: true });
+    last = i + m[0].length;
+  }
+  if (last < text.length) out.push({ text: text.slice(last), math: false });
+  return out;
+}
+
+/** The same text with the `$` and `^` delimiters removed (for meta tags and labels). */
+export function plainText(text: string): string {
+  return text.replace(MARKUP_RE, (_m, math?: string, sup?: string) => math ?? sup ?? '');
+}
+
+/**
+ * Newest first. Undated items (e.g. submitted manuscripts) come first, then by date descending,
  * then by title, then by id so the order is stable.
  */
 export function compareWork(

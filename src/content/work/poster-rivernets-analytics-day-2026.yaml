@@ -1,14 +1,14 @@
-# Spec §3. Title still to come from Andrew ([A]); stays a draft until supplied.
+# From Andrew's CV (Presentations). With Yunus Kaya.
 type: poster
-title: ''
+title: 'RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin'
 date: '2026-12-04'
-description: A RiverNets poster.
-venue: KSU Fall Analytics Day
+description: Graph-Laplacian regression that predicts water quality at unmonitored river stations in the Colorado River Basin.
+venue: KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA
 authors:
   - Andrew Chincea
   - Yunus Kaya
 links: {}
 tags:
-  - tda-rivernets
-draft: true
-confirmed: false
+  - water-quality
+draft: false
+confirmed: true

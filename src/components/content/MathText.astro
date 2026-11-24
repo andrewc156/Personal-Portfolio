@@ -1,0 +1,27 @@
+---
+/**
+ * Content text with `$…$` inline math and `^…^` superscript, e.g.
+ * "Largest $k$^th^-Power Divisor" renders as "Largest <i>k</i><sup>th</sup>-Power Divisor",
+ * as in the CV. Text is escaped by Astro; only the italics and superscript are markup, so
+ * screen readers read the words unchanged ("kth").
+ */
+import { mathSegments } from './format';
+
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+
+{mathSegments(text).map((s) =>
+  s.math ? <i class="math">{s.text}</i> : s.sup ? <sup class="sup">{s.text}</sup> : s.text,
+)}
+
+<style>
+  /* Superscript (e.g. the "th" of kth) without stretching the line box. */
+  .sup {
+    font-size: 0.7em;
+    line-height: 0;
+    vertical-align: 0.5em;
+  }
+</style>

@@ -1,12 +1,19 @@
 ---
 /**
- * Web CV generated from content (spec §5): education, research, presentations,
- * publications and projects. The PDF link appears only if the file exists in public/.
+ * Web CV generated from content (spec §5): education, research interests, publications,
+ * research experience (from src/content/research), presentations, projects, technical
+ * skills and work experience (from src/data/cv.yaml). The PDF link appears only if the
+ * file exists in public/. No phone number and no references (DECISIONS #68).
  */
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Citation from '../../components/content/Citation.astro';
+import ContactLinks from '../../components/content/ContactLinks.astro';
+import DateRange from '../../components/content/DateRange.astro';
+import MathText from '../../components/content/MathText.astro';
+import { contactLinks } from '../../components/content/contact';
+import { cv } from '../../components/content/cv';
 import { getResearch, getWork, researchHref } from '../../components/content/work';
 import { displayName, profile } from '../../components/site/profile';
 import '../../components/content/content.css';
@@ -14,10 +21,12 @@ import { withBase } from '../../lib/url';
 
 const work = await getWork();
 const areas = await getResearch();
+const links = contactLinks();
 
 const publications = work.filter((w) => w.data.type === 'paper' || w.data.type === 'preprint');
 const presentations = work.filter((w) => w.data.type === 'talk' || w.data.type === 'poster');
 const projects = work.filter((w) => ['project', 'software', 'dataset'].includes(w.data.type));
+const positions = areas.filter((a) => a.data.position);
 
 /** A local PDF path (e.g. "/cv.pdf") must exist in public/; an absolute URL is taken as given. */
 function cvPdfHref(value: string): string {
@@ -27,22 +36,22 @@ function cvPdfHref(value: string): string {
   return existsSync(join(process.cwd(), 'public', rel)) ? withBase(`/${rel}`) : '';
 }
 const pdf = cvPdfHref(profile.cv_pdf);
-
-const sections = [
-  { id: 'cv-publications', title: 'Publications and preprints', items: publications },
-  { id: 'cv-presentations', title: 'Presentations', items: presentations },
-  { id: 'cv-projects', title: 'Projects', items: projects },
-].filter((s) => s.items.length > 0);
 ---
 
 <BaseLayout
   title="CV"
-  description={`Curriculum vitae of ${displayName}: education, research, presentations and projects.`}
+  description={`Curriculum vitae of ${displayName}: education, research, publications, presentations, projects, skills and work experience.`}
 >
   <article class="container cv">
     <header class="cv__head">
       <h1>CV</h1>
       <p class="cv__name">{profile.full_name || displayName}</p>
+      {links.length > 0 && (
+        <div class="cv__contact" data-cv-contact>
+          <h2 class="visually-hidden">Contact</h2>
+          <ContactLinks links={links} />
+        </div>
+      )}
       {pdf && (
         <p>
           <a class="link-btn" href={pdf} data-cv-pdf>
@@ -52,47 +61,156 @@ const sections = [
       )}
     </header>
 
-    <section class="cv__section" aria-labelledby="cv-education">
+    <section class="cv__section" aria-labelledby="cv-education" data-cv-education>
       <h2 id="cv-education">Education</h2>
-      <p class="cv__entry">
-        <strong>{profile.affiliation}</strong>
-        {profile.expected_graduation && (
-          <span class="cv__when">Expected {profile.expected_graduation}</span>
+      <div class="cv__entry">
+        <p class="cv__line">
+          <strong>{profile.affiliation}</strong>
+          {cv.education.location && <span class="cv__where">{cv.education.location}</span>}
+        </p>
+        <p class="cv__line">
+          {profile.degrees.length > 0 && <span>{profile.degrees.join('; ')}</span>}
+          {profile.expected_graduation && (
+            <span class="cv__when">Expected {profile.expected_graduation}</span>
+          )}
+        </p>
+        {profile.standing && <p class="cv__meta">{profile.standing}.</p>}
+        {cv.education.coursework.length > 0 && (
+          <dl class="cv__groups" aria-label="Coursework">
+            {cv.education.coursework.map((g) => (
+              <div>
+                <dt>{g.group}</dt>
+                <dd>{g.courses.join(', ')}</dd>
+              </div>
+            ))}
+          </dl>
         )}
-      </p>
-      {profile.degrees.length > 0 && (
-        <ul>
-          {profile.degrees.map((deg) => (
-            <li>{deg}</li>
-          ))}
-        </ul>
-      )}
-      {profile.standing && <p>{profile.standing}.</p>}
+      </div>
     </section>
 
-    <section class="cv__section" aria-labelledby="cv-research">
-      <h2 id="cv-research">Research</h2>
-      <ul class="cv__areas">
-        {areas.map((a) => (
-          <li>
-            <a href={researchHref(a.id)}>{a.data.title}</a>. {a.data.summary}
-          </li>
-        ))}
-      </ul>
-    </section>
+    {cv.research_interests && (
+      <section class="cv__section" aria-labelledby="cv-interests">
+        <h2 id="cv-interests">Research interests</h2>
+        <p>{cv.research_interests}</p>
+      </section>
+    )}
 
-    {sections.map((s) => (
-      <section class="cv__section" aria-labelledby={s.id}>
-        <h2 id={s.id}>{s.title}</h2>
+    {publications.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-publications">
+        <h2 id="cv-publications">Publications and preprints</h2>
         <ul class="citation-list">
-          {s.items.map((item) => (
+          {publications.map((item) => (
             <li>
-              <Citation item={item} showType={s.id !== 'cv-projects'} />
+              <Citation item={item} />
             </li>
           ))}
         </ul>
       </section>
-    ))}
+    )}
+
+    {positions.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-research" data-cv-research>
+        <h2 id="cv-research">Research experience</h2>
+        {positions.map((a) => {
+          const p = a.data.position!;
+          return (
+            <div class="cv__entry" data-cv-position={a.id}>
+              <h3 class="cv__line cv__role">
+                <span>{p.role}</span>
+                <span class="cv__when">
+                  <DateRange date={p.start} end={p.end} ongoing={p.ongoing} />
+                </span>
+              </h3>
+              <p class="cv__meta">
+                {p.organization}
+                {a.data.advisor && <span> · Advisor: {a.data.advisor}</span>}
+              </p>
+              {p.highlights.length > 0 && (
+                <ul class="cv__bullets">
+                  {p.highlights.map((h) => (
+                    <li>
+                      <MathText text={h} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <p class="cv__more">
+                Research area: <a href={researchHref(a.id)}>{a.data.title}</a>
+              </p>
+            </div>
+          );
+        })}
+      </section>
+    )}
+
+    {presentations.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-presentations">
+        <h2 id="cv-presentations">Presentations</h2>
+        <ul class="citation-list">
+          {presentations.map((item) => (
+            <li>
+              <Citation item={item} showType />
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {projects.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-projects">
+        <h2 id="cv-projects">Projects</h2>
+        <ul class="citation-list">
+          {projects.map((item) => (
+            <li>
+              <Citation item={item} />
+              {item.data.description && (
+                <p class="cv__desc">
+                  <MathText text={item.data.description} />
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {cv.skills.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-skills">
+        <h2 id="cv-skills">Technical skills</h2>
+        <dl class="cv__groups">
+          {cv.skills.map((g) => (
+            <div>
+              <dt>{g.group}</dt>
+              <dd>{g.items.join(', ')}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+    )}
+
+    {cv.work_experience.length > 0 && (
+      <section class="cv__section" aria-labelledby="cv-work">
+        <h2 id="cv-work">Work experience</h2>
+        {cv.work_experience.map((w) => (
+          <div class="cv__entry" data-cv-job>
+            <h3 class="cv__line cv__role">
+              <span>{w.role}</span>
+              <span class="cv__when">
+                <DateRange date={w.start} end={w.end} ongoing={w.ongoing} />
+              </span>
+            </h3>
+            <p class="cv__meta">{w.organization}</p>
+            {w.highlights.length > 0 && (
+              <ul class="cv__bullets">
+                {w.highlights.map((h) => (
+                  <li>{h}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </section>
+    )}
   </article>
 </BaseLayout>
 
@@ -106,6 +224,10 @@ const sections = [
     color: var(--color-text-muted);
   }
 
+  .cv__contact {
+    margin-top: var(--space-4);
+  }
+
   .cv__section {
     margin-top: var(--space-6);
     padding-top: var(--space-5);
@@ -116,25 +238,77 @@ const sections = [
     font-size: var(--fs-h3);
   }
 
-  .cv__entry {
+  .cv__entry + .cv__entry {
+    margin-top: var(--space-5);
+  }
+
+  .cv__line {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: var(--space-2);
-    margin-bottom: var(--space-2);
+    align-items: baseline;
+    gap: 0 var(--space-4);
+    margin: 0;
+    max-width: none;
   }
 
+  .cv__role {
+    font-size: 1rem;
+    font-weight: var(--fw-semibold);
+  }
+
+  .cv__meta,
+  .cv__desc,
+  .cv__more {
+    margin: var(--space-1) 0 0;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+
+  .cv__more {
+    color: var(--color-text);
+  }
+
+  .cv__where,
   .cv__when {
     font-family: var(--font-mono);
     font-size: var(--fs-small);
+    font-weight: var(--fw-regular);
     color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
-  .cv__areas {
+  .cv__bullets {
+    margin: var(--space-2) 0 0;
     padding-left: var(--space-5);
   }
 
-  .cv__areas li + li {
-    margin-top: var(--space-2);
+  .cv__bullets li + li {
+    margin-top: var(--space-1);
+  }
+
+  .cv__groups {
+    display: grid;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+  }
+
+  .cv__groups div {
+    display: grid;
+    gap: 0 var(--space-4);
+  }
+
+  @media (min-width: 40.0625rem) {
+    .cv__groups div {
+      grid-template-columns: 12rem minmax(0, 1fr);
+    }
+  }
+
+  .cv__groups dt {
+    font-weight: var(--fw-semibold);
+  }
+
+  .cv__groups dd {
+    margin: 0;
   }
 </style>

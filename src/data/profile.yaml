@@ -1,26 +1,28 @@
-# Andrew's profile — facts only from spec §3.
-# Empty strings are fields Andrew still has to supply ([A] in §3); see docs/QUESTIONS.md.
+# Andrew's profile — facts only from spec §3 and Andrew's CV (DECISIONS #68).
+# Empty strings are fields Andrew still has to supply ([A] in §3) or chose not to publish
+# (no phone number, no ORCID, no CV PDF); see docs/QUESTIONS.md.
 # Draft copy is marked `confirmed: false` until Andrew approves it.
 
 full_name: Andrew Dumitru Chincea
 display_name:
   text: Andrew Chincea
-  confirmed: false
+  confirmed: true
 
 affiliation: Kennesaw State University
 degrees:
   - B.S. in Mathematics (Statistics concentration)
   - B.S. in Data Science and Analytics
 standing: Junior in the 2026–27 academic year
-expected_graduation: ''
+expected_graduation: May 2028
 
 contact:
-  email: ''
-  github: ''
-  linkedin: ''
+  email: achincea@students.kennesaw.edu
+  github: https://github.com/andrewc156
+  linkedin: https://www.linkedin.com/in/andrewchincea
   orcid: ''
 
 photo: ''
+# No CV PDF download (DECISIONS #68).
 cv_pdf: ''
 domain: ''
 
@@ -40,6 +42,6 @@ keywords:
 
 site:
   # Link target for "Source" in the footer. Hidden while empty.
-  source_url: ''
+  source_url: https://github.com/andrewc156/Personal-Portfolio
   # Footer credit "Built with help from Claude Code". On by default (spec §4.1).
   show_claude_code_credit: true

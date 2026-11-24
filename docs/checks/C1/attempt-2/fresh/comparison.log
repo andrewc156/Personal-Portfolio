@@ -1,0 +1,25 @@
+EXACT /cv/ :: Coauthored the submitted manuscript Largest kth-Power Divisor of a Random Integer, establishing an asymptotic formula with an O(log x) error term for every integer k ≥ 2.
+NOEXACT - :: Developed all Python code for experiments on integers up to 10⁸ , calculating empirical averages, growth constants, and relative errors to validate the theoretical results.
+NOEXACT - :: Co-presented the square-divisor case (k = 2) with Michael Liu at the 105th MAA Southeastern Section Meeting.
+EXACT /cv/ :: Developed a graph-Laplacian regression model that predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH, turbidity) at river stations with no data, using a smoothness penalty along the river network.
+EXACT /cv/ :: Downloaded, cleaned, and audited hourly USGS continuous water-quality records from 28 Colorado River Basin stations, tracking data completeness by station and variable.
+EXACT /cv/ :: Built river-network graphs in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), along with graphs for the Chattahoochee basin.
+EXACT /cv/ :: Applied Kron (Schur-complement) reduction to collapse the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.
+EXACT /cv/ :: Benchmarked against OLS, Ridge, Elastic Net, a spline GAM, random forest, and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts; the graph model reached R² = 0.38 for specific conductance and 0.12 for pH at unseen stations, versus 0.02 for the best alternative.
+EXACT /cv/ :: Found feature-selection leakage that had overstated R² by up to 0.13 and moved all selection inside the inner validation loop.
+EXACT /cv/ :: Ran paired, station-bootstrapped experiments on six new features and models; ERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).
+EXACT /cv/ :: Built an interactive river-network map site with 28 automated tests, and wrote technical reports for the lab.
+EXACT /research/spectral-fractals/,/cv/ :: Formulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.
+EXACT /cv/ :: Computed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum, and extended the analysis to two dimensions using separation of variables.
+EXACT /cv/ :: Presented the results as a poster at the 104th MAA Southeastern Section Meeting (see
+NOEXACT - :: Built and deployed an interactive prerequisite map for three KSU majors (B.S. Computer Science, B.S. and M.S. Data Science and Analytics); students mark completed courses and see which classes they can take next term.
+NOEXACT - :: Wrote a Python pipeline that turns catalog listings into a validated JSON prerequisite schema supporting and/or logic and minimum grades, cross-checked against Banner.
+NOEXACT - :: Set up automated testing (pytest, Vitest) and continuous deployment to GitHub Pages with GitHub Actions.
+NOEXACT - :: Integrated 10 years of MTA major-incident records, NOAA weather API data, and monthly ridership totals into an analysis-ready dataset covering 2015–2024.
+NOEXACT - :: Engineered heavy-precipitation and extreme-heat indicators and compared linear, log, and log-log regression models to quantify relationships among weather, ridership, and subway disruptions.
+NOEXACT - :: Evaluated model fit using residual diagnostics, variance inflation factors, and AIC; communicated results through a reproducible Quarto report, Beamer presentation, and publication-quality visualizations.
+NOEXACT - :: Extracted and preprocessed a 1,600-page PDF with pdfplumber, dividing the text into 1,023 retrieval-ready segments for a local RAG pipeline.
+NOEXACT - :: Built an AI academic-advising assistant with LangChain, Ollama, and LLaMA 3.1 that ran entirely on local hardware without cloud dependencies.
+EXACT /cv/ :: Respond to diploma-related inquiries through the Office of the Registrar's shared email inbox.
+NOEXACT - :: Research student records using Banner, OnBase, and DegreeWorks to support diploma inquiries and graduation services.
+EXACT /cv/ :: Compare scanned historical records from Southern Technical Institute and Kennesaw College with physical originals to verify readability before the originals are shredded.

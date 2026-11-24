@@ -1,6 +1,21 @@
-# Spec §3 research area 4.
+# Spec §3 research area; details from Andrew's CV. The CV names no advisor for this position.
 title: Spectral analysis on fractals
-order: 4
+order: 3
 summary: First-Year Scholar research on eigenvalues of the fractal Laplacian.
-methods: []
+description: >-
+  How fractal geometry shapes the spectrum of the fractal Laplacian, from the
+  one-dimensional Dirichlet eigenvalue problem to two dimensions.
+methods:
+  - Formulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.
+  - Computed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum.
+  - Extended the analysis to two dimensions using separation of variables.
 advisor: ''
+position:
+  role: First-Year Scholar Undergraduate Researcher
+  organization: Kennesaw State University
+  start: '2024-08'
+  end: '2025-05'
+  highlights:
+    - Formulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.
+    - Computed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum, and extended the analysis to two dimensions using separation of variables.
+    - Presented the results as a poster at the 104th MAA Southeastern Section Meeting (see Presentations).

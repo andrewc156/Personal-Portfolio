@@ -27,7 +27,23 @@ const hsH = ((hs.height * hsBlock) / meta.native.height) * 100;
 const D = EXPLORER_DEFAULTS;
 const keys = 'Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape';
 const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
+// Data-derived sizes and the legend colours go in one inline <style> element (hashed into the CSP
+// by scripts/write-headers.mjs) instead of style="" attributes, so the CSP needs no 'unsafe-hashes'
+// (DECISIONS #62). The map's aspect-ratio stays in CSS so its box is sized before hydration.
+const swatchRules = IDENTITY.light
+  .map(
+    (_, k) =>
+      `.explorer .ex-swatch[data-sw="${k}"]{--sw-l:${swatch('light', k)};--sw-d:${swatch('dark', k)}}`,
+  )
+  .join('');
+const inlineCss =
+  `.explorer .ex-map{aspect-ratio:${aspect.toFixed(5)}}` +
+  `.explorer .ex-map__shade{width:${hsW.toFixed(4)}%;height:${hsH.toFixed(4)}%}` +
+  swatchRules +
+  `.explorer .ex-swatch[data-sw="neutral"]{--sw-l:${NEUTRAL_WATER.light};--sw-d:${NEUTRAL_WATER.dark}}`;
 ---
+
+<style is:inline set:html={inlineCss}></style>
 
 <section
   class="explorer"
@@ -49,13 +65,12 @@ const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
       aria-describedby="ex-keys"
       aria-keyshortcuts={keys}
     >
-      <div class="ex-map" style={`aspect-ratio: ${aspect.toFixed(5)}`}>
+      <div class="ex-map">
         <img
           class="ex-map__shade"
           src={withBase(`/data/colorado/${hs.file}`)}
           width={hs.width}
           height={hs.height}
-          style={`width: ${hsW.toFixed(4)}%; height: ${hsH.toFixed(4)}%`}
           alt={`Shaded relief of the ${meta.label}.`}
           fetchpriority="high"
           decoding="async"
@@ -78,20 +93,13 @@ const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
     <p class="ex-legend">
       <span class="ex-swatches" aria-hidden="true">
         {IDENTITY.light.map((_, k) => (
-          <span
-            class="ex-swatch"
-            style={`--sw-l: ${swatch('light', k)}; --sw-d: ${swatch('dark', k)}`}
-          />
+          <span class="ex-swatch" data-sw={k} />
         ))}
       </span>
       The lowest lake and the 11 longest-lived lakes each have their own colour and a label at their
       pit (“lowest”, 1–11).
-      <span
-        class="ex-swatch ex-swatch--neutral"
-        aria-hidden="true"
-        style={`--sw-l: ${NEUTRAL_WATER.light}; --sw-d: ${NEUTRAL_WATER.dark}`}
-      ></span>{' '}
-      All other lakes share one colour.
+      <span class="ex-swatch ex-swatch--neutral" aria-hidden="true" data-sw="neutral"></span> All
+      other lakes share one colour.
     </p>
   </div>
 
@@ -141,7 +149,7 @@ const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
       </p>
     </div>
 
-    <form class="ex-controls" aria-label="Explorer controls" onsubmit="return false">
+    <form class="ex-controls" aria-label="Explorer controls" data-ex-controls>
       <div class="ex-row">
         <button
           type="button"
@@ -374,6 +382,15 @@ const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
     line-height: 1.4;
     color: var(--color-text-muted);
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Error state (explorer-client.ts markInert): nothing suggests the map can be used. */
+  .explorer[data-inert='true'] .ex-hover {
+    visibility: hidden;
+  }
+
+  .explorer[data-inert='true'] .ex-map__water {
+    cursor: default;
   }
 
   .ex-legend {

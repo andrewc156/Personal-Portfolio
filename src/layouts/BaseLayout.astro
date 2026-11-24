@@ -11,6 +11,11 @@ import Seo from '../components/site/Seo.astro';
 import SettingsPanel from '../components/site/SettingsPanel.astro';
 import { displayName, profile } from '../components/site/profile';
 import { withBase } from '../lib/url';
+// Critical webfonts, preloaded so they usually arrive before first paint (F9-R1).
+// `?url` gives Vite's hashed asset URL, already prefixed with the configured base,
+// and the same file the @fontsource CSS references (one download, not two).
+import plexSans400 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2?url';
+import plexSans600 from '@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2?url';
 
 interface Props {
   /** Page title; the site name is appended. Omit on the home page. */
@@ -37,6 +42,8 @@ const hasSettings = Astro.slots.has('settings');
       }
     </script>
     <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href={plexSans400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={plexSans600} as="font" type="font/woff2" crossorigin />
     <title>{fullTitle}</title>
     <Seo title={fullTitle} description={description} />
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />

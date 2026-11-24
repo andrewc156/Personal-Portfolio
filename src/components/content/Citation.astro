@@ -1,13 +1,16 @@
 ---
 /**
  * One work item in citation style (spec §4.3): authors with Andrew in bold, date as
- * "Mon YYYY", title, venue in italics, then small buttons only for links that exist.
+ * "Mon YYYY" (or a range for projects), title, venue in italics, then small buttons only
+ * for links that exist. A submitted item shows "Submitted" in place of date and venue.
  * Empty fields render nothing.
  */
 import './content.css';
+import DateRange from './DateRange.astro';
 import DraftBadge from './DraftBadge.astro';
-import { LINK_BUTTONS, TYPE_LABELS } from './constants';
-import { formatMonth, isoDate, isAndrewName } from './format';
+import MathText from './MathText.astro';
+import { LINK_BUTTONS, STATUS_LABELS, TYPE_LABELS } from './constants';
+import { formatMonth, isAndrewName, plainText } from './format';
 import type { WorkEntry } from './work';
 import { withBase } from '../../lib/url';
 import { displayName, profile } from '../site/profile';
@@ -21,7 +24,8 @@ interface Props {
 const { item, showType = false } = Astro.props;
 const d = item.data;
 const andrew = [displayName, profile.full_name].filter(Boolean);
-const when = formatMonth(d.date);
+const status = d.status ? STATUS_LABELS[d.status] : '';
+const when = status ? '' : formatMonth(d.date);
 const buttons = LINK_BUTTONS.flatMap(([key, label]) => {
   const href = d.links[key];
   return href ? [{ href: withBase(href), label }] : [];
@@ -44,7 +48,8 @@ const titleText = d.title || (d.draft ? 'Title needed' : '');
     {when && (
       <>
         {' '}
-        (<time datetime={isoDate(d.date)}>{when}</time>).
+        (<DateRange date={d.date} end={d.end} ongoing={d.ongoing} />
+        ).
       </>
     )}
     {!when && '.'}
@@ -53,15 +58,26 @@ const titleText = d.title || (d.draft ? 'Title needed' : '');
         {' '}
         {d.links.site ? (
           <a class="citation__title" href={withBase(d.links.site)}>
-            {titleText}
+            <MathText text={titleText} />
           </a>
         ) : (
-          <span class="citation__title">{titleText}</span>
+          <span class="citation__title">
+            <MathText text={titleText} />
+          </span>
         )}
         .
       </>
     )}
-    {d.venue && (
+    {status && (
+      <>
+        {' '}
+        <span class="citation__status" data-status={d.status}>
+          {status}
+        </span>
+        .
+      </>
+    )}
+    {!status && d.venue && (
       <>
         {' '}
         <em class="citation__venue">{d.venue}</em>.
@@ -70,7 +86,10 @@ const titleText = d.title || (d.draft ? 'Title needed' : '');
     {d.draft && <DraftBadge />}
   </p>
   {buttons.length > 0 && (
-    <ul class="citation__links" aria-label={`Links for ${titleText || TYPE_LABELS[d.type]}`}>
+    <ul
+      class="citation__links"
+      aria-label={`Links for ${plainText(titleText) || TYPE_LABELS[d.type]}`}
+    >
       {buttons.map((b) => (
         <li>
           <a class="link-btn" href={b.href}>

@@ -22,17 +22,29 @@ const { links } = Astro.props;
 <style>
   .contact-links {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-2);
     margin: 0;
   }
 
+  /*
+   * Every row has the same layout at a given width: below 30rem each label sits on its own
+   * line above its value; from 30rem up, labels share a fixed 6rem column.
+   */
   .contact-links__row {
-    display: flex;
-    gap: var(--space-3);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0 var(--space-3);
+    min-width: 0;
+  }
+
+  @media (min-width: 30rem) {
+    .contact-links__row {
+      grid-template-columns: 6rem minmax(0, 1fr);
+    }
   }
 
   .contact-links dt {
-    min-width: 6rem;
     font-family: var(--font-mono);
     font-size: var(--fs-small);
     color: var(--color-text-muted);
@@ -40,5 +52,7 @@ const { links } = Astro.props;
 
   .contact-links dd {
     margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 </style>
