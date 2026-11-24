@@ -1,0 +1,475 @@
+{
+ "light-375": {
+  "scrollable": 476,
+  "shiftsLoad": [
+   {
+    "v": 0.00004271442524691208,
+    "recent": false,
+    "src": [
+     "LI."
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 126,
+   "headerPos": "static",
+   "var": "125.96875px",
+   "panel": [
+    0,
+    461,
+    375,
+    351,
+    812
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "scrollY": 0,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "panelYScrolled": 461,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 476,
+   "scrollAfter": 476,
+   "gear": {
+    "inView": false,
+    "top": -466,
+    "hitSelf": false,
+    "hitEl": null
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-375x812-light.png",
+  "shiftsNoInputTotal": 0
+ },
+ "light-768": {
+  "scrollable": 355,
+  "shiftsLoad": [
+   {
+    "v": 0.00007196457590907812,
+    "recent": false,
+    "src": [
+     "LI.",
+     "LI.",
+     "LI."
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 96,
+   "headerPos": "sticky",
+   "var": "95.578125px",
+   "panel": [
+    416,
+    96,
+    352,
+    928,
+    1024
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "scrollY": 355,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "panelYScrolled": 96,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 355,
+   "scrollAfter": 355,
+   "gear": {
+    "inView": true,
+    "top": 10,
+    "hitSelf": true,
+    "hitEl": "svg."
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-768x1024-light.png",
+  "shiftsNoInputTotal": 0
+ },
+ "light-1280": {
+  "scrollable": 281,
+  "shiftsLoad": [
+   {
+    "v": 0.00037889529466629025,
+    "recent": false,
+    "src": [
+     "#text.",
+     "NAV.site-nav"
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 61,
+   "headerPos": "sticky",
+   "var": "61px",
+   "panel": [
+    928,
+    61,
+    352,
+    739,
+    800
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "scrollY": 281,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__moon"
+  },
+  "panelYScrolled": 61,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 281,
+   "scrollAfter": 281,
+   "gear": {
+    "inView": true,
+    "top": 10,
+    "hitSelf": true,
+    "hitEl": "svg."
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-1280x800-light.png",
+  "shiftsNoInputTotal": 0
+ },
+ "dark-375": {
+  "scrollable": 476,
+  "shiftsLoad": [
+   {
+    "v": 0.00004271442524691208,
+    "recent": false,
+    "src": [
+     "LI."
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 126,
+   "headerPos": "static",
+   "var": "125.96875px",
+   "panel": [
+    0,
+    461,
+    375,
+    351,
+    812
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "scrollY": 0,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "panelYScrolled": 461,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 476,
+   "scrollAfter": 476,
+   "gear": {
+    "inView": false,
+    "top": -466,
+    "hitSelf": false,
+    "hitEl": null
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-375x812-dark.png",
+  "shiftsNoInputTotal": 0
+ },
+ "dark-768": {
+  "scrollable": 355,
+  "shiftsLoad": [
+   {
+    "v": 0.00007196457590907812,
+    "recent": false,
+    "src": [
+     "LI.",
+     "LI.",
+     "LI."
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 96,
+   "headerPos": "sticky",
+   "var": "95.578125px",
+   "panel": [
+    416,
+    96,
+    352,
+    928,
+    1024
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "scrollY": 355,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "panelYScrolled": 96,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 355,
+   "scrollAfter": 355,
+   "gear": {
+    "inView": true,
+    "top": 10,
+    "hitSelf": true,
+    "hitEl": "svg."
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-768x1024-dark.png",
+  "shiftsNoInputTotal": 0
+ },
+ "dark-1280": {
+  "scrollable": 281,
+  "shiftsLoad": [
+   {
+    "v": 0.00037889529466629025,
+    "recent": false,
+    "src": [
+     "#text.",
+     "NAV.site-nav"
+    ]
+   }
+  ],
+  "mainTopDelta": 0,
+  "geom": {
+   "headerBottom": 61,
+   "headerPos": "sticky",
+   "var": "61px",
+   "panel": [
+    928,
+    61,
+    352,
+    739,
+    800
+   ],
+   "overflowX": 0
+  },
+  "gearTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleTop": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "scrollY": 281,
+  "gearScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg."
+  },
+  "toggleScrolled": {
+   "inView": true,
+   "top": 10,
+   "hitSelf": true,
+   "hitEl": "svg.theme-toggle__sun"
+  },
+  "panelYScrolled": 61,
+  "focusAfterEsc": true,
+  "reopenScrolled": {
+   "scrollBefore": 281,
+   "scrollAfter": 281,
+   "gear": {
+    "inView": true,
+    "top": 10,
+    "hitSelf": true,
+    "hitEl": "svg."
+   },
+   "shifts": []
+  },
+  "screenshot": "docs/checks/F1/attempt-2/extra-open-scrolled-1280x800-dark.png",
+  "shiftsNoInputTotal": 0
+ },
+ "storedOpen1280": {
+  "hidden": false,
+  "attr": true,
+  "expanded": "true",
+  "panel": [
+   928,
+   61,
+   352,
+   739
+  ],
+  "hdr": 61,
+  "headerPos": "sticky"
+ },
+ "resized375": {
+  "hidden": false,
+  "attr": true,
+  "expanded": "true",
+  "panel": [
+   0,
+   461,
+   375,
+   351
+  ],
+  "hdr": 126,
+  "headerPos": "static"
+ },
+ "resized800": {
+  "hidden": false,
+  "attr": true,
+  "expanded": "true",
+  "panel": [
+   448,
+   96,
+   352,
+   804
+  ],
+  "hdr": 96,
+  "headerPos": "sticky"
+ },
+ "resized1280": {
+  "hidden": false,
+  "attr": true,
+  "expanded": "true",
+  "panel": [
+   928,
+   61,
+   352,
+   739
+  ],
+  "hdr": 61,
+  "headerPos": "sticky"
+ },
+ "tab": {
+  "afterOpen": "settings-title",
+  "seq": [
+   "PANEL:BUTTON[Close art settings]",
+   "PANEL:INPUT#hero-scale",
+   "PANEL:SELECT#hero-palette",
+   "PANEL:BUTTON",
+   "BODY",
+   "A",
+   "A",
+   "A",
+   "A",
+   "A",
+   "A",
+   "A"
+  ],
+  "closedNext": "BODY Skip to contentAndrew ChinceaM",
+  "skip": "main"
+ }
+}

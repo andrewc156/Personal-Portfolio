@@ -1,0 +1,45 @@
+---
+/**
+ * Small static terrain illustration (inline SVG, no script): layered ridges with
+ * water pooled in the low ground. Decorative unless `label` is given.
+ */
+interface Props {
+  label?: string;
+  class?: string;
+}
+const { label, class: className } = Astro.props;
+---
+
+<svg
+  class:list={['terrain-art', className]}
+  viewBox="0 0 480 240"
+  preserveAspectRatio="xMidYMid slice"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  focusable="false"
+>
+  <rect width="480" height="240" fill="var(--color-surface-sunken)"></rect>
+  <path
+    d="M0 120 L40 92 L78 110 L120 64 L158 98 L196 80 L240 118 L282 70 L326 96 L364 58 L410 100 L450 84 L480 104 V240 H0 Z"
+    fill="var(--color-land-1)"
+  ></path>
+  <path
+    d="M0 158 L36 138 L70 150 L112 118 L150 146 L190 130 L226 160 L262 128 L304 150 L344 120 L388 152 L430 136 L480 150 V240 H0 Z"
+    fill="var(--color-land-2)"
+  ></path>
+  <rect x="0" y="184" width="480" height="56" fill="var(--color-water)"></rect>
+  <path d="M0 184 H480" stroke="var(--color-water-deep)" stroke-width="1.5" opacity="0.6"></path>
+  <path
+    d="M0 172 L34 166 L62 194 L96 200 L128 160 L164 176 L196 206 L232 198 L262 168 L300 150 L336 190 L372 208 L404 182 L444 162 L480 174 V240 H0 Z"
+    fill="var(--color-land-3)"
+  ></path>
+</svg>
+
+<style>
+  .terrain-art {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

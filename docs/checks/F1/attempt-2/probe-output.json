@@ -1,0 +1,189 @@
+{
+ "axe": [
+  "light 375 rm=no-preference home: none",
+  "light 375 rm=no-preference home+settings: none",
+  "light 375 rm=no-preference 404: none",
+  "light 375 rm=reduce home: none",
+  "light 375 rm=reduce home+settings: none",
+  "light 375 rm=reduce 404: none",
+  "light 768 rm=no-preference home: none",
+  "light 768 rm=no-preference home+settings: none",
+  "light 768 rm=no-preference 404: none",
+  "light 768 rm=reduce home: none",
+  "light 768 rm=reduce home+settings: none",
+  "light 768 rm=reduce 404: none",
+  "light 1280 rm=no-preference home: none",
+  "light 1280 rm=no-preference home+settings: none",
+  "light 1280 rm=no-preference 404: none",
+  "light 1280 rm=reduce home: none",
+  "light 1280 rm=reduce home+settings: none",
+  "light 1280 rm=reduce 404: none",
+  "dark 375 rm=no-preference home: none",
+  "dark 375 rm=no-preference home+settings: none",
+  "dark 375 rm=no-preference 404: none",
+  "dark 375 rm=reduce home: none",
+  "dark 375 rm=reduce home+settings: none",
+  "dark 375 rm=reduce 404: none",
+  "dark 768 rm=no-preference home: none",
+  "dark 768 rm=no-preference home+settings: none",
+  "dark 768 rm=no-preference 404: none",
+  "dark 768 rm=reduce home: none",
+  "dark 768 rm=reduce home+settings: none",
+  "dark 768 rm=reduce 404: none",
+  "dark 1280 rm=no-preference home: none",
+  "dark 1280 rm=no-preference home+settings: none",
+  "dark 1280 rm=no-preference 404: none",
+  "dark 1280 rm=reduce home: none",
+  "dark 1280 rm=reduce home+settings: none",
+  "dark 1280 rm=reduce 404: none"
+ ],
+ "axeImmediate": {
+  "opacityAtCheck": "0",
+  "violations": []
+ },
+ "drawerSettled": {
+  "box": {
+   "x": 928,
+   "y": 61,
+   "width": 352,
+   "height": 739
+  },
+  "clientWidth": 1280
+ },
+ "noflash_os=light_stored=dark": [
+  [
+   "body",
+   "dark",
+   ""
+  ],
+  [
+   "raf1",
+   "dark",
+   "rgb(17, 19, 21)"
+  ]
+ ],
+ "noflash_os=dark_stored=light": [
+  [
+   "body",
+   "light",
+   ""
+  ],
+  [
+   "raf1",
+   "light",
+   "rgb(247, 244, 238)"
+  ]
+ ],
+ "storageThrows": {
+  "before": [
+   null,
+   "rgb(17, 19, 21)"
+  ],
+  "afterToggle": [
+   "light",
+   "rgb(247, 244, 238)"
+  ],
+  "expandedAfterOpen": "true",
+  "focusGearAfterEsc": true,
+  "errors": []
+ },
+ "requests": {
+  "foreign": [],
+  "uniqueSameOrigin": [
+   "http://localhost:4321/",
+   "http://localhost:4321/_astro/TerrainArt.DrFIFASn.css",
+   "http://localhost:4321/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+   "http://localhost:4321/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+   "http://localhost:4321/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+   "http://localhost:4321/404.html",
+   "http://localhost:4321/x/y/"
+  ]
+ },
+ "focus": [
+  null,
+  "A.skip-link#[Skip to content] outline=solid 2px rgb(28, 27, 25) shadow=none",
+  "A.wordmark#[Andrew Chincea] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[Mission] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[Research] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[Work] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[Open science] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[Rising water] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "A.#[CV] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "BUTTON.icon-btn#[Dark theme] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "BUTTON.icon-btn#[Art settings] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "BUTTON.icon-btn#[Close art settings] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "INPUT.#hero-scale[] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "SELECT.#hero-palette[DeltaCanyonGlacierEs] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  "BUTTON.btn#[Reset] outline=solid 2px rgb(11, 79, 122) shadow=none",
+  null
+ ],
+ "panel": {
+  "afterOpenKeyboard": [
+   "true",
+   "settings-title",
+   false
+  ],
+  "afterEsc": [
+   "false",
+   true,
+   true
+  ],
+  "gear404": [
+   0,
+   0
+  ],
+  "gearUnknown": [
+   0,
+   "Page not found · Andrew Chincea",
+   "This page has gone under water."
+  ],
+  "skipBox": {
+   "x": 8,
+   "y": 8,
+   "width": 151.046875,
+   "height": 43.1875
+  },
+  "afterSkip": [
+   "#main",
+   "main"
+  ],
+  "nextAfterSkip": "<body data-astro-cid-z4jru4n3=\"\"><a class=\"skip-link\" href=\"#main\" data-astro-ci"
+ },
+ "motion_no-preference": [
+  "smooth",
+  "0.22s",
+  "0.12s, 0.12s"
+ ],
+ "motion_reduce": [
+  "auto",
+  "1e-05s",
+  "1e-05s"
+ ],
+ "anchors375": [
+  [
+   "mission",
+   161,
+   476
+  ],
+  [
+   "research",
+   439,
+   476
+  ],
+  [
+   "work",
+   299,
+   476
+  ],
+  [
+   "open-science",
+   579,
+   476
+  ]
+ ],
+ "fontsLoaded": [
+  "IBM Plex Sans 400 normal",
+  "IBM Plex Sans 600 normal",
+  "IBM Plex Mono 400 normal"
+ ]
+}

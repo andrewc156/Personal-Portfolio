@@ -1,0 +1,33 @@
+---
+/** Labelled checkbox (on/off option) for the settings panel. */
+interface Props {
+  id: string;
+  label: string;
+  checked?: boolean;
+  name?: string;
+  disabled?: boolean;
+}
+
+const { id, label, checked = false, name, disabled = false } = Astro.props;
+---
+
+<div class="checkbox-row">
+  <input type="checkbox" id={id} name={name ?? id} checked={checked} disabled={disabled} />
+  <label for={id}>{label}</label>
+</div>
+
+<style>
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--fs-small);
+  }
+
+  input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin: 0;
+    accent-color: var(--color-accent);
+  }
+</style>

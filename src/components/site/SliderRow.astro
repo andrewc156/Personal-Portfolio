@@ -1,0 +1,86 @@
+---
+/**
+ * Labelled range input with a live monospace readout.
+ * The readout updates on `input` events inside the settings panel. After setting
+ * `.value` from code, call `syncSliderOutput(input)` from ./settings.
+ */
+import { formatSliderValue } from './settings';
+
+interface Props {
+  id: string;
+  label: string;
+  min: number;
+  max: number;
+  step?: number;
+  value: number;
+  /** Decimals shown in the readout. */
+  decimals?: number;
+  /** Suffix shown after the readout value, e.g. "×" or "%". */
+  unit?: string;
+  name?: string;
+  disabled?: boolean;
+}
+
+const {
+  id,
+  label,
+  min,
+  max,
+  step = 1,
+  value,
+  decimals = 0,
+  unit = '',
+  name,
+  disabled = false,
+} = Astro.props;
+---
+
+<div class="slider-row">
+  <div class="slider-row__top">
+    <label for={id}>{label}</label>
+    <output for={id} class="slider-row__value" aria-hidden="true">
+      {formatSliderValue(value, decimals, unit)}
+    </output>
+  </div>
+  <input
+    type="range"
+    id={id}
+    name={name ?? id}
+    min={min}
+    max={max}
+    step={step}
+    value={value}
+    disabled={disabled}
+    data-live-value
+    data-decimals={decimals}
+    data-unit={unit}
+  />
+</div>
+
+<style>
+  .slider-row__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-size: var(--fs-small);
+  }
+
+  .slider-row__value {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    font-variant-numeric: tabular-nums;
+    color: var(--color-text-muted);
+  }
+
+  input[type='range'] {
+    width: 100%;
+    margin: var(--space-1) 0 0;
+    accent-color: var(--color-accent);
+    cursor: pointer;
+  }
+
+  input[type='range']:disabled {
+    cursor: not-allowed;
+  }
+</style>

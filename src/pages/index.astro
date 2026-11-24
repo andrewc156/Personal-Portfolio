@@ -1,16 +1,27 @@
 ---
+/**
+ * Home (spec §4.3). Composes the section components in order with their anchors.
+ * F2 and F5 fill the components; this file stays as the composition point.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/hero/Hero.astro';
+import HeroSettings from '../components/hero/HeroSettings.astro';
+import Mission from '../components/home/Mission.astro';
+import RecentWork from '../components/home/RecentWork.astro';
+import ResearchGrid from '../components/home/ResearchGrid.astro';
+import OpenScience from '../components/home/OpenScience.astro';
+import Teaching from '../components/home/Teaching.astro';
+import Contact from '../components/home/Contact.astro';
+import { SECTION_IDS } from '../components/site/nav';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<BaseLayout>
+  <Hero />
+  <Mission id={SECTION_IDS.mission} />
+  <RecentWork id={SECTION_IDS.work} />
+  <ResearchGrid id={SECTION_IDS.research} />
+  <OpenScience id={SECTION_IDS.openScience} />
+  <Teaching id={SECTION_IDS.teaching} />
+  <Contact id={SECTION_IDS.contact} />
+  <HeroSettings slot="settings" />
+</BaseLayout>

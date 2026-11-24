@@ -1,0 +1,163 @@
+---
+import { NAV_ITEMS } from './nav';
+import { displayName } from './profile';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  /** Show the gear button. BaseLayout sets this when the page fills the `settings` slot. */
+  hasSettings?: boolean;
+}
+
+const { hasSettings = false } = Astro.props;
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => !href.includes('#') && path === href;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="wordmark" href="/" aria-current={path === '/' ? 'page' : undefined}>
+      {displayName}
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        {NAV_ITEMS.map((item) => (
+          <li>
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="site-header__tools">
+      <ThemeToggle />
+      {hasSettings && (
+        <button
+          type="button"
+          class="icon-btn"
+          data-settings-toggle
+          aria-label="Art settings"
+          aria-controls="settings-panel"
+          aria-expanded="false"
+          title="Art settings"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1.4 2.1-2.4 2.4-2.1-1.4-1.7.8-.5 2.4h-3.4l-.5-2.4-1.7-.8-2.1 1.4-2.4-2.4 1.4-2.1-.8-1.7-2.4-.5v-3.4l2.4-.5.8-1.7-1.4-2.1 2.4-2.4 2.1 1.4 1.7-.8Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            />
+            <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+      )}
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+  }
+
+  /* While the art settings drawer is open (desktop/tablet), pin the header
+     above it so the gear can close it and the theme toggle stays usable. */
+  @media (min-width: 40.0625rem) {
+    :global(:root[data-settings-open]) .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+    }
+  }
+
+  .site-header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 'mark nav tools';
+    align-items: center;
+    column-gap: var(--space-5);
+    min-height: var(--header-h);
+  }
+
+  .wordmark {
+    grid-area: mark;
+    font-weight: var(--fw-semibold);
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    text-decoration: none;
+    white-space: nowrap;
+    padding-block: var(--space-2);
+  }
+
+  .wordmark:hover {
+    color: var(--color-accent);
+  }
+
+  .site-nav {
+    grid-area: nav;
+    justify-self: end;
+  }
+
+  .site-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: none;
+  }
+
+  .site-nav a {
+    display: inline-block;
+    padding-block: var(--space-2);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .site-nav a:hover,
+  .site-nav a[aria-current='page'] {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .site-header__tools {
+    grid-area: tools;
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-inline-end: calc(-1 * var(--space-2));
+  }
+
+  /* Mobile and tablet: nav moves to its own row and wraps. */
+  @media (max-width: 52rem) {
+    .site-header__inner {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        'mark tools'
+        'nav nav';
+      padding-block: var(--space-2);
+    }
+
+    .site-nav {
+      justify-self: start;
+      border-top: 1px solid var(--color-border);
+      width: 100%;
+      padding-top: var(--space-1);
+    }
+
+    .site-nav ul {
+      gap: 0 var(--space-4);
+    }
+
+    .site-nav a {
+      padding-block: var(--space-1);
+    }
+  }
+</style>

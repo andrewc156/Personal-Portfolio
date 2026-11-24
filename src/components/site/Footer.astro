@@ -1,0 +1,42 @@
+---
+import { displayName, profile } from './profile';
+
+const year = new Date().getFullYear();
+const { source_url: sourceUrl, show_claude_code_credit: showCredit } = profile.site;
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      <span>
+        © {year} {displayName}
+      </span>
+      {sourceUrl && (
+        <>
+          <span aria-hidden="true"> · </span>
+          <a href={sourceUrl}>Source</a>
+        </>
+      )}
+      {showCredit && (
+        <>
+          <span aria-hidden="true"> · </span>
+          <span>Built with help from Claude Code</span>
+        </>
+      )}
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-5);
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+
+  .site-footer p {
+    margin: 0;
+    max-width: none;
+  }
+</style>

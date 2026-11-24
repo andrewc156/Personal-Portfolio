@@ -1,0 +1,120 @@
+---
+/**
+ * Art settings panel shell (spec §4.1). Right-hand drawer on desktop, bottom
+ * sheet on mobile. Non-modal so the art stays visible while it changes.
+ * Behaviour lives in settings.ts (Esc closes, focus returns to the gear,
+ * open/closed state remembered in localStorage).
+ */
+interface Props {
+  title?: string;
+}
+const { title = 'Art settings' } = Astro.props;
+---
+
+<aside id="settings-panel" class="settings" aria-labelledby="settings-title" hidden>
+  <div class="settings__head">
+    <h2 id="settings-title" class="settings__title" tabindex="-1" data-settings-title>
+      {title}
+    </h2>
+    <button type="button" class="icon-btn" data-settings-close aria-label="Close art settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          d="M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linecap="round"
+        ></path>
+      </svg>
+    </button>
+  </div>
+  <div class="settings__body">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  .settings {
+    position: fixed;
+    z-index: 50;
+    /* Starts below the header (pinned while open, see Header.astro) so the
+       gear and theme toggle stay visible and clickable. */
+    inset: var(--shell-header-h, var(--header-h)) 0 0 auto;
+    width: min(var(--panel-w), 100vw);
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-left: 1px solid var(--color-border);
+    box-shadow: var(--shadow-panel);
+    animation: settings-in-right var(--dur-med) var(--ease);
+  }
+
+  .settings[hidden] {
+    display: none;
+  }
+
+  .settings__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-3) var(--space-3) var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .settings__title {
+    margin: 0;
+    font-size: var(--fs-small);
+    font-family: var(--font-mono);
+    font-weight: var(--fw-regular);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+  }
+
+  .settings__title:focus {
+    outline: none;
+  }
+
+  .settings__title:focus-visible {
+    outline: 2px solid var(--color-focus);
+  }
+
+  .settings__body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: var(--space-4) var(--space-5) var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  /* Mobile: bottom sheet */
+  @media (max-width: 40rem) {
+    .settings {
+      inset: auto 0 0 0;
+      width: 100%;
+      max-height: 65vh;
+      max-height: 65dvh;
+      border-left: 0;
+      border-top: 1px solid var(--color-border);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      animation-name: settings-in-up;
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+  }
+
+  @keyframes settings-in-right {
+    from {
+      transform: translateX(1.5rem);
+      opacity: 0;
+    }
+  }
+
+  @keyframes settings-in-up {
+    from {
+      transform: translateY(1.5rem);
+      opacity: 0;
+    }
+  }
+</style>

@@ -1,0 +1,15 @@
+---
+/** Home section stub (spec §4.3). F1 renders the anchored heading only; F2 fills it. */
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+---
+
+<section id={id} class="section" aria-labelledby={`${id}-title`}>
+  <div class="container">
+    <h2 id={`${id}-title`} class="section-title">
+      Recent work
+    </h2>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+/**
+ * Hero art settings (spec §6.3). F1 stub so the panel shell can be exercised:
+ * the controls only update their own readouts. F5 replaces this file.
+ */
+import SettingsGroup from '../site/SettingsGroup.astro';
+import SliderRow from '../site/SliderRow.astro';
+import SelectRow from '../site/SelectRow.astro';
+import ButtonRow from '../site/ButtonRow.astro';
+
+const palettes = ['Delta', 'Canyon', 'Glacier', 'Estuary', 'Mono'].map((p) => ({
+  value: p.toLowerCase(),
+  label: p,
+}));
+---
+
+<form class="hero-settings" aria-label="Hero art settings">
+  <SettingsGroup title="Terrain">
+    <SliderRow
+      id="hero-scale"
+      label="Scale"
+      min={0.5}
+      max={3}
+      step={0.1}
+      value={1.5}
+      decimals={1}
+    />
+  </SettingsGroup>
+  <SettingsGroup title="Color">
+    <SelectRow id="hero-palette" label="Palette" options={palettes} value="delta" />
+  </SettingsGroup>
+  <ButtonRow>
+    <button type="reset" class="btn">
+      Reset
+    </button>
+  </ButtonRow>
+</form>
+
+<style>
+  .hero-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+</style>

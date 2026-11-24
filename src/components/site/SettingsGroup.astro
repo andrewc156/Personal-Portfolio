@@ -1,0 +1,39 @@
+---
+/** A titled group of controls inside the settings panel. */
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<fieldset class="settings-group">
+  <legend class="settings-group__title">{title}</legend>
+  <div class="settings-group__rows">
+    <slot />
+  </div>
+</fieldset>
+
+<style>
+  .settings-group {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  .settings-group__title {
+    padding: 0;
+    margin-bottom: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xsmall);
+    letter-spacing: var(--tracking-caps);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .settings-group__rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+</style>
