@@ -3,7 +3,7 @@
 | Feature | Owner | State | Attempt | Last report | Notes |
 |---|---|---|---|---|---|
 | Phase 0 Setup | control | done | 1 | — | Toolchain, scaffold, agents, configs, venv |
-| F1 Site shell | site-builder | todo | 0 | — | |
+| F1 Site shell | site-builder | done | 2 | docs/checks/F1/attempt-2.md | PASS_WITH_NOTES: a few type/size literals outside tokens.css; 375 header not pinned while sheet open (by design); F8 CSP needs hashes for 2 inline scripts |
 | F2 Content and pages | site-builder | todo | 0 | — | |
 | F3 Persistence engine | tda-engineer | todo | 0 | — | |
 | F4a Colorado DEM → grid | data-engineer | todo | 0 | — | |

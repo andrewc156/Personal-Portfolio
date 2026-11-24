@@ -17,3 +17,12 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 12. **Python deps installed fine:** numpy 2.5.5, rasterio 1.5.2, gudhi 3.13.0, ruff 0.17.6. No GUDHI fallback needed.
 13. **Gitignore additions** beyond §9.1: `.claude/scheduled_tasks.lock`, `.claude/settings.local.json`, Python caches, `.DS_Store`.
 14. **Agents.** `.claude/agents/*.md` copied verbatim from spec §8.3. This session spawns `general-purpose` agents with the role body pasted in (new agents folder loads only next session).
+
+## F1
+15. Added `yaml@^2.9.1` as an explicit dependency (F1 request: `src/components/site/profile.ts` imports it).
+16. Deleted template `public/favicon.ico` (unlinked Astro logo; `public/favicon.svg` is the site icon).
+17. Builder self-check screenshots (`docs/builds/**/*.png`) are gitignored like checker screenshots.
+18. **F1 check found Phase 0 harness bugs (fixed by Control):** `astro preview` in Astro 7.4 backgrounds itself under agent detection, so `playwright.config.ts` webServer now runs `npm run preview -- --port 4321 --ignore-lock`. linkinator 8.1.0 scans 0 links in local-directory mode, so `npm run links` is now `node scripts/check-links.mjs` (Control-owned): starts preview on 4321, crawls it with `linkinator.config.json` (skips non-localhost URLs), stops the server.
+19. F1 attempt 1 FAIL was test-only (5/28 e2e failures from bugs in e2e/shell.spec.ts); returned to site-builder as attempt 2.
+## F1 (cont.)
+20. Raw Lighthouse JSON/HTML reports under docs/checks/ are gitignored; scores are recorded in each check report.

@@ -1,6 +1,5 @@
 {
   "recurse": true,
-  "directoryListing": true,
-  "skip": "^(?!http://localhost)",
+  "skip": "^https?://(?!localhost)",
   "verbosity": "error"
 }
