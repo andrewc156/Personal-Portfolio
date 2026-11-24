@@ -160,11 +160,41 @@ test.describe('header and navigation', () => {
     expect(positions).toEqual([...positions].sort((a, b) => a - b));
     await expect(page.locator('main h1')).toHaveCount(1);
 
+    // html has scroll-behavior: smooth. Clicking while a previous smooth scroll is
+    // still running races Playwright's own scroll-into-view of the header link, so
+    // wait for scrollY to stay unchanged for 150 ms before each click. After the
+    // click, wait for the target to come into view, let the scroll settle, and
+    // assert again so the final resting position is checked.
+    type SettleWindow = Window & { __settleY?: number; __settleT?: number };
+    const scrollSettled = async () => {
+      await page.evaluate(() => {
+        (window as SettleWindow).__settleY = undefined;
+      });
+      await page.waitForFunction(
+        () => {
+          const w = window as SettleWindow;
+          const now = performance.now();
+          if (w.__settleY !== window.scrollY) {
+            w.__settleY = window.scrollY;
+            w.__settleT = now;
+            return false;
+          }
+          return now - (w.__settleT ?? now) >= 150;
+        },
+        undefined,
+        { polling: 50 },
+      );
+    };
+
     for (const id of SECTION_ANCHORS) {
+      await scrollSettled();
       const link = page.locator(`nav[aria-label="Main"] a[href="/#${id}"]`);
       await link.click();
       await expect(page).toHaveURL(new RegExp(`#${id}$`));
-      await expect(page.locator(`#${id}`)).toBeInViewport();
+      const target = page.locator(`#${id}`);
+      await expect(target).toBeInViewport();
+      await scrollSettled();
+      await expect(target).toBeInViewport();
     }
   });
 

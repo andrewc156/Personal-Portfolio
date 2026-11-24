@@ -1,0 +1,29 @@
+---
+/** Generative SVG thumbnail, deterministic per slug, made at build time (no runtime JS). */
+import { THUMB_VIEWBOX, thumbnailMarkup } from './thumb';
+
+interface Props {
+  slug: string;
+  class?: string;
+}
+const { slug, class: className } = Astro.props;
+---
+
+<svg
+  class:list={['research-thumb', className]}
+  viewBox={THUMB_VIEWBOX}
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+  data-thumb={slug}
+  set:html={thumbnailMarkup(slug)}
+/>
+
+<style>
+  .research-thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+  }
+</style>

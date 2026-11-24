@@ -1,0 +1,9 @@
+# Repositories shown in the home "Open science" section. Links render only when a URL is set.
+# The site's own repository URL is not yet confirmed for display by Andrew (docs/QUESTIONS.md),
+# so it is empty here; profile.yaml site.source_url is used as a fallback when set.
+- id: site-source
+  label: Source for this site
+  url: ''
+- id: data-pipeline
+  label: Data pipeline
+  url: ''

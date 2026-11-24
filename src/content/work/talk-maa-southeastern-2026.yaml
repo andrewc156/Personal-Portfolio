@@ -1,0 +1,14 @@
+# Spec §3. Title still to come from Andrew ([A]); stays a draft until supplied.
+type: talk
+title: ''
+date: '2026-03'
+description: A co-presented number theory talk.
+venue: 105th MAA Southeastern Section Meeting
+authors:
+  - Andrew Chincea
+  - Michael Liu
+links: {}
+tags:
+  - number-theory
+draft: true
+confirmed: false

@@ -1,0 +1,36 @@
+
+> andrew-chincea-portfolio@0.0.1 lhci
+> lhci autorun --config=./lighthouserc.cjs
+
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server on port 59220...
+Running Lighthouse 1 time(s) on http://localhost:59220/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:59220/garden/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:59220/cv/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:59220/research/tda-rivernets/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:59220/about/
+Run #1...done.
+Done running Lighthouse!
+
+Checking assertions against 5 URL(s), 5 total run(s)
+
+All results processed!
+
+Dumping 5 reports to disk at /private/tmp/claude-501/-Users-andrewchincea-personalPortfolio/1f67abd1-ed51-4a07-9073-e87a4f7de7b0/scratchpad/f2-snap/.lighthouseci...
+Done writing reports to disk.
+
+Done running autorun.
+/ 100 100 100 100 CLS 0.0001452120624089881 mobile
+/garden/ 100 100 100 100 CLS 0.0001452120624089881 mobile
+/cv/ 100 100 100 100 CLS 0.0001452120624089881 mobile
+/research/tda-rivernets/ 100 100 100 100 CLS 0.0001452120624089881 mobile
+/about/ 100 100 100 100 CLS 0.003550122548575188 mobile

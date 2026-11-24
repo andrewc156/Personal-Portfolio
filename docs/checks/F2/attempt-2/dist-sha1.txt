@@ -1,0 +1,10 @@
+49a5cf56490e86c1be0b270444ea85b8efa8bbe3  ./404.html
+8457c318905b5be4133c5818d9ac9af9c6a19c37  ./about/index.html
+951a875a9b329231d0bca0f7f25b0f969cb2a60c  ./cv/index.html
+756b2ee3aa1f2692f5fefc95d9ef22ff9027a6d7  ./garden/index.html
+0645e65efe19a67c5241ca6e3c42dfefaca60cb6  ./index.html
+b7bc74f9e2e8551f5852bac8722f5630e2c20c51  ./research/index.html
+a0d84a20e3f1ff556289696f0047bef236ad37b9  ./research/number-theory/index.html
+4a09e0f9b38b6259c6b3056759761128fedabb97  ./research/spectral-fractals/index.html
+a7cfd6ccf0e3eea8a1bd39275cf1fe2ca0864f46  ./research/tda-rivernets/index.html
+d62936cf48409d4299bb97fe6e5b0c8c8d54e703  ./research/water-quality/index.html

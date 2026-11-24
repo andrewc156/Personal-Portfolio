@@ -1,0 +1,67 @@
+---
+/** Research-area card (spec §4.3): thumbnail, linked heading, one-liner, "Related work →". */
+import ResearchThumb from './ResearchThumb.astro';
+import { gardenTagHref, researchHref, type ResearchEntry } from './work';
+
+interface Props {
+  area: ResearchEntry;
+  headingLevel?: 2 | 3;
+}
+const { area, headingLevel = 3 } = Astro.props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+---
+
+<article class="research-card" data-research-card={area.id}>
+  <div class="research-card__thumb">
+    <ResearchThumb slug={area.id} />
+  </div>
+  <Heading class="research-card__title">
+    <a href={researchHref(area.id)}>{area.data.title}</a>
+  </Heading>
+  <p class="research-card__summary">{area.data.summary}</p>
+  <p class="research-card__more">
+    <a href={gardenTagHref(area.id)}>
+      Related work<span class="visually-hidden"> on {area.data.title}</span>{' '}
+      <span aria-hidden="true">→</span>
+    </a>
+  </p>
+</article>
+
+<style>
+  .research-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .research-card__thumb {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--space-2);
+  }
+
+  .research-card__title {
+    font-size: var(--fs-h3);
+    margin: 0;
+  }
+
+  .research-card__title a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .research-card__title a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .research-card__summary,
+  .research-card__more {
+    margin: 0;
+  }
+
+  .research-card__more {
+    font-size: var(--fs-small);
+  }
+</style>

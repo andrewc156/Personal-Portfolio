@@ -1,9 +1,22 @@
 ---
-/**
- * Home section stub (spec §4.3). Rendered only when content exists; F1 has none,
- * so this renders nothing. F2 fills it and uses `id` as the section anchor.
- */
+/** Home: Contact (spec §4.3 item 7). Only links that exist; hidden when there are none. */
+import ContactLinks from '../content/ContactLinks.astro';
+import { contactLinks } from '../content/contact';
+
 export interface Props {
   id: string;
 }
+const { id } = Astro.props;
+const links = contactLinks();
 ---
+
+{links.length > 0 && (
+  <section id={id} class="section" aria-labelledby={`${id}-title`}>
+    <div class="container">
+      <h2 id={`${id}-title`} class="section-title">
+        Contact
+      </h2>
+      <ContactLinks links={links} />
+    </div>
+  </section>
+)}

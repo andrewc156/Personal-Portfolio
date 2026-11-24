@@ -1,0 +1,51 @@
+/* Shared content styles (Garden rows, citations). Values come from tokens.css. */
+
+/* Type tag: mono, small caps (spec §4.1). */
+.type-tag {
+  display: inline-block;
+  margin-inline-end: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xsmall);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-caps);
+  color: var(--color-text-muted);
+  font-weight: var(--fw-regular);
+}
+
+.citation__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: var(--space-2) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-btn {
+  display: inline-block;
+  padding: 0.125rem var(--space-2);
+  border: 1px solid var(--color-control);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xsmall);
+  text-decoration: none;
+}
+
+.link-btn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+}
+
+.citation-list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0 0 var(--space-5);
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+}
+
+.more-link {
+  font-size: var(--fs-small);
+}

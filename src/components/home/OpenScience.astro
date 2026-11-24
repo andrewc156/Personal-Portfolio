@@ -1,9 +1,21 @@
 ---
-/** Home section stub (spec §4.3). F1 renders the anchored heading only; F2 fills it. */
+/**
+ * Home: Open science (spec §4.3 item 5). Describes only what is true. Repository
+ * links render only when a URL is set in src/data/open-science.yaml (or profile
+ * site.source_url for the site's own source).
+ */
+import { getCopy, getRepos } from '../content/work';
+import { profile } from '../site/profile';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
+const copy = await getCopy('open_science');
+const repos = await getRepos();
+if (profile.site.source_url && !repos.some((r) => r.url === profile.site.source_url)) {
+  repos.unshift({ label: 'Source for this site', url: profile.site.source_url });
+}
 ---
 
 <section id={id} class="section" aria-labelledby={`${id}-title`}>
@@ -11,5 +23,15 @@ const { id } = Astro.props;
     <h2 id={`${id}-title`} class="section-title">
       Open science
     </h2>
+    {copy.text && <p data-confirmed={String(copy.confirmed)}>{copy.text}</p>}
+    {repos.length > 0 && (
+      <ul class="repos" data-repos>
+        {repos.map((r) => (
+          <li>
+            <a href={r.url}>{r.label}</a>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 </section>

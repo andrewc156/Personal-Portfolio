@@ -1,0 +1,20 @@
+
+Running 3 tests using 1 worker
+
+mission: top=16 scrollY=409
+work: top=16 scrollY=692
+research: top=60 scrollY=954
+open-science: top=511 scrollY=954
+  ✓  1 [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop (3.5s)
+mission: top=16 scrollY=409
+work: top=16 scrollY=692
+research: top=60 scrollY=954
+open-science: top=511 scrollY=954
+  ✓  2 [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop (3.5s)
+mission: top=16 scrollY=409
+work: top=16 scrollY=692
+research: top=60 scrollY=954
+open-science: top=511 scrollY=954
+  ✓  3 [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop (3.5s)
+
+  3 passed (11.4s)

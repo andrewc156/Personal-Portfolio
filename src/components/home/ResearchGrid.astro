@@ -1,9 +1,13 @@
 ---
-/** Home section stub (spec §4.3). F1 renders the anchored heading only; F2 fills it. */
+/** Home: Research (spec §4.3 item 4). One card per research area. */
+import ResearchCard from '../content/ResearchCard.astro';
+import { getResearch } from '../content/work';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
+const areas = await getResearch();
 ---
 
 <section id={id} class="section" aria-labelledby={`${id}-title`}>
@@ -11,5 +15,24 @@ const { id } = Astro.props;
     <h2 id={`${id}-title`} class="section-title">
       Research
     </h2>
+    <ul class="research-grid">
+      {areas.map((area) => (
+        <li>
+          <ResearchCard area={area} />
+        </li>
+      ))}
+    </ul>
   </div>
 </section>
+
+<style>
+  .research-grid {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: none;
+  }
+</style>

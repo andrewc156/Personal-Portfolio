@@ -1,0 +1,112 @@
+CONSOLE errors/warnings: []
+THIRD-PARTY requests: []
+NOJS /garden/ rows [ 'project-rising-water', 'poster-fractal-laplacian-2025' ] emptyHidden true chipHref /garden/ /garden/?type=poster /garden/?type=project /garden/ /garden/?tag=water-quality /garden/?tag=tda-rivernets /garden/?tag=number-theory /garden/?tag=spectral-fractals
+NOJS /garden/?type=poster rows [ 'project-rising-water', 'poster-fractal-laplacian-2025' ] emptyHidden true chipHref /garden/ /garden/?type=poster /garden/?type=project /garden/ /garden/?tag=water-quality /garden/?tag=tda-rivernets /garden/?tag=number-theory /garden/?tag=spectral-fractals
+NOJS /garden/?type=talk&tag=water-quality rows [ 'project-rising-water', 'poster-fractal-laplacian-2025' ] emptyHidden true chipHref /garden/ /garden/?type=poster /garden/?type=project /garden/ /garden/?tag=water-quality /garden/?tag=tda-rivernets /garden/?tag=number-theory /garden/?tag=spectral-fractals
+DEEP /garden/ rows ["project-rising-water","poster-fractal-laplacian-2025"] status "2 items" empty false current type=,tag=
+DEEP /garden/?type=poster rows ["poster-fractal-laplacian-2025"] status "Showing 1 of 2 items" empty false current type=poster,tag=
+DEEP /garden/?type=project rows ["project-rising-water"] status "Showing 1 of 2 items" empty false current type=project,tag=
+DEEP /garden/?tag=tda-rivernets rows ["project-rising-water"] status "Showing 1 of 2 items" empty false current type=,tag=tda-rivernets
+DEEP /garden/?tag=spectral-fractals rows ["poster-fractal-laplacian-2025"] status "Showing 1 of 2 items" empty false current type=,tag=spectral-fractals
+DEEP /garden/?type=poster&tag=spectral-fractals rows ["poster-fractal-laplacian-2025"] status "Showing 1 of 2 items" empty false current type=poster,tag=spectral-fractals
+DEEP /garden/?type=project&tag=spectral-fractals rows [] status "Showing 0 of 2 items" empty true current type=project,tag=spectral-fractals
+DEEP /garden/?tag=water-quality rows [] status "Showing 0 of 2 items" empty true current type=,tag=water-quality
+DEEP /garden/?type=bogus&tag=nope rows ["project-rising-water","poster-fractal-laplacian-2025"] status "2 items" empty false current type=,tag=
+DEEP /garden/?type=talk rows [] status "Showing 0 of 2 items" empty true current tag=
+TAB order to Posters chip: Skip to content | Andrew Chincea | Mission | Research | Work | Open science | Rising water | CV |  | type= | type=poster
+KB after Enter on Posters: url http://localhost:4321/garden/?type=poster rows [ 'poster-fractal-laplacian-2025' ] focused poster outline solid 2px rgb(11, 79, 122)
+KB after Enter on spectral-fractals: url http://localhost:4321/garden/?type=poster&tag=spectral-fractals rows [ 'poster-fractal-laplacian-2025' ]
+BACK url http://localhost:4321/garden/?type=poster rows [ 'poster-fractal-laplacian-2025' ]
+BACK2 url http://localhost:4321/garden/ rows [ 'project-rising-water', 'poster-fractal-laplacian-2025' ]
+HOME research links: [
+  'Water quality -> /research/water-quality/',
+  'Related work on Water quality → -> /garden/?tag=water-quality',
+  'Topological data analysis: RiverNets -> /research/tda-rivernets/',
+  'Related work on Topological data analysis: RiverNets → -> /garden/?tag=tda-rivernets',
+  'Number theory -> /research/number-theory/',
+  'Related work on Number theory → -> /garden/?tag=number-theory',
+  'Spectral analysis on fractals -> /research/spectral-fractals/',
+  'Related work on Spectral analysis on fractals → -> /garden/?tag=spectral-fractals'
+]
+RELATED water-quality http://localhost:4321/garden/?tag=water-quality rows [] current type=,tag=water-quality
+RELATED tda-rivernets http://localhost:4321/garden/?tag=tda-rivernets rows ["project-rising-water"] current type=,tag=tda-rivernets
+RELATED number-theory http://localhost:4321/garden/?tag=number-theory rows [] current type=,tag=number-theory
+RELATED spectral-fractals http://localhost:4321/garden/?tag=spectral-fractals rows ["poster-fractal-laplacian-2025"] current type=,tag=spectral-fractals
+RESEARCH index links: /research/water-quality/ /garden/?tag=water-quality /research/tda-rivernets/ /garden/?tag=tda-rivernets /research/number-theory/ /garden/?tag=number-theory /research/spectral-fractals/ /garden/?tag=spectral-fractals
+HOME sections: mission > work > research > open-science
+HOME #teaching/#contact count: 0 0
+HOME h1/h2: H1:Andrew Chincea | H2:Mission | H2:Recent work | H2:Research | H2:Open science
+CITES / [
+ {
+  "cls": "citation-list",
+  "html": "<li><article class=\"citation\" data-citation=\"\" data-id=\"project-rising-water\"=\"\"><p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>.</p></article></li><li><article class=\"citation\" data-citation=\"\" data-id=\"poster-fractal-laplacian-2025\"=\"\"><p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"cit"
+ },
+ {
+  "cls": "citation",
+  "html": "<p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>.</p>"
+ },
+ {
+  "cls": "citation__text",
+  "html": "<span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>."
+ },
+ {
+  "cls": "citation__authors",
+  "html": "<strong=\"\">Andrew Chincea</strong>"
+ }
+]
+CITES /research/spectral-fractals/ [
+ {
+  "cls": "citation-list",
+  "html": "<li=\"\"><article class=\"citation\" data-citation=\"\" data-id=\"poster-fractal-laplacian-2025\"=\"\"><p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>.</p></article></li>"
+ },
+ {
+  "cls": "citation",
+  "html": "<p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>.</p>"
+ },
+ {
+  "cls": "citation__text",
+  "html": "<span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>."
+ },
+ {
+  "cls": "citation__authors",
+  "html": "<strong=\"\">Andrew Chincea</strong>"
+ }
+]
+CITES /research/tda-rivernets/ [
+ {
+  "cls": "citation-list",
+  "html": "<li=\"\"><article class=\"citation\" data-citation=\"\" data-id=\"project-rising-water\"=\"\"><p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>.</p></article></li>"
+ },
+ {
+  "cls": "citation",
+  "html": "<p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>.</p>"
+ },
+ {
+  "cls": "citation__text",
+  "html": "<span class=\"type-tag\"=\"\">Project</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span>. <a class=\"citation__title\" href=\"/rising-water/\"=\"\">Rising water</a>."
+ },
+ {
+  "cls": "citation__authors",
+  "html": "<strong=\"\">Andrew Chincea</strong>"
+ }
+]
+CITES /cv/ [
+ {
+  "cls": "citation-list",
+  "html": "<li=\"\"><article class=\"citation\" data-citation=\"\" data-id=\"poster-fractal-laplacian-2025\"=\"\"><p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>.</p></article></li>"
+ },
+ {
+  "cls": "citation",
+  "html": "<p class=\"citation__text\"=\"\"><span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>.</p>"
+ },
+ {
+  "cls": "citation__text",
+  "html": "<span class=\"type-tag\"=\"\">Poster</span><span class=\"citation__authors\"=\"\"><strong=\"\">Andrew Chincea</strong></span> (<time datetime=\"2025-03\"=\"\">Mar 2025</time>). <span class=\"citation__title\"=\"\">Properties of Eigenvalues of Fractal Laplacian</span>. <em class=\"citation__venue\"=\"\">104th MAA Southeastern Section Meeting, High Point University</em>."
+ },
+ {
+  "cls": "citation__authors",
+  "html": "<strong=\"\">Andrew Chincea</strong>"
+ }
+]
+CV pdf links: []
+CV headings: H1:CV | H2:Education | H2:Research | H2:Presentations | H2:Projects

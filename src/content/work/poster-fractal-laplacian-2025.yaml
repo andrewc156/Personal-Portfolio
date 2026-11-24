@@ -1,0 +1,13 @@
+# Spec §3, confirmed by Andrew.
+type: poster
+title: Properties of Eigenvalues of Fractal Laplacian
+date: '2025-03'
+description: First-Year Scholar research on eigenvalues of the fractal Laplacian.
+venue: 104th MAA Southeastern Section Meeting, High Point University
+authors:
+  - Andrew Chincea
+links: {}
+tags:
+  - spectral-fractals
+draft: false
+confirmed: true

@@ -1,0 +1,51 @@
+
+> andrew-chincea-portfolio@0.0.1 links
+> node scripts/check-links.mjs
+
+→ crawling http://localhost:4321/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+[404] http://localhost:4321/rising-water/
+http://localhost:4321/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/rising-water/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/cv/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?tag=water-quality
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?tag=tda-rivernets
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?tag=number-theory
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/research/spectral-fractals/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/research/water-quality/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?tag=spectral-fractals
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/research/number-theory/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/research/tda-rivernets/
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?type=poster
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/garden/?type=project
+  [404] http://localhost:4321/rising-water/
+http://localhost:4321/research/
+  [404] http://localhost:4321/rising-water/
+ERROR: Detected 15 broken links. Scanned 31 links in 0.039 seconds.

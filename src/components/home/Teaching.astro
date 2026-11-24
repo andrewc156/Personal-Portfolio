@@ -1,9 +1,41 @@
 ---
 /**
- * Home section stub (spec §4.3). Rendered only when content exists; F1 has none,
- * so this renders nothing. F2 fills it and uses `id` as the section anchor.
+ * Home: Teaching & outreach (spec §4.3 item 6). Rendered only when
+ * src/data/teaching.yaml has entries; it is empty for now, so this renders nothing.
  */
+import { parse } from 'yaml';
+import raw from '../../data/teaching.yaml?raw';
+
 export interface Props {
   id: string;
 }
+
+interface Entry {
+  title: string;
+  detail?: string;
+}
+
+const { id } = Astro.props;
+const parsed: unknown = parse(raw);
+const entries: Entry[] = Array.isArray(parsed)
+  ? parsed.filter((e): e is Entry => typeof e?.title === 'string' && e.title.trim() !== '')
+  : [];
 ---
+
+{entries.length > 0 && (
+  <section id={id} class="section" aria-labelledby={`${id}-title`}>
+    <div class="container">
+      <h2 id={`${id}-title`} class="section-title">
+        Teaching &amp; outreach
+      </h2>
+      <ul>
+        {entries.map((e) => (
+          <li>
+            {e.title}
+            {e.detail && <span>. {e.detail}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}

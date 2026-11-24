@@ -1,0 +1,10 @@
+# Spec §3. Status, link and date still to come from Andrew ([A]); stays a draft until supplied.
+type: project
+title: OwlPath
+description: A course-prerequisite chart for Kennesaw State, modeled on Georgia Tech's GradGT.
+authors:
+  - Andrew Chincea
+links: {}
+tags: []
+draft: true
+confirmed: false

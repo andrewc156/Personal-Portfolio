@@ -1,0 +1,92 @@
+---
+/**
+ * One work item in citation style (spec §4.3): authors with Andrew in bold, date as
+ * "Mon YYYY", title, venue in italics, then small buttons only for links that exist.
+ * Empty fields render nothing.
+ */
+import './content.css';
+import DraftBadge from './DraftBadge.astro';
+import { LINK_BUTTONS, TYPE_LABELS } from './constants';
+import { formatMonth, isoDate, isAndrewName } from './format';
+import type { WorkEntry } from './work';
+import { displayName, profile } from '../site/profile';
+
+interface Props {
+  item: WorkEntry;
+  /** Show the type tag before the citation (used where types are mixed). */
+  showType?: boolean;
+}
+
+const { item, showType = false } = Astro.props;
+const d = item.data;
+const andrew = [displayName, profile.full_name].filter(Boolean);
+const when = formatMonth(d.date);
+const buttons = LINK_BUTTONS.flatMap(([key, label]) => {
+  const href = d.links[key];
+  return href ? [{ href, label }] : [];
+});
+const titleText = d.title || (d.draft ? 'Title needed' : '');
+---
+
+<article class="citation" data-citation data-id={item.id}>
+  <p class="citation__text">
+    {showType && <span class="type-tag">{TYPE_LABELS[d.type]}</span>}
+    <span class="citation__authors">
+      {d.authors.map((a, i) => (
+        <>
+          {i > 0 &&
+            (i === d.authors.length - 1 ? (d.authors.length > 2 ? ', and ' : ' and ') : ', ')}
+          {isAndrewName(a, andrew) ? <strong>{a}</strong> : <span>{a}</span>}
+        </>
+      ))}
+    </span>
+    {when && (
+      <>
+        {' '}
+        (<time datetime={isoDate(d.date)}>{when}</time>).
+      </>
+    )}
+    {!when && '.'}
+    {titleText && (
+      <>
+        {' '}
+        {d.links.site ? (
+          <a class="citation__title" href={d.links.site}>
+            {titleText}
+          </a>
+        ) : (
+          <span class="citation__title">{titleText}</span>
+        )}
+        .
+      </>
+    )}
+    {d.venue && (
+      <>
+        {' '}
+        <em class="citation__venue">{d.venue}</em>.
+      </>
+    )}
+    {d.draft && <DraftBadge />}
+  </p>
+  {buttons.length > 0 && (
+    <ul class="citation__links" aria-label={`Links for ${titleText || TYPE_LABELS[d.type]}`}>
+      {buttons.map((b) => (
+        <li>
+          <a class="link-btn" href={b.href}>
+            {b.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</article>
+
+<style>
+  .citation__text {
+    margin: 0;
+  }
+
+  .citation__authors strong {
+    font-weight: var(--fw-semibold);
+  }
+</style>

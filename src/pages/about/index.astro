@@ -1,0 +1,50 @@
+---
+/** About (spec §5): longer bio (draft copy) and only the contact links that exist. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactLinks from '../../components/content/ContactLinks.astro';
+import { contactLinks } from '../../components/content/contact';
+import { getCopy } from '../../components/content/work';
+import { displayName } from '../../components/site/profile';
+
+const bio = await getCopy('about_bio');
+const links = contactLinks();
+---
+
+<BaseLayout title="About" description={bio.text || `About ${displayName}.`}>
+  <article class="container about">
+    <h1>About</h1>
+    {bio.text && (
+      <p class="about__bio" data-confirmed={String(bio.confirmed)}>
+        {bio.text}
+      </p>
+    )}
+    <p>
+      See the <a href="/#research">research areas</a>, the <a href="/garden/">Garden</a> of work, or
+      the <a href="/cv/">CV</a>.
+    </p>
+    {links.length > 0 && (
+      <section class="about__contact" aria-labelledby="about-contact">
+        <h2 id="about-contact">Contact</h2>
+        <ContactLinks links={links} />
+      </section>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .about {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .about__bio {
+    font-size: 1.1875rem;
+  }
+
+  .about__contact {
+    margin-top: var(--space-6);
+  }
+
+  .about__contact h2 {
+    font-size: var(--fs-h3);
+  }
+</style>

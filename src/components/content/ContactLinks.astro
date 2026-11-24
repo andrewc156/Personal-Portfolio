@@ -1,0 +1,44 @@
+---
+/** List of contact links. Callers render nothing when the list is empty. */
+import type { ContactLink } from './contact';
+
+interface Props {
+  links: ContactLink[];
+}
+const { links } = Astro.props;
+---
+
+<dl class="contact-links">
+  {links.map((l) => (
+    <div class="contact-links__row">
+      <dt>{l.label}</dt>
+      <dd>
+        <a href={l.href}>{l.text}</a>
+      </dd>
+    </div>
+  ))}
+</dl>
+
+<style>
+  .contact-links {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .contact-links__row {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .contact-links dt {
+    min-width: 6rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+
+  .contact-links dd {
+    margin: 0;
+  }
+</style>

@@ -66,3 +66,6 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 
 ## F4b
 44. F4b PASS_WITH_NOTES. Notes 1 (primary-source LANDMARKS coords) and 3 ("≈ 40 m" vs "about 34–46 m") are deferred to the data-engineer in the F9 fix round unless F6 needs them sooner; neither changes any conclusion.
+
+## F2 done
+45. F2 PASS_WITH_NOTES (attempt 2). For F7: tighten the anchor test (target top near viewport top), fix /garden/ meta description to match visible types, add /about/ footer link (#29).

@@ -1,0 +1,35 @@
+
+Running 1 test using 1 worker
+
+  ✘  1 [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop (4.0s)
+
+
+  1) [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop ─────────────────
+
+    Error: expect(locator).toBeInViewport() failed
+
+    Locator:  locator('#research')
+    Expected: in viewport
+    Received: viewport ratio 0
+    Timeout:  3000ms
+
+    Call log:
+      - Expect "toBeInViewport" locator('#research') with timeout 3000ms
+      - waiting for locator('#research')
+        10 × locator resolved to <section id="research" class="section" data-astro-cid-4msv5bci="" aria-labelledby="research-title">…</section>
+           - unexpected value "viewport ratio 0"
+
+
+      30 |     await expect(page).toHaveURL(new RegExp(`#${id}$`));
+      31 |     const target = page.locator(`#${id}`);
+    > 32 |     await expect(target).toBeInViewport({ timeout: 3000 });
+         |                          ^
+      33 |     await scrollSettled();
+      34 |     await expect(target).toBeInViewport();
+      35 |     const r = await target.evaluate((el) => ({ top: Math.round(el.getBoundingClientRect().top), y: Math.round(scrollY) }));
+        at /Users/andrewchincea/personalPortfolio/docs/checks/tools/f2a2/anchor-mutation.spec.ts:32:26
+
+    Error Context: docs/checks/tools/f2a2/.pw/anchor-mutation-anchor-loop-chromium/error-context.md
+
+  1 failed
+    [chromium] › docs/checks/tools/f2a2/anchor-mutation.spec.ts:5:1 › anchor loop ──────────────────

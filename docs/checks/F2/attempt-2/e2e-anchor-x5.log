@@ -1,0 +1,10 @@
+
+Running 5 tests using 1 worker
+
+  ✓  1 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.5s)
+  ✓  2 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.5s)
+  ✓  3 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.5s)
+  ✓  4 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.5s)
+  ✓  5 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.5s)
+
+  5 passed (20.3s)

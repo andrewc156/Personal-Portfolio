@@ -1,0 +1,139 @@
+---
+/**
+ * Web CV generated from content (spec §5): education, research, presentations,
+ * publications and projects. The PDF link appears only if the file exists in public/.
+ */
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Citation from '../../components/content/Citation.astro';
+import { getResearch, getWork, researchHref } from '../../components/content/work';
+import { displayName, profile } from '../../components/site/profile';
+import '../../components/content/content.css';
+
+const work = await getWork();
+const areas = await getResearch();
+
+const publications = work.filter((w) => w.data.type === 'paper' || w.data.type === 'preprint');
+const presentations = work.filter((w) => w.data.type === 'talk' || w.data.type === 'poster');
+const projects = work.filter((w) => ['project', 'software', 'dataset'].includes(w.data.type));
+
+/** A local PDF path (e.g. "/cv.pdf") must exist in public/; an absolute URL is taken as given. */
+function cvPdfHref(value: string): string {
+  if (!value) return '';
+  if (/^https?:\/\//.test(value)) return value;
+  const rel = value.replace(/^\/+/, '');
+  return existsSync(join(process.cwd(), 'public', rel)) ? `/${rel}` : '';
+}
+const pdf = cvPdfHref(profile.cv_pdf);
+
+const sections = [
+  { id: 'cv-publications', title: 'Publications and preprints', items: publications },
+  { id: 'cv-presentations', title: 'Presentations', items: presentations },
+  { id: 'cv-projects', title: 'Projects', items: projects },
+].filter((s) => s.items.length > 0);
+---
+
+<BaseLayout
+  title="CV"
+  description={`Curriculum vitae of ${displayName}: education, research, presentations and projects.`}
+>
+  <article class="container cv">
+    <header class="cv__head">
+      <h1>CV</h1>
+      <p class="cv__name">{profile.full_name || displayName}</p>
+      {pdf && (
+        <p>
+          <a class="link-btn" href={pdf} data-cv-pdf>
+            PDF
+          </a>
+        </p>
+      )}
+    </header>
+
+    <section class="cv__section" aria-labelledby="cv-education">
+      <h2 id="cv-education">Education</h2>
+      <p class="cv__entry">
+        <strong>{profile.affiliation}</strong>
+        {profile.expected_graduation && (
+          <span class="cv__when">Expected {profile.expected_graduation}</span>
+        )}
+      </p>
+      {profile.degrees.length > 0 && (
+        <ul>
+          {profile.degrees.map((deg) => (
+            <li>{deg}</li>
+          ))}
+        </ul>
+      )}
+      {profile.standing && <p>{profile.standing}.</p>}
+    </section>
+
+    <section class="cv__section" aria-labelledby="cv-research">
+      <h2 id="cv-research">Research</h2>
+      <ul class="cv__areas">
+        {areas.map((a) => (
+          <li>
+            <a href={researchHref(a.id)}>{a.data.title}</a>. {a.data.summary}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {sections.map((s) => (
+      <section class="cv__section" aria-labelledby={s.id}>
+        <h2 id={s.id}>{s.title}</h2>
+        <ul class="citation-list">
+          {s.items.map((item) => (
+            <li>
+              <Citation item={item} showType={s.id !== 'cv-projects'} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
+
+<style>
+  .cv {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .cv__name {
+    font-size: var(--fs-h3);
+    color: var(--color-text-muted);
+  }
+
+  .cv__section {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cv__section h2 {
+    font-size: var(--fs-h3);
+  }
+
+  .cv__entry {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  .cv__when {
+    font-family: var(--font-mono);
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+
+  .cv__areas {
+    padding-left: var(--space-5);
+  }
+
+  .cv__areas li + li {
+    margin-top: var(--space-2);
+  }
+</style>

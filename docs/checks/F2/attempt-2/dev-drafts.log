@@ -1,0 +1,27 @@
+## /garden/
+   preprint-number-theory badge=true :: PREPRINT Title neededDRAFT A number theory preprint.
+   project-owlpath badge=true :: PROJECT OwlPathDRAFT A course-prerequisite chart for Kennesaw State, modeled on Georgia Tech's GradGT.
+   project-rising-water badge=false :: PROJECT Rising water This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
+   poster-rivernets-analytics-day-2026 badge=true :: POSTER Title neededDRAFT A RiverNets poster. · KSU Fall Analytics Day Dec 2026
+   talk-maa-southeastern-2026 badge=true :: TALK Title neededDRAFT A co-presented number theory talk. · 105th MAA Southeastern Section Meeting Mar 2026
+   poster-fractal-laplacian-2025 badge=false :: POSTER Properties of Eigenvalues of Fractal Laplacian First-Year Scholar research on eigenvalues of the fractal Laplacian. · 104th MAA South
+   badge text: [ 'Draft' ]
+## /
+   preprint-number-theory badge=true :: PREPRINTAndrew Chincea. Title needed.DRAFT
+   project-owlpath badge=true :: PROJECTAndrew Chincea. OwlPath.DRAFT
+   project-rising-water badge=false :: PROJECTAndrew Chincea. Rising water.
+   poster-rivernets-analytics-day-2026 badge=true :: POSTERAndrew Chincea and Yunus Kaya (Dec 2026). Title needed. KSU Fall Analytics Day.DRAFT
+   talk-maa-southeastern-2026 badge=true :: TALKAndrew Chincea and Michael Liu (Mar 2026). Title needed. 105th MAA Southeastern Section Meeting.DRAFT
+   badge text: [ 'Draft' ]
+## /research/number-theory/
+   preprint-number-theory badge=true :: PREPRINTAndrew Chincea. Title needed.DRAFT
+   talk-maa-southeastern-2026 badge=true :: TALKAndrew Chincea and Michael Liu (Mar 2026). Title needed. 105th MAA Southeastern Section Meeting.DRAFT
+   badge text: [ 'Draft' ]
+## /cv/
+   preprint-number-theory badge=true :: PREPRINTAndrew Chincea. Title needed.DRAFT
+   poster-rivernets-analytics-day-2026 badge=true :: POSTERAndrew Chincea and Yunus Kaya (Dec 2026). Title needed. KSU Fall Analytics Day.DRAFT
+   talk-maa-southeastern-2026 badge=true :: TALKAndrew Chincea and Michael Liu (Mar 2026). Title needed. 105th MAA Southeastern Section Meeting.DRAFT
+   poster-fractal-laplacian-2025 badge=false :: POSTERAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point Universi
+   project-owlpath badge=true :: Andrew Chincea. OwlPath.DRAFT
+   project-rising-water badge=false :: Andrew Chincea. Rising water.
+   badge text: [ 'Draft' ]

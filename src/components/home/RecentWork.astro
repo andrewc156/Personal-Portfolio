@@ -1,9 +1,14 @@
 ---
-/** Home section stub (spec §4.3). F1 renders the anchored heading only; F2 fills it. */
+/** Home: Recent work (spec §4.3 item 3). Latest five items in citation style. */
+import Citation from '../content/Citation.astro';
+import { getWork } from '../content/work';
+import '../content/content.css';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
+const items = (await getWork()).slice(0, 5);
 ---
 
 <section id={id} class="section" aria-labelledby={`${id}-title`}>
@@ -11,5 +16,19 @@ const { id } = Astro.props;
     <h2 id={`${id}-title`} class="section-title">
       Recent work
     </h2>
+    {items.length > 0 && (
+      <ul class="citation-list" data-recent-work>
+        {items.map((item) => (
+          <li>
+            <Citation item={item} showType />
+          </li>
+        ))}
+      </ul>
+    )}
+    <p class="more-link">
+      <a href="/garden/">
+        All work <span aria-hidden="true">→</span>
+      </a>
+    </p>
   </div>
 </section>

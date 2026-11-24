@@ -1,0 +1,23 @@
+# Site copy written only from spec §3 facts. Draft copy stays `confirmed: false`
+# until Andrew approves it (see docs/QUESTIONS.md).
+
+mission:
+  text: >-
+    Andrew Chincea studies mathematics (statistics concentration) and data science and
+    analytics at Kennesaw State University. Water quality is his primary research focus,
+    and his work also spans topological data analysis through the RiverNets project at
+    KSU, number theory, and spectral analysis on fractals.
+  confirmed: false
+
+about_bio:
+  text: >-
+    Andrew Chincea is an undergraduate at Kennesaw State University studying mathematics
+    (statistics concentration) and data science and analytics. His research spans water
+    quality, topological data analysis, and number theory.
+  confirmed: false
+
+open_science:
+  text: >-
+    The source code for this site is public, including the data pipeline and the
+    persistence engine behind the Rising water explorer.
+  confirmed: false

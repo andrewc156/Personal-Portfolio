@@ -1,0 +1,109 @@
+---
+/**
+ * Research topic page (spec §5): description, methods (only when known), related work.
+ * The TDA page links to the Rising water explorer.
+ */
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Citation from '../../components/content/Citation.astro';
+import ResearchThumb from '../../components/content/ResearchThumb.astro';
+import {
+  gardenTagHref,
+  getResearch,
+  getWork,
+  type ResearchEntry,
+} from '../../components/content/work';
+import '../../components/content/content.css';
+
+export const getStaticPaths = (async () => {
+  const areas = await getResearch();
+  return areas.map((area) => ({ params: { slug: area.id }, props: { area } }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  area: ResearchEntry;
+}
+
+const { area } = Astro.props;
+const d = area.data;
+const related = (await getWork()).filter((w) => (w.data.tags as string[]).includes(area.id));
+const isTda = area.id === 'tda-rivernets';
+---
+
+<BaseLayout title={d.title} description={d.summary}>
+  <article class="container topic" data-topic={area.id}>
+    <p class="eyebrow">
+      <a href="/research/">Research</a>
+    </p>
+    <h1>{d.title}</h1>
+    <div class="topic__thumb">
+      <ResearchThumb slug={area.id} />
+    </div>
+
+    <section class="topic__section" aria-labelledby="topic-about">
+      <h2 id="topic-about">About</h2>
+      <p>{d.summary}</p>
+      {d.description && <p>{d.description}</p>}
+      {d.advisor && <p>Advisor: {d.advisor}</p>}
+      {isTda && (
+        <p data-rising-water-link>
+          The <a href="/rising-water/">Rising water explorer</a> on this site is built from
+          elevation data for the Colorado River Basin study area (RiverNets coverage).
+        </p>
+      )}
+    </section>
+
+    {d.methods.length > 0 && (
+      <section class="topic__section" aria-labelledby="topic-methods">
+        <h2 id="topic-methods">Methods</h2>
+        <ul>
+          {d.methods.map((m) => (
+            <li>{m}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="topic__section" aria-labelledby="topic-work">
+      <h2 id="topic-work">Related work</h2>
+      {related.length > 0 ? (
+        <ul class="citation-list">
+          {related.map((item) => (
+            <li>
+              <Citation item={item} showType />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p data-no-related>No work in this area is listed yet.</p>
+      )}
+      <p class="more-link">
+        <a href={gardenTagHref(area.id)}>
+          See this area in the Garden <span aria-hidden="true">→</span>
+        </a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .topic {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .topic__thumb {
+    max-width: 36rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-block: var(--space-5) var(--space-6);
+  }
+
+  .topic__section + .topic__section {
+    margin-top: var(--space-6);
+  }
+
+  .topic__section h2 {
+    font-size: var(--fs-h3);
+  }
+</style>

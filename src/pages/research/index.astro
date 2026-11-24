@@ -1,0 +1,38 @@
+---
+/** Index of research areas; each card links to its topic page. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ResearchCard from '../../components/content/ResearchCard.astro';
+import { getResearch } from '../../components/content/work';
+import { displayName } from '../../components/site/profile';
+
+const areas = await getResearch();
+---
+
+<BaseLayout title="Research" description={`${displayName}'s research areas.`}>
+  <div class="container research-index">
+    <h1>Research</h1>
+    <ul class="research-index__grid">
+      {areas.map((area) => (
+        <li>
+          <ResearchCard area={area} headingLevel={2} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .research-index {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .research-index__grid {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: none;
+  }
+</style>

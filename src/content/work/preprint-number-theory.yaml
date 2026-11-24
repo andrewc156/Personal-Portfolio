@@ -1,0 +1,12 @@
+# Spec §3. Title, date, link and coauthors still to come from Andrew ([A]); stays a draft.
+type: preprint
+title: ''
+date: ''
+description: A number theory preprint.
+authors:
+  - Andrew Chincea
+links: {}
+tags:
+  - number-theory
+draft: true
+confirmed: false

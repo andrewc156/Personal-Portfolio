@@ -1,0 +1,14 @@
+# Spec §3. Title still to come from Andrew ([A]); stays a draft until supplied.
+type: poster
+title: ''
+date: '2026-12-04'
+description: A RiverNets poster.
+venue: KSU Fall Analytics Day
+authors:
+  - Andrew Chincea
+  - Yunus Kaya
+links: {}
+tags:
+  - tda-rivernets
+draft: true
+confirmed: false

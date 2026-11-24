@@ -1,0 +1,13 @@
+# Spec §3, confirmed by Andrew. Date is the month F6 (the explorer) passes its check;
+# it is left out until then (the date is optional for projects).
+type: project
+title: Rising water
+description: This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
+authors:
+  - Andrew Chincea
+links:
+  site: /rising-water/
+tags:
+  - tda-rivernets
+draft: false
+confirmed: true

@@ -1,9 +1,12 @@
 ---
-/** Home section stub (spec §4.3). F1 renders the anchored heading only; F2 fills it. */
+/** Home: Mission (spec §4.3 item 2). Draft copy from src/data/copy.yaml. */
+import { getCopy } from '../content/work';
+
 interface Props {
   id: string;
 }
 const { id } = Astro.props;
+const mission = await getCopy('mission');
 ---
 
 <section id={id} class="section" aria-labelledby={`${id}-title`}>
@@ -11,5 +14,16 @@ const { id } = Astro.props;
     <h2 id={`${id}-title`} class="section-title">
       Mission
     </h2>
+    {mission.text && (
+      <p class="mission" data-confirmed={String(mission.confirmed)}>
+        {mission.text}
+      </p>
+    )}
   </div>
 </section>
+
+<style>
+  .mission {
+    font-size: 1.1875rem;
+  }
+</style>
