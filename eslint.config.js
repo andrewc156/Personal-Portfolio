@@ -4,6 +4,7 @@ import astro from 'eslint-plugin-astro';
 export default [
   {
     ignores: [
+      '.claude/',
       'dist/',
       '.astro/',
       'node_modules/',

@@ -22,3 +22,6 @@ docs/checks/**/*.report.html
 docs/checks/tools/.pw-results/
 docs/checks/tools/*.log
 docs/checks/**/lh/
+node_modules
+pipeline/.venv
+.claude/worktrees/

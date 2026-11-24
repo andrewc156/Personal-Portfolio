@@ -97,3 +97,14 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 65. D1 PASS_WITH_NOTES. Control bumped the Pages workflow to checkout@v7, setup-node@v7, upload-pages-artifact@v5, deploy-pages@v5 (current majors; inputs verified in each action.yml) and set cancel-in-progress: false. The D1 commit excludes package.json's build-script change and all F8 files (unchecked); they ship with F8.
 66. GitHub Pages test deploy is live: https://andrewc156.github.io/Personal-Portfolio/ (run 45474947932, build+deploy green). Live browser check: hero draws, explorer '600 of 600 bars identical', 0 console errors, 0 failed or third-party requests.
 67. F8 PASS_WITH_NOTES. Control fixed the stale .nvmrc sentence in docs/deploy.md (now 26.13.0, per #61) before committing — wording only.
+
+## C1 — content update from Andrew's CV (2026-11-24)
+68. Andrew supplied his CV (PDF, uploaded in the session; kept out of the repo) and asked to update the site with it. Facts in it are now [C]. His answers: NO phone number on the site; NO CV PDF download for now; MERGE "Water quality" and "TDA: RiverNets" into one research area; advisors named only on their research entries/CV entries, NO References section.
+69. C1 (site-builder) runs in an isolated git worktree because the F9 audit is building the main tree. After C1's check passes, Control merges it into main; F9's content findings are then re-checked in the fix round.
+70. CI run 45476952307 (ubuntu): all of `npm run verify` passed except Lighthouse CLS on `/` = 0.21 (> 0.05). Locally ≈ 0.0001. Sent to the F9 auditor to diagnose; fix goes to the owning role in the fix round.
+71. C1 built (worktree .claude/worktrees/agent-a302a2e8cd44f54ea, branch worktree-agent-a302a2e8cd44f54ea). Research slugs are now `water-quality`, `number-theory`, `spectral-fractals` (supersedes #21 per #68). Control applied C1's requests in the worktree: e2e/shell.spec.ts footer test now expects the Source link (repo URL); e2e/headers.spec.ts drops /research/tda-rivernets/.
+72. Main tree: tsconfig/eslint/prettier ignore `.claude/` (worktrees live there); .gitignore adds symlink forms `node_modules` and `pipeline/.venv`.
+
+## F9 fix round 1
+73. F9 attempt 1 FAIL: one blocking fix (font-swap layout shift, CLS up to 0.21 with a wide fallback font; site-builder). Fix round 1 runs three builders in parallel on disjoint files: site-builder R1 (font CLS + footer wrap + home description), viz-builder R1 (drop 'unsafe-hashes', marker overlap, NBSP, destroy() timers, explorer e2e rejection cases, error-state hint), data-engineer R1 (LANDMARKS from USGS GNIS/MRDS, data.md wording). Garden lede note dropped: with C1, OwlPath is an ongoing project, so "Ongoing projects come first" is now accurate.
+74. Meanwhile the C1 checker verifies the CV content in its worktree. Integration order: merge C1 → commit fix-round changes → F9 attempt 2 (fresh checker) on the merged main → push.

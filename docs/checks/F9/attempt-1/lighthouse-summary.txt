@@ -1,0 +1,11 @@
+/                              n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=902 tbt=0 fails=- 3p=0 og=false
+/garden/                       n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=751 tbt=0 fails=- 3p=0 og=false
+/research/                     n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=751 tbt=0 fails=- 3p=0 og=false
+/research/water-quality/       n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0006 maxCLS=0.0006 lcp=752 tbt=0 fails=- 3p=0 og=false
+/research/tda-rivernets/       n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0005 maxCLS=0.0005 lcp=752 tbt=0 fails=- 3p=0 og=false
+/research/number-theory/       n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0006 maxCLS=0.0006 lcp=751 tbt=0 fails=- 3p=0 og=false
+/research/spectral-fractals/   n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0006 maxCLS=0.0006 lcp=752 tbt=0 fails=- 3p=0 og=false
+/cv/                           n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0001 maxCLS=0.0001 lcp=752 tbt=0 fails=- 3p=0 og=false
+/about/                        n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0006 maxCLS=0.0006 lcp=751 tbt=0 fails=- 3p=0 og=false
+/rising-water/                 n=4 warmup=97/100/96/100 judged perf=[97,97,97] med perf=97 a11y=100 bp=96 seo=100 cls=0.0001 maxCLS=0.0001 lcp=2553 tbt=0 fails=image-aspect-ratio 3p=0 og=false
+/404.html                      n=4 warmup=100/100/100/100 judged perf=[100,100,100] med perf=100 a11y=100 bp=100 seo=100 cls=0.0000 maxCLS=0.0006 lcp=751 tbt=0 fails=- 3p=0 og=false

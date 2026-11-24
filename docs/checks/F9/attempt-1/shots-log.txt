@@ -1,0 +1,72 @@
+home-375-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-375-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-375-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-375-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-375-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-375-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-375-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-375-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-375-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-375-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-375-light: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 375-light: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0
+home-768-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-768-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-768-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-768-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-768-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-768-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-768-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-768-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-768-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-768-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-768-light: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 768-light: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0
+home-1280-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-1280-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-1280-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-1280-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-1280-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-1280-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-1280-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-1280-light: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-1280-light: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-1280-light: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-1280-light: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 1280-light: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0
+home-375-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-375-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-375-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-375-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-375-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-375-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-375-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-375-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-375-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-375-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-375-dark: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 375-dark: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0
+home-768-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-768-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-768-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-768-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-768-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-768-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-768-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-768-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-768-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-768-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-768-dark: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 768-dark: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0
+home-1280-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+garden-1280-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+research-1280-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rs-water-quality-1280-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-tda-rivernets-1280-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-number-theory-1280-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+rs-spectral-fractals-1280-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+cv-1280-dark: status 200 overflowX 0 fontsLoaded 4 clipped [] errors 0
+about-1280-dark: status 200 overflowX 0 fontsLoaded 2 clipped [] errors 0
+rising-water-1280-dark: status 200 overflowX 0 fontsLoaded 3 clipped [] errors 0
+404-1280-dark: status 404 overflowX 0 fontsLoaded 3 clipped [] errors 1 Failed to load resource: the server responded with a status of 404 (Not Found)
+states 1280-dark: focus after Esc → Art settings; explorer selected 17991 card "Lake 3 · birth cell 17991Born at 1,275.7 m near 40.7704° N, 113.6646° W, merged at 1,671.5 m at 37.5704° N, 113.1896° W into the lowest lake (cell 133025), persistence 395.8 m."; errors 0

@@ -13,6 +13,7 @@
 | F7 Polish / SEO / perf / a11y | site-builder | done | 1 | docs/checks/F7/attempt-1.md | PASS_WITH_NOTES: footer wraps at 375 (clean); social card bakes in draft name/tagline — rerun scripts/og-image.mjs after confirming; home description is just the tagline |
 | F8 Cloudflare Pages setup | site-builder | done | 1 | docs/checks/F8/attempt-1.md | PASS_WITH_NOTES: CSP headroom 322 chars (~5 hashes); ci.yml also runs on push to main; GitHub Pages will serve _headers as a plain file (harmless) |
 | D1 GitHub Pages base path | site-builder | done | 1 | docs/checks/D1/attempt-1.md | PASS_WITH_NOTES; workflow actions bumped to current majors, cancel-in-progress false |
-| F9 Final audit | checker | todo | 0 | — | |
+| C1 Content from Andrew's CV | site-builder | built, waiting for checker | 1 | worktree docs/builds/C1/attempt-1.md | isolated worktree (DECISIONS #68–69) |
+| F9 Final audit | checker | fix round 1 | 1 | docs/checks/F9/attempt-1.md | FAIL: font-swap CLS 0.21 under Linux fallback fonts (site-builder) |
 
 States: todo · building · checking · done · blocked
