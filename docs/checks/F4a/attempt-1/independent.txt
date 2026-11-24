@@ -1,0 +1,36 @@
+tiles found: 108
+tiles with SW-corner naming verified: 108 / 108
+AREA_OR_POINT values: {'Point'} nodata values: {None} dtypes: {'float32'}
+example ('Copernicus_DSM_COG_30_N36_00_W112_00_DEM.tif', 1200, 1200, np.float64(-112.0), np.float64(37.0), np.float64(-111.00083333333333), np.float64(36.00083333333333), 'Point', None, 'float32')
+union mosaic 10800 x 14400 NaN: 0
+closed-bbox centres: 9770 x 12409
+edge centres: W -115.20166666666667 E -107.06083333333333 N 42.1575 S 31.8175
+half-open native: 9769 x 12408
+footprint (W,S,E,N): -115.20208333333333 31.817916666666665 -107.06125 42.157916666666665
+native NaN: 0  <= -1000: 0
+raw min: -2.885 m at row 12241 col 511 lat 31.956667 lon -114.775833
+raw max: 4339.021 m at row 4904 col 9288 lat 38.070833 lon -107.461667
+ties at max: 1  ties at min: 1
+pixels == 0: 4045  < 0: 16
+  zero/neg lat range 31.81833333333333 32.0025 lon range -115.0 -114.70333333333333
+my grid: 326 x 414 last col px 19 last row px 18
+grid.f32 bytes: 539856 expected 539856
+full-grid exact equality: True  max abs diff: 0.0
+big-endian interpretation equal?  False
+transposed/flipped equal? flipud: False
+  block y=  0 x=  0 shape=(30, 30) mine=1578.869 file[i=0]=1578.869
+  block y=  0 x=325 shape=(30, 19) mine=2195.656 file[i=325]=2195.656
+  block y=413 x=  0 shape=(18, 30) mine=8.005 file[i=134638]=8.005
+  block y=413 x=325 shape=(18, 19) mine=1252.957 file[i=134963]=1252.957
+  block y=100 x=200 shape=(30, 30) mine=2350.846 file[i=32800]=2350.846
+  block y=207 x=163 shape=(30, 30) mine=1138.617 file[i=67645]=1138.617
+  block y=413 x=150 shape=(18, 30) mine=932.680 file[i=134788]=932.680
+  block y=200 x=325 shape=(30, 19) mine=2064.101 file[i=65525]=2064.101
+  block y=408 x= 17 shape=(30, 30) mine=-2.885 file[i=133025]=-2.885
+  block y=172 x=311 shape=(30, 30) mine=3697.834 file[i=56383]=3697.834
+grid min: -2.885 at cell 133025 (x 17, y 408) centre 31.945417, -114.764583
+grid max: 3697.834 at cell 56383 (x 311, y 172) centre 37.845417, -107.414583
+grid ties at max: 1 at min: 1
+meta.bbox == spec: True [-115.201667, 31.8175, -107.060833, 42.1575]
+meta width/height/cells: 326 414 134964
+sha256 matches meta: True

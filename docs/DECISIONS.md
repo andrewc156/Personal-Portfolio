@@ -26,3 +26,22 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 19. F1 attempt 1 FAIL was test-only (5/28 e2e failures from bugs in e2e/shell.spec.ts); returned to site-builder as attempt 2.
 ## F1 (cont.)
 20. Raw Lighthouse JSON/HTML reports under docs/checks/ are gitignored; scores are recorded in each check report.
+
+## F2 (builder decisions, accepted by Control)
+21. Research slugs: `water-quality`, `tda-rivernets`, `number-theory`, `spectral-fractals`.
+22. Research areas are not drafts (their one-liners are [C]); [A] parts are optional empty fields that don't render.
+23. Rising water project: not a draft, no date yet (date optional for projects). Control sets `date` when F6 passes (via the F2 owner).
+24. OwlPath is `draft: true` (status, link and date are [A]).
+25. Fractal poster lists Andrew as sole author (§3 names no coauthors) — flagged for Andrew.
+26. Garden/CV sort: undated (ongoing) items first, then newest first. Drafts with an empty title show "Title needed", dev only.
+27. Number-theory one-liner: "One preprint, with a second paper in progress." ("expected early 2027" omitted until Andrew decides whether to list it).
+28. Request to let F2 own `tests/unit/content/**`: deferred — e2e covers thumbnail determinism; revisit if a checker asks for unit tests.
+29. `/about/` has no link from header/footer/home: assigned to F7 (Control will list Footer.astro for F7).
+
+## F3
+30. Added npm script `bench:tda` = `node scripts/bench-tda.mjs` (F3 optional request).
+31. F3 API additions beyond §6.2 accepted: `Bar.mergedInto` (absorbing lake's birth cell, for the F6 info card) and `MergeEvent.type` ('birth' | 'merge').
+32. Checker order: F4a → F3 → F2 (F3 unblocks F4b and F5; nothing waits on F2 until F7).
+
+## F4a
+33. F4a PASS_WITH_NOTES. Notes 1–3 (half-pixel offset range wording, unsourced "2021 release", unsourced vertical accuracy) go to the data-engineer as part of F4b, before F6 renders "About the data" from meta.json.

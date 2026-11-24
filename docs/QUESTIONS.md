@@ -25,6 +25,13 @@ Everything here is something only Andrew can supply or decide. Items stay as dra
 - [ ] Number theory preprint: title, date, link
 - [ ] OwlPath: status, link, date
 
+## Added during F2
+- [ ] Fractal Laplacian poster: are you the sole author, or are there coauthors / an advisor to list? Add a poster PDF?
+- [ ] Open science copy (draft): "The source code for this site is public, including the data pipeline and the persistence engine behind the Rising water explorer." OK?
+- [ ] Which repository URL should the site link to (Open science section and footer "Source")? github.com/andrewc156/Personal-Portfolio?
+- [ ] Teaching and outreach entries, if any (the section stays hidden until there are some).
+- [ ] Methods for any research area (topic pages show a Methods section only when you supply them).
+
 ## Copy choices (first option used by default, marked unconfirmed)
 - [ ] Tagline: **"Mathematics, statistics, and water."** / "Measuring the shape of water." / "Where topology meets water."
 - [ ] Hero question: **"What can the shape of a landscape tell us about the water that moves through it?"** / "How do we measure the structure hidden in water data?"

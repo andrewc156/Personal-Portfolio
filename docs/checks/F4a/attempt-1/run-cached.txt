@@ -1,0 +1,11 @@
+
+> andrew-chincea-portfolio@0.0.1 data
+> pipeline/.venv/bin/python -m pipeline.build_colorado --out-dir /private/tmp/claude-501/-Users-andrewchincea-personalPortfolio/***/scratchpad/out_cached
+
+[colorado] bbox (-115.201667, 31.8175, -107.060833, 42.1575); native window 9769 x 12408; 108 tiles
+[colorado] tiles present 108, missing 0 (0.1 s)
+[colorado] native min {'value': -2.885, 'row': 12241, 'col': 511, 'lat': 31.956667, 'lon': -114.775833}; max {'value': 4339.021, 'row': 4904, 'col': 9288, 'lat': 38.070833, 'lon': -107.461667}
+[colorado] grid 326 x 414: min {'value': -2.885, 'cell': 133025, 'x': 17, 'y': 408, 'lat': 31.945417, 'lon': -114.764583}; max {'value': 3697.834, 'cell': 56383, 'x': 311, 'y': 172, 'lat': 37.845417, 'lon': -107.414583}
+[colorado] grid.f32 539856 B, hillshade.webp 179574 B (q85)
+[colorado] timings: download/cache check 0.1 s, processing 6.5 s, total 6.6 s
+npm run data -- --out-dir $S/out_cached  5.58s user 0.85s system 93% cpu 6.908 total

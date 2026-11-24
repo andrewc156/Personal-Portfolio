@@ -1,0 +1,156 @@
+{
+  "label": "Colorado River Basin study area (RiverNets coverage)",
+  "bbox": [
+    -115.201667,
+    31.8175,
+    -107.060833,
+    42.1575
+  ],
+  "bboxOrder": "W, S, E, N (degrees)",
+  "center": {
+    "lat": 36.9875,
+    "lon": -111.13125
+  },
+  "width": 326,
+  "height": 414,
+  "cells": 134964,
+  "cellDeg": 0.025,
+  "rowOrder": "row 0 is north; rows run north to south; cell index i = y * width + x",
+  "dtype": "float32 little-endian, row-major (grid.f32)",
+  "units": "m",
+  "cellCenter": "cell (x, y) covers native pixels cols 30x..30x+29, rows 30y..30y+29 of the clipped native raster (fewer in the last column/row); its centre is the centre of those pixels. For full cells: lon = native.extent[0] + (x + 0.5) * cellDeg, lat = native.extent[3] - (y + 0.5) * cellDeg",
+  "edgeBlocks": {
+    "lastColumnNativePx": 19,
+    "lastRowNativePx": 18
+  },
+  "min": {
+    "value": -2.885,
+    "cell": 133025,
+    "x": 17,
+    "y": 408,
+    "lat": 31.945417,
+    "lon": -114.764583
+  },
+  "max": {
+    "value": 3697.834,
+    "cell": 56383,
+    "x": 311,
+    "y": 172,
+    "lat": 37.845417,
+    "lon": -107.414583
+  },
+  "crs": "EPSG:4326",
+  "verticalDatum": "EGM2008 geoid (EPSG:3855), metres",
+  "connectivity": 4,
+  "tieBreak": "i precedes j iff (h[i], i) < (h[j], j) lexicographically",
+  "native": {
+    "width": 9769,
+    "height": 12408,
+    "pixelDeg": 0.0008333333333333334,
+    "pixelConvention": "PixelIsPoint; pixel centres on lon = k/1200, lat = m/1200",
+    "columns": "k in [-138242, -128473)",
+    "rows": "m in (38181, 50589]",
+    "extent": [
+      -115.202083333,
+      31.817916667,
+      -107.06125,
+      42.157916667
+    ],
+    "extentNote": "pixel-edge extent of the clipped native raster. The spec bbox edges fall on pixel centres (to within the residuals below); the west column and north row on the bbox edge are kept and the east column and south row are dropped (the tiles' own rule), so the footprint is the bbox shifted by half a pixel (0.000417°, about 37–46 m) west and north.",
+    "snapResidualsPx": {
+      "west": -0.0004,
+      "south": 0.0,
+      "east": 0.0004,
+      "north": 0.0
+    },
+    "rawMin": {
+      "value": -2.885,
+      "row": 12241,
+      "col": 511,
+      "lat": 31.956667,
+      "lon": -114.775833
+    },
+    "rawMax": {
+      "value": 4339.021,
+      "row": 4904,
+      "col": 9288,
+      "lat": 38.070833,
+      "lon": -107.461667
+    }
+  },
+  "derived": {
+    "spanDeg": {
+      "lon": 8.140834,
+      "lat": 10.34
+    },
+    "spanKm": {
+      "eastWestAtCenterLat": 724.7,
+      "eastWestAtSouthEdge": 770.8,
+      "eastWestAtNorthEdge": 672.8,
+      "northSouth": 1147.5,
+      "ellipsoid": "WGS84"
+    },
+    "displayAspect": 0.6289,
+    "displayAspectNote": "width/height of the equirectangular map scaled by cos(center latitude)"
+  },
+  "source": {
+    "name": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED, 2021 release), Cloud-Optimized GeoTIFF",
+    "url": "https://copernicus-dem-90m.s3.amazonaws.com/",
+    "registry": "https://registry.opendata.aws/copernicus-dem/",
+    "tilePattern": "https://copernicus-dem-90m.s3.amazonaws.com/<TILE>/<TILE>.tif, <TILE> = Copernicus_DSM_COG_30_N{LAT:02d}_00_W{LON:03d}_00_DEM",
+    "tiles": {
+      "lat": [
+        31,
+        42
+      ],
+      "lonW": [
+        108,
+        116
+      ],
+      "requested": 108,
+      "used": 108,
+      "missing": []
+    },
+    "surfaceModel": "Copernicus DEM is a Digital Surface Model (DSM): it represents the top-reflective surface of the Earth, including buildings, infrastructure and vegetation, not the bare ground."
+  },
+  "licence": {
+    "name": "Copernicus DEM GLO-90 free licence (ESA / Copernicus)",
+    "url": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+    "requiredNotice": "produced using Copernicus WorldDEM-90 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved",
+    "citationDoi": "https://doi.org/10.5270/ESA-c5d3d65"
+  },
+  "processing": [
+    "Download the 108 GLO-90 tiles N31–N42 x W108–W116 from the AWS Open Data bucket (cached in pipeline/data/raw/; a tile may be absent only if it is all ocean).",
+    "Check every tile: 1200 x 1200 px, EPSG:4326, 3″ spacing, PixelIsPoint, origin at its SW-named integer corner, no nodata.",
+    "Mosaic and clip to the bbox at native 3″: 9769 x 12408 px. Bbox edges snapped to the nearest pixel-centre line; west/north edge pixels kept, east/south dropped.",
+    "TDA grid: minimum of each 30 x 30 block of native pixels (0.025°), partial edge blocks allowed -> 326 x 414 float32 m. Minimum, not mean, keeps narrow canyons connected.",
+    "Hillshade: block mean of 10 x 10 native pixels (30″) -> 977 x 1241; Horn gradient with E–W spacing scaled by cos(latitude) per row (WGS84), azimuth 315°, altitude 45°, vertical exaggeration 2; grayscale WebP quality 85."
+  ],
+  "hillshade": {
+    "file": "hillshade.webp",
+    "width": 977,
+    "height": 1241,
+    "cellDeg": 0.008333333333333333,
+    "extent": [
+      -115.202083333,
+      31.817916667,
+      -107.06125,
+      42.157916667
+    ],
+    "azimuthDeg": 315.0,
+    "altitudeDeg": 45.0,
+    "verticalExaggeration": 2.0,
+    "webpQuality": 85
+  },
+  "files": {
+    "grid.f32": {
+      "bytes": 539856,
+      "sha256": "7775c4fd6800862b3ed79942f96fe6f96b59e2dc25aee358f23e09fed145e08a"
+    },
+    "hillshade.webp": {
+      "bytes": 179574
+    }
+  },
+  "generatedAt": "2026-11-24T09:39:36+00:00",
+  "gitCommit": "8a2b7c5e5e4d17f569bde2c09c64cd6df99a992b"
+}

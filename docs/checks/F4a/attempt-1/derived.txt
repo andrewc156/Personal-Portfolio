@@ -1,0 +1,6 @@
+center from bbox: 36.9875 -111.13125
+span: 8.140834 10.34
+E-W km at centre/S/N: 724.75 770.77 672.81
+N-S km: 1147.52  sphere R=6371: 1149.8
+display aspect: 0.62888
+webp: WEBP RGB (977, 1241)
