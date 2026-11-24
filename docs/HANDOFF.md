@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 18:50 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 18:58 EST, Claude Code (Control)
 
 ## Status
 
@@ -20,16 +20,17 @@
 | C1 CV content | done | PASS_WITH_NOTES (attempt 3) | `be62c1e`, `f8061b3`, `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
-| F10 Extra hero modes (S1) | blocked: needs Andrew's approval | n/a | — |
-| F11 Islands barcode (S2) | blocked: needs Andrew's approval | n/a | — |
-| F12 Basin mask (S3) | blocked: needs Andrew's approval | n/a | — |
-| F13 Place labels (S4) | blocked: needs Andrew's approval | n/a | — |
+| F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
+| F11 Islands barcode (S2) | todo (approved) | n/a | — |
+| F12 Basin mask (S3) | todo (approved) | n/a | — |
+| F13 Place labels (S4) | todo (approved) | n/a | — |
 
 ## Current task
 
-- **Role:** Control. **Files:** `docs/HANDOFF.md` only.
-- **Done:** Resumed from Codex and checked the handoff against the repo. Added the handoff protocol to CLAUDE.md. No WIP branch exists. No reports are marked PARTIAL. There is no unchecked work on main.
-- **Left:** Andrew needs to decide on the stretch features. Spec §10 says stretch work starts "only after F9 PASS and only if Andrew says yes".
+- **Role:** viz-builder, F10 attempt 1 (Andrew approved F10–F13 on 2026-11-24).
+- **Files:** src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/.
+- **Done:** delegated.
+- **Left:** build the four modes, then report to docs/builds/F10/attempt-1.md. After that, Control runs a fresh checker.
 
 ## Handoff vs repo (resume check, 2026-11-24)
 
@@ -42,16 +43,15 @@ None.
 
 ## Open issues and "Needs Andrew"
 
-- Approve or decline stretch features F10–F13 (S1–S4). The scope is in `docs/STATUS.md`.
 - Before deployment: domain, hosting method, and explicit deployment approval (`docs/deploy.md`).
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
 
-1. Get Andrew's yes or no on F10–F13.
-2. If yes, delegate F10 to viz-builder, then run the checker and commit and push on PASS. Then F11 (tda-engineer + viz-builder), F12 (data-engineer + viz-builder), F13 (data-engineer + viz-builder), and a fresh F9 audit at the end.
-3. Collect the `docs/QUESTIONS.md` answers and deployment approval.
+1. When viz-builder returns F10, run a fresh checker on F10. On PASS, commit `feat(F10): … [checked]` and push. On FAIL, run a fix round.
+2. F11 Islands barcode (tda-engineer for H1 engine, then viz-builder for the strip) → checker.
+3. F12 Basin mask, then F13 Place labels (data-engineer then viz-builder) → checker. Then a fresh F9 audit.
 
 ## WIP branch
 
