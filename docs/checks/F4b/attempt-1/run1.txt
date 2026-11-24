@@ -1,0 +1,12 @@
+
+> andrew-chincea-portfolio@0.0.1 data
+> pipeline/.venv/bin/python -m pipeline.build_colorado --out-dir /private/tmp/claude-501/-Users-andrewchincea-personalPortfolio/***/scratchpad/run1
+
+[colorado] bbox (-115.201667, 31.8175, -107.060833, 42.1575); native window 9769 x 12408; 108 tiles
+[colorado] tiles present 108, missing 0 (0.1 s)
+[colorado] native min {'value': -2.885, 'row': 12241, 'col': 511, 'lat': 31.956667, 'lon': -114.775833}; max {'value': 4339.021, 'row': 4904, 'col': 9288, 'lat': 38.070833, 'lon': -107.461667}
+[colorado] barcode.json 33492 B: 600 bars ({'cells': 134964, 'births': 1217, 'finiteBars': 1216, 'positiveBars': 1009, 'zeroLengthBars': 207, 'exportedFinite': 599, 'positiveBelowThreshold': 410, 'essential': 1})
+[colorado] grid 326 x 414: min {'value': -2.885, 'cell': 133025, 'x': 17, 'y': 408, 'lat': 31.945417, 'lon': -114.764583}; max {'value': 3697.834, 'cell': 56383, 'x': 311, 'y': 172, 'lat': 37.845417, 'lon': -107.414583}
+[colorado] grid.f32 539856 B, hillshade.webp 179574 B (q85)
+[colorado] timings: download/cache check 0.1 s, processing 6.7 s, total 7.0 s
+npm run data -- --out-dir $S/run$k  5.95s user 0.79s system 92% cpu 7.299 total

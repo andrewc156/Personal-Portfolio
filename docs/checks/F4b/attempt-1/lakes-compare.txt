@@ -1,0 +1,5 @@
+block 1 (12 lines) present verbatim and contiguous in docs/data.md: True
+block 2 (2 lines) present verbatim and contiguous in docs/data.md: True
+block 3 (12 lines) present verbatim and contiguous in docs/data.md: True
+block 4 (1 lines) present verbatim and contiguous in docs/data.md: True
+block 5 (9 lines) present verbatim and contiguous in docs/data.md: True

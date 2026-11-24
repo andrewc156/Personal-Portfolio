@@ -1,0 +1,26 @@
+landmark cells: {'Great Salt Lake Desert': 18972, 'Great Salt Lake': 12820, 'Bingham Canyon Mine': 21312, 'Ray Mine': 117528, 'Sierrita mine': 134148, 'Great Divide Basin': 2244, 'Wamsutter WY': 6482, 'GNIS 1455061 Great Salt Lake Desert': 19626, 'GNIS 1425872 Bonneville Salt Flats': 17660, 'GNIS 1597072 Great Divide Basin (pt 1)': 2244, 'GNIS 1597072 Great Divide Basin (pt 2)': 2244, 'GNIS 1609172 Wamsutter': 6482, 'MRDS 10069296 Bingham Open Pit Mine': 21312, 'MRDS 10210616 Ray Mine': 116876, 'MRDS 10137918 Sierrita': 134148}
+#1 P=466.2 b=2710.8 bi=58027 (37.7204,-107.0692) d=3177.1 di=55088 (37.9454,-107.1896) edge=['east'] nearest=Wamsutter WY 445.8 km inside=[] cells=107
+#2 P=397.5 b=1560.2 bi=94865 (34.8954,-107.0692) d=1957.7 di=106927 (33.9704,-107.0692) edge=['east'] nearest=MRDS 10210616 Ray Mine 408.5 km inside=[] cells=1060
+#3 P=395.8 b=1275.7 bi=17991 (40.7704,-113.6646) d=1671.5 di=59738 (37.5704,-113.1896) edge=no nearest=Great Salt Lake Desert 9.5 km inside=['Great Salt Lake Desert', 'Great Salt Lake', 'GNIS 1455061 Great Salt Lake Desert', 'GNIS 1425872 Bonneville Salt Flats'] cells=12278
+#4 P=336.6 b=1428.0 bi=50 (42.1454,-113.9396) d=1764.6 di=4925 (41.7704,-114.3146) edge=['north'] nearest=GNIS 1425872 Bonneville Salt Flats 150.1 km inside=[] cells=192
+#5 P=314.2 b=249.0 bi=117202 (33.1704,-110.9896) d=563.2 di=117529 (33.1454,-110.9646) edge=no nearest=MRDS 10210616 Ray Mine 1.4 km inside=[] cells=2
+#6 P=313.0 b=1378.2 bi=21312 (40.5204,-112.1396) d=1691.2 di=21313 (40.5204,-112.1146) edge=no nearest=MRDS 10069296 Bingham Open Pit Mine 0.5 km inside=['Bingham Canyon Mine', 'MRDS 10069296 Bingham Open Pit Mine'] cells=2
+#7 P=303.3 b=749.5 bi=134148 (31.8704,-111.1396) d=1052.8 di=134150 (31.8704,-111.0896) edge=no nearest=Sierrita mine 0.7 km inside=['Sierrita mine', 'MRDS 10137918 Sierrita'] cells=2
+#8 P=268.8 b=2633.2 bi=44335 (38.7704,-107.0692) d=2902.0 di=45637 (38.6704,-107.1146) edge=['east'] nearest=Wamsutter WY 331.3 km inside=[] cells=20
+#9 P=264.5 b=2917.5 bi=27709 (40.0454,-107.0692) d=3182.0 di=27057 (40.0954,-107.0692) edge=['east'] nearest=Wamsutter WY 196.0 km inside=[] cells=9
+#10 P=263.6 b=1520.0 bi=18 (42.1454,-114.7396) d=1783.6 di=8491 (41.4954,-114.8146) edge=['north'] nearest=GNIS 1425872 Bonneville Salt Flats 168.9 km inside=[] cells=308
+landmark Great Salt Lake Desert: cell 18972 h=1279.8 -> longest-lived containing lake (3, 395.8, 17991, 1275.7, 1671.5)
+landmark Great Salt Lake: cell 12820 h=1278.0 -> longest-lived containing lake (3, 395.8, 17991, 1275.7, 1671.5)
+landmark Bingham Canyon Mine: cell 21312 h=1378.2 -> longest-lived containing lake (6, 313.0, 21312, 1378.2, 1691.2)
+landmark Ray Mine: cell 117528 h=579.0 -> longest-lived containing lake None
+landmark Sierrita mine: cell 134148 h=749.5 -> longest-lived containing lake (7, 303.3, 134148, 749.5, 1052.8)
+landmark Great Divide Basin: cell 2244 h=1976.1 -> longest-lived containing lake (47, 94.0, 2273, 1943.8, 2037.8)
+landmark Wamsutter WY: cell 6482 h=2037.0 -> longest-lived containing lake (47, 94.0, 2273, 1943.8, 2037.8)
+landmark GNIS 1455061 Great Salt Lake Desert: cell 19626 h=1284.4 -> longest-lived containing lake (3, 395.8, 17991, 1275.7, 1671.5)
+landmark GNIS 1425872 Bonneville Salt Flats: cell 17660 h=1283.9 -> longest-lived containing lake (3, 395.8, 17991, 1275.7, 1671.5)
+landmark GNIS 1597072 Great Divide Basin (pt 1): cell 2244 h=1976.1 -> longest-lived containing lake (47, 94.0, 2273, 1943.8, 2037.8)
+landmark GNIS 1597072 Great Divide Basin (pt 2): cell 2244 h=1976.1 -> longest-lived containing lake (47, 94.0, 2273, 1943.8, 2037.8)
+landmark GNIS 1609172 Wamsutter: cell 6482 h=2037.0 -> longest-lived containing lake (47, 94.0, 2273, 1943.8, 2037.8)
+landmark MRDS 10069296 Bingham Open Pit Mine: cell 21312 h=1378.2 -> longest-lived containing lake (6, 313.0, 21312, 1378.2, 1691.2)
+landmark MRDS 10210616 Ray Mine: cell 116876 h=615.2 -> longest-lived containing lake None
+landmark MRDS 10137918 Sierrita: cell 134148 h=749.5 -> longest-lived containing lake (7, 303.3, 134148, 749.5, 1052.8)

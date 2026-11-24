@@ -1,0 +1,3 @@
+Ray (lake 117202): block min 249.0 m at (33.17667,-110.99250); dist to USGS MRDS 0.72 km, to Wikipedia 3.07 km; MRDS->Wikipedia 3.78 km; ~12x12 km window min/max 249/1540 m; pixels <= min+100 m in block: 52
+Bingham (lake 21312): block min 1378.2 m at (40.52167,-112.14917); dist to USGS MRDS 0.30 km, to Wikipedia 0.21 km; MRDS->Wikipedia 0.50 km; ~12x12 km window min/max 1378/2834 m; pixels <= min+100 m in block: 83
+Sierrita (lake 134148): block min 749.5 m at (31.87250,-111.14000); dist to USGS MRDS 0.84 km, to Wikipedia 0.60 km; MRDS->Wikipedia 1.43 km; ~12x12 km window min/max 750/1816 m; pixels <= min+100 m in block: 49

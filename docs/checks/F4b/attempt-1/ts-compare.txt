@@ -1,0 +1,2 @@
+TS computeH0 26 ms; stats {"cells":134964,"connectivity":4,"births":1217,"finite":1216,"zeroLength":207,"essential":1}
+TS kept 600 | TS == barcode.json (ordered, exact): true | TS == my union-find: true

@@ -45,3 +45,24 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 
 ## F4a
 33. F4a PASS_WITH_NOTES. Notes 1–3 (half-pixel offset range wording, unsourced "2021 release", unsourced vertical accuracy) go to the data-engineer as part of F4b, before F6 renders "About the data" from meta.json.
+
+## Phase 3 scheduling
+34. F4b starts now (pipeline-only, can't disturb the F2 site build). F5 starts after the F2 check finishes, because F5 edits src/components/hero/** which the F2 checker's build includes.
+
+## F4b
+35. barcode.json stores exact float32 heights (not rounded to 0.1 m): 33.5 KB, and F6 can check `b[k] === heights[bi[k]]` strictly. Accepted.
+36. barcode.json adds column `mi` (mergedInto birth cell; essential bar di = mi = -1). Accepted (consistent with #31).
+37. Geography finding for F6 copy: 6 of the top-10 lakes are valleys closed only by the rectangle's east/north edges; #5–7 are open-pit mines (surface-model depressions). Bonneville/Great Salt Lake is rank 3; Great Divide Basin is present but rank 47. F6 must not claim more than docs/data.md supports.
+
+## F2 attempt 1 FAIL
+38. F2 FAIL (all 7 criteria pass; hard gate failed on F1's `e2e/shell.spec.ts:150` anchor-scroll race exposed by real home content, plus "or theCV" on /about/). For attempt 2 Control assigns `e2e/shell.spec.ts` to the F2 site-builder (F1 is done; same role owns both).
+39. F2 attempt 2 also takes cheap non-blocking notes: neutral draft descriptions (collaborators only in authors), Garden lede wording vs sort order, chip-group alignment at 768 px.
+40. Parallel now: F2 builder (attempt 2), F4b checker (data-only, no site build), F5 builder (hero files only). F5's checker will wait until F2 is done.
+
+## F2 attempt 2
+41. Scroll-settle rule for e2e: `scrollY` unchanged for 150 ms, polled every 50 ms with a synchronous `waitForFunction` predicate (Promise/rAF predicates resolve early in headless Chromium). Garden filter groups: fixed 8.5rem label column from 40.0625rem up, stacked below.
+42. tsconfig `exclude` adds playwright-report, test-results, .lighthouseci, docs/checks/tools, pipeline (keeps `astro check` to project code).
+43. Because F5 is editing hero files in parallel, the F2 attempt-2 check runs in an isolated snapshot (git worktree of HEAD + F2's changed files), so a half-built hero can't affect F2's verdict.
+
+## F4b
+44. F4b PASS_WITH_NOTES. Notes 1 (primary-source LANDMARKS coords) and 3 ("≈ 40 m" vs "about 34–46 m") are deferred to the data-engineer in the F9 fix round unless F6 needs them sooner; neither changes any conclusion.

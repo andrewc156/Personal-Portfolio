@@ -2,7 +2,8 @@
 
 Run from the repo root:  npm run data   (= python -m pipeline.build_colorado)
 
-Outputs in public/data/colorado/: grid.f32, meta.json, hillshade.webp, ATTRIBUTION.md.
+Outputs in public/data/colorado/: grid.f32, barcode.json, meta.json, hillshade.webp, ATTRIBUTION.md.
+The barcode (step 5) is computed by pipeline.barcode from grid.f32 as read back from disk.
 Raw tiles are cached in pipeline/data/raw/ (gitignored).
 """
 
@@ -20,6 +21,7 @@ from pathlib import Path
 
 import numpy as np
 
+from pipeline import barcode as bc
 from pipeline import colorado_dem as cd
 
 REPO = Path(__file__).resolve().parent.parent
@@ -40,6 +42,17 @@ REQUIRED_NOTICE = (
     "GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved"
 )
 CITATION_DOI = "https://doi.org/10.5270/ESA-c5d3d65"
+HANDBOOK_URL = (
+    "https://dataspace.copernicus.eu/sites/default/files/media/files/2024-06/"
+    "geo1988-copernicusdem-spe-002_producthandbook_i5.0.pdf"
+)
+# Copernicus DEM Product Handbook v5.0 (Airbus, 29 Nov 2022), section 1.1, Table 1.
+ACCURACY_NOTE = (
+    "The Copernicus DEM Product Handbook (version 5.0, 2022, section 1.1, Table 1) gives an absolute "
+    "vertical accuracy of < 4 m (90% linear error) as a global arithmetic mean, validated against "
+    "ICESat GLAS reference points and excluding Antarctica and Greenland, and notes that local "
+    "deviations can occur. This build does not assess accuracy locally."
+)
 SURFACE_NOTE = (
     "Copernicus DEM is a Digital Surface Model (DSM): it represents the top-reflective surface of the "
     "Earth, including buildings, infrastructure and vegetation, not the bare ground."
@@ -169,6 +182,18 @@ def main(argv=None) -> int:
     gmin = cell_record(grid, win, ordered_argmin(grid))
     gmax = cell_record(grid, win, ordered_argmax(grid))
     fw, fs, fe, fn = win.footprint()
+
+    out = args.out_dir
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "grid.f32").write_bytes(grid_bytes)
+    # 5. reference barcode, computed on grid.f32 as read back from disk
+    barcode, barcode_bytes = bc.write_barcode(out, W, H)
+    if barcode["grid"]["sha256"] != hashlib.sha256(grid_bytes).hexdigest():
+        raise RuntimeError("grid.f32 on disk differs from the grid just written")
+    if barcode["essential"]["birthCell"] != gmin["cell"]:
+        raise RuntimeError("essential bar is not born at the grid's global-minimum cell")
+    log(f"barcode.json {len(barcode_bytes)} B: {barcode['count']} bars ({barcode['stats']})")
+
     meta = {
         "label": "Colorado River Basin study area (RiverNets coverage)",
         "bbox": list(cd.BBOX),
@@ -208,7 +233,7 @@ def main(argv=None) -> int:
                 "pixel-edge extent of the clipped native raster. The spec bbox edges fall on pixel "
                 "centres (to within the residuals below); the west column and north row on the bbox edge "
                 "are kept and the east column and south row are dropped (the tiles' own rule), so the "
-                "footprint is the bbox shifted by half a pixel (0.000417°, about 37–46 m) west and north."
+                "footprint is the bbox shifted by half a pixel (0.000417°, about 34–46 m) west and north."
             ),
             "snapResidualsPx": {k: round(v, 6) for k, v in win.residuals_px.items()},
             "rawMin": raw_min,
@@ -216,7 +241,7 @@ def main(argv=None) -> int:
         },
         "derived": cd.derived_values(),
         "source": {
-            "name": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED, 2021 release), Cloud-Optimized GeoTIFF",
+            "name": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoTIFF",
             "url": "https://copernicus-dem-90m.s3.amazonaws.com/",
             "registry": REGISTRY_URL,
             "tilePattern": "https://copernicus-dem-90m.s3.amazonaws.com/<TILE>/<TILE>.tif, "
@@ -229,6 +254,8 @@ def main(argv=None) -> int:
                 "missing": missing,
             },
             "surfaceModel": SURFACE_NOTE,
+            "verticalAccuracy": ACCURACY_NOTE,
+            "productHandbook": HANDBOOK_URL,
         },
         "licence": {
             "name": "Copernicus DEM GLO-90 free licence (ESA / Copernicus)",
@@ -242,7 +269,7 @@ def main(argv=None) -> int:
                 "(cached in pipeline/data/raw/; a tile may be absent only if it is all ocean)."
             ),
             (
-                "Check every tile: 1200 x 1200 px, EPSG:4326, 3″ spacing, PixelIsPoint, origin at its SW-named "
+                "Check every tile: 1200 x 1200 px, WGS 84 lon/lat (EPSG:4326 equivalent), 3″ spacing, PixelIsPoint, origin at its SW-named "
                 "integer corner, no nodata."
             ),
             (
@@ -259,6 +286,34 @@ def main(argv=None) -> int:
                 f"{HILLSHADE_AZIMUTH:g}°, altitude {HILLSHADE_ALTITUDE:g}°, vertical exaggeration "
                 f"{HILLSHADE_ZFACTOR:g}; grayscale WebP quality {quality}."
             ),
+            (
+                f"Reference barcode: 0-dimensional sublevel-set persistence of grid.f32 (read back from "
+                f"disk) by pipeline/tda_ref.py, {bc.CONNECTIVITY}-connectivity, ties broken by (height, "
+                f"cell index), elder rule. barcode.json keeps the {barcode['stats']['exportedFinite']} "
+                f"bars with persistence >= {bc.MIN_PERSISTENCE:g} m plus the essential bar "
+                f"({barcode['count']} of {barcode['stats']['births']} lakes); heights are exact float32 "
+                "values, not rounded."
+            ),
+        ],
+        "limitations": [
+            SURFACE_NOTE,
+            (
+                "Resolution: the source is 3″ (about 90 m); the TDA grid is 0.025° (about 2.2 km x "
+                "2.8 km) and keeps each block's minimum, so it follows valley floors, under-represents "
+                "peaks and ridges, and merges or loses features narrower than a cell."
+            ),
+            (
+                "Rectangle, not basin: the study area is a lat/lon rectangle, not the Colorado River's "
+                "hydrologic basin. Water cannot leave through the rectangle's edges, so a valley that "
+                "drains out across an edge becomes a closed basin in the grid; several long-lived lakes "
+                "are born on the edge for this reason."
+            ),
+            (
+                "Open-pit mines are real depressions in a surface model, and a block minimum keeps "
+                "their pit floors, so some deep lakes only a cell or two wide are mine pits (for "
+                "example, one lies about 1 km from the published position of Utah's Bingham Canyon Mine)."
+            ),
+            ACCURACY_NOTE,
         ],
         "hillshade": {
             "file": "hillshade.webp",
@@ -277,14 +332,29 @@ def main(argv=None) -> int:
                 "sha256": hashlib.sha256(grid_bytes).hexdigest(),
             },
             "hillshade.webp": {"bytes": len(webp)},
+            "barcode.json": {
+                "bytes": len(barcode_bytes),
+                "sha256": hashlib.sha256(barcode_bytes).hexdigest(),
+            },
+        },
+        "barcode": {
+            "file": "barcode.json",
+            "engine": barcode["engine"],
+            "connectivity": barcode["connectivity"],
+            "tieBreak": barcode["tieBreak"],
+            "minPersistence": barcode["minPersistence"],
+            "units": barcode["units"],
+            "rounding": barcode["rounding"],
+            "count": barcode["count"],
+            "stats": barcode["stats"],
+            "essentialBirthCell": barcode["essential"]["birthCell"],
+            "gridSha256": barcode["grid"]["sha256"],
+            "columns": "b, d, bi, di, mi (see barcode.json description)",
         },
         "generatedAt": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat(),
         "gitCommit": git_commit(),
     }
 
-    out = args.out_dir
-    out.mkdir(parents=True, exist_ok=True)
-    (out / "grid.f32").write_bytes(grid_bytes)
     (out / "hillshade.webp").write_bytes(webp)
     (out / "meta.json").write_text(
         json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"

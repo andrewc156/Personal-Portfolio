@@ -32,6 +32,8 @@ Everything here is something only Andrew can supply or decide. Items stay as dra
 - [ ] Teaching and outreach entries, if any (the section stays hidden until there are some).
 - [ ] Methods for any research area (topic pages show a Methods section only when you supply them).
 
+- [ ] Rising water project is tagged under the RiverNets (TDA) research area. Is the explorer part of RiverNets work, or should it be tagged only as a personal project?
+
 ## Copy choices (first option used by default, marked unconfirmed)
 - [ ] Tagline: **"Mathematics, statistics, and water."** / "Measuring the shape of water." / "Where topology meets water."
 - [ ] Hero question: **"What can the shape of a landscape tell us about the water that moves through it?"** / "How do we measure the structure hidden in water data?"
