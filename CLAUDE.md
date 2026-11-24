@@ -22,3 +22,11 @@ Python lint: pipeline/.venv/bin/ruff check pipeline
 - Never deploy, run `wrangler login`, or create remotes. Control commits after a checker PASS.
 - Control pushes to origin main after each commit; never force-push. Only Control pushes.
 - Reports: builders → docs/builds/F#/attempt-N.md; checkers → docs/checks/F#/attempt-N.md.
+
+## Handoff protocol (Claude Code ⇄ Codex)
+- docs/HANDOFF.md is the live state file. Control updates it after every delegation, verdict, commit, or push, not just when switching tools. Assume usage can stop at any moment.
+- Format: Last updated (time + tool) | status table (feature | state | last verdict | commit) | current task (role, files, what's done, what's left) | uncommitted changes mapped to tasks | open issues and "Needs Andrew" | next 3 actions | WIP branch.
+- When resuming in either tool: git pull, read HANDOFF.md, verify it against git log, git status, and docs/. If they disagree, trust the repo. Treat reports marked "PARTIAL" and uncommitted changes as unverified, and re-run the checker on them.
+- Builders and checkers write "PARTIAL — in progress" at the top of their report when they start, and remove it when they finish.
+- Switching tools on purpose: stop at a safe point, commit HANDOFF.md and finished reports to main, put unchecked code on wip/handoff, push both, never force-push.
+- Never merge wip/handoff into main without a checker PASS.
