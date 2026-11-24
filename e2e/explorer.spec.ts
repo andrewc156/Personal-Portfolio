@@ -136,15 +136,59 @@ test.describe('explorer: load and verification', () => {
   });
 });
 
-test.describe('explorer: corrupted grid is rejected', () => {
-  const cases = [
+/** Index in barcode.json of the r-th longest-lived finite lake. */
+function rankedIndex(r: number): number {
+  const c = rankedFromFile(r);
+  return barcode.bi.indexOf(c.bi);
+}
+
+test.describe('explorer: corrupted data are rejected', () => {
+  const gridFile = () => readFileSync('public/data/colorado/grid.f32');
+  const flip = (byte: number, mask: number) => () => {
+    const bad = Buffer.from(gridFile());
+    bad[byte] ^= mask;
+    return bad;
+  };
+  const cases: {
+    name: string;
+    file: 'grid.f32' | 'barcode.json';
+    body: () => Buffer | string;
+    reason: RegExp;
+  }[] = [
     // A low mantissa bit: every bar still matches, only the SHA-256 differs.
-    { name: 'low mantissa bit (hash only)', byte: () => 4 * 70000, mask: 0x01 },
+    {
+      name: 'low mantissa bit (hash only)',
+      file: 'grid.f32',
+      body: flip(4 * 70000, 0x01),
+      reason: /SHA-256 checksum/,
+    },
     // An exponent byte of lake 3's pit: its height (and bars) change.
     {
       name: 'exponent byte of a top lake’s pit',
-      byte: () => 4 * rankedFromFile(3).bi + 3,
-      mask: 0x40,
+      file: 'grid.f32',
+      body: () => flip(4 * rankedFromFile(3).bi + 3, 0x40)(),
+      reason: /SHA-256 checksum/,
+    },
+    // Truncated by one float: rejected by the size check, before any hashing.
+    {
+      name: 'grid truncated by 4 bytes (size check)',
+      file: 'grid.f32',
+      body: () => gridFile().subarray(0, gridFile().length - 4),
+      reason: /wrong size/,
+    },
+    // Intact grid, but one bar's death cell in barcode.json is altered: the live comparison fails.
+    {
+      name: 'barcode.json with one bar’s di altered (barcode comparison)',
+      file: 'barcode.json',
+      body: () => {
+        const k = rankedIndex(3);
+        const di = barcode.di.slice();
+        di[k] = di[k] + 1;
+        return JSON.stringify({ ...barcode, di });
+      },
+      reason: new RegExp(
+        `does not match barcode\\.json \\(${barcode.count - 1} of ${barcode.count} bars identical\\)`,
+      ),
     },
   ];
   for (const c of cases) {
@@ -154,11 +198,13 @@ test.describe('explorer: corrupted grid is rejected', () => {
         if (m.type() === 'error') errors.push(m.text());
       });
       page.on('pageerror', (e) => errors.push(e.message));
-      const original = readFileSync('public/data/colorado/grid.f32');
-      const bad = Buffer.from(original);
-      bad[c.byte()] ^= c.mask;
-      await page.route('**/data/colorado/grid.f32', (route) =>
-        route.fulfill({ status: 200, contentType: 'application/octet-stream', body: bad }),
+      const body = c.body();
+      await page.route(`**/data/colorado/${c.file}`, (route) =>
+        route.fulfill({
+          status: 200,
+          contentType: c.file === 'grid.f32' ? 'application/octet-stream' : 'application/json',
+          body,
+        }),
       );
       await page.goto(URL);
       await page.waitForFunction(
@@ -171,16 +217,27 @@ test.describe('explorer: corrupted grid is rejected', () => {
       await expect(status).toBeVisible();
       await expect(status).toHaveAttribute('data-kind', 'error');
       await expect(status).toContainText('failed its integrity check');
+      await expect(status).toContainText(c.reason);
       await expect(status).toHaveAttribute('role', 'status');
       expect(errors).toHaveLength(1);
       await expect(page.locator('[data-ex-play]')).toBeDisabled();
       await expect(page.locator('#ex-level')).toBeDisabled();
+      for (const el of await page.locator('[data-ex-control]').all())
+        await expect(el).toBeDisabled();
       await expect(
         page.getByRole('button', { name: 'Show lake 1 on the map', exact: true }),
       ).toBeDisabled();
       for (const sel of ['[data-ro-level]', '[data-ro-pct]', '[data-ro-lakes]', '[data-ro-area]']) {
         await expect(page.locator(sel)).toHaveText('–');
       }
+      // Nothing implies the map can be used: no hint, no focus stop, no crosshair.
+      await expect(page.locator('[data-ex-hover]')).toBeHidden();
+      await expect(page.locator('[data-ex-hover]')).toHaveText('');
+      await expect(page.getByText('Point at or tap the map')).toHaveCount(0);
+      await expect(page.locator('[data-ex-stage]')).not.toHaveAttribute('tabindex', /.*/);
+      expect(
+        await page.locator('[data-ex-map]').evaluate((el) => getComputedStyle(el).cursor),
+      ).toBe('default');
       const info = await page.evaluate(() => {
         const root = document.querySelector<HTMLElement>('[data-explorer]')!;
         const c = document.querySelector<HTMLCanvasElement>('[data-ex-map]')!;

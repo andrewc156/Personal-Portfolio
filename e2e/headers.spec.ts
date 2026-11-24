@@ -19,7 +19,6 @@ const PAGES = [
   '/garden/',
   '/research/',
   '/research/water-quality/',
-  '/research/tda-rivernets/',
   '/research/number-theory/',
   '/research/spectral-fractals/',
   '/cv/',
@@ -67,8 +66,7 @@ function expectSecurityHeaders(headers: Record<string, string>): void {
   for (const name of ['script-src', 'style-src']) {
     const values = d.get(name) ?? [];
     expect(values[0], `${name} starts with 'self'`).toBe("'self'");
-    for (const v of values.slice(1))
-      expect(v).toMatch(/^'(unsafe-hashes|sha256-[A-Za-z0-9+/]+=*)'$/);
+    for (const v of values.slice(1)) expect(v).toMatch(/^'sha256-[A-Za-z0-9+/]+=*'$/);
   }
 }
 
@@ -152,7 +150,9 @@ test.describe('CSP in the browser', () => {
     expect(await violations(page)).toEqual([]);
   });
 
-  test('explorer loads and verifies its data; inline attributes are allowed', async ({ page }) => {
+  test('explorer verifies its data and handles form submissions under the CSP', async ({
+    page,
+  }) => {
     await watchCsp(page);
     await page.goto(`${BASE}/rising-water/`);
     await page.waitForFunction(
@@ -162,11 +162,9 @@ test.describe('CSP in the browser', () => {
     );
     const root = page.locator('[data-explorer]');
     await expect(root).toHaveAttribute('data-match', 'true');
-    // style="aspect-ratio: …" is hashed under 'unsafe-hashes', so it must apply.
     expect(
       await page.locator('.ex-map').evaluate((el) => getComputedStyle(el).aspectRatio),
     ).not.toBe('auto');
-    // onsubmit="return false" is hashed too: it must run and cancel the submit.
     const prevented = await page.locator('form.ex-controls').evaluate((f) => {
       const ev = new Event('submit', { cancelable: true });
       f.dispatchEvent(ev);

@@ -186,16 +186,46 @@ def lakes_markdown(doc: dict, n: int = 10) -> str:
 
 # --- geography check (docs/data.md) --------------------------------------------------
 
-# Published reference points, each with the page its coordinates were read from (checked 2026-11-24).
+# Primary-source reference points (read 2026-11-24). WGS84 / NAD83 decimal degrees as published.
+#
+# Names: USGS GNIS primary coordinates (prim_lat_dec / prim_long_dec) from the official GNIS
+# "Domestic Names" state files, published 2026-11-02:
+#   https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_{UT,WY,ID}_Text.zip
+# Cross-check: the National Map geonames service returns the same points to 1e-5° (Great Salt Lake,
+# a lake, is in the file but not in the service's point layers), e.g.
+#   https://carto.nationalmap.gov/arcgis/rest/services/geonames/MapServer/5/query?where=gaz_id=1455061&outSR=4326&f=json
+# Link shown per name: the GNIS record page .../gaz-domestic/public/search/names/<feature_id>.
+#
+# Mines: USGS Mineral Resources Data System (MRDS) record coordinates, from
+#   https://mrdata.usgs.gov/mrds/show-mrds.php?dep_id=<dep_id>
+# Every one has mining method "Open Pit" in its record.
+_GNIS = "https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/"
+_MRDS = "https://mrdata.usgs.gov/mrds/show-mrds.php?dep_id="
 LANDMARKS = (
-    ("Great Salt Lake Desert", 40.7, -113.6, "https://en.wikipedia.org/wiki/Great_Salt_Lake_Desert"),
-    ("Great Salt Lake", 41.167, -112.533, "https://en.wikipedia.org/wiki/Great_Salt_Lake"),
-    ("Bingham Canyon Mine", 40.523, -112.151, "https://en.wikipedia.org/wiki/Bingham_Canyon_Mine"),
-    ("Ray Mine", 33.14944, -110.98722, "https://en.wikipedia.org/wiki/Ray_Mine"),
-    ("Sierrita mine", 31.87389, -111.13389, "https://en.wikipedia.org/wiki/Sierrita_mine"),
-    ("Great Divide Basin", 42.00028, -107.98389, "https://en.wikipedia.org/wiki/Great_Divide_Basin"),
-    ("Wamsutter, WY (in the Great Divide Basin)", 41.66806, -107.97917,
-     "https://en.wikipedia.org/wiki/Wamsutter,_Wyoming"),
+    # GNIS 1455061, Plain, UT (Tooele)
+    ("Great Salt Lake Desert", 40.6529889, -113.5272152, _GNIS + "1455061"),
+    # GNIS 1441459, Lake, UT (Box Elder)
+    ("Great Salt Lake", 41.1628677, -112.5353656, _GNIS + "1441459"),
+    # GNIS 1425872, Flat, UT (Tooele)
+    ("Bonneville Salt Flats", 40.7996521, -113.8000029, _GNIS + "1425872"),
+    # GNIS 1597072, Basin, WY (Sweetwater)
+    ("Great Divide Basin", 42.0002345, -108.0009183, _GNIS + "1597072"),
+    # GNIS 1609172, Populated Place, WY (Sweetwater)
+    ("Wamsutter, WY (in the Great Divide Basin)", 41.6730144, -107.9792489, _GNIS + "1609172"),
+    # GNIS 389236, Gap, ID (Bannock): Lake Bonneville's outlet; north of the rectangle
+    ("Red Rock Pass, ID", 42.3563088, -112.043293, _GNIS + "389236"),
+    # MRDS 10069296 "Bingham Open Pit Mine" (alt. name Bingham Canyon Mine), UT; Surface, Producer
+    ("Bingham Canyon Mine", 40.52077, -112.1458, _MRDS + "10069296"),
+    # MRDS 10210616 "Ray Mine", AZ; Surface, Producer
+    ("Ray Mine", 33.18315, -110.99236, _MRDS + "10210616"),
+    # MRDS 10137918 "Sierrita", AZ; Surface, Producer
+    ("Sierrita mine", 31.87152, -111.14879, _MRDS + "10137918"),
+    # MRDS 10111429 "Mission Mine", AZ; mining method Open Pit (point between two parts of the pit)
+    ("Mission Mine", 31.99234, -111.0643, _MRDS + "10111429"),
+    # MRDS 10087992 "Chino Mine" (Santa Rita), NM; Open Pit (point at the approximate pit centre)
+    ("Chino Mine", 32.794, -108.06644, _MRDS + "10087992"),
+    # MRDS 10162326 "Bagdad", AZ; Surface, Producer, Open Pit
+    ("Bagdad mine", 34.58474, -113.20857, _MRDS + "10162326"),
 )  # fmt: skip
 
 
@@ -281,6 +311,11 @@ def geography_markdown(doc: dict, grid: np.ndarray, n: int = 10) -> str:
     out.append("|---|---|---|---|---|---|---|---|---|---|")
     ranked = top_lakes(doc, doc["count"])
     for name, lat, lon, url, cell in marks:
+        if cell < 0:
+            out.append(
+                f"| [{name}]({url}) | {lat:.4f}, {lon:.4f} | outside the rectangle | | | | | | | |"
+            )
+            continue
         hit = None
         for rnk, k in enumerate(ranked, start=1):
             # Cheap rejections first: the lake must be born no higher than the landmark cell,

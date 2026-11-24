@@ -229,7 +229,19 @@ test.describe('header and navigation', () => {
     await page.goto('/');
     const links = page.getByRole('navigation', { name: 'Main' }).getByRole('link');
     await expect(links).toHaveCount(6);
-    for (let i = 0; i < 6; i++) await expect(links.nth(i)).toBeInViewport();
+    await page.keyboard.press('Tab'); // skip link
+    await page.keyboard.press('Tab'); // wordmark
+    for (let i = 0; i < 6; i++) {
+      await page.keyboard.press('Tab');
+      await expect(links.nth(i)).toBeFocused();
+      await expect(links.nth(i)).toBeInViewport();
+    }
+    expect(
+      await page
+        .getByRole('navigation', { name: 'Main' })
+        .locator('ul')
+        .evaluate((list) => list.scrollLeft),
+    ).toBeGreaterThan(0);
   });
 
   test('skip link is the first tab stop and moves focus to main', async ({ page }) => {

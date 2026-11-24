@@ -581,8 +581,8 @@ test.describe('production build hygiene', () => {
     const url = 'https://andrewc156.github.io/OwlPath/';
     for (const path of ['/garden/', '/cv/']) {
       await page.goto(path);
-      const project = page.locator('[data-id="project-owlpath"]');
-      await expect(project.getByRole('link', { name: /OwlPath/ })).toHaveAttribute('href', url);
+      const projectLink = page.locator(`[data-id="project-owlpath"] a[href="${url}"]`);
+      await expect(projectLink).toHaveCount(1);
     }
   });
 

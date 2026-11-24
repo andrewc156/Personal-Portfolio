@@ -153,3 +153,19 @@ def test_top_lakes_table(barcode):
     assert pers == sorted(pers, reverse=True)
     table = bc.lakes_markdown(barcode, 10)
     assert table.count("\n| ") >= 10 and "Essential bar" in table
+
+
+def test_landmarks_primary_sources():
+    # F9-R1: every landmark comes from USGS GNIS or USGS MRDS, not a secondary page.
+    for name, lat, lon, url in bc.LANDMARKS:
+        assert url.startswith((bc._GNIS, bc._MRDS)), name
+        assert url.rsplit("/", 1)[-1].split("=")[-1].isdigit(), name
+        assert 31 < lat < 43 and -116 < lon < -107, name
+
+
+def test_geography_markdown_outside_landmark(barcode, grid):
+    text = bc.geography_markdown(barcode, grid, 10)
+    rows = [r for r in text.splitlines() if r.startswith("| [")]
+    assert len(rows) == len(bc.LANDMARKS)
+    red_rock = next(r for r in rows if r.startswith("| [Red Rock Pass"))
+    assert "outside the rectangle" in red_rock

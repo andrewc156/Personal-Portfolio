@@ -59,7 +59,7 @@ async function expectedLevelReadout(page: Page): Promise<string> {
   return page.evaluate(() => {
     const h = document.querySelector<HTMLElement>('[data-hero]')!.__hero!;
     const n = h.lakeCount;
-    return `Level ${Math.round(h.level())} m · ${n === 1 ? '1 lake' : `${n} lakes`}`;
+    return `Level ${Math.round(h.level())}\u00a0m · ${n === 1 ? '1 lake' : `${n} lakes`}`;
   });
 }
 
@@ -195,7 +195,7 @@ test.describe('controls', () => {
     await expect(page.locator('[data-hero-readout]')).toContainText(/^Lake \d+ · born/);
     const map = (await page.locator('[data-hero-map]').boundingBox())!;
     await page.mouse.move(map.x + map.width / 2, map.y + map.height / 2);
-    await expect(page.locator('[data-hero-readout]')).toContainText(/^Height \d+ m · /);
+    await expect(page.locator('[data-hero-readout]')).toContainText(/^Height \d+\u00a0m · /);
   });
 
   test('keyboard: Space, arrows and N act only when the hero is focused', async ({ page }) => {
@@ -345,7 +345,7 @@ test.describe('readout', () => {
       await page.goto(URL);
       await waitForHero(page);
       const want = await expectedLevelReadout(page);
-      expect(want).toMatch(/^Level 450 m · /);
+      expect(want).toMatch(/^Level 450\u00a0m · /);
       await expect.poll(() => readout(page), { timeout: 1000 }).toBe(want);
       await page.waitForTimeout(1000);
       expect(await readout(page)).toBe(want);
@@ -370,7 +370,7 @@ test.describe('readout', () => {
         await page.keyboard.press('ArrowDown');
         text = await readout(page);
       }
-      expect(text).toMatch(/^Lake \d+ · born .* · persistence \d+ m$/);
+      expect(text).toMatch(/^Lake \d+ · born .* · persistence \d+\u00a0m$/);
       const fit = await page.locator('[data-hero-readout]').evaluate((el) => ({
         sw: el.scrollWidth,
         cw: el.clientWidth,
@@ -464,6 +464,55 @@ test.describe('motion and pausing', () => {
     const sorted = deltas.slice(1).sort((a, b) => a - b);
     const p95 = sorted[Math.floor(0.95 * (sorted.length - 1))];
     expect(p95).toBeLessThanOrEqual(22);
+  });
+});
+
+test.describe('lifecycle', () => {
+  test('destroy() clears every pending timer: no callback runs afterwards', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    await waitForHero(page);
+    const r = await page.evaluate(async () => {
+      const root = document.querySelector<HTMLElement>('[data-hero]')!;
+      const h = root.__hero!;
+      const readoutEl = root.querySelector<HTMLElement>('[data-hero-readout]')!;
+      const summaryEl = root.querySelector<HTMLElement>('[data-hero-summary]')!;
+      const raf = () => new Promise<void>((res) => requestAnimationFrame(() => res()));
+      // While playing (so the readout's trailing timer is usually pending): the summary debounce
+      // (300 ms, from a view change), then the resize-settle timer (200 ms, from a size change).
+      h.setPlaying(true);
+      await raf();
+      await raf();
+      h.update({ view: 'diagram' });
+      root.style.setProperty('max-width', '40rem');
+      await raf();
+      await raf();
+      const before = h.pendingTimers;
+      const grid = h.grid;
+      h.destroy();
+      const after = h.pendingTimers;
+      // Sentinels: any summary, readout or rebuild callback would overwrite or change these.
+      readoutEl.textContent = 'sentinel-readout';
+      summaryEl.textContent = 'sentinel-summary';
+      const frames = h.frames;
+      await new Promise((res) => setTimeout(res, 700));
+      return {
+        before,
+        after,
+        readout: readoutEl.textContent,
+        summary: summaryEl.textContent,
+        framesDelta: h.frames - frames,
+        gridSame: h.grid.W === grid.W && h.grid.H === grid.H,
+        running: root.dataset.running,
+      };
+    });
+    expect(r.before).toBeGreaterThanOrEqual(2);
+    expect(r.after).toBe(0);
+    expect(r.readout).toBe('sentinel-readout');
+    expect(r.summary).toBe('sentinel-summary');
+    expect(r.framesDelta).toBe(0);
+    expect(r.gridSame).toBe(true);
+    expect(r.running).toBe('false');
   });
 });
 
