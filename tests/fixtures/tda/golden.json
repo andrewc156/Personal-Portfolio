@@ -1,0 +1,35 @@
+{
+  "description": "Hand-checked cases from portfolio-megaprompt.md section 10/F3 (criteria 2 and 3). finite = [birth, death, birthCell, deathCell]; essential = [birth, birthCell].",
+  "cases": [
+    {
+      "name": "golden 1x7",
+      "W": 7,
+      "H": 1,
+      "heights": [10, 1, 8, 3, 6, 5, 10],
+      "connectivity": 4,
+      "finite": [
+        [5, 6, 5, 4],
+        [3, 8, 3, 2]
+      ],
+      "essential": [[1, 1]]
+    },
+    {
+      "name": "checkerboard 4-connectivity",
+      "W": 2,
+      "H": 2,
+      "heights": [0, 1, 1, 0],
+      "connectivity": 4,
+      "finite": [[0, 1, 3, 1]],
+      "essential": [[0, 0]]
+    },
+    {
+      "name": "checkerboard 8-connectivity",
+      "W": 2,
+      "H": 2,
+      "heights": [0, 1, 1, 0],
+      "connectivity": 8,
+      "finite": [],
+      "essential": [[0, 0]]
+    }
+  ]
+}
