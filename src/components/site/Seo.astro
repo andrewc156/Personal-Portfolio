@@ -1,0 +1,73 @@
+---
+/**
+ * Search and social metadata for every page (spec §5): description, canonical URL,
+ * Open Graph and Twitter cards. Every absolute URL is built from `Astro.site`, which
+ * astro.config.mjs reads from SITE_URL (spec §7). No third-party scripts.
+ *
+ * The 404 page has no canonical or og:url, because it has no address of its own. It is not
+ * `noindex`: the HTTP 404 status keeps it out of indexes (DECISIONS #53).
+ */
+import { displayName } from './profile';
+
+interface Props {
+  /** Full document title, as rendered in <title>. */
+  title: string;
+  description?: string;
+}
+
+const { title, description = '' } = Astro.props;
+
+/**
+ * Search snippets are cut near 160 characters. A longer description (the About bio)
+ * keeps its whole leading sentences when they say enough, else it is cut on a word.
+ */
+const MAX_DESCRIPTION = 160;
+function clampDescription(text: string): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= MAX_DESCRIPTION) return clean;
+  const head = clean.slice(0, MAX_DESCRIPTION + 1);
+  const sentenceEnd = Math.max(head.lastIndexOf('. '), head.lastIndexOf('? '));
+  if (sentenceEnd >= 80) return clean.slice(0, sentenceEnd + 1);
+  const cut = clean.slice(0, MAX_DESCRIPTION - 1);
+  const space = cut.lastIndexOf(' ');
+  const words = (space > 0 ? cut.slice(0, space) : cut).replace(/[\s,;:.–—-]+$/, '');
+  return `${words}…`;
+}
+
+const site = Astro.site ?? new URL('http://localhost:4321');
+const isNotFound = Astro.routePattern === '/404' || /^\/404(\.html|\/)?$/.test(Astro.url.pathname);
+
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, site).href;
+
+const desc = clampDescription(description);
+
+/** Social card: a static frame of the home-page hero (scripts/og-image.mjs). */
+const image = {
+  url: new URL('/og/social-card.png', site).href,
+  width: 1200,
+  height: 630,
+  alt: `${displayName}: water rising over a generated landscape, with each lake in its own color.`,
+};
+---
+
+{desc && <meta name="description" content={desc} />}
+{!isNotFound && <link rel="canonical" href={canonical} />}
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={displayName} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={title} />
+{desc && <meta property="og:description" content={desc} />}
+{!isNotFound && <meta property="og:url" content={canonical} />}
+<meta property="og:image" content={image.url} />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content={String(image.width)} />
+<meta property="og:image:height" content={String(image.height)} />
+<meta property="og:image:alt" content={image.alt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+{desc && <meta name="twitter:description" content={desc} />}
+<meta name="twitter:image" content={image.url} />
+<meta name="twitter:image:alt" content={image.alt} />

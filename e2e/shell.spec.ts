@@ -186,6 +186,20 @@ test.describe('header and navigation', () => {
       );
     };
 
+    // After settling, the target's top must sit at its scroll-margin-top (± 2 px). The
+    // one exception is a section too close to the page end to reach the top: then the
+    // page must be scrolled to the bottom and the target's top must be below the margin.
+    // This proves the scroll for every section, including #mission and #work that start
+    // near the first screen.
+    const landing = (id: string) =>
+      page.evaluate((sel) => {
+        const el = document.getElementById(sel) as HTMLElement;
+        const top = el.getBoundingClientRect().top;
+        const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+        const maxY = document.documentElement.scrollHeight - window.innerHeight;
+        return { top, margin, scrollY: window.scrollY, atBottom: window.scrollY >= maxY - 1 };
+      }, id);
+
     for (const id of SECTION_ANCHORS) {
       await scrollSettled();
       const link = page.locator(`nav[aria-label="Main"] a[href="/#${id}"]`);
@@ -195,6 +209,18 @@ test.describe('header and navigation', () => {
       await expect(target).toBeInViewport();
       await scrollSettled();
       await expect(target).toBeInViewport();
+      const l = await landing(id);
+      expect(l.scrollY, `#${id}: page scrolled`).toBeGreaterThan(0);
+      if (l.atBottom) {
+        expect(l.top, `#${id}: top at or below its margin (page end)`).toBeGreaterThanOrEqual(
+          l.margin - 2,
+        );
+      } else {
+        expect(
+          Math.abs(l.top - l.margin),
+          `#${id}: top lands at the viewport top`,
+        ).toBeLessThanOrEqual(2);
+      }
     }
   });
 

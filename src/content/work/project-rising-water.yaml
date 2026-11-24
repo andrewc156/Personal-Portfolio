@@ -1,7 +1,7 @@
-# Spec §3, confirmed by Andrew. Date is the month F6 (the explorer) passes its check;
-# it is left out until then (the date is optional for projects).
+# Spec §3, confirmed by Andrew. Date is the month F6 (the explorer) passed its check.
 type: project
 title: Rising water
+date: '2026-11'
 description: This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
 authors:
   - Andrew Chincea

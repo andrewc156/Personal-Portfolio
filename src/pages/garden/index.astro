@@ -13,12 +13,20 @@ const items = await getWork();
 const areas = await getResearch();
 const presentTypes = WORK_TYPES.filter((t) => items.some((i) => i.data.type === t));
 const noun = items.length === 1 ? 'item' : 'items';
+
+// Name only the types that are actually listed, so the description never promises
+// work that is still a draft (drafts are excluded from production builds).
+const typeWords = presentTypes.map((t) => TYPE_PLURALS[t].toLowerCase());
+const typeList =
+  typeWords.length <= 2
+    ? typeWords.join(' and ')
+    : `${typeWords.slice(0, -1).join(', ')} and ${typeWords[typeWords.length - 1]}`;
+const description = typeList
+  ? `All of ${displayName}'s work: ${typeList}, filterable by type and research area.`
+  : `All of ${displayName}'s work, filterable by type and research area.`;
 ---
 
-<BaseLayout
-  title="Garden"
-  description={`All of ${displayName}'s work: posters, talks, preprints and projects, filterable by type and research area.`}
->
+<BaseLayout title="Garden" description={description}>
   <div
     class="container garden"
     data-garden
