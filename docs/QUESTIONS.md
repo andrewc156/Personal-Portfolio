@@ -1,0 +1,34 @@
+# Questions for Andrew
+
+Everything here is something only Andrew can supply or decide. Items stay as drafts on the site until answered.
+
+## Identity and links
+- [ ] Display name: is "Andrew Chincea" right (vs. full "Andrew Dumitru Chincea")?
+- [ ] Expected graduation term
+- [ ] Email address to show on the site (or none)
+- [ ] GitHub profile URL (repo is github.com/andrewc156/Personal-Portfolio — is `andrewc156` the profile to link?)
+- [ ] LinkedIn URL
+- [ ] ORCID iD
+- [ ] Photo (optional)
+- [ ] CV PDF (optional; the PDF link is shown only if provided)
+- [ ] Domain name (needed before deploy)
+
+## Research areas
+- [ ] Water quality: topic, advisor, data, methods
+- [ ] RiverNets (TDA): one-paragraph description, advisor
+- [ ] Number theory: preprint title, coauthors, date, link; second paper's title/coauthors, and whether to list the in-progress paper (expected early 2027)
+- [ ] Spectral analysis on fractals: anything to add beyond the First-Year Scholar poster?
+
+## Work items (drafts until supplied)
+- [ ] Talk with Michael Liu, 105th MAA Southeastern Section Meeting, March 2026: title
+- [ ] Poster with Yunus Kaya, KSU Fall Analytics Day, Dec 4, 2026: title
+- [ ] Number theory preprint: title, date, link
+- [ ] OwlPath: status, link, date
+
+## Copy choices (first option used by default, marked unconfirmed)
+- [ ] Tagline: **"Mathematics, statistics, and water."** / "Measuring the shape of water." / "Where topology meets water."
+- [ ] Hero question: **"What can the shape of a landscape tell us about the water that moves through it?"** / "How do we measure the structure hidden in water data?"
+- [ ] Mission paragraph (draft written from §3 facts only)
+- [ ] About bio (draft from §3)
+- [ ] Footer "Built with help from Claude Code": keep it? (on by default)
+- [ ] Personal touch in the header (e.g. a hover note): skipped by default — want one?

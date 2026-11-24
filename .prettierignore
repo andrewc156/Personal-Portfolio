@@ -1,0 +1,8 @@
+dist/
+.astro/
+node_modules/
+pipeline/
+public/data/
+docs/
+*.md
+package-lock.json

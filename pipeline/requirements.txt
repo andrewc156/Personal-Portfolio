@@ -1,0 +1,7 @@
+numpy
+rasterio
+requests
+pillow
+gudhi
+pytest
+ruff

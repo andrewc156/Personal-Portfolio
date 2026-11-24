@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+.env
+pipeline/.venv/
+pipeline/data/raw/
+test-results/
+playwright-report/
+.lighthouseci/
+.wrangler/
+docs/checks/**/*.png
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.DS_Store

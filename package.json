@@ -1,0 +1,52 @@
+{
+  "name": "andrew-chincea-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint . && prettier --check --no-error-on-unmatched-pattern \"src/**/*.{astro,ts,css}\" \"tests/**/*.ts\" \"e2e/**/*.ts\" \"scripts/**/*.{mjs,ts}\"",
+    "format": "prettier --write --no-error-on-unmatched-pattern \"src/**/*.{astro,ts,css}\" \"tests/**/*.ts\" \"e2e/**/*.ts\" \"scripts/**/*.{mjs,ts}\"",
+    "test": "vitest run",
+    "pytest": "pipeline/.venv/bin/python -m pytest pipeline -q",
+    "e2e": "playwright test",
+    "lhci": "lhci autorun --config=./lighthouserc.cjs",
+    "links": "linkinator dist --config linkinator.config.json",
+    "data": "pipeline/.venv/bin/python -m pipeline.build_colorado",
+    "verify": "npm run check && npm run lint && npm run test && npm run pytest && npm run build && npm run e2e && npm run links && npm run lhci"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@lhci/cli": "^0.16.1",
+    "@playwright/test": "^1.65.1",
+    "@typescript-eslint/parser": "^8.74.0",
+    "eslint": "^10.15.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "linkinator": "^8.1.0",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^5.1.1",
+    "wrangler": "^4.167.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261123.1": true,
+    "fsevents@2.3.3": true
+  }
+}
