@@ -17,3 +17,14 @@
 | F9 Final audit | checker | done | 3 | docs/checks/F9/attempt-3.md | PASS_WITH_NOTES: all gates pass. Lighthouse /rising-water/ image-aspect-ratio note, with scores within budget. See docs/checks/F9/summary.md. |
 
 States: todo · building · checking · done · blocked
+
+## Proposed features after F9
+
+F9 has passed. The following plan follows the order of the megaprompt's stretch items. Each item awaits Andrew's approval before implementation.
+
+| Feature | Spec item | State | Scope |
+|---|---|---|---|
+| F10 Extra hero modes | S1 | Not started | Add Dye spill, Fractal pond, Random rivers, and Collatz delta to the hero. |
+| F11 Islands barcode | S2 | Not started | Show when islands appear and disappear during flooding using an H1 barcode. |
+| F12 Basin mask | S3 | Not started | Add an optional explorer mask using USGS Watershed Boundary Dataset regions 14 and 15. Document the coverage gap in Mexico. |
+| F13 Place labels | S4 | Not started | Add explorer place labels using coordinates from USGS GNIS and cite the source. |

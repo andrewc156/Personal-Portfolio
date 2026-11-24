@@ -19,7 +19,10 @@ Written by Codex at 2026-11-24 18:34:06 EST
 | D1 GitHub Pages base path | done | PASS_WITH_NOTES | `71d5077` |
 | C1 CV content | done | PASS_WITH_NOTES, attempt 3 | `be62c1e`, `f8061b3`, OwlPath correction in `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES, attempt 3 | `c7bdc7c` |
-| S1–S4 Optional stretch work | not started | n/a | — |
+| F10 Extra hero modes (spec S1) | not started | n/a | — |
+| F11 Islands barcode (spec S2) | not started | n/a | — |
+| F12 Basin mask (spec S3) | not started | n/a | — |
+| F13 Place labels (spec S4) | not started | n/a | — |
 
 ## What I did this session
 
@@ -28,6 +31,7 @@ Written by Codex at 2026-11-24 18:34:06 EST
 - The site-builder recovered the interrupted F9 font fix, reviewed the existing implementation and ran its permitted checks. Control retained the completed viz-builder and data-engineer changes and updated the shared CSP test.
 - A fresh checker ran F9 attempt 2 on the integrated site. The mobile nav test assumed every link fit the initial viewport, and Control had omitted the checked OwlPath URL during integration. The site-builder fixed those issues in round 2. A fresh checker then passed the full F9 audit with notes. Control committed the remaining checked changes in `c7bdc7c`.
 - Control collected completed reports, checker evidence and this handoff in the final docs commit immediately after `c7bdc7c`.
+- At Andrew's request, Control added proposed F10–F13 to the handoff and status plan, using the existing stretch scope in the megaprompt.
 
 ## Interrupted or in-progress work
 
@@ -87,7 +91,7 @@ Within that list, `docs/data.md` and `pipeline/` are the data-engineer fixes. `e
 
 1. Resume Claude Code on main and read `docs/STATUS.md` and `docs/checks/F9/summary.md` for the accepted state.
 2. Collect Andrew's content decisions and deployment choices from `docs/QUESTIONS.md`.
-3. After explicit deployment approval, follow `docs/deploy.md` for the chosen hosting method. Stretch work requires separate approval.
+3. After explicit deployment approval, follow `docs/deploy.md` for the chosen hosting method. If Andrew approves stretch work, use the F10–F13 plan in `docs/STATUS.md` and follow the usual builder and independent checker workflow.
 
 ## Deviations
 
