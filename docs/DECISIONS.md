@@ -95,3 +95,5 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 63. Check order: D1 (GitHub Pages base path) check first, then F8 check, because both build the site and D1 is still editing src/.
 64. tests/unit/url.test.ts added (D1 builder's helper test, placed by Control). D1 check runs before F8's.
 65. D1 PASS_WITH_NOTES. Control bumped the Pages workflow to checkout@v7, setup-node@v7, upload-pages-artifact@v5, deploy-pages@v5 (current majors; inputs verified in each action.yml) and set cancel-in-progress: false. The D1 commit excludes package.json's build-script change and all F8 files (unchecked); they ship with F8.
+66. GitHub Pages test deploy is live: https://andrewc156.github.io/Personal-Portfolio/ (run 45474947932, build+deploy green). Live browser check: hero draws, explorer '600 of 600 bars identical', 0 console errors, 0 failed or third-party requests.
+67. F8 PASS_WITH_NOTES. Control fixed the stale .nvmrc sentence in docs/deploy.md (now 26.13.0, per #61) before committing — wording only.

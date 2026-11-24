@@ -1,0 +1,40 @@
+# Cloudflare Pages response headers (spec §10/F8). See docs/deploy.md.
+#
+# This file is a TEMPLATE. `npm run build` runs scripts/write-headers.mjs after
+# `astro build`, which replaces the two __INLINE_*_HASHES__ markers below with
+# sha256 hashes of every inline <script>/<style> (and inline style="" / on*=""
+# attribute) found in dist/, and writes the result to dist/_headers.
+# Never type hashes here by hand.
+#
+# Matching rules apply in file order and headers set twice are JOINED with a
+# comma, so Cache-Control is set only on the specific paths below (never on /*).
+# HTML, robots.txt and the sitemaps keep the Pages default
+# (public, max-age=0, must-revalidate): always revalidated, so a deploy is
+# visible at once.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' __INLINE_SCRIPT_HASHES__; style-src 'self' __INLINE_STYLE_HASHES__; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
+
+# Content-hashed by Vite: a changed file gets a new name, so cache forever.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Colorado data: fixed names, changes only when the pipeline is rerun and the
+# site redeployed. One day, then must-revalidate (a cheap 304 via ETag). No
+# stale-while-revalidate: the explorer checks meta.json, barcode.json and
+# grid.f32 against each other, and serving a stale file next to a fresh one
+# would trip that check.
+/data/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# Social card: fixed name, fetched by link-preview crawlers, not by pages.
+/og/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+/favicon.svg
+  Cache-Control: public, max-age=86400, must-revalidate

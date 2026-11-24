@@ -1,0 +1,75 @@
+# Checks only (spec §10/F8.4). This workflow never deploys and needs no secrets:
+# Cloudflare Pages builds and deploys on its own when it's connected to the repo.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      # No SITE_URL: astro.config.mjs falls back to http://localhost:4321, which is
+      # the preview origin the e2e and link checks expect.
+      WRANGLER_SEND_METRICS: 'false'
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      # npm 11 runs install scripts only for packages approved in package.json
+      # "allowScripts" (esbuild, workerd, fsevents; DECISIONS #4). Those entries are
+      # version-pinned: a PR that bumps any of them must update allowScripts too, or
+      # npm won't run that package's install script and the build/wrangler steps break.
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium (e2e and Lighthouse use it)
+        run: npx playwright install --with-deps chromium
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: pipeline/requirements.txt
+
+      # `npm run pytest` calls pipeline/.venv/bin/python, so build that venv.
+      - name: Python venv for the pipeline tests
+        run: |
+          python -m venv pipeline/.venv
+          pipeline/.venv/bin/python -m pip install --upgrade pip
+          pipeline/.venv/bin/python -m pip install -r pipeline/requirements.txt
+
+      - name: npm run verify
+        run: npm run verify
+
+      # The built dist/_headers only takes effect under wrangler (astro preview ignores
+      # it), so serve dist locally with wrangler (no Cloudflare account involved) and
+      # run the header/CSP spec against it.
+      - name: Headers and CSP under wrangler pages dev
+        run: |
+          npx wrangler pages dev dist --port 8788 > wrangler.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:8788/ && break; sleep 1; done
+          HEADERS_BASE_URL=http://localhost:8788 npx playwright test e2e/headers.spec.ts
+          kill %1 || true
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

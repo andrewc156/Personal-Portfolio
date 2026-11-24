@@ -1,0 +1,45 @@
+OK   / status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=4
+OK   /garden/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   /research/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=2
+OK   /research/water-quality/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   /research/tda-rivernets/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   /research/number-theory/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   /research/spectral-fractals/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=4
+OK   /cv/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=4
+OK   /about/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=2
+OK   /rising-water/ status 200 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   /no-such-page-f8c/ status 404 violations=0  font=""IBM Plex Sans", system-ui, -a" loadedFonts=3
+OK   hero animates frames 32->123
+OK   settings slider works (1.5× -> 1.7×)
+OK   settings closes on Escape
+OK   theme persists via inline script (dark/dark/dark) body bg rgb(17, 19, 21)
+OK   no violations during theme/hero/settings
+OK   garden type filter (inline module script) poster: 1/2 aria-current=true
+OK   no violations on garden filters
+OK   explorer verified match=true status="Computed in your browser in 18 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+OK   Web Crypto available (secure context) = true
+OK   style attr aspect-ratio applied: 0.62888 / 1
+OK   swatch custom property applied: #1f5f99
+OK   bar click selects lake (selected=120103, "Lake 15 · birth cell 120103")
+OK   hashed onsubmit handler ran (defaultPrevented=true)
+OK   no violations in explorer: 
+OK   injected inline <script> blocked (ran=false)
+OK   injected <style> blocked (outline rgb(28, 27, 25))
+OK   injected style attribute blocked (color rgb(28, 27, 25))
+OK   injected onclick handler blocked (ran=false)
+OK   cross-origin fetch http://127.0.0.1:8788 blocked (blocked)
+OK   cross-origin <img> blocked (blocked)
+OK   eval blocked (blocked)
+OK   violation events 7: directives script-src-elem, style-src-elem, style-src-attr, script-src-attr, connect-src, img-src, script-src
+OK   no requests to other origins except the deliberate negative-control ones (0) 
+console errors (8):
+   http://localhost:8788/no-such-page-f8c/: Failed to load resource: the server responded with a status of 404 (Not Found)
+   http://localhost:8788/rising-water/: Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'unsafe-hashes' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0=' 'sha256-GZIcz60Uwd6wT3vaYke/atSr53TehbYAPepOa3d03Vw=''. Either the 'unsafe-inline' keyword, a hash ('sha256-0htjE2t1zt83u+yXKVSR8Y9nA5F7pDh2gsd6GjkhGHg='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+   http://localhost:8788/rising-water/: Applying inline style violates the following Content Security Policy directive 'style-src 'self' 'unsafe-hashes' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-IhZXlVvrdy6WEgA86sufVxPclxD6p+CJ01HqAf2nlwk=' 'sha256-Pfsa+27ntUO9uY1itxQk5l9HHQCGt+h5M+yXAs2sxJw=' 'sha256-SFXZxikTXFTLlPBMWSfCq9qcITzB/6HwvkNg59yOShU=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-XX0BOc/DI02TtMSjgRrpXzI4hnboYa/16Zjf3+Fs0tA=' 'sha256-YRYRGkxeSnztg/Drb9cN4FFhwHpm7/zWifftnLuBDYw=' 'sha256-h+r7BmlFXTz9yiVArkMk1MlL6daCTq8C7XMLXc/bT+U=' 'sha256-+/WBI4vkcZiHv8ZD/8eNNbSzoJuU4iQeAjsVo/a02UQ=' 'sha256-+ULG9hiiXOpa2vI4e7ZM0y/PpDLipiAW6uYygYJoVeQ=' 'sha256-6aphL5Nn9UDqNwE6YveHT5e53oINjH4bXPSERg1WY5g=' 'sha256-BZhTetHYiE+N6zMFj6jE+XX5ib8HKMp51Gj7a5p0ick=' 'sha256-CsTCfnBqs+zlJehx31J+TtV2erV04Otzd/ksnGWPmOo=' 'sha256-U0NMYQgSuYgFa7yvQ0yxDC+Y0OS2KgYLcK5up7lDv0k=' 'sha256-Ygyxs05BLdw/Iqw4TAOBP9JWCP5ruofVSj1H8+Cgzy4=' 'sha256-ZDByixeCEjddvk6FGb3V7DyqjrMsdAAGw40sdo2t2gU=' 'sha256-bo5pWrx4sPk91jchipjB2/kBlAS8r88pWfIQvrvQcTc=' 'sha256-c4rAGMjwOT0jKvy5B9xl2G4VCM3I5nICYDthPwiT0QY=' 'sha256-fyDclXJIawDiZDcfuwGUsK9U0J6MnkJHzNgJlom0wOM=' 'sha256-n/IPz9nTDNMJqCh65fZ9QG6hIyBQSBBUlOI78FVF+O8=' 'sha256-rpmHY+JpCH1t81NhiRXM63fm7EKMcqgC7Zj3DYNPgyo=' 'sha256-wK4OqYMgbmrk/Qyi/0RY6oomfC5OkuMpF5bnk2maJFE=' 'sha256-zyFYYAmhqZM0arC9ScT6N8hu+fppXrjja6ZBGw/FrT4=''. Either the 'unsafe-inline' keyword, a hash ('sha256-XiEbTeaZ0ZQJqMfZqjk3AB4OaJ6s15OX7cp0srnUwZE='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+   http://localhost:8788/rising-water/: Applying inline style violates the following Content Security Policy directive 'style-src 'self' 'unsafe-hashes' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-IhZXlVvrdy6WEgA86sufVxPclxD6p+CJ01HqAf2nlwk=' 'sha256-Pfsa+27ntUO9uY1itxQk5l9HHQCGt+h5M+yXAs2sxJw=' 'sha256-SFXZxikTXFTLlPBMWSfCq9qcITzB/6HwvkNg59yOShU=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-XX0BOc/DI02TtMSjgRrpXzI4hnboYa/16Zjf3+Fs0tA=' 'sha256-YRYRGkxeSnztg/Drb9cN4FFhwHpm7/zWifftnLuBDYw=' 'sha256-h+r7BmlFXTz9yiVArkMk1MlL6daCTq8C7XMLXc/bT+U=' 'sha256-+/WBI4vkcZiHv8ZD/8eNNbSzoJuU4iQeAjsVo/a02UQ=' 'sha256-+ULG9hiiXOpa2vI4e7ZM0y/PpDLipiAW6uYygYJoVeQ=' 'sha256-6aphL5Nn9UDqNwE6YveHT5e53oINjH4bXPSERg1WY5g=' 'sha256-BZhTetHYiE+N6zMFj6jE+XX5ib8HKMp51Gj7a5p0ick=' 'sha256-CsTCfnBqs+zlJehx31J+TtV2erV04Otzd/ksnGWPmOo=' 'sha256-U0NMYQgSuYgFa7yvQ0yxDC+Y0OS2KgYLcK5up7lDv0k=' 'sha256-Ygyxs05BLdw/Iqw4TAOBP9JWCP5ruofVSj1H8+Cgzy4=' 'sha256-ZDByixeCEjddvk6FGb3V7DyqjrMsdAAGw40sdo2t2gU=' 'sha256-bo5pWrx4sPk91jchipjB2/kBlAS8r88pWfIQvrvQcTc=' 'sha256-c4rAGMjwOT0jKvy5B9xl2G4VCM3I5nICYDthPwiT0QY=' 'sha256-fyDclXJIawDiZDcfuwGUsK9U0J6MnkJHzNgJlom0wOM=' 'sha256-n/IPz9nTDNMJqCh65fZ9QG6hIyBQSBBUlOI78FVF+O8=' 'sha256-rpmHY+JpCH1t81NhiRXM63fm7EKMcqgC7Zj3DYNPgyo=' 'sha256-wK4OqYMgbmrk/Qyi/0RY6oomfC5OkuMpF5bnk2maJFE=' 'sha256-zyFYYAmhqZM0arC9ScT6N8hu+fppXrjja6ZBGw/FrT4=''. Either the 'unsafe-inline' keyword, a hash ('sha256-10NftZCZM8DRwF73VIpLLW7DCfc65zj9GHNQacHU0MU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+   http://localhost:8788/rising-water/: Executing inline event handler violates the following Content Security Policy directive 'script-src 'self' 'unsafe-hashes' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0=' 'sha256-GZIcz60Uwd6wT3vaYke/atSr53TehbYAPepOa3d03Vw=''. Either the 'unsafe-inline' keyword, a hash ('sha256-...'), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.
+   http://localhost:8788/rising-water/: Connecting to 'http://127.0.0.1:8788/data/colorado/meta.json' violates the following Content Security Policy directive: "connect-src 'self'". The action has been blocked.
+   http://localhost:8788/rising-water/: Fetch API cannot load http://127.0.0.1:8788/data/colorado/meta.json. Refused to connect because it violates the document's Content Security Policy.
+   http://localhost:8788/rising-water/: Loading the image 'http://127.0.0.1:8788/favicon.svg' violates the following Content Security Policy directive: "img-src 'self'". The action has been blocked.
+other-origin requests attempted (negative controls): http://127.0.0.1:8788/favicon.svg
+ALL OK
