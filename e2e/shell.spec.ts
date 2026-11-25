@@ -420,10 +420,305 @@ test.describe('settings panel', () => {
     await expect(gear).toBeFocused();
   });
 
+  // QA-03: on narrow screens the bottom sheet is modal.
+  for (const opener of ['header gear', 'hero Settings'] as const) {
+    test(`narrow sheet keeps focus inside, background inert, focus returns (${opener})`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: 390, height: 844 });
+      await page.goto('/');
+      const panel = page.locator('#settings-panel');
+      const button =
+        opener === 'header gear'
+          ? page.getByRole('button', { name: 'Art settings', exact: true })
+          : page.getByRole('button', { name: 'Animation settings', exact: true });
+      await expect(button).toBeEnabled();
+      await button.focus();
+      await page.keyboard.press('Enter');
+      await expect(panel).toBeVisible();
+      await expect(page.locator('#settings-title')).toBeFocused();
+      await expect(panel).toHaveAttribute('aria-modal', 'true');
+      await expect(panel).toHaveAttribute('role', 'dialog');
+      // The dialog role is allowed on the panel element (axe aria-allowed-role, any impact).
+      const roles = await new AxeBuilder({ page })
+        .include('#settings-panel')
+        .withRules(['aria-allowed-role'])
+        .analyze();
+      expect(roles.violations.map((v) => v.id)).toEqual([]);
+      // Everything outside the sheet is inert.
+      const inert = await page.evaluate(() =>
+        ['header.site-header', 'main', 'footer', '.skip-link'].map(
+          (s) => (document.querySelector(s) as HTMLElement | null)?.inert ?? null,
+        ),
+      );
+      expect(inert).toEqual([true, true, true, true]);
+
+      // Tab forward and backward past both edges: focus never leaves the sheet.
+      const inside = () =>
+        page.evaluate(() => !!document.activeElement?.closest('#settings-panel'));
+      for (let i = 0; i < 60; i++) {
+        await page.keyboard.press('Tab');
+        expect(await inside(), `Tab ${i + 1}`).toBe(true);
+      }
+      for (let i = 0; i < 8; i++) {
+        await page.keyboard.press('Shift+Tab');
+        expect(await inside(), `Shift+Tab ${i + 1}`).toBe(true);
+      }
+      // Shift+Tab from the first control wraps to the last one.
+      await panel.getByRole('button', { name: 'Close art settings' }).focus();
+      await page.keyboard.press('Shift+Tab');
+      expect(await inside()).toBe(true);
+
+      // Esc closes, restores the background and returns focus to the opener.
+      await page.keyboard.press('Escape');
+      await expect(panel).toBeHidden();
+      await expect(button).toBeFocused();
+      expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+      await expect(panel).not.toHaveAttribute('aria-modal', 'true');
+
+      // Close button.
+      await button.click();
+      await expect(panel).toBeVisible();
+      await panel.getByRole('button', { name: 'Close art settings' }).click();
+      await expect(panel).toBeHidden();
+      await expect(button).toBeFocused();
+
+      // Backdrop: a tap on the covered page above the sheet dismisses it.
+      await button.click();
+      await expect(panel).toBeVisible();
+      await animationsSettled(page, '#settings-panel');
+      const box = await panel.boundingBox();
+      expect(box && box.y > 40).toBeTruthy();
+      await page.mouse.click(195, Math.max(5, Math.round((box?.y ?? 100) / 2)));
+      await expect(panel).toBeHidden();
+      await expect(button).toBeFocused();
+      expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+    });
+  }
+
+  test('wide drawer stays non-modal: page not inert, background click keeps it open', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    const gear = page.getByRole('button', { name: 'Art settings', exact: true });
+    const panel = page.locator('#settings-panel');
+    await gear.click();
+    await expect(panel).toBeVisible();
+    await expect(panel).not.toHaveAttribute('aria-modal', 'true');
+    await expect(page.getByRole('complementary', { name: 'Art settings' })).toBeVisible();
+    expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+    await page.mouse.click(100, 400);
+    await expect(panel).toBeVisible();
+    // Crossing into the sheet breakpoint makes it modal; back out restores the page.
+    await page.setViewportSize({ width: 390, height: 844 });
+    await expect(panel).toHaveAttribute('aria-modal', 'true');
+    await expect(panel).toHaveAttribute('role', 'dialog');
+    await expect(page.locator('main')).toHaveJSProperty('inert', true);
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await expect(panel).not.toHaveAttribute('aria-modal', 'true');
+    await expect(panel).toHaveAttribute('role', 'complementary');
+    await expect(page.locator('main')).toHaveJSProperty('inert', false);
+  });
+
+  test('a remembered open drawer does not reopen as a sheet on narrow screens', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.reload();
+    await expect(page.locator('#settings-panel')).toBeHidden();
+    expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.reload();
+    await expect(page.locator('#settings-panel')).toBeVisible();
+  });
+
   test('gear is absent on pages without settings', async ({ page }) => {
     await page.goto('/this-page-does-not-exist/');
     await expect(page.getByRole('button', { name: 'Art settings', exact: true })).toHaveCount(0);
     await expect(page.locator('#settings-panel')).toHaveCount(0);
+  });
+});
+
+// QA-11: history traversal keeps focus where the visitor can see it.
+test.describe('focus after history navigation', () => {
+  const offscreenFocus = (page: Page) =>
+    page.evaluate(() => {
+      const a = document.activeElement;
+      if (!a || a === document.body) return false;
+      const r = a.getBoundingClientRect();
+      return r.bottom <= 0 || r.top >= innerHeight;
+    });
+
+  /** Resolve once scrollY has been unchanged for several frames (smooth scrolling done). */
+  const scrollSettled = (page: Page) =>
+    page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          let last = window.scrollY;
+          let stable = 0;
+          const tick = () => {
+            stable = window.scrollY === last ? stable + 1 : 0;
+            last = window.scrollY;
+            if (stable >= 10) resolve();
+            else requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }),
+    );
+
+  // Default motion animates both the fragment scroll and the Back scroll restoration
+  // (`scroll-behavior: smooth`), which is the case that broke attempt 1; reduced motion jumps.
+  for (const motion of ['no-preference', 'reduce'] as const) {
+    test.describe(`${motion} motion`, () => {
+      test.use({ reducedMotion: motion });
+
+      for (const width of [1024, 1280, 1440]) {
+        test(`Back to the top of home leaves no offscreen focus (${width}px, ${motion})`, async ({
+          page,
+        }) => {
+          await page.setViewportSize({ width, height: 800 });
+          await page.goto('/');
+          expect(
+            await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior),
+          ).toBe(motion === 'reduce' ? 'auto' : 'smooth');
+          const nav = page.getByRole('navigation', { name: 'Main' });
+          await nav.getByRole('link', { name: 'Research', exact: true }).focus();
+          await page.keyboard.press('Enter');
+          await expect(page).toHaveURL(/#research$/);
+          // The QA steps: wait for the scroll to Research to settle, then Tab.
+          await scrollSettled(page);
+          expect(await page.evaluate(() => window.scrollY)).toBeGreaterThan(800);
+          // Focus the first article link, as a keyboard user would with Tab.
+          const article = page.locator('#research a[href*="/research/"]').first();
+          await page.keyboard.press('Tab');
+          await expect(article).toBeFocused();
+          await scrollSettled(page);
+
+          // Same-document Back (/#research → /), the step that left focus offscreen in D01;
+          // bfcache restores of the article round trip end in this same state.
+          await page.goBack();
+          await expect(page).toHaveURL(/\/$/);
+          await page.waitForFunction(() => window.scrollY <= 1);
+          await scrollSettled(page);
+          await expect.poll(() => offscreenFocus(page)).toBe(false);
+          // The next Tab stays near the top instead of jumping back to Research.
+          await page.keyboard.press('Tab');
+          await scrollSettled(page);
+          const after = await page.evaluate(() => ({
+            y: window.scrollY,
+            top: document.activeElement?.getBoundingClientRect().top ?? 0,
+          }));
+          expect(after.y).toBeLessThan(200);
+          expect(after.top).toBeLessThan(800);
+
+          // Full D01 path: Research → article → Back twice.
+          await page.keyboard.press('Shift+Tab');
+          await nav.getByRole('link', { name: 'Research', exact: true }).focus();
+          await page.keyboard.press('Enter');
+          await expect(page).toHaveURL(/#research$/);
+          await scrollSettled(page);
+          await page.keyboard.press('Tab');
+          await expect(article).toBeFocused();
+          await page.keyboard.press('Enter');
+          await expect(page).toHaveURL(/\/research\/[^#]+$/);
+          await page.goBack();
+          await expect(page).toHaveURL(/\/#research$/);
+          await scrollSettled(page);
+          await page.goBack();
+          await expect(page).toHaveURL(/\/$/);
+          await page.waitForFunction(() => window.scrollY <= 1);
+          await scrollSettled(page);
+          await expect.poll(() => offscreenFocus(page)).toBe(false);
+        });
+      }
+    });
+  }
+
+  test('in-page link navigation still continues from the section', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    await page
+      .getByRole('navigation', { name: 'Main' })
+      .getByRole('link', { name: 'Research', exact: true })
+      .focus();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(/#research$/);
+    await page.waitForTimeout(500);
+    expect(await page.evaluate(() => document.querySelector('[data-focus-restore]'))).toBeNull();
+    await page.keyboard.press('Tab');
+    expect(await page.evaluate(() => !!document.activeElement?.closest('#research'))).toBe(true);
+  });
+});
+
+// QA-16: script-only shell controls are not dead tab stops without JavaScript.
+test.describe('no-JS shell controls', () => {
+  test('theme toggle and gear are disabled without JS and enabled with it', async ({
+    browser,
+    page,
+  }) => {
+    const ctx = await browser.newContext({ javaScriptEnabled: false });
+    const nojs = await ctx.newPage();
+    for (const path of ['/', '/garden/']) {
+      await nojs.goto(path);
+      await expect(nojs.locator('[data-theme-toggle]')).toBeDisabled();
+      // Looks unavailable without JS.
+      expect(
+        Number(
+          await nojs.locator('[data-theme-toggle]').evaluate((el) => getComputedStyle(el).opacity),
+        ),
+      ).toBeLessThan(1);
+    }
+    await nojs.goto('/');
+    await expect(nojs.locator('[data-settings-toggle]')).toBeDisabled();
+    // Tabbing through the header never lands on either control.
+    const stops: string[] = [];
+    for (let i = 0; i < 12; i++) {
+      await nojs.keyboard.press('Tab');
+      stops.push(
+        await nojs.evaluate(
+          () =>
+            (document.activeElement?.getAttribute('aria-label') ??
+              document.activeElement?.textContent ??
+              '') + '',
+        ),
+      );
+    }
+    expect(stops).not.toContain('Dark theme');
+    expect(stops).not.toContain('Art settings');
+    await ctx.close();
+
+    await page.goto('/');
+    await expect(page.locator('html')).toHaveClass(/(^|\s)js(\s|$)/);
+    await expect(page.locator('[data-theme-toggle]')).toBeEnabled();
+    await expect(page.locator('[data-settings-toggle]')).toBeEnabled();
+    expect(
+      await page.locator('[data-theme-toggle]').evaluate((el) => getComputedStyle(el).opacity),
+    ).toBe('1');
+  });
+
+  test('with JS the toggles are never dimmed while loading', async ({ browser }) => {
+    const ctx = await browser.newContext();
+    await ctx.addInitScript(() => {
+      const w = window as unknown as { __dimmed?: boolean };
+      w.__dimmed = false;
+      const check = () => {
+        const btn = document.querySelector('[data-theme-toggle]');
+        if (btn && getComputedStyle(btn).opacity !== '1') w.__dimmed = true;
+      };
+      new MutationObserver(check).observe(document, { childList: true, subtree: true });
+      document.addEventListener('DOMContentLoaded', check);
+    });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    await expect(page.locator('[data-theme-toggle]')).toBeEnabled();
+    expect(await page.evaluate(() => (window as unknown as { __dimmed?: boolean }).__dimmed)).toBe(
+      false,
+    );
+    await ctx.close();
   });
 });
 

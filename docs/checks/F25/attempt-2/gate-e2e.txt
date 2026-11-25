@@ -1,0 +1,13 @@
+  5 failed
+  10 skipped
+  216 passed (4.1m)
+  1) [chromium] › e2e/hero.spec.ts:657:3 › motion and pausing › p95 frame time ≤ 22 ms during play at 1280×800 
+  2) [chromium] › e2e/hero.spec.ts:1259:5 › hero modes › dye: p95 frame time ≤ 22 ms at 1280×800 ───
+  3) [chromium] › e2e/hero.spec.ts:1259:5 › hero modes › pond: p95 frame time ≤ 22 ms at 1280×800 ──
+  4) [chromium] › e2e/hero.spec.ts:1259:5 › hero modes › rivers: p95 frame time ≤ 22 ms at 1280×800 
+  5) [chromium] › e2e/hero.spec.ts:1259:5 › hero modes › collatz: p95 frame time ≤ 22 ms at 1280×800 
+    Received:    66.70000000000027
+    Received:    66.70000000000073
+    Received:    66.70000000000027
+    Received:    66.70000000000073
+    Received:    66.70000000000027

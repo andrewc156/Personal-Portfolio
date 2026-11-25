@@ -1,0 +1,2 @@
+http://localhost:52122/404.html {'performance': 100, 'accessibility': 100, 'best-practices': 100, 'seo': 100, 'agentic-browsing': 100} LCP 753 CLS 0 TBT 0
+http://localhost:52122/ {'performance': 100, 'accessibility': 100, 'best-practices': 100, 'seo': 100, 'agentic-browsing': 100} LCP 903 CLS 0 TBT 0

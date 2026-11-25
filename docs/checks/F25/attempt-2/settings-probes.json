@@ -1,0 +1,269 @@
+{
+ "ok": true,
+ "checks": [
+  {
+   "name": "two openers present",
+   "pass": true,
+   "detail": [
+    {
+     "i": 0,
+     "label": "Art settings",
+     "inHeader": true
+    },
+    {
+     "i": 1,
+     "label": "Animation settings",
+     "inHeader": false
+    }
+   ]
+  },
+  {
+   "name": "375 light opener \"Art settings\": dialog + aria-modal + inert bg + focus in panel",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "dialog",
+    "modal": "true",
+    "inert": [
+     "A.skip-link",
+     "HEADER.site-header",
+     "MAIN",
+     "FOOTER.site-footer"
+    ],
+    "focusInPanel": true,
+    "focus": "H2:Art settings"
+   }
+  },
+  {
+   "name": "375 light \"Art settings\": 40 Tab + 12 Shift+Tab stay in panel",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "axe / 375 light sheet open: 0 violations (any impact)",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "375 light \"Art settings\": Escape closes, focus back on that opener, no inert left, role complementary",
+   "pass": true,
+   "detail": {
+    "after": {
+     "tag": "DIV",
+     "hidden": true,
+     "role": "complementary",
+     "modal": null,
+     "inert": [],
+     "focusInPanel": false,
+     "focus": "BUTTON:Art settings"
+    },
+    "back": true
+   }
+  },
+  {
+   "name": "375 light opener \"Animation settings\": dialog + aria-modal + inert bg + focus in panel",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "dialog",
+    "modal": "true",
+    "inert": [
+     "A.skip-link",
+     "HEADER.site-header",
+     "MAIN",
+     "FOOTER.site-footer"
+    ],
+    "focusInPanel": true,
+    "focus": "H2:Art settings"
+   }
+  },
+  {
+   "name": "375 light \"Animation settings\": 40 Tab + 12 Shift+Tab stay in panel",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "375 light \"Animation settings\": Escape closes, focus back on that opener, no inert left, role complementary",
+   "pass": true,
+   "detail": {
+    "after": {
+     "tag": "DIV",
+     "hidden": true,
+     "role": "complementary",
+     "modal": null,
+     "inert": [],
+     "focusInPanel": false,
+     "focus": "BUTTON:Animation settings"
+    },
+    "back": true
+   }
+  },
+  {
+   "name": "375 dark opener \"Art settings\": dialog + aria-modal + inert bg + focus in panel",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "dialog",
+    "modal": "true",
+    "inert": [
+     "A.skip-link",
+     "HEADER.site-header",
+     "MAIN",
+     "FOOTER.site-footer"
+    ],
+    "focusInPanel": true,
+    "focus": "H2:Art settings"
+   }
+  },
+  {
+   "name": "375 dark \"Art settings\": 40 Tab + 12 Shift+Tab stay in panel",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "375 dark \"Art settings\": Escape closes, focus back on that opener, no inert left, role complementary",
+   "pass": true,
+   "detail": {
+    "after": {
+     "tag": "DIV",
+     "hidden": true,
+     "role": "complementary",
+     "modal": null,
+     "inert": [],
+     "focusInPanel": false,
+     "focus": "BUTTON:Art settings"
+    },
+    "back": true
+   }
+  },
+  {
+   "name": "axe / 375 dark sheet open: 0 violations (any impact)",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "dark theme actually applied",
+   "pass": true,
+   "detail": "dark"
+  },
+  {
+   "name": "375 dark: tap on covered page closes sheet, focus to opener",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": true,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": false,
+    "focus": "BUTTON:Art settings"
+   }
+  },
+  {
+   "name": "1280 drawer open: role complementary, no aria-modal, nothing inert, focus in panel",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": true,
+    "focus": "H2:Art settings"
+   }
+  },
+  {
+   "name": "1280: complementary landmark named \"Art settings\"",
+   "pass": true,
+   "detail": 1
+  },
+  {
+   "name": "1280: Tab can leave the non-modal drawer",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "1280: background click keeps drawer open",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": false,
+    "focus": "MAIN:Andrew ChinceaWhat can the sha"
+   }
+  },
+  {
+   "name": "resize 1280→375 open: dialog + aria-modal + inert + focus moved into panel",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "dialog",
+    "modal": "true",
+    "inert": [
+     "A.skip-link",
+     "HEADER.site-header",
+     "MAIN",
+     "FOOTER.site-footer"
+    ],
+    "focusInPanel": true,
+    "focus": "H2:Art settings"
+   }
+  },
+  {
+   "name": "after resize: Tab stays in panel",
+   "pass": true,
+   "detail": null
+  },
+  {
+   "name": "resize 375→1280 open: complementary, no aria-modal, nothing inert, still open",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": false,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": true,
+    "focus": "INPUT:"
+   }
+  },
+  {
+   "name": "axe / 1280 drawer open: 0 violations",
+   "pass": true,
+   "detail": []
+  },
+  {
+   "name": "1280 Escape closes, focus back to header opener",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": true,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": false,
+    "focus": "BUTTON:Art settings"
+   }
+  },
+  {
+   "name": "1280 closed state remembered after reload (closed)",
+   "pass": true,
+   "detail": {
+    "tag": "DIV",
+    "hidden": true,
+    "role": "complementary",
+    "modal": null,
+    "inert": [],
+    "focusInPanel": false,
+    "focus": "BODY:Skip to contentAndrew ChinceaM"
+   }
+  }
+ ]
+}

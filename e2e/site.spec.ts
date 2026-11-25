@@ -251,6 +251,59 @@ test.describe('garden', () => {
     await expect(visibleRows(page)).toHaveCount(PUBLIC_WORK.length);
   });
 
+  // QA-17: known types with nothing listed (e.g. preprint, software, dataset today).
+  test('deep link to an unlisted type shows its active chip, a clear action and a plain empty state', async ({
+    page,
+  }) => {
+    const KNOWN = ['preprint', 'paper', 'poster', 'talk', 'project', 'software', 'dataset'];
+    const listed = new Set(PUBLIC_WORK.map((w) => w.data.type));
+    const unlisted = KNOWN.filter((t) => !listed.has(t));
+    test.skip(unlisted.length === 0, 'every known type has listed work');
+    for (const t of unlisted) {
+      await page.goto(`/garden/?type=${t}`);
+      const chip = page.locator(`a[data-filter="type"][data-value="${t}"]`);
+      await expect(chip).toBeVisible();
+      await expect(chip).toHaveAttribute('aria-current', 'true');
+      await expect(page.locator('a[data-filter="type"][data-value=""]')).not.toHaveAttribute(
+        'aria-current',
+        'true',
+      );
+      await expect(visibleRows(page)).toHaveCount(0);
+      const empty = page.locator('[data-garden-empty]');
+      await expect(empty).toBeVisible();
+      await expect(empty).toContainText(/Nothing is listed under .+ yet\./);
+      await expect(page.locator('[data-garden-status]')).toHaveText(
+        `Showing 0 of ${PUBLIC_WORK.length} items`,
+      );
+    }
+    // The clear action drops the type, keeps the area, and hides the unlisted chip.
+    const t = unlisted[0];
+    await page.goto(`/garden/?type=${t}&tag=${AREAS[0].id}`);
+    const clear = page.locator('a[data-garden-clear="type"]:visible');
+    await expect(clear).toHaveCount(1);
+    await clear.focus();
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(new RegExp(`/garden/\\?tag=${AREAS[0].id}$`));
+    await expect(page.locator(`a[data-filter="type"][data-value="${t}"]`)).toBeHidden();
+    await expect(page.locator('a[data-filter="type"][data-value=""]')).toBeFocused();
+    const expected = PUBLIC_WORK.filter((w) => (w.data.tags ?? []).includes(AREAS[0].id)).length;
+    await expect(visibleRows(page)).toHaveCount(expected);
+    // Back returns to the unlisted filter with its chip active again.
+    await page.goBack();
+    await expect(page.locator(`a[data-filter="type"][data-value="${t}"]`)).toHaveAttribute(
+      'aria-current',
+      'true',
+    );
+  });
+
+  test('ignored filter values are dropped from the address bar', async ({ page }) => {
+    await page.goto(`/garden/?type=nonsense&tag=${AREAS[0].id}`);
+    await expect(page).toHaveURL(new RegExp(`/garden/\\?tag=${AREAS[0].id}$`));
+    await page.goto('/garden/?type=nonsense&tag=nope');
+    await expect(page).toHaveURL(/\/garden\/$/);
+    await expect(visibleRows(page)).toHaveCount(PUBLIC_WORK.length);
+  });
+
   test('works without JavaScript: every item is shown, even with a filter in the URL', async ({
     browser,
   }) => {

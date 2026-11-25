@@ -1,0 +1,6 @@
+18:03:33 [check] Getting diagnostics for Astro files in /Users/andrewchincea/personalPortfolio...
+Result (169 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+

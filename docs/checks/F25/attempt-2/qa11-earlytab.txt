@@ -1,0 +1,3 @@
+Tab 100 ms after Back: {"url":"/","y":0,"focus":"Skip to contentAndrew ChinceaM","top":0}
+Tab 300 ms after Back: {"url":"/","y":1721,"focus":"Related work →","top":391}
+Tab 600 ms after Back: {"url":"/","y":1721,"focus":"Research\n    \n    \n    \n    \n ","top":-90}

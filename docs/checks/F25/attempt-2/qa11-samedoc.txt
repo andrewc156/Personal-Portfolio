@@ -1,0 +1,8 @@
+== samedoc default
+PASS 1024 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}
+PASS 1280 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}
+PASS 1440 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}
+== samedoc RM=1
+PASS 1024 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}
+PASS 1280 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}
+PASS 1440 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"BODY:Skip to contentAndrew Chi","top":0},"tab":{"scrollY":0,"focus":"Skip to content"}}

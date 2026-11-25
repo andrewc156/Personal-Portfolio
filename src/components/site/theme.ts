@@ -33,6 +33,8 @@ function sync(): void {
 
 export function initThemeToggle(): void {
   document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    // Rendered disabled so it is no dead tab stop without JavaScript (QA-16).
+    btn.disabled = false;
     btn.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
   });
   media().addEventListener('change', sync);

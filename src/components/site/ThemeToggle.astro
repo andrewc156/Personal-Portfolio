@@ -1,5 +1,7 @@
 ---
-/* Theme toggle button. aria-pressed = dark theme active (set by theme.ts). */
+/* Theme toggle button. aria-pressed = dark theme active (set by theme.ts).
+   Rendered disabled: theme.ts enables it, so without JavaScript it is no dead tab stop
+   (the page then follows the OS theme). */
 ---
 
 <button
@@ -9,6 +11,7 @@
   aria-pressed="false"
   aria-label="Dark theme"
   title="Toggle dark theme"
+  disabled
 >
   <svg class="theme-toggle__moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path

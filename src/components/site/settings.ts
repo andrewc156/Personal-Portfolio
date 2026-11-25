@@ -9,6 +9,70 @@ export const SETTINGS_TOGGLE_EVENT = 'settings:toggle';
 
 let opener: HTMLButtonElement | undefined;
 
+/** Same breakpoint as the bottom-sheet layout in SettingsPanel.astro. */
+const SHEET_QUERY = '(max-width: 40rem)';
+/** Marks background elements this module made inert, so only those are restored. */
+const INERT_MARK = 'data-settings-inert';
+
+function sheetMedia(): MediaQueryList | null {
+  return typeof window.matchMedia === 'function' ? window.matchMedia(SHEET_QUERY) : null;
+}
+
+/** The bottom sheet covers most of a narrow screen, so there it is modal. */
+function isSheet(): boolean {
+  return sheetMedia()?.matches === true;
+}
+
+/**
+ * Modal bottom sheet (narrow screens, QA-03): the covered page is inert (no focus, no
+ * pointer, hidden from assistive tech) and the panel is exposed as a modal dialog. On wider
+ * screens the drawer stays a non-modal aside next to the art, as before.
+ */
+function syncModal(panel: HTMLElement): void {
+  const modal = !panel.hidden && isSheet();
+  document.documentElement.toggleAttribute('data-settings-modal', modal);
+  if (modal) {
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-modal', 'true');
+  } else {
+    // Wide drawer: the non-modal complementary landmark it has always been.
+    panel.setAttribute('role', 'complementary');
+    panel.removeAttribute('aria-modal');
+  }
+  if (modal) {
+    // Inert every branch of the tree that doesn't contain the panel.
+    for (let node: HTMLElement | null = panel; node && node !== document.body;) {
+      const parent: HTMLElement | null = node.parentElement;
+      if (!parent) break;
+      for (const sib of Array.from(parent.children)) {
+        if (sib === node || !(sib instanceof HTMLElement) || sib.inert) continue;
+        if (sib instanceof HTMLScriptElement || sib instanceof HTMLTemplateElement) continue;
+        sib.inert = true;
+        sib.setAttribute(INERT_MARK, '');
+      }
+      node = parent;
+    }
+  } else {
+    for (const el of document.querySelectorAll<HTMLElement>(`[${INERT_MARK}]`)) {
+      el.inert = false;
+      el.removeAttribute(INERT_MARK);
+    }
+  }
+}
+
+/** Keyboard-reachable controls inside the panel, in tab order (rendered ones only). */
+function tabbables(panel: HTMLElement): HTMLElement[] {
+  const sel =
+    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]), [contenteditable="true"]';
+  return Array.from(panel.querySelectorAll<HTMLElement>(sel)).filter(
+    (el) =>
+      !(el as HTMLButtonElement).disabled &&
+      !el.closest('[inert]') &&
+      el.tabIndex >= 0 &&
+      el.getClientRects().length > 0,
+  );
+}
+
 function store(open: boolean): void {
   try {
     localStorage.setItem(SETTINGS_STORAGE_KEY, open ? '1' : '0');
@@ -45,6 +109,7 @@ export function setSettingsOpen(open: boolean, moveFocus = true): void {
   panel.hidden = !open;
   document.documentElement.toggleAttribute('data-settings-open', open);
   for (const toggle of toggles) toggle.setAttribute('aria-expanded', String(open));
+  syncModal(panel);
   store(open);
   if (moveFocus) {
     if (open) panel.querySelector<HTMLElement>('[data-settings-title]')?.focus();
@@ -110,6 +175,46 @@ export function initSettingsPanel(): void {
     if (e.key === 'Escape' && isSettingsOpen()) {
       e.preventDefault();
       setSettingsOpen(false);
+      return;
+    }
+    // Modal sheet: Tab and Shift+Tab wrap around inside the panel.
+    if (e.key !== 'Tab' || !isSettingsOpen() || !isSheet()) return;
+    const items = tabbables(panel);
+    const first = items[0];
+    const last = items[items.length - 1];
+    const active = document.activeElement;
+    if (!first || !last) {
+      e.preventDefault();
+      panel.querySelector<HTMLElement>('[data-settings-title]')?.focus();
+      return;
+    }
+    const inside = active instanceof Node && panel.contains(active);
+    const atStart = active === first || active === panel.querySelector('[data-settings-title]');
+    if (e.shiftKey && (atStart || !inside)) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && (active === last || !inside)) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
+
+  // Modal sheet: a tap or click on the covered page (the backdrop) dismisses it and
+  // returns focus to the opener. Inert content can't be the target, so such clicks
+  // land on <body>/<html> or another non-inert node outside the panel.
+  document.addEventListener('click', (e) => {
+    if (!isSettingsOpen() || !isSheet()) return;
+    const t = e.target;
+    if (!(t instanceof Node) || panel.contains(t)) return;
+    if (t instanceof Element && t.closest('[aria-controls="settings-panel"]')) return;
+    setSettingsOpen(false);
+  });
+
+  // Rotating or resizing across the breakpoint switches between sheet and drawer.
+  sheetMedia()?.addEventListener('change', () => {
+    syncModal(panel);
+    if (isSettingsOpen() && isSheet() && !panel.contains(document.activeElement)) {
+      panel.querySelector<HTMLElement>('[data-settings-title]')?.focus();
     }
   });
 
@@ -126,5 +231,8 @@ export function initSettingsPanel(): void {
 
   trackHeaderHeight();
   syncAllSliders(panel);
-  if (stored()) setSettingsOpen(true, false);
+  // A remembered open drawer is restored beside the art on wide screens. On a narrow
+  // screen it would be a modal sheet over a page the visitor hasn't seen yet, so it
+  // starts closed there (the remembered value is kept for the next wide visit).
+  if (stored() && !isSheet()) setSettingsOpen(true, false);
 }

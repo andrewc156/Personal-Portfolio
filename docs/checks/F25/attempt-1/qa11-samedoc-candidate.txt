@@ -1,0 +1,3 @@
+FAIL 1024 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"A:Water-quality prediction ","top":1907},"tab":{"scrollY":1612,"focus":"Related work →"}}
+FAIL 1280 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"A:Water-quality prediction ","top":1953},"tab":{"scrollY":1700,"focus":"Related work →"}}
+FAIL 1440 {"onCard":{"text":"Water-quality prediction on ri","url":"#research"},"after":{"url":"/","scrollY":0,"focus":"A:Water-quality prediction ","top":1995},"tab":{"scrollY":1724,"focus":"Related work →"}}

@@ -13,6 +13,9 @@ import { withBase } from '../../lib/url';
 const items = await getWork();
 const areas = await getResearch();
 const presentTypes = WORK_TYPES.filter((t) => items.some((i) => i.data.type === t));
+// Known types with nothing listed: no visible chip, but a ?type= deep link to one shows
+// its chip as the active filter with a clear action (QA-17, DECISIONS #88).
+const unlistedTypes = WORK_TYPES.filter((t) => !presentTypes.includes(t));
 const noun = items.length === 1 ? 'item' : 'items';
 
 // Describe the sort order truthfully: undated items (e.g. submitted manuscripts) sort first.
@@ -77,6 +80,26 @@ const description = typeList
               </a>
             </li>
           ))}
+          {unlistedTypes.map((t) => (
+            <li class="chips__unlisted" data-unlisted-type={t} data-label={TYPE_PLURALS[t]} hidden>
+              <a
+                class="chip"
+                href={withBase(`/garden/?type=${t}`)}
+                data-filter="type"
+                data-value={t}
+              >
+                {TYPE_PLURALS[t]}
+              </a>
+              <a
+                class="chip-clear"
+                href={withBase('/garden/')}
+                data-garden-clear="type"
+                aria-label={`Clear the ${TYPE_PLURALS[t]} filter`}
+              >
+                Clear
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
       <div class="filter-group" role="group" aria-labelledby="filter-tag-label">
@@ -126,7 +149,7 @@ const description = typeList
     </ol>
 
     <p class="garden__empty" data-garden-empty hidden>
-      Nothing matches these filters.{' '}
+      <span data-garden-empty-text>Nothing matches these filters.</span>{' '}
       <a href={withBase('/garden/')} data-garden-reset>
         Show all work
       </a>
@@ -206,6 +229,20 @@ const description = typeList
     border-color: var(--color-accent);
     background: var(--color-accent-soft);
     color: var(--color-text);
+  }
+
+  .chips__unlisted:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .chip-clear {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.25rem;
+    padding-inline: var(--space-1);
+    font-size: var(--fs-small);
   }
 
   .chip[aria-current='true'] {

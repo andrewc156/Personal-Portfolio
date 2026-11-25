@@ -1,0 +1,11 @@
+Control run: temporary copy at ~/.hermes/cache/scratch/f25a2-nofix (src/e2e/config copied from the working tree;
+node_modules symlinked). Only change: afterRestore() replaced with attempt-1 timing
+  requestAnimationFrame(() => requestAnimationFrame(reconcileFocus));
+astro build + astro preview --port 4431.
+
+PW_BASE_URL=http://localhost:4431 npx playwright test e2e/shell.spec.ts -g "focus after history"
+  3 failed: Back to the top ... (1024|1280|1440px, no-preference)
+  4 passed: the 3 reduce-motion variants + in-page link test
+node docs/checks/tools/f25-a2-qa11.mjs http://localhost:4431
+  FAIL 1024 / FAIL 1280 / FAIL 1440 (default motion)
+Copy and server removed afterwards. Repo working tree untouched.

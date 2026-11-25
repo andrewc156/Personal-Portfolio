@@ -1,0 +1,6 @@
+scroll-behavior: smooth scrollRestoration: auto
+waitAfterEnter=1200 [["popstate",1615,"A"],["raf0",1615,"A",1],["scroll",1591],["raf1",1591,"A",51],["scroll",1481],["raf2",1481,"A",101],["scroll",1135],["raf3",1135,"A",149],["scroll",693],["raf4",693,"A",206],["scroll",595],["raf5",595,"A",213],["scroll",341],["raf6",341,"A",282],["scroll",298],["raf7",298,"A",294],["scroll",171],["scroll",0]]
+final [ 0, 'A', 'Water-quality predic' ]
+scroll-behavior: smooth scrollRestoration: auto
+waitAfterEnter=0 [["popstate",916,"A"],["scroll",1208],["raf7",1208,"A",370],["raf0",1208,"A",61],["scroll",1333],["raf1",1333,"A",105],["scroll",1442],["raf2",1442,"A",181],["scroll",1462],["raf3",1462,"A",188],["scroll",1521],["raf4",1521,"A",265],["scroll",1532],["raf5",1532,"A",271],["scroll",1563],["raf6",1563,"A",348],["scroll",1568],["raf7",1568,"A",354],["scroll",1580],["scroll",1581]]
+final [ 1581, 'A', 'Water-quality predic' ]

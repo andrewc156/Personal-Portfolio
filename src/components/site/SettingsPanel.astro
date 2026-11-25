@@ -1,9 +1,12 @@
 ---
 /**
  * Art settings panel shell (spec §4.1). Right-hand drawer on desktop, bottom
- * sheet on mobile. Non-modal so the art stays visible while it changes.
+ * sheet on mobile. The desktop drawer is non-modal so the art stays visible while it
+ * changes; the narrow sheet is a modal dialog (settings.ts, QA-03).
  * Behaviour lives in settings.ts (Esc closes, focus returns to the opener,
  * open/closed state remembered in localStorage).
+ * The root is a div with role="complementary", not <aside>: settings.ts switches the role
+ * to "dialog" on narrow screens, which ARIA in HTML doesn't allow on <aside>.
  */
 interface Props {
   title?: string;
@@ -11,7 +14,13 @@ interface Props {
 const { title = 'Art settings' } = Astro.props;
 ---
 
-<aside id="settings-panel" class="settings" aria-labelledby="settings-title" hidden>
+<div
+  id="settings-panel"
+  class="settings"
+  role="complementary"
+  aria-labelledby="settings-title"
+  hidden
+>
   <div class="settings__head">
     <h2 id="settings-title" class="settings__title" tabindex="-1" data-settings-title>
       {title}
@@ -30,7 +39,7 @@ const { title = 'Art settings' } = Astro.props;
   <div class="settings__body">
     <slot />
   </div>
-</aside>
+</div>
 
 <style>
   .settings {

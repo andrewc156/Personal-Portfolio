@@ -33,6 +33,7 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     </nav>
     <div class="site-header__tools">
       <ThemeToggle />
+      {/* Disabled until settings.ts wires it, so it is no dead tab stop without JS. */}
       {hasSettings && (
         <button
           type="button"
@@ -42,6 +43,7 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
           aria-controls="settings-panel"
           aria-expanded="false"
           title="Art settings"
+          disabled
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path

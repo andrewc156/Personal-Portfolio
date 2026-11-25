@@ -1,0 +1,6 @@
+
+18:03:44 [build] ✓ Completed in 211ms.
+18:03:44 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+18:03:44 [build] 10 page(s) built in 439ms
+18:03:44 [build] Complete!
+write-headers: 10 HTML files; script-src +3 element +0 handler hashes; style-src +9 element +0 attribute hashes; CSP line 959/2000 chars; 5 rules -> dist/_headers
