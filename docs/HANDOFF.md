@@ -42,7 +42,7 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F9 full-site audit, attempt 4 | checker (fresh) | docs/checks/F9/attempt-4.md, docs/checks/F9/attempt-4/, docs/checks/F9/summary.md | Delegated at `5c54ee2` with hosted CI green | Audit. On FAIL: fix rounds through the owning builders (at most 2). |
+| F9 full-site audit, attempt 4 | checker (fresh) | docs/checks/F9/attempt-4.md, docs/checks/F9/attempt-4/, docs/checks/F9/summary.md | Delegated at `5c54ee2` with hosted CI green. The first run stopped mid-Lighthouse; the report is still PARTIAL with 81 evidence files. The same agent was resumed to finish. | Finish Lighthouse and the remaining gates, then the report. On FAIL: fix rounds through the owning builders (at most 2). |
 
 ## Handoff vs repo (resume check)
 
