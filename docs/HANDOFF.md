@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 16:14:40 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 16:20:48 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -38,7 +38,7 @@
 | F19c Visual polish within the system | done | PASS (check attempt 1) | `680aeac` |
 | F20 Hero Settings cog | done | PASS (attempt 1) | `9f9fb7c` |
 | F21 Collatz steps setting | done | PASS (attempt 1) | `a74ce65` (candidate `83d402f`) |
-| F22 Collatz starts at step one | done | PASS (attempt 1) | this merge (candidate `755a594`) |
+| F22 Collatz starts at step one | done | PASS (attempt 1) | `614feef` (candidate `755a594`) |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -100,8 +100,8 @@
 
 ## WIP branch
 
-F22 candidate `755a594` on `wip/codex-handoff`, draft PR #3; scratch worktree `~/.hermes/cache/scratch/portfolio-f22-ci.hYjHTXuf`. Independent PASS and hosted CI 45701214633 green; branch cleanup follows integration. F21 draft PR #2 already merged.
+None. F22 draft PR #3 merged on PASS; `wip/codex-handoff` was deleted locally and on origin.
 
-Latest verified main push: F21 `a74ce65` (exact candidate CI 45696088155 and merged main CI 45698726531 passed). F20 `9f9fb7c` passed hosted CI 45692029569. F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
+Latest verified main push: F22 `614feef` (candidate CI 45701214633 passed; merged main CI 45702534254 success (completed)). F21 `a74ce65` (exact candidate CI 45696088155 and merged main CI 45698726531 passed). F20 `9f9fb7c` passed hosted CI 45692029569. F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).
