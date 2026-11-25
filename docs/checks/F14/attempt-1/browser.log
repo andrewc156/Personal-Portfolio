@@ -1,0 +1,10 @@
+Five modes, direct load, Reset, both triggers, keyboard focus, localStorage, CSP and network checks pass.
+No-JS fallback visible with native controls disabled.
+{"width":320,"theme":"light","touchTargets":[44,44],"canvasColors":785,"axe":[]}
+{"width":320,"theme":"dark","touchTargets":[44,44],"canvasColors":585,"axe":[]}
+{"width":375,"theme":"light","touchTargets":[44,44],"canvasColors":974,"axe":[]}
+{"width":375,"theme":"dark","touchTargets":[44,44],"canvasColors":655,"axe":[]}
+{"width":768,"theme":"light","touchTargets":[44,44],"canvasColors":1706,"axe":[]}
+{"width":768,"theme":"dark","touchTargets":[44,44],"canvasColors":870,"axe":[]}
+{"width":1280,"theme":"light","touchTargets":[44,44],"canvasColors":1568,"axe":[]}
+{"width":1280,"theme":"dark","touchTargets":[44,44],"canvasColors":877,"axe":[]}

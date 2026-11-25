@@ -1,0 +1,15 @@
+
+> andrew-chincea-portfolio@0.0.1 test
+> vitest run
+
+
+ RUN  v5.1.1 /private/tmp/portfolio-recovery.RmJMcJ/F14
+
+
+ Test Files  26 passed (26)
+      Tests  799 passed (799)
+   Start at  21:25:53
+   Duration  4.69s (tests 88%, transform 7%, import 4%, worker 1%)
+
+    Isolate  26 workers spawned · ~171ms startup each (spawn + environment, per file)
+             at least ~463ms faster with isolate: false — reuses workers across files instead of one per file

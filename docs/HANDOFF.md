@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:20 EST, Codex (Control)
+**Last updated:** 2026-11-24 21:36 EST, Codex (Control)
 
 ## Status
 
@@ -24,17 +24,21 @@
 | F10 Extra hero modes (S1) | done | PASS_WITH_NOTES (attempt 2) | `0454256` |
 | F11 Islands barcode (S2) | done | PASS_WITH_NOTES (F11a attempt 1, F11b attempt 2) | `248ebae`, `0dd1ea1` |
 | F12 Basin mask (S3) | done | PASS_WITH_NOTES (F12a and F12b attempt 1) | `4c32017`, `f0060bb` |
-| F13 Place labels (S4) | F13a done, F13b accepted, commit pending | PASS_WITH_NOTES (F13b attempt 2 and F13a) | `7aa2244` |
-| F14 Homepage animation toolbar | building | — | — |
+| F13 Place labels (S4) | done | PASS_WITH_NOTES (F13a attempt 1, F13b attempt 2) | `7aa2244`, `aa6b3da` |
+| F14 Homepage animation toolbar | accepted, commit pending | PASS_WITH_NOTES (attempt 1) | — |
+| CI2 TDA unit-test timeouts on GitHub | checking | CI #35 failed before browser gates | — |
+| F15 Footer credit removal | built, checker queued | — | — |
+| F16 Personal portfolio project entry | building | — | — |
+| F17 Garden header link | queued after F15 source snapshot | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F13b place labels attempt 2 | checker | docs/checks/F13b/ | PASS_WITH_NOTES. 173 browser tests, zero marker collisions, all priority labels present. | Commit pending. |
-| F14 homepage animation toolbar | viz-builder | Hero and applicable settings panel components and tests | Andrew chose option 1, an Animation dropdown and Settings button above the canvas. | Builder delegated and independent check queued. |
+| F14 homepage animation toolbar | checker | Isolated candidate /private/tmp/portfolio-recovery.RmJMcJ/F14, docs/checks/F14/ | Visible toolbar built. Astro check, lint and 221 focused unit tests passed. | PASS_WITH_NOTES. 174 preview browser passes, 8 Wrangler passes, max direct-link CLS 0.039080. Commit pending. |
+| CI2 TDA timeouts | tda-engineer | tests/unit/tda/{flood,properties}.test.ts and docs/builds/CI2/attempt-1.md | CI #35 timed out two long existing oracle tests at 5 seconds. 797 other unit tests passed. | TDA engineer gave the two expensive tests a scoped 20-second limit. All 14 targeted tests passed and the test bodies are unchanged. Independent checker delegated in /private/tmp/portfolio-recovery.RmJMcJ/CI2. |
 
-The fresh full-site audit follows F13b and the approved F14 toolbar.
+F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. Andrew requested F17 Garden header link. The fresh full-site audit follows these features and CI2.
 
 ## Handoff vs repo (resume check)
 
@@ -48,7 +52,11 @@ The fresh full-site audit follows F13b and the approved F14 toolbar.
 - F8 documentation clarification was reviewed by Control against Cloudflare’s official build and deployment instructions. No application or hosting configuration changed.
 
 Unchecked feature candidates:
-- F13b accepted, commit pending: `e2e/explorer.spec.ts`, `src/components/explorer/{AboutData.astro,Explorer.astro,PlaceLabels.astro,build-data.ts,explorer-client.ts,place-labels-client.ts}`, `src/lib/viz/explorer/labels.ts`, `src/pages/rising-water/index.astro`, `tests/unit/viz/explorer/labels.test.ts`, and `docs/builds/F13b/attempt-1.md`.
+
+- F14 accepted, commit pending: `src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}`, `src/components/site/{settings.ts,SettingsPanel.astro}`, `e2e/hero.spec.ts`, and `docs/builds/F14/attempt-1.md`.
+- F15 built, unchecked: `src/data/profile.yaml`, footer assertion in `e2e/shell.spec.ts`, and `docs/builds/F15/attempt-1.md`.
+- F16 building: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
+- CI2 built, checking: `tests/unit/tda/{flood,properties}.test.ts` and `docs/builds/CI2/attempt-1.md`.
 
 ## Open issues and "Needs Andrew"
 
@@ -68,12 +76,12 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Commit and push the accepted F13b explorer labels.
-2. Finish and independently check the F14 toolbar, then commit and push on acceptance.
-3. Run the fresh F9 full-site audit and push the final report and handoff.
+1. Push the accepted F14 toolbar and finish CI2 independent verification.
+2. Build, check, and push the footer, portfolio entry and Garden navigation updates.
+3. Run the fresh F9 full-site audit and check hosted CI for the accepted changes.
 
 ## WIP branch
 
 none
 
-Latest Control push: F11b `0dd1ea1` to origin/main. Unchecked candidates remain local.
+Latest Control push: F13b `aa6b3da` to origin/main. Unchecked candidates remain local.

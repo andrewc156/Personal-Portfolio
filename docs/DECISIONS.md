@@ -121,3 +121,5 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 80. F12b (S3 explorer mask): the basin mask is display-only. Lakes and the barcode stay computed on the whole grid per §6.1, and the lakes table gets a "Pit in basin" marker column (shown when the mask is on) rather than a filter. The new URL hash state is `#mask=basin`. Section anchors such as `#lakes` are left untouched, so old links still behave. The public coverage wording in basin-mask.json is being made reader-facing as part of F13a attempt 1 (data-engineer), with no change to basin-mask.bin.
 
 81. Andrew approved the F11b explainer copy: “An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.” Use this approval for the islands strip.
+
+82. Andrew chose option 1 for homepage discoverability. F14 adds a compact toolbar above the hero canvas with the Animation selector and a labeled Settings trigger for the existing panel.

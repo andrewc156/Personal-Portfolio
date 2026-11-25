@@ -1,7 +1,7 @@
 ---
 /**
  * Hero art settings (spec §6.3, stretch S1), rendered inside F1's settings panel through the
- * layout's `settings` slot. Groups: Mode, Terrain, Water, Barcode, Color. hero-client.ts wires
+ * layout's `settings` slot. Groups: Terrain, Water, Barcode, Color. hero-client.ts wires
  * every control to the running mode; values here are the defaults (HERO_DEFAULTS in
  * controller.ts). Controls inside [data-rising-only] apply to Rising water alone and are hidden
  * in the other modes; Seed, New terrain, Play, Speed and Palette apply to every mode.
@@ -16,19 +16,14 @@ import { MAX_SEED } from '../../lib/viz/common/rng';
 import { HERO_DEFAULTS as D } from '../../lib/viz/hero/controller';
 import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
 import { ROUGHNESS_RANGE, SCALE_RANGE } from '../../lib/viz/hero/terrain';
-import { DEFAULT_MODE, HERO_MODES } from '../../lib/viz/hero/modes/meta';
 
 const palettes = PALETTES.map((p) => ({ value: p.name, label: p.label }));
-const modes = HERO_MODES.map((m) => ({ value: m.id, label: m.label }));
 ---
 
-<form class="hero-settings" aria-label="Hero art settings" data-hero-settings>
-  <SettingsGroup title="Mode">
-    <SelectRow id="hero-mode" label="Animation" options={modes} value={DEFAULT_MODE} />
-    <p class="hero-settings__note" data-mode-note hidden>
-      Terrain shape, water level, pacing, the barcode and lake colours apply to Rising water only.
-    </p>
-  </SettingsGroup>
+<form id="hero-settings" class="hero-settings" aria-label="Hero art settings" data-hero-settings>
+  <p class="hero-settings__note" data-mode-note hidden>
+    Terrain shape, water level, pacing, the barcode and lake colours apply to Rising water only.
+  </p>
 
   <SettingsGroup title="Terrain">
     <div class="number-row">

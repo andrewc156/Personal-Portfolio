@@ -247,6 +247,13 @@ function init(): void {
     void setMode(startMode);
   }
 
+  if (modeInput) {
+    modeInput.disabled = false;
+    modeInput.addEventListener('change', () => {
+      if (isHeroMode(modeInput.value) && modeInput.value !== mode) void setMode(modeInput.value);
+    });
+  }
+
   for (const b of playButtons) b.addEventListener('click', () => current?.togglePlay());
   for (const b of newButtons) b.addEventListener('click', () => current?.newTerrain());
 
@@ -255,10 +262,6 @@ function init(): void {
     form.addEventListener('input', (e) => {
       const t = e.target;
       if (!(t instanceof HTMLInputElement || t instanceof HTMLSelectElement)) return;
-      if (t.id === 'hero-mode') {
-        if (isHeroMode(t.value) && t.value !== mode) void setMode(t.value);
-        return;
-      }
       if (t.id === 'hero-seed') return; // applied on change, so typing a number doesn't thrash
       if (!current) return;
       if (current instanceof HeroController) {
@@ -284,14 +287,13 @@ function init(): void {
     form.addEventListener('reset', () => {
       // Let the form restore its defaults first; keep the current seed.
       setTimeout(() => {
-        if (!current) return;
-        const s = current.settings.seed;
+        const s = current?.settings.seed ?? seed;
         if (seedInput) seedInput.value = String(s);
-        const want = modeInput && isHeroMode(modeInput.value) ? modeInput.value : DEFAULT_MODE;
-        if (want !== mode) {
-          void setMode(want);
+        if (mode !== DEFAULT_MODE) {
+          void setMode(DEFAULT_MODE);
           return;
         }
+        if (!current) return;
         if (current instanceof HeroController) {
           current.update(readForm(s));
           applyRisingStrip(current.settings);

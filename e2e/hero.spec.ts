@@ -699,16 +699,55 @@ async function waitForMode(page: Page, id: string): Promise<void> {
   );
 }
 
-/** Pick a mode with the real settings-panel select. */
+/** Pick a mode with the on-page select. */
 async function chooseMode(page: Page, id: string): Promise<void> {
-  const panel = page.locator('#settings-panel');
-  if (!(await panel.isVisible())) {
-    await page.getByRole('button', { name: 'Art settings', exact: true }).click();
-    await expect(panel).toBeVisible();
-  }
-  await panel.getByLabel('Animation', { exact: true }).selectOption(id);
+  await page.getByLabel('Animation', { exact: true }).selectOption(id);
   await waitForMode(page, id);
 }
+
+test('hero toolbar exposes mode selection and settings at 320px', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 740 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/?seed=42&mode=dye');
+  await waitForMode(page, 'dye');
+  const select = page.getByLabel('Animation', { exact: true });
+  const settings = page.getByRole('button', { name: 'Animation settings', exact: true });
+  const gear = page.getByRole('button', { name: 'Art settings', exact: true });
+  const panel = page.locator('#settings-panel');
+  await expect(panel).toBeHidden();
+  await expect(select).toHaveValue('dye');
+  await expect(settings).toHaveText('Settings');
+  const selectBox = (await select.boundingBox())!;
+  const buttonBox = (await settings.boundingBox())!;
+  const mapBox = (await page.locator('[data-hero-map]').boundingBox())!;
+  expect(selectBox.x + selectBox.width).toBeLessThan(buttonBox.x);
+  expect(buttonBox.x + buttonBox.width).toBeLessThanOrEqual(320);
+  expect(Math.abs(selectBox.y - buttonBox.y)).toBeLessThanOrEqual(1);
+  expect(buttonBox.y + buttonBox.height).toBeLessThan(mapBox.y);
+
+  await chooseMode(page, 'pond');
+  await select.focus();
+  await page.keyboard.press('Tab');
+  await expect(settings).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(panel).toBeVisible();
+  await expect(page.locator('#settings-title')).toBeFocused();
+  await expect(settings).toHaveAttribute('aria-expanded', 'true');
+  await expect(gear).toHaveAttribute('aria-expanded', 'true');
+
+  await panel.getByRole('button', { name: 'Reset', exact: true }).click();
+  await waitForMode(page, 'rising');
+  await expect(select).toHaveValue('rising');
+  await page.keyboard.press('Escape');
+  await expect(panel).toBeHidden();
+  await expect(settings).toBeFocused();
+  await expect(settings).toHaveAttribute('aria-expanded', 'false');
+  await expect(gear).toHaveAttribute('aria-expanded', 'false');
+
+  await settings.click();
+  await panel.getByRole('button', { name: 'Close art settings' }).click();
+  await expect(settings).toBeFocused();
+});
 
 /** Cheap FNV hash of the map canvas pixels at 128×64 (for determinism checks). */
 async function mapHash(page: Page): Promise<number> {
@@ -740,7 +779,7 @@ test.describe('hero modes', () => {
     await waitForHero(page);
     await page.getByRole('button', { name: 'Art settings', exact: true }).click();
     const panel = page.locator('#settings-panel');
-    const select = panel.getByLabel('Animation', { exact: true });
+    const select = page.getByLabel('Animation', { exact: true });
     await expect(select).toHaveValue('rising');
     await expect(page.locator('[data-hero]')).toHaveAttribute('data-mode', 'rising');
 

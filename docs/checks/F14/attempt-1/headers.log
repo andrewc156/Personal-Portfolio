@@ -1,0 +1,15 @@
+
+Running 8 tests using 1 worker
+
+(node:37316) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/headers.spec.ts:87:3 › response headers › HTML pages: security headers, CSP, revalidated (96ms)
+  ✓  2 [chromium] › e2e/headers.spec.ts:97:3 › response headers › /_astro/* is immutable for a year (51ms)
+  ✓  3 [chromium] › e2e/headers.spec.ts:109:3 › response headers › /data/*, /og/* and the favicon: one day, then revalidate (24ms)
+  ✓  4 [chromium] › e2e/headers.spec.ts:124:3 › response headers › unknown route: custom 404 page with status 404 and the same headers (14ms)
+  ✓  5 [chromium] › e2e/headers.spec.ts:135:3 › CSP in the browser › every page renders with zero CSP violations (340ms)
+  ✓  6 [chromium] › e2e/headers.spec.ts:144:3 › CSP in the browser › theme script runs: a stored theme is applied on load (110ms)
+  ✓  7 [chromium] › e2e/headers.spec.ts:153:3 › CSP in the browser › explorer verifies its data and handles form submissions under the CSP (208ms)
+  ✓  8 [chromium] › e2e/headers.spec.ts:177:3 › CSP in the browser › negative control: injected inline script and style are blocked (223ms)
+
+  8 passed (1.5s)

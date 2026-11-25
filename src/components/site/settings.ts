@@ -7,6 +7,8 @@ export const SETTINGS_STORAGE_KEY = 'settings-open';
 /** Fired on the panel element whenever it opens or closes. detail: { open: boolean } */
 export const SETTINGS_TOGGLE_EVENT = 'settings:toggle';
 
+let opener: HTMLButtonElement | undefined;
+
 function store(open: boolean): void {
   try {
     localStorage.setItem(SETTINGS_STORAGE_KEY, open ? '1' : '0');
@@ -23,30 +25,32 @@ function stored(): boolean {
   }
 }
 
-function elements(): { panel: HTMLElement; gear: HTMLButtonElement } | null {
+function elements(): { panel: HTMLElement; toggles: NodeListOf<HTMLButtonElement> } | null {
   const panel = document.getElementById('settings-panel');
-  const gear = document.querySelector<HTMLButtonElement>('[data-settings-toggle]');
-  return panel && gear ? { panel, gear } : null;
+  const toggles = document.querySelectorAll<HTMLButtonElement>(
+    'button[aria-controls="settings-panel"]',
+  );
+  return panel && toggles.length ? { panel, toggles } : null;
 }
 
 export function isSettingsOpen(): boolean {
-  const els = elements();
-  return !!els && els.panel.hidden !== true;
+  return document.getElementById('settings-panel')?.hidden === false;
 }
 
-/** Open or close the panel. `moveFocus` sends focus into the panel on open, or back to the gear on close. */
+/** Move focus into the open panel and return it to its opener on close. */
 export function setSettingsOpen(open: boolean, moveFocus = true): void {
   const els = elements();
   if (!els) return;
-  const { panel, gear } = els;
+  const { panel, toggles } = els;
   panel.hidden = !open;
   document.documentElement.toggleAttribute('data-settings-open', open);
-  gear.setAttribute('aria-expanded', String(open));
+  for (const toggle of toggles) toggle.setAttribute('aria-expanded', String(open));
   store(open);
   if (moveFocus) {
     if (open) panel.querySelector<HTMLElement>('[data-settings-title]')?.focus();
-    else gear.focus();
+    else (opener?.isConnected ? opener : toggles[0])?.focus();
   }
+  if (!open) opener = undefined;
   panel.dispatchEvent(new CustomEvent(SETTINGS_TOGGLE_EVENT, { detail: { open }, bubbles: true }));
 }
 
@@ -88,9 +92,16 @@ function trackHeaderHeight(): void {
 export function initSettingsPanel(): void {
   const els = elements();
   if (!els) return;
-  const { panel, gear } = els;
+  const { panel, toggles } = els;
 
-  gear.addEventListener('click', () => setSettingsOpen(!isSettingsOpen()));
+  for (const toggle of toggles) {
+    toggle.disabled = false;
+    toggle.addEventListener('click', () => {
+      const open = !isSettingsOpen();
+      if (open) opener = toggle;
+      setSettingsOpen(open);
+    });
+  }
   panel
     .querySelector<HTMLButtonElement>('[data-settings-close]')
     ?.addEventListener('click', () => setSettingsOpen(false));

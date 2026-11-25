@@ -28,5 +28,9 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F10 Extra hero modes | S1 | done (attempt 2 PASS_WITH_NOTES, `0454256`, docs/checks/F10/attempt-2.md) | Add Dye spill, Fractal pond, Random rivers, and Collatz delta to the hero. |
 | F11 Islands barcode | S2 | F11a engine done, PASS_WITH_NOTES (docs/checks/F11a/attempt-1.md, `248ebae`); F11b done (`0dd1ea1`), PASS_WITH_NOTES (docs/checks/F11b/attempt-2.md) | Show when islands appear and disappear during flooding using an H1 barcode. |
 | F12 Basin mask | S3 | F12a done, PASS_WITH_NOTES (docs/checks/F12a/attempt-1.md, `4c32017`); F12b done (`f0060bb`), PASS_WITH_NOTES (docs/checks/F12b/attempt-1.md) | Add an optional explorer mask using USGS Watershed Boundary Dataset regions 14 and 15. Document the coverage gap in Mexico. |
-| F13 Place labels | S4 | F13a done (`7aa2244`), PASS_WITH_NOTES (docs/checks/F13a/attempt-1.md); F13b accepted, PASS_WITH_NOTES (docs/checks/F13b/attempt-2.md) | Add explorer place labels using coordinates from USGS GNIS and cite the source. |
-| F14 Homepage animation toolbar | Andrew approved option 1 | building | Visible Animation dropdown and Settings button above the hero canvas. |
+| F13 Place labels | S4 | F13a done (`7aa2244`), PASS_WITH_NOTES (docs/checks/F13a/attempt-1.md); F13b done (`aa6b3da`), PASS_WITH_NOTES (docs/checks/F13b/attempt-2.md) | Add explorer place labels using coordinates from USGS GNIS and cite the source. |
+| F14 Homepage animation toolbar | Andrew approved option 1 | accepted, PASS_WITH_NOTES (docs/checks/F14/attempt-1.md) | Visible Animation dropdown and Settings button above the hero canvas. |
+| CI2 TDA timeout fix | CI run #35 | checking | Preserve the existing randomized checks and stop timing out under GitHub runner load. |
+| F15 Footer credit | Andrew requested removal | built, checker queued | Disable the existing footer credit profile flag. |
+| F16 Personal portfolio project | Andrew confirmed | building | List the current website in the Garden and CV. |
+| F17 Garden nav | Andrew requested | queued | Add a direct Garden link to the shared header. |
