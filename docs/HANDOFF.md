@@ -21,17 +21,17 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
-| F10 Extra hero modes (S1) | accepted, commit pending | PASS_WITH_NOTES (attempt 2) | — |
-| F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
+| F10 Extra hero modes (S1) | done | PASS_WITH_NOTES (attempt 2) | `0454256` |
+| F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip delegated to viz-builder | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
-| F13 Place labels (S4) | F13a built (39 GNIS labels, labels.json 9,962 B), checker queued after F10 | n/a | — |
+| F13 Place labels (S4) | F13a accepted, F13b queued after F12b | PASS_WITH_NOTES (F13a attempt 1) | — |
 
 ## Current task (one checker and one builder in parallel, with no overlapping paths)
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 attempt 2 | checker | docs/checks/F10/ and isolated snapshot at /private/tmp/portfolio-recovery.RmJMcJ/F10 | Builder fixed off-screen redraws and rivers spacing. Astro check, lint and 39 mode tests pass. | PASS_WITH_NOTES. 151 browser passes, 5/5 repeat, Lighthouse 100s, max direct-link CLS 0.045173. Commit pending. |
-| F13a check | checker | docs/checks/F13a/ only | Data-engineer finished recovery and verified cached output. Replaced Python 3.11-only UTC alias in three pipeline files for §7 Python 3.10 compatibility. | Fresh checker delegated in /private/tmp/portfolio-recovery.RmJMcJ/F13a and owns port 4321. |
+| F11b islands barcode attempt 1 | viz-builder | Hero components, hero viz, unit/browser tests, docs/builds/F11b/attempt-1.md | Delegated with approved explainer wording. | Builder report and fresh checker. |
+| F13a check | checker | docs/checks/F13a/ only | Data-engineer finished recovery and verified cached output. Replaced Python 3.11-only UTC alias in three pipeline files for §7 Python 3.10 compatibility. | PASS_WITH_NOTES. All 39 labels checked against primary archives. Commit pending. |
 | F12b | viz-builder | Explorer files listed below | Review complete. Viz-builder guarded stale mask requests and added a regression. Astro check, lint and 80 explorer unit tests passed. | Independent checker after accepted F13a data. |
 
 Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (after F12b + F13a), then a fresh F9 audit.
@@ -46,8 +46,8 @@ Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (aft
 ## Uncommitted changes
 
 All unverified:
-- F10 (attempt 2 PASS_WITH_NOTES, commit pending): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
-- F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
+- F11b build may touch the hero components, hero viz files, unit/browser tests and attempt-1 report. F10 is committed.
+- F13a (PASS_WITH_NOTES, commit pending): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
 ## Open issues and "Needs Andrew"
@@ -66,12 +66,12 @@ All unverified:
 
 ## Next 3 actions
 
-1. Finish the F10 attempt 2 check. Commit and push on acceptance.
-2. Rerun the interrupted F13a check from scratch and commit and push on acceptance. Then verify F12b against the accepted F13a data.
-3. F11b, F13b, then a fresh F9 full-site audit.
+1. Finish the fresh F13a check and commit/push on acceptance.
+2. Check the F11b builder result and F12b explorer mask in sequence on port 4321, then commit/push each accepted feature.
+3. Build and check F13b, then run the fresh F9 full-site audit.
 
 ## WIP branch
 
 none
 
-Latest Control push: `b44b8c1` to origin/main. Unchecked candidates remain local.
+Latest Control push: F10 `0454256` to origin/main. Unchecked candidates remain local.

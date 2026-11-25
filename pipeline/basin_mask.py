@@ -160,9 +160,11 @@ def download_wbd(hu: str, cache_dir: Path, log=log) -> tuple[Path, dict]:
             f"could not download {url}; stopping (no substitute data is used)"
         )
     data = resp.content
+    # Support Python 3.10, which lacks the datetime.UTC alias.
+    access_date = dt.datetime.now(dt.timezone.utc).date()  # noqa: UP017
     rec = {
         "url": url,
-        "accessDate": dt.datetime.now(dt.UTC).date().isoformat(),
+        "accessDate": access_date.isoformat(),
         "httpLastModified": resp.headers.get("Last-Modified"),
         "httpEtag": resp.headers.get("ETag"),
         "bytes": len(data),
@@ -615,7 +617,7 @@ def build_meta(res: dict, grid_meta: dict, mask_bytes: bytes) -> dict:
     terminals = ", ".join(f"{k} ({v})" for k, v in trace["terminals"].items())
     hits = mexico.get("gridMinimumCell", {}).get("inMexicoOnlyHu12", [])
     min_hu12 = ", ".join(
-        f"{h['huc12']} (states MX, downstream {h['tohuc']})" for h in hits
+        f"HU-12 {h['huc12']}, whose downstream code in WBD is {h['tohuc']}" for h in hits
     )
 
     def pct(code: str) -> float:
@@ -693,47 +695,45 @@ def build_meta(res: dict, grid_meta: dict, mask_bytes: bytes) -> dict:
         },
         "coverage": [
             (
-                "Mexico, included: the S3 brief expected WBD to stop at the border, but this WBD "
-                "release extends region 15 into Mexico. WBD metadata: areas along the border "
-                '"have been updated to include harmonized hydrologic units and hydrography that '
-                "extends across the border\", in collaboration with Mexico's INEGI. In the study "
-                "area this includes the Colorado's lower river and delta (HU-6 150301) down to "
-                f"the south edge. {mexico['basinCells']} basin cells lie mostly in HU-12 units "
-                "whose states attribute is only MX (regions 14 and 15 have "
-                f"{mexico['hu12Units']} such units; see stats.mexicoOnlyHu12). The grid's lowest "
-                f"cell (meta.min) is in HU-12 {min_hu12} and is inside the mask."
+                "Mexico: the U.S. Watershed Boundary Dataset continues region 15 into Mexico. WBD "
+                "metadata: areas along the border \"have been updated to include harmonized "
+                "hydrologic units and hydrography that extends across the border\", in "
+                "collaboration with Mexico's INEGI. In the study area this includes the Colorado "
+                f"River's lower course and delta down to the south edge: {mexico['basinCells']} "
+                "basin cells lie mostly in hydrologic units that are entirely in Mexico. The "
+                f"lowest cell of the elevation grid is in one of these units ({min_hu12}) and "
+                "is inside the mask."
             ),
             (
-                "Mexico, gap: WBD covers Mexico only as far as its harmonized units go. A one-off "
-                "check against the USGS WBD map service (docs/data.md) found that in the study "
-                "area only 4 cells, in the south-west corner around 31.87° N, 115.19° W, lie "
-                "mostly in no WBD unit at all. Those cells are 0 here; no Mexican boundary has "
-                "been drawn or invented. This build did not compare WBD's Mexican units with "
-                "INEGI's own hydrography."
+                "Gap in Mexico: WBD covers Mexico only as far as its harmonized units go. In the "
+                "study area, 4 cells in the south-west corner, around 31.87° N, 115.19° W, lie "
+                "mostly in no WBD unit. They are outside the mask; no boundary has been drawn "
+                "for them. WBD's Mexican units have not been compared with INEGI's own "
+                "hydrography."
             ),
             (
-                "Region is not drainage: WBD region 15 includes HU-4 1508 Sonora. Following "
-                "WBD's own downstream codes (tohuc), every one of its "
-                f"{trace['hu12Units']} HU-12 units stays inside 1508 and ends at "
-                f"{terminals} (stats.sonoraDrainage), so none drains to the Colorado. Region 14 "
-                "includes HU-6 140402 Great Divide Closed Basin. Both are inside this mask "
-                "because they are part of the WBD regions. Cells: "
+                "Region is not drainage: WBD region 15 includes subregion 1508 Sonora. Following "
+                "WBD's own downstream codes, every one of its "
+                f"{trace['hu12Units']} smallest units (HU-12) stays inside 1508 and ends at "
+                f"{terminals}, so none drains to the Colorado. Region 14 includes the Great "
+                "Divide Closed Basin (HU-6 140402). Both are inside the mask because they are "
+                "part of WBD regions 14 and 15. Cells: "
                 f"Sonora {sum(h['cells'] for h in sonora)}, Great Divide Closed Basin "
-                f"{sum(h['cells'] for h in great_divide)} (see stats.hu6). Land along the west "
-                "edge between about 32.5° and 35.1° N is WBD region 18 (California) and is "
-                "outside the mask."
+                f"{sum(h['cells'] for h in great_divide)}. Land along the west edge between "
+                "about 32.5° and 35.1° N is WBD region 18 (California) and is outside the mask."
             ),
             (
-                "Study-area edges: parts of both regions lie outside the bbox, so the mask covers "
-                "only the part of each region inside the rectangle (stats.hu6.inStudyAreaPct; "
-                f"for example Colorado Headwaters {pct('140100')}% and Upper Green "
-                f"{pct('140401')}%)."
+                "Study-area edges: parts of both regions lie outside the study rectangle, so the "
+                "mask covers only the part of each region inside it (for example "
+                f"{pct('140100')}% of the Colorado Headwaters and {pct('140401')}% of the Upper "
+                "Green)."
             ),
             (
                 "Resolution: the mask is per 0.025° cell (about 2.2 km x 2.8 km); "
-                f"{stats['boundaryCells']} cells straddle the basin boundary and are decided by "
-                'the half-of-pixels rule. WBD metadata: "At a minimum, the HUs are delineated '
-                'at 1:24,000-scale in the conterminous United States".'
+                f"{stats['boundaryCells']} cells straddle the basin boundary and count as basin "
+                "when at least half of their elevation pixels fall inside it. WBD metadata: \"At "
+                'a minimum, the HUs are delineated at 1:24,000-scale in the conterminous United '
+                'States".'
             ),
         ],
         "stats": stats,

@@ -1,0 +1,131 @@
+{
+ "description": "Place labels for the explorer map. Coordinates are the GNIS primary feature location (prim_lat_dec, prim_long_dec), unrounded.",
+ "fields": {
+  "id": "GNIS feature_id",
+  "name": "GNIS feature_name, exactly",
+  "display": "map text when it differs from name (else use name)",
+  "class": "GNIS feature_class",
+  "category": "peak|water|city|basin|canyon",
+  "priority": "1 = always show; 2, 3 = drop first (3 before 2) when labels collide",
+  "lat, lon": "degrees, NAD 83, used as WGS 84",
+  "x, y": "grid cell whose native 3″ pixels contain the point (cell i = y*width + x)",
+  "anchor": "mouth: GNIS places stream and valley records at their downstream end"
+ },
+ "grid": {
+  "file": "grid.f32",
+  "sha256": "7775c4fd6800862b3ed79942f96fe6f96b59e2dc25aee358f23e09fed145e08a",
+  "width": 326,
+  "height": 414,
+  "cellDeg": 0.025,
+  "extent": [
+   -115.202083333,
+   31.817916667,
+   -107.06125,
+   42.157916667
+  ],
+  "pixelDeg": 0.0008333333333333334,
+  "rule": "x = floor((lon - extent[0]) / pixelDeg) // 30, y = floor((extent[3] - lat) / pixelDeg) // 30"
+ },
+ "source": {
+  "name": "USGS Geographic Names Information System (GNIS), Domestic Names, state text files",
+  "page": "https://www.usgs.gov/us-board-on-geographic-names/domestic-names",
+  "formatDoc": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/GNIS_file_format.pdf",
+  "recordPage": "https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/<id>",
+  "files": [
+   {
+    "state": "AZ",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_AZ_Text.zip",
+    "pubdate": "20261102",
+    "accessDate": "2026-11-25",
+    "httpLastModified": "Mon, 02 Nov 2026 21:18:52 GMT",
+    "bytes": 1367581,
+    "sha256": "c68de21bc4b014689bbaa8726215e04c7ab263e44b1d6f1ec8ba8600da6af810"
+   },
+   {
+    "state": "CO",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_CO_Text.zip",
+    "pubdate": "20261102",
+    "accessDate": "2026-11-25",
+    "httpLastModified": "Mon, 02 Nov 2026 20:42:54 GMT",
+    "bytes": 1136591,
+    "sha256": "2a2485727a0ece9eddc3819a42301037ce1d2847d81c9131c3476ab8a3461137"
+   },
+   {
+    "state": "NV",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_NV_Text.zip",
+    "pubdate": "20261102",
+    "accessDate": "2026-11-25",
+    "httpLastModified": "Mon, 02 Nov 2026 18:57:09 GMT",
+    "bytes": 802075,
+    "sha256": "248d4abd1c43315d1a74d42339dbeba7eaa117c28be1bfe5feae679144ad8be2"
+   },
+   {
+    "state": "UT",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_UT_Text.zip",
+    "pubdate": "20261102",
+    "accessDate": "2026-11-25",
+    "httpLastModified": "Mon, 02 Nov 2026 19:51:53 GMT",
+    "bytes": 1149054,
+    "sha256": "b7495efb598ec30199ffe6d66f4b5d509fd4960a0dc1f9cb8114570e0cee8bd1"
+   },
+   {
+    "state": "WY",
+    "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_WY_Text.zip",
+    "pubdate": "20261102",
+    "accessDate": "2026-11-25",
+    "httpLastModified": "Mon, 02 Nov 2026 20:15:35 GMT",
+    "bytes": 1006010,
+    "sha256": "2f57fbfb90f7b74021de1e39f0898a9a3ecb92156e1c3964e63ccf1cab2d7bda"
+   }
+  ],
+  "datum": "NAD 83 (GNIS file format: 'Datum is NAD83'). Used as WGS 84 without a shift; USGS: \"All modern maps and GIS data are cast on NAD 83 or WGS 84, which are equivalent datums at map scales of 1:5,000 and smaller.\" (https://www.usgs.gov/faqs/why-are-nad-83-position-values-so-far-nad-27-values-were-old-coordinates-wrong)",
+  "mouthRule": "https://webarchive.library.unt.edu/eot2008/20090506152409/http://geonames.usgs.gov/domestic/metadata.htm"
+ },
+ "attribution": {
+  "credit": "Place names and coordinates: Geographic Names Information System (GNIS) courtesy of the U.S. Geological Survey",
+  "publicDomain": "Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without restriction.",
+  "creditSource": "https://www.usgs.gov/information-policies-and-instructions/acknowledging-or-crediting-usgs"
+ },
+ "count": 39,
+ "labels": [
+  {"id":45730,"name":"Colorado River","class":"Stream","category":"water","priority":1,"lat":31.9,"lon":-114.9508333,"x":10,"y":410,"anchor":"mouth"},
+  {"id":1431462,"name":"Lake Powell","class":"Reservoir","category":"water","priority":1,"lat":37.1713378,"lon":-110.809176,"x":175,"y":199},
+  {"id":7862,"name":"Lake Mead","class":"Reservoir","category":"water","priority":1,"lat":36.1725406,"lon":-114.4298448,"x":30,"y":239},
+  {"id":1441459,"name":"Great Salt Lake","class":"Lake","category":"water","priority":1,"lat":41.1628677,"lon":-112.5353656,"x":106,"y":39},
+  {"id":1455061,"name":"Great Salt Lake Desert","class":"Plain","category":"basin","priority":1,"lat":40.6529889,"lon":-113.5272152,"x":66,"y":60},
+  {"id":1597072,"name":"Great Divide Basin","class":"Basin","category":"basin","priority":1,"lat":42.0002345,"lon":-108.0009183,"x":288,"y":6},
+  {"id":23907,"name":"Grand Canyon","class":"Valley","category":"canyon","priority":1,"lat":36.112764,"lon":-113.9960696,"x":48,"y":241,"anchor":"mouth"},
+  {"id":188678,"name":"Uncompahgre Peak","class":"Summit","category":"peak","priority":1,"lat":38.0714529,"lon":-107.4625289,"x":309,"y":163},
+  {"id":1442332,"name":"Kings Peak","class":"Summit","category":"peak","priority":1,"lat":40.7763756,"lon":-110.3728037,"x":193,"y":55},
+  {"id":30290,"name":"Humphreys Peak","class":"Summit","category":"peak","priority":1,"lat":35.3463151,"lon":-111.6779884,"x":140,"y":272},
+  {"id":44784,"name":"Phoenix","class":"Populated Place","category":"city","priority":1,"lat":33.4483771,"lon":-112.0740373,"x":125,"y":348},
+  {"id":43534,"name":"Tucson","class":"Populated Place","category":"city","priority":1,"lat":32.2217429,"lon":-110.926479,"x":171,"y":397},
+  {"id":847388,"name":"Las Vegas","class":"Populated Place","category":"city","priority":1,"lat":36.1749705,"lon":-115.137223,"x":2,"y":239},
+  {"id":1454997,"name":"Salt Lake City","class":"Populated Place","category":"city","priority":1,"lat":40.7607794,"lon":-111.8910474,"x":132,"y":55},
+  {"id":1428399,"name":"Green River","class":"Stream","category":"water","priority":2,"lat":38.189153,"lon":-109.8854026,"x":212,"y":158,"anchor":"mouth"},
+  {"id":42838,"name":"Gila River","class":"Stream","category":"water","priority":2,"lat":32.7197692,"lon":-114.5552281,"x":25,"y":377,"anchor":"mouth"},
+  {"id":1441113,"name":"Flaming Gorge Reservoir","class":"Reservoir","category":"water","priority":2,"lat":41.096139,"lon":-109.5536311,"x":225,"y":42},
+  {"id":243280,"name":"Lake Havasu","class":"Reservoir","category":"water","priority":2,"lat":34.4340905,"lon":-114.3125965,"x":35,"y":308},
+  {"id":1432342,"name":"Sevier Lake","class":"Lake","category":"water","priority":2,"lat":38.9464331,"lon":-113.1385564,"x":82,"y":128},
+  {"id":1425872,"name":"Bonneville Salt Flats","class":"Flat","category":"basin","priority":2,"lat":40.7996521,"lon":-113.8000029,"x":56,"y":54},
+  {"id":1428200,"name":"Glen Canyon","class":"Valley","category":"canyon","priority":2,"lat":36.8651055,"lon":-111.5880874,"x":144,"y":211,"anchor":"mouth"},
+  {"id":1426406,"name":"Cataract Canyon","class":"Valley","category":"canyon","priority":2,"lat":37.8659196,"lon":-110.2835403,"x":196,"y":171,"anchor":"mouth"},
+  {"id":186506,"name":"Black Canyon of the Gunnison","class":"Valley","category":"canyon","priority":2,"lat":38.7832477,"lon":-107.8366169,"x":294,"y":134,"anchor":"mouth"},
+  {"id":1425581,"name":"Bingham Canyon","class":"Valley","category":"canyon","priority":2,"lat":40.560142,"lon":-112.0954295,"x":124,"y":63,"anchor":"mouth"},
+  {"id":8537,"name":"Navajo Mountain","class":"Summit","category":"peak","priority":2,"lat":37.0341566,"lon":-110.8695747,"x":173,"y":204},
+  {"id":1444257,"name":"Mount Peale","class":"Summit","category":"peak","priority":2,"lat":38.4383313,"lon":-109.2291617,"x":238,"y":148},
+  {"id":861956,"name":"Wheeler Peak","class":"Summit","category":"peak","priority":2,"lat":38.9857693,"lon":-114.313966,"x":35,"y":126},
+  {"id":29046,"name":"Flagstaff","class":"Populated Place","category":"city","priority":2,"lat":35.1980671,"lon":-111.6512725,"x":142,"y":278},
+  {"id":204662,"name":"Grand Junction","class":"Populated Place","category":"city","priority":2,"lat":39.0638705,"lon":-108.5506486,"x":266,"y":123},
+  {"id":14111,"name":"Yuma","class":"Populated Place","category":"city","priority":2,"lat":32.7253249,"lon":-114.624397,"x":23,"y":377},
+  {"id":31050,"name":"Little Colorado River","class":"Stream","category":"water","priority":3,"lat":36.1910972,"lon":-111.8037701,"x":135,"y":238,"anchor":"mouth"},
+  {"id":42942,"name":"Theodore Roosevelt Lake","display":"Roosevelt Lake","class":"Reservoir","category":"water","priority":3,"lat":33.684557,"lon":-111.1218411,"x":163,"y":338},
+  {"id":186973,"name":"Blue Mesa Reservoir","class":"Reservoir","category":"water","priority":3,"lat":38.4713913,"lon":-107.2113433,"x":319,"y":147},
+  {"id":1455153,"name":"Sevier Desert","class":"Plain","category":"basin","priority":3,"lat":39.4166197,"lon":-112.667451,"x":101,"y":109},
+  {"id":5204,"name":"Mount Graham","class":"Summit","category":"peak","priority":3,"lat":32.70173,"lon":-109.8714579,"x":213,"y":378},
+  {"id":1430389,"name":"Moab","class":"Populated Place","category":"city","priority":3,"lat":38.5733155,"lon":-109.5498395,"x":226,"y":143},
+  {"id":9110,"name":"Page","class":"Populated Place","category":"city","priority":3,"lat":36.9147222,"lon":-111.4558333,"x":149,"y":209},
+  {"id":1455098,"name":"Saint George","display":"St. George","class":"Populated Place","category":"city","priority":3,"lat":37.1041476,"lon":-113.5841233,"x":64,"y":202},
+  {"id":1593588,"name":"Rock Springs","class":"Populated Place","category":"city","priority":3,"lat":41.5874644,"lon":-109.2029043,"x":239,"y":22}
+ ]
+}

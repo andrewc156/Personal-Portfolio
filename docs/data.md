@@ -5,8 +5,9 @@ Rebuild with `npm run data` (runs `python -m pipeline.build_colorado`). Code:
 `pipeline/build_colorado.py` (driver, exports), `pipeline/colorado_dem.py` (download, mosaic,
 downsampling, hillshade) and `pipeline/barcode.py` (reference barcode, lakes table). Tests:
 `pipeline/tests/test_colorado.py`, `pipeline/tests/test_barcode.py`. The optional basin mask from the
-USGS Watershed Boundary Dataset is described in "Basin mask (stretch S3)" below. Every number below
-is read from `meta.json` (or `basin-mask.json`) or from the pipeline log of the run that produced it.
+USGS Watershed Boundary Dataset is described in "Basin mask (stretch S3)" below, and the place labels
+from USGS GNIS in "Place labels (stretch S4)". Every number below is read from `meta.json` (or
+`basin-mask.json`, `labels.json`) or from the pipeline log of the run that produced it.
 
 ## Provenance
 
@@ -443,8 +444,8 @@ cell-majority rule.
   MEXICO (117) or CLOSED BASIN (22) (`stats.sonoraDrainage`). None drains to the Colorado. Region
   14 includes HU-6 140402 Great Divide Closed Basin. Both are inside the mask because they belong
   to the regions: 1,609 cells of 1508 Sonora and 1,426 of the Great Divide Closed Basin
-  (`stats.hu6`). Whether the explorer should drop 1508 is a decision for Control and Andrew; the
-  mask follows the brief (HU-2 14 ∪ 15).
+  (`stats.hu6`). Andrew decided on 2026-11-24 to keep regions 14 + 15 as built, including 1508
+  Sonora and the Great Divide Closed Basin (docs/DECISIONS.md #78), so the mask is HU-2 14 ∪ 15.
 - **Study-area edges.** The mask covers only the part of each region inside the rectangle (see the
   HU-6 shares above).
 - **Resolution.** One bit per 0.025° cell (≈ 2.2 × 2.8 km). The WBD metadata says "At a minimum,
@@ -490,6 +491,166 @@ cell-majority rule.
   byte-identical `basin-mask.bin` and `basin-mask.json`. A run from an empty cache (fresh download)
   also gave identical bytes.
 
+## Place labels (stretch S4)
+
+`labels.json` gives the explorer 39 place names to draw on the map. Every coordinate is a USGS GNIS
+primary feature location, copied unrounded from the GNIS file. No coordinate was typed, estimated or
+taken from a secondary source. Code: `pipeline/labels.py` (run last by `npm run data`, or alone with
+`pipeline/.venv/bin/python -m pipeline.labels`). Tests: `pipeline/tests/test_labels.py`.
+`meta.json` is not changed by this step.
+
+### Source and version
+
+| Item | Value |
+|---|---|
+| Dataset | USGS Geographic Names Information System (GNIS), Domestic Names, state text files (pipe-delimited) |
+| Files | `https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_<ST>_Text.zip` for ST = AZ, CO, NV, UT, WY (the five files the selected records come from) |
+| Version | Each file's FGDC metadata: title "Geographic Names Information System (GNIS) Domestic Names for <ST> (published 20261102)", pubdate 20261102; HTTP Last-Modified 2 Nov 2026 |
+| Access date | 2026-11-25 (UTC; 2026-11-24 local), recorded per file in the cache sidecar and in `labels.json` → `source.files` |
+| SHA-256 | AZ `c68de21bc4b014689bbaa8726215e04c7ab263e44b1d6f1ec8ba8600da6af810`, CO `2a2485727a0ece9eddc3819a42301037ce1d2847d81c9131c3476ab8a3461137`, NV `248d4abd1c43315d1a74d42339dbeba7eaa117c28be1bfe5feae679144ad8be2`, UT `b7495efb598ec30199ffe6d66f4b5d509fd4960a0dc1f9cb8114570e0cee8bd1`, WY `2f57fbfb90f7b74021de1e39f0898a9a3ecb92156e1c3964e63ccf1cab2d7bda` |
+| Fields used | `feature_id`, `feature_name`, `feature_class`, `prim_lat_dec`, `prim_long_dec` |
+| Format doc | GNIS File Format Documentation, 2 Oct 2026: https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/GNIS_file_format.pdf. It says of the primary coordinates: "The official feature location. … Datum is NAD83." |
+| Datum | NAD 83 (also the metadata's `horizdn`, checked at build time). Used as WGS 84 without a shift, as for the basin mask (USGS: "All modern maps and GIS data are cast on NAD 83 or WGS 84, which are equivalent datums at map scales of 1:5,000 and smaller.") |
+| Cache | `pipeline/data/raw/gnis/` (gitignored), each zip with a `.json` sidecar (URL, access date, Last-Modified, ETag, bytes, SHA-256). A cached zip that does not match its sidecar stops the build. |
+
+**Attribution** (in `labels.json` → `attribution`, the same USGS crediting form as the basin mask):
+"Place names and coordinates: Geographic Names Information System (GNIS) courtesy of the U.S.
+Geological Survey". USGS
+(https://www.usgs.gov/information-policies-and-instructions/acknowledging-or-crediting-usgs):
+"Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without
+restriction." The GNIS metadata's use constraint reads: "None. Acknowledgment of the U.S. Geological
+Survey would be appreciated for products derived from these data."
+
+### Format
+
+`labels.json` (9,962 B): `description`, `fields` (meaning of each key), `grid` (the `grid.f32`
+SHA-256, width, height, cellDeg, the native extent and pixel size, and the cell rule), `source`,
+`attribution`, `count` and `labels`. Each label:
+
+- `id`: GNIS feature_id. `name`: GNIS feature_name, exactly. `display`: the map text, present only
+  where it differs from `name` (2 labels, below). `class`: GNIS feature_class.
+- `category`: peak, water, city, basin or canyon. `priority`: 1 (always show), 2, 3 (drop 3 first,
+  then 2, when labels collide). Priority 1 has 14 labels, 2 has 16, 3 has 9.
+- `lat`, `lon`: GNIS `prim_lat_dec`, `prim_long_dec`.
+- `x`, `y`: the grid cell whose native 3″ pixels contain the point, using the explorer's convention
+  (`meta.json` `cellCenter`; `src/lib/viz/explorer/geo.ts`): x = floor((lon − extent[0]) / pixelDeg)
+  // 30, y = floor((extent[3] − lat) / pixelDeg) // 30, cell index i = y · 326 + x. This is the same
+  rule `pipeline/barcode.py` `latlon_cell` uses for the lakes-table landmarks.
+- `anchor: "mouth"` on Stream and Valley records. GNIS gives these at their downstream end. The
+  current format doc only says that "Source coordinates are available for the linear feature
+  classes of stream, valley, or arroyo". The archived USGS GNIS FAQ states that the primary point of
+  a stream, valley or arroyo is its mouth
+  (https://webarchive.library.unt.edu/eot2008/20090506152409/http://geonames.usgs.gov/domestic/metadata.htm),
+  and the records agree: the Colorado River's primary point is 31.9° N, 114.9508° W (in Baja
+  California) and its source point 40.4722° N, 105.8261° W (Rocky Mountain National Park). So a river
+  or canyon label marks its mouth, not its middle: Grand Canyon is labelled at its lower end, the
+  Green River at the confluence with the Colorado.
+
+### Selection criteria
+
+About 25–40 labels chosen to make the map readable and to name what the barcode's lakes are:
+
+1. **The frame:** the Colorado River, its two big reservoirs (Lake Powell, Lake Mead), Grand Canyon,
+   the main tributaries' mouths (Green, Gila, Little Colorado) and the main cities (Phoenix, Tucson,
+   Las Vegas, Salt Lake City, then smaller towns at priority 2–3).
+2. **The extremes:** Uncompahgre Peak (the highest raw elevation, `meta.native.rawMax`, native row
+   4904, column 9288, is in the same cell as its label, (309, 163); see Extremes), plus Kings Peak, Humphreys Peak and other range high points
+   for orientation. The Colorado River mouth label is 18.3 km from the grid minimum cell
+   (`meta.min`, the essential lake's birth cell).
+3. **The long-lived lakes.** Run once against the committed `barcode.json` (scratch script, same
+   lake-extent rule as the Geography check: the lake's 4-connected component just before it spills):
+   - Lake rank 3 (395.8 m, Bonneville basin) contains 7 labels before it spills: Great Salt Lake,
+     Great Salt Lake Desert, Bonneville Salt Flats, Sevier Lake, Sevier Desert, Salt Lake City and
+     Bingham Canyon. Bonneville Salt Flats is the label nearest its birth cell (11.9 km).
+   - Lake rank 47 (94.0 m) contains Great Divide Basin; rank 106 (29.4 m) also contains it.
+   - Lake rank 6 (Bingham Canyon open pit, 2 cells): the Bingham Canyon label (GNIS Valley, so its
+     mouth) is 5.8 km from the birth cell and not inside the lake. GNIS Domestic Names has no record
+     for the pits themselves (no Mine class in these files), so lakes 5, 6, 7, 11, 14 and 18 stay
+     identified by the MRDS records in the Geography check, not by labels.
+   - Glen Canyon is inside lake rank 41 (106.6 m, 26 cells, birth cell 68607). This build does not
+     interpret that lake.
+   - The edge-born lakes (ranks 1, 2, 4, 8, 9, 10, …) get no label: they are closed off by the
+     rectangle, and the GNIS features nearest them are small local features (lakes, reservoirs,
+     stock tanks, mesas).
+4. **No duplicates and no shared cells:** tributary and canyon mouths within 12 km of a stronger
+   label were left out (Virgin River at Lake Mead, San Juan River in Lake Powell, Gunnison River at Grand
+   Junction, Sevier River at Sevier Lake, Marble Canyon at the Little Colorado mouth).
+
+**Display names that differ from GNIS:** 42942 "Theodore Roosevelt Lake" → "Roosevelt Lake" (shorter
+on the map); 1455098 "Saint George" → "St. George" (the common short form). All other labels show the
+GNIS name exactly.
+
+**Outside the US.** Only the Colorado River label lies in Mexico. GNIS Domestic Names carries that
+record (state "Baja California Norte") because it is a US river. GNIS has no record for the Colorado
+River Delta, the Gulf of California or the Mexican towns in the study area (for example San Luis Río
+Colorado). The NGA GEOnet Names Server, the primary source for foreign names, did not answer from
+this machine on 2026-11-24 (connection timeouts), so those places are left out rather than
+placed from a secondary source.
+
+### Labels
+
+Generated from `labels.json` (not typed). "File" is the GNIS state file the record is read from; the
+link is the GNIS record page.
+
+| P | Category | Map text | GNIS name (class, file) | GNIS ID | Lat, lon (NAD 83) | Cell (x, y) | Why |
+|---|---|---|---|---|---|---|---|
+| 1 | water | Colorado River | Colorado River (Stream, mouth, AZ) | [45730](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/45730) | 31.9, -114.9508333 | 10, 410 | the river; GNIS point is its mouth, near the grid minimum (essential lake) |
+| 1 | water | Lake Powell | Lake Powell (Reservoir, UT) | [1431462](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1431462) | 37.1713378, -110.809176 | 175, 199 | reservoir |
+| 1 | water | Lake Mead | Lake Mead (Reservoir, NV) | [7862](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/7862) | 36.1725406, -114.4298448 | 30, 239 | reservoir |
+| 1 | water | Great Salt Lake | Great Salt Lake (Lake, UT) | [1441459](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1441459) | 41.1628677, -112.5353656 | 106, 39 | inside lake #3 before it spills |
+| 1 | basin | Great Salt Lake Desert | Great Salt Lake Desert (Plain, UT) | [1455061](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1455061) | 40.6529889, -113.5272152 | 66, 60 | floor of lake #3 |
+| 1 | basin | Great Divide Basin | Great Divide Basin (Basin, WY) | [1597072](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1597072) | 42.0002345, -108.0009183 | 288, 6 | closed basin cut by the north edge (lake rank 47) |
+| 1 | canyon | Grand Canyon | Grand Canyon (Valley, mouth, AZ) | [23907](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/23907) | 36.112764, -113.9960696 | 48, 241 | GNIS point is the canyon's lower end |
+| 1 | peak | Uncompahgre Peak | Uncompahgre Peak (Summit, CO) | [188678](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/188678) | 38.0714529, -107.4625289 | 309, 163 | highest raw elevation in the study area |
+| 1 | peak | Kings Peak | Kings Peak (Summit, UT) | [1442332](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1442332) | 40.7763756, -110.3728037 | 193, 55 | Uinta Mountains |
+| 1 | peak | Humphreys Peak | Humphreys Peak (Summit, AZ) | [30290](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/30290) | 35.3463151, -111.6779884 | 140, 272 | San Francisco Peaks |
+| 1 | city | Phoenix | Phoenix (Populated Place, AZ) | [44784](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/44784) | 33.4483771, -112.0740373 | 125, 348 | city |
+| 1 | city | Tucson | Tucson (Populated Place, AZ) | [43534](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/43534) | 32.2217429, -110.926479 | 171, 397 | city |
+| 1 | city | Las Vegas | Las Vegas (Populated Place, NV) | [847388](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/847388) | 36.1749705, -115.137223 | 2, 239 | city |
+| 1 | city | Salt Lake City | Salt Lake City (Populated Place, UT) | [1454997](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1454997) | 40.7607794, -111.8910474 | 132, 55 | city |
+| 2 | water | Green River | Green River (Stream, mouth, UT) | [1428399](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1428399) | 38.189153, -109.8854026 | 212, 158 | GNIS point is its mouth, the confluence with the Colorado |
+| 2 | water | Gila River | Gila River (Stream, mouth, AZ) | [42838](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/42838) | 32.7197692, -114.5552281 | 25, 377 | GNIS point is its mouth, at the Colorado near Yuma |
+| 2 | water | Flaming Gorge Reservoir | Flaming Gorge Reservoir (Reservoir, WY) | [1441113](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1441113) | 41.096139, -109.5536311 | 225, 42 | reservoir on the Green River |
+| 2 | water | Lake Havasu | Lake Havasu (Reservoir, AZ) | [243280](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/243280) | 34.4340905, -114.3125965 | 35, 308 | reservoir |
+| 2 | water | Sevier Lake | Sevier Lake (Lake, UT) | [1432342](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1432342) | 38.9464331, -113.1385564 | 82, 128 | terminal lake, closed basin |
+| 2 | basin | Bonneville Salt Flats | Bonneville Salt Flats (Flat, UT) | [1425872](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1425872) | 40.7996521, -113.8000029 | 56, 54 | inside lake #3; nearest GNIS point to its birth cell |
+| 2 | canyon | Glen Canyon | Glen Canyon (Valley, mouth, AZ) | [1428200](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1428200) | 36.8651055, -111.5880874 | 144, 211 | below Glen Canyon Dam; GNIS point is its lower end |
+| 2 | canyon | Cataract Canyon | Cataract Canyon (Valley, mouth, UT) | [1426406](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1426406) | 37.8659196, -110.2835403 | 196, 171 | Colorado River above Lake Powell |
+| 2 | canyon | Black Canyon of the Gunnison | Black Canyon of the Gunnison (Valley, mouth, CO) | [186506](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/186506) | 38.7832477, -107.8366169 | 294, 134 | deep canyon kept open by the block minimum |
+| 2 | canyon | Bingham Canyon | Bingham Canyon (Valley, mouth, UT) | [1425581](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1425581) | 40.560142, -112.0954295 | 124, 63 | the Bingham Canyon open pit (lake #6) is at its head |
+| 2 | peak | Navajo Mountain | Navajo Mountain (Summit, UT) | [8537](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/8537) | 37.0341566, -110.8695747 | 173, 204 | above Lake Powell |
+| 2 | peak | Mount Peale | Mount Peale (Summit, UT) | [1444257](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1444257) | 38.4383313, -109.2291617 | 238, 148 | La Sal Mountains |
+| 2 | peak | Wheeler Peak | Wheeler Peak (Summit, NV) | [861956](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/861956) | 38.9857693, -114.313966 | 35, 126 | Snake Range, Great Basin |
+| 2 | city | Flagstaff | Flagstaff (Populated Place, AZ) | [29046](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/29046) | 35.1980671, -111.6512725 | 142, 278 | city |
+| 2 | city | Grand Junction | Grand Junction (Populated Place, CO) | [204662](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/204662) | 39.0638705, -108.5506486 | 266, 123 | city |
+| 2 | city | Yuma | Yuma (Populated Place, AZ) | [14111](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/14111) | 32.7253249, -114.624397 | 23, 377 | city |
+| 3 | water | Little Colorado River | Little Colorado River (Stream, mouth, AZ) | [31050](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/31050) | 36.1910972, -111.8037701 | 135, 238 | GNIS point is its mouth, at the Colorado |
+| 3 | water | Roosevelt Lake | Theodore Roosevelt Lake (Reservoir, AZ) | [42942](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/42942) | 33.684557, -111.1218411 | 163, 338 | reservoir on the Salt River; shorter display name |
+| 3 | water | Blue Mesa Reservoir | Blue Mesa Reservoir (Reservoir, CO) | [186973](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/186973) | 38.4713913, -107.2113433 | 319, 147 | reservoir on the Gunnison |
+| 3 | basin | Sevier Desert | Sevier Desert (Plain, UT) | [1455153](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1455153) | 39.4166197, -112.667451 | 101, 109 | Bonneville basin floor |
+| 3 | peak | Mount Graham | Mount Graham (Summit, AZ) | [5204](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/5204) | 32.70173, -109.8714579 | 213, 378 | Pinaleño Mountains |
+| 3 | city | Moab | Moab (Populated Place, UT) | [1430389](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1430389) | 38.5733155, -109.5498395 | 226, 143 | town |
+| 3 | city | Page | Page (Populated Place, AZ) | [9110](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/9110) | 36.9147222, -111.4558333 | 149, 209 | town at Glen Canyon Dam |
+| 3 | city | St. George | Saint George (Populated Place, UT) | [1455098](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1455098) | 37.1041476, -113.5841233 | 64, 202 | city; common short form of the GNIS name |
+| 3 | city | Rock Springs | Rock Springs (Populated Place, WY) | [1593588](https://edits.nationalmap.gov/apps/gaz-domestic/public/search/names/1593588) | 41.5874644, -109.2029043 | 239, 22 | city |
+
+### Verification (`pipeline/tests/test_labels.py`)
+
+- **Bounding box:** every label lies strictly inside the spec §6.4 bbox (typed independently in the
+  test).
+- **Cell mapping:** x, y are recomputed from `meta.json` (`native.extent`, `native.pixelDeg`), the
+  cell's footprint is checked to contain the point, the cell centre is within half a cell, and the
+  result equals `pipeline/barcode.py` `latlon_cell`. No label is within 0.001 pixel of a native pixel
+  edge, so the rule is unambiguous.
+- **Source match** (needs the cache): each cached zip's SHA-256 and size equal `source.files`, and a
+  plain `|`-split reader (independent of `pipeline/labels.py`) finds every id with the same name,
+  class and coordinates. The build itself also stops if a GNIS name differs from the one expected in
+  `SELECTION`.
+- **No duplicates:** ids, names, map texts, coordinates and cells are all unique.
+- **Grid:** `labels.json` → `grid.sha256` equals the `grid.f32` on disk and `meta.json`.
+- **Reproducible:** rebuilding from the cache gives byte-identical `labels.json`; so did a run from
+  an empty cache (fresh download, same SHA-256s) and a full `npm run data`.
+
 ## Run log (this build)
 
 | Run | Cache | Result | Time |
@@ -503,3 +664,6 @@ cell-majority rule.
 | `python -m pipeline.basin_mask` (F12a) | empty `pipeline/data/raw/wbd/` | both WBD zips downloaded; `basin-mask.bin` 33,742 B, `basin-mask.json`; `meta.json` gains `basinMask` and two `files` entries | ≈ 40 s |
 | `npm run data -- --out-dir <scratch>` (F12a) | full cache | success; all seven outputs byte-identical to the committed ones except `meta.json` `generatedAt`/`gitCommit` | 39.0 s |
 | `python -m pipeline.basin_mask --raw-dir <new empty dir> --out-dir <scratch>` (F12a) | empty | both zips downloaded again (same SHA-256); `basin-mask.bin`, `basin-mask.json`, `meta.json` byte-identical | 41.9 s |
+| `python -m pipeline.labels` (F13a) | empty `pipeline/data/raw/gnis/` | 5 GNIS zips downloaded (AZ, CO, NV, UT, WY); `labels.json` 9,962 B, 39 labels; `meta.json` untouched | < 5 s |
+| `npm run data -- --out-dir <scratch>` (F13a) | full cache | success; all eight outputs byte-identical to the committed ones (and the new `labels.json`) except `meta.json` `generatedAt`/`gitCommit` | 33.1 s |
+| `python -m pipeline.labels --raw-dir <new empty dir> --out-dir <scratch>` (F13a) | empty | 5 zips downloaded again (same SHA-256); `labels.json` byte-identical | 4.6 s |

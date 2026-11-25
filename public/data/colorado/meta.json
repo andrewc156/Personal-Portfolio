@@ -169,8 +169,8 @@
       "sha256": "67672eac75586dbab35c3dc0224acdc665f51feb962750c35e2b073fd1847056"
     },
     "basin-mask.json": {
-      "bytes": 14056,
-      "sha256": "d1658674358c605b6662bc6adb2769cdbd81897e35b7efcfbba6267f7e06012e"
+      "bytes": 13882,
+      "sha256": "f9f3e4d60b6cc1583a827e66431a9180b2436f9f424e23e170afec8f959d578f"
     }
   },
   "barcode": {

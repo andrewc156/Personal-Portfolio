@@ -1,0 +1,45 @@
+[labels] downloaded DomesticNames_AZ_Text.zip (1,367,581 B)
+[labels] downloaded DomesticNames_CO_Text.zip (1,136,591 B)
+[labels] downloaded DomesticNames_NV_Text.zip (802,075 B)
+[labels] downloaded DomesticNames_UT_Text.zip (1,149,054 B)
+[labels] downloaded DomesticNames_WY_Text.zip (1,006,010 B)
+[labels] 1 water  Colorado River               GNIS    45730 (31.9, -114.9508333) -> 10,410
+[labels] 1 water  Lake Powell                  GNIS  1431462 (37.1713378, -110.809176) -> 175,199
+[labels] 1 water  Lake Mead                    GNIS     7862 (36.1725406, -114.4298448) -> 30,239
+[labels] 1 water  Great Salt Lake              GNIS  1441459 (41.1628677, -112.5353656) -> 106,39
+[labels] 1 basin  Great Salt Lake Desert       GNIS  1455061 (40.6529889, -113.5272152) -> 66,60
+[labels] 1 basin  Great Divide Basin           GNIS  1597072 (42.0002345, -108.0009183) -> 288,6
+[labels] 1 canyon Grand Canyon                 GNIS    23907 (36.112764, -113.9960696) -> 48,241
+[labels] 1 peak   Uncompahgre Peak             GNIS   188678 (38.0714529, -107.4625289) -> 309,163
+[labels] 1 peak   Kings Peak                   GNIS  1442332 (40.7763756, -110.3728037) -> 193,55
+[labels] 1 peak   Humphreys Peak               GNIS    30290 (35.3463151, -111.6779884) -> 140,272
+[labels] 1 city   Phoenix                      GNIS    44784 (33.4483771, -112.0740373) -> 125,348
+[labels] 1 city   Tucson                       GNIS    43534 (32.2217429, -110.926479) -> 171,397
+[labels] 1 city   Las Vegas                    GNIS   847388 (36.1749705, -115.137223) -> 2,239
+[labels] 1 city   Salt Lake City               GNIS  1454997 (40.7607794, -111.8910474) -> 132,55
+[labels] 2 water  Green River                  GNIS  1428399 (38.189153, -109.8854026) -> 212,158
+[labels] 2 water  Gila River                   GNIS    42838 (32.7197692, -114.5552281) -> 25,377
+[labels] 2 water  Flaming Gorge Reservoir      GNIS  1441113 (41.096139, -109.5536311) -> 225,42
+[labels] 2 water  Lake Havasu                  GNIS   243280 (34.4340905, -114.3125965) -> 35,308
+[labels] 2 water  Sevier Lake                  GNIS  1432342 (38.9464331, -113.1385564) -> 82,128
+[labels] 2 basin  Bonneville Salt Flats        GNIS  1425872 (40.7996521, -113.8000029) -> 56,54
+[labels] 2 canyon Glen Canyon                  GNIS  1428200 (36.8651055, -111.5880874) -> 144,211
+[labels] 2 canyon Cataract Canyon              GNIS  1426406 (37.8659196, -110.2835403) -> 196,171
+[labels] 2 canyon Black Canyon of the Gunnison GNIS   186506 (38.7832477, -107.8366169) -> 294,134
+[labels] 2 canyon Bingham Canyon               GNIS  1425581 (40.560142, -112.0954295) -> 124,63
+[labels] 2 peak   Navajo Mountain              GNIS     8537 (37.0341566, -110.8695747) -> 173,204
+[labels] 2 peak   Mount Peale                  GNIS  1444257 (38.4383313, -109.2291617) -> 238,148
+[labels] 2 peak   Wheeler Peak                 GNIS   861956 (38.9857693, -114.313966) -> 35,126
+[labels] 2 city   Flagstaff                    GNIS    29046 (35.1980671, -111.6512725) -> 142,278
+[labels] 2 city   Grand Junction               GNIS   204662 (39.0638705, -108.5506486) -> 266,123
+[labels] 2 city   Yuma                         GNIS    14111 (32.7253249, -114.624397) -> 23,377
+[labels] 3 water  Little Colorado River        GNIS    31050 (36.1910972, -111.8037701) -> 135,238
+[labels] 3 water  Roosevelt Lake               GNIS    42942 (33.684557, -111.1218411) -> 163,338
+[labels] 3 water  Blue Mesa Reservoir          GNIS   186973 (38.4713913, -107.2113433) -> 319,147
+[labels] 3 basin  Sevier Desert                GNIS  1455153 (39.4166197, -112.667451) -> 101,109
+[labels] 3 peak   Mount Graham                 GNIS     5204 (32.70173, -109.8714579) -> 213,378
+[labels] 3 city   Moab                         GNIS  1430389 (38.5733155, -109.5498395) -> 226,143
+[labels] 3 city   Page                         GNIS     9110 (36.9147222, -111.4558333) -> 149,209
+[labels] 3 city   St. George                   GNIS  1455098 (37.1041476, -113.5841233) -> 64,202
+[labels] 3 city   Rock Springs                 GNIS  1593588 (41.5874644, -109.2029043) -> 239,22
+[labels] labels.json: 39 labels, 9,962 B

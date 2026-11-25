@@ -3,10 +3,12 @@
 Run from the repo root:  npm run data   (= python -m pipeline.build_colorado)
 
 Outputs in public/data/colorado/: grid.f32, barcode.json, meta.json, hillshade.webp, ATTRIBUTION.md,
-basin-mask.bin and basin-mask.json.
+basin-mask.bin, basin-mask.json and labels.json.
 The barcode (step 5) is computed by pipeline.barcode from grid.f32 as read back from disk.
 The basin mask (stretch S3) is computed last by pipeline.basin_mask from the USGS WBD and adds
-its entries to meta.json. Raw tiles and WBD zips are cached in pipeline/data/raw/ (gitignored).
+its entries to meta.json. The place labels (stretch S4) come after it, from pipeline.labels and
+the USGS GNIS, and do not change meta.json. Raw tiles and the WBD and GNIS zips are cached in
+pipeline/data/raw/ (gitignored).
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ import numpy as np
 from pipeline import barcode as bc
 from pipeline import basin_mask as bm
 from pipeline import colorado_dem as cd
+from pipeline import labels as lb
 
 REPO = Path(__file__).resolve().parent.parent
 RAW_DIR = REPO / "pipeline" / "data" / "raw"
@@ -197,6 +200,8 @@ def main(argv=None) -> int:
         raise RuntimeError("essential bar is not born at the grid's global-minimum cell")
     log(f"barcode.json {len(barcode_bytes)} B: {barcode['count']} bars ({barcode['stats']})")
 
+    # Support Python 3.10, which lacks the datetime.UTC alias.
+    generated_at = dt.datetime.now(dt.timezone.utc)  # noqa: UP017
     meta = {
         "label": "Colorado River Basin study area (RiverNets coverage)",
         "bbox": list(cd.BBOX),
@@ -354,7 +359,7 @@ def main(argv=None) -> int:
             "gridSha256": barcode["grid"]["sha256"],
             "columns": "b, d, bi, di, mi (see barcode.json description)",
         },
-        "generatedAt": dt.datetime.now(dt.UTC).replace(microsecond=0).isoformat(),
+        "generatedAt": generated_at.replace(microsecond=0).isoformat(),
         "gitCommit": git_commit(),
     }
 
@@ -365,6 +370,8 @@ def main(argv=None) -> int:
     (out / "ATTRIBUTION.md").write_text(attribution_md(), encoding="utf-8")
     # S3 basin mask: USGS WBD HU-2 14 + 15 on this grid; adds basinMask/files to meta.json.
     bm.write(out, args.raw_dir, log)
+    # S4 place labels: USGS GNIS points on this grid -> labels.json (meta.json untouched).
+    lb.write(out, args.raw_dir, log)
     log(f"grid {W} x {H}: min {gmin}; max {gmax}")
     log(f"grid.f32 {len(grid_bytes)} B, hillshade.webp {len(webp)} B (q{quality})")
     log(

@@ -1,0 +1,61 @@
+
+> andrew-chincea-portfolio@0.0.1 data
+> pipeline/.venv/bin/python -m pipeline.build_colorado --raw-dir /private/tmp/portfolio-recovery.RmJMcJ/F13a/pipeline/data/raw --out-dir docs/checks/F13a/attempt-1/cached-out
+
+[colorado] bbox (-115.201667, 31.8175, -107.060833, 42.1575); native window 9769 x 12408; 108 tiles
+[colorado] tiles present 108, missing 0 (0.1 s)
+[colorado] native min {'value': -2.885, 'row': 12241, 'col': 511, 'lat': 31.956667, 'lon': -114.775833}; max {'value': 4339.021, 'row': 4904, 'col': 9288, 'lat': 38.070833, 'lon': -107.461667}
+[colorado] barcode.json 33492 B: 600 bars ({'cells': 134964, 'births': 1217, 'finiteBars': 1216, 'positiveBars': 1009, 'zeroLengthBars': 207, 'exportedFinite': 599, 'positiveBelowThreshold': 410, 'essential': 1})
+[colorado] cached WBD_14_HU2_Shape.zip (104,512,674 B, accessed 2026-11-25)
+[colorado] cached WBD_15_HU2_Shape.zip (180,502,107 B, accessed 2026-11-25)
+[colorado] basin-mask.bin 33742 B, basin-mask.json 13882 B; basin cells 97311 / 134964 (0.7210); area 603,745.7 of 830,506.9 km²
+[colorado] HU-2 14: {'name': 'Upper Colorado Region', 'states': 'AZ,CO,NM,UT,WY', 'wbdAreaKm2': 293569.02, 'rasterizedAreaKm2': 293565.2, 'rasterizedVsWbdPct': -0.001, 'cells': 41956, 'cellAreaKm2': 251903.3, 'ringCount': 1, 'vertexCount': 109538}
+[colorado] HU-2 15: {'name': 'Lower Colorado Region', 'states': 'AZ,CA,MX,NM,NV,UT', 'wbdAreaKm2': 424356.02, 'rasterizedAreaKm2': 424359.5, 'rasterizedVsWbdPct': 0.001, 'cells': 55355, 'cellAreaKm2': 351842.5, 'ringCount': 1, 'vertexCount': 156601}
+[colorado] cached DomesticNames_AZ_Text.zip (1,367,581 B, accessed 2026-11-25)
+[colorado] cached DomesticNames_CO_Text.zip (1,136,591 B, accessed 2026-11-25)
+[colorado] cached DomesticNames_NV_Text.zip (802,075 B, accessed 2026-11-25)
+[colorado] cached DomesticNames_UT_Text.zip (1,149,054 B, accessed 2026-11-25)
+[colorado] cached DomesticNames_WY_Text.zip (1,006,010 B, accessed 2026-11-25)
+[colorado] 1 water  Colorado River               GNIS    45730 (31.9, -114.9508333) -> 10,410
+[colorado] 1 water  Lake Powell                  GNIS  1431462 (37.1713378, -110.809176) -> 175,199
+[colorado] 1 water  Lake Mead                    GNIS     7862 (36.1725406, -114.4298448) -> 30,239
+[colorado] 1 water  Great Salt Lake              GNIS  1441459 (41.1628677, -112.5353656) -> 106,39
+[colorado] 1 basin  Great Salt Lake Desert       GNIS  1455061 (40.6529889, -113.5272152) -> 66,60
+[colorado] 1 basin  Great Divide Basin           GNIS  1597072 (42.0002345, -108.0009183) -> 288,6
+[colorado] 1 canyon Grand Canyon                 GNIS    23907 (36.112764, -113.9960696) -> 48,241
+[colorado] 1 peak   Uncompahgre Peak             GNIS   188678 (38.0714529, -107.4625289) -> 309,163
+[colorado] 1 peak   Kings Peak                   GNIS  1442332 (40.7763756, -110.3728037) -> 193,55
+[colorado] 1 peak   Humphreys Peak               GNIS    30290 (35.3463151, -111.6779884) -> 140,272
+[colorado] 1 city   Phoenix                      GNIS    44784 (33.4483771, -112.0740373) -> 125,348
+[colorado] 1 city   Tucson                       GNIS    43534 (32.2217429, -110.926479) -> 171,397
+[colorado] 1 city   Las Vegas                    GNIS   847388 (36.1749705, -115.137223) -> 2,239
+[colorado] 1 city   Salt Lake City               GNIS  1454997 (40.7607794, -111.8910474) -> 132,55
+[colorado] 2 water  Green River                  GNIS  1428399 (38.189153, -109.8854026) -> 212,158
+[colorado] 2 water  Gila River                   GNIS    42838 (32.7197692, -114.5552281) -> 25,377
+[colorado] 2 water  Flaming Gorge Reservoir      GNIS  1441113 (41.096139, -109.5536311) -> 225,42
+[colorado] 2 water  Lake Havasu                  GNIS   243280 (34.4340905, -114.3125965) -> 35,308
+[colorado] 2 water  Sevier Lake                  GNIS  1432342 (38.9464331, -113.1385564) -> 82,128
+[colorado] 2 basin  Bonneville Salt Flats        GNIS  1425872 (40.7996521, -113.8000029) -> 56,54
+[colorado] 2 canyon Glen Canyon                  GNIS  1428200 (36.8651055, -111.5880874) -> 144,211
+[colorado] 2 canyon Cataract Canyon              GNIS  1426406 (37.8659196, -110.2835403) -> 196,171
+[colorado] 2 canyon Black Canyon of the Gunnison GNIS   186506 (38.7832477, -107.8366169) -> 294,134
+[colorado] 2 canyon Bingham Canyon               GNIS  1425581 (40.560142, -112.0954295) -> 124,63
+[colorado] 2 peak   Navajo Mountain              GNIS     8537 (37.0341566, -110.8695747) -> 173,204
+[colorado] 2 peak   Mount Peale                  GNIS  1444257 (38.4383313, -109.2291617) -> 238,148
+[colorado] 2 peak   Wheeler Peak                 GNIS   861956 (38.9857693, -114.313966) -> 35,126
+[colorado] 2 city   Flagstaff                    GNIS    29046 (35.1980671, -111.6512725) -> 142,278
+[colorado] 2 city   Grand Junction               GNIS   204662 (39.0638705, -108.5506486) -> 266,123
+[colorado] 2 city   Yuma                         GNIS    14111 (32.7253249, -114.624397) -> 23,377
+[colorado] 3 water  Little Colorado River        GNIS    31050 (36.1910972, -111.8037701) -> 135,238
+[colorado] 3 water  Roosevelt Lake               GNIS    42942 (33.684557, -111.1218411) -> 163,338
+[colorado] 3 water  Blue Mesa Reservoir          GNIS   186973 (38.4713913, -107.2113433) -> 319,147
+[colorado] 3 basin  Sevier Desert                GNIS  1455153 (39.4166197, -112.667451) -> 101,109
+[colorado] 3 peak   Mount Graham                 GNIS     5204 (32.70173, -109.8714579) -> 213,378
+[colorado] 3 city   Moab                         GNIS  1430389 (38.5733155, -109.5498395) -> 226,143
+[colorado] 3 city   Page                         GNIS     9110 (36.9147222, -111.4558333) -> 149,209
+[colorado] 3 city   St. George                   GNIS  1455098 (37.1041476, -113.5841233) -> 64,202
+[colorado] 3 city   Rock Springs                 GNIS  1593588 (41.5874644, -109.2029043) -> 239,22
+[colorado] labels.json: 39 labels, 9,962 B
+[colorado] grid 326 x 414: min {'value': -2.885, 'cell': 133025, 'x': 17, 'y': 408, 'lat': 31.945417, 'lon': -114.764583}; max {'value': 3697.834, 'cell': 56383, 'x': 311, 'y': 172, 'lat': 37.845417, 'lon': -107.414583}
+[colorado] grid.f32 539856 B, hillshade.webp 179574 B (q85)
+[colorado] timings: download/cache check 0.1 s, processing 9.1 s, total 29.7 s

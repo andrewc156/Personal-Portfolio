@@ -1,0 +1,9 @@
+grid bbox (Decimal('-115.201667'), Decimal('31.817500'), Decimal('-107.060833'), Decimal('42.157500')), 326 × 414, minimum cell 133025, height -2.885 m, all meta.json listed file sizes/hashes match
+GNIS AZ: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS CO: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS NV: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS UT: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS WY: archive length, SHA, sidecar, publication, datum, and credit request match
+39/39 exact archive records and cell positions; categories {'water': 12, 'basin': 4, 'canyon': 5, 'peak': 7, 'city': 11}
+Uncompahgre Peak matches raw-max grid cell (309, 163); Colorado River primary location (Decimal('31.9'), Decimal('-114.9508333'))
+Basin bitplanes unchanged semantically: 97,311 mask cells, 55,355 in HU2 15; grid minimum inside; baseline JSON changes only coverage and metadata digest

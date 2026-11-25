@@ -75,3 +75,9 @@ Rewrote the `coverage[]` strings in `basin-mask.json` for public readers. The F1
   - ruff check: clean.
   - `npx vitest run tests/unit/viz/explorer`: 6 files, 80 tests passed.
   - `npm run data -- --out-dir <scratch>`: all outputs, including the new basin-mask.json and labels.json, are byte-identical to the committed files except meta.json `generatedAt`/`gitCommit`.
+
+## Recovery review
+
+- The labels generator, coverage text, and metadata hashes were complete at handoff. I replaced `datetime.UTC` with the Python 3.10-compatible `datetime.timezone.utc` in `pipeline/labels.py`, `pipeline/basin_mask.py` and `pipeline/build_colorado.py`. The targeted Ruff suppressions preserve the documented Python minimum.
+- `pipeline/.venv/bin/python -m pytest pipeline -q` passed all 606 tests. `pipeline/.venv/bin/ruff check pipeline` passed. The cached full pipeline rebuilt all seven data files byte-for-byte and matched `meta.json` apart from `generatedAt` and `gitCommit`. The local interpreter was Python 3.13.
+- The earlier empty-cache repeat used the same GNIS releases and UTC access date. A later cold run can update access-date provenance or pick up a new upstream release.
