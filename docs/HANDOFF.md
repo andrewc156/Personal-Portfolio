@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 19:15 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 19:20 EST, Claude Code (Control)
 
 ## Status
 
@@ -22,7 +22,7 @@
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | building (site-builder, attempt 1); CI red since `ef15630` | n/a | — |
 | F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
-| F11 Islands barcode (S2) | building: F11a H1 engine (tda-engineer, attempt 1) | n/a | — |
+| F11 Islands barcode (S2) | checking: F11a built (docs/builds/F11a/attempt-1.md), checker attempt 1 running | n/a | — |
 | F12 Basin mask (S3) | building: F12a mask data (data-engineer, attempt 1) | n/a | — |
 | F13 Place labels (S4) | todo (approved) | n/a | — |
 
@@ -31,7 +31,7 @@
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | four modes, tests, report → checker |
-| F11a H1 islands engine | tda-engineer | src/lib/tda/**, tests/unit/tda/**, tests/fixtures/tda/**, pipeline/tda_ref.py, pipeline/tests/test_tda_ref.py, scripts/bench-tda.mjs, docs/tda.md, docs/builds/F11a/ | delegated | engine + Python ref + oracle tests, report → checker |
+| F11a H1 islands engine | tda-engineer | src/lib/tda/**, tests/unit/tda/**, tests/fixtures/tda/**, pipeline/tda_ref.py, pipeline/tests/test_tda_ref.py, scripts/bench-tda.mjs, docs/tda.md, docs/builds/F11a/ | built, report done | checker attempt 1 running → docs/checks/F11a/attempt-1.md |
 | CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | delegated | root cause + fix, report → checker (priority: check first) |
 | F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | delegated | WBD 14+15 rasterized to grid, tests, report → checker |
 
@@ -44,13 +44,18 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 
 ## Uncommitted changes
 
-None.
+All are unverified builder work in progress, not yet checked:
+- F11a (built): src/lib/tda/h1.ts, types.ts, index.ts, pipeline/tda_ref.py, pipeline/tests/test_tda_ref.py, tests/unit/tda/islands.test.ts, tests/fixtures/tda/islands*.json, generate_islands_fixtures.py, scripts/bench-tda.mjs, docs/tda.md, docs/builds/F11a/
+- F10 (building): src/lib/viz/hero/** (modes/), src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts
+- F12a (building): pipeline/basin_mask.py and others, public/data/colorado/meta.json
+- CI1 (building): header/styles/e2e cls+shell
 
 ## Open issues and "Needs Andrew"
 
 - Before deployment: domain, hosting method, and explicit deployment approval (`docs/deploy.md`).
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
 - GitHub CI `npm run verify` has failed on every push since `ef15630`: `e2e/cls.spec.ts:171` says "Rising water is scrolled into view when focused" at 412px. It is Linux-only; the F9 checker passed on macOS. Being fixed as CI1. Andrew is preparing a Cloudflare Pages deploy.
+- §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
