@@ -1,0 +1,58 @@
+
+> andrew-chincea-portfolio@0.0.1 build
+> astro build && node scripts/write-headers.mjs
+
+17:19:52 [content] Syncing content
+17:19:52 [content] Astro config changed
+17:19:52 [content] Clearing content store
+17:19:52 [content] Synced content
+17:19:52 [types] Generated 211ms
+17:19:52 [build] output: "static"
+17:19:52 [build] mode: "static"
+17:19:52 [build] directory: /Users/andrewchincea/personalPortfolio/dist/
+17:19:52 [build] Collecting build info...
+17:19:52 [build] ✓ Completed in 220ms.
+17:19:52 [build] Building static entrypoints...
+17:19:52 [vite] ✓ built in 103ms
+17:19:52 [vite] ✓ built in 26ms
+17:19:52 [build] Rearranging server assets...
+
+ generating static routes 
+17:19:52   ├─ /404.html (+5ms) 
+17:19:52   ├─ /about/index.html (+2ms) 
+17:19:52   ├─ /cv/index.html (+5ms) 
+17:19:52   ├─ /garden/index.html (+3ms) 
+17:19:52   ├─ /research/water-quality/index.html (+2ms) 
+17:19:52   ├─ /research/number-theory/index.html (+1ms) 
+17:19:52   ├─ /research/spectral-fractals/index.html (+1ms) 
+17:19:52   ├─ /research/index.html (+1ms) 
+17:19:52   ├─ /rising-water/index.html (+7ms) 
+17:19:52   ├─ /robots.txt (+1ms) 
+17:19:52   ├─ /index.html (+3ms) 
+17:19:52 ✓ Completed in 38ms.
+
+17:19:52 [build] ✓ Completed in 186ms.
+17:19:52 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+17:19:52 [build] 10 page(s) built in 415ms
+17:19:52 [build] Complete!
+write-headers: 51 public URL(s) are not production https:// URLs. Set SITE_URL as a *build* variable or check astro.config.mjs:
+  dist/404.html: og:image http://localhost:4321/og/social-card.png
+  dist/404.html: twitter:image http://localhost:4321/og/social-card.png
+  dist/about/index.html: canonical http://localhost:4321/about/
+  dist/about/index.html: og:url http://localhost:4321/about/
+  dist/about/index.html: og:image http://localhost:4321/og/social-card.png
+  dist/about/index.html: twitter:image http://localhost:4321/og/social-card.png
+  dist/cv/index.html: canonical http://localhost:4321/cv/
+  dist/cv/index.html: og:url http://localhost:4321/cv/
+  dist/cv/index.html: og:image http://localhost:4321/og/social-card.png
+  dist/cv/index.html: twitter:image http://localhost:4321/og/social-card.png
+  dist/garden/index.html: canonical http://localhost:4321/garden/
+  dist/garden/index.html: og:url http://localhost:4321/garden/
+  dist/garden/index.html: og:image http://localhost:4321/og/social-card.png
+  dist/garden/index.html: twitter:image http://localhost:4321/og/social-card.png
+  dist/index.html: canonical http://localhost:4321/
+  dist/index.html: og:url http://localhost:4321/
+  dist/index.html: og:image http://localhost:4321/og/social-card.png
+  dist/index.html: twitter:image http://localhost:4321/og/social-card.png
+  dist/research/index.html: canonical http://localhost:4321/research/
+  dist/research/index.html: og:url http://localhost:4321/research/

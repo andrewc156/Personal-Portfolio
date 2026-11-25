@@ -1,4 +1,10 @@
-# Cloudflare Pages response headers (spec §10/F8). See docs/deploy.md.
+# Cloudflare response headers (spec §10/F8). See docs/deploy.md.
+#
+# Single source of truth for response headers. Production is a Worker with
+# assets.run_worker_first (wrangler.jsonc); Cloudflare does not apply _headers
+# to responses that pass through Worker code, so worker/index.ts bundles
+# dist/_headers as text at deploy time and applies these same rules itself,
+# with Cloudflare's matching semantics (worker/headers.ts).
 #
 # This file is a TEMPLATE. `npm run build` runs scripts/write-headers.mjs after
 # `astro build`, which replaces the two __INLINE_*_HASHES__ markers below with
@@ -8,12 +14,16 @@
 #
 # Matching rules apply in file order and headers set twice are JOINED with a
 # comma, so Cache-Control is set only on the specific paths below (never on /*).
-# HTML, robots.txt and the sitemaps keep the Pages default
+# HTML, robots.txt and the sitemaps keep the Cloudflare default
 # (public, max-age=0, must-revalidate): always revalidated, so a deploy is
 # visible at once.
+#
+# Cloudflare Web Analytics is kept (DECISIONS #88): script-src allows exactly
+# https://static.cloudflareinsights.com (the beacon) and connect-src exactly
+# https://cloudflareinsights.com (where it reports). Nothing broader.
 
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' __INLINE_SCRIPT_HASHES__; style-src 'self' __INLINE_STYLE_HASHES__; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com __INLINE_SCRIPT_HASHES__; style-src 'self' __INLINE_STYLE_HASHES__; img-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()

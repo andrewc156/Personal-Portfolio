@@ -1,0 +1,58 @@
+
+> andrew-chincea-portfolio@0.0.1 build
+> astro build && node scripts/write-headers.mjs
+
+17:19:53 [content] Syncing content
+17:19:53 [content] Astro config changed
+17:19:53 [content] Clearing content store
+17:19:53 [content] Synced content
+17:19:53 [types] Generated 210ms
+17:19:53 [build] output: "static"
+17:19:53 [build] mode: "static"
+17:19:53 [build] directory: /Users/andrewchincea/personalPortfolio/dist/
+17:19:53 [build] Collecting build info...
+17:19:53 [build] ✓ Completed in 219ms.
+17:19:53 [build] Building static entrypoints...
+17:19:53 [vite] ✓ built in 128ms
+17:19:53 [vite] ✓ built in 27ms
+17:19:53 [build] Rearranging server assets...
+
+ generating static routes 
+17:19:53   ├─ /404.html (+5ms) 
+17:19:53   ├─ /about/index.html (+2ms) 
+17:19:53   ├─ /cv/index.html (+5ms) 
+17:19:53   ├─ /garden/index.html (+3ms) 
+17:19:53   ├─ /research/water-quality/index.html (+2ms) 
+17:19:53   ├─ /research/number-theory/index.html (+1ms) 
+17:19:53   ├─ /research/spectral-fractals/index.html (+1ms) 
+17:19:53   ├─ /research/index.html (+1ms) 
+17:19:53   ├─ /rising-water/index.html (+7ms) 
+17:19:53   ├─ /robots.txt (+1ms) 
+17:19:53   ├─ /index.html (+3ms) 
+17:19:53 ✓ Completed in 39ms.
+
+17:19:53 [build] ✓ Completed in 214ms.
+17:19:53 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+17:19:53 [build] 10 page(s) built in 441ms
+17:19:53 [build] Complete!
+write-headers: 49 public URL(s) are not production https:// URLs. Set SITE_URL as a *build* variable or check astro.config.mjs:
+  dist/404.html: og:image http://andrewchincea.com/og/social-card.png
+  dist/404.html: twitter:image http://andrewchincea.com/og/social-card.png
+  dist/about/index.html: canonical http://andrewchincea.com/about/
+  dist/about/index.html: og:url http://andrewchincea.com/about/
+  dist/about/index.html: og:image http://andrewchincea.com/og/social-card.png
+  dist/about/index.html: twitter:image http://andrewchincea.com/og/social-card.png
+  dist/cv/index.html: canonical http://andrewchincea.com/cv/
+  dist/cv/index.html: og:url http://andrewchincea.com/cv/
+  dist/cv/index.html: og:image http://andrewchincea.com/og/social-card.png
+  dist/cv/index.html: twitter:image http://andrewchincea.com/og/social-card.png
+  dist/garden/index.html: canonical http://andrewchincea.com/garden/
+  dist/garden/index.html: og:url http://andrewchincea.com/garden/
+  dist/garden/index.html: og:image http://andrewchincea.com/og/social-card.png
+  dist/garden/index.html: twitter:image http://andrewchincea.com/og/social-card.png
+  dist/index.html: canonical http://andrewchincea.com/
+  dist/index.html: og:url http://andrewchincea.com/
+  dist/index.html: og:image http://andrewchincea.com/og/social-card.png
+  dist/index.html: twitter:image http://andrewchincea.com/og/social-card.png
+  dist/research/index.html: canonical http://andrewchincea.com/research/
+  dist/research/index.html: og:url http://andrewchincea.com/research/

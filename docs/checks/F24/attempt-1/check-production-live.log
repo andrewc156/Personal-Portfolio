@@ -1,0 +1,22 @@
+check-production: https://andrewchincea.com (expected public origin https://andrewchincea.com)
+sitemap: 1 pages
+  FAIL /robots.txt: Sitemap lines [http://localhost:4321/sitemap-index.xml], expected https://andrewchincea.com/sitemap-index.xml
+  FAIL sitemap-index.xml <loc>: http://localhost:4321/sitemap-0.xml is not on https://andrewchincea.com
+  FAIL sitemaps list no pages
+  FAIL /: canonical [http://localhost:4321/], expected https://andrewchincea.com/
+  FAIL /: og:url [http://localhost:4321/], expected https://andrewchincea.com/
+  FAIL / og:image: http://localhost:4321/og/social-card.png is not on https://andrewchincea.com
+  FAIL / twitter:image: http://localhost:4321/og/social-card.png is not on https://andrewchincea.com
+  FAIL /: page source mentions localhost
+  FAIL /: CSP script-src hosts are [], expected [https://static.cloudflareinsights.com]
+  FAIL /: CSP connect-src hosts are [], expected [https://cloudflareinsights.com]
+  FAIL HEAD /: CSP script-src hosts are [], expected [https://static.cloudflareinsights.com]
+  FAIL HEAD /: CSP connect-src hosts are [], expected [https://cloudflareinsights.com]
+  FAIL /check-production-missing-mwwovrqm/: body lacks "This page has gone under water."
+  FAIL /check-production-missing-mwwovrqm/: body lacks "Go to the home page"
+  FAIL /check-production-missing-mwwovrqm/: CSP script-src hosts are [], expected [https://static.cloudflareinsights.com]
+  FAIL /check-production-missing-mwwovrqm/: CSP connect-src hosts are [], expected [https://cloudflareinsights.com]
+  FAIL http://andrewchincea.com/rising-water/?check=production&x=1: 200 → (no Location); expected 301 → https://andrewchincea.com/rising-water/?check=production&x=1
+  FAIL https://www.andrewchincea.com/rising-water/?check=production&x=1: 200 → (no Location); expected 301 → https://andrewchincea.com/rising-water/?check=production&x=1
+  FAIL http://www.andrewchincea.com/rising-water/?check=production&x=1: 200 → (no Location); expected 301 → https://andrewchincea.com/rising-water/?check=production&x=1
+check-production: 35 passed, 19 failed

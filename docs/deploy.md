@@ -1,190 +1,207 @@
-# Deploying to Cloudflare Pages
+# Deploying andrewchincea.com (Cloudflare Workers Builds)
 
-This site is fully static: `npm run build` writes everything to `dist/`, and Cloudflare Pages serves it with no adapter and no Functions.
+Production is a Cloudflare **Worker with static assets**, built and deployed by **Workers Builds** from the GitHub repo `andrewc156/Personal-Portfolio` (branch `main`):
 
-Nothing in this repo deploys by itself. Every step that talks to a Cloudflare account is one **Andrew runs himself**, after deciding:
-- which domain to use, or whether to use the `*.pages.dev` URL for now;
-- Git integration or direct upload.
+| Setting | Value |
+|---|---|
+| Worker name | `personal-portfolio` (also `name` in `wrangler.jsonc`) |
+| Custom domain | `andrewchincea.com`; `www.andrewchincea.com` must also reach this Worker (see [dashboard steps](#what-andrew-still-has-to-do-in-the-dashboard)) |
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy --assets ./dist --compatibility-date 2026-11-23` |
 
-Pick one of the two methods below. Cloudflare says a Direct Upload project "cannot switch to Git integration later" ([direct upload docs](https://developers.cloudflare.com/pages/get-started/direct-upload/)). To change methods you'd create a new project.
+The site is still fully static. The Worker (`worker/`) is about 60 lines: it redirects the non-canonical host and scheme and attaches the response headers. Every page and asset, and the 404 page, comes from `dist/` through the asset binding.
+
+Nothing in this repo deploys by itself, and no agent deploys. A push to `main` triggers Workers Builds, and the Cloudflare dashboard belongs to Andrew.
+
+## Files involved
+
+| File | Role |
+|---|---|
+| `astro.config.mjs` | Chooses `site`, the origin of every absolute URL ([below](#site_url-build-variables-vs-runtime-variables)). |
+| `scripts/write-headers.mjs` | Second half of `npm run build`. Writes `dist/_headers` (CSP hashes). On Cloudflare's build machines it also fails the build if any public URL is not a production `https://` URL. |
+| `public/_headers` | Template and **single source of truth** for every response header. |
+| `wrangler.jsonc` | Worker config: `main`, the asset binding, `run_worker_first`, the 404 page, trailing-slash handling. |
+| `worker/index.ts`, `worker/handler.ts`, `worker/headers.ts` | The Worker. |
+| `scripts/check-production.mjs` | Read-only post-deploy smoke check. |
+
+## `SITE_URL`: build variables vs runtime variables
+
+Canonical links, `og:url`, `og:image`, `twitter:image`, `robots.txt` and the sitemaps are absolute URLs. They are fixed when `astro build` runs. `astro.config.mjs` picks the origin in this order:
+
+1. `SITE_URL`, if it is set **in the build's environment**.
+2. Otherwise `https://andrewchincea.com`, when the build runs on Cloudflare. Workers Builds sets `WORKERS_CI=1`; Pages sets `CF_PAGES=1`.
+3. Otherwise `http://localhost:4321`, the preview origin. Local checks and the e2e suite rely on this.
+
+Workers Builds keeps two separate lists of variables:
+- **Build variables** (Worker → **Settings → Build → Variables and secrets**) exist while `npm run build` runs. Only these can affect the URLs.
+- **Runtime variables** (Worker → **Settings → Variables and Secrets**) are bindings for the running Worker. They never reach `astro build`.
+
+At F23 the production pages advertised `http://localhost:4321` (QA-01), even though `SITE_URL` "was set". That is consistent with `SITE_URL` being a runtime variable. It could not be confirmed from the repo, because no agent can see the dashboard.
+
+Either way, step 2 now covers it, so **no variable is needed**. If `SITE_URL` is set as a build variable, it wins, so it must be exactly `https://andrewchincea.com`, with no trailing slash.
+
+**Guard:** in a Cloudflare build (`WORKERS_CI` or `CF_PAGES` set), `scripts/write-headers.mjs` exits 1 unless every one of these is an `https://` URL that isn't localhost:
+- every canonical, `og:url`, `og:image` and `twitter:image` in `dist/**/*.html`;
+- the `Sitemap:` line in `dist/robots.txt`;
+- every `<loc>` in `dist/sitemap*.xml`.
+
+A wrong origin therefore fails the build, and the previous deployment stays live. To run the guard locally, use `node scripts/write-headers.mjs --require-public-urls`. On a local build it fails, which is correct.
+
+The Worker reads no variables. `wrangler.jsonc` sets `"keep_vars": true`, so deploys no longer delete runtime variables set in the dashboard, which is what `wrangler deploy` does by default.
 
 ## What the build does
 
 `npm run build` = `astro build && node scripts/write-headers.mjs`.
 
-1. **`astro build`** writes the pages to `dist/`. It also copies `public/` there, including the template `public/_headers`, the Colorado data and the social card.
-2. **`scripts/write-headers.mjs`** overwrites `dist/_headers` with the template's two markers filled in. It finds every inline `<script>`, `<style>`, `style=""` and `on…=""` in `dist/**/*.html` and puts their sha256 hashes into the Content-Security-Policy. You never edit hashes by hand.
-   - It exits 1 if a marker is missing, `dist/` has no HTML, or the file would break Cloudflare's `_headers` limits. Those limits are 100 rules and 2,000 characters per line ([headers docs](https://developers.cloudflare.com/pages/configuration/headers/)).
-   - The CSP line is currently 1,678 characters.
-3. **`SITE_URL`** sets the absolute URLs: canonical links, `og:url`/`og:image`, `sitemap-index.xml`/`sitemap-0.xml` and the `Sitemap:` line in `robots.txt`.
-   - Unset, it falls back to `http://localhost:4321`, which is right for local checks and wrong for production.
-   - **Always build for production with `SITE_URL` set.**
+1. **`astro build`** writes the pages to `dist/`, including `dist/404.html` from `src/pages/404.astro`, and copies `public/` there.
+2. **`scripts/write-headers.mjs`** runs the public-URL guard (Cloudflare builds only). It then fills the two markers in the `public/_headers` template and writes the result to `dist/_headers`. The markers become the sha256 hashes of every inline `<script>`, `<style>`, `style=""` and `on…=""` in `dist/**/*.html`. You never edit hashes by hand.
+   - It exits 1 if a marker is missing, `dist/` has no HTML, or the file breaks Cloudflare's `_headers` limits (100 rules, 2,000 characters per line).
+   - The CSP line is about 959 of 2,000 characters after the analytics allowance (checked in F24). The script prints the exact length on every build.
+3. **The deploy command** bundles `worker/index.ts`.
+   - A `Text` module rule in `wrangler.jsonc` makes it import `dist/_headers` as a string. It then uploads `dist/` as the Worker's assets.
+   - `--assets ./dist` only overrides `assets.directory`. Wrangler still reads `binding`, `run_worker_first`, `not_found_handling` and `html_handling` from `wrangler.jsonc` (`resolveAssetOptions` in wrangler 4.167).
 
-**Python is not needed on Cloudflare.**
-- The Colorado data in `public/data/colorado/` is committed, and the build only copies it.
-- The pipeline (`npm run data`) runs only on a developer machine.
-- The build command never calls Python. (The only `requirements.txt` is under `pipeline/`, not at the repo root.)
+Python is not needed on Cloudflare. The Colorado data in `public/data/colorado/` is committed and only copied.
 
-### Headers that `public/_headers` sets
+## The Worker
+
+`wrangler.jsonc` sets `assets.run_worker_first: true`, so the Worker sees every request first:
+
+| Request | Response |
+|---|---|
+| `http://andrewchincea.com/…` | `301` to `https://andrewchincea.com/…`, path and query preserved |
+| `https://www.andrewchincea.com/…`, `http://www.andrewchincea.com/…` | `301` to `https://andrewchincea.com/…`, path and query preserved (one hop) |
+| `https://andrewchincea.com/…` | passed unchanged to `env.ASSETS.fetch(request)` |
+| any other host (`*.workers.dev`, preview URLs, `localhost`) | passed through, never redirected |
+
+- **Pass-through keeps the asset server's behaviour.** The original request goes to the binding unchanged, so HEAD, `If-None-Match`/`If-Modified-Since` (`304`) and `Range` work as before.
+- **404 page:** `not_found_handling: "404-page"` serves `dist/404.html` with status **404** (QA-02). That is the branded page ("This page has gone under water.", "Go to the home page"), not an empty body.
+- **Trailing slashes:** `html_handling: "auto-trailing-slash"` keeps `/rising-water` → `307 /rising-water/`, the same as before.
+- **Headers:** Cloudflare does **not** apply `_headers` to responses that pass through Worker code ([static-assets headers](https://developers.cloudflare.com/workers/static-assets/headers/)). So the Worker applies the rules from the bundled `dist/_headers` itself, with Cloudflare's semantics:
+  - every matching rule applies, in file order;
+  - `! Name` detaches a header;
+  - each header is **set**, never appended, so the asset server's default `Cache-Control` is replaced, never joined;
+  - redirects get the security headers but no per-path `Cache-Control`.
+- **Fails closed:** if `dist/_headers` still contains a template marker or has no `/*` CSP, the Worker throws at startup. The deploy then fails instead of serving without a CSP. Unsupported `_headers` syntax (absolute-URL or `:placeholder` patterns) also throws.
+- **`dist/_headers` is still deployed.** Cloudflare parses it as configuration and never serves it, so it is harmless. It stays authoritative for any non-Worker serving, such as a Pages project or `wrangler pages dev`. There is no separate rules file and no `.assetsignore` to maintain.
+
+## Response headers (`public/_headers`)
 
 | Path | Cache-Control | Why |
 |---|---|---|
-| `/_astro/*` | `public, max-age=31536000, immutable` | Vite puts a content hash in every file name, so a changed file is a new URL. |
-| `/data/*` | `public, max-age=86400, must-revalidate` | Fixed names. They change only when the pipeline is rerun and the site redeployed. After a day the browser revalidates with the ETag, and an unchanged file costs a 304. There is deliberately no `stale-while-revalidate`: the explorer checks meta.json, barcode.json and grid.f32 against each other, and a stale file served next to a fresh one would trip that check. |
+| `/_astro/*` | `public, max-age=31536000, immutable` | Vite puts a content hash in every file name. |
+| `/data/*` | `public, max-age=86400, must-revalidate` | Fixed names; they change only when the pipeline is rerun. No `stale-while-revalidate`, because the explorer checks meta.json, barcode.json and grid.f32 against each other. |
 | `/og/*`, `/favicon.svg` | `public, max-age=86400, must-revalidate` | Fixed names that change rarely. |
-| HTML, `robots.txt`, sitemaps | Pages default `public, max-age=0, must-revalidate` | Always revalidated, so a new deploy shows up at once. |
+| HTML, `robots.txt`, sitemaps | Cloudflare default `public, max-age=0, must-revalidate` | Always revalidated, so a deploy shows at once. |
 
-On `/*`, every response also gets:
-- `Content-Security-Policy`: `default-src 'self'`; scripts and styles from `'self'` plus the build's hashes; `img-src`/`font-src`/`connect-src 'self'`; `object-src 'none'`; `base-uri 'self'`; `form-action 'self'`; `frame-ancestors 'none'`; `upgrade-insecure-requests`;
-- `X-Content-Type-Options: nosniff`;
-- `Referrer-Policy: strict-origin-when-cross-origin`;
-- `Permissions-Policy` that denies camera, microphone, geolocation, payment, USB, sensors and so on;
-- `Cross-Origin-Opener-Policy: same-origin`;
-- `X-Frame-Options: DENY`, for older browsers.
+On `/*`, every response also gets these headers:
+- `Content-Security-Policy`:
+  - `default-src 'self'`;
+  - `script-src 'self' https://static.cloudflareinsights.com` plus the build's hashes;
+  - `style-src 'self'` plus hashes;
+  - `img-src 'self'` and `font-src 'self'`;
+  - `connect-src 'self' https://cloudflareinsights.com`;
+  - `object-src 'none'`, `base-uri 'self'`, `form-action 'self'` and `frame-ancestors 'none'`;
+  - `upgrade-insecure-requests`.
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- a deny-all `Permissions-Policy`
+- `Cross-Origin-Opener-Policy: same-origin`
+- `X-Frame-Options: DENY`
 
-**Cache-Control is never set on `/*`.** Pages joins a header that two rules both set with a comma, which would corrupt `Cache-Control`.
+**Cache-Control is never set on `/*`**, because two matching rules that set the same header are joined with a comma.
 
-**About `'unsafe-hashes'`:** `/rising-water/` has `style=""` attributes and one `onsubmit="return false"`. CSP only allows those through `'unsafe-hashes'` plus the hash of each exact attribute value.
-- This is not `'unsafe-inline'`. Only those exact strings run or apply, and anything injected is still blocked.
-- The script adds `'unsafe-hashes'` to a directive only when the build actually contains such attributes.
+**Cloudflare Web Analytics (DECISIONS #88):** Andrew chose to keep it.
+- The CSP allows exactly the beacon script origin `https://static.cloudflareinsights.com` in `script-src`, and exactly its reporting origin `https://cloudflareinsights.com` in `connect-src`. Nothing is broader.
+- These are the only third-party origins.
+- Before this change, the CSP blocked the injected beacon (F23 QA-18).
+- A grep found no site copy that claims the site has no analytics or tracking.
 
-### Check the headers locally (no login)
+**About `'unsafe-hashes'`:** `/rising-water/` has `style=""` attributes and one `onsubmit="return false"`. Only those exact hashed strings are allowed. The keyword is added only when the build contains such attributes.
+
+## Check locally (no login, no deploy)
 
 ```sh
-npm run build
-npx wrangler pages dev dist --port 8788
-curl -sI http://localhost:8788/ | grep -iE 'content-security|cache-control|x-content|referrer|permissions'
-curl -sI http://localhost:8788/no-such-page/                # 404 status, custom page
+WORKERS_CI=1 npm run build                                     # production-like build (apex URLs)
+npx wrangler deploy --dry-run --outdir "$TMPDIR/f24-dryrun"   # validates wrangler.jsonc, bundles the Worker
+npx wrangler dev --port 8788                                   # Worker + dist/, as deployed
+curl -sI http://localhost:8788/ | grep -iE 'content-security|cache-control|x-content|referrer|permissions|etag'
+curl -sI http://localhost:8788/no-such-page/                   # 404, branded page
+curl -sI http://localhost:8788/rising-water                    # 307 -> /rising-water/
 HEADERS_BASE_URL=http://localhost:8788 npx playwright test e2e/headers.spec.ts
+node scripts/check-production.mjs --base http://localhost:8788 --origin https://andrewchincea.com --skip-aliases
+npm run build                                                  # rebuild with localhost URLs before e2e
 ```
 
-`astro preview` ignores `_headers`, which is why `e2e/headers.spec.ts` skips unless `HEADERS_BASE_URL` is set.
+- **Use the `WORKERS_CI=1` build for the smoke check.** The script rejects every localhost URL by design, so `--origin http://localhost:4321` against a plain local build always fails.
+- **Redirects** are covered by unit tests (`tests/unit/delivery/worker.test.ts`). `wrangler dev` does honour a spoofed `Host` header (`curl -sI -H 'Host: www.andrewchincea.com' http://localhost:8788/` → 301), but its local proxy rewrites same-host `Location` values to `http://`. That is a wrangler dev artifact, not a Worker bug; production returns `https://`.
+- **`astro preview` serves neither the Worker nor `_headers`.** That is why `e2e/headers.spec.ts` skips unless `HEADERS_BASE_URL` is set.
+
+## After every production deploy
+
+```sh
+node scripts/check-production.mjs            # read-only; default origin https://andrewchincea.com
+```
+
+It sends only GET and HEAD requests, never follows redirects, and exits 1 on any failure. It checks:
+- `robots.txt` → `Sitemap: https://andrewchincea.com/sitemap-index.xml`;
+- the sitemap index and the child sitemaps list only apex URLs;
+- every sitemap page returns `200` HTML with:
+  - canonical and `og:url` equal to its URL;
+  - `og:image` and `twitter:image` on the apex;
+- security headers, including the exact analytics CSP allowance;
+- per-path `Cache-Control`, HEAD, and a `304` for a matching `If-None-Match`;
+- an unknown path returns `404` with the branded body;
+- `http://`, `https://www.` and `http://www.` answer `301` to `https://andrewchincea.com`, path and query preserved. Two `301` hops are accepted, in case a zone-level "Always Use HTTPS" answers first.
+
+Run against production before F24 was deployed (November 25, 2026), it reported 19 failures, reproducing QA-01, QA-02, QA-12 and QA-18.
+
+## What Andrew still has to do in the dashboard
+
+None of this could be verified from the repo; agents have no dashboard access.
+
+1. **`www.andrewchincea.com` must reach this Worker**, or the `www` redirect can't run.
+   - It served the site at F23, so it is probably already attached.
+   - Check under Worker `personal-portfolio` → **Settings → Domains & Routes**. If it isn't listed, add it as a **Custom domain**.
+2. **Remove any zone redirect rule for `www`** (**Rules → Redirect Rules**), if one was ever added. The Worker handles this now, and two rules could disagree. F23 saw no redirect, so there is probably none.
+3. **`SITE_URL`: nothing to do.**
+   - Optionally, delete the runtime `SITE_URL`; it has no effect.
+   - To set it explicitly instead, add it under **Settings → Build → Variables and secrets** as `https://andrewchincea.com`.
+4. **Keep the deploy command as is.** Plain `npx wrangler deploy` would now behave the same, since `wrangler.jsonc` names the assets directory and the compatibility date.
+5. **Web Analytics: nothing to change.** After the deploy, the beacon should load without a CSP error. Check the browser console on `/`.
+6. **After the first deploy with F24**, look for a `write-headers: N public URLs checked` line in the build log, then run `node scripts/check-production.mjs`.
+
+Optional:
+- **"Always Use HTTPS"** (zone → **SSL/TLS → Edge Certificates**) is not needed, because the Worker already redirects HTTP. If you turn it on, Cloudflare answers `http://` itself, and the smoke check accepts that.
+- **HSTS** (`Strict-Transport-Security: max-age=31536000`, no `preload`), once HTTPS is settled. Add it under `/*` in `public/_headers` (the Worker applies it) or in the zone's HSTS setting, not both.
 
 ## Before every production deploy
 
-- [ ] `npm run verify` passes (check, lint, unit, pytest, build, e2e, links, Lighthouse).
-- [ ] `docs/QUESTIONS.md` is answered. That covers the display name, tagline, hero question, contact links and the domain. Confirmed copy also needs `confirmed: true`.
+- [ ] `npm run verify` passes.
+- [ ] `docs/QUESTIONS.md` is answered; confirmed copy has `confirmed: true`.
 - [ ] If the name or tagline changed, regenerate the social card:
-  1. Start a dev server with `npx astro dev --port 4407`.
-  2. Run `node scripts/og-image.mjs --base http://localhost:4407`. Details are in docs/builds/F7/attempt-1.md.
-  3. Commit the new `public/og/social-card.png`.
+  1. `npx astro dev --port 4407`
+  2. `node scripts/og-image.mjs --base http://localhost:4407`
+  3. Commit `public/og/social-card.png`.
 
-  The card bakes in the name and tagline from `src/data/profile.yaml`, and nothing checks it automatically.
-- [ ] `SITE_URL` is set for the build:
-  - in the Cloudflare project for Git integration;
-  - in your shell for direct upload.
+## Alternatives (not used)
 
-  Use the full origin with `https://` and no trailing slash, e.g. `https://<project>.pages.dev`.
-- [ ] After the deploy, open `<site>/sitemap-index.xml` and view-source on `/`. The canonical link and `og:url` must show the production origin, not `localhost`.
+- **Cloudflare Pages:** `dist/_headers` would apply directly. The Worker would not run, so normalizing `www` and `http` would need a zone Redirect Rule. `CF_PAGES` already selects the production origin.
+- **Direct upload:**
+  1. Andrew runs `npx wrangler login`.
+  2. Build with `WORKERS_CI=1 npm run build` or `SITE_URL=https://andrewchincea.com npm run build`.
+  3. Run `npx wrangler deploy`.
 
-## (a) Git integration (recommended)
+## Limits worth knowing (Workers static assets, Free plan)
 
-The repo is already on GitHub at `github.com/andrewc156/Personal-Portfolio`, branch `main`. With Git integration, every push to `main` deploys production. Every other branch, and every pull request from it, gets its own preview URL.
-
-1. In the [Cloudflare dashboard](https://dash.cloudflare.com/), open **Workers & Pages**.
-2. Select **Create application**, then the **Pages** tab, then **Import an existing Git repository** (shown as "Connect to Git" in some versions of the dashboard).
-3. Authorise the Cloudflare Pages GitHub app for `andrewc156/Personal-Portfolio`, select the repo, then **Begin setup**.
-4. **Set up builds and deployments:**
-   - **Project name:** this becomes `<project>.pages.dev`, so choose it with that in mind.
-   - **Production branch:** `main`
-   - **Framework preset:** Astro (if offered; it only pre-fills the next two fields)
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - **Root directory:** leave empty (repo root).
-5. **Environment variables (advanced) → Add variable:**
-   - `SITE_URL` = `https://<project>.pages.dev`. You know the project name from step 4, so you can set it before the first build.
-   - Add it for **Production**. Adding it for **Preview** too is fine: previews then point their canonical URLs at production, which is what you want.
-6. Select **Save and Deploy**. Then open `https://<project>.pages.dev` and run the "after the deploy" check above.
-7. **Node version.** This repo's `.nvmrc` pins `26.13.0`. The Pages v3 build image reads `.nvmrc` or `NODE_VERSION`. [Cloudflare Pages build image](https://developers.cloudflare.com/pages/configuration/build-image/)
-   - In the first build log, check that Cloudflare installed Node 26.13.0. The build image version is under **Settings → Build**.
-   - If the log shows the wrong version or a Node install error, add the environment variable `NODE_VERSION` = `26.13.0` and retry the deployment.
-   - The builds themselves need nothing else: no Python, no secrets, no API keys.
-
-Later changes, such as setting `SITE_URL` to the custom domain, are under the project's **Settings → Variables and Secrets** (older dashboards: **Settings → Environment variables**). A changed variable only applies to new builds, so go to **Deployments** and retry the latest one.
-
-### If the build succeeds but the deploy command fails
-
-The November 25, 2026 build log shows that `npm run build` generated all ten static pages and `dist/_headers`. The next step, `Executing user deploy command: npx wrangler deploy`, identifies a Workers Builds deployment. Wrangler auto-configured Astro with `@astrojs/cloudflare` and ran a second build. That rebuild failed when the Worker prerenderer tried to read `/public/data/colorado/meta.json`. [Wrangler's automatic configuration for Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#deploy-an-existing-astro-project-on-workers)
-
-For this repository, create a **Pages** project using the Pages tab and import the GitHub repository as described above. Select `main`, set the build command to `npm run build` and output directory to `dist`, and set `SITE_URL` to the Pages project's production origin. Pages publishes `dist` automatically after the build. If the dashboard asks for a **Deploy command**, return to **Create application → Pages**. [Cloudflare Pages Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/)
-
-For a deliberate Workers deployment, see [Workers static assets](#alternative-workers-static-assets-not-built) below.
-
-## (b) Direct upload with Wrangler
-
-Use this if you'd rather not connect GitHub. Each deploy is a build on your machine that you upload yourself. Wrangler is already a devDependency.
-
-```sh
-npx wrangler login                                   # Andrew runs this; opens a browser
-npx wrangler pages project create <project> --production-branch main   # once
-SITE_URL=https://<project>.pages.dev npm run build
-npx wrangler pages deploy dist --project-name <project> --branch main
-```
-
-- **`SITE_URL` must be set in your shell for the build.** Cloudflare's dashboard variables don't affect a build you run locally. On Windows PowerShell: `$env:SITE_URL="https://<project>.pages.dev"; npm run build`.
-- **Previews:** `--branch <name>` with any name other than `main` makes a preview deployment.
-- **`_headers` is still honoured:** `dist/_headers` is uploaded with the site.
-
-## Custom domain
-
-Do this once the site works on `<project>.pages.dev`. Steps follow [Cloudflare's custom-domain docs](https://developers.cloudflare.com/pages/configuration/custom-domains/).
-
-1. **Add the domain in Pages first:** **Workers & Pages** → the project → **Custom domains** → **Set up a domain**, enter it, **Continue**.
-   - Don't create the DNS record by hand before this step. Cloudflare warns that a CNAME added without first associating the domain in Pages fails to resolve, with a 522 error.
-2. **Apex domain** (`example.com`): it must be a zone on the **same Cloudflare account** as the Pages project, meaning its nameservers point to Cloudflare.
-   - Buying the domain through Cloudflare Registrar does this automatically.
-   - For a domain bought elsewhere, add it as a site in Cloudflare and change the nameservers at the registrar to the two Cloudflare gives you.
-   - Once the zone is active, Pages creates the DNS record itself.
-3. **Subdomain at another DNS provider** (`andrew.example.org`): add a `CNAME` record at that provider pointing to `<project>.pages.dev`. The zone doesn't need to be on Cloudflare.
-4. **`www` → apex:** add `www.example.com` as a second custom domain too, so it has a certificate and resolves. Then redirect it with a rule on the zone: **Rules → Redirect Rules → Create rule** (the dashboard may offer a ready-made www-to-root template), with:
-   - match type **Wildcard pattern**;
-   - request URL `https://www.*`;
-   - target URL `https://${1}`;
-   - status **301**;
-   - **Preserve query string** on.
-
-   These are the settings from [Cloudflare's www-to-root example](https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/).
-5. **Update `SITE_URL`** to the domain (`https://example.com`, no trailing slash) and rebuild:
-   - Git integration: change the variable, then retry the latest deployment.
-   - Direct upload: rebuild with the new `SITE_URL` and deploy again.
-
-   Then re-run the "after the deploy" check. Canonicals, `og:url` and the sitemap must all show the domain.
-6. **Optional, after the domain is live on HTTPS:**
-   - **HSTS:** send `Strict-Transport-Security: max-age=31536000` (no `preload`). Either add the line under `/*` in `public/_headers`, or turn it on under the zone's **SSL/TLS → Edge Certificates → HSTS**, but not both, because Pages would join the two values. Only consider `preload` once you're sure every subdomain is HTTPS-only for good.
-   - **Retire the old URL:** Cloudflare's docs describe redirecting the production `*.pages.dev` URL to the custom domain, so there's a single canonical host.
-
-## Alternative: Workers static assets (not built)
-
-If you ever prefer to host this on Cloudflare **Workers** with static assets instead of Pages:
-- the only change would be a `wrangler.jsonc` at the repo root:
-
-  ```jsonc
-  {
-    "name": "<project>",
-    "compatibility_date": "<deploy date, YYYY-MM-DD>",
-    "assets": { "directory": "./dist", "not_found_handling": "404-page" }
-  }
-  ```
-- the deploy command becomes `npx wrangler deploy`;
-- the same `dist/_headers` file is supported there, with the same 100-rule and 2,000-character limits ([Workers static-assets headers](https://developers.cloudflare.com/workers/static-assets/headers/); [static assets](https://developers.cloudflare.com/workers/static-assets/)).
-
-This repo doesn't include that file. Pages is the chosen host.
-
-## Limits worth knowing (Free plan)
-
-From [Pages limits](https://developers.cloudflare.com/pages/platform/limits/):
-- 25 MiB per file. The biggest file here is `grid.f32` at about 0.5 MB.
-- 20,000 files per site. `dist/` has 38.
-- 500 builds a month, with a 20-minute build timeout.
-- 100 custom domains per project.
+- 25 MiB per asset. The biggest file here is `grid.f32` at about 0.5 MB.
+- 20,000 assets per Worker version. `dist/` has about 50 files.
+- `run_worker_first: true` makes every request a Worker invocation, assets included. The Free plan's daily request allowance ([Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/)) now applies to every asset request, so check usage if traffic grows.
 
 ## Cloudflare docs used
-- `_headers` syntax, ordering and limits: https://developers.cloudflare.com/pages/configuration/headers/
-- Build image, Node and Python versions: https://developers.cloudflare.com/pages/configuration/build-image/
-- Astro on Pages, Git integration steps: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/
-- Direct upload: https://developers.cloudflare.com/pages/get-started/direct-upload/
-- Wrangler `pages` commands: https://developers.cloudflare.com/workers/wrangler/commands/pages/
-- Custom domains: https://developers.cloudflare.com/pages/configuration/custom-domains/
-- www → root redirect: https://developers.cloudflare.com/rules/url-forwarding/examples/redirect-www-to-root/
-- Pages limits: https://developers.cloudflare.com/pages/platform/limits/
-- Workers static assets: https://developers.cloudflare.com/workers/static-assets/ and https://developers.cloudflare.com/workers/static-assets/headers/
+- Static-assets headers (`_headers` is not applied to Worker responses): https://developers.cloudflare.com/workers/static-assets/headers/
+- Static assets, binding and `run_worker_first`: https://developers.cloudflare.com/workers/static-assets/binding/
+- Routing, `not_found_handling`, `html_handling`: https://developers.cloudflare.com/workers/static-assets/routing/
+- Workers Builds configuration and build variables: https://developers.cloudflare.com/workers/ci-cd/builds/configuration/
+- Wrangler configuration (`keep_vars`, `rules`): https://developers.cloudflare.com/workers/wrangler/configuration/
+- Custom domains: https://developers.cloudflare.com/workers/configuration/routing/custom-domains/

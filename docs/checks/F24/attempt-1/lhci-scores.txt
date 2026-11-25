@@ -1,0 +1,6 @@
+http://localhost:65194/rising-water/ performance=96 accessibility=100 best-practices=96 seo=100 CLS=0.0000 consoleErr=0
+http://localhost:65194/garden/ performance=100 accessibility=100 best-practices=100 seo=100 CLS=0.0000 consoleErr=0
+localhost--2026_11_25_22_30_40.report.json performance=100 accessibility=100 best-practices=100 seo=100 CLS=0.0000
+localhost-404_html-2026_11_25_22_30_51.report.json performance=100 accessibility=100 best-practices=100 seo=100 CLS=0.0000
+localhost-garden_-2026_11_25_22_31_53.report.json performance=100 accessibility=100 best-practices=100 seo=100 CLS=0.0000
+localhost-rising_water_-2026_11_25_22_31_42.report.json performance=96 accessibility=100 best-practices=96 seo=100 CLS=0.0000

@@ -1,0 +1,38 @@
+
+> andrew-chincea-portfolio@0.0.1 build
+> astro build && node scripts/write-headers.mjs
+
+17:19:54 [content] Syncing content
+17:19:54 [content] Astro config changed
+17:19:54 [content] Clearing content store
+17:19:54 [content] Synced content
+17:19:54 [types] Generated 212ms
+17:19:54 [build] output: "static"
+17:19:54 [build] mode: "static"
+17:19:54 [build] directory: /Users/andrewchincea/personalPortfolio/dist/
+17:19:54 [build] Collecting build info...
+17:19:54 [build] ✓ Completed in 221ms.
+17:19:54 [build] Building static entrypoints...
+17:19:54 [vite] ✓ built in 108ms
+17:19:54 [vite] ✓ built in 27ms
+17:19:54 [build] Rearranging server assets...
+
+ generating static routes 
+17:19:54   ├─ /404.html (+4ms) 
+17:19:54   ├─ /about/index.html (+1ms) 
+17:19:54   ├─ /cv/index.html (+5ms) 
+17:19:54   ├─ /garden/index.html (+2ms) 
+17:19:54   ├─ /research/water-quality/index.html (+1ms) 
+17:19:54   ├─ /research/number-theory/index.html (+1ms) 
+17:19:54   ├─ /research/spectral-fractals/index.html (+1ms) 
+17:19:54   ├─ /research/index.html (+1ms) 
+17:19:54   ├─ /rising-water/index.html (+7ms) 
+17:19:54   ├─ /robots.txt (+1ms) 
+17:19:54   ├─ /index.html (+2ms) 
+17:19:54 ✓ Completed in 34ms.
+
+17:19:54 [build] ✓ Completed in 189ms.
+17:19:54 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+17:19:54 [build] 10 page(s) built in 417ms
+17:19:54 [build] Complete!
+write-headers: 10 HTML files; script-src +3 element +0 handler hashes; style-src +9 element +0 attribute hashes; CSP line 959/2000 chars; 5 rules -> dist/_headers

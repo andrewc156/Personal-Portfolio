@@ -1,0 +1,67 @@
+{
+ "results": {
+  "F27": [
+   {
+    "id": "QA-06 Show moves focus to the map; next Tab continues forward",
+    "ok": true,
+    "detail": {
+     "btnLabel": "Show lake 5 on the map",
+     "a": {
+      "stage": true,
+      "top": 0,
+      "vh": 844,
+      "outline": "solid",
+      "desc": "ex-card-title ex-card-text ex-keys",
+      "card": "Lake 5 · birth cell 117202"
+     },
+     "next": {
+      "text": "Play",
+      "top": 1363
+     }
+    }
+   },
+   {
+    "id": "QA-07 tapped cell reading persists after release; second tap replaces",
+    "ok": true,
+    "detail": {
+     "r1": "Elevation 1,099.5 m (3,607 ft) at 36.9954° N, 111.1396° W · dry",
+     "r2": "Elevation 1,398.6 m (4,589 ft) at 39.0704° N, 112.7646° W · dry"
+    }
+   },
+   {
+    "id": "QA-08 keyboard cursor gives cell elevation/coords in a live region",
+    "ok": false,
+    "detail": {
+     "r": {
+      "hover": "Cursor at column 165 of 326, row 218 of 414: Elevation 1,623.9 m (5,328 ft) at 36.7204° N, 111.0896° W · dry",
+      "live": "Cursor at column 165 of 326, row 218 of 414: Elevation 1,623.9 m (5,328 ft) at 36.7204° N, 111.0896° W · dry"
+     },
+     "lvl0": -2.885450839996338,
+     "lvl1": -2.885450839996338,
+     "lvl2": 27.693038940429688
+    }
+   },
+   {
+    "id": "QA-10 no-JS explorer shows a fallback, no endless loading",
+    "ok": true,
+    "detail": {
+     "noscriptVisible": true,
+     "loadingVisible": false,
+     "controls": false,
+     "stageTab": null,
+     "rows": 21
+    }
+   },
+   {
+    "id": "explorer Play advances level; place labels present (regression)",
+    "ok": true,
+    "detail": {
+     "l0": -2.885450839996338,
+     "l1": 188.30377197265625,
+     "labels": 40
+    }
+   }
+  ]
+ },
+ "errors": []
+}

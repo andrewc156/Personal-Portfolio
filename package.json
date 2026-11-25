@@ -19,6 +19,7 @@
     "e2e": "playwright test",
     "lhci": "lhci autorun --config=./lighthouserc.cjs",
     "links": "node scripts/check-links.mjs",
+    "check:prod": "node scripts/check-production.mjs",
     "data": "pipeline/.venv/bin/python -m pipeline.build_colorado",
     "verify": "npm run check && npm run lint && npm run test && npm run pytest && npm run build && npm run e2e && npm run links && npm run lhci",
     "bench:tda": "node scripts/bench-tda.mjs"

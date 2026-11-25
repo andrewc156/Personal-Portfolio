@@ -1,0 +1,173 @@
+{
+ "results": {
+  "F26": [
+   {
+    "id": "QA-04 reduced motion mid-play pauses (rising, collatz); Play still works",
+    "ok": true,
+    "detail": {
+     "s0": "Play",
+     "s1": {
+      "label": "Play",
+      "playing": false
+     },
+     "sameCanvas": true,
+     "afterPlay": true,
+     "collatzAfterSwitchInReduce": false,
+     "collatzPlay": true,
+     "collatzAfterReduce": false,
+     "collatzCanvasStill": true
+    }
+   },
+   {
+    "id": "QA-05 manual pause + held level survive switches",
+    "ok": true,
+    "detail": {
+     "before": 0.27,
+     "chain": [
+      {
+       "m": "dye",
+       "label": "Play",
+       "playing": false,
+       "progress": 0
+      },
+      {
+       "m": "pond",
+       "label": "Play",
+       "playing": false,
+       "progress": 0
+      },
+      {
+       "m": "rivers",
+       "label": "Play",
+       "playing": false,
+       "progress": 0
+      },
+      {
+       "m": "collatz",
+       "label": "Play",
+       "playing": false,
+       "progress": 0
+      },
+      {
+       "m": "rising",
+       "label": "Play",
+       "playing": false,
+       "progress": 0.27
+      }
+     ]
+    }
+   },
+   {
+    "id": "QA-05 after Play, the next mode autoplays (regression)",
+    "ok": true,
+    "detail": {
+     "ap": true
+    }
+   },
+   {
+    "id": "QA-15 address bar follows mode/seed with replaceState",
+    "ok": true,
+    "detail": {
+     "u1": "http://localhost:4321/?x=1&mode=dye&seed=123456#hero-title",
+     "u2": "http://localhost:4321/?x=1&mode=dye&seed=366880#hero-title",
+     "u3": "http://localhost:4321/?x=1&seed=366880#hero-title",
+     "hl0": 2,
+     "hl1": 2,
+     "seed3": 366880,
+     "seedRe": 366880
+    }
+   },
+   {
+    "id": "QA-09 live summary updates at milestones and announces selection",
+    "ok": true,
+    "detail": {
+     "distinctSummaries": 4,
+     "sample": [
+      "Playing. Terrain 305613. Water level 0 m, 0% of the way up. 1 lake is present. The barcode",
+      "Playing. Terrain 305613. Water level 764 m, 76% of the way up. 2 lakes are present. The ba",
+      "Playing. Terrain 305613. Water level 1000 m, 100% of the way up. 1 lake is present. The ba",
+      "Paused. Terrain 305613. Water level 1000 m, 100% of the way up. 1 lake is present. The bar"
+     ],
+     "final": "Paused. Terrain 305613. Water level 1000 m, 100% of the way up. 1 lake is present. The bar",
+     "selection": "Selected Lake 2: born at 108 m, spills into Lake 1 at 420 m, persistence 312 m."
+    }
+   },
+   {
+    "id": "QA-14 hover blank row space does not select a distant bar",
+    "ok": true,
+    "detail": {
+     "info": {
+      "strip": {
+       "x": 569.71875,
+       "y": 484.96875,
+       "w": 565.28125
+      },
+      "k": 17,
+      "r": {
+       "x": 114.45787832384511,
+       "y": 48.4378125,
+       "w": 5.476969709898057,
+       "h": 1.530625
+      },
+      "n": 32
+     },
+     "onBar": 17,
+     "blank": -1,
+     "near": 17
+    }
+   },
+   {
+    "id": "QA-13 closed selector fits \"Rising water\" at 320–1280",
+    "ok": true,
+    "detail": {
+     "320": {
+      "selectW": 179,
+      "textW": 77,
+      "pad": 16,
+      "fits": true,
+      "overflowX": false,
+      "sameRowAsSettings": true
+     },
+     "375": {
+      "selectW": 161,
+      "textW": 77,
+      "pad": 16,
+      "fits": true,
+      "overflowX": false,
+      "sameRowAsSettings": true
+     },
+     "768": {
+      "selectW": 192,
+      "textW": 77,
+      "pad": 16,
+      "fits": true,
+      "overflowX": false,
+      "sameRowAsSettings": true
+     },
+     "1280": {
+      "selectW": 192,
+      "textW": 77,
+      "pad": 16,
+      "fits": true,
+      "overflowX": false,
+      "sameRowAsSettings": true
+     }
+    }
+   },
+   {
+    "id": "QA-16 hero no-JS: controls disabled, hero not tabbable",
+    "ok": true,
+    "detail": {
+     "play": true,
+     "nw": true,
+     "sel": true,
+     "heroTab": null,
+     "readout": "A still picture. The animation needs JavaScript.",
+     "playOpacity": "0.6",
+     "tabLandedInHero": 0
+    }
+   }
+  ]
+ },
+ "errors": []
+}

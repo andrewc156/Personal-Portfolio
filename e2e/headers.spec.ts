@@ -1,11 +1,12 @@
 import { test, expect, type Page } from '@playwright/test';
 
 /**
- * F8 Cloudflare Pages headers. `astro preview` ignores _headers, so this spec only
- * runs against `wrangler pages dev` and skips unless HEADERS_BASE_URL is set:
+ * F8/F24 response headers. Production is the Worker in worker/ (wrangler.jsonc), which
+ * applies the rules from dist/_headers itself. `astro preview` serves neither, so this
+ * spec only runs against `wrangler dev` and skips unless HEADERS_BASE_URL is set:
  *
  *   npm run build                      # astro build + scripts/write-headers.mjs
- *   npx wrangler pages dev dist --port 8788
+ *   npx wrangler dev --port 8788       # the Worker + dist assets, as deployed
  *   HEADERS_BASE_URL=http://localhost:8788 npx playwright test e2e/headers.spec.ts
  *
  * (Playwright's webServer still starts preview on 4321; this spec doesn't use it.)
@@ -33,11 +34,15 @@ const SECURITY: Record<string, string> = {
   'x-frame-options': 'DENY',
 };
 
+// Cloudflare Web Analytics is the only third-party origin (DECISIONS #88).
+const ANALYTICS_SCRIPT = 'https://static.cloudflareinsights.com';
+const ANALYTICS_CONNECT = 'https://cloudflareinsights.com';
+
 const REQUIRED_CSP = [
   "default-src 'self'",
   "img-src 'self'",
   "font-src 'self'",
-  "connect-src 'self'",
+  `connect-src 'self' ${ANALYTICS_CONNECT};`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -61,12 +66,17 @@ function expectSecurityHeaders(headers: Record<string, string>): void {
   expect(headers['permissions-policy']).toMatch(/geolocation=\(\)/);
   const csp = headers['content-security-policy'] ?? '';
   for (const d of REQUIRED_CSP) expect(csp, d).toContain(d);
-  expect(csp).not.toMatch(/__INLINE_|unsafe-inline|unsafe-eval|\*|https?:/);
+  expect(csp).not.toMatch(/__INLINE_|unsafe-inline|unsafe-eval|\*/);
+  // Exactly two origins, each in exactly one directive.
+  expect(csp.match(/https?:\/\/[^\s;]+/g)).toEqual([ANALYTICS_SCRIPT, ANALYTICS_CONNECT]);
   const d = directives(csp);
+  expect(d.get('connect-src')).toEqual(["'self'", ANALYTICS_CONNECT]);
   for (const name of ['script-src', 'style-src']) {
     const values = d.get(name) ?? [];
     expect(values[0], `${name} starts with 'self'`).toBe("'self'");
-    for (const v of values.slice(1)) expect(v).toMatch(/^'sha256-[A-Za-z0-9+/]+=*'$/);
+    const rest = name === 'script-src' ? values.slice(2) : values.slice(1);
+    if (name === 'script-src') expect(values[1]).toBe(ANALYTICS_SCRIPT);
+    for (const v of rest) expect(v).toMatch(/^'sha256-[A-Za-z0-9+/]+=*'$/);
   }
 }
 
@@ -124,10 +134,32 @@ test.describe('response headers', () => {
   test('unknown route: custom 404 page with status 404 and the same headers', async ({
     request,
   }) => {
-    const res = await request.get(`${BASE}/no-such-page-f8/`);
-    expect(res.status()).toBe(404);
-    expect(await res.text()).toContain('Page not found');
-    expectSecurityHeaders(res.headers());
+    for (const path of ['/no-such-page-f8/', '/no-such-page-f24', '/research/no-such-area/']) {
+      const res = await request.get(BASE + path);
+      expect(res.status(), path).toBe(404);
+      const body = await res.text();
+      expect(body, path).toContain('Page not found');
+      expect(body, path).toContain('Go to the home page');
+      expectSecurityHeaders(res.headers());
+    }
+  });
+
+  test('trailing-slash redirect and HEAD/conditional requests still work', async ({ request }) => {
+    const bare = await request.get(`${BASE}/rising-water`, { maxRedirects: 0 });
+    expect(bare.status()).toBe(307);
+    expect(bare.headers()['location']).toMatch(/\/rising-water\/$/);
+    const head = await request.head(`${BASE}/`);
+    expect(head.status()).toBe(200);
+    expectSecurityHeaders(head.headers());
+    const etag = head.headers()['etag'];
+    expect(etag).toBeTruthy();
+    const again = await request.get(`${BASE}/`, { headers: { 'If-None-Match': etag } });
+    expect(again.status()).toBe(304);
+  });
+
+  test('the local origin is never redirected to the production host', async ({ request }) => {
+    const res = await request.get(`${BASE}/about/?x=1`, { maxRedirects: 0 });
+    expect(res.status()).toBe(200);
   });
 });
 

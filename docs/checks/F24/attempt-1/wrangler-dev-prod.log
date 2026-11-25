@@ -1,0 +1,76 @@
+
+ ⛅️ wrangler 4.167.0 (update available 4.168.0)
+───────────────────────────────────────────────
+Your Worker has access to the following bindings:
+Binding            Resource      Mode
+env.ASSETS         Assets        local
+
+⎔ Starting local server...
+[wrangler:info] ✨ Parsed 5 valid header rules.
+[wrangler:info] Ready on http://127.0.0.1:8788
+[wrangler:info] GET / 200 OK (11ms)
+[wrangler:info] HEAD / 200 OK (3ms)
+[wrangler:info] GET /rising-water/ 200 OK (4ms)
+[wrangler:info] HEAD /rising-water/ 200 OK (2ms)
+[wrangler:info] GET /garden/ 200 OK (2ms)
+[wrangler:info] HEAD /garden/ 200 OK (2ms)
+[wrangler:info] GET /cv/ 200 OK (2ms)
+[wrangler:info] HEAD /cv/ 200 OK (2ms)
+[wrangler:info] GET /robots.txt 200 OK (2ms)
+[wrangler:info] HEAD /robots.txt 200 OK (2ms)
+[wrangler:info] GET /sitemap-index.xml 200 OK (2ms)
+[wrangler:info] HEAD /sitemap-index.xml 200 OK (1ms)
+[wrangler:info] GET /favicon.svg 200 OK (1ms)
+[wrangler:info] HEAD /favicon.svg 200 OK (2ms)
+[wrangler:info] GET /og/social-card.png 200 OK (1ms)
+[wrangler:info] HEAD /og/social-card.png 200 OK (2ms)
+[wrangler:info] GET /data/colorado/meta.json 200 OK (2ms)
+[wrangler:info] HEAD /data/colorado/meta.json 200 OK (3ms)
+[wrangler:info] GET /_astro/BaseLayout.CBVHXRoX.css 200 OK (2ms)
+[wrangler:info] HEAD /_astro/BaseLayout.CBVHXRoX.css 200 OK (2ms)
+[wrangler:info] GET /missing-xyz 404 Not Found (3ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] HEAD /missing-xyz 404 Not Found (2ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /_astro/missing.js 404 Not Found (1ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] HEAD /_astro/missing.js 404 Not Found (2ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /robots.txt 200 OK (2ms)
+[wrangler:info] GET /sitemap-index.xml 200 OK (2ms)
+[wrangler:info] GET /sitemap-0.xml 200 OK (2ms)
+[wrangler:info] GET / 200 OK (3ms)
+[wrangler:info] GET /about/ 200 OK (2ms)
+[wrangler:info] GET /cv/ 200 OK (2ms)
+[wrangler:info] GET /garden/ 200 OK (2ms)
+[wrangler:info] GET /research/ 200 OK (2ms)
+[wrangler:info] GET /research/number-theory/ 200 OK (2ms)
+[wrangler:info] GET /research/spectral-fractals/ 200 OK (2ms)
+[wrangler:info] GET /research/water-quality/ 200 OK (2ms)
+[wrangler:info] GET /rising-water/ 200 OK (2ms)
+[wrangler:info] HEAD /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (1ms)
+[wrangler:info] HEAD /favicon.svg 200 OK (2ms)
+[wrangler:info] HEAD /og/social-card.png 200 OK (2ms)
+[wrangler:info] HEAD /data/colorado/meta.json 200 OK (2ms)
+[wrangler:info] HEAD / 200 OK (2ms)
+[wrangler:info] GET / 304 Not Modified (2ms)
+[wrangler:info] GET /check-production-missing-mwwovj8g/ 404 Not Found (2ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /_astro/missing.js 404 Not Found (3ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /definitely-not-here 404 Not Found (3ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /nested/missing/page.html 404 Not Found (2ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] HEAD /definitely-not-here 404 Not Found (3ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.Bi8Pom_T.js 200 OK (4ms)
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.Bi8Pom_T.js 200 OK (2ms)
+[wrangler:info] GET /rising-water 307 Temporary Redirect (2ms)
+[wrangler:info] GET /data/colorado/meta.json 200 OK (2ms)
+[wrangler:info] GET /og/social-card.png 200 OK (2ms)
+[wrangler:info] HEAD / 200 OK (2ms)
+[wrangler:info] HEAD / 200 OK (2ms)
+[wrangler:info] GET / 304 Not Modified (3ms)
+[wrangler:info] HEAD /_astro/Hero.astro_astro_type_script_index_0_lang.Bi8Pom_T.js 200 OK (3ms)
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.Bi8Pom_T.js 304 Not Modified (2ms)
+[wrangler:info] POST / 405 Method Not Allowed (2ms)
+[wrangler:info] GET /cv/ 301 Moved Permanently (2ms)
+[wrangler:info] GET /garden/ 301 Moved Permanently (2ms)
+[wrangler:info] GET / 200 OK (2ms)
+[wrangler:info] GET / 200 OK (2ms)
+[wrangler:info] HEAD / 200 OK (5ms)
+[wrangler:info] GET /_headers 404 Not Found (3ms) `Sec-Fetch-Mode: navigate` header present - using `not_found_handling` behavior
+[wrangler:info] GET /404.html 307 Temporary Redirect (2ms)
+[wrangler:info] GET /index.html 307 Temporary Redirect (2ms)

@@ -1,0 +1,28 @@
+// Cloudflare Workers Builds config for andrewchincea.com (F24, DECISIONS #88).
+// Workers Builds runs `npm run build`, then
+//   npx wrangler deploy --assets ./dist --compatibility-date 2026-11-23
+// The --assets flag only overrides `assets.directory`; every other key below is still
+// read from this file. See docs/deploy.md.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "personal-portfolio",
+  "compatibility_date": "2026-11-23",
+  // Host/scheme normalisation and response headers (worker/handler.ts).
+  "main": "./worker/index.ts",
+  // Bundle the generated dist/_headers into the Worker as a string (worker/index.ts).
+  "rules": [{ "type": "Text", "globs": ["**/_headers"], "fallthrough": true }],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Run the Worker for every request, assets included, so it can redirect
+    // http:// and www. before anything is served.
+    "run_worker_first": true,
+    // Unknown paths get dist/404.html with HTTP 404 (QA-02).
+    "not_found_handling": "404-page",
+    // Same as the live site today: /rising-water -> 307 /rising-water/.
+    "html_handling": "auto-trailing-slash",
+  },
+  // The Worker reads no variables. Keep any set in the dashboard instead of deleting
+  // them on every deploy (wrangler's default without --keep-vars).
+  "keep_vars": true,
+}

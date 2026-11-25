@@ -1,0 +1,344 @@
+{
+ "results": {
+  "F25": [
+   {
+    "id": "QA-03 header opener",
+    "ok": true,
+    "detail": {
+     "sem": {
+      "role": "dialog",
+      "modal": "true",
+      "mainInert": true,
+      "headerInert": true
+     },
+     "tabs": 50,
+     "escaped": [],
+     "back": {
+      "expanded": "settings-panel",
+      "inHeader": true,
+      "inHero": false,
+      "inertLeft": 0
+     },
+     "afterBackdrop": {
+      "open": false,
+      "focusOpener": true,
+      "inert": 0
+     }
+    }
+   },
+   {
+    "id": "QA-03 hero opener",
+    "ok": true,
+    "detail": {
+     "sem": {
+      "role": "dialog",
+      "modal": "true",
+      "mainInert": true,
+      "headerInert": true
+     },
+     "tabs": 50,
+     "escaped": [],
+     "back": {
+      "expanded": "settings-panel",
+      "inHeader": false,
+      "inHero": true,
+      "inertLeft": 0
+     },
+     "afterBackdrop": {
+      "open": false,
+      "focusOpener": true,
+      "inert": 0
+     }
+    }
+   },
+   {
+    "id": "QA-03 wide drawer stays non-modal (regression)",
+    "ok": true,
+    "detail": {
+     "role": null,
+     "inert": 0,
+     "open": true,
+     "stillOpenAfterBgClick": true
+    }
+   },
+   {
+    "id": "theme toggle switches theme (regression)",
+    "ok": true,
+    "detail": {
+     "t1": "dark"
+    }
+   },
+   {
+    "id": "QA-11 history focus 1024",
+    "ok": true,
+    "detail": {
+     "art": {
+      "tag": "A",
+      "id": "",
+      "text": "Water-quality prediction on river networ",
+      "inPanel": false,
+      "top": 296,
+      "bottom": 349,
+      "vh": 800,
+      "scrollY": 1611
+     },
+     "articleUrl": "http://localhost:4321/research/water-quality/",
+     "url1": "http://localhost:4321/#research",
+     "afterBack1": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": -1611,
+      "bottom": 1065,
+      "vh": 800,
+      "scrollY": 1611
+     },
+     "url2": "http://localhost:4321/",
+     "afterBack2": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": 0,
+      "bottom": 2676,
+      "vh": 800,
+      "scrollY": 0
+     },
+     "afterTab": {
+      "tag": "A",
+      "id": "",
+      "text": "Skip to content",
+      "inPanel": false,
+      "top": 8,
+      "bottom": 51,
+      "vh": 800,
+      "scrollY": 0
+     }
+    }
+   },
+   {
+    "id": "QA-11 history focus 1280",
+    "ok": true,
+    "detail": {
+     "art": {
+      "tag": "A",
+      "id": "",
+      "text": "Water-quality prediction on river networ",
+      "inPanel": false,
+      "top": 338,
+      "bottom": 394,
+      "vh": 800,
+      "scrollY": 1615
+     },
+     "articleUrl": "http://localhost:4321/research/water-quality/",
+     "url1": "http://localhost:4321/#research",
+     "afterBack1": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": -1615,
+      "bottom": 1190,
+      "vh": 800,
+      "scrollY": 1615
+     },
+     "url2": "http://localhost:4321/",
+     "afterBack2": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": 0,
+      "bottom": 2805,
+      "vh": 800,
+      "scrollY": 0
+     },
+     "afterTab": {
+      "tag": "A",
+      "id": "",
+      "text": "Skip to content",
+      "inPanel": false,
+      "top": 8,
+      "bottom": 51,
+      "vh": 800,
+      "scrollY": 0
+     }
+    }
+   },
+   {
+    "id": "QA-11 history focus 1440",
+    "ok": true,
+    "detail": {
+     "art": {
+      "tag": "A",
+      "id": "",
+      "text": "Water-quality prediction on river networ",
+      "inPanel": false,
+      "top": 347,
+      "bottom": 404,
+      "vh": 800,
+      "scrollY": 1648
+     },
+     "articleUrl": "http://localhost:4321/research/water-quality/",
+     "url1": "http://localhost:4321/#research",
+     "afterBack1": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": -1648,
+      "bottom": 1242,
+      "vh": 800,
+      "scrollY": 1648
+     },
+     "url2": "http://localhost:4321/",
+     "afterBack2": {
+      "tag": "BODY",
+      "id": "",
+      "text": "Skip to contentAndrew ChinceaMissionWork",
+      "inPanel": false,
+      "top": 0,
+      "bottom": 2890,
+      "vh": 800,
+      "scrollY": 0
+     },
+     "afterTab": {
+      "tag": "A",
+      "id": "",
+      "text": "Skip to content",
+      "inPanel": false,
+      "top": 8,
+      "bottom": 51,
+      "vh": 800,
+      "scrollY": 0
+     }
+    }
+   },
+   {
+    "id": "QA-16 shell no-JS: theme/gear disabled+dimmed, no dead buttons in first 25 Tabs",
+    "ok": true,
+    "detail": {
+     "/": {
+      "st": [
+       {
+        "label": "Dark theme",
+        "disabled": true,
+        "opacity": "0.55"
+       },
+       {
+        "label": "Art settings",
+        "disabled": true,
+        "opacity": "0.55"
+       },
+       {
+        "label": "Animation settings",
+        "disabled": true,
+        "opacity": "0.6"
+       }
+      ],
+      "deadButtons": []
+     },
+     "/garden/": {
+      "st": [
+       {
+        "label": "Dark theme",
+        "disabled": true,
+        "opacity": "0.55"
+       }
+      ],
+      "deadButtons": []
+     },
+     "/rising-water/": {
+      "st": [
+       {
+        "label": "Dark theme",
+        "disabled": true,
+        "opacity": "0.55"
+       }
+      ],
+      "deadButtons": []
+     },
+     "/cv/": {
+      "st": [
+       {
+        "label": "Dark theme",
+        "disabled": true,
+        "opacity": "0.55"
+       }
+      ],
+      "deadButtons": []
+     }
+    }
+   },
+   {
+    "id": "QA-16 JS on: controls enabled, never dimmed during load",
+    "ok": true,
+    "detail": {
+     "dim": [],
+     "disabled": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+     ]
+    }
+   },
+   {
+    "id": "QA-17 unlisted type deep links show active chip + clear",
+    "ok": true,
+    "detail": {
+     "g": {
+      "preprint": {
+       "current": [
+        "Preprints",
+        "Water-quality prediction on river networks"
+       ],
+       "status": "Showing 0 of 9 items",
+       "empty": "Nothing matches these filters. Show all work",
+       "clear": [
+        "Clear /garden/?tag=water-quality"
+       ],
+       "url": "?type=preprint&tag=water-quality"
+      },
+      "software": {
+       "current": [
+        "Software",
+        "Water-quality prediction on river networks"
+       ],
+       "status": "Showing 0 of 9 items",
+       "empty": "Nothing matches these filters. Show all work",
+       "clear": [
+        "Clear /garden/?tag=water-quality"
+       ],
+       "url": "?type=software&tag=water-quality"
+      },
+      "dataset": {
+       "current": [
+        "Datasets",
+        "Water-quality prediction on river networks"
+       ],
+       "status": "Showing 0 of 9 items",
+       "empty": "Nothing matches these filters. Show all work",
+       "clear": [
+        "Clear /garden/?tag=water-quality"
+       ],
+       "url": "?type=dataset&tag=water-quality"
+      }
+     },
+     "afterClear": {
+      "url": "",
+      "status": "9 items",
+      "focus": "All types"
+     },
+     "bogus": "?x=1"
+    }
+   }
+  ]
+ },
+ "errors": []
+}

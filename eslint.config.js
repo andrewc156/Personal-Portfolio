@@ -15,6 +15,7 @@ export default [
       '.lighthouseci/',
       '.wrangler/',
       'docs/checks/tools/',
+      'docs/checks/**/test-results/',
     ],
   },
   ...tseslint.configs.recommended,

@@ -1,0 +1,4 @@
+check-production: http://localhost:8788 (expected public origin https://andrewchincea.com)
+sitemap: 9 pages
+aliases: skipped
+check-production: 175 passed, 0 failed

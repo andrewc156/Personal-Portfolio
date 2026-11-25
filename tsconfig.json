@@ -10,6 +10,7 @@
     "test-results",
     ".lighthouseci",
     "docs/checks/tools",
+    "docs/checks/**/test-results",
     "pipeline",
     ".claude"
   ]

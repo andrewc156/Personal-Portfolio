@@ -1,0 +1,9 @@
+check-production: http://localhost:8788 (expected public origin http://localhost:4321)
+sitemap: 1 pages
+aliases: skipped
+  FAIL sitemap-index.xml <loc>: http://localhost:4321/sitemap-0.xml is not on http://localhost:4321
+  FAIL sitemaps list no pages
+  FAIL / og:image: http://localhost:4321/og/social-card.png is not on http://localhost:4321
+  FAIL / twitter:image: http://localhost:4321/og/social-card.png is not on http://localhost:4321
+  FAIL /: page source mentions localhost
+check-production: 40 passed, 5 failed

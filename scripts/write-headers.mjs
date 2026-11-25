@@ -20,8 +20,14 @@
 // the file breaks Cloudflare's _headers limits (100 rules, 2,000 chars per line:
 // https://developers.cloudflare.com/pages/configuration/headers/).
 //
+// Public-URL guard (F24, QA-01): on Cloudflare's build machines (WORKERS_CI or
+// CF_PAGES set), or with --require-public-urls, it also exits 1 unless every
+// canonical / og:url / og:image / twitter:image in dist/**/*.html, the Sitemap: line in
+// dist/robots.txt and every <loc> in dist/sitemap*.xml is an https:// URL that isn't
+// localhost. Local builds keep their http://localhost:4321 URLs for the e2e suite.
+//
 // Usage: node scripts/write-headers.mjs [--dist dist] [--template public/_headers]
-//                                       [--out <dist>/_headers]
+//                                       [--out <dist>/_headers] [--require-public-urls]
 import { createHash } from 'node:crypto';
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -136,6 +142,66 @@ function scanHtml(html, where, found) {
   }
 }
 
+// --- Public-URL guard -------------------------------------------------------------
+
+const PUBLIC_META = new Set(['og:url', 'og:image', 'twitter:image']);
+const LOCAL_HOST_RE = /localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1?\]/i;
+
+/** Absolute URLs a page advertises: canonical, og:url, og:image, twitter:image. */
+function advertisedUrls(html) {
+  const urls = [];
+  for (const m of html.matchAll(/<(link|meta)\b((?:[^>"']|"[^"]*"|'[^']*')*)>/gi)) {
+    const attrs = Object.fromEntries(parseAttrs(m[2]).map((a) => [a.name, a.value]));
+    if (m[1].toLowerCase() === 'link') {
+      if ((attrs.rel ?? '').toLowerCase().split(/\s+/).includes('canonical')) {
+        urls.push({ field: 'canonical', url: attrs.href ?? '' });
+      }
+    } else {
+      const key = (attrs.property ?? attrs.name ?? '').toLowerCase();
+      if (PUBLIC_META.has(key)) urls.push({ field: key, url: attrs.content ?? '' });
+    }
+  }
+  return urls;
+}
+
+const badPublicUrl = (url) => !/^https:\/\/[^/]/i.test(url) || LOCAL_HOST_RE.test(url);
+
+async function checkPublicUrls(dir, files) {
+  const problems = [];
+  let checked = 0;
+  for (const file of files) {
+    const found = advertisedUrls(await readFile(file, 'utf8'));
+    for (const { field, url } of found) {
+      checked++;
+      if (badPublicUrl(url)) problems.push(`${show(file)}: ${field} ${url}`);
+    }
+  }
+  let robots = '';
+  try {
+    robots = await readFile(join(dir, 'robots.txt'), 'utf8');
+  } catch {
+    problems.push(`${show(dir)}/robots.txt is missing`);
+  }
+  const sitemapLines = [...robots.matchAll(/^Sitemap:\s*(\S+)/gim)].map((m) => m[1]);
+  if (robots && sitemapLines.length === 0) problems.push('robots.txt has no Sitemap: line');
+  for (const url of sitemapLines) {
+    checked++;
+    if (badPublicUrl(url)) problems.push(`robots.txt: Sitemap ${url}`);
+  }
+  const xmlFiles = (await readdir(dir)).filter((f) => /^sitemap.*\.xml$/.test(f)).sort();
+  if (xmlFiles.length === 0) problems.push(`no sitemap*.xml in ${show(dir)}`);
+  for (const name of xmlFiles) {
+    const xml = await readFile(join(dir, name), 'utf8');
+    if (LOCAL_HOST_RE.test(xml)) problems.push(`${name} mentions localhost`);
+    for (const m of xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)) {
+      checked++;
+      if (badPublicUrl(m[1])) problems.push(`${name}: <loc> ${m[1]}`);
+    }
+  }
+  if (checked === 0) problems.push('found no canonical, social or sitemap URLs to check');
+  return { problems, checked };
+}
+
 async function htmlFiles(dir) {
   const out = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
@@ -193,6 +259,20 @@ if (files.length === 0) fail(`no .html files in ${show(distDir)}`);
 const found = { scripts: new Set(), styles: new Set(), styleAttrs: new Set(), handlers: new Set() };
 for (const file of files) {
   scanHtml(await readFile(file, 'utf8'), show(file), found);
+}
+
+const onCloudflareBuild = Boolean(process.env.WORKERS_CI || process.env.CF_PAGES);
+if (onCloudflareBuild || process.argv.includes('--require-public-urls')) {
+  const { problems, checked } = await checkPublicUrls(distDir, files);
+  if (problems.length > 0) {
+    console.error(
+      `write-headers: ${problems.length} public URL(s) are not production https:// URLs.` +
+        ' Set SITE_URL as a *build* variable or check astro.config.mjs:',
+    );
+    for (const p of problems.slice(0, 20)) console.error(`  ${p}`);
+    process.exit(1);
+  }
+  console.log(`write-headers: ${checked} public URLs checked: all https, none localhost`);
 }
 
 let out = fillMarker(template, SCRIPT_MARKER, sourceList(found.scripts, found.handlers));

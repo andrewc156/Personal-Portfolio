@@ -1,0 +1,85 @@
+
+=== GET /definitely-not-here (status, headers, body marker)
+HTTP/1.1 404 Not Found
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=utf-8
+Cache-Control: public, max-age=0, must-revalidate
+ETag: "f29b2e6c3d2c062515ec19146cc6647e"
+CF-Cache-Status: HIT
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'sha256-Z+7b97pZlsbAqIoQEutU1xROHodxgozigOj9nFmYMPI=' 'sha256-pnZd8eHL9eEhrzhIYOitAZb2BUwSvzBaHBSbJVgVBsI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo='; style-src 'self' 'sha256-38LaEgS3LpUbKOL2fHMQPUoPeMXBNZbvPqboRvArCPA=' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+cross-origin-opener-policy: same-origin
+permissions-policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: DENY
+
+body bytes:     7221
+<title>Page not found · Andrew Chincea</title>
+1
+
+=== GET /nested/missing/page.html status
+404
+
+=== HEAD /definitely-not-here
+HTTP/1.1 404 Not Found
+Cache-Control: public, max-age=0, must-revalidate
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'sha256-Z+7b97pZlsbAqIoQEutU1xROHodxgozigOj9nFmYMPI=' 'sha256-pnZd8eHL9eEhrzhIYOitAZb2BUwSvzBaHBSbJVgVBsI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo='; style-src 'self' 'sha256-38LaEgS3LpUbKOL2fHMQPUoPeMXBNZbvPqboRvArCPA=' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+=== GET /_astro/Hero.astro_astro_type_script_index_0_lang.Bi8Pom_T.js (cache-control count)
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=31536000, immutable
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflareinsights.com 'sha256-Z+7b97pZlsbAqIoQEutU1xROHodxgozigOj9nFmYMPI=' 'sha256-pnZd8eHL9eEhrzhIYOitAZb2BUwSvzBaHBSbJVgVBsI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo='; style-src 'self' 'sha256-38LaEgS3LpUbKOL2fHMQPUoPeMXBNZbvPqboRvArCPA=' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+x-content-type-options: nosniff
+cache-control header lines: 1
+
+=== GET /rising-water (no slash)
+HTTP/1.1 307 Temporary Redirect
+Location: /rising-water/?x=1
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflarein
+
+=== GET /data/colorado/meta.json headers
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=86400, must-revalidate
+
+=== GET /og/social-card.png headers
+HTTP/1.1 200 OK
+Cache-Control: public, max-age=86400, must-revalidate
+
+=== HEAD /
+HTTP/1.1 200 OK
+ETag: "6bdff7458f6b8d318b31c5c27e8a6f70"
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflarein
+
+=== If-None-Match "6bdff7458f6b8d318b31c5c27e8a6f70"
+HTTP/1.1 304 Not Modified
+Cache-Control: public, max-age=0, must-revalidate
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflarein
+x-frame-options: DENY
+docs/checks/tools/f24-27-worker-curl.sh: line 18: /var/folders/1l/mt2c7wc101g058yhj7579spw0000gn/T//f24-304.body: No such file or directory
+304 body bytes: 
+
+=== If-None-Match on asset
+HTTP/1.1 304 Not Modified
+Cache-Control: public, max-age=31536000, immutable
+
+=== POST /
+405
+
+=== Host: www.andrewchincea.com /cv/?a=1
+HTTP/1.1 301 Moved Permanently
+Location: https://andrewchincea.com/cv/?a=1
+content-security-policy: default-src 'self'; script-src 'self' https://static.cloudflarein
+
+=== Host: andrewchincea.com (http) /garden/?type=paper
+HTTP/1.1 301 Moved Permanently
+Location: http://andrewchincea.com/garden/?type=paper
+
+=== Host: evil-andrewchincea.com
+200
+
+=== Host: sub.andrewchincea.com
+200
+
+=== CSP third-party origins on /
+   1 https://cloudflareinsights.com
+   1 https://static.cloudflareinsights.com

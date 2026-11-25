@@ -1,0 +1,14 @@
+
+Running 10 tests using 1 worker
+
+[1/10] [chromium] › e2e/headers.spec.ts:97:3 › response headers › HTML pages: security headers, CSP, revalidated
+[2/10] [chromium] › e2e/headers.spec.ts:107:3 › response headers › /_astro/* is immutable for a year
+[3/10] [chromium] › e2e/headers.spec.ts:119:3 › response headers › /data/*, /og/* and the favicon: one day, then revalidate
+[4/10] [chromium] › e2e/headers.spec.ts:134:3 › response headers › unknown route: custom 404 page with status 404 and the same headers
+[5/10] [chromium] › e2e/headers.spec.ts:147:3 › response headers › trailing-slash redirect and HEAD/conditional requests still work
+[6/10] [chromium] › e2e/headers.spec.ts:160:3 › response headers › the local origin is never redirected to the production host
+[7/10] [chromium] › e2e/headers.spec.ts:167:3 › CSP in the browser › every page renders with zero CSP violations
+[8/10] [chromium] › e2e/headers.spec.ts:176:3 › CSP in the browser › theme script runs: a stored theme is applied on load
+[9/10] [chromium] › e2e/headers.spec.ts:185:3 › CSP in the browser › explorer verifies its data and handles form submissions under the CSP
+[10/10] [chromium] › e2e/headers.spec.ts:209:3 › CSP in the browser › negative control: injected inline script and style are blocked
+  10 passed (2.3s)
