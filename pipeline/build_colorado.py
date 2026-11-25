@@ -2,9 +2,11 @@
 
 Run from the repo root:  npm run data   (= python -m pipeline.build_colorado)
 
-Outputs in public/data/colorado/: grid.f32, barcode.json, meta.json, hillshade.webp, ATTRIBUTION.md.
+Outputs in public/data/colorado/: grid.f32, barcode.json, meta.json, hillshade.webp, ATTRIBUTION.md,
+basin-mask.bin and basin-mask.json.
 The barcode (step 5) is computed by pipeline.barcode from grid.f32 as read back from disk.
-Raw tiles are cached in pipeline/data/raw/ (gitignored).
+The basin mask (stretch S3) is computed last by pipeline.basin_mask from the USGS WBD and adds
+its entries to meta.json. Raw tiles and WBD zips are cached in pipeline/data/raw/ (gitignored).
 """
 
 from __future__ import annotations
@@ -22,6 +24,7 @@ from pathlib import Path
 import numpy as np
 
 from pipeline import barcode as bc
+from pipeline import basin_mask as bm
 from pipeline import colorado_dem as cd
 
 REPO = Path(__file__).resolve().parent.parent
@@ -360,6 +363,8 @@ def main(argv=None) -> int:
         json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     (out / "ATTRIBUTION.md").write_text(attribution_md(), encoding="utf-8")
+    # S3 basin mask: USGS WBD HU-2 14 + 15 on this grid; adds basinMask/files to meta.json.
+    bm.write(out, args.raw_dir, log)
     log(f"grid {W} x {H}: min {gmin}; max {gmax}")
     log(f"grid.f32 {len(grid_bytes)} B, hillshade.webp {len(webp)} B (q{quality})")
     log(

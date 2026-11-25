@@ -1,0 +1,8 @@
+cells clearly in Mexico: 1568 of which in mask: 1485
+southernmost mask row lat: 31.820416667000003
+14 HU12 units 3179 states==MX: 0 contains MX: 0
+14 HU2 [('14', 'Upper Colorado Region', 'AZ,CO,NM,UT,WY')]
+14 HU4 [('1408', 'San Juan', 'AZ,CO,NM,UT'), ('1407', 'Upper Colorado-Dirty Devil', 'AZ,UT'), ('1404', 'Great Divide-Upper Green', 'CO,UT,WY'), ('1406', 'Lower Green', 'CO,UT'), ('1405', 'White-Yampa', 'CO,UT,WY'), ('1402', 'Gunnison', 'CO'), ('1401', 'Colorado Headwaters', 'CO,UT'), ('1403', 'Upper Colorado-Dolores', 'CO,UT')]
+15 HU12 units 4379 states==MX: 545 contains MX: 629
+15 HU2 [('15', 'Lower Colorado Region', 'AZ,CA,MX,NM,NV,UT')]
+15 HU4 [('1502', 'Little Colorado', 'AZ,NM'), ('1501', 'Lower Colorado-Lake Mead', 'AZ,NV,UT'), ('1507', 'Lower Gila', 'AZ'), ('1506', 'Salt', 'AZ'), ('1508', 'Sonora', 'AZ,MX,NM'), ('1504', 'Upper Gila', 'AZ,NM'), ('1505', 'Middle Gila', 'AZ,MX'), ('1503', 'Lower Colorado', 'AZ,CA,MX,NV')]

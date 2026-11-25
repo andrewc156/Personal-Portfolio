@@ -1,0 +1,31 @@
+W H N planeBytes 326 414 134964 16871 file 33742 expect 33742
+basin cells 97311 meta 97311 97311
+p1 outside p0: 0
+bbox meta [-115.201667, 31.8175, -107.060833, 42.1575] mask.json [-115.201667, 31.8175, -107.060833, 42.1575]
+HU2 14 rings 1 verts 109538
+HU2 15 rings 1 verts 156601
+first/last lon -115.189583333 -107.06916666633333 first/last lat 42.145416667 31.825416667
+centre-rule union cells 97310 overlap14/15 0
+full-grid disagreement (centre rule vs mask) 93
+shift dy=+0 dx=+0: disagreements 92
+shift dy=+1 dx=+0: disagreements 807
+shift dy=-1 dx=+0: disagreements 812
+shift dy=+0 dx=+1: disagreements 859
+shift dy=+0 dx=-1: disagreements 860
+shift dy=+1 dx=+1: disagreements 1217
+shift dy=-1 dx=-1: disagreements 1224
+disagreements in non-edge cells (3x3 uniform in my centre test): 0 of 130894
+random sample away from boundary: n=1467, inside=1060, plane0 disagreements=0, plane1 disagreements=0
+plane1 full-grid disagreement vs centre-rule 15 87 non-edge 22
+plane1 disagreements in cells with uniform 3x3 in both union and region-15 tests: 0
+rows with lat < 31.332 (all in Mexico): 0 basin cells there: 0 of 0
+Uncompahgre Peak   lat 38.07145 lon -107.46253 cell(309,163) mask=14       poly=14   want=14   5x5 uniform=True OK
+Grand Junction     lat 39.06387 lon -108.55065 cell(266,123) mask=14       poly=14   want=14   5x5 uniform=True OK
+Moab               lat 38.57332 lon -109.54984 cell(226,143) mask=14       poly=14   want=14   5x5 uniform=True OK
+Lake Mead          lat 36.17254 lon -114.42984 cell(30,239) mask=15       poly=15   want=15   5x5 uniform=True OK
+Las Vegas          lat 36.17497 lon -115.13722 cell(2,239) mask=15       poly=15   want=15   5x5 uniform=True OK
+Phoenix            lat 33.44838 lon -112.07404 cell(125,348) mask=15       poly=15   want=15   5x5 uniform=True OK
+Flagstaff          lat 35.19807 lon -111.65127 cell(142,278) mask=15       poly=15   want=15   5x5 uniform=True OK
+Salt Lake City     lat 40.76078 lon -111.89105 cell(132,55) mask=out      poly=out  want=out  5x5 uniform=True OK
+Great Salt Lake    lat 41.16287 lon -112.53537 cell(106,39) mask=out      poly=out  want=out  5x5 uniform=True OK
+Ely NV             lat 39.24744 lon -114.88863 cell(12,116) mask=out      poly=out  want=out  5x5 uniform=True OK

@@ -163,6 +163,14 @@
     "barcode.json": {
       "bytes": 33492,
       "sha256": "d4e195e8a29c0377023ecbb553f06358a63f05eb06c657b9f6d64d7a02c99f75"
+    },
+    "basin-mask.bin": {
+      "bytes": 33742,
+      "sha256": "67672eac75586dbab35c3dc0224acdc665f51feb962750c35e2b073fd1847056"
+    },
+    "basin-mask.json": {
+      "bytes": 14056,
+      "sha256": "d1658674358c605b6662bc6adb2769cdbd81897e35b7efcfbba6267f7e06012e"
     }
   },
   "barcode": {
@@ -189,5 +197,13 @@
     "columns": "b, d, bi, di, mi (see barcode.json description)"
   },
   "generatedAt": "2026-11-24T10:01:08+00:00",
-  "gitCommit": "53e54dc1e1af3426c4381de2db04c3bdd67cb6a0"
+  "gitCommit": "53e54dc1e1af3426c4381de2db04c3bdd67cb6a0",
+  "basinMask": {
+    "file": "basin-mask.bin",
+    "metaFile": "basin-mask.json",
+    "format": "basin-mask-bitplanes-v1",
+    "source": "USGS Watershed Boundary Dataset HU-2 regions 14 and 15, including WBD's harmonized units in Mexico (see basin-mask.json coverage)",
+    "credit": "Watershed Boundary Dataset (WBD) courtesy of the U.S. Geological Survey",
+    "basinCells": 97311
+  }
 }

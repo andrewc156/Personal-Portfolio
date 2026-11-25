@@ -1,0 +1,356 @@
+{
+  "format": {
+    "name": "basin-mask-bitplanes-v1",
+    "planes": [
+      "plane 0 (bytes 0 .. planeBytes-1): 1 = cell is in the basin (HU-2 14 or 15)",
+      "plane 1 (bytes planeBytes .. 2*planeBytes-1): 1 = basin cell assigned to HU-2 15 (Lower Colorado); a cell with plane 0 = 1 and plane 1 = 0 is HU-2 14 (Upper Colorado); plane 1 is 0 outside the basin"
+    ],
+    "bitOrder": "cell index i = y * width + x (row 0 north, as grid.f32); bit i of a plane is (byte[i >> 3] >> (i & 7)) & 1 (least significant bit first)",
+    "padding": "unused high bits of each plane's last byte are 0",
+    "file": "basin-mask.bin",
+    "planeBytes": 16871,
+    "bytes": 33742
+  },
+  "description": "Mask of the TDA grid (grid.f32) to the U.S. Geological Survey Watershed Boundary Dataset hydrologic regions 14 (Upper Colorado) and 15 (Lower Colorado).",
+  "grid": {
+    "file": "grid.f32",
+    "sha256": "7775c4fd6800862b3ed79942f96fe6f96b59e2dc25aee358f23e09fed145e08a",
+    "bbox": [
+      -115.201667,
+      31.8175,
+      -107.060833,
+      42.1575
+    ],
+    "width": 326,
+    "height": 414,
+    "cells": 134964,
+    "cellDeg": 0.025,
+    "rowOrder": "row 0 is north; rows run north to south; cell index i = y * width + x",
+    "extent": [
+      -115.202083333,
+      31.817916667,
+      -107.06125,
+      42.157916667
+    ],
+    "native": {
+      "width": 9769,
+      "height": 12408,
+      "pixelDeg": 0.0008333333333333334
+    }
+  },
+  "cellRule": "A cell is in the basin when at least half of the native 3″ Copernicus pixels it covers (the same 30 x 30 blocks as grid.f32; 19 px wide in the last column, 18 px tall in the last row) have their centres inside the union of the WBD HU-2 14 and 15 polygons (GDAL rasterization, pixel-centre rule). A basin cell is assigned to whichever of 14 and 15 holds more of its pixels (14 on a tie).",
+  "source": {
+    "name": "USGS Watershed Boundary Dataset (WBD), 2-digit hydrologic units (HU-2), National Map staged products, Shapefile",
+    "productPage": "https://www.usgs.gov/national-hydrography/watershed-boundary-dataset",
+    "accessPage": "https://www.usgs.gov/national-hydrography/access-national-hydrography-products",
+    "layer": "Shape/WBDHU2 (one polygon per zip); Shape/WBDHU6 only for the hu6 statistics",
+    "regions": [
+      {
+        "huc2": "14",
+        "name": "Upper Colorado Region",
+        "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/HU2/Shape/WBD_14_HU2_Shape.zip",
+        "title": "USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 14 (published 20250108) Shapefile",
+        "pubdate": "20250108",
+        "featureLoadDate": "20201221",
+        "tnmid": "{55B52F2D-76B0-44EA-8BE7-B371E86617AC}",
+        "accessDate": "2026-11-25",
+        "httpLastModified": "Wed, 08 Jan 2025 21:49:48 GMT",
+        "bytes": 104512674,
+        "sha256": "673df784ad15e4bd006e6a5ed3d869294f07abbbedec105c6e3cf9bb66498935"
+      },
+      {
+        "huc2": "15",
+        "name": "Lower Colorado Region",
+        "url": "https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/HU2/Shape/WBD_15_HU2_Shape.zip",
+        "title": "USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 15 (published 20250108) Shapefile",
+        "pubdate": "20250108",
+        "featureLoadDate": "20210630",
+        "tnmid": "{5A8D623A-5571-4976-A98E-019A7A94E228}",
+        "accessDate": "2026-11-25",
+        "httpLastModified": "Wed, 08 Jan 2025 21:49:49 GMT",
+        "bytes": 180502107,
+        "sha256": "c9cc5e2254d2ed18a4d4e6a089e6f0621ed3506a9ee95704c4608f0bf24c9420"
+      }
+    ],
+    "originators": [
+      "U.S. Geological Survey (USGS)",
+      "U.S. Department of Agriculture - Natural Resource Conservation Service (NRCS)",
+      "U.S. Environmental Protection Agency (EPA)",
+      "Other Federal, State, and local partners (see dataset specific metadata for details  https://www.usgs.gov/core-science-systems/ngp/national-hydrography/wbd-fgdc-historical-state-metadata-archive)"
+    ],
+    "crs": "NAD 83 geographic (GCS_North_American_1983, GRS 1980), from WBDHU2.prj",
+    "datumNote": "NAD 83 coordinates are used as WGS 84 (EPSG:4326) without a datum shift. USGS: \"All modern maps and GIS data are cast on NAD 83 or WGS 84, which are equivalent datums at map scales of 1:5,000 and smaller.\" (https://www.usgs.gov/faqs/why-are-nad-83-position-values-so-far-nad-27-values-were-old-coordinates-wrong). The grid is about 1:5,000,000 or smaller on screen and its cells are 0.025°."
+  },
+  "attribution": {
+    "credit": "Watershed Boundary Dataset (WBD) courtesy of the U.S. Geological Survey",
+    "publicDomain": "Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without restriction.",
+    "creditSource": "https://www.usgs.gov/information-policies-and-instructions/acknowledging-or-crediting-usgs",
+    "originatorsNote": "WBD metadata: \"Acknowledgment of the originating agencies would be appreciated in products derived from these data.\" Originators: U.S. Geological Survey (USGS); U.S. Department of Agriculture - Natural Resource Conservation Service (NRCS); U.S. Environmental Protection Agency (EPA); other Federal, State, and local partners."
+  },
+  "coverage": [
+    "Mexico, included: the S3 brief expected WBD to stop at the border, but this WBD release extends region 15 into Mexico. WBD metadata: areas along the border \"have been updated to include harmonized hydrologic units and hydrography that extends across the border\", in collaboration with Mexico's INEGI. In the study area this includes the Colorado's lower river and delta (HU-6 150301) down to the south edge. 1039 basin cells lie mostly in HU-12 units whose states attribute is only MX (regions 14 and 15 have 545 such units; see stats.mexicoOnlyHu12). The grid's lowest cell (meta.min) is in HU-12 150301080302 (states MX, downstream OCEAN) and is inside the mask.",
+    "Mexico, gap: WBD covers Mexico only as far as its harmonized units go. A one-off check against the USGS WBD map service (docs/data.md) found that in the study area only 4 cells, in the south-west corner around 31.87° N, 115.19° W, lie mostly in no WBD unit at all. Those cells are 0 here; no Mexican boundary has been drawn or invented. This build did not compare WBD's Mexican units with INEGI's own hydrography.",
+    "Region is not drainage: WBD region 15 includes HU-4 1508 Sonora. Following WBD's own downstream codes (tohuc), every one of its 634 HU-12 units stays inside 1508 and ends at CLOSED BASIN (22), MEXICO (117), OCEAN (495) (stats.sonoraDrainage), so none drains to the Colorado. Region 14 includes HU-6 140402 Great Divide Closed Basin. Both are inside this mask because they are part of the WBD regions. Cells: Sonora 1609, Great Divide Closed Basin 1426 (see stats.hu6). Land along the west edge between about 32.5° and 35.1° N is WBD region 18 (California) and is outside the mask.",
+    "Study-area edges: parts of both regions lie outside the bbox, so the mask covers only the part of each region inside the rectangle (stats.hu6.inStudyAreaPct; for example Colorado Headwaters 48.9% and Upper Green 67.7%).",
+    "Resolution: the mask is per 0.025° cell (about 2.2 km x 2.8 km); 1840 cells straddle the basin boundary and are decided by the half-of-pixels rule. WBD metadata: \"At a minimum, the HUs are delineated at 1:24,000-scale in the conterminous United States\"."
+  ],
+  "stats": {
+    "cells": 134964,
+    "basinCells": 97311,
+    "basinFraction": 0.721014,
+    "basinAreaKm2": 603745.7,
+    "studyAreaKm2": 830506.9,
+    "basinAreaFraction": 0.726961,
+    "pixelUnionAreaKm2": 603669.3,
+    "boundaryCells": 1840,
+    "overlapPixels14and15": 0,
+    "regions": {
+      "14": {
+        "name": "Upper Colorado Region",
+        "states": "AZ,CO,NM,UT,WY",
+        "wbdAreaKm2": 293569.02,
+        "rasterizedAreaKm2": 293565.2,
+        "rasterizedVsWbdPct": -0.001,
+        "cells": 41956,
+        "cellAreaKm2": 251903.3,
+        "ringCount": 1,
+        "vertexCount": 109538
+      },
+      "15": {
+        "name": "Lower Colorado Region",
+        "states": "AZ,CA,MX,NM,NV,UT",
+        "wbdAreaKm2": 424356.02,
+        "rasterizedAreaKm2": 424359.5,
+        "rasterizedVsWbdPct": 0.001,
+        "cells": 55355,
+        "cellAreaKm2": 351842.5,
+        "ringCount": 1,
+        "vertexCount": 156601
+      }
+    },
+    "mexicoOnlyHu12": {
+      "hu12Units": 545,
+      "basinCells": 1039,
+      "areaKm2": 6579.6,
+      "southernmostCellLat": 31.825417,
+      "rule": "basin cells with at least half their pixels in WBD HU-12 units whose states attribute is exactly 'MX' (a lower bound: HU-12s shared with a U.S. state are not counted)",
+      "gridMinimumCell": {
+        "lat": 31.945417,
+        "lon": -114.764583,
+        "inMexicoOnlyHu12": [
+          {
+            "huc12": "150301080302",
+            "tohuc": "OCEAN"
+          }
+        ]
+      }
+    },
+    "sonoraDrainage": {
+      "hu12Units": 634,
+      "terminals": {
+        "CLOSED BASIN": 22,
+        "MEXICO": 117,
+        "OCEAN": 495
+      },
+      "hu4sOnPaths": [
+        "1508"
+      ],
+      "rule": "for every HU-12 in HU-4 1508, follow WBD's tohuc (downstream HU-12) until a code that is not an HU-12 of regions 14/15; count those terminal codes"
+    },
+    "hu6": [
+      {
+        "huc6": "140402",
+        "name": "Great Divide Closed Basin",
+        "cells": 1426,
+        "areaKm2": 8215.1,
+        "wbdAreaKm2": 9947.54,
+        "inStudyAreaPct": 82.6
+      },
+      {
+        "huc6": "140401",
+        "name": "Upper Green",
+        "cells": 5114,
+        "areaKm2": 29678.2,
+        "wbdAreaKm2": 43810.87,
+        "inStudyAreaPct": 67.7
+      },
+      {
+        "huc6": "140300",
+        "name": "Upper Colorado-Dolores",
+        "cells": 3571,
+        "areaKm2": 21653.9,
+        "wbdAreaKm2": 21661.94,
+        "inStudyAreaPct": 100.0
+      },
+      {
+        "huc6": "140200",
+        "name": "Gunnison",
+        "cells": 2450,
+        "areaKm2": 14720.7,
+        "wbdAreaKm2": 20790.38,
+        "inStudyAreaPct": 70.8
+      },
+      {
+        "huc6": "140801",
+        "name": "Upper San Juan",
+        "cells": 5564,
+        "areaKm2": 34369.2,
+        "wbdAreaKm2": 37584.59,
+        "inStudyAreaPct": 91.4
+      },
+      {
+        "huc6": "140100",
+        "name": "Colorado Headwaters",
+        "cells": 2100,
+        "areaKm2": 12461.1,
+        "wbdAreaKm2": 25480.45,
+        "inStudyAreaPct": 48.9
+      },
+      {
+        "huc6": "140500",
+        "name": "White-Yampa",
+        "cells": 5253,
+        "areaKm2": 30821.5,
+        "wbdAreaKm2": 34342.6,
+        "inStudyAreaPct": 89.7
+      },
+      {
+        "huc6": "140600",
+        "name": "Lower Green",
+        "cells": 6330,
+        "areaKm2": 37670.3,
+        "wbdAreaKm2": 37701.49,
+        "inStudyAreaPct": 99.9
+      },
+      {
+        "huc6": "140802",
+        "name": "Lower San Juan",
+        "cells": 4373,
+        "areaKm2": 27009.5,
+        "wbdAreaKm2": 26984.52,
+        "inStudyAreaPct": 100.1
+      },
+      {
+        "huc6": "140700",
+        "name": "Upper Colorado-Dirty Devil",
+        "cells": 5775,
+        "areaKm2": 35303.8,
+        "wbdAreaKm2": 35264.65,
+        "inStudyAreaPct": 100.1
+      },
+      {
+        "huc6": "150803",
+        "name": "Rio De Bavispe",
+        "cells": 60,
+        "areaKm2": 333.2,
+        "wbdAreaKm2": 10948.79,
+        "inStudyAreaPct": 3.0
+      },
+      {
+        "huc6": "150801",
+        "name": "Rio Sonoyta",
+        "cells": 1549,
+        "areaKm2": 9865.8,
+        "wbdAreaKm2": 25587.5,
+        "inStudyAreaPct": 38.6
+      },
+      {
+        "huc6": "150302",
+        "name": "Bill Williams",
+        "cells": 2192,
+        "areaKm2": 13931.0,
+        "wbdAreaKm2": 13917.05,
+        "inStudyAreaPct": 100.1
+      },
+      {
+        "huc6": "150501",
+        "name": "Middle Gila",
+        "cells": 1304,
+        "areaKm2": 8439.3,
+        "wbdAreaKm2": 8508.05,
+        "inStudyAreaPct": 99.2
+      },
+      {
+        "huc6": "150503",
+        "name": "Santa Cruz",
+        "cells": 2543,
+        "areaKm2": 16464.2,
+        "wbdAreaKm2": 22222.52,
+        "inStudyAreaPct": 74.1
+      },
+      {
+        "huc6": "150502",
+        "name": "San Pedro-Willcox",
+        "cells": 1697,
+        "areaKm2": 11009.9,
+        "wbdAreaKm2": 15842.36,
+        "inStudyAreaPct": 69.5
+      },
+      {
+        "huc6": "150301",
+        "name": "Lower Colorado",
+        "cells": 5846,
+        "areaKm2": 37426.2,
+        "wbdAreaKm2": 39825.63,
+        "inStudyAreaPct": 94.0
+      },
+      {
+        "huc6": "150400",
+        "name": "Upper Gila",
+        "cells": 5809,
+        "areaKm2": 37571.9,
+        "wbdAreaKm2": 39347.33,
+        "inStudyAreaPct": 95.5
+      },
+      {
+        "huc6": "150601",
+        "name": "Salt",
+        "cells": 2769,
+        "areaKm2": 17771.7,
+        "wbdAreaKm2": 17732.61,
+        "inStudyAreaPct": 100.2
+      },
+      {
+        "huc6": "150702",
+        "name": "Lower Gila",
+        "cells": 2756,
+        "areaKm2": 17904.6,
+        "wbdAreaKm2": 17904.91,
+        "inStudyAreaPct": 100.0
+      },
+      {
+        "huc6": "150100",
+        "name": "Lower Colorado-Lake Mead",
+        "cells": 11732,
+        "areaKm2": 72746.2,
+        "wbdAreaKm2": 78401.75,
+        "inStudyAreaPct": 92.8
+      },
+      {
+        "huc6": "150602",
+        "name": "Verde",
+        "cells": 2706,
+        "areaKm2": 17169.5,
+        "wbdAreaKm2": 17168.28,
+        "inStudyAreaPct": 100.0
+      },
+      {
+        "huc6": "150200",
+        "name": "Little Colorado",
+        "cells": 11100,
+        "areaKm2": 70049.0,
+        "wbdAreaKm2": 70077.49,
+        "inStudyAreaPct": 100.0
+      },
+      {
+        "huc6": "150701",
+        "name": "Lower Gila-Agua Fria",
+        "cells": 3292,
+        "areaKm2": 21159.9,
+        "wbdAreaKm2": 21141.25,
+        "inStudyAreaPct": 100.1
+      }
+    ]
+  },
+  "reproducible": "No timestamps; the same cached WBD zips and grid give the same bytes. accessDate is the date the zip was downloaded (from the cache sidecar)."
+}

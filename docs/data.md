@@ -4,8 +4,9 @@ How `public/data/colorado/` is built from Copernicus DEM GLO-90 (spec §6.4, §6
 Rebuild with `npm run data` (runs `python -m pipeline.build_colorado`). Code:
 `pipeline/build_colorado.py` (driver, exports), `pipeline/colorado_dem.py` (download, mosaic,
 downsampling, hillshade) and `pipeline/barcode.py` (reference barcode, lakes table). Tests:
-`pipeline/tests/test_colorado.py`, `pipeline/tests/test_barcode.py`. Every number below is read from
-`meta.json` or from the pipeline log of the run that produced it.
+`pipeline/tests/test_colorado.py`, `pipeline/tests/test_barcode.py`. The optional basin mask from the
+USGS Watershed Boundary Dataset is described in "Basin mask (stretch S3)" below. Every number below
+is read from `meta.json` (or `basin-mask.json`) or from the pipeline log of the run that produced it.
 
 ## Provenance
 
@@ -318,6 +319,177 @@ south-west corner near the Colorado River delta (see Extremes).
   was tested here against a source, and the barcode says nothing about them directly. The many
   edge-born lakes are a property of the rectangle, not of the terrain.
 
+## Basin mask (stretch S3)
+
+`basin-mask.bin` and `basin-mask.json` let the explorer show only the Colorado River Basin, as
+defined by the USGS Watershed Boundary Dataset (WBD) hydrologic regions 14 (Upper Colorado) and 15
+(Lower Colorado). Code: `pipeline/basin_mask.py` (run last by `npm run data`, or alone with
+`pipeline/.venv/bin/python -m pipeline.basin_mask`). Tests: `pipeline/tests/test_basin_mask.py`.
+Every number below is in `basin-mask.json` → `stats` unless it says otherwise.
+
+### Source
+
+| Item | Value |
+|---|---|
+| Dataset | USGS Watershed Boundary Dataset (WBD), 2-digit hydrologic units (HU-2), USGS National Map staged products, Shapefile |
+| Region 14 | https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/HU2/Shape/WBD_14_HU2_Shape.zip |
+| Region 15 | https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/WBD/HU2/Shape/WBD_15_HU2_Shape.zip |
+| Version | FGDC metadata in each zip: "USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 14 (published 20250108) Shapefile" (and the same for 15); pubdate 20250108. HTTP Last-Modified: 8 Jan 2025. HU-2 feature `loaddate`: 2020-12-21 (14), 2021-06-30 (15). |
+| Access | Downloaded 2026-11-25 (UTC) over HTTPS, no account; 104,512,674 B (14) and 180,502,107 B (15). SHA-256 values are in `basin-mask.json` → `source.regions`. Cached in `pipeline/data/raw/wbd/` (gitignored) with a sidecar JSON per zip. |
+| Layers read | `Shape/WBDHU2` for the mask (one polygon per zip: 1 ring, 109,538 vertices for 14; 1 ring, 156,601 vertices for 15). `Shape/WBDHU6` and `Shape/WBDHU12` only for the statistics below. Files are read from the zip in memory; nothing is extracted. |
+| CRS | NAD 83 geographic (GRS 1980), from `WBDHU2.prj`. Used as WGS 84 with no datum shift. USGS: "All modern maps and GIS data are cast on NAD 83 or WGS 84, which are equivalent datums at map scales of 1:5,000 and smaller." (https://www.usgs.gov/faqs/why-are-nad-83-position-values-so-far-nad-27-values-were-old-coordinates-wrong) |
+| Product pages | https://www.usgs.gov/national-hydrography/watershed-boundary-dataset, https://www.usgs.gov/national-hydrography/access-national-hydrography-products |
+
+Why the staged Shapefile and not the WBD map service: the zips are the dated, citable release (with
+FGDC metadata and a fixed SHA-256), and they carry the full-resolution polygons. The map service
+(https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer) was used only for the one-off
+coverage check below.
+
+**Attribution (public domain).** The USGS page "Acknowledging or Crediting USGS"
+(https://www.usgs.gov/information-policies-and-instructions/acknowledging-or-crediting-usgs) says:
+"Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without restriction."
+For no-cost use it suggests the credit "(Product or data name) courtesy of the U.S. Geological
+Survey", so the credit used here is:
+
+> Watershed Boundary Dataset (WBD) courtesy of the U.S. Geological Survey
+
+The WBD metadata adds: "Acknowledgment of the originating agencies would be appreciated in products
+derived from these data." Its listed originators are the U.S. Geological Survey (USGS), the U.S.
+Department of Agriculture - Natural Resource Conservation Service (NRCS), the U.S. Environmental
+Protection Agency (EPA), and other Federal, State and local partners. The credit, the public-domain
+statement and the originators are in `basin-mask.json` → `attribution`, and the credit is also in
+`meta.json` → `basinMask.credit`. `ATTRIBUTION.md` (the Copernicus notice) was not changed. Whether
+the explorer's "About the data" shows the WBD credit is up to F12b.
+
+### Processing
+
+1. Download both zips (sequential, up to 4 attempts, generic User-Agent, atomic write). Check the
+   `.prj` (NAD 83), that `WBDHU2` holds exactly one record with `huc2` 14 or 15, and read the FGDC
+   citation. A strict built-in Shapefile/dBASE reader stops on anything unexpected. No new Python
+   package is needed (rasterio, numpy and requests are already pinned).
+2. Rasterize each HU-2 polygon with GDAL (rasterio `features.rasterize`, pixel-centre rule) onto the
+   **clipped native 3″ raster**: the same 9,769 × 12,408 pixel lattice and footprint as the DEM
+   (`meta.native.extent`).
+3. Count each grid cell's native pixels inside 14, inside 15, and inside their union, over the same
+   30 × 30 blocks as `grid.f32` (anchored north-west; the last column is 19 px wide and the last row
+   18 px tall). **Cell rule:** a cell is in the basin when at least half of its pixels are inside the
+   union. A basin cell belongs to 15 if more of its pixels are in 15 than in 14, and to 14 otherwise
+   (14 on a tie). The two polygons overlap in 0 pixels.
+4. Write two bit planes (below), `basin-mask.json`, and the `basinMask` entry plus
+   `files["basin-mask.bin"]` and `files["basin-mask.json"]` (bytes, SHA-256) in `meta.json`. The step
+   edits only those keys of `meta.json`. Run alone, it keeps the DEM build's `generatedAt` and
+   `gitCommit`.
+
+### basin-mask.bin format
+
+- 33,742 bytes = 2 planes × 16,871 bytes (⌈134,964 / 8⌉), one bit per grid cell.
+- Cell index i = y·W + x, row 0 north, exactly as `grid.f32`. Bit i of a plane is
+  `(byte[i >> 3] >> (i & 7)) & 1` (least significant bit first). The unused high bits of each
+  plane's last byte are 0.
+- **Plane 0** (bytes 0–16,870): 1 = basin (HU-2 14 or 15). The toggle only needs this plane.
+- **Plane 1** (bytes 16,871–33,741): 1 = basin cell assigned to 15 (Lower Colorado). Plane 0 = 1
+  with plane 1 = 0 means 14 (Upper Colorado). Plane 1 is 0 outside the basin.
+- `basin-mask.json` records the format, the grid it belongs to (bbox, width, height, cellDeg,
+  rowOrder, native extent and the SHA-256 of `grid.f32`), the cell rule, sources, version,
+  attribution, coverage notes and statistics. It has no timestamps.
+
+### Result
+
+| Quantity | Value |
+|---|---|
+| Basin cells | 97,311 of 134,964 (0.7210) |
+| Region 14 / 15 cells | 41,956 / 55,355 |
+| Basin area in the study area (sum of cell areas, GRS 80) | 603,745.7 km² of 830,506.9 km² (0.7270) |
+| Same area from the pixel-level union | 603,669.3 km² |
+| Cells straddling the boundary (0 < pixels inside < all) | 1,840 |
+| WBD area of 14 + 15 (`areasqkm`) | 293,569.02 + 424,356.02 km² |
+| Rasterized full-region area vs WBD `areasqkm` (15″ raster on each region's own bbox) | −0.001 % (14), +0.001 % (15) |
+
+Share of each HU-6 inside the study area (cell area ÷ WBD `areasqkm`): the units cut by the edges
+are 140100 Colorado Headwaters 48.9 %, 140401 Upper Green 67.7 %, 140200 Gunnison 70.8 %,
+140402 Great Divide Closed Basin 82.6 %, 140500 White-Yampa 89.7 %, 140801 Upper San Juan 91.4 %,
+150801 Rio Sonoyta 38.6 %, 150803 Rio De Bavispe 3.0 %, 150502 San Pedro-Willcox 69.5 %,
+150503 Santa Cruz 74.1 %, 150100 Lower Colorado-Lake Mead 92.8 %, 150301 Lower Colorado 94.0 % and
+150400 Upper Gila 95.5 %. The rest are 99.2–100.2 % inside. Values just above 100 % come from the
+cell-majority rule.
+
+### Coverage: Mexico, and region versus drainage
+
+- **Mexico is included, not missing.** The S3 brief assumed WBD stops at the border. This WBD release
+  does not. Its metadata says areas along the border "have been updated to include harmonized
+  hydrologic units and hydrography that extends across the border", in collaboration with Mexico's
+  INEGI. Region 15's HU-4s 1503 Lower Colorado, 1505 Middle Gila and 1508 Sonora list MX among their
+  states. In the study area the mask includes the Colorado's lower river and delta (HU-6 150301)
+  down to the south edge: 1,039 basin cells (6,579.6 km²) lie mostly in HU-12 units whose `states`
+  attribute is only "MX". The grid's lowest cell (`meta.min`, 31.945417° N, 114.764583° W) is in
+  HU-12 150301080302 (states MX, downstream code OCEAN) and is **inside** the mask.
+- **The gap.** WBD covers Mexico only as far as its harmonized units go, and this build did not
+  compare those units with INEGI's own hydrography. In the study area, the only land in no WBD unit is
+  4 cells in the south-west corner (rows 411–413, columns 0–1, around 31.83–31.87° N,
+  115.19–115.165° W). They are 0 in the mask. No Mexican boundary was drawn, filled or invented.
+- **One-off check (not part of the pipeline).** On 2026-11-25 (UTC), the HU-2 layer of the USGS WBD
+  map service was queried with the study-area bbox
+  (`https://hydro.nationalmap.gov/arcgis/rest/services/wbd/MapServer/1/query?geometry=-115.201667,31.8175,-107.060833,42.1575&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=huc2,name,loaddate&returnGeometry=true&outSR=4326&maxAllowableOffset=0.002&f=geojson`,
+  generalized to 0.002°). It returned regions 10, 13, 14, 15, 16, 17 and 18. Labelling every cell by
+  the majority of its pixels gave 14: 41,958, 15: 55,357, 16: 26,799, 13: 7,750, 17: 1,401,
+  18: 1,386, 10: 309, none: 4 cells. Region 14 or 15 by this generalized layer disagrees with the
+  mask in 12 boundary cells. Point queries on the HU-2 and HU-12 layers at 31.87° N, 115.19° W
+  returned no unit. At 32.8° N and 32.95° N, 115.19° W they returned region 18 (HU-12s 181002040402
+  "Gordons Well" and 181002040403 "Deer Peak", both closed basins). The west-edge land between about
+  32.5° and 35.1° N is region 18 (California) and is outside the mask.
+- **Region is not drainage.** WBD regions are administrative groupings of hydrologic units, not
+  exact drainage areas. Region 15 includes HU-4 1508 Sonora. Following WBD's own `tohuc`
+  (downstream HU-12) codes, all 634 of its HU-12s stay inside 1508 and end at OCEAN (495),
+  MEXICO (117) or CLOSED BASIN (22) (`stats.sonoraDrainage`). None drains to the Colorado. Region
+  14 includes HU-6 140402 Great Divide Closed Basin. Both are inside the mask because they belong
+  to the regions: 1,609 cells of 1508 Sonora and 1,426 of the Great Divide Closed Basin
+  (`stats.hu6`). Whether the explorer should drop 1508 is a decision for Control and Andrew; the
+  mask follows the brief (HU-2 14 ∪ 15).
+- **Study-area edges.** The mask covers only the part of each region inside the rectangle (see the
+  HU-6 shares above).
+- **Resolution.** One bit per 0.025° cell (≈ 2.2 × 2.8 km). The WBD metadata says "At a minimum,
+  the HUs are delineated at 1:24,000-scale in the conterminous United States". At this cell size
+  the 1,840 boundary cells, not WBD's precision, limit the mask.
+
+### Verification
+
+- **Grid alignment** (`test_dims_equal_grid`, `test_alignment_against_independent_point_in_polygon`):
+  the planes are 414 × 326. `basin-mask.json` → `grid` equals `meta.json` (bbox, width, height,
+  cellDeg, rowOrder, native extent) and the SHA-256 of `grid.f32`. An independent even-odd
+  point-in-polygon test of every cell centre, written without GDAL, agrees with plane 0 except in
+  cells on the boundary (each disagreement has both values in its 3 × 3 neighbourhood). Shifting the
+  mask by one cell in any of the 8 directions more than doubles the disagreements.
+- **Rasterization** (`stats.regions.*.rasterizedVsWbdPct`): each full region, rasterized on its own
+  bbox and summed on the GRS 80 ellipsoid, matches WBD's `areasqkm` to within 0.001 %.
+- **Sanity points** (`test_gnis_sanity_points`, `test_points_against_source_polygons`): primary
+  coordinates from the USGS GNIS Domestic Names state files, published 2026-11-02
+  (`https://prd-tnm.s3.amazonaws.com/StagedProducts/GeographicNames/DomesticNames/DomesticNames_<ST>_Text.zip`).
+  Each point's cell and its 5 × 5 neighbourhood have the expected value, and the point-in-polygon
+  test on the source polygons agrees. GNIS Domestic Names has no "Hoover Dam" record, so the Lake
+  Mead reservoir record stands in for it.
+
+| Place | GNIS ID | Lat, lon (NAD 83) | Expected | Mask |
+|---|---|---|---|---|
+| Uncompahgre Peak | 188678 | 38.0714529, −107.4625289 | 14 | 14 |
+| Grand Junction | 204662 | 39.0638705, −108.5506486 | 14 | 14 |
+| Moab | 1430389 | 38.5733155, −109.5498395 | 14 | 14 |
+| Lake Mead | 7862 | 36.1725406, −114.4298448 | 15 | 15 |
+| Las Vegas, NV | 847388 | 36.1749705, −115.137223 | 15 | 15 |
+| Phoenix | 44784 | 33.4483771, −112.0740373 | 15 | 15 |
+| Flagstaff | 29046 | 35.1980671, −111.6512725 | 15 | 15 |
+| Salt Lake City | 1454997 | 40.7607794, −111.8910474 | outside | outside |
+| Great Salt Lake | 1441459 | 41.1628677, −112.5353656 | outside | outside |
+| Ely, NV | 859671 | 39.2474393, −114.8886296 | outside | outside |
+| Denver | 201738 | 39.7391536, −104.9847034 | outside | east of the bbox, so not on the grid; outside both polygons |
+| Albuquerque | 928679 | 35.0844909, −106.6511367 | outside | east of the bbox, so not on the grid; outside both polygons |
+
+- **Plausibility** (`test_fraction_plausible`): basin fraction 0.721 of cells. The in-bbox basin area
+  is less than WBD's 14 + 15 total and is 84 % of it. The majority-rule area is within 0.5 % of the
+  pixel-level union.
+- **Reproducibility** (`test_reproducible_from_cache`): recomputing from the cached zips gives
+  byte-identical `basin-mask.bin` and `basin-mask.json`. A run from an empty cache (fresh download)
+  also gave identical bytes.
+
 ## Run log (this build)
 
 | Run | Cache | Result | Time |
@@ -328,3 +500,6 @@ south-west corner near the Colorado River delta (see Extremes).
 | `npm run data` (final) | full cache | success, outputs unchanged | ≈ 8 s |
 | `npm run data` (F4b, with barcode) | full cache | success; `grid.f32`, `hillshade.webp`, `ATTRIBUTION.md` byte-identical to the F4a commit; `barcode.json` 33,492 B, 600 bars | ≈ 6.5 s |
 | `npm run data` (F9-R1, LANDMARKS from GNIS/MRDS) | full cache | success; `grid.f32`, `hillshade.webp`, `barcode.json`, `ATTRIBUTION.md` byte-identical to HEAD 5752efb; only `meta.json` `generatedAt`/`gitCommit` changed, and that file was restored | 7.1 s |
+| `python -m pipeline.basin_mask` (F12a) | empty `pipeline/data/raw/wbd/` | both WBD zips downloaded; `basin-mask.bin` 33,742 B, `basin-mask.json`; `meta.json` gains `basinMask` and two `files` entries | ≈ 40 s |
+| `npm run data -- --out-dir <scratch>` (F12a) | full cache | success; all seven outputs byte-identical to the committed ones except `meta.json` `generatedAt`/`gitCommit` | 39.0 s |
+| `python -m pipeline.basin_mask --raw-dir <new empty dir> --out-dir <scratch>` (F12a) | empty | both zips downloaded again (same SHA-256); `basin-mask.bin`, `basin-mask.json`, `meta.json` byte-identical | 41.9 s |
