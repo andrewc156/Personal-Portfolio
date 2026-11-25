@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:45 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 21:05 EST, Claude Code (Control)
 
 ## Status
 
@@ -21,19 +21,20 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI confirmation pending | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
-| F10 Extra hero modes (S1) | built, waiting for checker (queue: CI1 → F12a → F10) | n/a | — |
+| F10 Extra hero modes (S1) | checking: F10 checker attempt 1 running | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
-| F12 Basin mask (S3) | checking: F12a checker attempt 1 running | n/a | — |
-| F13 Place labels (S4) | todo (approved) | n/a | — |
+| F12 Basin mask (S3) | F12a data done; F12b explorer toggle building (viz-builder, attempt 1) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
+| F13 Place labels (S4) | F13a GNIS labels data building (data-engineer, attempt 1) | n/a | — |
 
-## Current task: no builders running; F12a checker running; F10 check queued
+## Current task (one checker and two builders in parallel, with no overlapping paths)
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | built, report done | checker queued |
-| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | built | checker attempt 1 running → docs/checks/F12a/attempt-1.md |
+| F10 check | checker | docs/checks/F10/ only | started | full gates; investigate hero.spec :443/:521/:632/:842 → verdict |
+| F12b mask toggle | viz-builder | src/lib/viz/explorer/**, src/components/explorer/**, src/pages/rising-water/**, e2e/explorer.spec.ts, tests/unit/viz/explorer/**, docs/builds/F12b/ | delegated | lazy mask load, dim outside, credit in About, tests → checker |
+| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | delegated | GNIS labels + pipeline step + tests; fix stale 1508 sentence in data.md → checker |
 
-After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12b mask toggle in the explorer (viz-builder), F13a GNIS labels data (data-engineer, after F12a), F13b explorer labels (viz-builder), then a fresh F9 audit. Checkers run one at a time.
+Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explorer labels (viz-builder, after F12b + F13a), then a fresh F9 audit.
 
 ## Handoff vs repo (resume check, 2026-11-24)
 
@@ -42,9 +43,9 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 
 ## Uncommitted changes
 
-All are unverified builder work in progress, not yet checked:
-- F10 (built, unchecked): src/lib/viz/hero/modes/** (new), src/components/hero/{hero-client.ts,HeroSettings.astro,Hero.astro}, tests/unit/viz/modes/**, e2e/hero.spec.ts
-- F12a (built, unchecked): pipeline/basin_mask.py, pipeline/build_colorado.py, pipeline/tests/test_basin_mask.py, public/data/colorado/{basin-mask.bin,basin-mask.json,meta.json}, docs/data.md
+All unverified:
+- F10 (built, being checked): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
+- F12b and F13a (building): their owned paths above.
 
 ## Open issues and "Needs Andrew"
 
@@ -54,13 +55,15 @@ All are unverified builder work in progress, not yet checked:
 - §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
 - Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
+- CI: `2d79120` makes Playwright skip its preview server for the wrangler headers step. Waiting for GitHub CI to confirm green. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
+- F12a notes: optional INEGI credit for the Mexican units (F12b); stale 1508 sentence in docs/data.md (F13a is fixing it).
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
 
-1. Confirm GitHub CI is green for `7e9b745`. F12a checker (running), then the F10 checker (CI1 checker saw 5 hero.spec failures from F10, incl. :842 off-screen pause), one at a time, committing only each feature's owned paths.
-2. After F10 PASS: F11b islands strip in the hero (viz-builder). After F12a PASS: F12b explorer mask toggle (viz-builder) and F13a GNIS labels data (data-engineer).
-3. F13b explorer labels, then a fresh F9 full-site audit.
+1. Record the F10 verdict, then commit and push on PASS (or run a fix round with viz-builder). Confirm GitHub CI is green.
+2. Check F12b and F13a as they return, one checker at a time.
+3. F11b, then F13b, then a fresh F9 full-site audit.
 
 ## WIP branch
 
