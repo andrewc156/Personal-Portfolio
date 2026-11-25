@@ -25,20 +25,19 @@
 | F11 Islands barcode (S2) | done | PASS_WITH_NOTES (F11a attempt 1, F11b attempt 2) | `248ebae`, `0dd1ea1` |
 | F12 Basin mask (S3) | done | PASS_WITH_NOTES (F12a and F12b attempt 1) | `4c32017`, `f0060bb` |
 | F13 Place labels (S4) | done | PASS_WITH_NOTES (F13a attempt 1, F13b attempt 2) | `7aa2244`, `aa6b3da` |
-| F14 Homepage animation toolbar | accepted, commit pending | PASS_WITH_NOTES (attempt 1) | — |
-| CI2 TDA unit-test timeouts on GitHub | checking | CI #35 failed before browser gates | — |
+| F14 Homepage animation toolbar | done | PASS_WITH_NOTES (attempt 1) | `30db9ce` |
+| CI2 TDA unit-test timeouts on GitHub | accepted, commit pending | PASS_WITH_NOTES (attempt 1) | — |
 | F15 Footer credit removal | built, checker queued | — | — |
 | F16 Personal portfolio project entry | building | — | — |
-| F17 Garden header link | queued after F15 source snapshot | — | — |
+| F17 Garden header link and section order | building | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F14 homepage animation toolbar | checker | Isolated candidate /private/tmp/portfolio-recovery.RmJMcJ/F14, docs/checks/F14/ | Visible toolbar built. Astro check, lint and 221 focused unit tests passed. | PASS_WITH_NOTES. 174 preview browser passes, 8 Wrangler passes, max direct-link CLS 0.039080. Commit pending. |
-| CI2 TDA timeouts | tda-engineer | tests/unit/tda/{flood,properties}.test.ts and docs/builds/CI2/attempt-1.md | CI #35 timed out two long existing oracle tests at 5 seconds. 797 other unit tests passed. | TDA engineer gave the two expensive tests a scoped 20-second limit. All 14 targeted tests passed and the test bodies are unchanged. Independent checker delegated in /private/tmp/portfolio-recovery.RmJMcJ/CI2. |
+| CI2 TDA timeouts | tda-engineer | tests/unit/tda/{flood,properties}.test.ts and docs/builds/CI2/attempt-1.md | CI #35 timed out two long existing oracle tests at 5 seconds. 797 other unit tests passed. | TDA engineer gave the two expensive tests a scoped 20-second limit. All 14 targeted tests passed and the test bodies are unchanged. PASS_WITH_NOTES, all 799 unit checks and 14 focused tests passed. Commit pending. Hosted Linux check follows push. |
 
-F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. Andrew requested F17 Garden header link. The fresh full-site audit follows these features and CI2.
+F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. F17 Garden link and homepage section order are delegated to site-builder. The fresh full-site audit follows these features and CI2.
 
 ## Handoff vs repo (resume check)
 
@@ -53,10 +52,10 @@ F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-rec
 
 Unchecked feature candidates:
 
-- F14 accepted, commit pending: `src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}`, `src/components/site/{settings.ts,SettingsPanel.astro}`, `e2e/hero.spec.ts`, and `docs/builds/F14/attempt-1.md`.
 - F15 built, unchecked: `src/data/profile.yaml`, footer assertion in `e2e/shell.spec.ts`, and `docs/builds/F15/attempt-1.md`.
 - F16 building: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
-- CI2 built, checking: `tests/unit/tda/{flood,properties}.test.ts` and `docs/builds/CI2/attempt-1.md`.
+- F17 building: shared navbar, related shell and CLS nav checks, and its build report.
+- CI2 accepted, commit pending: `tests/unit/tda/{flood,properties}.test.ts` and `docs/builds/CI2/attempt-1.md`.
 
 ## Open issues and "Needs Andrew"
 
@@ -76,7 +75,7 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Push the accepted F14 toolbar and finish CI2 independent verification.
+1. Push CI2 and verify the new hosted GitHub CI run.
 2. Build, check, and push the footer, portfolio entry and Garden navigation updates.
 3. Run the fresh F9 full-site audit and check hosted CI for the accepted changes.
 
@@ -84,4 +83,4 @@ Unchecked feature candidates:
 
 none
 
-Latest Control push: F13b `aa6b3da` to origin/main. Unchecked candidates remain local.
+Latest Control push: F14 `30db9ce` to origin/main. Unchecked candidates remain local.

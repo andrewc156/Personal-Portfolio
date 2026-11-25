@@ -1,0 +1,9 @@
+verify	npm run verify	2026-11-25T02:21:59.1932220Z ##[group]Run npm run verify
+verify	npm run verify	2026-11-25T02:22:25.2177777Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/unit/tda/flood.test.ts^[[2m > ^[[22mFlood^[[2m > ^[[22m4-connectivity: matches computeH0 and a BFS of the sublevel set at random levels
+verify	npm run verify	2026-11-25T02:22:25.2183346Z ^[[31m^[[1mTestTimeoutError^[[22m: Test timed out in 5000ms.
+verify	npm run verify	2026-11-25T02:22:25.2268440Z ^[[41m^[[1m FAIL ^[[22m^[[49m tests/unit/tda/properties.test.ts^[[2m > ^[[22mproperties, 4-connectivity, 602 random grids^[[2m > ^[[22mevery death kills the younger root, at a cell with ≥ 2 distinct neighbor roots
+verify	npm run verify	2026-11-25T02:22:25.2270505Z ^[[31m^[[1mTestTimeoutError^[[22m: Test timed out in 5000ms.
+verify	npm run verify	2026-11-25T02:22:25.2318546Z ^[[2m Test Files ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m24 passed^[[39m^[[22m^[[90m (26)^[[39m
+verify	npm run verify	2026-11-25T02:22:25.2341781Z ^[[2m      Tests ^[[22m ^[[1m^[[31m2 failed^[[39m^[[22m^[[2m | ^[[22m^[[1m^[[32m797 passed^[[39m^[[22m^[[90m (799)^[[39m
+verify	npm run verify	2026-11-25T02:22:25.2399577Z ##[error]TestTimeoutError: Test timed out in 5000ms.
+verify	npm run verify	2026-11-25T02:22:25.2413609Z ##[error]TestTimeoutError: Test timed out in 5000ms.

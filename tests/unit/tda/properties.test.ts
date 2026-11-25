@@ -106,12 +106,17 @@ for (const conn of [4, 8] as const) {
       expect(zeroLength).toBeGreaterThan(0); // ties really exercise plateaus
     });
 
-    it('every death kills the younger root, at a cell with ≥ 2 distinct neighbor roots', () => {
-      for (const g of grids) {
-        const res = computeH0(g.heights, g.W, g.H, { connectivity: conn });
-        checkDeaths(g, conn, allFiniteBars(res));
-      }
-    });
+    // The independent oracle relabels the grid by BFS at each death cell.
+    it(
+      'every death kills the younger root, at a cell with ≥ 2 distinct neighbor roots',
+      { timeout: 20_000 },
+      () => {
+        for (const g of grids) {
+          const res = computeH0(g.heights, g.W, g.H, { connectivity: conn });
+          checkDeaths(g, conn, allFiniteBars(res));
+        }
+      },
+    );
 
     it('essential bar is born at the ≺-minimum cell', () => {
       for (const g of grids) {

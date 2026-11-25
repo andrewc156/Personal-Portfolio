@@ -57,43 +57,48 @@ describe('Flood', () => {
   });
 
   for (const conn of [4, 8] as const) {
-    it(`${conn}-connectivity: matches computeH0 and a BFS of the sublevel set at random levels`, () => {
-      const r = rng(conn);
-      for (let t = 0; t < 120; t++) {
-        const g = randomGrid(r, 30, t % 2 === 0);
-        const h = g.heights;
-        const res = computeH0(h, g.W, g.H, { connectivity: conn });
-        const f = new Flood(h, g.W, g.H, { connectivity: conn });
-        const levels = Array.from({ length: 12 }, () => f.levelAtPercentile(r() * 100));
-        levels.push(...levels.slice(0, 3).map((x) => x + 0.5));
-        levels.sort((a, b) => a - b);
-        const events: MergeEvent[] = [];
-        for (const level of levels) {
-          events.push(...f.advanceTo(level));
-          const labels = bfsLabels(h, g.W, g.H, conn, (i) => h[i] <= level);
-          const lakes = new Set<number>();
-          for (let i = 0; i < h.length; i++) {
-            expect(f.isWet(i)).toBe(h[i] <= level);
-            expect(f.componentOf(i)).toBe(labels[i]); // root = ≺-oldest cell of the lake
-            if (labels[i] >= 0) lakes.add(labels[i]);
+    // Each seeded grid runs a fresh BFS at every sampled level, which can exceed 5 s in CI.
+    it(
+      `${conn}-connectivity: matches computeH0 and a BFS of the sublevel set at random levels`,
+      { timeout: 20_000 },
+      () => {
+        const r = rng(conn);
+        for (let t = 0; t < 120; t++) {
+          const g = randomGrid(r, 30, t % 2 === 0);
+          const h = g.heights;
+          const res = computeH0(h, g.W, g.H, { connectivity: conn });
+          const f = new Flood(h, g.W, g.H, { connectivity: conn });
+          const levels = Array.from({ length: 12 }, () => f.levelAtPercentile(r() * 100));
+          levels.push(...levels.slice(0, 3).map((x) => x + 0.5));
+          levels.sort((a, b) => a - b);
+          const events: MergeEvent[] = [];
+          for (const level of levels) {
+            events.push(...f.advanceTo(level));
+            const labels = bfsLabels(h, g.W, g.H, conn, (i) => h[i] <= level);
+            const lakes = new Set<number>();
+            for (let i = 0; i < h.length; i++) {
+              expect(f.isWet(i)).toBe(h[i] <= level);
+              expect(f.componentOf(i)).toBe(labels[i]); // root = ≺-oldest cell of the lake
+              if (labels[i] >= 0) lakes.add(labels[i]);
+            }
+            expect(f.alive()).toBe(lakes.size);
           }
-          expect(f.alive()).toBe(lakes.size);
+          events.push(...f.advanceTo(Infinity));
+          const merges = events.filter((e) => e.type === 'merge');
+          expect(merges.map((e) => [e.lake, e.cell, e.into, e.level])).toEqual(
+            allFiniteBars(res).map((b) => [b.birthCell, b.deathCell, b.mergedInto, b.death]),
+          );
+          expect(events.filter((e) => e.type === 'birth').length).toBe(res.stats.births);
+          expect(f.alive()).toBe(1);
+          // Going back down replays to the same state.
+          const mid = f.levelAtPercentile(40);
+          f.advanceTo(mid);
+          const g2 = new Flood(h, g.W, g.H, { connectivity: conn });
+          g2.advanceTo(mid);
+          expect(f.alive()).toBe(g2.alive());
+          for (let i = 0; i < h.length; i++) expect(f.componentOf(i)).toBe(g2.componentOf(i));
         }
-        events.push(...f.advanceTo(Infinity));
-        const merges = events.filter((e) => e.type === 'merge');
-        expect(merges.map((e) => [e.lake, e.cell, e.into, e.level])).toEqual(
-          allFiniteBars(res).map((b) => [b.birthCell, b.deathCell, b.mergedInto, b.death]),
-        );
-        expect(events.filter((e) => e.type === 'birth').length).toBe(res.stats.births);
-        expect(f.alive()).toBe(1);
-        // Going back down replays to the same state.
-        const mid = f.levelAtPercentile(40);
-        f.advanceTo(mid);
-        const g2 = new Flood(h, g.W, g.H, { connectivity: conn });
-        g2.advanceTo(mid);
-        expect(f.alive()).toBe(g2.alive());
-        for (let i = 0; i < h.length; i++) expect(f.componentOf(i)).toBe(g2.componentOf(i));
-      }
-    });
+      },
+    );
   }
 });

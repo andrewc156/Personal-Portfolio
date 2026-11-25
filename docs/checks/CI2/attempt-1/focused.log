@@ -1,0 +1,22 @@
+
+ RUN  v5.1.1 /private/tmp/portfolio-recovery.RmJMcJ/CI2
+
+ ✓ tests/unit/tda/properties.test.ts > properties, 4-connectivity, 602 random grids > births = number of cells with no ≺-earlier neighbor; finite + essential = births 171ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 4-connectivity, 602 random grids > every death kills the younger root, at a cell with ≥ 2 distinct neighbor roots 1902ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 4-connectivity, 602 random grids > essential bar is born at the ≺-minimum cell 31ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 4-connectivity, 602 random grids > (birthCell, deathCell) pairs are invariant under strictly increasing transforms 131ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 8-connectivity, 602 random grids > births = number of cells with no ≺-earlier neighbor; finite + essential = births 105ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 8-connectivity, 602 random grids > every death kills the younger root, at a cell with ≥ 2 distinct neighbor roots 1483ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 8-connectivity, 602 random grids > essential bar is born at the ≺-minimum cell 38ms
+ ✓ tests/unit/tda/properties.test.ts > properties, 8-connectivity, 602 random grids > (birthCell, deathCell) pairs are invariant under strictly increasing transforms 132ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > golden grid: events, alive(), isWet, componentOf 3ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > lowering the level replays from the bottom; reset() empties 0ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > levelAtPercentile uses the ≺ order 0ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > accepts a precomputed order 1ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > 4-connectivity: matches computeH0 and a BFS of the sublevel set at random levels 1631ms
+ ✓ tests/unit/tda/flood.test.ts > Flood > 8-connectivity: matches computeH0 and a BFS of the sublevel set at random levels 1513ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  21:35:00
+   Duration  7.52s (tests 100%)
