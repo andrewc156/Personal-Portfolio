@@ -133,9 +133,10 @@ test.describe('header and navigation', () => {
     const nav = page.getByRole('navigation', { name: 'Main' });
     await expect(nav.getByRole('link')).toHaveText([
       'Mission',
-      'Research',
       'Work',
+      'Research',
       'Open science',
+      'Garden',
       'Rising water',
       'CV',
     ]);
@@ -145,6 +146,11 @@ test.describe('header and navigation', () => {
     );
     await expect(nav.getByRole('link', { name: 'CV' })).toHaveAttribute('href', '/cv/');
     await expect(page.getByRole('button', { name: 'Art settings', exact: true })).toBeVisible();
+    const garden = nav.getByRole('link', { name: 'Garden', exact: true });
+    await expect(garden).toHaveAttribute('href', '/garden/');
+    await garden.click();
+    await expect(page).toHaveURL('/garden/');
+    await expect(garden).toHaveAttribute('aria-current', 'page');
   });
 
   test('section anchors exist in §4.3 order and nav scrolls to them', async ({ page }) => {
@@ -228,10 +234,10 @@ test.describe('header and navigation', () => {
     await page.setViewportSize({ width: 375, height: 740 });
     await page.goto('/');
     const links = page.getByRole('navigation', { name: 'Main' }).getByRole('link');
-    await expect(links).toHaveCount(6);
+    await expect(links).toHaveCount(7);
     await page.keyboard.press('Tab'); // skip link
     await page.keyboard.press('Tab'); // wordmark
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
       await page.keyboard.press('Tab');
       await expect(links.nth(i)).toBeFocused();
       // ratio 1: fully visible, not just a sliver at the clipped edge of the row.

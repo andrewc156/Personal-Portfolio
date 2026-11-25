@@ -1,0 +1,114 @@
+[
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "default (system-ui)",
+  "platformFont": ".SF NS",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 26,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3012
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "default (system-ui)",
+  "platformFont": ".SF NS",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 26,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3012
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "DejaVu Sans Bold (Ubuntu default sans)",
+  "platformFont": "DejaVu Sans",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 13,
+  "p1Missing": [
+   "Las Vegas"
+  ],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "DejaVu Sans Bold (Ubuntu default sans)",
+  "platformFont": "DejaVu Sans",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 13,
+  "p1Missing": [
+   "Las Vegas"
+  ],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 13,
+  "p1Missing": [
+   "Las Vegas"
+  ],
+  "sumTextWidth": 3403
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": "341.0x542.2",
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 13,
+  "p1Missing": [
+   "Las Vegas"
+  ],
+  "sumTextWidth": 3403
+ }
+]

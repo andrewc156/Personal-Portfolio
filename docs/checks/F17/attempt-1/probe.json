@@ -1,0 +1,568 @@
+{
+ "header": [
+  {
+   "scheme": "light",
+   "w": 375,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": []
+  },
+  {
+   "scheme": "light",
+   "w": 375,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "light",
+   "w": 768,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "light",
+   "w": 768,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "light",
+   "w": 1280,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "light",
+   "w": 1280,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "light",
+   "w": 320,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": []
+  },
+  {
+   "scheme": "light",
+   "w": 320,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "light",
+   "w": 832,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "light",
+   "w": 832,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "dark",
+   "w": 375,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": []
+  },
+  {
+   "scheme": "dark",
+   "w": 375,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "dark",
+   "w": 768,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "dark",
+   "w": 768,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "dark",
+   "w": 1280,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "dark",
+   "w": 1280,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "dark",
+   "w": 320,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": []
+  },
+  {
+   "scheme": "dark",
+   "w": 320,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": true,
+   "current": [
+    "Garden"
+   ]
+  },
+  {
+   "scheme": "dark",
+   "w": 832,
+   "path": "/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": []
+  },
+  {
+   "scheme": "dark",
+   "w": 832,
+   "path": "/garden/",
+   "rows": 1,
+   "docOverflow": 0,
+   "navScrollable": false,
+   "current": [
+    "Garden"
+   ]
+  }
+ ],
+ "f16": [
+  {
+   "scheme": "light",
+   "w": 375,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "light",
+   "w": 375,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  },
+  {
+   "scheme": "light",
+   "w": 768,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "light",
+   "w": 768,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  },
+  {
+   "scheme": "light",
+   "w": 1280,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "light",
+   "w": 1280,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  },
+  {
+   "scheme": "dark",
+   "w": 375,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "dark",
+   "w": 375,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  },
+  {
+   "scheme": "dark",
+   "w": 768,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "dark",
+   "w": 768,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  },
+  {
+   "scheme": "dark",
+   "w": 1280,
+   "path": "/garden/",
+   "overflow": 0,
+   "text": "PROJECT\nPersonal portfolio\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.\nNov 2026"
+  },
+  {
+   "scheme": "dark",
+   "w": 1280,
+   "path": "/cv/",
+   "overflow": 0,
+   "text": "Andrew Chincea (Nov 2026). Personal portfolio.\n\nAn academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer."
+  }
+ ],
+ "keyboard": [
+  {
+   "w": 320,
+   "forward": [
+    {
+     "label": "Mission",
+     "fullyVisible": true
+    },
+    {
+     "label": "Work",
+     "fullyVisible": true
+    },
+    {
+     "label": "Research",
+     "fullyVisible": true
+    },
+    {
+     "label": "Open science",
+     "fullyVisible": true
+    },
+    {
+     "label": "Garden",
+     "fullyVisible": true
+    },
+    {
+     "label": "Rising water",
+     "fullyVisible": true
+    },
+    {
+     "label": "CV",
+     "fullyVisible": true
+    }
+   ],
+   "back": [
+    "Rising water",
+    "Garden",
+    "Open science",
+    "Research",
+    "Work",
+    "Mission"
+   ]
+  },
+  {
+   "w": 375,
+   "forward": [
+    {
+     "label": "Mission",
+     "fullyVisible": true
+    },
+    {
+     "label": "Work",
+     "fullyVisible": true
+    },
+    {
+     "label": "Research",
+     "fullyVisible": true
+    },
+    {
+     "label": "Open science",
+     "fullyVisible": true
+    },
+    {
+     "label": "Garden",
+     "fullyVisible": true
+    },
+    {
+     "label": "Rising water",
+     "fullyVisible": true
+    },
+    {
+     "label": "CV",
+     "fullyVisible": true
+    }
+   ],
+   "back": [
+    "Rising water",
+    "Garden",
+    "Open science",
+    "Research",
+    "Work",
+    "Mission"
+   ]
+  },
+  {
+   "w": 412,
+   "forward": [
+    {
+     "label": "Mission",
+     "fullyVisible": true
+    },
+    {
+     "label": "Work",
+     "fullyVisible": true
+    },
+    {
+     "label": "Research",
+     "fullyVisible": true
+    },
+    {
+     "label": "Open science",
+     "fullyVisible": true
+    },
+    {
+     "label": "Garden",
+     "fullyVisible": true
+    },
+    {
+     "label": "Rising water",
+     "fullyVisible": true
+    },
+    {
+     "label": "CV",
+     "fullyVisible": true
+    }
+   ],
+   "back": [
+    "Rising water",
+    "Garden",
+    "Open science",
+    "Research",
+    "Work",
+    "Mission"
+   ]
+  },
+  {
+   "w": 768,
+   "forward": [
+    {
+     "label": "Mission",
+     "fullyVisible": true
+    },
+    {
+     "label": "Work",
+     "fullyVisible": true
+    },
+    {
+     "label": "Research",
+     "fullyVisible": true
+    },
+    {
+     "label": "Open science",
+     "fullyVisible": true
+    },
+    {
+     "label": "Garden",
+     "fullyVisible": true
+    },
+    {
+     "label": "Rising water",
+     "fullyVisible": true
+    },
+    {
+     "label": "CV",
+     "fullyVisible": true
+    }
+   ],
+   "back": [
+    "Rising water",
+    "Garden",
+    "Open science",
+    "Research",
+    "Work",
+    "Mission"
+   ]
+  },
+  {
+   "w": 832,
+   "forward": [
+    {
+     "label": "Mission",
+     "fullyVisible": true
+    },
+    {
+     "label": "Work",
+     "fullyVisible": true
+    },
+    {
+     "label": "Research",
+     "fullyVisible": true
+    },
+    {
+     "label": "Open science",
+     "fullyVisible": true
+    },
+    {
+     "label": "Garden",
+     "fullyVisible": true
+    },
+    {
+     "label": "Rising water",
+     "fullyVisible": true
+    },
+    {
+     "label": "CV",
+     "fullyVisible": true
+    }
+   ],
+   "back": [
+    "Rising water",
+    "Garden",
+    "Open science",
+    "Research",
+    "Work",
+    "Mission"
+   ]
+  }
+ ],
+ "cls": [
+  {
+   "w": 375,
+   "path": "/",
+   "cls": 0
+  },
+  {
+   "w": 375,
+   "path": "/garden/",
+   "cls": 0
+  },
+  {
+   "w": 375,
+   "path": "/cv/",
+   "cls": 0
+  },
+  {
+   "w": 1280,
+   "path": "/",
+   "cls": 0
+  },
+  {
+   "w": 1280,
+   "path": "/garden/",
+   "cls": 0
+  },
+  {
+   "w": 1280,
+   "path": "/cv/",
+   "cls": 0
+  }
+ ],
+ "order": {
+  "nav": [
+   [
+    "Mission",
+    "/#mission"
+   ],
+   [
+    "Work",
+    "/#work"
+   ],
+   [
+    "Research",
+    "/#research"
+   ],
+   [
+    "Open science",
+    "/#open-science"
+   ],
+   [
+    "Garden",
+    "/garden/"
+   ],
+   [
+    "Rising water",
+    "/rising-water/"
+   ],
+   [
+    "CV",
+    "/cv/"
+   ]
+  ],
+  "sectionsInDom": [
+   "mission",
+   "work",
+   "research",
+   "open-science"
+  ]
+ },
+ "garden": null
+}

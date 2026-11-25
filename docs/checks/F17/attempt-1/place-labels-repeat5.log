@@ -1,0 +1,15 @@
+
+Running 10 tests using 1 worker
+
+  ✓   1 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (light) (538ms)
+  ✓   2 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (dark) (556ms)
+  ✓   3 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (light) (613ms)
+  ✓   4 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (dark) (540ms)
+  ✓   5 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (light) (623ms)
+  ✓   6 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (dark) (592ms)
+  ✓   7 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (light) (580ms)
+  ✓   8 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (dark) (720ms)
+  ✓   9 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (light) (703ms)
+  ✓  10 [chromium] › e2e/explorer.spec.ts:873:7 › explorer: place labels › map labels, markers, and leaders stay separated at 375px (dark) (638ms)
+
+  10 passed (9.1s)

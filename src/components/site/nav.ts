@@ -15,12 +15,13 @@ export interface NavItem {
   href: string;
 }
 
-/** Header nav (spec §4.3): Mission · Research · Work · Open science · Rising water · CV. */
+/** Header links follow the homepage section order, then link to standalone pages. */
 export const NAV_ITEMS: readonly NavItem[] = [
   { label: 'Mission', href: withBase(`/#${SECTION_IDS.mission}`) },
-  { label: 'Research', href: withBase(`/#${SECTION_IDS.research}`) },
   { label: 'Work', href: withBase(`/#${SECTION_IDS.work}`) },
+  { label: 'Research', href: withBase(`/#${SECTION_IDS.research}`) },
   { label: 'Open science', href: withBase(`/#${SECTION_IDS.openScience}`) },
+  { label: 'Garden', href: withBase('/garden/') },
   { label: 'Rising water', href: withBase('/rising-water/') },
   { label: 'CV', href: withBase('/cv/') },
 ];

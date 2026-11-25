@@ -1,0 +1,36 @@
+
+> andrew-chincea-portfolio@0.0.1 lhci
+> lhci autorun --config=./lighthouserc.cjs
+
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server on port 64834...
+Running Lighthouse 1 time(s) on http://localhost:64834/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:64834/garden/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:64834/cv/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:64834/rising-water/
+Run #1...done.
+Done running Lighthouse!
+
+Checking assertions against 4 URL(s), 4 total run(s)
+
+1 result(s) for [1mhttp://localhost:64834/rising-water/[0m :
+
+  ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+        expected: >=[32m0.9[0m
+           found: [31m0.76[0m
+      [2mall values: 0.76[0m
+
+All results processed!
+
+Dumping 4 reports to disk at /Users/andrewchincea/personalPortfolio/.lighthouseci...
+Done writing reports to disk.
+
+Done running autorun.

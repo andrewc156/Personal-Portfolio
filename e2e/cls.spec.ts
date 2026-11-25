@@ -128,12 +128,12 @@ test.describe('font swap layout stability (mobile, fonts delayed)', () => {
 });
 
 test.describe('mobile nav row is font-independent and fully reachable', () => {
-  const LABELS = ['Mission', 'Research', 'Work', 'Open science', 'Rising water', 'CV'];
+  const LABELS = ['Mission', 'Work', 'Research', 'Open science', 'Garden', 'Rising water', 'CV'];
   // Focus ring: 2px outline at 2px offset (global.css :focus-visible).
   const RING = 4;
 
   for (const width of [320, 375, 412, 768, 832]) {
-    test(`${width}px: one row in any font; all 6 links reachable by keyboard`, async ({
+    test(`${width}px: one row in any font; all ${LABELS.length} links reachable by keyboard`, async ({
       browser,
     }) => {
       const ctx = await browser.newContext({ viewport: { width, height: 800 } });
@@ -168,7 +168,7 @@ test.describe('mobile nav row is font-independent and fully reachable', () => {
           };
         }, RING);
 
-      // Tab from the wordmark visits the 6 links in order, Shift+Tab walks back; every
+      // Tab from the wordmark visits the links in order, Shift+Tab walks back; every
       // focused link is fully visible inside the scrolling row.
       const walk = async (font: string) => {
         await page.evaluate(() => {
