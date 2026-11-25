@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 10:56:44 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 15:08:15 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -36,6 +36,7 @@
 | F19a Copy voice (first person, humanized) | done | PASS (check attempt 2) | `111f774` |
 | F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `637d2a6` (candidate `464da59`) |
 | F19c Visual polish within the system | done | PASS (check attempt 1) | `680aeac` |
+| F20 Hero Settings cog | done | PASS (attempt 1) | this commit |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task

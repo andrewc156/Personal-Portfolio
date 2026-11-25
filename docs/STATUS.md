@@ -40,6 +40,7 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F19b Hero framing | Andrew requested | done | Attempt 2 PASS (docs/checks/F19b/attempt-2.md); hosted candidate CI 45573412148 passed. The hero's first frame reads as terrain plus water, not a brown blur. |
 | F19c Visual polish | Andrew requested | done | Attempt 1 PASS (docs/checks/F19c/attempt-1.md). Type scale, spacing, section rhythm, distinct research thumbnails, contact. |
 | F9 attempt 4 | checker | done, PASS_WITH_NOTES (docs/checks/F9/attempt-4.md) | Post-stretch baseline before F19. |
+| F20 Hero Settings cog | Andrew requested | done | PASS (docs/checks/F20/attempt-1.md); decorative icon with unchanged button behavior. |
 
 ## Post-F19 audit
 
