@@ -95,12 +95,20 @@ The repo is already on GitHub at `github.com/andrewc156/Personal-Portfolio`, bra
    - `SITE_URL` = `https://<project>.pages.dev`. You know the project name from step 4, so you can set it before the first build.
    - Add it for **Production**. Adding it for **Preview** too is fine: previews then point their canonical URLs at production, which is what you want.
 6. Select **Save and Deploy**. Then open `https://<project>.pages.dev` and run the "after the deploy" check above.
-7. **Node version.** Cloudflare's v3 build image reads `.nvmrc` (or `NODE_VERSION`) and supports any Node version ([build image docs](https://developers.cloudflare.com/pages/configuration/build-image/)). This repo's `.nvmrc` pins `26.13.0` (the version it is developed on), and npm 11 comes with Node 26.
-   - In the first build log, check that Node 26.13.0 is the version installed, and that the project's build system version (under **Settings → Build**) is v3. Otherwise you get Node 22 and npm 10. (Dashboard labels move around. If one isn't where this says, look for the nearest match.)
+7. **Node version.** This repo's `.nvmrc` pins `26.13.0`. The Pages v3 build image reads `.nvmrc` or `NODE_VERSION`. [Cloudflare Pages build image](https://developers.cloudflare.com/pages/configuration/build-image/)
+   - In the first build log, check that Cloudflare installed Node 26.13.0. The build image version is under **Settings → Build**.
    - If the log shows the wrong version or a Node install error, add the environment variable `NODE_VERSION` = `26.13.0` and retry the deployment.
    - The builds themselves need nothing else: no Python, no secrets, no API keys.
 
 Later changes, such as setting `SITE_URL` to the custom domain, are under the project's **Settings → Variables and Secrets** (older dashboards: **Settings → Environment variables**). A changed variable only applies to new builds, so go to **Deployments** and retry the latest one.
+
+### If the build succeeds but the deploy command fails
+
+The November 25, 2026 build log shows that `npm run build` generated all ten static pages and `dist/_headers`. The next step, `Executing user deploy command: npx wrangler deploy`, identifies a Workers Builds deployment. Wrangler auto-configured Astro with `@astrojs/cloudflare` and ran a second build. That rebuild failed when the Worker prerenderer tried to read `/public/data/colorado/meta.json`. [Wrangler's automatic configuration for Astro](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#deploy-an-existing-astro-project-on-workers)
+
+For this repository, create a **Pages** project using the Pages tab and import the GitHub repository as described above. Select `main`, set the build command to `npm run build` and output directory to `dist`, and set `SITE_URL` to the Pages project's production origin. Pages publishes `dist` automatically after the build. If the dashboard asks for a **Deploy command**, return to **Create application → Pages**. [Cloudflare Pages Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/)
+
+For a deliberate Workers deployment, see [Workers static assets](#alternative-workers-static-assets-not-built) below.
 
 ## (b) Direct upload with Wrangler
 
