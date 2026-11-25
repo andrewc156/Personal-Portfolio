@@ -2,11 +2,11 @@
 # Andrew's CV.
 title: Water-quality prediction on river networks
 order: 1
-summary: Predicting hourly water quality at river stations with no data, using graph-Laplacian regression on the river network.
+summary: I use graph-Laplacian regression on river networks to predict hourly water quality at stations that have no data.
 description: >-
-  RiverNets, a project in the TDA Lab at Kennesaw State University, predicts hourly water
-  quality (water temperature, dissolved oxygen, specific conductance, pH and turbidity) at
-  river stations with no data, using a smoothness penalty along the river network.
+  I work on RiverNets, a project in the TDA Lab at Kennesaw State University. The model
+  predicts five measurements (water temperature, dissolved oxygen, specific conductance, pH
+  and turbidity) with a smoothness penalty along the river network.
 methods:
   - Graph-Laplacian regression with a smoothness penalty along the river network.
   - Hourly USGS continuous water-quality records from 28 Colorado River Basin stations, cleaned and audited for completeness by station and variable.

@@ -2,7 +2,7 @@
 type: poster
 title: 'RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin'
 date: '2026-12-04'
-description: Graph-Laplacian regression that predicts water quality at unmonitored river stations in the Colorado River Basin.
+description: We present graph-Laplacian regression for predicting water quality at unmonitored stations in the Colorado River Basin.
 venue: KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA
 authors:
   - Andrew Chincea

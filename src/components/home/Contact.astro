@@ -2,12 +2,14 @@
 /** Home: Contact (spec §4.3 item 7). Only links that exist; hidden when there are none. */
 import ContactLinks from '../content/ContactLinks.astro';
 import { contactLinks } from '../content/contact';
+import { getCopy } from '../content/work';
 
 export interface Props {
   id: string;
 }
 const { id } = Astro.props;
 const links = contactLinks();
+const lead = await getCopy('contact');
 ---
 
 {links.length > 0 && (
@@ -16,6 +18,7 @@ const links = contactLinks();
       <h2 id={`${id}-title`} class="section-title">
         Contact
       </h2>
+      {lead.text && <p data-confirmed={String(lead.confirmed)}>{lead.text}</p>}
       <ContactLinks links={links} />
     </div>
   </section>

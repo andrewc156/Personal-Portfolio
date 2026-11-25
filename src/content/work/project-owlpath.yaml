@@ -4,7 +4,7 @@ type: project
 title: OwlPath
 date: '2026-11'
 ongoing: true
-description: An interactive prerequisite map for three KSU majors; students mark completed courses and see which classes they can take next term.
+description: An interactive prerequisite map for three KSU majors. Students mark the courses they've finished and see which classes they can take next term.
 authors:
   - Andrew Chincea
 links:

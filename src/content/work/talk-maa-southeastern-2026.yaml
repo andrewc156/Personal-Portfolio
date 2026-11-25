@@ -2,7 +2,7 @@
 type: talk
 title: Largest Square Divisor of a Random Integer
 date: '2026-03'
-description: The square-divisor case ($k$ = 2) of the largest $k$^th^-power divisor of a random integer.
+description: We presented the square-divisor case ($k$ = 2) of the largest $k$^th^-power divisor of a random integer.
 venue: Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL
 authors:
   - Andrew Chincea

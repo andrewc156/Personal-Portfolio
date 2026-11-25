@@ -2,6 +2,7 @@
 /** Research-area card (spec §4.3): thumbnail, linked heading, one-liner, "Related work →". */
 import MathText from './MathText.astro';
 import ResearchThumb from './ResearchThumb.astro';
+import { plainText } from './format';
 import { gardenTagHref, researchHref, type ResearchEntry } from './work';
 
 interface Props {
@@ -23,9 +24,8 @@ const Heading = `h${headingLevel}` as 'h2' | 'h3';
     <MathText text={area.data.summary} />
   </p>
   <p class="research-card__more">
-    <a href={gardenTagHref(area.id)}>
-      Related work<span class="visually-hidden"> on {area.data.title}</span>{' '}
-      <span aria-hidden="true">→</span>
+    <a href={gardenTagHref(area.id)} aria-label={`Related work: ${plainText(area.data.title)}`}>
+      Related work <span aria-hidden="true">→</span>
     </a>
   </p>
 </article>

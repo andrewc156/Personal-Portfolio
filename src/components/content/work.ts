@@ -40,7 +40,7 @@ export function primaryHref(item: WorkEntry): string | undefined {
 }
 
 export async function getCopy(
-  id: 'mission' | 'about_bio' | 'open_science',
+  id: 'mission' | 'about_bio' | 'open_science' | 'contact',
 ): Promise<{ text: string; confirmed: boolean }> {
   const entries = await getCollection('copy');
   const e = entries.find((x) => x.id === id);

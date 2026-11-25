@@ -3,7 +3,7 @@
 type: paper
 title: Largest $k$^th^-Power Divisor of a Random Integer
 status: submitted
-description: An asymptotic formula with an $O$(log $x$) error term for every integer $k$ ≥ 2.
+description: We establish an asymptotic formula with an $O$(log $x$) error term for every integer $k$ ≥ 2.
 authors:
   - Tsz Ho Chan
   - Andrew Chincea

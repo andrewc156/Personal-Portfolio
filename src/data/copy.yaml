@@ -1,25 +1,35 @@
-# Site copy written only from spec §3 and Andrew's CV. Draft copy stays `confirmed: false`
-# until Andrew approves it (see docs/QUESTIONS.md).
+# Site copy written only from spec §3, Andrew's CV and DECISIONS #85–86, in Andrew's first
+# person (F19a). Draft copy stays `confirmed: false` until Andrew approves it (see
+# docs/QUESTIONS.md).
 
 mission:
   text: >-
-    Andrew Chincea studies mathematics (statistics concentration) and data science and
-    analytics at Kennesaw State University. His primary research, on the RiverNets project
-    in the KSU TDA Lab, uses graph-Laplacian regression to predict water quality at river
-    stations with no data. He also works in analytic number theory and has studied
-    eigenvalues of the fractal Laplacian.
+    I study mathematics (statistics concentration) and data science and analytics at
+    Kennesaw State University. My main research is on RiverNets, a
+    project in the KSU TDA Lab, where I use graph-Laplacian regression to predict
+    water quality at river stations that have no data. I also work in analytic number
+    theory; as a First-Year Scholar, I studied eigenvalues of the fractal Laplacian.
   confirmed: false
 
 about_bio:
   text: >-
-    Andrew Chincea is an undergraduate at Kennesaw State University studying mathematics
-    (statistics concentration) and data science and analytics. His research spans
-    water-quality modeling on river networks, analytic number theory, and spectral analysis
-    on fractals.
+    I'm an undergraduate at Kennesaw State University, working toward a B.S. in
+    Mathematics (Statistics concentration) and a B.S. in Data Science and Analytics.
+    I work in analytic number theory and on predicting water quality on river networks.
+    As a First-Year Scholar, I studied spectral analysis on fractals. I'm interested
+    in PhD programs and in mathematics and data science REUs.
   confirmed: false
 
 open_science:
   text: >-
-    The source code for this site is public, including the data pipeline and the
+    The code for my site is public, including the data pipeline and the
     persistence engine behind the Rising water explorer.
+  confirmed: false
+
+# Contact lead-in on the home page. The only new fact is DECISIONS #86 (interest, not an
+# application; no PhD field, schools or dates).
+contact:
+  text: >-
+    I'm interested in PhD programs and in mathematics and data science REUs. If you'd
+    like to talk about either, here's how to reach me.
   confirmed: false

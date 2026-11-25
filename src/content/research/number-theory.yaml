@@ -1,10 +1,11 @@
 # Every fact is from Andrew's CV (DECISIONS #68). `$…$` marks inline math, rendered in italics.
 title: Analytic number theory
 order: 2
-summary: The largest $k$^th^-power divisor of a random integer, the subject of a submitted manuscript.
+summary: I study the largest $k$^th^-power divisor of a random integer.
 description: >-
-  The submitted manuscript Largest $k$^th^-Power Divisor of a Random Integer establishes an
-  asymptotic formula with an $O$(log $x$) error term for every integer $k$ ≥ 2.
+  In our submitted manuscript, "Largest $k$^th^-Power Divisor of a Random Integer," Dr. Tsz
+  Ho Chan and I establish an asymptotic formula with an $O$(log $x$) error term for every
+  integer $k$ ≥ 2.
 methods:
   - Asymptotic analysis of the largest $k$^th^-power divisor of a random integer.
   - Python experiments on integers up to 10⁸, calculating empirical averages, growth constants and relative errors to validate the theoretical results.

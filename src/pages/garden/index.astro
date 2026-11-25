@@ -1,6 +1,6 @@
 ---
 /**
- * Garden: every work item (spec §4.1, §5). Filter chips by type and research area,
+ * Garden: selected work (spec §4.1, §5). Filter chips by type and research area,
  * `?type=` / `?tag=` deep links, and every row visible when JavaScript is off.
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
@@ -21,8 +21,8 @@ const lede =
   undated.length === 0
     ? 'Newest first.'
     : undated.every((i) => i.data.status === 'submitted')
-      ? 'Submitted work, which has no date yet, comes first; everything else is newest first.'
-      : 'Undated work comes first; everything else is newest first.';
+      ? 'Submitted work has no date yet, so it comes first. The rest is newest first.'
+      : 'Undated work comes first. The rest is newest first.';
 
 // Name only the types that are actually listed, so the description never promises
 // work that is still a draft (drafts are excluded from production builds).
@@ -32,8 +32,8 @@ const typeList =
     ? typeWords.join(' and ')
     : `${typeWords.slice(0, -1).join(', ')} and ${typeWords[typeWords.length - 1]}`;
 const description = typeList
-  ? `All of ${displayName}'s work: ${typeList}, filterable by type and research area.`
-  : `All of ${displayName}'s work, filterable by type and research area.`;
+  ? `Selected work by ${displayName}: ${typeList}, filterable by type and research area.`
+  : `Selected work by ${displayName}, filterable by type and research area.`;
 ---
 
 <BaseLayout title="Garden" description={description}>
@@ -45,9 +45,7 @@ const description = typeList
   >
     <header class="garden__head">
       <h1>Garden</h1>
-      <p class="garden__lede">
-        All of {displayName}'s work. {lede}
-      </p>
+      <p class="garden__lede">Here's some of my work. {lede}</p>
     </header>
 
     <nav class="garden-filters" aria-label="Filter work">
@@ -128,7 +126,7 @@ const description = typeList
     </ol>
 
     <p class="garden__empty" data-garden-empty hidden>
-      Nothing matches these filters yet.{' '}
+      Nothing matches these filters.{' '}
       <a href={withBase('/garden/')} data-garden-reset>
         Show all work
       </a>

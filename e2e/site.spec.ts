@@ -156,6 +156,10 @@ test.describe('garden', () => {
     await expect(
       page.getByRole('heading', { level: 1, name: 'Garden', exact: true }),
     ).toBeVisible();
+    // First-person lede; the one submitted paper has no date and is listed first.
+    await expect(page.locator('.garden__lede')).toHaveText(
+      "Here's some of my work. Submitted work has no date yet, so it comes first. The rest is newest first.",
+    );
     const rows = page.locator('[data-work-row]');
     await expect(rows).toHaveCount(PUBLIC_WORK.length);
     const ids = await rows.evaluateAll((els) => els.map((e) => (e as HTMLElement).dataset.id));
@@ -301,10 +305,10 @@ test.describe('research', () => {
         `/research/${a.id}/`,
       );
       await expect(card.locator('.research-card__summary')).not.toBeEmpty();
-      await expect(card.getByRole('link', { name: /^Related work/ })).toHaveAttribute(
-        'href',
-        `/garden/?tag=${a.id}`,
-      );
+      const related = card.getByRole('link', { name: /^Related work/ });
+      await expect(related).toHaveAttribute('href', `/garden/?tag=${a.id}`);
+      // Visible text is "Related work →"; the accessible name adds the area after a colon.
+      await expect(related).toHaveAccessibleName(`Related work: ${a.data.title}`);
       await expect(card.locator(`svg[data-thumb="${a.id}"]`)).toHaveCount(1);
     }
     await expect(page.locator('#research img')).toHaveCount(0);
@@ -537,6 +541,14 @@ test.describe('cv and about', () => {
     await page.goto('/about/');
     await expect(page.getByRole('heading', { level: 1, name: 'About', exact: true })).toBeVisible();
     await expect(page.locator('.about__bio')).toContainText('Kennesaw State University');
+    // First-person bio with the confirmed REU/PhD interest (DECISIONS #85, #86).
+    await expect(page.locator('.about__bio')).toContainText(
+      "I'm an undergraduate at Kennesaw State University",
+    );
+    await expect(page.locator('.about__bio')).toContainText(
+      "I'm interested in PhD programs and in mathematics and data science REUs.",
+    );
+    await expect(page.locator('.about__bio')).not.toContainText(/apply/i);
     await expect(
       page.getByRole('heading', { level: 2, name: 'Contact', exact: true }),
     ).toBeVisible();
@@ -547,6 +559,9 @@ test.describe('cv and about', () => {
     await page.goto('/');
     await expect(page.locator('#contact')).toBeVisible();
     await expectContactLinks(page.locator('#contact'));
+    await expect(page.locator('#contact p[data-confirmed="false"]')).toHaveText(
+      "I'm interested in PhD programs and in mathematics and data science REUs. If you'd like to talk about either, here's how to reach me.",
+    );
     // No teaching content exists, so the section is not rendered at all.
     await expect(page.locator('#teaching')).toHaveCount(0);
   });

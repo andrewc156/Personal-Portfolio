@@ -78,8 +78,8 @@ const linksRisingWater = area.id === 'water-quality';
       )}
       {linksRisingWater && (
         <p data-rising-water-link>
-          The <a href={withBase('/rising-water/')}>Rising water explorer</a> on this site is built
-          from elevation data for the Colorado River Basin study area (RiverNets coverage).
+          The <a href={withBase('/rising-water/')}>Rising water explorer</a> uses elevation data for
+          the same Colorado River Basin study area that RiverNets covers.
         </p>
       )}
     </section>
@@ -121,7 +121,7 @@ const linksRisingWater = area.id === 'water-quality';
           ))}
         </ul>
       ) : (
-        <p data-no-related>No work in this area is listed yet.</p>
+        <p data-no-related>I haven't listed any work in this area yet.</p>
       )}
       <p class="more-link">
         <a href={gardenTagHref(area.id)}>

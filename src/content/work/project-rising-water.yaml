@@ -2,7 +2,7 @@
 type: project
 title: Rising water
 date: '2026-11'
-description: This site's interactive explorer of persistent homology, shown as water rising over terrain with a live barcode.
+description: 'An interactive explorer of persistent homology: water rises over Colorado River Basin terrain while a barcode updates live.'
 authors:
   - Andrew Chincea
 links:

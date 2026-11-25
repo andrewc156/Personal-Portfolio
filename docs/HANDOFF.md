@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 02:57:19 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 03:23:44 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -33,8 +33,8 @@
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
 | F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | `e426d03` |
-| F19a Copy voice (first person, humanized) | building (fix round) | FAIL (check attempt 1) | — |
-| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | building (fix round) | FAIL (check attempt 1) | — |
+| F19a Copy voice (first person, humanized) | checked; integration pending | PASS (check attempt 2) | — |
+| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | checked; integration pending | PASS (check attempt 2) | — |
 | F19c Visual polish within the system | todo, after F19a | — | — |
 | F9 re-audit after F19 | todo | — | — |
 
@@ -42,8 +42,8 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19a copy | site-builder | Existing F19a ownership; `docs/builds/F19a/attempt-3.md` | Check attempt 1 FAIL | Fix Garden/About completeness language and remove two collaborator names from descriptions only. |
-| F19b hero | viz-builder | Existing F19b ownership; `docs/builds/F19b/attempt-3.md` | Check attempt 1 FAIL | Fix seed 25 mobile first frame and add regression. Exact candidate still needs hosted timing. |
+| F19a copy | checker `sa-0-4054aa8b` | `docs/checks/F19a/attempt-2.md` | Blocking wording and collaborator prose fixed; `docs/builds/F19a/attempt-3.md` | PASS; commit verified copy paths only. |
+| F19b hero | same checker + GitHub CI | `docs/checks/F19b/attempt-2.md`, draft PR #1 | Seed 25 fixed; `docs/builds/F19b/attempt-3.md`; candidate `464da59` pushed | PASS; hosted CI 45573412148 passed all five timing cases. Merge WIP after F19a. |
 
 ## Handoff vs repo (resume check)
 
@@ -58,8 +58,8 @@
 
 ## Uncommitted changes
 
-- F19a (failed, fixing): src/data/copy.yaml, src/content/research/*.yaml and src/content/work/*.yaml (descriptions only), src/components/content/{work.ts,ResearchCard.astro}, src/components/home/Contact.astro, src/pages/{about,garden}/index.astro, src/pages/research/[slug].astro, e2e/site.spec.ts, `docs/builds/F19a/attempt-2.md`, updated Contact draft in `docs/QUESTIONS.md`; untracked `.Rhistory` is excluded from commits.
-- F19b (failed, fixing): src/lib/viz/hero/{controller,model,render-map}.ts, src/lib/viz/hero/modes/meta.ts, src/components/hero/Hero.astro, tests/unit/viz/start.test.ts, tests/unit/viz/modes/meta.test.ts, e2e/hero.spec.ts, src/components/explorer/LakesTable.astro and src/pages/rising-water/index.astro (spacing only), `docs/builds/F19b/attempt-2.md`.
+- F19a (PASS, committing): src/data/copy.yaml, src/content/research/*.yaml and src/content/work/*.yaml (descriptions only), src/components/content/{work.ts,ResearchCard.astro}, src/components/home/Contact.astro, src/pages/{about,garden}/index.astro, src/pages/research/[slug].astro, e2e/site.spec.ts, `docs/builds/F19a/attempt-3.md`; updated Contact draft in `docs/QUESTIONS.md`; untracked `.Rhistory` is excluded from commits.
+- F19b (PASS, merge pending): src/lib/viz/hero/{controller,model,render-map}.ts, src/lib/viz/hero/modes/meta.ts, src/components/hero/Hero.astro, tests/unit/viz/start.test.ts, tests/unit/viz/modes/meta.test.ts, e2e/hero.spec.ts, src/components/explorer/LakesTable.astro and src/pages/rising-water/index.astro (spacing only), `docs/builds/F19b/attempt-2.md`.
 - Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
 ## Open issues and "Needs Andrew"
@@ -89,14 +89,14 @@
 
 ## Next 3 actions
 
-1. Owning builders fix F19a/F19b FAILs; run fresh checker and representative hosted timing for F19b before any feature commit.
+1. Run fresh independent F19a/F19b checks on the fixes. Verify unchanged hosted timing on F19b draft PR #1. Commit checked F19a separately; integrate and remove F19b WIP only after checker PASS.
 2. F19c site-builder → checker (DECISIONS #85), including Rising water explainer wording alignment.
 3. Fresh F9 attempt 5 full-site audit; commit and push the report and final handoff.
 
 ## WIP branch
 
-none
+`wip/codex-handoff` at `464da59` (F19b code only), verified on origin and draft PR #1 (hosted GitHub CI run 45573412148). Isolated worktree: `~/.hermes/cache/scratch/portfolio-f19b-ci.TrSu2TR8`. Independent checker PASS in attempt 2; integration and branch cleanup pending.
 
-Latest verified push: docs-only recovery builds and checker checkpoint `707a99b` to origin/main. CI passed on prior checkpoint `7a659bc` (run 45567602561).
+Latest verified push: docs-only FAIL reports and fix checkpoint `509f38b` to origin/main. CI passed on `509f38b` (run 45572174037). Latest WIP push: `464da59` (candidate CI and checker PASS).
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).
