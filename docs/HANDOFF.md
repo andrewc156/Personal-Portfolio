@@ -82,7 +82,7 @@
 ## Next 3 actions
 
 1. F9 attempt 4 audit (running; baseline). Commit its report. Fold any FAIL fixes into the F19 rounds.
-2. Start F19a (site-builder, copy) and F19b (viz-builder, hero) in parallel; their files don't overlap. Then F19c (site-builder, visual polish). Each one goes to the checker and is committed on PASS. Andrew's choices are in DECISIONS #85.
+2. Start F19a (site-builder, copy) and F19b (viz-builder, hero) in parallel; their files don't overlap. Then F19c (site-builder, visual polish). Each one goes to the checker and is committed on PASS. Andrew's choices are in DECISIONS #85. F19a must include the new fact in DECISIONS #86 (interested in PhD programs and in math and data science REUs).
 3. Fresh F9 re-audit after F19, then a final handoff.
 
 ## WIP branch
