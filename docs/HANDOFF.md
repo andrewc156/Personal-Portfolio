@@ -31,13 +31,13 @@
 | F16 Personal portfolio project entry | done | PASS_WITH_NOTES (attempt 1) | `49befc5` |
 | F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
-| CI3 Hosted CI red: place-label 375px tests | building (viz-builder) | — | — |
+| CI3 Hosted CI red: place-label 375px tests | built, checking | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| CI3 place labels on Linux CI | viz-builder | src/components/explorer/PlaceLabels.astro, src/components/explorer/place-labels-client.ts, src/lib/**/labels.ts, label unit tests, docs/builds/CI3/ | Cause found by the F16/F17 checker. Labels use `600 11px system-ui`. DejaVu Sans on Ubuntu is about 14% wider, so priority-1 Las Vegas (x=2) doesn't fit at 375px and is silently dropped. See docs/checks/F16/attempt-1.md "Pre-existing CI issue". | Build the fix (self-hosted Plex for labels, relayout after fonts load, guaranteed slot for priority-1 labels). Then checker, commit, push, and a green hosted CI. |
+| CI3 place labels on Linux CI | checker (was viz-builder) | src/components/explorer/PlaceLabels.astro, src/components/explorer/place-labels-client.ts, src/lib/**/labels.ts, label unit tests, docs/builds/CI3/ | Cause found by the F16/F17 checker. Labels use `600 11px system-ui`. DejaVu Sans on Ubuntu is about 14% wider, so priority-1 Las Vegas (x=2) doesn't fit at 375px and is silently dropped. See docs/checks/F16/attempt-1.md "Pre-existing CI issue". | Builder done (docs/builds/CI3/attempt-1.md): Plex font, re-layout after font load, priority-1 retry and edge slots, 11 new unit tests; 811 unit tests pass. Checker running (docs/checks/CI3/attempt-1.md). Then commit, push, and a green hosted CI. |
 
 ## Handoff vs repo (resume check)
 
@@ -50,7 +50,8 @@
 
 ## Uncommitted changes
 
-- None. F16 and F17 committed. CI3 work will be uncommitted while it's being built.
+- CI3 (unchecked): labels.ts, PlaceLabels.astro, place-labels-client.ts, e2e/explorer.spec.ts, tests/unit/viz/explorer/label-metrics.test.ts and place-label-widths.json, docs/builds/CI3/.
+- Stray `astro dev --port 4411` (pid 23366, started 2026-11-24 15:37) is still running from an earlier session. Harmless; left alone.
 
 ## Open issues and "Needs Andrew"
 
