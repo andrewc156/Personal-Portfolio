@@ -123,3 +123,7 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 81. Andrew approved the F11b explainer copy: “An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.” Use this approval for the islands strip.
 
 82. Andrew chose option 1 for homepage discoverability. F14 adds a compact toolbar above the hero canvas with the Animation selector and a labeled Settings trigger for the existing panel.
+
+83. Andrew requested the footer credit removal (F15), the Personal portfolio project entry (F16), and a Garden header link with the section anchors in homepage order (F17). The header order is Mission, Work, Research, Open science, Garden, Rising water, CV.
+
+84. Andrew requested GitHub Pages uploads stop in favor of Cloudflare only (F18). Remove the additional GitHub Pages deploy workflow while keeping CI and base-path compatibility.

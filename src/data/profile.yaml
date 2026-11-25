@@ -43,5 +43,5 @@ keywords:
 site:
   # Link target for "Source" in the footer. Hidden while empty.
   source_url: https://github.com/andrewc156/Personal-Portfolio
-  # Footer credit "Built with help from Claude Code". On by default (spec §4.1).
-  show_claude_code_credit: true
+  # Footer credit preference (spec §4.1).
+  show_claude_code_credit: false

@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:36 EST, Codex (Control)
+**Last updated:** 2026-11-24 21:40 EST, Codex (Control)
 
 ## Status
 
@@ -26,18 +26,21 @@
 | F12 Basin mask (S3) | done | PASS_WITH_NOTES (F12a and F12b attempt 1) | `4c32017`, `f0060bb` |
 | F13 Place labels (S4) | done | PASS_WITH_NOTES (F13a attempt 1, F13b attempt 2) | `7aa2244`, `aa6b3da` |
 | F14 Homepage animation toolbar | done | PASS_WITH_NOTES (attempt 1) | `30db9ce` |
-| CI2 TDA unit-test timeouts on GitHub | accepted, commit pending | PASS_WITH_NOTES (attempt 1) | — |
-| F15 Footer credit removal | built, checker queued | — | — |
-| F16 Personal portfolio project entry | building | — | — |
-| F17 Garden header link and section order | building | — | — |
+| CI2 TDA unit-test timeouts on GitHub | done, hosted CI #37 running | PASS_WITH_NOTES (attempt 1) | `cc75f4d` |
+| F15 Footer credit removal | accepted, commit pending | PASS (attempt 1) | — |
+| F16 Personal portfolio project entry | built, checker queued | — | — |
+| F17 Garden header link and section order | built, checker queued | — | — |
+| F18 Stop GitHub Pages uploads | built, checker queued | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| CI2 TDA timeouts | tda-engineer | tests/unit/tda/{flood,properties}.test.ts and docs/builds/CI2/attempt-1.md | CI #35 timed out two long existing oracle tests at 5 seconds. 797 other unit tests passed. | TDA engineer gave the two expensive tests a scoped 20-second limit. All 14 targeted tests passed and the test bodies are unchanged. PASS_WITH_NOTES, all 799 unit checks and 14 focused tests passed. Commit pending. Hosted Linux check follows push. |
+| F15 footer credit removal | checker | /private/tmp/portfolio-recovery.RmJMcJ/F15, docs/checks/F15/ | Existing profile flag false and regression ready. | PASS. All ten pages omit the credit and keep copyright, About and Source. Commit only the isolated footer test hunk. |
+| F16 personal portfolio project | site-builder | New work record, site test and build report | Built, Astro check/lint and 799 tests pass. | Checker queued. |
+| F17 Garden nav and section order | site-builder | nav.ts, shell and CLS tests | Andrew requested Garden and homepage section order. | Builder finished. Astro check, lint and 799 unit tests passed. Checker queued. |
 
-F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. F17 Garden link and homepage section order are delegated to site-builder. The fresh full-site audit follows these features and CI2.
+F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. F17 Garden link and homepage section order are delegated to site-builder. The fresh full-site audit follows these features, the F18 GitHub Pages workflow removal, and CI2.
 
 ## Handoff vs repo (resume check)
 
@@ -53,9 +56,9 @@ F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-rec
 Unchecked feature candidates:
 
 - F15 built, unchecked: `src/data/profile.yaml`, footer assertion in `e2e/shell.spec.ts`, and `docs/builds/F15/attempt-1.md`.
-- F16 building: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
-- F17 building: shared navbar, related shell and CLS nav checks, and its build report.
-- CI2 accepted, commit pending: `tests/unit/tda/{flood,properties}.test.ts` and `docs/builds/CI2/attempt-1.md`.
+- F16 built, unchecked: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
+- F17 built, unchecked: shared navbar, related shell and CLS nav checks, and its build report.
+- F18 workflow removed by site-builder, checker queued. CI remains active.
 
 ## Open issues and "Needs Andrew"
 
@@ -75,12 +78,12 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Push CI2 and verify the new hosted GitHub CI run.
-2. Build, check, and push the footer, portfolio entry and Garden navigation updates.
+1. Finish F15 checking and push the footer update on acceptance.
+2. Independently check and push F16, F17 and F18.
 3. Run the fresh F9 full-site audit and check hosted CI for the accepted changes.
 
 ## WIP branch
 
 none
 
-Latest Control push: F14 `30db9ce` to origin/main. Unchecked candidates remain local.
+Latest Control push: CI2 `cc75f4d` to origin/main. Hosted CI #37 is in progress. Unchecked candidates remain local.

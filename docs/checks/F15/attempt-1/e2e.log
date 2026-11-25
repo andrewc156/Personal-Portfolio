@@ -1,0 +1,8 @@
+
+Running 1 test using 1 worker
+
+(node:41120) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/shell.spec.ts:274:3 › header and navigation › footer shows © year, name and Source without the Claude Code credit (352ms)
+
+  1 passed (1.0s)

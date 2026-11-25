@@ -4,7 +4,7 @@
 - [x] Domain and hosting confirmed. Andrew deployed `andrewchincea.com` on Cloudflare Workers.
 - [ ] Set the Cloudflare build variable `SITE_URL=https://andrewchincea.com` and rebuild. The deployed canonical URL and sitemap currently use localhost.
 - [ ] ORCID iD and photo, if you want them shown.
-- [ ] Keep the footer credit and current header, or request a change?
+- [x] Footer credit removed at Andrew’s request.
 
 ## Research and work
 - [ ] Confirm whether to list an advisor for spectral analysis on fractals.

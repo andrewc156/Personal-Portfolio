@@ -271,11 +271,11 @@ test.describe('header and navigation', () => {
     }
   });
 
-  test('footer line shows © year, name, credit and the Source link', async ({ page }) => {
+  test('footer shows © year, name and Source without the Claude Code credit', async ({ page }) => {
     await page.goto('/');
     const footer = page.locator('footer');
     await expect(footer).toContainText(`© ${new Date().getFullYear()} Andrew Chincea`);
-    await expect(footer).toContainText('Built with help from Claude Code');
+    await expect(footer).not.toContainText('Built with help from Claude Code');
     await expect(footer.getByRole('link', { name: 'Source', exact: true })).toHaveAttribute(
       'href',
       'https://github.com/andrewc156/Personal-Portfolio',
