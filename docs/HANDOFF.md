@@ -33,8 +33,8 @@
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
 | F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | reports in this commit |
-| F19a Copy voice (first person, humanized) | building (site-builder) | — | — |
-| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | building (viz-builder) | — | — |
+| F19a Copy voice (first person, humanized) | built, checking | — | — |
+| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | built, checking | — | — |
 | F19c Visual polish within the system | todo, after F19a | — | — |
 | F9 re-audit after F19 | todo | — | — |
 
@@ -42,8 +42,7 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19a copy voice | site-builder | src/data/copy.yaml, profile.yaml, home/about/research copy, content YAML descriptions, docs/builds/F19a/ | Delegated | Build, then report (docs/builds/F19a/attempt-1.md) |
-| F19b hero framing + F9a4 note 2 spacing | viz-builder | src/components/hero/**, src/lib/viz/hero/**, e2e/hero.spec.ts, LakesTable.astro, rising-water/index.astro (spacing only), docs/builds/F19b/ | Delegated in parallel with F19a | Build, then report (docs/builds/F19b/attempt-1.md) |
+| F19a + F19b check | checker (one agent, two reports) | docs/checks/F19a/attempt-1.md, docs/checks/F19b/attempt-1.md | Both builds done (docs/builds/F19a and F19b/attempt-1.md); 818 unit tests | Check. Then commit F19a and F19b separately on PASS. Then F19c (visual polish), which also needs the /rising-water/ lines 43/58 "Lakes are born" wording aligned with the new caption. |
 
 ## Handoff vs repo (resume check)
 
@@ -56,8 +55,9 @@
 
 ## Uncommitted changes
 
-- None.
-- Stray `astro dev --port 4411` (pid 23366, started 2026-11-24 15:37) is still running from an earlier session. Harmless; left alone.
+- F19a (unchecked): src/data/copy.yaml, src/content/research/*.yaml and src/content/work/*.yaml (descriptions only), src/components/content/{work.ts,ResearchCard.astro}, src/components/home/Contact.astro, src/pages/{about,garden}/index.astro, src/pages/research/[slug].astro, e2e/site.spec.ts, docs/builds/F19a/.
+- F19b (unchecked): src/lib/viz/hero/{controller,model,render-map}.ts, src/lib/viz/hero/modes/meta.ts, src/components/hero/Hero.astro, tests/unit/viz/start.test.ts, tests/unit/viz/modes/meta.test.ts, e2e/hero.spec.ts, src/components/explorer/LakesTable.astro and src/pages/rising-water/index.astro (spacing only), docs/builds/F19b/.
+- Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
 ## Open issues and "Needs Andrew"
 

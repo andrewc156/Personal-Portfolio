@@ -131,3 +131,11 @@ Decisions Control made without asking Andrew (spec §1.5, §9.6). Newest last.
 85. Andrew asked for a better site vibe (2026-11-25). His choices: (a) copy in the first person, warm but academic ("I study… I'm interested in…"), edited with the humanizer rules (no AI-isms) and no new facts; (b) visual polish within the current design system (type scale, spacing, hero framing, distinct research thumbnails, contact and section rhythm), with no redesign of tokens, fonts or accent; (c) no new personal content, since he skipped that question. The work runs after the F9 attempt-4 baseline audit and is followed by a fresh F9 re-audit. Planned features: F19a copy voice (site-builder), F19b hero first frame and framing (viz-builder), F19c visual polish (site-builder, after F19a).
 
 86. New confirmed fact from Andrew (2026-11-25), in his words: "I am interested in PhD's and Mathematics and Data Science REUs." F19a may say that he's interested in PhD programs and in mathematics and data science REUs. It must not say he is applying, name a field or schools for the PhD, or give dates. Suggested placement: the Mission or About copy, and/or near Contact (for example, "I'm interested in math and data science REUs and PhD programs. If you run one, I'd like to hear from you."). The wording is the builder's; the substance must stay exactly this.
+
+87. F19b hero changes, under Andrew's polish brief (#85). They supersede the matching parts of spec §6.3:
+- playback starts part-way up the rise, at a deterministic level picked from the engine bars, so the first frame shows several lakes; loops and replays still start from the bottom; reduced motion keeps a static frame at 45%;
+- the default bar cap drops from 30 to 12;
+- the map is 16:9 (was 2:1) and the barcode strip is shorter;
+- hovering or tapping a lake on the map highlights its bar;
+- relief shading is stronger.
+The hero caption becomes "Water rises over a random landscape. Lakes form in the valleys, and when two meet, the older one carries on. The barcode gives each lake a bar from the level where it forms to the level where it merges." This supersedes the caption quoted in §6.3; the spec file itself is left unedited. The copy is unconfirmed until Andrew approves it.
