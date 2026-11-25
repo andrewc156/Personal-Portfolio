@@ -41,6 +41,7 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F19c Visual polish | Andrew requested | done | Attempt 1 PASS (docs/checks/F19c/attempt-1.md). Type scale, spacing, section rhythm, distinct research thumbnails, contact. |
 | F9 attempt 4 | checker | done, PASS_WITH_NOTES (docs/checks/F9/attempt-4.md) | Post-stretch baseline before F19. |
 | F20 Hero Settings cog | Andrew requested | done | PASS (docs/checks/F20/attempt-1.md); decorative icon with unchanged button behavior. |
+| F21 Collatz Steps | Andrew requested | done | 50-step default with 1–120 slider; exact counts through 50, labeled sampling above 50. [PASS](checks/F21/attempt-1.md). |
 
 ## Post-F19 audit
 

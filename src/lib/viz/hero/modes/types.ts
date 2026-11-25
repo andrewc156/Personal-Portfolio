@@ -30,8 +30,8 @@ export interface ModeSim {
   readonly interactive: boolean;
   /** Fixed steps per second at speed 1×. */
   readonly stepHz: number;
-  /** Fresh state for `seed` on a canvas of cssW × cssH CSS px. */
-  build(seed: number, cssW: number, cssH: number): void;
+  /** Fresh state for `seed` on a canvas of cssW × cssH CSS px. Only Collatz uses the step limit. */
+  build(seed: number, cssW: number, cssH: number, collatzSteps?: number): void;
   /** True if a canvas of this size needs a different grid (the shell then rebuilds). */
   needsRebuild(cssW: number, cssH: number): boolean;
   /** Bring a fresh build to its first frame: the static frame if `still`, else the start. */

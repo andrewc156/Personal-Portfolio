@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 15:08:15 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 15:50:10 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -36,7 +36,8 @@
 | F19a Copy voice (first person, humanized) | done | PASS (check attempt 2) | `111f774` |
 | F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `637d2a6` (candidate `464da59`) |
 | F19c Visual polish within the system | done | PASS (check attempt 1) | `680aeac` |
-| F20 Hero Settings cog | done | PASS (attempt 1) | this commit |
+| F20 Hero Settings cog | done | PASS (attempt 1) | `9f9fb7c` |
+| F21 Collatz steps setting | done | PASS (attempt 1) | this merge (candidate `83d402f`) |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -57,6 +58,7 @@
 - There is an old Claude worktree at `.claude/worktrees/agent-a302a2e8cd44f54ea` (branch `worktree-agent-a302a2e8cd44f54ea`, at `dc8e61c`) with uncommitted C1-era edits. It is the historical snapshot the C1 notes describe, and the C1 content on main supersedes it. Per Andrew's instruction it stays untouched under `.claude/`. It is not a WIP branch to merge.
 
 ## Uncommitted changes
+
 
 
 - Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
@@ -96,8 +98,8 @@
 
 ## WIP branch
 
-None. `wip/codex-handoff` was merged on PASS and deleted locally and on origin; GitHub PR #1 reads MERGED.
+F21 uses `wip/codex-handoff` at `83d402f`, draft PR #2, scratch worktree `~/.hermes/cache/scratch/portfolio-f21-ci.aoALMIlO`. Independent checker PASS and exact hosted CI 45696088155 passed; branch cleanup follows integration.
 
-Latest verified main push: F19c `680aeac` (hosted CI 45645398484 passed); hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
+Latest verified main push: F20 `9f9fb7c` (hosted CI 45692029569 passed). F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).

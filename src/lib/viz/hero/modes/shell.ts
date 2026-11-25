@@ -28,6 +28,7 @@ export interface ModeSettings {
   seed: number;
   speed: number;
   palette: PaletteName;
+  collatzSteps?: number;
 }
 
 export interface ModeUiState {
@@ -119,7 +120,7 @@ export class ModeController {
   newTerrain(seed?: number): void {
     if (this.destroyed) return;
     this.settings.seed = normalizeSeed(seed ?? randomSeed());
-    this.build(false);
+    this.build(this.mode === 'collatz' && !this.playing);
     this.dirty = true;
     this.emitUi();
     this.queueSummary(300);
@@ -130,12 +131,21 @@ export class ModeController {
     if (this.destroyed) return;
     const prev = this.settings;
     this.settings = { ...prev, ...next, seed: normalizeSeed(next.seed ?? prev.seed) };
+    const paletteChanged = this.settings.palette !== prev.palette;
+    if (paletteChanged) this.colors = this.readColors();
     if (this.settings.seed !== prev.seed) {
       this.newTerrain(this.settings.seed);
       return;
     }
-    if (this.settings.palette !== prev.palette) {
-      this.colors = this.readColors();
+    if (this.mode === 'collatz' && this.settings.collatzSteps !== prev.collatzSteps) {
+      this.build(!this.playing);
+      this.dirty = true;
+      this.updateReadout(true);
+      this.updateSummary();
+      this.schedule();
+      return;
+    }
+    if (paletteChanged) {
       this.sim.setColors(this.colors);
       this.dirty = true;
       this.schedule();
@@ -196,7 +206,7 @@ export class ModeController {
   // ---- state -----------------------------------------------------------------------------
 
   private build(still: boolean): void {
-    this.sim.build(this.settings.seed, this.css.w, this.css.h);
+    this.sim.build(this.settings.seed, this.css.w, this.css.h, this.settings.collatzSteps);
     this.sim.setColors(this.colors);
     this.sim.warm(still);
     this.stepsTaken = 0;

@@ -14,6 +14,7 @@ import ButtonRow from '../site/ButtonRow.astro';
 import { PALETTES } from '../../lib/viz/common/palettes';
 import { MAX_SEED } from '../../lib/viz/common/rng';
 import { HERO_DEFAULTS as D } from '../../lib/viz/hero/controller';
+import { COLLATZ_DEFAULT_STEPS, COLLATZ_MAX_STEPS } from '../../lib/viz/hero/modes/meta';
 import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
 import { ROUGHNESS_RANGE, SCALE_RANGE } from '../../lib/viz/hero/terrain';
 
@@ -136,6 +137,22 @@ const palettes = PALETTES.map((p) => ({ value: p.name, label: p.label }));
     </SettingsGroup>
   </div>
 
+  <div class="collatz-only" data-collatz-only hidden>
+    <SettingsGroup title="Collatz delta">
+      <SliderRow
+        id="hero-collatz-steps"
+        label="Steps"
+        min={1}
+        max={COLLATZ_MAX_STEPS}
+        step={1}
+        value={COLLATZ_DEFAULT_STEPS}
+      />
+      <p class="hero-settings__note">
+        Totals are exact through 50 steps. Higher settings show sampled branches only.
+      </p>
+    </SettingsGroup>
+  </div>
+
   <SettingsGroup title="Color">
     <SelectRow id="hero-palette" label="Palette" options={palettes} value={D.palette} />
     <div class="rising-only" data-rising-only>
@@ -172,6 +189,7 @@ const palettes = PALETTES.map((p) => ({ value: p.name, label: p.label }));
   }
 
   .rising-only[hidden],
+  .collatz-only[hidden],
   .hero-settings__note[hidden] {
     display: none;
   }
