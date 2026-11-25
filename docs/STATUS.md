@@ -32,6 +32,7 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F14 Homepage animation toolbar | Andrew approved option 1 | done (`30db9ce`), PASS_WITH_NOTES (docs/checks/F14/attempt-1.md) | Visible Animation dropdown and Settings button above the hero canvas. |
 | CI2 TDA timeout fix | CI run #35 | done (`cc75f4d`), PASS_WITH_NOTES, hosted #37 superseded | Preserve the existing randomized checks and stop timing out under GitHub runner load. |
 | F15 Footer credit | Andrew requested removal | done (`9f28641`), PASS (docs/checks/F15/attempt-1.md) | Disable the existing footer credit profile flag. |
-| F16 Personal portfolio project | Andrew confirmed | checking | List the current website in the Garden and CV. |
-| F17 Garden nav and order | Andrew requested | checking | Add Garden and order the first four links by the homepage sections. |
+| F16 Personal portfolio project | Andrew confirmed | done (`49befc5`), PASS_WITH_NOTES (docs/checks/F16/attempt-1.md) | List the current website in the Garden and CV. |
+| F17 Garden nav and order | Andrew requested | done (`51133cd`), PASS_WITH_NOTES (docs/checks/F17/attempt-1.md) | Add Garden and order the first four links by the homepage sections. |
 | F18 Cloudflare-only deployment | Andrew requested | done (`c9047a5`), PASS (docs/checks/F18/attempt-1.md) | Remove only the GitHub Pages deploy workflow. Keep CI. |
+| CI3 Place labels on Linux CI | hosted CI 45534748972 | building | Priority-1 labels dropped at 375px under DejaVu metrics. Make label layout font-robust. |

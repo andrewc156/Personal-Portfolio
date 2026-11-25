@@ -28,17 +28,16 @@
 | F14 Homepage animation toolbar | done | PASS_WITH_NOTES (attempt 1) | `30db9ce` |
 | CI2 TDA unit-test timeouts on GitHub | done, hosted CI #37 running | PASS_WITH_NOTES (attempt 1) | `cc75f4d` |
 | F15 Footer credit removal | done | PASS (attempt 1) | `9f28641` |
-| F16 Personal portfolio project entry | checking | — | — |
-| F17 Garden header link and section order | checking | — | — |
+| F16 Personal portfolio project entry | done | PASS_WITH_NOTES (attempt 1) | `49befc5` |
+| F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
-| CI3 Hosted CI red: place-label 375px tests | todo, diagnosing (the F16/F17 checker also reports it) | — | — |
+| CI3 Hosted CI red: place-label 375px tests | building (viz-builder) | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F16 personal portfolio project | checker (Claude Code) | work YAML, e2e/site.spec.ts, docs/checks/F16/ | Builder finished (docs/builds/F16/attempt-1.md). Codex check never finished (report was a PARTIAL stub). | Fresh check, attempt 1 rerun in the main working tree. |
-| F17 Garden nav and section order | checker (Claude Code) | nav.ts, e2e/shell.spec.ts, e2e/cls.spec.ts, docs/checks/F17/ | Builder finished (docs/builds/F17/attempt-1.md). Codex check never finished (PARTIAL stub). | Fresh check after F16. |
+| CI3 place labels on Linux CI | viz-builder | src/components/explorer/PlaceLabels.astro, src/components/explorer/place-labels-client.ts, src/lib/**/labels.ts, label unit tests, docs/builds/CI3/ | Cause found by the F16/F17 checker. Labels use `600 11px system-ui`. DejaVu Sans on Ubuntu is about 14% wider, so priority-1 Las Vegas (x=2) doesn't fit at 375px and is silently dropped. See docs/checks/F16/attempt-1.md "Pre-existing CI issue". | Build the fix (self-hosted Plex for labels, relayout after fonts load, guaranteed slot for priority-1 labels). Then checker, commit, push, and a green hosted CI. |
 
 ## Handoff vs repo (resume check)
 
@@ -51,16 +50,13 @@
 
 ## Uncommitted changes
 
-- F8 documentation clarification was reviewed by Control against Cloudflare’s official build and deployment instructions. No application or hosting configuration changed.
-
-Unchecked feature candidates:
-
-- F16 built, unchecked: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
-- F17 built, unchecked: shared navbar, related shell and CLS nav checks, and its build report.
+- None. F16 and F17 committed. CI3 work will be uncommitted while it's being built.
 
 ## Open issues and "Needs Andrew"
 
-- Hosted CI is RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder), queued after the F16/F17 check.
+- F16 notes (Andrew's call): the description is in the first person ("for my research"); it overlaps with the "Rising water" project; and it lacks `ongoing: true`. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
+- Local hero.spec.ts frame-time tests fail when the laptop is on battery (Chromium throttles rAF). They pass on hosted CI. Run the hero gates on AC power.
+- Hosted CI is RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder). Run 45551772489 on `6210515` confirms: only these 2 fail; hero tests pass on hosted CI.
 
 - Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://andrewchincea.com` and trigger a fresh build.
 
@@ -78,13 +74,12 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Re-run the F16 and F17 checks (the Codex reports were PARTIAL), then commit and push each on PASS.
-2. CI3: viz-builder fixes the place-label failure on hosted CI, then checker, then push, then confirm green CI.
-3. Run the fresh F9 full-site audit (attempt 4) and push its report and handoff.
-
+1. CI3: viz-builder fix, then checker, then commit and push, then confirm green hosted CI.
+2. Fresh F9 full-site audit (docs/checks/F9/attempt-4.md plus summary.md), then fix rounds if it FAILs.
+3. Commit and push the F9 report and the final HANDOFF/STATUS.
 
 ## WIP branch
 
 none
 
-Latest Control push: F18 `c9047a5` to origin/main. CI2 hosted #37 was canceled by the next push. Verify the final hosted CI run. Unchecked candidates remain local.
+Latest Control push: F17 `51133cd` to origin/main.
