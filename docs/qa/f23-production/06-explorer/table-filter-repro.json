@@ -1,0 +1,57 @@
+[
+  [
+    "baseline",
+    [
+      "Lake 1 · birth cell 58027",
+      "400",
+      "5",
+      "859",
+      "17991",
+      1443
+    ]
+  ],
+  [
+    "physical click Show Lake 2, 400m filter",
+    [
+      "Lake 2 · birth cell 94865",
+      "400",
+      "5",
+      "530",
+      "94865",
+      431
+    ]
+  ],
+  [
+    "physical click Show Lake 1, 400m filter",
+    [
+      "Lake 2 · birth cell 94865",
+      "400",
+      "5",
+      "530",
+      null,
+      1388
+    ]
+  ],
+  [
+    "physical click Show Lake 2, 10m and Top 40",
+    [
+      "Lake 2 · birth cell 94865",
+      "10",
+      "40",
+      "530",
+      "94865",
+      431
+    ]
+  ],
+  [
+    "keyboard Enter Show Lake 3, 10m and Top 40",
+    [
+      "Lake 3 · birth cell 17991",
+      "10",
+      "40",
+      "452",
+      "17991",
+      1371
+    ]
+  ]
+]

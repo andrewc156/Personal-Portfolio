@@ -1,0 +1,104 @@
+{
+  "homeClick": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 0,
+    "sectionY": 2378.734375,
+    "height": 413,
+    "header": 99.578125,
+    "errors": []
+  },
+  "cvClick": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 0,
+    "sectionY": 2378.734375,
+    "height": 413,
+    "header": 99.578125,
+    "errors": []
+  },
+  "coldDeepLink": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 0,
+    "sectionY": 2378.734375,
+    "height": 413,
+    "header": 99.578125,
+    "errors": []
+  },
+  "reload": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 0,
+    "sectionY": 2378.734375,
+    "height": 413,
+    "header": 99.578125,
+    "errors": []
+  },
+  "manualScroll": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 2276,
+    "sectionY": 102.734375,
+    "height": 413,
+    "header": 99.578125,
+    "errors": []
+  },
+  "missionClickControl": {
+    "href": "https://andrewchincea.com/#mission",
+    "y": 0,
+    "sectionY": 1037.796875,
+    "sectionId": "mission",
+    "rootScrollHeight": 3152,
+    "root": "HTML",
+    "scrollMargin": "16px",
+    "scrollPadding": "auto"
+  },
+  "openScienceFromMission": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 0,
+    "sectionY": 2378.734375,
+    "sectionId": "open-science",
+    "rootScrollHeight": 3152,
+    "root": "HTML",
+    "scrollMargin": "16px",
+    "scrollPadding": "auto"
+  },
+  "openScienceRepo": {
+    "href": "https://github.com/andrewc156/Personal-Portfolio",
+    "status": 200,
+    "title": "\ud83d\udc34 GitHub - andrewc156/Personal-Portfolio \u00b7 GitHub"
+  },
+  "footerSource": {
+    "href": "https://github.com/andrewc156/Personal-Portfolio",
+    "status": 200,
+    "title": "GitHub - andrewc156/Personal-Portfolio \u00b7 GitHub"
+  },
+  "browserNativeFragmentControl": {
+    "hash": "",
+    "y": 0,
+    "sectionY": 2026
+  },
+  "productionCSS": {
+    "scrollBehavior": "smooth",
+    "reduced": false
+  },
+  "productionProgrammaticSmoothControl": {
+    "hash": "",
+    "y": 0,
+    "sectionY": 2378.734375
+  },
+  "nativeFragment_auto": {
+    "href": "about:blank#target",
+    "y": 2026,
+    "sectionY": 0
+  },
+  "nativeFragment_smooth": {
+    "href": "about:blank#target",
+    "y": 0,
+    "sectionY": 2026
+  },
+  "reducedMotion": {
+    "href": "https://andrewchincea.com/#open-science",
+    "y": 2363,
+    "headingY": 53.53125,
+    "headerBottom": -2263.421875,
+    "headerPosition": "static",
+    "headingHit": "<h2 id=\"open-science-title\" class=\"section-title\" data-astro-cid-inbioyy7=\"\">Open science</h2>"
+  }
+}

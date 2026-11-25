@@ -1,0 +1,197 @@
+{
+  "rivers": [
+    {
+      "elapsed": 0.0,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20136 \u00b7 largest river drains 1,581 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 123456. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 6, and the largest river drains 1,581 cells, 22% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 427141908,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 2.0,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20136 \u00b7 largest river drains 1,581 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 123456. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 6, and the largest river drains 1,581 cells, 22% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1710589545,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 5.02,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20136 \u00b7 largest river drains 1,581 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 123456. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 6, and the largest river drains 1,581 cells, 22% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1466567330,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 8.02,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20136 \u00b7 largest river drains 1,581 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 123456. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 6, and the largest river drains 1,581 cells, 22% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -523263144,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 11.07,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,554 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 580324. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,554 cells, 21% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 693401604,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 14.02,
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,554 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 580324. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,554 cells, 21% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -263053655,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  ],
+  "collatz": [
+    {
+      "elapsed": 0.0,
+      "mode": "collatz",
+      "readout": "5 numbers within 4 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -133081955,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 2.02,
+      "mode": "collatz",
+      "readout": "103 numbers within 15 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1255575798,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 5.03,
+      "mode": "collatz",
+      "readout": "1,095 numbers within 25 steps of 1 \u00b7 817 drawn",
+      "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1657248814,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 8.0,
+      "mode": "collatz",
+      "readout": "2,786 numbers within 29 steps of 1 \u00b7 1,201 drawn",
+      "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1385612873,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 11.06,
+      "mode": "collatz",
+      "readout": "2 numbers within 1 step of 1",
+      "summary": "Collatz delta. Playing. Seed 181929. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 6 degrees one way after an even step and 12 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -718699632,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    {
+      "elapsed": 14.01,
+      "mode": "collatz",
+      "readout": "132 numbers within 16 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 181929. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 6 degrees one way after an even step and 12 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -88705251,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  ],
+  "loopVisibility": {
+    "collatz": {
+      "visible": false,
+      "checked": true
+    },
+    "rising": {
+      "visible": true,
+      "checked": true,
+      "afterToggle": false
+    },
+    "dye": {
+      "visible": false,
+      "checked": false
+    },
+    "pond": {
+      "visible": false,
+      "checked": false
+    },
+    "rivers": {
+      "visible": false,
+      "checked": false
+    }
+  }
+}

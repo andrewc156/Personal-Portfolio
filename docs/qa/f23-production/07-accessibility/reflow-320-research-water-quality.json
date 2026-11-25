@@ -1,0 +1,379 @@
+{
+  "initial": {
+    "width": 320,
+    "height": 256,
+    "doc": 320,
+    "body": 320,
+    "header": 99.578125,
+    "overflow": [],
+    "errors": []
+  },
+  "skip": {
+    "tag": "A",
+    "id": "",
+    "cls": "skip-link",
+    "role": null,
+    "label": "Skip to content",
+    "href": "#main",
+    "focus": true,
+    "outline": [
+      "solid",
+      "3px",
+      "rgb(255, 255, 255)"
+    ],
+    "shadow": "none",
+    "rect": [
+      8,
+      -78,
+      151,
+      43
+    ],
+    "hit": false
+  },
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "RESEARCH\n\nWater-quality prediction on river networks\nIllustration",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(28, 27, 25)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      0,
+      320,
+      2744
+    ],
+    "hit": false
+  },
+  "tasks": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "RESEARCH",
+      "href": "/research/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        49,
+        69,
+        17
+      ],
+      "hit": true,
+      "scrollY": 100
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Rising water explorer",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        49,
+        117,
+        161,
+        22
+      ],
+      "hit": true,
+      "scrollY": 925
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Rising water",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        71,
+        117,
+        92,
+        22
+      ],
+      "hit": true,
+      "scrollY": 2567
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "See this area in the Garden →",
+      "href": "/garden/?tag=water-quality",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        168,
+        186,
+        18
+      ],
+      "hit": true,
+      "scrollY": 2567
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "About",
+      "href": "/about/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        180,
+        212,
+        38,
+        18
+      ],
+      "hit": true,
+      "scrollY": 2659
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Source",
+      "href": "https://github.com/andrewc156/Personal-Portfolio",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        229,
+        212,
+        44,
+        18
+      ],
+      "hit": true,
+      "scrollY": 2659
+    },
+    {
+      "tag": "BODY",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Skip to content\nAndrew Chincea\nMission\nWork\nResearch\nOpen science",
+      "href": null,
+      "focus": false,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        -2659,
+        320,
+        2915
+      ],
+      "hit": false,
+      "scrollY": 2659
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "skip-link",
+      "role": null,
+      "label": "Skip to content",
+      "href": "#main",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(255, 255, 255)"
+      ],
+      "shadow": "none",
+      "rect": [
+        8,
+        -78,
+        151,
+        43
+      ],
+      "hit": false,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "wordmark",
+      "role": null,
+      "label": "Andrew Chincea",
+      "href": "/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        8,
+        232,
+        43
+      ],
+      "hit": true,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Mission",
+      "href": "/#mission",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        56,
+        48,
+        30
+      ],
+      "hit": true,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Work",
+      "href": "/#work",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        80,
+        56,
+        33,
+        30
+      ],
+      "hit": true,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Research",
+      "href": "/#research",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        128,
+        56,
+        58,
+        30
+      ],
+      "hit": true,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Open science",
+      "href": "/#open-science",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        203,
+        56,
+        85,
+        30
+      ],
+      "hit": true,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Garden",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        258,
+        56,
+        46,
+        30
+      ],
+      "hit": true,
+      "scrollY": 0
+    }
+  ]
+}

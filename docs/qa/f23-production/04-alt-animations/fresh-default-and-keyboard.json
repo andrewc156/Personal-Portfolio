@@ -1,0 +1,52 @@
+{
+  "bare": {
+    "href": "https://andrewchincea.com/",
+    "mode": "rising",
+    "steps": "30",
+    "default": "30",
+    "asset": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "seeded": {
+    "href": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "steps": "30",
+    "default": "30",
+    "asset": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "beforeKeys": {
+    "focused": true,
+    "steps": "30",
+    "output": "30",
+    "aria": "30",
+    "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "Home": {
+    "focused": true,
+    "steps": "1",
+    "output": "1",
+    "aria": "1",
+    "summary": "Collatz delta. Playing. Seed 123456. Exactly 2 numbers reach 1 within 1 Collatz step, the largest 2. The full drawing shows them all. 1 of 1 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "End": {
+    "focused": true,
+    "steps": "120",
+    "output": "120",
+    "aria": "120",
+    "summary": "Collatz delta. Playing. Seed 123456. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "1": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "steps": "1",
+    "ariaValue": "1",
+    "output": "1",
+    "note": "Totals are exact through 50 steps. Higher settings show sampled branches only.",
+    "loopVisible": false,
+    "body": "Pause\nNew terrain\n\n2 numbers within 1 step of 1\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Exactly 2 numbers reach 1 within 1 Collatz step, the largest 2. The full drawing shows them all. 1 of 1 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "30": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "steps": "30",
+    "ariaValue": "30",
+    "output": "30",
+    "note": "Totals are exact through 50 steps. Higher settings show sampled branches only.",
+    "loopVisible": false,
+    "body": "Pause\nNew terrain\n\n2 numbers within 1 step of 1\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "50": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "steps": "50",
+    "ariaValue": "50",
+    "output": "50",
+    "note": "Totals are exact through 50 steps. Higher settings show sampled branches only.",
+    "loopVisible": false,
+    "body": "Pause\nNew terrain\n\n2 numbers within 1 step of 1\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "51": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "steps": "51",
+    "ariaValue": "51",
+    "output": "51",
+    "note": "Totals are exact through 50 steps. Higher settings show sampled branches only.",
+    "loopVisible": false,
+    "body": "Pause\nNew terrain\n\nSampled branches \u00b7 1 step\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "120": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "steps": "120",
+    "ariaValue": "120",
+    "output": "120",
+    "note": "Totals are exact through 50 steps. Higher settings show sampled branches only.",
+    "loopVisible": false,
+    "body": "Pause\nNew terrain\n\nSampled branches \u00b7 1 step\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  }
+}

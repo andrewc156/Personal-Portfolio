@@ -1,0 +1,42 @@
+{
+  "dye": {
+    "url": "https://andrewchincea.com/?mode=dye&seed=123456",
+    "mode": "dye",
+    "seed": "123456",
+    "steps": "30",
+    "html": "Pause\nNew terrain\n\n3,600 dye particles \u00b7 0 spills by you\n\nWhen the animation has focus, Space plays or pauses, Enter spills dye at the centre, and N makes a new current.\n\nDye spill. Playing. Seed 123456. Dye leaks from one point and drifts on a swirling current while it spreads out. 3,600 dye particles are in the water. None has been spilled by clicking yet.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "pond": {
+    "url": "https://andrewchincea.com/?mode=pond&seed=123456",
+    "mode": "pond",
+    "seed": "123456",
+    "steps": "30",
+    "html": "Pause\nNew terrain\n\nKoch snowflake pond, level 4 \u00b7 0 pebbles by you\n\nWhen the animation has focus, Space plays or pauses, Enter drops a pebble at the centre, and N makes a new pond.\n\nFractal pond. Playing. Seed 123456. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. None has been dropped by clicking yet.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "rivers": {
+    "url": "https://andrewchincea.com/?mode=rivers&seed=123456",
+    "mode": "rivers",
+    "seed": "123456",
+    "steps": "30",
+    "html": "Pause\nNew terrain\n\nStrahler orders 1\u20136 \u00b7 largest river drains 1,581 of 7,232 cells\n\nWhen the animation has focus, Space plays or pauses and N grows a new network.\n\nRandom rivers. Playing. Seed 123456. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 6, and the largest river drains 1,581 cells, 22% of the grid. Bigger rivers appear first.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "collatz": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "seed": "123456",
+    "steps": "30",
+    "html": "Pause\nNew terrain\n\n2 numbers within 1 step of 1\n\nWhen the animation has focus, Space plays or pauses and N draws a new delta.\n\nCollatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  }
+}

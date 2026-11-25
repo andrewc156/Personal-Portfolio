@@ -1,0 +1,644 @@
+[
+  {
+    "name": "achincea@students.kennesaw.edu",
+    "rects": [
+      {
+        "x": 16,
+        "y": 172.75,
+        "w": 264.421875,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 100,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -100,
+      "width": 320,
+      "height": 99.578125,
+      "top": -100,
+      "right": 320,
+      "bottom": -0.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "github.com/andrewc156",
+    "rects": [
+      {
+        "x": 16,
+        "y": 230.328125,
+        "w": 187.75,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 100,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -100,
+      "width": 320,
+      "height": 99.578125,
+      "top": -100,
+      "right": 320,
+      "bottom": -0.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "www.linkedin.com/in/andrewchincea",
+    "rects": [
+      {
+        "x": 16,
+        "y": 116.90625,
+        "w": 283.546875,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 271,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -271,
+      "width": 320,
+      "height": 99.578125,
+      "top": -271,
+      "right": 320,
+      "bottom": -171.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Water-quality prediction on river networks",
+    "rects": [
+      {
+        "x": 112.890625,
+        "y": 108.28125,
+        "w": 171.84375,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      },
+      {
+        "x": 16,
+        "y": 130.671875,
+        "w": 89.8125,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 2945,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -2945,
+      "width": 320,
+      "height": 99.578125,
+      "top": -2945,
+      "right": 320,
+      "bottom": -2845.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Analytic number theory",
+    "rects": [
+      {
+        "x": 112.890625,
+        "y": 118.828125,
+        "w": 146.859375,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 3535,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -3535,
+      "width": 320,
+      "height": 99.578125,
+      "top": -3535,
+      "right": 320,
+      "bottom": -3435.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Spectral analysis on fractals",
+    "rects": [
+      {
+        "x": 112.890625,
+        "y": 118.78125,
+        "w": 175.765625,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 4118,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -4118,
+      "width": 320,
+      "height": 99.578125,
+      "top": -4118,
+      "right": 320,
+      "bottom": -4018.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "OwlPath",
+    "rects": [
+      {
+        "x": 89.203125,
+        "y": 116.703125,
+        "w": 64.5625,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 4937,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -4937,
+      "width": 320,
+      "height": 99.578125,
+      "top": -4937,
+      "right": 320,
+      "bottom": -4837.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Personal portfolio",
+    "rects": [
+      {
+        "x": 16,
+        "y": 116.640625,
+        "w": 135.203125,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 5101,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -5101,
+      "width": 320,
+      "height": 99.578125,
+      "top": -5101,
+      "right": 320,
+      "bottom": -5001.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Rising water",
+    "rects": [
+      {
+        "x": 243.421875,
+        "y": 206.609375,
+        "w": 46.296875,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      },
+      {
+        "x": 16,
+        "y": 233.796875,
+        "w": 42.09375,
+        "h": 22,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 5103,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -5103,
+      "width": 320,
+      "height": 99.578125,
+      "top": -5103,
+      "right": 320,
+      "bottom": -5003.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "About",
+    "rects": [
+      {
+        "x": 180.265625,
+        "y": 211.390625,
+        "w": 37.8125,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 6827,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -6827,
+      "width": 320,
+      "height": 99.578125,
+      "top": -6827,
+      "right": 320,
+      "bottom": -6727.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Source",
+    "rects": [
+      {
+        "x": 229.265625,
+        "y": 211.390625,
+        "w": 43.640625,
+        "h": 18,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 6827,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -6827,
+      "width": 320,
+      "height": 99.578125,
+      "top": -6827,
+      "right": 320,
+      "bottom": -6727.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Skip to contentAndrew ChinceaMissionWorkResearchOpen scienceGarde",
+    "rects": [
+      {
+        "x": 0,
+        "y": -6827,
+        "w": 320,
+        "h": 7082.78125,
+        "vis": [
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen"
+        ]
+      }
+    ],
+    "scrollY": 6827,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": -6827,
+      "width": 320,
+      "height": 99.578125,
+      "top": -6827,
+      "right": 320,
+      "bottom": -6727.421875,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Skip to content",
+    "rects": [
+      {
+        "x": 8,
+        "y": -78.375,
+        "w": 151.046875,
+        "h": 43.1875,
+        "vis": [
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen",
+          "offscreen"
+        ]
+      }
+    ],
+    "scrollY": 0,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Andrew Chincea",
+    "rects": [
+      {
+        "x": 16,
+        "y": 8,
+        "w": 232,
+        "h": 43.1875,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 0,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Mission",
+    "rects": [
+      {
+        "x": 16,
+        "y": 56.1875,
+        "w": 47.71875,
+        "h": 30.390625,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 0,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "errors": []
+  },
+  {
+    "name": "Work",
+    "rects": [
+      {
+        "x": 79.71875,
+        "y": 56.1875,
+        "w": 32.625,
+        "h": 30.390625,
+        "vis": [
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self",
+          "self"
+        ]
+      }
+    ],
+    "scrollY": 0,
+    "view": [
+      320,
+      256
+    ],
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "errors": []
+  }
+]

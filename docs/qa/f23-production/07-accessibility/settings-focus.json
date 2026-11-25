@@ -1,0 +1,1938 @@
+{
+  "art": {
+    "trigger": {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "icon-btn",
+      "role": null,
+      "label": "Art settings",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1224,
+        10,
+        40,
+        40
+      ],
+      "hit": true
+    },
+    "before": {
+      "active": "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.",
+      "expanded": [
+        [
+          "Art settings",
+          "false"
+        ],
+        [
+          "Animation settings",
+          "false"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "opened": {
+      "active": "<h2 id=\"settings-title\" class=\"settings__title\" tabindex=\"-1\" data-settings-title=\"\" data-astro-cid-psic4rm5=\"\">Art settings</h2>",
+      "expanded": [
+        [
+          "Art settings",
+          "true"
+        ],
+        [
+          "Animation settings",
+          "true"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "ax": [
+      {
+        "role": "link",
+        "name": "Skip to content",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "banner",
+        "name": "",
+        "properties": {}
+      },
+      {
+        "role": "main",
+        "name": "",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "contentinfo",
+        "name": "",
+        "properties": {}
+      },
+      {
+        "role": "link",
+        "name": "Andrew Chincea",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "navigation",
+        "name": "Main",
+        "properties": {}
+      },
+      {
+        "role": "button",
+        "name": "Dark theme",
+        "description": "Toggle dark theme",
+        "properties": {
+          "focusable": true,
+          "pressed": "true"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Art settings",
+        "description": "Art settings",
+        "properties": {
+          "focusable": true,
+          "expanded": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "ART SETTINGS",
+        "properties": {
+          "focusable": true,
+          "level": 2
+        }
+      },
+      {
+        "role": "button",
+        "name": "Close art settings",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "region",
+        "name": "Andrew Chincea",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Mission",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Recent work",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Research",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Open science",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Contact",
+        "properties": {}
+      },
+      {
+        "role": "heading",
+        "name": "Andrew Chincea",
+        "properties": {
+          "level": 1
+        }
+      },
+      {
+        "role": "link",
+        "name": "About",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Source",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "group",
+        "name": "TERRAIN",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "WATER",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "BARCODE",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "COLOR",
+        "properties": {}
+      },
+      {
+        "role": "button",
+        "name": "Reset",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Animation",
+        "value": "Rising water",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "button",
+        "name": "Animation settings",
+        "properties": {
+          "focusable": true,
+          "expanded": true
+        }
+      },
+      {
+        "role": "group",
+        "name": "Rising water animation",
+        "description": "When the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Mission",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Recent work",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Research",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Open science",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Contact",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "link",
+        "name": "Mission",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Work",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Research",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Open science",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Garden",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Rising water",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "CV",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "spinbutton",
+        "name": "Seed",
+        "value": 598892,
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "button",
+        "name": "New terrain",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Scale",
+        "value": 1.5,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Roughness",
+        "value": 0.5,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Play",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Speed",
+        "value": 1,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Water level",
+        "value": 45,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Pacing",
+        "value": "Linear (metres)",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Loop with a new terrain",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Show barcode",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Min persistence",
+        "value": 10,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Max bars",
+        "value": 12,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "View",
+        "value": "Barcode",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Palette",
+        "value": "Delta",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Color by",
+        "value": "Lake",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Shoreline outlines",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Play",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "button",
+        "name": "New terrain",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "See it on the Colorado River Basin →",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "All work ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Source for this site ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Data pipeline ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Persistence engine ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "achincea@students.kennesaw.edu",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "github.com/andrewc156",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "www.linkedin.com/in/andrewchincea",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Water-quality prediction on river networks",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Analytic number theory",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Spectral analysis on fractals",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "link",
+        "name": "OwlPath",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Personal portfolio",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Rising water",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Water-quality prediction on river networks",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Water-quality prediction on river networks",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Analytic number theory",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Analytic number theory",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Spectral analysis on fractals",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Spectral analysis on fractals",
+        "properties": {
+          "focusable": true
+        }
+      }
+    ],
+    "forward": [
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Close art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1388,
+          73,
+          40,
+          40
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-seed",
+        "cls": "",
+        "role": null,
+        "label": "Seed",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1272,
+          175,
+          144,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "New terrain",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          223,
+          99,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-scale",
+        "cls": "",
+        "role": null,
+        "label": "Scale",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          298,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-roughness",
+        "cls": "",
+        "role": null,
+        "label": "Roughness",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          361,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "Play",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          442,
+          53,
+          36
+        ],
+        "hit": true
+      }
+    ],
+    "afterTabs": {
+      "active": "<button type=\"button\" class=\"btn\" data-hero-play=\"\" data-astro-cid-hib4isnx=\"\">Play</button>",
+      "expanded": [
+        [
+          "Art settings",
+          "true"
+        ],
+        [
+          "Animation settings",
+          "true"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "back": [
+      {
+        "tag": "INPUT",
+        "id": "hero-roughness",
+        "cls": "",
+        "role": null,
+        "label": "Roughness",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          361,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-scale",
+        "cls": "",
+        "role": null,
+        "label": "Scale",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          298,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "New terrain",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          223,
+          99,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-seed",
+        "cls": "",
+        "role": null,
+        "label": "Seed",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1272,
+          175,
+          144,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Close art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1388,
+          73,
+          40,
+          40
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1224,
+          10,
+          40,
+          40
+        ],
+        "hit": true
+      }
+    ],
+    "afterEscape": {
+      "active": "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.",
+      "expanded": [
+        [
+          "Art settings",
+          "false"
+        ],
+        [
+          "Animation settings",
+          "false"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "nextTab": [
+      {
+        "tag": "SELECT",
+        "id": "hero-mode",
+        "cls": "",
+        "role": null,
+        "label": "Animation",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          761,
+          109,
+          192,
+          44
+        ],
+        "hit": true
+      }
+    ]
+  },
+  "animation": {
+    "trigger": {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Animation settings",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        961,
+        109,
+        101,
+        44
+      ],
+      "hit": true
+    },
+    "before": {
+      "active": "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2bfj=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.",
+      "expanded": [
+        [
+          "Art settings",
+          "false"
+        ],
+        [
+          "Animation settings",
+          "false"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "opened": {
+      "active": "<h2 id=\"settings-title\" class=\"settings__title\" tabindex=\"-1\" data-settings-title=\"\" data-astro-cid-psic4rm5=\"\">Art settings</h2>",
+      "expanded": [
+        [
+          "Art settings",
+          "true"
+        ],
+        [
+          "Animation settings",
+          "true"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "ax": [
+      {
+        "role": "link",
+        "name": "Skip to content",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "banner",
+        "name": "",
+        "properties": {}
+      },
+      {
+        "role": "main",
+        "name": "",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "contentinfo",
+        "name": "",
+        "properties": {}
+      },
+      {
+        "role": "link",
+        "name": "Andrew Chincea",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "navigation",
+        "name": "Main",
+        "properties": {}
+      },
+      {
+        "role": "button",
+        "name": "Dark theme",
+        "description": "Toggle dark theme",
+        "properties": {
+          "focusable": true,
+          "pressed": "true"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Art settings",
+        "description": "Art settings",
+        "properties": {
+          "focusable": true,
+          "expanded": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "ART SETTINGS",
+        "properties": {
+          "focusable": true,
+          "level": 2
+        }
+      },
+      {
+        "role": "button",
+        "name": "Close art settings",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "region",
+        "name": "Andrew Chincea",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Mission",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Recent work",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Research",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Open science",
+        "properties": {}
+      },
+      {
+        "role": "region",
+        "name": "Contact",
+        "properties": {}
+      },
+      {
+        "role": "heading",
+        "name": "Andrew Chincea",
+        "properties": {
+          "level": 1
+        }
+      },
+      {
+        "role": "link",
+        "name": "About",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Source",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "group",
+        "name": "TERRAIN",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "WATER",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "BARCODE",
+        "properties": {}
+      },
+      {
+        "role": "group",
+        "name": "COLOR",
+        "properties": {}
+      },
+      {
+        "role": "button",
+        "name": "Reset",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Animation",
+        "value": "Rising water",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "button",
+        "name": "Animation settings",
+        "properties": {
+          "focusable": true,
+          "expanded": true
+        }
+      },
+      {
+        "role": "group",
+        "name": "Rising water animation",
+        "description": "When the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Mission",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Recent work",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Research",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Open science",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Contact",
+        "properties": {
+          "level": 2
+        }
+      },
+      {
+        "role": "link",
+        "name": "Mission",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Work",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Research",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Open science",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Garden",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Rising water",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "CV",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "spinbutton",
+        "name": "Seed",
+        "value": 956652,
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "button",
+        "name": "New terrain",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Scale",
+        "value": 1.5,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Roughness",
+        "value": 0.5,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Play",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Speed",
+        "value": 1,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Water level",
+        "value": 45,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Pacing",
+        "value": "Linear (metres)",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Loop with a new terrain",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Show barcode",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Min persistence",
+        "value": 10,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "slider",
+        "name": "Max bars",
+        "value": 12,
+        "properties": {
+          "focusable": true,
+          "orientation": "horizontal"
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "View",
+        "value": "Barcode",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Palette",
+        "value": "Delta",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "combobox",
+        "name": "Color by",
+        "value": "Lake",
+        "properties": {
+          "focusable": true,
+          "expanded": false
+        }
+      },
+      {
+        "role": "checkbox",
+        "name": "Shoreline outlines",
+        "properties": {
+          "focusable": true,
+          "checked": "true"
+        }
+      },
+      {
+        "role": "button",
+        "name": "Play",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "button",
+        "name": "New terrain",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "See it on the Colorado River Basin →",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "All work ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Source for this site ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Data pipeline ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Persistence engine ",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "achincea@students.kennesaw.edu",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "github.com/andrewc156",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "www.linkedin.com/in/andrewchincea",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Water-quality prediction on river networks",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Analytic number theory",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "heading",
+        "name": "Spectral analysis on fractals",
+        "properties": {
+          "level": 3
+        }
+      },
+      {
+        "role": "link",
+        "name": "OwlPath",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Personal portfolio",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Rising water",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Water-quality prediction on river networks",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Water-quality prediction on river networks",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Analytic number theory",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Analytic number theory",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Spectral analysis on fractals",
+        "properties": {
+          "focusable": true
+        }
+      },
+      {
+        "role": "link",
+        "name": "Related work: Spectral analysis on fractals",
+        "properties": {
+          "focusable": true
+        }
+      }
+    ],
+    "forward": [
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Close art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1388,
+          73,
+          40,
+          40
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-seed",
+        "cls": "",
+        "role": null,
+        "label": "Seed",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1272,
+          175,
+          144,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "New terrain",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          223,
+          99,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-scale",
+        "cls": "",
+        "role": null,
+        "label": "Scale",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          298,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-roughness",
+        "cls": "",
+        "role": null,
+        "label": "Roughness",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          361,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "Play",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          442,
+          53,
+          36
+        ],
+        "hit": true
+      }
+    ],
+    "afterTabs": {
+      "active": "<button type=\"button\" class=\"btn\" data-hero-play=\"\" data-astro-cid-hib4isnx=\"\">Play</button>",
+      "expanded": [
+        [
+          "Art settings",
+          "true"
+        ],
+        [
+          "Animation settings",
+          "true"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\"",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"true\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "back": [
+      {
+        "tag": "INPUT",
+        "id": "hero-roughness",
+        "cls": "",
+        "role": null,
+        "label": "Roughness",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          361,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-scale",
+        "cls": "",
+        "role": null,
+        "label": "Scale",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          298,
+          303,
+          16
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn",
+        "role": null,
+        "label": "New terrain",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1113,
+          223,
+          99,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "INPUT",
+        "id": "hero-seed",
+        "cls": "",
+        "role": null,
+        "label": "Seed",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1272,
+          175,
+          144,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Close art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1388,
+          73,
+          40,
+          40
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "icon-btn",
+        "role": null,
+        "label": "Art settings",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          1224,
+          10,
+          40,
+          40
+        ],
+        "hit": true
+      }
+    ],
+    "afterEscape": {
+      "active": "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a2bfj=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.",
+      "expanded": [
+        [
+          "Art settings",
+          "false"
+        ],
+        [
+          "Animation settings",
+          "false"
+        ]
+      ],
+      "panels": [
+        [
+          "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false",
+          40,
+          false
+        ],
+        [
+          "<button type=\"button\" class=\"btn\" aria-label=\"Animation settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" data-astro-cid-fi6a2bfj=\"\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-fi6a",
+          44,
+          false
+        ]
+      ],
+      "err": []
+    },
+    "nextTab": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "cls": "hero__art",
+        "role": "group",
+        "label": "Rising water animation",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "3px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          689,
+          165,
+          567,
+          477
+        ],
+        "hit": true
+      }
+    ]
+  }
+}

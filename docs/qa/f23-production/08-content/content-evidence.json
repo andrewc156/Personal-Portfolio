@@ -1,0 +1,1154 @@
+{
+  "pages": [
+    {
+      "url": "https://andrewchincea.com/research/water-quality/",
+      "title": "🐴 Water-quality prediction on river networks · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "RESEARCH\n\nWater-quality prediction on river networks\nIllustration\nAbout\n\nI use graph-Laplacian regression on river networks to predict hourly water quality at stations that have no data.\n\nI work on RiverNets, a project in the TDA Lab at Kennesaw State University. The model predicts five measurements (water temperature, dissolved oxygen, specific conductance, pH and turbidity) with a smoothness penalty along the river network.\n\nPosition\nUndergraduate Research Assistant – RiverNets (TDA Lab), Kennesaw State University · Aug 2026 – Present\nAdvisor\nDr. Mehmet Aktas\n\nThe Rising water explorer uses elevation data for the same Colorado River Basin study area that RiverNets covers.\n\nMethods\nGraph-Laplacian regression with a smoothness penalty along the river network.\nHourly USGS continuous water-quality records from 28 Colorado River Basin stations, cleaned and audited for completeness by station and variable.\nRiver-network graphs built in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), plus graphs for the Chattahoochee basin.\nKron (Schur-complement) reduction that collapses the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.\nBenchmarks against OLS, Ridge, Elastic Net, a spline GAM, random forest and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts.\nResults\nAt unseen stations the graph model reached R² = 0.38 for specific conductance and 0.12 for pH, versus 0.02 for the best alternative.\nERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend became the best dissolved-oxygen model (R² = 0.748).\nRelated work\n\nPOSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.\n\nPROJECTAndrew Chincea (Nov 2026). Rising water.\n\nSee this area in the Garden →",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "RESEARCH",
+          "href": "/research/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water explorer",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "See this area in the Garden →",
+          "href": "/garden/?tag=water-quality",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [
+        "topic-about",
+        "topic-methods",
+        "topic-results",
+        "topic-work"
+      ],
+      "canonical": "http://localhost:4321/research/water-quality/",
+      "errors": [],
+      "citations": [
+        {
+          "id": "poster-rivernets-analytics-day-2026",
+          "domText": "PosterAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.",
+          "type": "POSTER",
+          "authors": "Andrew Chincea and Yunus Kaya",
+          "title": "RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin",
+          "cssGap": "8px"
+        },
+        {
+          "id": "project-rising-water",
+          "domText": "ProjectAndrew Chincea (Nov 2026). Rising water.",
+          "type": "PROJECT",
+          "authors": "Andrew Chincea",
+          "title": "Rising water",
+          "link": "/rising-water/",
+          "cssGap": "8px"
+        }
+      ],
+      "meta": [
+        [
+          "canonical",
+          "http://localhost:4321/research/water-quality/"
+        ],
+        [
+          "og:url",
+          "http://localhost:4321/research/water-quality/"
+        ],
+        [
+          "og:image",
+          "http://localhost:4321/og/social-card.png"
+        ]
+      ]
+    },
+    {
+      "url": "https://andrewchincea.com/research/number-theory/",
+      "title": "🐴 Analytic number theory · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "RESEARCH\n\nAnalytic number theory\nIllustration\nAbout\n\nI study the largest kth-power divisor of a random integer.\n\nIn our submitted manuscript, \"Largest kth-Power Divisor of a Random Integer,\" Dr. Tsz Ho Chan and I establish an asymptotic formula with an O(log x) error term for every integer k ≥ 2.\n\nPosition\nUndergraduate Researcher – Analytic Number Theory, Kennesaw State University · Aug 2025 – Present\nAdvisor\nDr. Tsz Ho Chan\nMethods\nAsymptotic analysis of the largest kth-power divisor of a random integer.\nPython experiments on integers up to 10⁸, calculating empirical averages, growth constants and relative errors to validate the theoretical results.\nRelated work\n\nPAPERTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.\n\nTALKAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.\n\nSee this area in the Garden →",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "RESEARCH",
+          "href": "/research/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "See this area in the Garden →",
+          "href": "/garden/?tag=number-theory",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [
+        "topic-about",
+        "topic-methods",
+        "topic-work"
+      ],
+      "canonical": "http://localhost:4321/research/number-theory/",
+      "errors": [],
+      "citations": [
+        {
+          "id": "paper-kth-power-divisor",
+          "domText": "PaperTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.",
+          "type": "PAPER",
+          "authors": "Tsz Ho Chan and Andrew Chincea",
+          "title": "Largest kth-Power Divisor of a Random Integer",
+          "cssGap": "8px"
+        },
+        {
+          "id": "talk-maa-southeastern-2026",
+          "domText": "TalkAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.",
+          "type": "TALK",
+          "authors": "Andrew Chincea and Michael Liu",
+          "title": "Largest Square Divisor of a Random Integer",
+          "cssGap": "8px"
+        }
+      ],
+      "meta": [
+        [
+          "canonical",
+          "http://localhost:4321/research/number-theory/"
+        ],
+        [
+          "og:url",
+          "http://localhost:4321/research/number-theory/"
+        ],
+        [
+          "og:image",
+          "http://localhost:4321/og/social-card.png"
+        ]
+      ]
+    },
+    {
+      "url": "https://andrewchincea.com/research/spectral-fractals/",
+      "title": "🐴 Spectral analysis on fractals · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "RESEARCH\n\nSpectral analysis on fractals\nIllustration\nAbout\n\nAs a First-Year Scholar, I studied eigenvalues of the fractal Laplacian.\n\nI looked at how fractal geometry shapes the spectrum of the fractal Laplacian. I started from the Dirichlet eigenvalue problem in one dimension and then extended the analysis to two.\n\nPosition\nFirst-Year Scholar Undergraduate Researcher, Kennesaw State University · Aug 2024 – May 2025\nMethods\nFormulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.\nComputed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum.\nExtended the analysis to two dimensions using separation of variables.\nRelated work\n\nPOSTERAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point University, High Point, NC.\n\nSee this area in the Garden →",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "RESEARCH",
+          "href": "/research/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "See this area in the Garden →",
+          "href": "/garden/?tag=spectral-fractals",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [
+        "topic-about",
+        "topic-methods",
+        "topic-work"
+      ],
+      "canonical": "http://localhost:4321/research/spectral-fractals/",
+      "errors": [],
+      "citations": [
+        {
+          "id": "poster-fractal-laplacian-2025",
+          "domText": "PosterAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point University, High Point, NC.",
+          "type": "POSTER",
+          "authors": "Andrew Chincea",
+          "title": "Properties of Eigenvalues of Fractal Laplacian",
+          "cssGap": "8px"
+        }
+      ],
+      "meta": [
+        [
+          "canonical",
+          "http://localhost:4321/research/spectral-fractals/"
+        ],
+        [
+          "og:url",
+          "http://localhost:4321/research/spectral-fractals/"
+        ],
+        [
+          "og:image",
+          "http://localhost:4321/og/social-card.png"
+        ]
+      ]
+    },
+    {
+      "url": "https://andrewchincea.com/research/",
+      "title": "🐴 Research · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "Research\nIllustration\nWater-quality prediction on river networks\n\nI use graph-Laplacian regression on river networks to predict hourly water quality at stations that have no data.\n\nRelated work →\n\nIllustration\nAnalytic number theory\n\nI study the largest kth-power divisor of a random integer.\n\nRelated work →\n\nIllustration\nSpectral analysis on fractals\n\nAs a First-Year Scholar, I studied eigenvalues of the fractal Laplacian.\n\nRelated work →",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Water-quality prediction on river networks",
+          "href": "/research/water-quality/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Related work →",
+          "href": "/garden/?tag=water-quality",
+          "name": "Related work: Water-quality prediction on river networks",
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Analytic number theory",
+          "href": "/research/number-theory/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Related work →",
+          "href": "/garden/?tag=number-theory",
+          "name": "Related work: Analytic number theory",
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Spectral analysis on fractals",
+          "href": "/research/spectral-fractals/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Related work →",
+          "href": "/garden/?tag=spectral-fractals",
+          "name": "Related work: Spectral analysis on fractals",
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [],
+      "canonical": "http://localhost:4321/research/",
+      "errors": []
+    },
+    {
+      "url": "https://andrewchincea.com/garden/",
+      "title": "🐴 Garden · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "Garden\n\nHere's some of my work. Submitted work has no date yet, so it comes first. The rest is newest first.\n\nTYPE\nAll types\nPapers\nPosters\nTalks\nProjects\nRESEARCH AREA\nAll areas\nWater-quality prediction on river networks\nAnalytic number theory\nSpectral analysis on fractals\n\n9 items\n\nPAPER\nLargest kth-Power Divisor of a Random Integer\nWe establish an asymptotic formula with an O(log x) error term for every integer k ≥ 2.\nSubmitted\nPOSTER\nRiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin\nWe present graph-Laplacian regression for predicting water quality at unmonitored stations in the Colorado River Basin. · KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA\nDec 2026\nPROJECT\nOwlPath\nAn interactive prerequisite map for three KSU majors. Students mark the courses they've finished and see which classes they can take next term.\nNov 2026 – Present\nPROJECT\nPersonal portfolio\nMy academic site for research, projects and CV.\nNov 2026\nPROJECT\nRising water\nAn interactive explorer of persistent homology: water rises over Colorado River Basin terrain while a barcode updates live.\nNov 2026\nTALK\nLargest Square Divisor of a Random Integer\nWe presented the square-divisor case (k = 2) of the largest kth-power divisor of a random integer. · Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL\nMar 2026\nPROJECT\nNYC Subway Incident Modeling\nRegression models in R and Quarto that relate weather and ridership to NYC subway disruptions, using MTA major-incident records for 2015–2024.\nJan 2026 – May 2026\nPOSTER\nProperties of Eigenvalues of Fractal Laplacian\nResults from my First-Year Scholar research on eigenvalues of the fractal Laplacian. · 104th MAA Southeastern Section Meeting, High Point University, High Point, NC\nMar 2025\nPROJECT\nAskScrappy\nAn academic-advising assistant built with LangChain, Ollama and LLaMA 3.1. It uses retrieval-augmented generation and runs entirely on local hardware.\nAug 2024 – Dec 2024",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "All types",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Papers",
+          "href": "/garden/?type=paper",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Posters",
+          "href": "/garden/?type=poster",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Talks",
+          "href": "/garden/?type=talk",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Projects",
+          "href": "/garden/?type=project",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "All areas",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Water-quality prediction on river networks",
+          "href": "/garden/?tag=water-quality",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Analytic number theory",
+          "href": "/garden/?tag=number-theory",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Spectral analysis on fractals",
+          "href": "/garden/?tag=spectral-fractals",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "PAPER\nLargest kth-Power Divisor of a Random Integer\nWe establish an asymptotic formula with an O(log x) error term for every integer k ≥ 2.\nSubmitted",
+          "href": "/research/number-theory/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "POSTER\nRiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin\nWe present graph-Laplacian regression for predicting water quality at unmonitored stations in the Colorado River Basin. · KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA\nDec 2026",
+          "href": "/research/water-quality/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "PROJECT\nOwlPath\nAn interactive prerequisite map for three KSU majors. Students mark the courses they've finished and see which classes they can take next term.\nNov 2026 – Present",
+          "href": "https://andrewc156.github.io/OwlPath/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "PROJECT\nPersonal portfolio\nMy academic site for research, projects and CV.\nNov 2026",
+          "href": "https://andrewchincea.com/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "PROJECT\nRising water\nAn interactive explorer of persistent homology: water rises over Colorado River Basin terrain while a barcode updates live.\nNov 2026",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "TALK\nLargest Square Divisor of a Random Integer\nWe presented the square-divisor case (k = 2) of the largest kth-power divisor of a random integer. · Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL\nMar 2026",
+          "href": "/research/number-theory/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "POSTER\nProperties of Eigenvalues of Fractal Laplacian\nResults from my First-Year Scholar research on eigenvalues of the fractal Laplacian. · 104th MAA Southeastern Section Meeting, High Point University, High Point, NC\nMar 2025",
+          "href": "/research/spectral-fractals/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Show all work",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": false
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [
+        "filter-type-label",
+        "filter-tag-label"
+      ],
+      "canonical": "http://localhost:4321/garden/",
+      "errors": []
+    },
+    {
+      "url": "https://andrewchincea.com/about/",
+      "title": "🐴 About · Andrew Chincea",
+      "viewport": [
+        1220,
+        820
+      ],
+      "text": "About\n\nI'm an undergraduate at Kennesaw State University, working toward a B.S. in Mathematics (Statistics concentration) and a B.S. in Data Science and Analytics. I work in analytic number theory and on predicting water quality on river networks. As a First-Year Scholar, I studied spectral analysis on fractals. I'm interested in PhD programs and in mathematics and data science REUs.\n\nYou can also browse my research areas, selected work in the Garden, or my CV.\n\nContact\nEmail\nachincea@students.kennesaw.edu\nGitHub\ngithub.com/andrewc156\nLinkedIn\nwww.linkedin.com/in/andrewchincea",
+      "links": [
+        {
+          "text": "Skip to content",
+          "href": "#main",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Andrew Chincea",
+          "href": "/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Mission",
+          "href": "/#mission",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Work",
+          "href": "/#work",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Research",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Open science",
+          "href": "/#open-science",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Rising water",
+          "href": "/rising-water/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "research areas",
+          "href": "/#research",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Garden",
+          "href": "/garden/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "CV",
+          "href": "/cv/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "achincea@students.kennesaw.edu",
+          "href": "mailto:achincea@students.kennesaw.edu",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "github.com/andrewc156",
+          "href": "https://github.com/andrewc156",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "www.linkedin.com/in/andrewchincea",
+          "href": "https://www.linkedin.com/in/andrewchincea",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "About",
+          "href": "/about/",
+          "name": null,
+          "target": "",
+          "visible": true
+        },
+        {
+          "text": "Source",
+          "href": "https://github.com/andrewc156/Personal-Portfolio",
+          "name": null,
+          "target": "",
+          "visible": true
+        }
+      ],
+      "ids": [
+        "about-contact"
+      ],
+      "canonical": "http://localhost:4321/about/",
+      "errors": []
+    }
+  ],
+  "journeys": [
+    {
+      "step": "Research landing → water-quality",
+      "path": "/research/water-quality/",
+      "heading": "Water-quality prediction on river networks",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "water-quality breadcrumb → Research landing",
+      "path": "/research/",
+      "heading": "Research",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Research landing related work → water-quality",
+      "path": "/garden/?tag=water-quality",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Water-quality prediction on river networks"
+      ],
+      "work": [
+        "poster-rivernets-analytics-day-2026",
+        "project-rising-water"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Garden row → water-quality",
+      "path": "/research/water-quality/",
+      "heading": "Water-quality prediction on river networks",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Topic related-work footer → water-quality",
+      "path": "/garden/?tag=water-quality",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Water-quality prediction on river networks"
+      ],
+      "work": [
+        "poster-rivernets-analytics-day-2026",
+        "project-rising-water"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Research landing → number-theory",
+      "path": "/research/number-theory/",
+      "heading": "Analytic number theory",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "number-theory breadcrumb → Research landing",
+      "path": "/research/",
+      "heading": "Research",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Research landing related work → number-theory",
+      "path": "/garden/?tag=number-theory",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Analytic number theory"
+      ],
+      "work": [
+        "paper-kth-power-divisor",
+        "talk-maa-southeastern-2026"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Garden row → number-theory",
+      "path": "/research/number-theory/",
+      "heading": "Analytic number theory",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Topic related-work footer → number-theory",
+      "path": "/garden/?tag=number-theory",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Analytic number theory"
+      ],
+      "work": [
+        "paper-kth-power-divisor",
+        "talk-maa-southeastern-2026"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Research landing → spectral-fractals",
+      "path": "/research/spectral-fractals/",
+      "heading": "Spectral analysis on fractals",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "spectral-fractals breadcrumb → Research landing",
+      "path": "/research/",
+      "heading": "Research",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Research landing related work → spectral-fractals",
+      "path": "/garden/?tag=spectral-fractals",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Spectral analysis on fractals"
+      ],
+      "work": [
+        "poster-fractal-laplacian-2025"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Garden row → spectral-fractals",
+      "path": "/research/spectral-fractals/",
+      "heading": "Spectral analysis on fractals",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Topic related-work footer → spectral-fractals",
+      "path": "/garden/?tag=spectral-fractals",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "Spectral analysis on fractals"
+      ],
+      "work": [
+        "poster-fractal-laplacian-2025"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Water-quality body → Rising water",
+      "path": "/rising-water/",
+      "heading": "Colorado River Basin study area (RiverNets coverage)",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Rising water citation → Rising water",
+      "path": "/rising-water/",
+      "heading": "Colorado River Basin study area (RiverNets coverage)",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "Garden footer → About",
+      "path": "/about/",
+      "heading": "About",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "About → research areas",
+      "path": "/#research",
+      "heading": "Andrew Chincea",
+      "active": [],
+      "work": [],
+      "fragmentTop": 1618.21875,
+      "errors": []
+    },
+    {
+      "step": "About → Garden",
+      "path": "/garden/",
+      "heading": "Garden",
+      "active": [
+        "All types",
+        "All areas"
+      ],
+      "work": [
+        "paper-kth-power-divisor",
+        "poster-rivernets-analytics-day-2026",
+        "project-owlpath",
+        "project-personal-portfolio",
+        "project-rising-water",
+        "talk-maa-southeastern-2026",
+        "project-nyc-subway",
+        "poster-fractal-laplacian-2025",
+        "project-askscrappy"
+      ],
+      "fragmentTop": null,
+      "errors": []
+    },
+    {
+      "step": "About → CV",
+      "path": "/cv/",
+      "heading": "CV",
+      "active": [],
+      "work": [],
+      "fragmentTop": null,
+      "errors": []
+    }
+  ]
+}

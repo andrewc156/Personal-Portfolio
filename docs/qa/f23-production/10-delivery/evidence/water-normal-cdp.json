@@ -1,0 +1,2244 @@
+[
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/rising-water/",
+        "method": "GET",
+        "headers": {
+          "Accept-Language": "en-US,en;q=0.9",
+          "Upgrade-Insecure-Requests": "1",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.396123,
+      "wallTime": 1795642626.92784,
+      "initiator": {
+        "type": "other"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Document",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.449423,
+      "type": "Document",
+      "response": {
+        "url": "https://andrewchincea.com/rising-water/",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=0, must-revalidate",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a603caf25daf5358-ATL",
+          "content-encoding": "zstd",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "content-type": "text/html",
+          "cross-origin-opener-policy": "same-origin",
+          "date": "Wed, 25 Nov 2026 21:37:06 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "priority": "u=0,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=or5Q9nRt8eMLRplYdokShITM1TlPj9SN1oJ%2FZ817ftugg40EiiTkvTDmy%2BuNyHpzkCKHubcWJnVXRrrZjhPX%2FVVtu3dnoe2%2BA2y65BKRDzFpF%2BtA0ckPfNendRZiLcSJ0R9galoZi645yI1ezejVXA%3D%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfCacheStatus;desc=\"HIT\"\ncfEdge;dur=28,cfOrigin;dur=0\ncfExtPri",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY"
+        },
+        "mimeType": "text/html",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 531,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 1495,
+        "timing": {
+          "requestTime": 690930.396709,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 2.786,
+          "sendEnd": 2.96,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 51.145,
+          "receiveHeadersEnd": 51.375
+        },
+        "responseTime": 1795642626979.598,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.161",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isLinkPreload": true,
+        "isSameSite": true
+      },
+      "timestamp": 690930.453136,
+      "wallTime": 1795642626.984861,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 181
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.161"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.161",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.453201,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"48f6e488c4c66be2caeba6c4720a9cdb\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=T5Ws824O%2BPSLClBqS8%2BoFtjLEg3yQNNoW18KH%2FX1N4a3B3zbXBgZHvqFqVYw3tZMYJL0S2G6QTyQ0esGBvGNXbAfgSWHE%2FSC29HQsOVgbYKiSDkINioCuOHXH3SGe8LGxUVRoqbcm8cX5l2A1%2BO2Rw%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d20889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "22588",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 24060,
+        "timing": {
+          "requestTime": 690864.177491,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 2.319,
+          "sendEnd": 2.414,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 93.991,
+          "receiveHeadersEnd": 94.118
+        },
+        "responseTime": 1795642560803.191,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.161",
+      "timestamp": 690930.453224,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.162",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isLinkPreload": true,
+        "isSameSite": true
+      },
+      "timestamp": 690930.453258,
+      "wallTime": 1795642626.984974,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 302
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.162"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.162",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.453298,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"3fa0565a0de4cf8368c174014804a3ed\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=OVvPCGHqAYF0oeX%2BVtGbwrMuxBBVR9SINtlETNOtu3lpFjnvrRBzMXX51WkA4s5xoHzV5l3y18JDHVSbgki%2FUfgXmkV8cdpl6UwgU1EC2fS6O3ugJBVIVG%2B7kHRi3G6FGpKqC3jASPoScLeFP%2FHoTQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d10889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "24252",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 25723,
+        "timing": {
+          "requestTime": 690864.177611,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.996,
+          "sendEnd": 2.17,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 44.918,
+          "receiveHeadersEnd": 44.979
+        },
+        "responseTime": 1795642560754.236,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.162",
+      "timestamp": 690930.453308,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.163",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/data/colorado/hillshade.webp",
+        "method": "GET",
+        "headers": {
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isLinkPreload": true,
+        "isSameSite": true
+      },
+      "timestamp": 690930.45333,
+      "wallTime": 1795642626.985044,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 2124
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Image",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.163"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.163",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.45336,
+      "type": "Image",
+      "response": {
+        "url": "https://andrewchincea.com/data/colorado/hillshade.webp",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"9e1f084fdfad5fe5449735bb90505ac1\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=MR4TWliydB30Xty2K3Py9dWZ31xC0q7PCm18Qva1Z0ddF6y9FrwJF6yjTq6RrLQb%2BYBeEoFnDqTul80ViK7Qaw4c1hsBSWEU54UqbrDvzV5a4yKqfhbUQ0C2UmRD57wpTGxZf21skIvcFI9Tv1JDXA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "image/webp",
+          "priority": "u=1,i",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=86400, must-revalidate",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479ca0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "179574",
+          "server": "cloudflare"
+        },
+        "mimeType": "image/webp",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 181061,
+        "timing": {
+          "requestTime": 690864.177675,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.098,
+          "sendEnd": 0.17,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 25.461,
+          "receiveHeadersEnd": 25.592
+        },
+        "responseTime": 1795642560734.847,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.163",
+      "timestamp": 690930.453374,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.164",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+        "method": "GET",
+        "headers": {
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.453388,
+      "wallTime": 1795642626.985101,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 2186
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Stylesheet",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "Blocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.164"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.164",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.45342,
+      "type": "Stylesheet",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"e158351305602d616f281f6e17e19f7e\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tYsNRb5EKentmR5%2FLvSwQANKx5mhNkJuljeqCDshTrsIdqbPM6wnxfLEyOBKHpprifBLovQZx8F7x4ZexB04aZCPuUQwNcuc8llD%2Fw1wS99x9r5TiFTMRlROt%2F6OW%2FfnpNyWnGmUcK1Ox9mR0hGceQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/css",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d00889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/css",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 5359,
+        "timing": {
+          "requestTime": 690864.177881,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 2.122,
+          "sendEnd": 2.162,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 43.781,
+          "receiveHeadersEnd": 43.922
+        },
+        "responseTime": 1795642560753.379,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.164",
+      "timestamp": 690930.453431,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.165",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/index.CmVcPBNB.css",
+        "method": "GET",
+        "headers": {
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.453446,
+      "wallTime": 1795642626.985159,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 2243
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Stylesheet",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "Blocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.165"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.165",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.453474,
+      "type": "Stylesheet",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/index.CmVcPBNB.css",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"52ebe558109ec0bafd2b7af029035f77\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=WsQ2yZXkn6dl4MwZ1NAltzJYZSLcGpMHB4FXrIFtyuBSrYpTZjcRuEVC%2FstaSCkAAShrTKUQXS2zX15s89n2g0XzU4XQ838OSo4A8kkX8B50kedu6NJohEDXq40C98NPFRiSIvsCNG5K0AbWmDZo4A%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/css",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479cb0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/css",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 3644,
+        "timing": {
+          "requestTime": 690864.177932,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.053,
+          "sendEnd": 0.093,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 47.167,
+          "receiveHeadersEnd": 47.238
+        },
+        "responseTime": 1795642560756.806,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.165",
+      "timestamp": 690930.453483,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.167",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.453525,
+      "wallTime": 1795642626.985239,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 30070
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.167"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.167",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.453551,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"dbb96891b2324ea6d06b9871be201353\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=o5BRoQrD8hYVb6Dy1XHZ67l9bzX6BRHxw5W6ZtUrFVIdf20IqPzIzfdvarUATOXa0do1bExyrTFpgetlFSro%2FI9beVsYZ3OlrVffYhNwiYFzaWsRgiPOPYQ2pAaZFVMl%2FTz4Fw9WH3cnfIb8f6vjAQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479cc0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 19701,
+        "timing": {
+          "requestTime": 690864.178062,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.035,
+          "sendEnd": 0.062,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 44.152,
+          "receiveHeadersEnd": 44.223
+        },
+        "responseTime": 1795642560753.921,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.167",
+      "timestamp": 690930.453564,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.168",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/rising-water/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.453575,
+      "wallTime": 1795642626.985289,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 75696
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.168"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.168",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.453602,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"cb7f96e7c994f69dfde78696ee5c7a2a\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hrhHbsXuPMF%2BHHUPpsgocdEYnWXLkySn6N%2FGO4Mesx4JWXShZ%2B8EkBlkEF4wb3Ki1Uuxn6fBO27EVRHYzDPUu799pmRKuHEpmCF4T5UQ%2BVsl3AIDbx%2Bz6lIGCIom8ODIlddPUPXuHilPatDDb5s5rA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479cf0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 1843,
+        "timing": {
+          "requestTime": 690864.178158,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.897,
+          "sendEnd": 1.925,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 49.339,
+          "receiveHeadersEnd": 49.424
+        },
+        "responseTime": 1795642560759.202,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.168",
+      "timestamp": 690930.453611,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "security",
+        "level": "error",
+        "text": "Loading the script 'https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092' violates the following Content Security Policy directive: \"script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+        "timestamp": 1795642626989.279,
+        "url": "https://andrewchincea.com/rising-water/"
+      }
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.178",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": false
+      },
+      "timestamp": 690930.457653,
+      "wallTime": 1795642626.989374,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/rising-water/",
+        "lineNumber": 7,
+        "columnNumber": 76071
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "requestId": "32498.178",
+      "timestamp": 690930.457672,
+      "type": "Script",
+      "errorText": "",
+      "canceled": false,
+      "blockedReason": "csp"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.449643,
+      "encodedDataLength": 17614
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.179",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/color.BAcvsT9T.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.458108,
+      "wallTime": 1795642626.989824,
+      "initiator": {
+        "type": "script",
+        "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+        "lineNumber": 0,
+        "columnNumber": 39
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.179"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.179",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.458151,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/color.BAcvsT9T.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"45fbe24319ee59ae0f2671996c66df9c\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=6SZ3R9Am%2FMT2jEq%2Bb4%2BZ3CoZJxBwoHwHkt%2FKpkW6R%2BTr4F5lMUrGdlsm5K5TggR4G6eUlR9ig4m1dwdwPaqxui5NNEOOxiDeP64lu2jL6vmFhZVG4J21qKmtNB9eCZXVBMXL4MKwkIDSOtTtRaV5hA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954c9f60889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 3568,
+        "timing": {
+          "requestTime": 690864.224842,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.089,
+          "sendEnd": 1.167,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 21.319,
+          "receiveHeadersEnd": 21.44
+        },
+        "responseTime": 1795642560777.869,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.179",
+      "timestamp": 690930.458166,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.180",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/settings.D649Pdqp.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.458238,
+      "wallTime": 1795642626.989951,
+      "initiator": {
+        "type": "script",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "lineNumber": 0,
+        "columnNumber": 18
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.180"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.180",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.458256,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/settings.D649Pdqp.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"c4a0d0ba0e08b92c4d6426df010d8b8c\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=7vEBxEzDrN8%2Bgb8GgOO1%2BRoF2sKrul7VpJZkb8N8ASztj5IfQsjbEsWPb4rizeEVK0DgjtDghlgPWQdtDq9DMkwlV54Gbn96xHSl397f013grrfrPELpsLnPINUVeBCpAMSwyEQyd5OukrbZeLNBXg%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954c9f80889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 2470,
+        "timing": {
+          "requestTime": 690864.228408,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.501,
+          "sendEnd": 0.575,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 22.773,
+          "receiveHeadersEnd": 22.862
+        },
+        "responseTime": 1795642560782.885,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.180",
+      "timestamp": 690930.458263,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.183",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.459421,
+      "wallTime": 1795642626.99114,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.183"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.183",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.459477,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"d832a27df909b76e0be31d86af9e2509\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=8ikSRKZR5qvmNOgfw8WJp9vVEAG0Ed9lpbzxJW5Y7m7PNeUW9P1lf8JEPAXzNv5ulAN%2BxbBW5OFjUdiLo%2BnU1Hc4Q51pRZdtWn77SQTe9ZH5abwpwMjAXpRqW7yPgTwL8YxGxyq6EUrrz3iM2JsNpA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:35:53 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9261ba70889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "24356",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690920.240282,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.037,
+          "sendEnd": 0.037,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.726,
+          "receiveHeadersEnd": 0.781
+        },
+        "responseTime": 1795642553314.033,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.183",
+      "timestamp": 690930.459492,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.187",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.459549,
+      "wallTime": 1795642626.991266,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.187"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.187",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.459597,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"86348d462740fd14324170a9d059b01b\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tHPxe8FmB0YQkcnftpKygZcarrAM%2F%2BmYlYFOfiiQLupSry671EkJAwJnKhiJHYzRNO3jJXD1aFJxA%2BQSh%2B8EqSkr9uR%2BQWkWOm1yd1JMXLdFdo6lnTRFqO9jq0FM%2BlKhaJWerCcSh4UEqFb55jnYXA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954fa110889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "14708",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 16178,
+        "timing": {
+          "requestTime": 690864.254073,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.899,
+          "sendEnd": 0.98,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 25.408,
+          "receiveHeadersEnd": 25.529
+        },
+        "responseTime": 1795642560811.188,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.187",
+      "timestamp": 690930.459609,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.189",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/data/colorado/meta.json",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/rising-water/",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.474322,
+      "wallTime": 1795642627.006061,
+      "initiator": {
+        "type": "script",
+        "stack": {
+          "callFrames": [
+            {
+              "functionName": "S",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 6028
+            },
+            {
+              "functionName": "dt",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 41747
+            },
+            {
+              "functionName": "t",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 49325
+            }
+          ]
+        }
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Fetch",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.190",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/data/colorado/barcode.json",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/rising-water/",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.47449,
+      "wallTime": 1795642627.006213,
+      "initiator": {
+        "type": "script",
+        "stack": {
+          "callFrames": [
+            {
+              "functionName": "S",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 6028
+            },
+            {
+              "functionName": "dt",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 41769
+            },
+            {
+              "functionName": "t",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 49325
+            }
+          ]
+        }
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Fetch",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.191",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "documentURL": "https://andrewchincea.com/rising-water/",
+      "request": {
+        "url": "https://andrewchincea.com/data/colorado/grid.f32",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/rising-water/",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690930.474533,
+      "wallTime": 1795642627.006254,
+      "initiator": {
+        "type": "script",
+        "stack": {
+          "callFrames": [
+            {
+              "functionName": "S",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 6028
+            },
+            {
+              "functionName": "dt",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 41794
+            },
+            {
+              "functionName": "t",
+              "scriptId": "20",
+              "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+              "lineNumber": 0,
+              "columnNumber": 49325
+            }
+          ]
+        }
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Fetch",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.189",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.47814,
+      "type": "Fetch",
+      "response": {
+        "url": "https://andrewchincea.com/data/colorado/meta.json",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"86176e6a1273fad9f9e891292ffc2454\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=VQBiizqsG5TSTcn7USEnsqqNLnLJOTN3%2B0SvpqAVtCNvgDxHD%2BeKWPsBchctI0WoRs4TKK%2FJzd2%2F%2B3Vk0TEsHFqlOTSv0JgmJIcyeBSpF0beIYeL9W4ZDJAQ8oLBeuVsUDdAx7aLvq%2B6bc6hOT7O5Q%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "application/json",
+          "priority": "u=1,i",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=86400, must-revalidate",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9552a270889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "application/json",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690930.475047,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.043,
+          "sendEnd": 0.043,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.464,
+          "receiveHeadersEnd": 0.551
+        },
+        "responseTime": 1795642560850.077,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.190",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.478456,
+      "type": "Fetch",
+      "response": {
+        "url": "https://andrewchincea.com/data/colorado/barcode.json",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"3d6be43d51f6bde5e0af7622fd31ce20\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=TcstE3gYsF%2BP3LsveeOUizGWHnvOICbjFepOoEIq604nkANR9ec3uCDAPhNam1x%2Bv7tj%2BDHVu%2FjpwAHpmHqSwSHihJqi58f%2FFeptdxaJydI2pEI05X4Ghp3EbrrOROOqhbPaKBUoVr%2BWkxKYmtWwyA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "application/json",
+          "priority": "u=1,i",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=86400, must-revalidate",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9552a260889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "application/json",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690930.475151,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.012,
+          "sendEnd": 0.012,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.74,
+          "receiveHeadersEnd": 0.948
+        },
+        "responseTime": 1795642560908.05,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.191",
+      "loaderId": "D78D2ABD3342126A6595C08AC0BA7FC4",
+      "timestamp": 690930.478544,
+      "type": "Fetch",
+      "response": {
+        "url": "https://andrewchincea.com/data/colorado/grid.f32",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"e09674f1f5f417ba39658a71746e22e2\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=d12PT1siIvIFZMy7qs95UORpK%2BCg7AF9Eh668PZ8qO5JXtu6RPykGfcdNbzy5X703esu0SUZZN6Bq5jw3zXkx86NACy191Ga2zemsgV6PcWo6%2Bkses30mDTOksUxEpuOR0Ix%2Bx1bFN3TaRDZE60P7g%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "priority": "u=1,i",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=86400, must-revalidate",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9552a290889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "539856",
+          "server": "cloudflare"
+        },
+        "mimeType": "",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690930.475208,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.011,
+          "sendEnd": 0.011,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.737,
+          "receiveHeadersEnd": 1.069
+        },
+        "responseTime": 1795642560854.505,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.189",
+      "timestamp": 690930.47776,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.190",
+      "timestamp": 690930.477993,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.191",
+      "timestamp": 690930.4786,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  }
+]

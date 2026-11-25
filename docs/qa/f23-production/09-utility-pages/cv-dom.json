@@ -1,0 +1,132 @@
+{
+  "title": "\ud83d\udc34 CV \u00b7 Andrew Chincea",
+  "url": "https://andrewchincea.com/cv/",
+  "status": 200,
+  "headings": [
+    "CV",
+    "Contact",
+    "Education",
+    "Research interests",
+    "Publications and preprints",
+    "Research experience",
+    "Undergraduate Research Assistant \u2013 RiverNets (TDA Lab)\nAug 2026 \u2013 Present",
+    "Undergraduate Researcher \u2013 Analytic Number Theory\nAug 2025 \u2013 Present",
+    "First-Year Scholar Undergraduate Researcher\nAug 2024 \u2013 May 2025",
+    "Presentations",
+    "Projects",
+    "Technical skills",
+    "Work experience",
+    "Graduation Services Student Assistant (Federal Work-Study)\nAug 2026 \u2013 Present"
+  ],
+  "text": "CV\n\nAndrew Dumitru Chincea\n\nContact\nEmail\nachincea@students.kennesaw.edu\nGitHub\ngithub.com/andrewc156\nLinkedIn\nwww.linkedin.com/in/andrewchincea\nEducation\n\nKennesaw State University\nMarietta, GA\n\nB.S. in Mathematics (Statistics concentration); B.S. in Data Science and Analytics\nExpected May 2028\n\nJunior in the 2026\u201327 academic year.\n\nMathematics\nCalculus I\u2013III, Linear Algebra, Ordinary Differential Equations, Real Analysis, Topology\nStatistics & Data Science\nStatistical Methods I & II, Programming in R, Data Visualization\nComputing\nProgramming and Problem Solving I & II\nResearch interests\n\nAnalytic number theory; topological and graph-based data analysis; statistics and machine learning for scientific data.\n\nPublications and preprints\n\nTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.\n\nResearch experience\nUndergraduate Research Assistant \u2013 RiverNets (TDA Lab)\nAug 2026 \u2013 Present\n\nKennesaw State University \u00b7 Advisor: Dr. Mehmet Aktas\n\nDeveloped a graph-Laplacian regression model that predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH, turbidity) at river stations with no data, using a smoothness penalty along the river network.\nDownloaded, cleaned, and audited hourly USGS continuous water-quality records from 28 Colorado River Basin stations, tracking data completeness by station and variable.\nBuilt river-network graphs in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), along with graphs for the Chattahoochee basin.\nApplied Kron (Schur-complement) reduction to collapse the network exactly onto the station nodes, matching the full Laplacian to within 10\u207b\u2078 while running about 150\u00d7 faster.\nBenchmarked against OLS, Ridge, Elastic Net, a spline GAM, random forest, and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts; the graph model reached R\u00b2\u00a0=\u00a00.38 for specific conductance and 0.12 for pH at unseen stations, versus 0.02 for the best alternative.\nFound feature-selection leakage that had overstated R\u00b2 by up to 0.13 and moved all selection inside the inner validation loop.\nRan paired, station-bootstrapped experiments on six new features and models; ERA5-Land air temperature raised water-temperature R\u00b2 from 0.863 to 0.892, and a graph\u2013gradient-boosting blend became the best dissolved-oxygen model (R\u00b2\u00a0=\u00a00.748).\nBuilt an interactive river-network map site with 28 automated tests, and wrote technical reports for the lab.\n\nResearch area: Water-quality prediction on river networks\n\nUndergraduate Researcher \u2013 Analytic Number Theory\nAug 2025 \u2013 Present\n\nKennesaw State University \u00b7 Advisor: Dr. Tsz Ho Chan\n\nCoauthored the submitted manuscript Largest kth-Power Divisor of a Random Integer, establishing an asymptotic formula with an O(log x) error term for every integer k\u00a0\u2265\u00a02.\nDeveloped all Python code for experiments on integers up to 10\u2078, calculating empirical averages, growth constants, and relative errors to validate the theoretical results.\nCo-presented the square-divisor case (k\u00a0=\u00a02) at the 105th MAA Southeastern Section Meeting.\n\nResearch area: Analytic number theory\n\nFirst-Year Scholar Undergraduate Researcher\nAug 2024 \u2013 May 2025\n\nKennesaw State University\n\nFormulated the Dirichlet eigenvalue problem for the one-dimensional fractal Laplacian and derived analytical solutions for specific fractal parameters.\nComputed eigenvalues and eigenfunctions numerically to show how fractal geometry shapes the spectrum, and extended the analysis to two dimensions using separation of variables.\nPresented the results as a poster at the 104th MAA Southeastern Section Meeting (see Presentations).\n\nResearch area: Spectral analysis on fractals\n\nPresentations\n\nPOSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.\n\nTALKAndrew Chincea and Michael Liu (Mar 2026). Largest Square Divisor of a Random Integer. Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL.\n\nPOSTERAndrew Chincea (Mar 2025). Properties of Eigenvalues of Fractal Laplacian. 104th MAA Southeastern Section Meeting, High Point University, High Point, NC.\n\nProjects\n\nAndrew Chincea (Nov 2026 \u2013 Present). OwlPath.\n\nAn interactive prerequisite map for three KSU majors. Students mark the courses they've finished and see which classes they can take next term.\n\nAndrew Chincea (Nov 2026). Personal portfolio.\n\nMy academic site for research, projects and CV.\n\nAndrew Chincea (Nov 2026). Rising water.\n\nAn interactive explorer of persistent homology: water rises over Colorado River Basin terrain while a barcode updates live.\n\nAndrew Chincea (Jan 2026 \u2013 May 2026). NYC Subway Incident Modeling.\n\nRegression models in R and Quarto that relate weather and ridership to NYC subway disruptions, using MTA major-incident records for 2015\u20132024.\n\nAndrew Chincea (Aug 2024 \u2013 Dec 2024). AskScrappy.\n\nAn academic-advising assistant built with LangChain, Ollama and LLaMA 3.1. It uses retrieval-augmented generation and runs entirely on local hardware.\n\nTechnical skills\nLanguages\nPython, R, TypeScript, Java, C++, LaTeX\nData analysis & machine learning\nPandas, NumPy, SciPy, Scikit-learn, XGBoost, TensorFlow, NetworkX, Matplotlib, ggplot2, dplyr\nMethods\nRegression, regularization, graph Laplacians, cross-validation, feature engineering, numerical experiments, data visualization\nTools & platforms\nGit, GitHub Actions, pytest, React, Docker, Google Cloud Platform, Quarto, Jupyter, LangChain, Ollama, pdfplumber\nWork experience\nGraduation Services Student Assistant (Federal Work-Study)\nAug 2026 \u2013 Present\n\nKennesaw State University, Office of the Registrar\n\nRespond to diploma-related inquiries through the Office of the Registrar's shared email inbox.\nResearch student records using Banner, OnBase and DegreeWorks to support diploma inquiries and graduation services.\nCompare scanned historical records from Southern Technical Institute and Kennesaw College with physical originals to verify readability before the originals are shredded.",
+  "items": [
+    {
+      "text": "achincea@students.kennesaw.edu",
+      "href": "mailto:achincea@students.kennesaw.edu",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "github.com/andrewc156",
+      "href": "https://github.com/andrewc156",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "www.linkedin.com/in/andrewchincea",
+      "href": "https://www.linkedin.com/in/andrewchincea",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Water-quality prediction on river networks",
+      "href": "https://andrewchincea.com/research/water-quality/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Analytic number theory",
+      "href": "https://andrewchincea.com/research/number-theory/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Spectral analysis on fractals",
+      "href": "https://andrewchincea.com/research/spectral-fractals/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "OwlPath",
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Personal portfolio",
+      "href": "https://andrewchincea.com/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Rising water",
+      "href": "https://andrewchincea.com/rising-water/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "About",
+      "href": "https://andrewchincea.com/about/",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    },
+    {
+      "text": "Source",
+      "href": "https://github.com/andrewc156/Personal-Portfolio",
+      "download": null,
+      "title": "",
+      "aria": null,
+      "visible": true
+    }
+  ],
+  "share": [
+    "<link rel=\"canonical\" href=\"http://localhost:4321/cv/\">",
+    "<meta property=\"og:type\" content=\"website\">",
+    "<meta property=\"og:site_name\" content=\"Andrew Chincea\">",
+    "<meta property=\"og:locale\" content=\"en_US\">",
+    "<meta property=\"og:title\" content=\"CV \u00b7 Andrew Chincea\">",
+    "<meta property=\"og:description\" content=\"Curriculum vitae of Andrew Chincea: education, research, publications, presentations, projects, skills and work experience.\">",
+    "<meta property=\"og:url\" content=\"http://localhost:4321/cv/\">",
+    "<meta property=\"og:image\" content=\"http://localhost:4321/og/social-card.png\">",
+    "<meta property=\"og:image:type\" content=\"image/png\">",
+    "<meta property=\"og:image:width\" content=\"1200\">",
+    "<meta property=\"og:image:height\" content=\"630\">",
+    "<meta property=\"og:image:alt\" content=\"Andrew Chincea: water rising over a generated landscape, with each lake in its own color.\">",
+    "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+    "<meta name=\"twitter:title\" content=\"CV \u00b7 Andrew Chincea\">",
+    "<meta name=\"twitter:description\" content=\"Curriculum vitae of Andrew Chincea: education, research, publications, presentations, projects, skills and work experience.\">",
+    "<meta name=\"twitter:image\" content=\"http://localhost:4321/og/social-card.png\">",
+    "<meta name=\"twitter:image:alt\" content=\"Andrew Chincea: water rising over a generated landscape, with each lake in its own color.\">"
+  ],
+  "errors": []
+}

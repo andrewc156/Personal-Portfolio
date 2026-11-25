@@ -1,0 +1,379 @@
+{
+  "initial": {
+    "width": 360,
+    "height": 225,
+    "doc": 360,
+    "body": 360,
+    "header": 99.578125,
+    "overflow": [],
+    "errors": []
+  },
+  "skip": {
+    "tag": "A",
+    "id": "",
+    "cls": "skip-link",
+    "role": null,
+    "label": "Skip to content",
+    "href": "#main",
+    "focus": true,
+    "outline": [
+      "solid",
+      "3px",
+      "rgb(255, 255, 255)"
+    ],
+    "shadow": "none",
+    "rect": [
+      8,
+      -78,
+      151,
+      43
+    ],
+    "hit": false
+  },
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "Garden\n\nHere's some of my work. Submitted work has no date yet, s",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(28, 27, 25)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      0,
+      360,
+      2311
+    ],
+    "hit": false
+  },
+  "tasks": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "All types",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        94,
+        80,
+        36
+      ],
+      "hit": true,
+      "scrollY": 242
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Papers",
+      "href": "/garden/?type=paper",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        104,
+        94,
+        70,
+        36
+      ],
+      "hit": true,
+      "scrollY": 242
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Posters",
+      "href": "/garden/?type=poster",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        182,
+        94,
+        73,
+        36
+      ],
+      "hit": true,
+      "scrollY": 242
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Talks",
+      "href": "/garden/?type=talk",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        263,
+        94,
+        58,
+        36
+      ],
+      "hit": true,
+      "scrollY": 242
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Projects",
+      "href": "/garden/?type=project",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        138,
+        77,
+        36
+      ],
+      "hit": true,
+      "scrollY": 242
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "All areas",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        189,
+        80,
+        36
+      ],
+      "hit": true,
+      "scrollY": 268
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Water-quality prediction on river networks",
+      "href": "/garden/?tag=water-quality",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        94,
+        291,
+        36
+      ],
+      "hit": true,
+      "scrollY": 407
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Analytic number theory",
+      "href": "/garden/?tag=number-theory",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        138,
+        173,
+        36
+      ],
+      "hit": true,
+      "scrollY": 407
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "chip",
+      "role": null,
+      "label": "Spectral analysis on fractals",
+      "href": "/garden/?tag=spectral-fractals",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        182,
+        202,
+        36
+      ],
+      "hit": true,
+      "scrollY": 407
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "work-row__inner",
+      "role": null,
+      "label": "PAPER\nLargest kth-Power Divisor of a Random Integer\nWe establish ",
+      "href": "/research/number-theory/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        33,
+        328,
+        160
+      ],
+      "hit": true,
+      "scrollY": 648
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "work-row__inner",
+      "role": null,
+      "label": "POSTER\nRiverNets: Graph-Laplacian Regression on River Networks fo",
+      "href": "/research/water-quality/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        0,
+        328,
+        259
+      ],
+      "hit": true,
+      "scrollY": 841
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "work-row__inner",
+      "role": null,
+      "label": "PROJECT\nOwlPath\nAn interactive prerequisite map for three KSU maj",
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        24,
+        328,
+        178
+      ],
+      "hit": true,
+      "scrollY": 1078
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "work-row__inner",
+      "role": null,
+      "label": "PROJECT\nPersonal portfolio\nMy academic site for research, project",
+      "href": "https://andrewchincea.com/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        114,
+        328,
+        110
+      ],
+      "hit": true,
+      "scrollY": 1166
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "work-row__inner",
+      "role": null,
+      "label": "PROJECT\nRising water\nAn interactive explorer of persistent homolo",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        35,
+        328,
+        155
+      ],
+      "hit": true,
+      "scrollY": 1357
+    }
+  ]
+}

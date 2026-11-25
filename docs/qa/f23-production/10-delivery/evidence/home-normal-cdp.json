@@ -1,0 +1,1614 @@
+[
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/",
+        "method": "GET",
+        "headers": {
+          "Accept-Language": "en-US,en;q=0.9",
+          "Upgrade-Insecure-Requests": "1",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "sec-ch-ua-mobile": "?0",
+          "sec-ch-ua-platform": "\"macOS\""
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.138943,
+      "wallTime": 1795642616.670657,
+      "initiator": {
+        "type": "other"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Document",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.225371,
+      "type": "Document",
+      "response": {
+        "url": "https://andrewchincea.com/",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "cache-control": "public, max-age=0, must-revalidate",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a603cab27ff95358-ATL",
+          "content-encoding": "zstd",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "content-type": "text/html",
+          "cross-origin-opener-policy": "same-origin",
+          "date": "Wed, 25 Nov 2026 21:36:56 GMT",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "priority": "u=0,i",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=3tG01XLsw2hmtBaJt8mAETVmvgQwwaMzcazLTVFzfV29YhE7vd%2B90RtAyMi85kuHDbbL%2FkCYgIodQBqD0bWCfG2u4gwBnBn%2FR9pwtFdYGeSvqFdnbMFqDb%2FGY%2BHJgETiMLB21j7D1KfW6Aqzy4J%2BhA%3D%3D\"}]}",
+          "server": "cloudflare",
+          "server-timing": "cfCacheStatus;desc=\"HIT\"\ncfEdge;dur=28,cfOrigin;dur=0\ncfExtPri",
+          "x-content-type-options": "nosniff",
+          "x-frame-options": "DENY"
+        },
+        "mimeType": "text/html",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 531,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 1533,
+        "timing": {
+          "requestTime": 690920.139784,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": 0,
+          "dnsEnd": 0,
+          "connectStart": 0,
+          "connectEnd": 34.455,
+          "sslStart": 0,
+          "sslEnd": 34.455,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 34.605,
+          "sendEnd": 34.682,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 84.59,
+          "receiveHeadersEnd": 84.767
+        },
+        "responseTime": 1795642616756.112,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.110",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isLinkPreload": true,
+        "isSameSite": true
+      },
+      "timestamp": 690920.229865,
+      "wallTime": 1795642616.761587,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 7,
+        "columnNumber": 181
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.110"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.110",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.229922,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"48f6e488c4c66be2caeba6c4720a9cdb\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=T5Ws824O%2BPSLClBqS8%2BoFtjLEg3yQNNoW18KH%2FX1N4a3B3zbXBgZHvqFqVYw3tZMYJL0S2G6QTyQ0esGBvGNXbAfgSWHE%2FSC29HQsOVgbYKiSDkINioCuOHXH3SGe8LGxUVRoqbcm8cX5l2A1%2BO2Rw%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d20889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "22588",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 24060,
+        "timing": {
+          "requestTime": 690864.177491,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 2.319,
+          "sendEnd": 2.414,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 93.991,
+          "receiveHeadersEnd": 94.118
+        },
+        "responseTime": 1795642560803.191,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.110",
+      "timestamp": 690920.229943,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.111",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isLinkPreload": true,
+        "isSameSite": true
+      },
+      "timestamp": 690920.229975,
+      "wallTime": 1795642616.761689,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 7,
+        "columnNumber": 302
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.111"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.111",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.230004,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"3fa0565a0de4cf8368c174014804a3ed\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=OVvPCGHqAYF0oeX%2BVtGbwrMuxBBVR9SINtlETNOtu3lpFjnvrRBzMXX51WkA4s5xoHzV5l3y18JDHVSbgki%2FUfgXmkV8cdpl6UwgU1EC2fS6O3ugJBVIVG%2B7kHRi3G6FGpKqC3jASPoScLeFP%2FHoTQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d10889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "24252",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 25723,
+        "timing": {
+          "requestTime": 690864.177611,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.996,
+          "sendEnd": 2.17,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 44.918,
+          "receiveHeadersEnd": 44.979
+        },
+        "responseTime": 1795642560754.236,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.111",
+      "timestamp": 690920.230013,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.112",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+        "method": "GET",
+        "headers": {
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.230026,
+      "wallTime": 1795642616.761742,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 7,
+        "columnNumber": 2186
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Stylesheet",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "Blocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.112"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.112",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.230058,
+      "type": "Stylesheet",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"e158351305602d616f281f6e17e19f7e\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tYsNRb5EKentmR5%2FLvSwQANKx5mhNkJuljeqCDshTrsIdqbPM6wnxfLEyOBKHpprifBLovQZx8F7x4ZexB04aZCPuUQwNcuc8llD%2Fw1wS99x9r5TiFTMRlROt%2F6OW%2FfnpNyWnGmUcK1Ox9mR0hGceQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/css",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479d00889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/css",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 5359,
+        "timing": {
+          "requestTime": 690864.177881,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 2.122,
+          "sendEnd": 2.162,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 43.781,
+          "receiveHeadersEnd": 43.922
+        },
+        "responseTime": 1795642560753.379,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.112",
+      "timestamp": 690920.230065,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.113",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/index.B3oojaYO.css",
+        "method": "GET",
+        "headers": {
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.230102,
+      "wallTime": 1795642616.761819,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 8,
+        "columnNumber": 65
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Stylesheet",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "Blocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.114",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.230279,
+      "wallTime": 1795642616.761999,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 14,
+        "columnNumber": 17627
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.115",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.230309,
+      "wallTime": 1795642616.762022,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 7,
+        "columnNumber": 75696
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.115"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.115",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.230348,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"cb7f96e7c994f69dfde78696ee5c7a2a\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=hrhHbsXuPMF%2BHHUPpsgocdEYnWXLkySn6N%2FGO4Mesx4JWXShZ%2B8EkBlkEF4wb3Ki1Uuxn6fBO27EVRHYzDPUu799pmRKuHEpmCF4T5UQ%2BVsl3AIDbx%2Bz6lIGCIom8ODIlddPUPXuHilPatDDb5s5rA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c95479cf0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 1843,
+        "timing": {
+          "requestTime": 690864.178158,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.897,
+          "sendEnd": 1.925,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 49.339,
+          "receiveHeadersEnd": 49.424
+        },
+        "responseTime": 1795642560759.202,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.115",
+      "timestamp": 690920.230356,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.113",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.233677,
+      "type": "Stylesheet",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/index.B3oojaYO.css",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"0332be92bf6f09853736c0910ddce1a1\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=5h1F9qqlY7eAcOe1qzNrBKBOxQ03Dr90NTkTgYFitgnvIFxSw6OMT2nsIiYheWHFDWhGz5C9ISOSFrCUIftmcuxHa6L1yEeHfgcqwhwRFzIQSxdcQXsD5Okupos%2FhiJnM63P0KLIg%2BXRLTOEDVWg%2BQ%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:35:53 GMT",
+          "content-type": "text/css",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9258b5e0889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/css",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690920.230895,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.037,
+          "sendEnd": 0.037,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.25,
+          "receiveHeadersEnd": 0.284
+        },
+        "responseTime": 1795642553247.081,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.113",
+      "timestamp": 690920.231427,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Log.entryAdded",
+    "params": {
+      "entry": {
+        "source": "security",
+        "level": "error",
+        "text": "Loading the script 'https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092' violates the following Content Security Policy directive: \"script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback. The action has been blocked.",
+        "timestamp": 1795642616768.143,
+        "url": "https://andrewchincea.com/"
+      }
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.123",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": false
+      },
+      "timestamp": 690920.236506,
+      "wallTime": 1795642616.76823,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/",
+        "lineNumber": 30,
+        "columnNumber": 4752
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFailed",
+    "params": {
+      "requestId": "32498.123",
+      "timestamp": 690920.236525,
+      "type": "Script",
+      "errorText": "",
+      "canceled": false,
+      "blockedReason": "csp"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.227644,
+      "encodedDataLength": 11084
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.114",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.236778,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"9d7ee379439cffdd5caf7c1439fef464\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=fGUJAO%2FAJ0CovlYyeBLbCuloCtDzm9oGCtUoeCfmk%2FCw1wPiT8q%2BmSsLdeX%2BnT%2FNI3gdgx4tPF0dbQRYa08KBeVuQNJL57OvO%2BOKE54GayGee2v6qcGgFJkn0DhPRRgpBeZrZFTg9TvKhZ3hqwy%2BHw%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:35:53 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9258b620889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690920.23099,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.012,
+          "sendEnd": 0.012,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 1.051,
+          "receiveHeadersEnd": 1.072
+        },
+        "responseTime": 1795642553222.69,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.114",
+      "timestamp": 690920.233035,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.124",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/settings.D649Pdqp.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.23703,
+      "wallTime": 1795642616.768743,
+      "initiator": {
+        "type": "script",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+        "lineNumber": 0,
+        "columnNumber": 18
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.124"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.124",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.237055,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/settings.D649Pdqp.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"c4a0d0ba0e08b92c4d6426df010d8b8c\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=7vEBxEzDrN8%2Bgb8GgOO1%2BRoF2sKrul7VpJZkb8N8ASztj5IfQsjbEsWPb4rizeEVK0DgjtDghlgPWQdtDq9DMkwlV54Gbn96xHSl397f013grrfrPELpsLnPINUVeBCpAMSwyEQyd5OukrbZeLNBXg%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954c9f80889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 2470,
+        "timing": {
+          "requestTime": 690864.228408,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.501,
+          "sendEnd": 0.575,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 22.773,
+          "receiveHeadersEnd": 22.862
+        },
+        "responseTime": 1795642560782.885,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.124",
+      "timestamp": 690920.237061,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.125",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/color.BAcvsT9T.js",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "High",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.237393,
+      "wallTime": 1795642616.769108,
+      "initiator": {
+        "type": "script",
+        "url": "https://andrewchincea.com/_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+        "lineNumber": 0,
+        "columnNumber": 39
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Script",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.125"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.125",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.237421,
+      "type": "Script",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/color.BAcvsT9T.js",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "content-encoding": "zstd",
+          "cf-cache-status": "HIT",
+          "etag": "W/\"45fbe24319ee59ae0f2671996c66df9c\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=6SZ3R9Am%2FMT2jEq%2Bb4%2BZ3CoZJxBwoHwHkt%2FKpkW6R%2BTr4F5lMUrGdlsm5K5TggR4G6eUlR9ig4m1dwdwPaqxui5NNEOOxiDeP64lu2jL6vmFhZVG4J21qKmtNB9eCZXVBMXL4MKwkIDSOtTtRaV5hA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "server-timing": "cfExtPri",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "text/javascript",
+          "priority": "u=1,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954c9f60889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "server": "cloudflare"
+        },
+        "mimeType": "text/javascript",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 3568,
+        "timing": {
+          "requestTime": 690864.224842,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 1.089,
+          "sendEnd": 1.167,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 21.319,
+          "receiveHeadersEnd": 21.44
+        },
+        "responseTime": 1795642560777.869,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.125",
+      "timestamp": 690920.23743,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.132",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.238372,
+      "wallTime": 1795642616.770087,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestServedFromCache",
+    "params": {
+      "requestId": "32498.132"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.132",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.238414,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"86348d462740fd14324170a9d059b01b\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=tHPxe8FmB0YQkcnftpKygZcarrAM%2F%2BmYlYFOfiiQLupSry671EkJAwJnKhiJHYzRNO3jJXD1aFJxA%2BQSh%2B8EqSkr9uR%2BQWkWOm1yd1JMXLdFdo6lnTRFqO9jq0FM%2BlKhaJWerCcSh4UEqFb55jnYXA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:36:00 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c954fa110889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "14708",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": true,
+        "connectionId": 378,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": false,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 16178,
+        "timing": {
+          "requestTime": 690864.254073,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.899,
+          "sendEnd": 0.98,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 25.408,
+          "receiveHeadersEnd": 25.529
+        },
+        "responseTime": 1795642560811.188,
+        "protocol": "h3",
+        "alternateProtocolUsage": "alternativeJobWonWithoutRace",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": true,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.132",
+      "timestamp": 690920.238427,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.requestWillBeSent",
+    "params": {
+      "requestId": "32498.128",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "documentURL": "https://andrewchincea.com/",
+      "request": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2",
+        "method": "GET",
+        "headers": {
+          "Origin": "https://andrewchincea.com",
+          "sec-ch-ua-platform": "\"macOS\"",
+          "Referer": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+          "Accept-Language": "en-US,en;q=0.9",
+          "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\"",
+          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+          "sec-ch-ua-mobile": "?0"
+        },
+        "mixedContentType": "none",
+        "initialPriority": "VeryHigh",
+        "referrerPolicy": "strict-origin-when-cross-origin",
+        "isSameSite": true
+      },
+      "timestamp": 690920.24007,
+      "wallTime": 1795642616.771795,
+      "initiator": {
+        "type": "parser",
+        "url": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css"
+      },
+      "redirectHasExtraInfo": false,
+      "type": "Font",
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12",
+      "hasUserGesture": false,
+      "renderBlockingBehavior": "NonBlocking"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.responseReceived",
+    "params": {
+      "requestId": "32498.128",
+      "loaderId": "1E08D400E4CD8DBA780F6A5D813E0027",
+      "timestamp": 690920.260387,
+      "type": "Font",
+      "response": {
+        "url": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2",
+        "status": 200,
+        "statusText": "",
+        "headers": {
+          "cf-cache-status": "HIT",
+          "etag": "\"d832a27df909b76e0be31d86af9e2509\"",
+          "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=8ikSRKZR5qvmNOgfw8WJp9vVEAG0Ed9lpbzxJW5Y7m7PNeUW9P1lf8JEPAXzNv5ulAN%2BxbBW5OFjUdiLo%2BnU1Hc4Q51pRZdtWn77SQTe9ZH5abwpwMjAXpRqW7yPgTwL8YxGxyq6EUrrz3iM2JsNpA%3D%3D\"}]}",
+          "x-content-type-options": "nosniff",
+          "server-timing": "cfExtPri",
+          "alt-svc": "h3=\":443\"; ma=86400",
+          "date": "Wed, 25 Nov 2026 21:35:53 GMT",
+          "content-type": "font/woff2",
+          "priority": "u=0,i=?0",
+          "x-frame-options": "DENY",
+          "content-security-policy": "default-src 'self'; script-src 'self' 'sha256-j2ITQ62FRS71VBaAkt9zL0JltN7g8ezkk6b1HarSckI=' 'sha256-qAPn5qN6iGdUKARS+LCPaR2n6XfxpbI8OS6iwX/wMxo=' 'sha256-rRXDE/T1KtTNyuzDqWRSeFkfjN6FpjXk7UYCO0r0MZ0='; style-src 'self' 'sha256-4Gzcl0D74gf1nQtoTRmpcDQ0MGlPCpx4Og05e9X/7Mc=' 'sha256-8wMYD/ZLbepuL+42smsP37OHITSFxBmfyrsMlUJoGCY=' 'sha256-LqhRKmaHls/4Lb6axUXDEnDE7RtSA2nOz2lIMTeQ6DY=' 'sha256-UYWZhi8zuEZ+eykGgTgu0oJcBWFYHIxjlmtPQ+cbXCc=' 'sha256-c9T6SrUqf8mHzVPXruDrZaMu04IB82sUEZjcgUp1VtQ=' 'sha256-fFH8SpEALKZNgCFeGBSGqIb2b021+HkjFE2eU+ZHWAY=' 'sha256-oDwkg6BHhO7xXCnoXQzfs+HA9jb4CHIXphSxzoObf8Y=' 'sha256-ormpB1FPK2By+XkjPWVII5nd2FF+oLH6SeAU1MZE+W8=' 'sha256-rBtWcW+jAWRL21tHKpIMrU71nOYpCRFtQdi8xnX3YL8='; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests",
+          "cache-control": "public, max-age=31536000, immutable",
+          "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+          "cross-origin-opener-policy": "same-origin",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "cf-ray": "a603c9261ba70889-ATL",
+          "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), hid=(), magnetometer=(), microphone=(), midi=(), payment=(), publickey-credentials-get=(), serial=(), usb=(), xr-spatial-tracking=()",
+          "content-length": "24356",
+          "server": "cloudflare"
+        },
+        "mimeType": "font/woff2",
+        "charset": "",
+        "connectionReused": false,
+        "connectionId": 0,
+        "remoteIPAddress": "[2606:4700:3033::ac43:8183]",
+        "remotePort": 443,
+        "fromDiskCache": true,
+        "fromServiceWorker": false,
+        "fromPrefetchCache": false,
+        "encodedDataLength": 0,
+        "timing": {
+          "requestTime": 690920.240282,
+          "proxyStart": -1,
+          "proxyEnd": -1,
+          "dnsStart": -1,
+          "dnsEnd": -1,
+          "connectStart": -1,
+          "connectEnd": -1,
+          "sslStart": -1,
+          "sslEnd": -1,
+          "workerStart": -1,
+          "workerReady": -1,
+          "workerFetchStart": -1,
+          "workerRespondWithSettled": -1,
+          "sendStart": 0.037,
+          "sendEnd": 0.037,
+          "pushStart": 0,
+          "pushEnd": 0,
+          "receiveHeadersStart": 0.726,
+          "receiveHeadersEnd": 0.781
+        },
+        "responseTime": 1795642553314.033,
+        "protocol": "h3",
+        "alternateProtocolUsage": "unspecifiedReason",
+        "securityState": "secure",
+        "securityDetails": {
+          "protocol": "QUIC",
+          "keyExchange": "",
+          "keyExchangeGroup": "X25519MLKEM768",
+          "cipher": "AES_128_GCM",
+          "certificateId": 0,
+          "subjectName": "andrewchincea.com",
+          "sanList": [
+            "andrewchincea.com",
+            "www.andrewchincea.com",
+            "*.www.andrewchincea.com"
+          ],
+          "issuer": "WE1",
+          "validFrom": 1795568613,
+          "validTo": 1803348209,
+          "signedCertificateTimestampList": [],
+          "certificateTransparencyCompliance": "unknown",
+          "serverSignatureAlgorithm": 1027,
+          "encryptedClientHello": true
+        }
+      },
+      "hasExtraInfo": false,
+      "frameId": "8AFC339ACA39BA6426FDA4C18E609C12"
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  },
+  {
+    "method": "Network.loadingFinished",
+    "params": {
+      "requestId": "32498.128",
+      "timestamp": 690920.242391,
+      "encodedDataLength": 0
+    },
+    "session_id": "CCC705EB71D765C4F4AA7A2A7B88B9BA"
+  }
+]

@@ -1,0 +1,198 @@
+{
+  "reduce/": [
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\" style=\"--shell-header-h: 61px;\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStora",
+      "hero": "Play\nNew terrain\n\nLevel 450 m · 2 lakes\n\nWhen the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.\n\nPaused. Terrain 879742. Water level 450 m, 45% of the way up. 2 lakes are present. The barcode shows 2 of 12 bars so far.",
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "auto",
+      "animations": [
+        ""
+      ],
+      "errors": []
+    },
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\" style=\"--shell-header-h: 61px;\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStora",
+      "hero": "Play\nNew terrain\n\nLevel 450 m · 2 lakes\n\nWhen the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.\n\nPaused. Terrain 879742. Water level 450 m, 45% of the way up. 2 lakes are present. The barcode shows 2 of 12 bars so far.",
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "auto",
+      "animations": [
+        ""
+      ],
+      "errors": []
+    }
+  ],
+  "reduce/rising-water/": [
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": "<button type=\"button\" class=\"btn ex-play\" data-ex-play=\"\" data-ex-control=\"\" aria-pressed=\"false\" data-astro-cid-qvjcxdyb=\"\">Play</button>",
+      "water": "450",
+      "ready": false,
+      "scroll": "auto",
+      "animations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "errors": []
+    },
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": "<button type=\"button\" class=\"btn ex-play\" data-ex-play=\"\" data-ex-control=\"\" aria-pressed=\"false\" data-astro-cid-qvjcxdyb=\"\">Play</button>",
+      "water": "450",
+      "ready": false,
+      "scroll": "auto",
+      "animations": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "errors": []
+    }
+  ],
+  "reduce/garden/": [
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "auto",
+      "animations": [],
+      "errors": []
+    },
+    {
+      "motion": true,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "auto",
+      "animations": [],
+      "errors": []
+    }
+  ],
+  "no-preference/": [
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\" style=\"--shell-header-h: 61px;\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStora",
+      "hero": "Pause\nNew terrain\n\nLevel 190 m · 5 lakes\n\nWhen the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.\n\nPlaying. Terrain 836581. Water level 190 m, 19% of the way up. 5 lakes are present. The barcode shows 4 of 12 bars so far. The longest finite bar is Lake 4, persistence 80 m.",
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "smooth",
+      "animations": [],
+      "errors": []
+    },
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\" style=\"--shell-header-h: 61px;\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStora",
+      "hero": "Pause\nNew terrain\n\nLevel 190 m · 5 lakes\n\nWhen the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.\n\nPlaying. Terrain 836581. Water level 190 m, 19% of the way up. 5 lakes are present. The barcode shows 4 of 12 bars so far. The longest finite bar is Lake 4, persistence 80 m.",
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "smooth",
+      "animations": [],
+      "errors": []
+    }
+  ],
+  "no-preference/rising-water/": [
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": "<button type=\"button\" class=\"btn ex-play\" data-ex-play=\"\" data-ex-control=\"\" aria-pressed=\"true\" data-astro-cid-qvjcxdyb=\"\">Pause</button>",
+      "water": "0",
+      "ready": false,
+      "scroll": "smooth",
+      "animations": [
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play"
+      ],
+      "errors": []
+    },
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": "<button type=\"button\" class=\"btn ex-play\" data-ex-play=\"\" data-ex-control=\"\" aria-pressed=\"true\" data-astro-cid-qvjcxdyb=\"\">Pause</button>",
+      "water": "0",
+      "ready": false,
+      "scroll": "smooth",
+      "animations": [
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play",
+        "btn ex-play"
+      ],
+      "errors": []
+    }
+  ],
+  "no-preference/garden/": [
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "smooth",
+      "animations": [],
+      "errors": []
+    },
+    {
+      "motion": false,
+      "mode": "<html lang=\"en\" data-astro-cid-z4jru4n3=\"\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if ",
+      "hero": null,
+      "play": null,
+      "water": null,
+      "ready": null,
+      "scroll": "smooth",
+      "animations": [],
+      "errors": []
+    }
+  ]
+}

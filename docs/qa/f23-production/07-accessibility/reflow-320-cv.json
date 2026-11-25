@@ -1,0 +1,379 @@
+{
+  "initial": {
+    "width": 320,
+    "height": 256,
+    "doc": 320,
+    "body": 320,
+    "header": 99.578125,
+    "overflow": [],
+    "errors": []
+  },
+  "skip": {
+    "tag": "A",
+    "id": "",
+    "cls": "skip-link",
+    "role": null,
+    "label": "Skip to content",
+    "href": "#main",
+    "focus": true,
+    "outline": [
+      "solid",
+      "3px",
+      "rgb(255, 255, 255)"
+    ],
+    "shadow": "none",
+    "rect": [
+      8,
+      -78,
+      151,
+      43
+    ],
+    "hit": false
+  },
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "CV\n\nAndrew Dumitru Chincea\n\nContact\nEmail\nachincea@students.kenne",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(28, 27, 25)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      0,
+      320,
+      6912
+    ],
+    "hit": false
+  },
+  "tasks": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "achincea@students.kennesaw.edu",
+      "href": "mailto:achincea@students.kennesaw.edu",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        173,
+        264,
+        22
+      ],
+      "hit": true,
+      "scrollY": 100
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "github.com/andrewc156",
+      "href": "https://github.com/andrewc156",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        230,
+        188,
+        22
+      ],
+      "hit": true,
+      "scrollY": 100
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "www.linkedin.com/in/andrewchincea",
+      "href": "https://www.linkedin.com/in/andrewchincea",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        117,
+        284,
+        22
+      ],
+      "hit": true,
+      "scrollY": 271
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Water-quality prediction on river networks",
+      "href": "/research/water-quality/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        108,
+        269,
+        40
+      ],
+      "hit": false,
+      "scrollY": 2945
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Analytic number theory",
+      "href": "/research/number-theory/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        113,
+        119,
+        147,
+        18
+      ],
+      "hit": true,
+      "scrollY": 3535
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Spectral analysis on fractals",
+      "href": "/research/spectral-fractals/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        113,
+        119,
+        176,
+        18
+      ],
+      "hit": true,
+      "scrollY": 4118
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "OwlPath",
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        89,
+        117,
+        65,
+        22
+      ],
+      "hit": true,
+      "scrollY": 4937
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Personal portfolio",
+      "href": "https://andrewchincea.com/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        117,
+        135,
+        22
+      ],
+      "hit": true,
+      "scrollY": 5101
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Rising water",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        207,
+        274,
+        49
+      ],
+      "hit": false,
+      "scrollY": 5103
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "About",
+      "href": "/about/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        180,
+        211,
+        38,
+        18
+      ],
+      "hit": true,
+      "scrollY": 6827
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Source",
+      "href": "https://github.com/andrewc156/Personal-Portfolio",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        229,
+        211,
+        44,
+        18
+      ],
+      "hit": true,
+      "scrollY": 6827
+    },
+    {
+      "tag": "BODY",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Skip to content\nAndrew Chincea\nMission\nWork\nResearch\nOpen science",
+      "href": null,
+      "focus": false,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        -6827,
+        320,
+        7083
+      ],
+      "hit": false,
+      "scrollY": 6827
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "skip-link",
+      "role": null,
+      "label": "Skip to content",
+      "href": "#main",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(255, 255, 255)"
+      ],
+      "shadow": "none",
+      "rect": [
+        8,
+        -78,
+        151,
+        43
+      ],
+      "hit": false,
+      "scrollY": 0
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "wordmark",
+      "role": null,
+      "label": "Andrew Chincea",
+      "href": "/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        8,
+        232,
+        43
+      ],
+      "hit": true,
+      "scrollY": 0
+    }
+  ]
+}

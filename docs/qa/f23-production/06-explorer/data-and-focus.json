@@ -1,0 +1,125 @@
+{
+  "mobile focus Show Lake 5": [
+    "BUTTON",
+    "117202",
+    425.328125,
+    -2334.40625,
+    -1159.984375,
+    "Lake 3 · birth cell 17991",
+    2829
+  ],
+  "mobile Enter Show Lake 5": [
+    "BUTTON",
+    "117202",
+    2759.328125,
+    -0.40625,
+    1174.015625,
+    "Lake 5 · birth cell 117202",
+    495
+  ],
+  "mobile next Tab": [
+    "BUTTON",
+    "21312",
+    406.109375,
+    -2429.40625,
+    -1254.984375,
+    "Lake 5 · birth cell 117202",
+    2924
+  ],
+  "overlays": {
+    "s": [
+      "Shown: 97,311 of 134,964 cells (72.1 %) are inside the basin. Hatched cells are outside; the line is the boundary.",
+      "26 of 39 place labels shown. See the full list in About the data."
+    ],
+    "headers": [
+      "Lake",
+      "Persistence",
+      "Born at",
+      "Spills at",
+      "Merges into",
+      "Birth cell",
+      "Pit in basin",
+      "Select"
+    ],
+    "flags": [
+      "yes (region 15)",
+      "no",
+      "no",
+      "no",
+      "no",
+      "yes (region 15)",
+      "no",
+      "yes (region 15)",
+      "yes (region 14)",
+      "yes (region 14)",
+      "no",
+      "yes (region 15)",
+      "no",
+      "no",
+      "no",
+      "yes (region 15)",
+      "no",
+      "no",
+      "yes (region 15)",
+      "yes (region 14)",
+      "no"
+    ],
+    "layout": [
+      390,
+      390
+    ],
+    "resources": [
+      [
+        "/data/colorado/hillshade.webp",
+        200,
+        179574
+      ],
+      [
+        "/data/colorado/meta.json",
+        200,
+        9372
+      ],
+      [
+        "/data/colorado/barcode.json",
+        200,
+        33492
+      ],
+      [
+        "/data/colorado/grid.f32",
+        200,
+        539856
+      ],
+      [
+        "/data/colorado/basin-mask.bin",
+        200,
+        33742
+      ],
+      [
+        "/data/colorado/basin-mask.json",
+        200,
+        13882
+      ]
+    ],
+    "status": "Computed in your browser in 37 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+    "errors": [
+      "error: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "places": {
+    "hash": "#place-labels-source",
+    "open": false,
+    "summary": "All 39 places and coordinates",
+    "li": 39,
+    "excerpt": "Place labels\n\nPlace names and coordinates: Geographic Names Information System (GNIS) courtesy of the U.S. Geological Survey\n\nLabels marked “mouth” use the downstream point recorded by GNIS. GNIS Domestic Names data · USGS FAQ on GNIS coordinates\n\nAll 39 places and coordinates"
+  },
+  "places after expansion": [
+    true,
+    39,
+    "All 39 places and coordinates\nColorado River (mouth) · 31.9, -114.9508333\nLake Powell · 37.1713378, -110.809176\nLake Mead · 36.1725406, -114.4298448\nGreat Salt Lake · 41.1628677, -112.5353656\nGreat Salt Lake De"
+  ],
+  "data": [
+    "#about-data",
+    -6645.9375,
+    "RISING WATER\n\nColorado River Basin study area (RiverNets coverage)\n\nWater rises over the study area. Lakes form in the valleys. When two meet, the older one carries on. Each bar runs from the water level where its lake forms to the level where it merges. The lowest lake’s bar never ends. The water on the map and the barcode are computed in your browser from the same 326 × 414 elevation grid; the shaded relief under the water is precomputed.\n\nColorado River\nLake Powell\nLake Mead\nGreat Salt Lake\nGreat Salt Lake Desert\nGreat Divide Basin\nGrand Canyon\nUncompahgre Peak\nKings Peak\nHumphreys Peak\nPhoenix\nTucson\nLas Vegas\nSalt Lake City\nFlaming Gorge Reservoir\nLake Havasu\nCataract Canyon\nBlack Canyon of the Gunnison\nNavajo Mountain\nWheeler Peak\nGrand Junction\nYuma\nLittle Colorado River\nSevier Desert\nMount Graham\nSt. "
+  ]
+}

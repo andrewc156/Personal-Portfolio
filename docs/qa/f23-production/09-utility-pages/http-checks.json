@@ -1,0 +1,101 @@
+[
+  {
+    "request": "https://andrewchincea.com/qa-missing-cf8867e87875/",
+    "status": 404,
+    "final": "https://andrewchincea.com/qa-missing-cf8867e87875/",
+    "content_type": null,
+    "bytes": 0,
+    "title": null,
+    "preview": ""
+  },
+  {
+    "request": "https://andrewchincea.com/404.html",
+    "status": 200,
+    "final": "https://andrewchincea.com/404",
+    "content_type": "text/html",
+    "bytes": 7519,
+    "title": "Page not found \u00b7 Andrew Chincea",
+    "preview": "<!DOCTYPE html><html lang=\"en\" data-astro-cid-z4jru4n3><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);\n      } catch {\n        /* sto"
+  },
+  {
+    "request": "https://andrewchincea.com/404/",
+    "status": 200,
+    "final": "https://andrewchincea.com/404",
+    "content_type": "text/html",
+    "bytes": 7519,
+    "title": "Page not found \u00b7 Andrew Chincea",
+    "preview": "<!DOCTYPE html><html lang=\"en\" data-astro-cid-z4jru4n3><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><script>\n      try {\n        const t = localStorage.getItem('theme');\n        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);\n      } catch {\n        /* sto"
+  },
+  {
+    "request": "https://andrewchincea.com/favicon.svg",
+    "status": 200,
+    "final": "https://andrewchincea.com/favicon.svg",
+    "content_type": "image/svg+xml",
+    "bytes": 272,
+    "title": null,
+    "preview": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\">\n  <rect width=\"32\" height=\"32\" rx=\"7\" fill=\"#0b4f7a\"/>\n  <path d=\"M4 19 9 12l4 4 5-8 5 7 5-4v7H4Z\" fill=\"#dce8f0\"/>\n  <path d=\"M4 22h24M7 26h18\" stroke=\"#73b6e6\" stroke-width=\"2\" stroke-linecap=\"round\"/>\n</svg>\n"
+  },
+  {
+    "request": "https://andrewchincea.com/og/social-card.png",
+    "status": 200,
+    "final": "https://andrewchincea.com/og/social-card.png",
+    "content_type": "image/png",
+    "bytes": 172683,
+    "title": null,
+    "preview": null
+  },
+  {
+    "request": "https://andrewchincea.com/about/",
+    "status": 200,
+    "final": "https://andrewchincea.com/about/",
+    "content_type": "text/html",
+    "bytes": 9913,
+    "title": "About \u00b7 Andrew Chincea",
+    "preview": null
+  },
+  {
+    "request": "https://github.com/andrewc156/Personal-Portfolio",
+    "status": 200,
+    "final": "https://github.com/andrewc156/Personal-Portfolio",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 234562,
+    "title": "GitHub - andrewc156/Personal-Portfolio \u00b7 GitHub",
+    "preview": null
+  },
+  {
+    "request": "https://github.com/andrewc156/Personal-Portfolio/tree/main/pipeline",
+    "status": 200,
+    "final": "https://github.com/andrewc156/Personal-Portfolio/tree/main/pipeline",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 178637,
+    "title": "Personal-Portfolio/pipeline at main \u00b7 andrewc156/Personal-Portfolio \u00b7 GitHub",
+    "preview": null
+  },
+  {
+    "request": "https://github.com/andrewc156/Personal-Portfolio/tree/main/src/lib/tda",
+    "status": 200,
+    "final": "https://github.com/andrewc156/Personal-Portfolio/tree/main/src/lib/tda",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 175483,
+    "title": "Personal-Portfolio/src/lib/tda at main \u00b7 andrewc156/Personal-Portfolio \u00b7 GitHub",
+    "preview": null
+  },
+  {
+    "request": "https://github.com/andrewc156",
+    "status": 200,
+    "final": "https://github.com/andrewc156",
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 172817,
+    "title": "andrewc156 (Andrew Chincea) \u00b7 GitHub",
+    "preview": null
+  },
+  {
+    "request": "https://www.linkedin.com/in/andrewchincea",
+    "status": 999,
+    "final": "https://www.linkedin.com/in/andrewchincea",
+    "content_type": "text/html",
+    "bytes": 1530,
+    "title": null,
+    "preview": "<html><head>\n<script type=\"text/javascript\">\nwindow.onload = function() {\n  // Parse the tracking code from cookies.\n  var trk = \"bf\";\n  var trkInfo = \"bf\";\n  var cookies = document.cookie.split(\"; \");\n  for (var i = 0; i < cookies.length; ++i) {\n    if ((cookies[i].indexOf(\"trkCode=\") == 0) && (cookies[i].length > 8)) {\n      trk = cookies[i].subs"
+  }
+]

@@ -1,0 +1,796 @@
+{
+  "url": "https://andrewchincea.com/",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": [
+    756,
+    413,
+    1
+  ],
+  "visibility": "visible",
+  "title": "\ud83d\udc34 Andrew Chincea",
+  "qa": {
+    "errors": [
+      {
+        "message": "",
+        "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+        "file": ""
+      }
+    ],
+    "lcp": [
+      {
+        "name": "",
+        "entryType": "largest-contentful-paint",
+        "startTime": 316,
+        "duration": 0,
+        "navigationId": 8930,
+        "paintTime": 237.5,
+        "presentationTime": 316,
+        "size": 20034,
+        "renderTime": 316,
+        "loadTime": 0,
+        "id": "",
+        "url": "",
+        "tag": "P"
+      }
+    ],
+    "cls": [],
+    "tasks": []
+  },
+  "navigation": [
+    {
+      "name": "https://andrewchincea.com/",
+      "entryType": "navigation",
+      "startTime": 0,
+      "duration": 204.09999990463257,
+      "navigationId": 8930,
+      "initiatorType": "navigation",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/html",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 1.0999999046325684,
+      "domainLookupStart": 3.1999999284744263,
+      "domainLookupEnd": 3.1999999284744263,
+      "connectStart": 3.1999999284744263,
+      "secureConnectionStart": 3.1999999284744263,
+      "connectEnd": 16.299999952316284,
+      "requestStart": 16.399999976158142,
+      "responseStart": 70.29999995231628,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 70.29999995231628,
+      "responseEnd": 76,
+      "transferSize": 9774,
+      "encodedBodySize": 9474,
+      "decodedBodySize": 39992,
+      "responseStatus": 200,
+      "serverTiming": [
+        {},
+        {},
+        {},
+        {}
+      ],
+      "unloadEventStart": 74,
+      "unloadEventEnd": 74,
+      "domInteractive": 124.89999997615814,
+      "domContentLoadedEventStart": 197.29999995231628,
+      "domContentLoadedEventEnd": 197.29999995231628,
+      "domComplete": 204.09999990463257,
+      "loadEventStart": 204.09999990463257,
+      "loadEventEnd": 204.09999990463257,
+      "type": "navigate",
+      "redirectCount": 0,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "notRestoredReasons": null,
+      "confidence": {}
+    }
+  ],
+  "paint": [
+    {
+      "name": "first-paint",
+      "entryType": "paint",
+      "startTime": 316,
+      "duration": 0,
+      "navigationId": 8930,
+      "paintTime": 237.5,
+      "presentationTime": 316
+    },
+    {
+      "name": "first-contentful-paint",
+      "entryType": "paint",
+      "startTime": 316,
+      "duration": 0,
+      "navigationId": 8930,
+      "paintTime": 237.5,
+      "presentationTime": 316
+    }
+  ],
+  "resources": [
+    {
+      "name": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2",
+      "entryType": "resource",
+      "startTime": 77.79999995231628,
+      "duration": 49,
+      "navigationId": 8930,
+      "initiatorType": "link",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 77.79999995231628,
+      "domainLookupStart": 77.79999995231628,
+      "domainLookupEnd": 77.79999995231628,
+      "connectStart": 77.79999995231628,
+      "secureConnectionStart": 77.79999995231628,
+      "connectEnd": 77.79999995231628,
+      "requestStart": 85.69999992847443,
+      "responseStart": 126.39999997615814,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 126.39999997615814,
+      "responseEnd": 126.79999995231628,
+      "transferSize": 22888,
+      "encodedBodySize": 22588,
+      "decodedBodySize": 22588,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/BaseLayout.CPGn5Zzt.css",
+      "entryType": "resource",
+      "startTime": 78.09999990463257,
+      "duration": 56.40000009536743,
+      "navigationId": 8930,
+      "initiatorType": "link",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "blocking",
+      "contentType": "text/css",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.09999990463257,
+      "domainLookupStart": 78.09999990463257,
+      "domainLookupEnd": 78.09999990463257,
+      "connectStart": 78.09999990463257,
+      "secureConnectionStart": 78.09999990463257,
+      "connectEnd": 78.09999990463257,
+      "requestStart": 87.09999990463257,
+      "responseStart": 134.09999990463257,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 134.09999990463257,
+      "responseEnd": 134.5,
+      "transferSize": 4243,
+      "encodedBodySize": 3943,
+      "decodedBodySize": 14622,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2",
+      "entryType": "resource",
+      "startTime": 78.09999990463257,
+      "duration": 64.20000004768372,
+      "navigationId": 8930,
+      "initiatorType": "link",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.09999990463257,
+      "domainLookupStart": 78.09999990463257,
+      "domainLookupEnd": 78.09999990463257,
+      "connectStart": 78.09999990463257,
+      "secureConnectionStart": 78.09999990463257,
+      "connectEnd": 78.09999990463257,
+      "requestStart": 85.79999995231628,
+      "responseStart": 142.19999992847443,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 142.19999992847443,
+      "responseEnd": 142.29999995231628,
+      "transferSize": 24552,
+      "encodedBodySize": 24252,
+      "decodedBodySize": 24252,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/index.B3oojaYO.css",
+      "entryType": "resource",
+      "startTime": 78.19999992847443,
+      "duration": 57.60000002384186,
+      "navigationId": 8930,
+      "initiatorType": "link",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "blocking",
+      "contentType": "text/css",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.19999992847443,
+      "domainLookupStart": 78.19999992847443,
+      "domainLookupEnd": 78.19999992847443,
+      "connectStart": 78.19999992847443,
+      "secureConnectionStart": 78.19999992847443,
+      "connectEnd": 78.19999992847443,
+      "requestStart": 85.39999997615814,
+      "responseStart": 135.69999992847443,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 135.69999992847443,
+      "responseEnd": 135.79999995231628,
+      "transferSize": 2518,
+      "encodedBodySize": 2218,
+      "decodedBodySize": 9376,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/Hero.astro_astro_type_script_index_0_lang.Pchunebk.js",
+      "entryType": "resource",
+      "startTime": 78.39999997615814,
+      "duration": 34.299999952316284,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/javascript",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.39999997615814,
+      "domainLookupStart": 78.39999997615814,
+      "domainLookupEnd": 78.39999997615814,
+      "connectStart": 78.39999997615814,
+      "secureConnectionStart": 78.39999997615814,
+      "connectEnd": 78.39999997615814,
+      "requestStart": 85.89999997615814,
+      "responseStart": 111.29999995231628,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 111.29999995231628,
+      "responseEnd": 112.69999992847443,
+      "transferSize": 16973,
+      "encodedBodySize": 16673,
+      "decodedBodySize": 42527,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+      "entryType": "resource",
+      "startTime": 78.59999990463257,
+      "duration": 0.10000002384185791,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.59999990463257,
+      "domainLookupStart": 0,
+      "domainLookupEnd": 0,
+      "connectStart": 0,
+      "secureConnectionStart": 0,
+      "connectEnd": 0,
+      "requestStart": 0,
+      "responseStart": 0,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 0,
+      "responseEnd": 78.69999992847443,
+      "transferSize": 0,
+      "encodedBodySize": 0,
+      "decodedBodySize": 0,
+      "responseStatus": 0,
+      "serverTiming": []
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js",
+      "entryType": "resource",
+      "startTime": 78.59999990463257,
+      "duration": 48.200000047683716,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/javascript",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 78.59999990463257,
+      "domainLookupStart": 78.59999990463257,
+      "domainLookupEnd": 78.59999990463257,
+      "connectStart": 78.59999990463257,
+      "secureConnectionStart": 78.59999990463257,
+      "connectEnd": 78.59999990463257,
+      "requestStart": 86.69999992847443,
+      "responseStart": 126.59999990463257,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 126.59999990463257,
+      "responseEnd": 126.79999995231628,
+      "transferSize": 673,
+      "encodedBodySize": 373,
+      "decodedBodySize": 647,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+      "entryType": "resource",
+      "startTime": 81.19999992847443,
+      "duration": 0,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 81.19999992847443,
+      "domainLookupStart": 0,
+      "domainLookupEnd": 0,
+      "connectStart": 0,
+      "secureConnectionStart": 0,
+      "connectEnd": 0,
+      "requestStart": 0,
+      "responseStart": 0,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 0,
+      "responseEnd": 81.19999992847443,
+      "transferSize": 0,
+      "encodedBodySize": 0,
+      "decodedBodySize": 0,
+      "responseStatus": 0,
+      "serverTiming": []
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/settings.D649Pdqp.js",
+      "entryType": "resource",
+      "startTime": 125.5,
+      "duration": 28.299999952316284,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/javascript",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 125.5,
+      "domainLookupStart": 125.5,
+      "domainLookupEnd": 125.5,
+      "connectStart": 125.5,
+      "secureConnectionStart": 125.5,
+      "connectEnd": 125.5,
+      "requestStart": 126.69999992847443,
+      "responseStart": 153.59999990463257,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 153.59999990463257,
+      "responseEnd": 153.79999995231628,
+      "transferSize": 1306,
+      "encodedBodySize": 1006,
+      "decodedBodySize": 2041,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/color.BAcvsT9T.js",
+      "entryType": "resource",
+      "startTime": 125.5,
+      "duration": 48.299999952316284,
+      "navigationId": 8930,
+      "initiatorType": "script",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "text/javascript",
+      "contentEncoding": "zstd",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 125.5,
+      "domainLookupStart": 125.5,
+      "domainLookupEnd": 125.5,
+      "connectStart": 125.5,
+      "secureConnectionStart": 125.5,
+      "connectEnd": 125.5,
+      "requestStart": 126.89999997615814,
+      "responseStart": 173.59999990463257,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 173.59999990463257,
+      "responseEnd": 173.79999995231628,
+      "transferSize": 2399,
+      "encodedBodySize": 2099,
+      "decodedBodySize": 4425,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+      "entryType": "resource",
+      "startTime": 177,
+      "duration": 25.5,
+      "navigationId": 8930,
+      "initiatorType": "css",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 177,
+      "domainLookupStart": 177,
+      "domainLookupEnd": 177,
+      "connectStart": 177,
+      "secureConnectionStart": 177,
+      "connectEnd": 177,
+      "requestStart": 177.79999995231628,
+      "responseStart": 200.29999995231628,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 200.29999995231628,
+      "responseEnd": 202.5,
+      "transferSize": 15008,
+      "encodedBodySize": 14708,
+      "decodedBodySize": 14708,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    },
+    {
+      "name": "https://andrewchincea.com/_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2",
+      "entryType": "resource",
+      "startTime": 177.09999990463257,
+      "duration": 26,
+      "navigationId": 8930,
+      "initiatorType": "css",
+      "deliveryType": "",
+      "nextHopProtocol": "h3",
+      "renderBlockingStatus": "non-blocking",
+      "contentType": "",
+      "contentEncoding": "",
+      "workerStart": 0,
+      "workerRouterEvaluationStart": 0,
+      "workerCacheLookupStart": 0,
+      "workerMatchedSourceType": "",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "redirectEnd": 0,
+      "fetchStart": 177.09999990463257,
+      "domainLookupStart": 177.09999990463257,
+      "domainLookupEnd": 177.09999990463257,
+      "connectStart": 177.09999990463257,
+      "secureConnectionStart": 177.09999990463257,
+      "connectEnd": 177.09999990463257,
+      "requestStart": 178,
+      "responseStart": 202.59999990463257,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 202.59999990463257,
+      "responseEnd": 203.09999990463257,
+      "transferSize": 24656,
+      "encodedBodySize": 24356,
+      "decodedBodySize": 24356,
+      "responseStatus": 200,
+      "serverTiming": [
+        {}
+      ]
+    }
+  ],
+  "meta": [
+    "<meta charset=\"utf-8\">",
+    "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+    "<meta name=\"color-scheme\" content=\"light dark\">",
+    "<link rel=\"preload\" href=\"/_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"\">",
+    "<link rel=\"preload\" href=\"/_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2\" as=\"font\" type=\"font/woff2\" crossorigin=\"\">",
+    "<meta name=\"description\" content=\"Andrew Chincea studies mathematics and data science at Kennesaw State University. Research: water quality, topological data analysis and number theory.\">",
+    "<link rel=\"canonical\" href=\"http://localhost:4321/\">",
+    "<meta property=\"og:type\" content=\"website\">",
+    "<meta property=\"og:site_name\" content=\"Andrew Chincea\">",
+    "<meta property=\"og:locale\" content=\"en_US\">",
+    "<meta property=\"og:title\" content=\"Andrew Chincea\">",
+    "<meta property=\"og:description\" content=\"Andrew Chincea studies mathematics and data science at Kennesaw State University. Research: water quality, topological data analysis and number theory.\">",
+    "<meta property=\"og:url\" content=\"http://localhost:4321/\">",
+    "<meta property=\"og:image\" content=\"http://localhost:4321/og/social-card.png\">",
+    "<meta property=\"og:image:type\" content=\"image/png\">",
+    "<meta property=\"og:image:width\" content=\"1200\">",
+    "<meta property=\"og:image:height\" content=\"630\">",
+    "<meta property=\"og:image:alt\" content=\"Andrew Chincea: water rising over a generated landscape, with each lake in its own color.\">",
+    "<meta name=\"twitter:card\" content=\"summary_large_image\">",
+    "<meta name=\"twitter:title\" content=\"Andrew Chincea\">",
+    "<meta name=\"twitter:description\" content=\"Andrew Chincea studies mathematics and data science at Kennesaw State University. Research: water quality, topological data analysis and number theory.\">",
+    "<meta name=\"twitter:image\" content=\"http://localhost:4321/og/social-card.png\">",
+    "<meta name=\"twitter:image:alt\" content=\"Andrew Chincea: water rising over a generated landscape, with each lake in its own color.\">",
+    "<link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.svg\">",
+    "<meta name=\"generator\" content=\"Astro v7.4.13\">",
+    "<link rel=\"stylesheet\" href=\"/_astro/BaseLayout.CPGn5Zzt.css\">",
+    "<link rel=\"stylesheet\" href=\"/_astro/index.B3oojaYO.css\">"
+  ],
+  "anchors": [
+    "https://andrewchincea.com/#main",
+    "https://andrewchincea.com/",
+    "https://andrewchincea.com/#mission",
+    "https://andrewchincea.com/#work",
+    "https://andrewchincea.com/#research",
+    "https://andrewchincea.com/#open-science",
+    "https://andrewchincea.com/garden/",
+    "https://andrewchincea.com/rising-water/",
+    "https://andrewchincea.com/cv/",
+    "https://andrewchincea.com/research/water-quality/",
+    "https://andrewchincea.com/garden/?tag=water-quality",
+    "https://andrewchincea.com/research/number-theory/",
+    "https://andrewchincea.com/garden/?tag=number-theory",
+    "https://andrewchincea.com/research/spectral-fractals/",
+    "https://andrewchincea.com/garden/?tag=spectral-fractals",
+    "https://andrewchincea.com/about/"
+  ],
+  "images": [],
+  "rangeInputs": [
+    {
+      "id": "hero-scale",
+      "value": "1.5"
+    },
+    {
+      "id": "hero-roughness",
+      "value": "0.5"
+    },
+    {
+      "id": "hero-speed",
+      "value": "1"
+    },
+    {
+      "id": "hero-level",
+      "value": "0"
+    },
+    {
+      "id": "hero-min-persistence",
+      "value": "10"
+    },
+    {
+      "id": "hero-max-bars",
+      "value": "12"
+    },
+    {
+      "id": "hero-collatz-steps",
+      "value": "30"
+    }
+  ],
+  "cdpPerformance": {
+    "metrics": [
+      {
+        "name": "Timestamp",
+        "value": 690864.14196
+      },
+      {
+        "name": "AudioHandlers",
+        "value": 0
+      },
+      {
+        "name": "AudioWorkletProcessors",
+        "value": 0
+      },
+      {
+        "name": "Documents",
+        "value": 8
+      },
+      {
+        "name": "Frames",
+        "value": 9
+      },
+      {
+        "name": "JSEventListeners",
+        "value": 90
+      },
+      {
+        "name": "LayoutObjects",
+        "value": 1676
+      },
+      {
+        "name": "MediaKeySessions",
+        "value": 0
+      },
+      {
+        "name": "MediaKeys",
+        "value": 0
+      },
+      {
+        "name": "Nodes",
+        "value": 2341
+      },
+      {
+        "name": "Resources",
+        "value": 39
+      },
+      {
+        "name": "ContextLifecycleStateObservers",
+        "value": 29
+      },
+      {
+        "name": "V8PerContextDatas",
+        "value": 3
+      },
+      {
+        "name": "WorkerGlobalScopes",
+        "value": 0
+      },
+      {
+        "name": "UACSSResources",
+        "value": 0
+      },
+      {
+        "name": "RTCPeerConnections",
+        "value": 0
+      },
+      {
+        "name": "ResourceFetchers",
+        "value": 8
+      },
+      {
+        "name": "AdSubframes",
+        "value": 0
+      },
+      {
+        "name": "DetachedScriptStates",
+        "value": 2
+      },
+      {
+        "name": "ArrayBufferContents",
+        "value": 49
+      },
+      {
+        "name": "LayoutCount",
+        "value": 49
+      },
+      {
+        "name": "RecalcStyleCount",
+        "value": 56
+      },
+      {
+        "name": "LayoutDuration",
+        "value": 0.050394
+      },
+      {
+        "name": "RecalcStyleDuration",
+        "value": 0.014499
+      },
+      {
+        "name": "DevToolsCommandDuration",
+        "value": 0.00238
+      },
+      {
+        "name": "ScriptDuration",
+        "value": 0.151945
+      },
+      {
+        "name": "V8CompileDuration",
+        "value": 1e-05
+      },
+      {
+        "name": "TaskDuration",
+        "value": 0.336209
+      },
+      {
+        "name": "TaskOtherDuration",
+        "value": 0.116981
+      },
+      {
+        "name": "ThreadTime",
+        "value": 0.302415
+      },
+      {
+        "name": "ProcessTime",
+        "value": 0.655621
+      },
+      {
+        "name": "JSHeapUsedSize",
+        "value": 2253684
+      },
+      {
+        "name": "JSHeapTotalSize",
+        "value": 5767168
+      },
+      {
+        "name": "FirstMeaningfulPaint",
+        "value": 690856.895485
+      },
+      {
+        "name": "DomContentLoaded",
+        "value": 690856.777049
+      },
+      {
+        "name": "NavigationStart",
+        "value": 690856.57974
+      }
+    ]
+  }
+}

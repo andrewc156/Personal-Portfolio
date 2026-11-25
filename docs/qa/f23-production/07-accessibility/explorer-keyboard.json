@@ -1,0 +1,1522 @@
+{
+  "settled": {
+    "text": "Point at or tap the map to read a cell’s elevation and coordinates.\n\nThe lowest lake and the 11 longest-lived lakes each have their own colour and a label at their pit (“lowest”, 1–11). All other lakes share one colour.",
+    "controls": [
+      [
+        "<button type=\"button\" class=\"btn ex-play\" data-ex-play=\"\" data-ex-control=\"\" aria-pressed=\"true\" data-astro-cid-qvjcxdyb",
+        false
+      ],
+      [
+        "<select id=\"ex-speed\" data-ex-control=\"\" data-astro-cid-qvjcxdyb=\"\"><option value=\"0.25\" data-astro-cid-qvjcxdyb=\"\">0.25",
+        false
+      ],
+      [
+        "<select id=\"ex-pacing\" data-ex-control=\"\" data-astro-cid-qvjcxdyb=\"\"><option value=\"percentile\" selected=\"\" data-astro-c",
+        false
+      ],
+      [
+        "<input type=\"range\" id=\"ex-level\" min=\"0\" max=\"1000\" step=\"1\" value=\"0\" data-ex-control=\"\" data-astro-cid-qvjcxdyb=\"\" ar",
+        false
+      ],
+      [
+        "<input type=\"range\" id=\"ex-minp\" min=\"1\" max=\"400\" step=\"1\" value=\"10\" data-ex-control=\"\" data-astro-cid-qvjcxdyb=\"\" ari",
+        false
+      ],
+      [
+        "<input type=\"range\" id=\"ex-topn\" min=\"5\" max=\"600\" step=\"5\" value=\"40\" data-ex-control=\"\" data-astro-cid-qvjcxdyb=\"\" ari",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn\" data-ex-units=\"m\" data-ex-control=\"\" aria-pressed=\"true\" data-astro-cid-qvjcxdyb=\"\">m<",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn\" data-ex-units=\"ft\" data-ex-control=\"\" aria-pressed=\"false\" data-astro-cid-qvjcxdyb=\"\">",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn\" data-ex-view=\"barcode\" data-ex-control=\"\" aria-pressed=\"true\" data-astro-cid-qvjcxdyb=",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn\" data-ex-view=\"diagram\" data-ex-control=\"\" aria-pressed=\"false\" data-astro-cid-qvjcxdyb",
+        false
+      ],
+      [
+        "<input type=\"checkbox\" id=\"ex-basin\" data-ex-basin=\"\" data-ex-control=\"\" aria-describedby=\"ex-basin-desc\" data-astro-cid",
+        false
+      ],
+      [
+        "<input type=\"checkbox\" id=\"ex-places\" data-ex-place-labels=\"\" data-ex-control=\"\" aria-describedby=\"ex-places-desc\" data-",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn lakes__btn\" data-lake-cell=\"133025\" data-astro-cid-shk76qrh=\"\">Show<span class=\"visuall",
+        false
+      ],
+      [
+        "<button type=\"button\" class=\"btn lakes__btn\" data-lake-cell=\"58027\" data-astro-cid-shk76qrh=\"\">Show<span class=\"visually",
+        false
+      ]
+    ],
+    "errors": []
+  },
+  "first": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "skip-link",
+      "role": null,
+      "label": "Skip to content",
+      "href": "#main",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        8,
+        8,
+        151,
+        43
+      ],
+      "hit": true
+    }
+  ],
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "RISING WATER\n\nColorado River Basin study area (RiverNets coverage",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(232, 229, 223)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      61,
+      1440,
+      8167
+    ],
+    "hit": false
+  },
+  "afterSkip": [
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "ex-stage",
+      "role": "group",
+      "label": "Rising water map",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        184,
+        327,
+        572,
+        908
+      ],
+      "hit": true
+    }
+  ],
+  "mapKeys": [
+    [
+      "initial",
+      {
+        "range": [
+          [
+            "ex-level",
+            "0",
+            "−2.9 m (−9 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Pause",
+            "true"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      "ArrowRight",
+      {
+        "range": [
+          [
+            "ex-level",
+            "5",
+            "27.7 m (91 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      "ArrowDown",
+      {
+        "range": [
+          [
+            "ex-level",
+            "1000",
+            "3,697.8 m (12,132 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      "Escape",
+      {
+        "range": [
+          [
+            "ex-level",
+            "1000",
+            "3,697.8 m (12,132 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      "End",
+      {
+        "range": [
+          [
+            "ex-level",
+            "1000",
+            "3,697.8 m (12,132 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      "Home",
+      {
+        "range": [
+          [
+            "ex-level",
+            "0",
+            "−2.9 m (−9 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      " ",
+      {
+        "range": [
+          [
+            "ex-level",
+            "0",
+            "−2.9 m (−9 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Pause",
+            "true"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ],
+    [
+      " ",
+      {
+        "range": [
+          [
+            "ex-level",
+            "0",
+            "−2.9 m (−9 ft)"
+          ],
+          [
+            "ex-minp",
+            "10",
+            "10.0 m"
+          ],
+          [
+            "ex-topn",
+            "40",
+            "40 bars (40 shown)"
+          ]
+        ],
+        "status": [
+          "Computed in your browser in 26 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+          "",
+          ""
+        ],
+        "pressed": [
+          [
+            "Play",
+            "false"
+          ],
+          [
+            "m",
+            "true"
+          ],
+          [
+            "ft",
+            "false"
+          ],
+          [
+            "Barcode",
+            "true"
+          ],
+          [
+            "Diagram",
+            "false"
+          ]
+        ],
+        "active": "Rising water map",
+        "errors": []
+      }
+    ]
+  ],
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn ex-play",
+      "role": null,
+      "label": "Play",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        979,
+        80,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-speed",
+      "cls": "",
+      "role": null,
+      "label": "Speed\n0.25×\n0.5×\n1×\n2×\n4×",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        932,
+        979,
+        72,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-pacing",
+      "cls": "",
+      "role": null,
+      "label": "Pacing\nPercentile\nLinear (metres)",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1069,
+        979,
+        130,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-level",
+      "cls": "",
+      "role": null,
+      "label": "Water level",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        1054,
+        468,
+        16
+      ],
+      "hit": false
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-minp",
+      "cls": "",
+      "role": null,
+      "label": "Min persistence",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        1115,
+        468,
+        16
+      ],
+      "hit": false
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-topn",
+      "cls": "",
+      "role": null,
+      "label": "Top bars",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        1176,
+        468,
+        16
+      ],
+      "hit": false
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "m",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        829,
+        1210,
+        38,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "ft",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        871,
+        1210,
+        35,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Barcode",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        961,
+        1210,
+        78,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Diagram",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1043,
+        1210,
+        79,
+        36
+      ],
+      "hit": false
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-basin",
+      "cls": "",
+      "role": null,
+      "label": "Basin mask",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        1260,
+        18,
+        18
+      ],
+      "hit": false
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-places",
+      "cls": "",
+      "role": null,
+      "label": "Place labels",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        1372,
+        18,
+        18
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "all places and coordinates",
+      "href": "#place-labels-source",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        994,
+        1414,
+        152,
+        17
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "About the data",
+      "href": "#about-data",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        301,
+        1711,
+        113,
+        22
+      ],
+      "hit": false
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "lakes__scroll",
+      "role": "region",
+      "label": "Table of the longest-lived lakes",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        184,
+        1752,
+        1072,
+        1171
+      ],
+      "hit": false
+    }
+  ],
+  "controlFocusSettled": {
+    "tag": "DIV",
+    "id": "",
+    "cls": "lakes__scroll",
+    "role": "region",
+    "label": "Table of the longest-lived lakes",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "solid",
+      "2px",
+      "rgb(115, 182, 230)"
+    ],
+    "shadow": "none",
+    "rect": [
+      184,
+      1752,
+      1072,
+      1171
+    ],
+    "hit": false
+  },
+  "ax": [
+    {
+      "role": "link",
+      "name": "Skip to content",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "banner",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "main",
+      "name": "",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "contentinfo",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "link",
+      "name": "Andrew Chincea",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "navigation",
+      "name": "Main",
+      "properties": {}
+    },
+    {
+      "role": "button",
+      "name": "Dark theme",
+      "description": "Toggle dark theme",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "region",
+      "name": "Explorer",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Longest-lived lakes",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "How to read the barcode",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "About the data",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Code",
+      "properties": {}
+    },
+    {
+      "role": "heading",
+      "name": "Colorado River Basin study area (RiverNets coverage)",
+      "properties": {
+        "level": 1
+      }
+    },
+    {
+      "role": "group",
+      "name": "Rising water map",
+      "description": "With the map focused: Space plays or pauses, Left and Right arrows move the water level (with Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the previous or next bar, and Escape clears the selection.",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "heading",
+      "name": "Longest-lived lakes",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "region",
+      "name": "Table of the longest-lived lakes",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "How to read the barcode",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "About the data",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Attribution",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Processing steps",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Limitations",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Basin mask",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Code",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "link",
+      "name": "About",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Play",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Water level",
+      "value": 0,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Min persistence",
+      "value": 10,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Top bars",
+      "value": 40,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "group",
+      "name": "Units",
+      "properties": {}
+    },
+    {
+      "role": "group",
+      "name": "View",
+      "properties": {}
+    },
+    {
+      "role": "checkbox",
+      "name": "Basin mask",
+      "description": "USGS Watershed Boundary Dataset regions 14–15 (Upper Colorado Region and Lower Colorado Region). Off by default. It hatches the map outside the basin and marks each lake in the table below; the lakes and the barcode are still computed on the whole rectangle.",
+      "properties": {
+        "focusable": true,
+        "checked": "false"
+      }
+    },
+    {
+      "role": "checkbox",
+      "name": "Place labels",
+      "description": "Show nearby names from GNIS. When labels would overlap, the map gives priority to selected landmarks. See all places and coordinates.",
+      "properties": {
+        "focusable": true,
+        "checked": "false"
+      }
+    },
+    {
+      "role": "link",
+      "name": "About the data",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://registry.opendata.aws/copernicus-dem/",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://copernicus-dem-90m.s3.amazonaws.com/",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://doi.org/10.5270/ESA-c5d3d65",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Place labels",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "group",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "link",
+      "name": "Mission",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Work",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Research",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Open science",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Garden",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Rising water",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "CV",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "combobox",
+      "name": "Speed",
+      "value": "1×",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "combobox",
+      "name": "Pacing",
+      "value": "Percentile",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "button",
+      "name": "m",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "button",
+      "name": "ft",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "button",
+      "name": "Barcode",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "button",
+      "name": "Diagram",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "link",
+      "name": "all places and coordinates",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoTIFF",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Copernicus DEM GLO-90 free licence (ESA / Copernicus)",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://doi.org/10.5270/ESA-c5d3d65",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "USGS Watershed Boundary Dataset (WBD), 2-digit hydrologic units (HU-2), National Map staged products, Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Upper Colorado Region: USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 14 (published 20250108) Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Lower Colorado Region: USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 15 (published 20250108) Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without restriction.",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "GNIS Domestic Names data",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "USGS FAQ on GNIS coordinates",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Repository",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lowest lake on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 1 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 2 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 3 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 4 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 5 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 6 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 7 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 8 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 9 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 10 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 11 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 12 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 13 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 14 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 15 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 16 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 17 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 18 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 19 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 20 on the map",
+      "properties": {
+        "focusable": true
+      }
+    }
+  ]
+}

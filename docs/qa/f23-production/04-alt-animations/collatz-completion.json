@@ -1,0 +1,1352 @@
+{
+  "50": [
+    {
+      "mode": "collatz",
+      "readout": "2 numbers within 1 step of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1639086685,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.01
+    },
+    {
+      "mode": "collatz",
+      "readout": "4 numbers within 3 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -249022311,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.28
+    },
+    {
+      "mode": "collatz",
+      "readout": "9 numbers within 6 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2018842721,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.61
+    },
+    {
+      "mode": "collatz",
+      "readout": "23 numbers within 9 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2094438769,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.02
+    },
+    {
+      "mode": "collatz",
+      "readout": "79 numbers within 14 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1460818507,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.35
+    },
+    {
+      "mode": "collatz",
+      "readout": "132 numbers within 16 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1868357306,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.65
+    },
+    {
+      "mode": "collatz",
+      "readout": "270 numbers within 19 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 547773068,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.97
+    },
+    {
+      "mode": "collatz",
+      "readout": "433 numbers within 21 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1108297351,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.26
+    },
+    {
+      "mode": "collatz",
+      "readout": "689 numbers within 23 steps of 1 \u00b7 625 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 595479286,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.57
+    },
+    {
+      "mode": "collatz",
+      "readout": "1,095 numbers within 25 steps of 1 \u00b7 817 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -795115592,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.88
+    },
+    {
+      "mode": "collatz",
+      "readout": "2,786 numbers within 29 steps of 1 \u00b7 1,201 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 2145413806,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.21
+    },
+    {
+      "mode": "collatz",
+      "readout": "4,444 numbers within 31 steps of 1 \u00b7 1,393 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1845204973,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.48
+    },
+    {
+      "mode": "collatz",
+      "readout": "5,618 numbers within 32 steps of 1 \u00b7 1,489 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 404350931,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.74
+    },
+    {
+      "mode": "collatz",
+      "readout": "8,986 numbers within 34 steps of 1 \u00b7 1,681 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1606943185,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.07
+    },
+    {
+      "mode": "collatz",
+      "readout": "14,339 numbers within 36 steps of 1 \u00b7 1,873 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1568181775,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.4
+    },
+    {
+      "mode": "collatz",
+      "readout": "18,119 numbers within 37 steps of 1 \u00b7 1,969 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1876702227,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.7
+    },
+    {
+      "mode": "collatz",
+      "readout": "28,956 numbers within 39 steps of 1 \u00b7 2,161 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1406741591,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.99
+    },
+    {
+      "mode": "collatz",
+      "readout": "36,584 numbers within 40 steps of 1 \u00b7 2,257 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1877877361,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.25
+    },
+    {
+      "mode": "collatz",
+      "readout": "46,219 numbers within 41 steps of 1 \u00b7 2,353 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 161909120,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.57
+    },
+    {
+      "mode": "collatz",
+      "readout": "73,818 numbers within 43 steps of 1 \u00b7 2,545 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -536233432,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.9
+    },
+    {
+      "mode": "collatz",
+      "readout": "117,831 numbers within 45 steps of 1 \u00b7 2,737 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1209266495,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.22
+    },
+    {
+      "mode": "collatz",
+      "readout": "117,831 numbers within 45 steps of 1 \u00b7 2,737 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1777519459,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.55
+    },
+    {
+      "mode": "collatz",
+      "readout": "148,856 numbers within 46 steps of 1 \u00b7 2,833 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 556524900,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.85
+    },
+    {
+      "mode": "collatz",
+      "readout": "188,085 numbers within 47 steps of 1 \u00b7 2,929 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -411349118,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.15
+    },
+    {
+      "mode": "collatz",
+      "readout": "237,665 numbers within 48 steps of 1 \u00b7 3,025 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1009975079,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.46
+    },
+    {
+      "mode": "collatz",
+      "readout": "237,665 numbers within 48 steps of 1 \u00b7 3,025 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -153793504,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.77
+    },
+    {
+      "mode": "collatz",
+      "readout": "300,345 numbers within 49 steps of 1 \u00b7 3,121 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 396483728,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.04
+    },
+    {
+      "mode": "collatz",
+      "readout": "300,345 numbers within 49 steps of 1 \u00b7 3,121 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2021406978,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.33
+    },
+    {
+      "mode": "collatz",
+      "readout": "300,345 numbers within 49 steps of 1 \u00b7 3,121 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 698341368,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.64
+    },
+    {
+      "mode": "collatz",
+      "readout": "300,345 numbers within 49 steps of 1 \u00b7 3,121 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 1 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -162166699,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.93
+    },
+    {
+      "mode": "collatz",
+      "readout": "379,600 numbers within 50 steps of 1 \u00b7 3,217 drawn",
+      "summary": "Collatz delta. Playing. Seed 147120. Exactly 379,600 numbers reach 1 within 50 Collatz steps, the largest 1,125,899,906,842,624. The full drawing shows 3,217 of those numbers. 50 of 50 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -162166699,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 9.24
+    }
+  ],
+  "51": [
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 1 step",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -162166699,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.0
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 1 step",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1824848950,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.26
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 7 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 357199926,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.59
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 9 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -268790431,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.85
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 12 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1531533051,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.12
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 15 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1167180411,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.44
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 17 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -60537026,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.72
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 20 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1811178235,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.99
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 22 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2019703769,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.3
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 25 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1862178099,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.57
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 27 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1543005754,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.83
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 29 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1543570664,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.15
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 30 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 234240453,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.41
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 32 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 2103187798,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.74
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 34 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1708340414,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.07
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 36 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1468564619,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.38
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 38 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 443077076,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.65
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 39 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -281094755,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.91
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 41 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 136810961,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.21
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 42 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1100444421,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.47
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 43 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 600697319,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.79
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 44 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1941202452,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.07
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 45 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 654190863,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.34
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 46 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -603197128,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.66
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 48 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1381847484,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.97
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 49 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1704119012,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.27
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 49 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1463482503,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.56
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 50 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -760978812,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.89
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 50 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1426026422,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.2
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 50 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 348594780,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.46
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 50 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1824704321,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.74
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 50 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 1 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 659759232,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 9.0
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 51 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 51-step setting. The full drawing shows 3,313 sampled numbers, not a total. 51 of 51 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -783897069,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 9.25
+    }
+  ],
+  "120": [
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 1 step",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -783897069,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.01
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 1 step",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1207297971,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.33
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 14 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1583634069,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.6
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 21 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -607480932,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 0.93
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 29 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1890210442,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.25
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 35 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2110460567,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.55
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 41 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -921762335,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 1.83
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 47 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -277236244,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.1
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 53 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -165819756,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.43
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 58 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -926415573,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 2.73
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 62 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1873917499,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.02
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 67 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 886892135,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.29
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 72 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1847372902,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.59
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 76 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -79253470,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 3.89
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 81 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1309727407,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.17
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 88 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 859882764,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.49
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 92 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1208446303,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 4.79
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 95 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1239762862,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.11
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 98 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -631909286,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.39
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 102 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1761430069,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 5.73
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 104 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 819193665,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.04
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 107 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1960885067,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.35
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 109 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1031271010,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.61
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 111 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1997411058,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 6.9
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 113 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1445014033,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.19
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 114 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1936299179,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.46
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 116 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -145499370,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 7.73
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 117 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 263191135,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.03
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 119 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 840175191,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.31
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 119 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1995471141,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.63
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 119 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2009712664,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 8.89
+    },
+    {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 119 steps",
+      "summary": "Collatz delta. Playing. Seed 147120. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 120 of 120 levels are fully drawn. Each path bends 9 degrees one way after an even step and 21 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -287274516,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ],
+      "elapsed": 9.17
+    }
+  ]
+}

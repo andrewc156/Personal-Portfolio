@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 # Andrew Chincea — portfolio
 
-Static Astro + TypeScript site with a Python data pipeline, hosted on Cloudflare Pages. Full spec: portfolio-megaprompt.md (authoritative).
+Static Astro + TypeScript site with a Python data pipeline, hosted on Cloudflare Workers (Workers Builds, static assets + a small redirect/header Worker; see docs/deploy.md). Full spec: portfolio-megaprompt.md (authoritative).
 
 ## Commands
 npm run dev | build | preview | check | lint | test | e2e | lhci | links | data | verify
@@ -15,7 +15,7 @@ Python lint: pipeline/.venv/bin/ruff check pipeline
 ## Rules for every agent
 - Facts about Andrew come only from spec §3 and src/content. Unknown → draft + "Needs Andrew". Never invent.
 - Edit only the files you own for your current task (spec §8.2). Shared files belong to Control.
-- Don't copy from the reference sites. No trackers or third-party runtime requests.
+- Don't copy from the reference sites. No trackers or third-party runtime requests, except Cloudflare Web Analytics, which Andrew chose to keep (DECISIONS #88).
 - Persistence math follows spec §6.1 exactly: ties broken by (height, index), 4-connectivity, elder rule.
 - Never fabricate Colorado data. Never commit raw DEM tiles or secrets.
 - Only the checker runs build, preview, e2e, and Lighthouse (port 4321, one at a time). Builders may run `npx astro dev --port 44NN`.

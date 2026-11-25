@@ -1,0 +1,1303 @@
+{
+  "map": [
+    [
+      "map focused",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 1,603.0 m (5,259 ft), percentile 45.0. 13 lakes; 45.7 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "1,603.0 m (5,259 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      "ArrowRight",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 1,603.0 m (5,259 ft), percentile 45.0. 13 lakes; 45.7 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "1,610.0 m (5,282 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      "ArrowDown",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 3,697.8 m (12,132 ft), percentile 100.0. 1 lake; 100.0 % of the area flooded. Barcode showing 40 lakes, paced by percentile. Selected: The lowest lake · birth cell 133025. Born at −2.9 m near 31.9454° N, 114.7646° W. It never merges: its bar is infinite, because it eventually holds all the water."
+          ]
+        ],
+        "water": "3,697.8 m (12,132 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      "Escape",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 3,697.8 m (12,132 ft), percentile 100.0. 1 lake; 100.0 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "3,697.8 m (12,132 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      "End",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 3,697.8 m (12,132 ft), percentile 100.0. 1 lake; 100.0 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "3,697.8 m (12,132 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      "Home",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level −2.9 m (−9 ft), percentile 0.0. 1 lake; 0.0 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "−2.9 m (−9 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      " ",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Playing. Water level −2.9 m (−9 ft), percentile 0.0. 1 lake; 0.0 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "32.3 m (106 ft)",
+        "play": "true",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ],
+    [
+      " ",
+      {
+        "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+        "selected": [
+          [
+            "",
+            "status",
+            null,
+            "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            "status",
+            null,
+            ""
+          ],
+          [
+            "",
+            null,
+            "polite",
+            "Paused. Water level 32.3 m (106 ft), percentile 0.6. 6 lakes; 0.6 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+          ]
+        ],
+        "water": "32.3 m (106 ft)",
+        "play": "false",
+        "focus": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escap",
+        "errors": []
+      }
+    ]
+  ],
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn ex-play",
+      "role": null,
+      "label": "Play",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        652,
+        80,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-speed",
+      "cls": "",
+      "role": null,
+      "label": "Speed\n0.25×\n0.5×\n1×\n2×\n4×",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        932,
+        652,
+        72,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-pacing",
+      "cls": "",
+      "role": null,
+      "label": "Pacing\nPercentile\nLinear (metres)",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1069,
+        652,
+        130,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-level",
+      "cls": "",
+      "role": null,
+      "label": "Water level",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        727,
+        468,
+        16
+      ],
+      "hit": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-minp",
+      "cls": "",
+      "role": null,
+      "label": "Min persistence",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        788,
+        468,
+        16
+      ],
+      "hit": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-topn",
+      "cls": "",
+      "role": null,
+      "label": "Top bars",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        849,
+        468,
+        16
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "m",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        829,
+        864,
+        38,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "ft",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        871,
+        864,
+        35,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Barcode",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        961,
+        864,
+        78,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Diagram",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1043,
+        864,
+        79,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-basin",
+      "cls": "",
+      "role": null,
+      "label": "Basin mask",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        440,
+        18,
+        18
+      ],
+      "hit": true
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-places",
+      "cls": "",
+      "role": null,
+      "label": "Place labels",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        788,
+        552,
+        18,
+        18
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "all places and coordinates",
+      "href": "#place-labels-source",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        994,
+        594,
+        152,
+        17
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "About the data",
+      "href": "#about-data",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        301,
+        878,
+        113,
+        22
+      ],
+      "hit": true
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "lakes__scroll",
+      "role": "region",
+      "label": "Table of the longest-lived lakes",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        184,
+        -136,
+        1072,
+        1171
+      ],
+      "hit": true
+    }
+  ],
+  "ax": [
+    {
+      "role": "link",
+      "name": "Skip to content",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "banner",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "main",
+      "name": "",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "contentinfo",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "link",
+      "name": "Andrew Chincea",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "navigation",
+      "name": "Main",
+      "properties": {}
+    },
+    {
+      "role": "button",
+      "name": "Dark theme",
+      "description": "Toggle dark theme",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "region",
+      "name": "Explorer",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Longest-lived lakes",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "How to read the barcode",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "About the data",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Code",
+      "properties": {}
+    },
+    {
+      "role": "heading",
+      "name": "Colorado River Basin study area (RiverNets coverage)",
+      "properties": {
+        "level": 1
+      }
+    },
+    {
+      "role": "group",
+      "name": "Rising water map",
+      "description": "With the map focused: Space plays or pauses, Left and Right arrows move the water level (with Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the previous or next bar, and Escape clears the selection.",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "heading",
+      "name": "Longest-lived lakes",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "region",
+      "name": "Table of the longest-lived lakes",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "How to read the barcode",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "About the data",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Attribution",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Processing steps",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Limitations",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Basin mask",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Code",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "link",
+      "name": "About",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Play",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Water level",
+      "value": 6,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Min persistence",
+      "value": 10,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "status",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "slider",
+      "name": "Top bars",
+      "value": 40,
+      "properties": {
+        "focusable": true,
+        "orientation": "horizontal"
+      }
+    },
+    {
+      "role": "group",
+      "name": "Units",
+      "properties": {}
+    },
+    {
+      "role": "group",
+      "name": "View",
+      "properties": {}
+    },
+    {
+      "role": "checkbox",
+      "name": "Basin mask",
+      "description": "USGS Watershed Boundary Dataset regions 14–15 (Upper Colorado Region and Lower Colorado Region). Off by default. It hatches the map outside the basin and marks each lake in the table below; the lakes and the barcode are still computed on the whole rectangle.",
+      "properties": {
+        "focusable": true,
+        "checked": "false"
+      }
+    },
+    {
+      "role": "checkbox",
+      "name": "Place labels",
+      "description": "Show nearby names from GNIS. When labels would overlap, the map gives priority to selected landmarks. See all places and coordinates.",
+      "properties": {
+        "focusable": true,
+        "checked": "false"
+      }
+    },
+    {
+      "role": "link",
+      "name": "About the data",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://registry.opendata.aws/copernicus-dem/",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://copernicus-dem-90m.s3.amazonaws.com/",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://doi.org/10.5270/ESA-c5d3d65",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Place labels",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "group",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "link",
+      "name": "Mission",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Work",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Research",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Open science",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Garden",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Rising water",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "CV",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "combobox",
+      "name": "Speed",
+      "value": "1×",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "combobox",
+      "name": "Pacing",
+      "value": "Percentile",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "button",
+      "name": "m",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "button",
+      "name": "ft",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "button",
+      "name": "Barcode",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "button",
+      "name": "Diagram",
+      "properties": {
+        "focusable": true,
+        "pressed": "false"
+      }
+    },
+    {
+      "role": "link",
+      "name": "all places and coordinates",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoTIFF",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Copernicus DEM GLO-90 free licence (ESA / Copernicus)",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "https://doi.org/10.5270/ESA-c5d3d65",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "USGS Watershed Boundary Dataset (WBD), 2-digit hydrologic units (HU-2), National Map staged products, Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Upper Colorado Region: USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 14 (published 20250108) Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Lower Colorado Region: USGS Watershed Boundary Dataset (WBD) for 2-digit Hydrologic Unit - 15 (published 20250108) Shapefile",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Most U.S. Geological Survey (USGS) information resides in the Public Domain and may be used without restriction.",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "GNIS Domestic Names data",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "USGS FAQ on GNIS coordinates",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Repository",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lowest lake on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 1 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 2 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 3 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 4 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 5 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 6 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 7 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 8 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 9 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 10 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 11 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 12 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 13 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 14 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 15 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 16 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 17 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 18 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 19 on the map",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Show lake 20 on the map",
+      "properties": {
+        "focusable": true
+      }
+    }
+  ],
+  "lakeButton": {
+    "stage": "<div class=\"ex-stage\" data-ex-stage=\"\" tabindex=\"0\" role=\"group\" aria-label=\"Rising water map\" aria-describedby=\"ex-keys\" aria-keyshortcuts=\"Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape\" data-astro-cid-qvjcxdyb=\"\"><div class=\"ex-map\" data-astro-cid-qvjcxdyb=\"\"><img class=\"ex-map__shade\" src=\"/data/colorado/hillshade.webp\" width=\"977\" height=\"1241\" alt=\"Shaded relief of the Colorado River Basin study area (RiverNets coverage).\" fetchpriority=\"high\" decoding=\"async\" data-astro-cid-qvjcxdyb=\"\"><canvas class=\"ex-map__water\" data-ex-map=\"\" role=\"img\" aria-label=\"Water at or below the current level, drawn over the shaded relief. Lakes appear in valleys and merge as the water spills over passes. Use the readouts, the info card and the Longest-lived lakes table for the numbers.\" data-astro-cid-qvjcxdyb=\"\" width=\"570\" height=\"906\"></canvas><svg class=\"ex-place-labels\" data-ex-place-layer=\"\" aria-hidden=\"true\" data-astro-cid-suvc7ilj=\"\"><g data-place-markers=\"\" data-astro-cid-suvc7ilj=\"\"><g data-place-marker=\"45730\" data-astro-cid-suvc7ilj=\"\"><line data-astro-cid-suvc7ilj=\"\"></",
+    "selected": [
+      [
+        "",
+        "status",
+        null,
+        "Computed in your browser in 19 ms: the live barcode matches barcode.json (600 of 600 bars identical)."
+      ],
+      [
+        "",
+        "status",
+        null,
+        ""
+      ],
+      [
+        "",
+        "status",
+        null,
+        ""
+      ],
+      [
+        "",
+        null,
+        "polite",
+        "Paused. Water level 32.3 m (106 ft), percentile 0.6. 6 lakes; 0.6 % of the area flooded. Barcode showing 40 lakes, paced by percentile."
+      ]
+    ],
+    "water": "32.3 m (106 ft)",
+    "play": "false",
+    "focus": "<button type=\"button\" class=\"btn lakes__btn\" data-lake-cell=\"133025\" data-astro-cid-shk76qrh=\"\">Show<span class=\"visually-hidden\" data-astro-cid-shk76qrh=\"\"> lowest lake on the map</span></button>",
+    "errors": []
+  },
+  "lakeButtonFocus": {
+    "tag": "BUTTON",
+    "id": "",
+    "cls": "btn lakes__btn",
+    "role": null,
+    "label": "Show\nlowest lake on the map",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "solid",
+      "2px",
+      "rgb(115, 182, 230)"
+    ],
+    "shadow": "none",
+    "rect": [
+      1179,
+      434,
+      61,
+      32
+    ],
+    "hit": true
+  }
+}

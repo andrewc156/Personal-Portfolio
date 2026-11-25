@@ -1,0 +1,379 @@
+{
+  "initial": {
+    "width": 360,
+    "height": 225,
+    "doc": 360,
+    "body": 360,
+    "header": 99.578125,
+    "overflow": [],
+    "errors": []
+  },
+  "skip": {
+    "tag": "A",
+    "id": "",
+    "cls": "skip-link",
+    "role": null,
+    "label": "Skip to content",
+    "href": "#main",
+    "focus": true,
+    "outline": [
+      "solid",
+      "3px",
+      "rgb(255, 255, 255)"
+    ],
+    "shadow": "none",
+    "rect": [
+      8,
+      -78,
+      151,
+      43
+    ],
+    "hit": false
+  },
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "RISING WATER\n\nColorado River Basin study area (RiverNets coverage",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(28, 27, 25)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      0,
+      360,
+      13833
+    ],
+    "hit": false
+  },
+  "tasks": [
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "ex-stage",
+      "role": "group",
+      "label": "Rising water map",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        -148,
+        328,
+        520
+      ],
+      "hit": true,
+      "scrollY": 669
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn ex-play",
+      "role": null,
+      "label": "Play",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        95,
+        80,
+        36
+      ],
+      "hit": true,
+      "scrollY": 1726
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-speed",
+      "cls": "",
+      "role": null,
+      "label": "Speed\n0.25×\n0.5×\n1×\n2×\n4×",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        160,
+        95,
+        72,
+        36
+      ],
+      "hit": true,
+      "scrollY": 1726
+    },
+    {
+      "tag": "SELECT",
+      "id": "ex-pacing",
+      "cls": "",
+      "role": null,
+      "label": "Pacing\nPercentile\nLinear (metres)",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        66,
+        139,
+        130,
+        36
+      ],
+      "hit": true,
+      "scrollY": 1726
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-level",
+      "cls": "",
+      "role": null,
+      "label": "Water level",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        209,
+        328,
+        16
+      ],
+      "hit": true,
+      "scrollY": 1731
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-minp",
+      "cls": "",
+      "role": null,
+      "label": "Min persistence",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        105,
+        328,
+        16
+      ],
+      "hit": true,
+      "scrollY": 1896
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-topn",
+      "cls": "",
+      "role": null,
+      "label": "Top bars",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        166,
+        328,
+        16
+      ],
+      "hit": true,
+      "scrollY": 1896
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "m",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        57,
+        189,
+        38,
+        36
+      ],
+      "hit": true,
+      "scrollY": 1907
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "ft",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        99,
+        189,
+        35,
+        36
+      ],
+      "hit": true,
+      "scrollY": 1907
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Barcode",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        54,
+        94,
+        78,
+        36
+      ],
+      "hit": true,
+      "scrollY": 2046
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Diagram",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        137,
+        94,
+        79,
+        36
+      ],
+      "hit": true,
+      "scrollY": 2046
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-basin",
+      "cls": "",
+      "role": null,
+      "label": "Basin mask",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        144,
+        18,
+        18
+      ],
+      "hit": true,
+      "scrollY": 2046
+    },
+    {
+      "tag": "INPUT",
+      "id": "ex-places",
+      "cls": "",
+      "role": null,
+      "label": "Place labels",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        16,
+        104,
+        18,
+        18
+      ],
+      "hit": true,
+      "scrollY": 2216
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "all places and coordinates",
+      "href": "#place-labels-source",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        41,
+        164,
+        152,
+        17
+      ],
+      "hit": true,
+      "scrollY": 2216
+    }
+  ]
+}

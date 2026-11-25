@@ -1,0 +1,25 @@
+Title:           🐴 CV · Andrew Chincea
+Creator:         Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36
+Producer:        Skia/PDF m156
+CreationDate:    Wed Nov 25 16:35:10 2026 EST
+ModDate:         Wed Nov 25 16:35:10 2026 EST
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          yes
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           5
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       129292 bytes
+Optimized:       no
+PDF version:     1.4
+
+Page 1: first=Andrew Chincea | last=Publications and preprints
+Page 2: first=Tsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. | last=Kennesaw State University · Advisor: Dr. Tsz Ho Chan
+Page 3: first=Coauthored the submitted manuscript Largest kth-Power Divisor of a Random Integer, | last=Andrew Chincea (Nov 2026 – Present). OwlPath.
+Page 4: first=An interactive prerequisite map for three KSU majors. Students mark the courses they've | last=inquiries and graduation services.
+Page 5: first=Compare scanned historical records from Southern Technical Institute and Kennesaw | last=© 2026 Andrew Chincea · About · Source

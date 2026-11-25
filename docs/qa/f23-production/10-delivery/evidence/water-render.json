@@ -1,0 +1,44 @@
+{
+  "url": "https://andrewchincea.com/rising-water/",
+  "visibility": "visible",
+  "canvases": [
+    {
+      "id": "",
+      "width": 694,
+      "height": 1103
+    },
+    {
+      "id": "",
+      "width": 694,
+      "height": 270
+    }
+  ],
+  "pageText": [
+    "Water rises over the study area. Lakes form in the valleys. When two meet, the older one carries on. Each bar runs from the water level where its lake forms to the level where it merges. The lowest lake\u2019s bar never ends. The water on the map and the barcode are computed in your browser from the same 326 \u00d7 414 elevation grid; the shaded relief under the water is precomputed.",
+    "The lowest lake and the 11 longest-lived lakes each have their own colour and a label at their pit (\u201clowest\u201d, 1\u201311). All other lakes share one colour.",
+    "Water level",
+    "Lakes",
+    "Click a bar, or use a button in the \u201cLongest-lived lakes\u201d table, to see where a lake is born and where it spills.",
+    "Water level",
+    "USGS Watershed Boundary Dataset regions 14\u201315 (Upper Colorado Region and Lower Colorado Region). Off by default. It hatches the map outside the basin and marks each lake in the table below; the lakes and the barcode are still computed on the whole rectangle.",
+    "With the map focused: Space plays or pauses, Left and Right arrows move the water level (with Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the previous or next bar, and Escape clears the selection.",
+    "Paused. Water level 3,697.8\u00a0m (12,132\u00a0ft), percentile 100.0. 1 lake; 100.0\u00a0% of the area flooded. Barcode showing 40 lakes, paced by percentile.",
+    "Longest-lived lakes",
+    "The lowest lake and the 20 lakes with the longest bars (persistence = death level \u2212 birth level), from barcode.json. Positions are cell centres. \u201cShow\u201d selects the lake, as clicking its bar does. With the basin mask on, a \u201cPit in basin\u201d column says whether each lake\u2019s pit (its birth cell) is inside the mask. The rows are the same either way.",
+    "6 of the 10 longest-lived lakes are born on the edge of the rectangle. Water cannot leave the grid across its edges, so a valley that drains out across an edge becomes a closed basin in the grid (see About the data).",
+    "At water level t the flooded region is the sublevel set {x : h(x) \u2264 t}. Its connected pieces are lakes.",
+    "The barcode has one bar per lake, running from its birth level to its death level. This is 0-dimensional persistent homology of the sublevel-set filtration. In the diagram view each bar is a point, birth level across and death level up.",
+    "The barcode depends only on the order of the heights. Pacing the water by percentile instead of by metres changes the animation speed, not which lakes merge with which.",
+    "Reference barcode: 0-dimensional sublevel-set persistence of grid.f32 (read back from disk) by pipeline/tda_ref.py, 4-connectivity, ties broken by (height, cell index), elder rule. barcode.json keeps the 599 bars with persistence >= 1 m plus the essential bar (600 of 1217 lakes); heights are exact float32 values, not rounded.",
+    "Rectangle, not basin: the study area is a lat/lon rectangle, not the Colorado River's hydrologic basin. Water cannot leave through the rectangle's edges, so a valley that drains out across an edge becomes a closed basin in the grid; several long-lived lakes are born on the edge for this reason.",
+    "Open-pit mines are real depressions in a surface model, and a block minimum keeps their pit floors, so some deep lakes only a cell or two wide are mine pits (for example, one lies about 1 km from the published position of Utah's Bingham Canyon Mine).",
+    "The Copernicus DEM Product Handbook (version 5.0, 2022, section 1.1, Table 1) gives an absolute vertical accuracy of < 4 m (90% linear error) as a global arithmetic mean, validated against ICESat GLAS reference points and excluding Antarctica and Greenland, and notes that local deviations can occur. This build does not assess accuracy locally."
+  ],
+  "errors": [
+    {
+      "message": "",
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092",
+      "file": ""
+    }
+  ]
+}

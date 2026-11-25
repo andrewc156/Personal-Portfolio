@@ -1,0 +1,79 @@
+[
+  [
+    "range Home",
+    [
+      "0",
+      "1",
+      "percentile",
+      "Water level\n−9 ft (−2.9 m)",
+      "Water level\n−9 ft−2.9 m\nPercentile\n0.0\nLakes\n1\nArea flooded\n0.0 %",
+      "Play"
+    ]
+  ],
+  [
+    "range End",
+    [
+      "1000",
+      "1",
+      "percentile",
+      "Water level\n12,132 ft (3,697.8 m)",
+      "Water level\n12,132 ft3,697.8 m\nPercentile\n100.0\nLakes\n1\nArea flooded\n100.0 %",
+      "Play"
+    ]
+  ],
+  [
+    "percentile slider midpoint",
+    [
+      "500",
+      "1",
+      "percentile",
+      "Water level\n5,490 ft (1,673.3 m)",
+      "Water level\n5,490 ft1,673.3 m\nPercentile\n50.0\nLakes\n16\nArea flooded\n50.7 %",
+      "Play"
+    ]
+  ],
+  [
+    "switch pace preserves level",
+    [
+      "453",
+      "1",
+      "linear",
+      "Water level\n5,490 ft (1,673.3 m)",
+      "Water level\n5,490 ft1,673.3 m\nPercentile\n50.0\nLakes\n16\nArea flooded\n50.7 %",
+      "Play"
+    ]
+  ],
+  [
+    "linear slider midpoint",
+    [
+      "500",
+      "1",
+      "linear",
+      "Water level\n6,061 ft (1,847.5 m)",
+      "Water level\n6,061 ft1,847.5 m\nPercentile\n64.0\nLakes\n4\nArea flooded\n64.6 %",
+      "Play"
+    ]
+  ],
+  [
+    "4x from zero for 3s",
+    [
+      "297",
+      "4",
+      "linear",
+      "Water level\n3,592 ft (1,094.9 m)",
+      "Water level\n3,592 ft1,094.9 m\nPercentile\n19.0\nLakes\n6\nArea flooded\n19.8 %",
+      "Play"
+    ]
+  ],
+  [
+    "0.25x from zero for 3s",
+    [
+      "19",
+      "0.25",
+      "linear",
+      "Water level\n218 ft (66.5 m)",
+      "Water level\n218 ft66.5 m\nPercentile\n1.1\nLakes\n1\nArea flooded\n1.1 %",
+      "Play"
+    ]
+  ]
+]

@@ -1,0 +1,84 @@
+[
+  {
+    "case": "Keyboard Tab to Posters, Enter",
+    "path": "/garden/?type=poster",
+    "active": "Posters",
+    "visibleRows": 2
+  },
+  {
+    "case": "JS disabled with ?type=talk",
+    "url": "https://andrewchincea.com/garden/?type=talk",
+    "rows": [
+      "paper-kth-power-divisor",
+      "poster-rivernets-analytics-day-2026",
+      "project-owlpath",
+      "project-personal-portfolio",
+      "project-rising-water",
+      "talk-maa-southeastern-2026",
+      "project-nyc-subway",
+      "poster-fractal-laplacian-2025",
+      "project-askscrappy"
+    ],
+    "text": [
+      "Garden",
+      "",
+      "Here's some of my work. Submitted work has no date yet, so it comes first. The rest is newest first.",
+      ""
+    ],
+    "hook": "object"
+  },
+  {
+    "case": "foreground attempt: About inline pointer",
+    "url": "https://andrewchincea.com/#research",
+    "scrollY": 1602,
+    "top": 16.21875,
+    "visibility": "visible",
+    "focus": true,
+    "errors": []
+  },
+  {
+    "case": "foreground attempt: direct URL",
+    "url": "https://andrewchincea.com/#research",
+    "scrollY": 1602,
+    "top": 16.21875,
+    "visibility": "visible",
+    "focus": true,
+    "errors": []
+  },
+  {
+    "case": "verified foreground pointer from /garden/",
+    "path": "/#research",
+    "scrollY": 1602,
+    "top": 16.21875,
+    "visibility": "visible",
+    "viewport": [
+      1220,
+      820
+    ],
+    "errors": []
+  },
+  {
+    "case": "verified foreground pointer from /",
+    "path": "/#research",
+    "scrollY": 1602,
+    "top": 16.21875,
+    "visibility": "visible",
+    "viewport": [
+      1220,
+      820
+    ],
+    "errors": []
+  },
+  {
+    "case": "verified foreground pointer from /about/",
+    "path": "/#research",
+    "scrollY": 2067,
+    "top": 16.21875,
+    "visibility": "visible",
+    "viewport": [
+      390,
+      844
+    ],
+    "errors": []
+  }
+]

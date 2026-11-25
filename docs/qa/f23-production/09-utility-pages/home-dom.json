@@ -1,0 +1,135 @@
+{
+  "title": "\ud83d\udc34 Andrew Chincea",
+  "url": "https://andrewchincea.com/",
+  "nav": [
+    {
+      "text": "Andrew Chincea",
+      "href": "/",
+      "resolved": "https://andrewchincea.com/",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Mission",
+      "href": "/#mission",
+      "resolved": "https://andrewchincea.com/#mission",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Work",
+      "href": "/#work",
+      "resolved": "https://andrewchincea.com/#work",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Research",
+      "href": "/#research",
+      "resolved": "https://andrewchincea.com/#research",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Open science",
+      "href": "/#open-science",
+      "resolved": "https://andrewchincea.com/#open-science",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Garden",
+      "href": "/garden/",
+      "resolved": "https://andrewchincea.com/garden/",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Rising water",
+      "href": "/rising-water/",
+      "resolved": "https://andrewchincea.com/rising-water/",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "CV",
+      "href": "/cv/",
+      "resolved": "https://andrewchincea.com/cv/",
+      "target": "",
+      "download": null
+    }
+  ],
+  "sectionIds": [
+    "mission",
+    "work",
+    "research",
+    "open-science",
+    "contact"
+  ],
+  "utility": [
+    {
+      "text": "Source for this site \u2197",
+      "href": "https://github.com/andrewc156/Personal-Portfolio",
+      "resolved": "https://github.com/andrewc156/Personal-Portfolio",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Data pipeline \u2197",
+      "href": "https://github.com/andrewc156/Personal-Portfolio/tree/main/pipeline",
+      "resolved": "https://github.com/andrewc156/Personal-Portfolio/tree/main/pipeline",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Persistence engine \u2197",
+      "href": "https://github.com/andrewc156/Personal-Portfolio/tree/main/src/lib/tda",
+      "resolved": "https://github.com/andrewc156/Personal-Portfolio/tree/main/src/lib/tda",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "achincea@students.kennesaw.edu\u2192",
+      "href": "mailto:achincea@students.kennesaw.edu",
+      "resolved": "mailto:achincea@students.kennesaw.edu",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "github.com/andrewc156\u2197",
+      "href": "https://github.com/andrewc156",
+      "resolved": "https://github.com/andrewc156",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "www.linkedin.com/in/andrewchincea\u2197",
+      "href": "https://www.linkedin.com/in/andrewchincea",
+      "resolved": "https://www.linkedin.com/in/andrewchincea",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "About",
+      "href": "/about/",
+      "resolved": "https://andrewchincea.com/about/",
+      "target": "",
+      "download": null
+    },
+    {
+      "text": "Source",
+      "href": "https://github.com/andrewc156/Personal-Portfolio",
+      "resolved": "https://github.com/andrewc156/Personal-Portfolio",
+      "target": "",
+      "download": null
+    }
+  ],
+  "icons": [
+    {
+      "href": "https://andrewchincea.com/favicon.svg",
+      "rel": "icon",
+      "type": "image/svg+xml"
+    }
+  ],
+  "errors": []
+}

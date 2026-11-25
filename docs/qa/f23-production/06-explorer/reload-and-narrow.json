@@ -1,0 +1,117 @@
+{
+  "narrow": {
+    "size": [
+      320,
+      720,
+      320
+    ],
+    "controls": [
+      [
+        "Play",
+        16,
+        96
+      ],
+      [
+        "ex-speed",
+        160,
+        232
+      ],
+      [
+        "ex-pacing",
+        66,
+        196
+      ],
+      [
+        "ex-level",
+        16,
+        304
+      ],
+      [
+        "ex-minp",
+        16,
+        304
+      ],
+      [
+        "ex-topn",
+        16,
+        304
+      ],
+      [
+        "m",
+        57,
+        95
+      ],
+      [
+        "ft",
+        99,
+        134
+      ],
+      [
+        "Barcode",
+        54,
+        133
+      ],
+      [
+        "Diagram",
+        137,
+        215
+      ],
+      [
+        "ex-basin",
+        16,
+        34
+      ],
+      [
+        "ex-places",
+        16,
+        34
+      ]
+    ],
+    "status": [
+      "Shown: 97,311 of 134,964 cells (72.1 %) are inside the basin. Hatched cells are outside; the line is the boundary.",
+      "22 of 39 place labels shown. See the full list in About the data."
+    ]
+  },
+  "reopen": {
+    "url": "https://andrewchincea.com/rising-water/",
+    "load": "complete",
+    "status": "Computed in your browser in 28 ms: the live barcode matches barcode.json (600 of 600 bars identical).",
+    "disabled": [],
+    "settings": [
+      [
+        "ex-basin",
+        false
+      ],
+      [
+        "ex-places",
+        false
+      ]
+    ],
+    "errors": [
+      "error: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ],
+    "resources": [
+      [
+        "/data/colorado/hillshade.webp",
+        200,
+        179574
+      ],
+      [
+        "/data/colorado/barcode.json",
+        200,
+        33492
+      ],
+      [
+        "/data/colorado/meta.json",
+        200,
+        9372
+      ],
+      [
+        "/data/colorado/grid.f32",
+        200,
+        539856
+      ]
+    ],
+    "noscript": []
+  }
+}

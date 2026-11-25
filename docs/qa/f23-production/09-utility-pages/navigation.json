@@ -1,0 +1,83 @@
+{
+  "home": {
+    "url": "https://andrewchincea.com/",
+    "status": 200,
+    "title": "\ud83d\udc34 Andrew Chincea",
+    "main": "Andrew Chincea",
+    "footer": "\u00a9 2026 Andrew Chincea \u00b7 About \u00b7 Source",
+    "metadata": {
+      "canonical": "http://localhost:4321/",
+      "og:url": "http://localhost:4321/",
+      "og:image": "http://localhost:4321/og/social-card.png",
+      "twitter:image": "http://localhost:4321/og/social-card.png"
+    },
+    "errors": []
+  },
+  "openScience": {
+    "url": "https://andrewchincea.com/#open-science",
+    "section": "Open science\n\nThe code for my site is public, including the data pipeline and the persistence engine behind the Rising water explorer.\n\nSource for this site \u2197\nData pipeline \u2197\nPersistence engine \u2197",
+    "position": 2378.734375,
+    "scrollY": 0,
+    "viewport": 413,
+    "errors": []
+  },
+  "about": {
+    "url": "https://andrewchincea.com/about/",
+    "status": 200,
+    "title": "\ud83d\udc34 About \u00b7 Andrew Chincea",
+    "main": "About",
+    "footer": "\u00a9 2026 Andrew Chincea \u00b7 About \u00b7 Source",
+    "metadata": {
+      "canonical": "http://localhost:4321/about/",
+      "og:url": "http://localhost:4321/about/",
+      "og:image": "http://localhost:4321/og/social-card.png",
+      "twitter:image": "http://localhost:4321/og/social-card.png"
+    },
+    "errors": []
+  },
+  "cv": {
+    "url": "https://andrewchincea.com/cv/",
+    "status": 200,
+    "title": "\ud83d\udc34 CV \u00b7 Andrew Chincea",
+    "main": "CV",
+    "footer": "\u00a9 2026 Andrew Chincea \u00b7 About \u00b7 Source",
+    "metadata": {
+      "canonical": "http://localhost:4321/cv/",
+      "og:url": "http://localhost:4321/cv/",
+      "og:image": "http://localhost:4321/og/social-card.png",
+      "twitter:image": "http://localhost:4321/og/social-card.png"
+    },
+    "errors": []
+  },
+  "directErrorTemplate": {
+    "url": "https://andrewchincea.com/404",
+    "status": 200,
+    "main": "ERROR 404\n\nThis page has gone under water.\n\nThe address may be mistyped, or the page may have moved.\n\nGo to the home page",
+    "links": [
+      {
+        "text": "Go to the home page",
+        "href": "https://andrewchincea.com/"
+      }
+    ]
+  },
+  "directTemplateHomeRecovery": {
+    "url": "https://andrewchincea.com/",
+    "status": 200,
+    "title": "\ud83d\udc34 Andrew Chincea",
+    "main": "Andrew Chincea",
+    "footer": "\u00a9 2026 Andrew Chincea \u00b7 About \u00b7 Source",
+    "metadata": {
+      "canonical": "http://localhost:4321/",
+      "og:url": "http://localhost:4321/",
+      "og:image": "http://localhost:4321/og/social-card.png",
+      "twitter:image": "http://localhost:4321/og/social-card.png"
+    },
+    "errors": []
+  },
+  "linkedinBrowser": {
+    "url": "https://www.linkedin.com/authwall?trk=gf&trkInfo=AQFUOLcHlCADqAAAAaIUo_R457EZSt5Y9lBc2ytcgk3zhmFaslRSAuY_AwiQapYkRCe2-0N5WdOqxg8PHdjDsYOphrZJYztTaIA0WlqrPo2fvitdxMLiFLY8sQ0g2INjrgcRi0o=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fandrewchincea",
+    "status": 200,
+    "title": "\ud83d\udc34 Sign Up | LinkedIn",
+    "body": "Skip to main content\nLinkedIn\nJoin LinkedIn\nEmail\nPassword (6+ characters)\n\nBy clicking Agree & Join, you agree to the LinkedIn User Agreement, Privacy Policy, and Cookie Policy.\n\nAgree & Join\n\nAlready on Linkedin? Sign in\n\nLinkedIn\n\u00a9 2026\nAbout\nAccessibility\nUser Agreement\nPrivacy Policy\nYour California Privacy Choices\nCookie Policy\nCopyright Policy\nBrand Policy\nGuest Controls\nCommunity Guideline"
+  }
+}

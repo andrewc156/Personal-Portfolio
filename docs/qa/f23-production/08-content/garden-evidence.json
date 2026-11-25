@@ -1,0 +1,975 @@
+[
+  {
+    "case": "initial",
+    "path": "/garden/",
+    "active": [
+      "All types",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "Posters",
+    "path": "/garden/?type=poster",
+    "active": [
+      "Posters",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "add water-quality",
+    "path": "/garden/?type=poster&tag=water-quality",
+    "active": [
+      "Posters",
+      "Water-quality prediction on river networks"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "clear type only",
+    "path": "/garden/?tag=water-quality",
+    "active": [
+      "All types",
+      "Water-quality prediction on river networks"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "Back",
+    "path": "/garden/?type=poster&tag=water-quality",
+    "active": [
+      "Posters",
+      "Water-quality prediction on river networks"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "Forward",
+    "path": "/garden/?tag=water-quality",
+    "active": [
+      "All types",
+      "Water-quality prediction on river networks"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "empty from visible filters",
+    "path": "/garden/?type=paper&tag=water-quality",
+    "active": [
+      "Papers",
+      "Water-quality prediction on river networks"
+    ],
+    "rows": [],
+    "empty": true,
+    "errors": []
+  },
+  {
+    "case": "reset from empty",
+    "path": "/garden/",
+    "active": [
+      "All types",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?tag=number-theory&type=paper",
+    "path": "/garden/?tag=number-theory&type=paper",
+    "active": [
+      "Papers",
+      "Analytic number theory"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?tag=bogus&type=paper",
+    "path": "/garden/?tag=bogus&type=paper",
+    "active": [
+      "Papers",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=BOGUS&tag=number-theory",
+    "path": "/garden/?type=BOGUS&tag=number-theory",
+    "active": [
+      "All types",
+      "Analytic number theory"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=poster&type=paper",
+    "path": "/garden/?type=poster&type=paper",
+    "active": [
+      "Posters",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=preprint",
+    "path": "/garden/?type=preprint",
+    "active": [
+      "All areas"
+    ],
+    "rows": [],
+    "empty": true,
+    "errors": []
+  },
+  {
+    "case": "?type=software",
+    "path": "/garden/?type=software",
+    "active": [
+      "All areas"
+    ],
+    "rows": [],
+    "empty": true,
+    "errors": []
+  },
+  {
+    "case": "?type=dataset",
+    "path": "/garden/?type=dataset",
+    "active": [
+      "All areas"
+    ],
+    "rows": [],
+    "empty": true,
+    "errors": []
+  },
+  {
+    "case": "#water-quality",
+    "path": "/garden/#water-quality",
+    "active": [
+      "All types",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "#tag=water-quality",
+    "path": "/garden/#tag=water-quality",
+    "active": [
+      "All types",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?tag=number-theory#water-quality",
+    "path": "/garden/?tag=number-theory#water-quality",
+    "active": [
+      "All types",
+      "Analytic number theory"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "#main",
+    "path": "/garden/#main",
+    "active": [
+      "All types",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "type": "poster",
+        "tags": "water-quality",
+        "date": [
+          "2026-12-04"
+        ],
+        "label": "Dec 2026",
+        "href": "/research/water-quality/"
+      },
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?tag=spectral-fractals",
+    "path": "/garden/?tag=spectral-fractals",
+    "active": [
+      "All types",
+      "Spectral analysis on fractals"
+    ],
+    "rows": [
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "type": "poster",
+        "tags": "spectral-fractals",
+        "date": [
+          "2025-03"
+        ],
+        "label": "Mar 2025",
+        "href": "/research/spectral-fractals/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=talk",
+    "path": "/garden/?type=talk",
+    "active": [
+      "Talks",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=project",
+    "path": "/garden/?type=project",
+    "active": [
+      "Projects",
+      "All areas"
+    ],
+    "rows": [
+      {
+        "id": "project-owlpath",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026 – Present",
+        "href": "https://andrewc156.github.io/OwlPath/"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "https://andrewchincea.com/"
+      },
+      {
+        "id": "project-rising-water",
+        "type": "project",
+        "tags": "water-quality",
+        "date": [
+          "2026-11"
+        ],
+        "label": "Nov 2026",
+        "href": "/rising-water/"
+      },
+      {
+        "id": "project-nyc-subway",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "label": "Jan 2026 – May 2026",
+        "href": null
+      },
+      {
+        "id": "project-askscrappy",
+        "type": "project",
+        "tags": "",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "label": "Aug 2024 – Dec 2024",
+        "href": null
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "?type=paper&tag=number-theory&note=example",
+    "path": "/garden/?type=paper&tag=number-theory&note=example",
+    "active": [
+      "Papers",
+      "Analytic number theory"
+    ],
+    "rows": [
+      {
+        "id": "paper-kth-power-divisor",
+        "type": "paper",
+        "tags": "number-theory",
+        "date": [],
+        "label": "Submitted",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  },
+  {
+    "case": "click with extra query parameter",
+    "path": "/garden/?type=talk&tag=number-theory",
+    "active": [
+      "Talks",
+      "Analytic number theory"
+    ],
+    "rows": [
+      {
+        "id": "talk-maa-southeastern-2026",
+        "type": "talk",
+        "tags": "number-theory",
+        "date": [
+          "2026-03"
+        ],
+        "label": "Mar 2026",
+        "href": "/research/number-theory/"
+      }
+    ],
+    "empty": false,
+    "errors": []
+  }
+]

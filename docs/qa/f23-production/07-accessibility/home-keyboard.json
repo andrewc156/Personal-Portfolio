@@ -1,0 +1,643 @@
+{
+  "first": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "skip-link",
+      "role": null,
+      "label": "Skip to content",
+      "href": "#main",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        8,
+        8,
+        151,
+        43
+      ],
+      "hit": true
+    }
+  ],
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "Andrew Chincea\n\nWhat can the shape of a landscape tell us about t",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(232, 229, 223)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      61,
+      1440,
+      2758
+    ],
+    "hit": false
+  },
+  "afterSkip": [
+    {
+      "tag": "SELECT",
+      "id": "hero-mode",
+      "cls": "",
+      "role": null,
+      "label": "Animation",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        761,
+        109,
+        192,
+        44
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Animation settings",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        961,
+        109,
+        101,
+        44
+      ],
+      "hit": true
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "hero__art",
+      "role": "group",
+      "label": "Rising water animation",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        689,
+        165,
+        567,
+        477
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn hero__btn",
+      "role": null,
+      "label": "Pause",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        702,
+        597,
+        72,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn hero__btn",
+      "role": null,
+      "label": "New terrain",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        782,
+        597,
+        99,
+        36
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "See it on the Colorado River Basin →",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        829,
+        701,
+        229,
+        18
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "OwlPath",
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        848,
+        1411,
+        65,
+        22
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Personal portfolio",
+      "href": "https://andrewchincea.com/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        771,
+        1463,
+        135,
+        22
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Rising water",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        771,
+        1515,
+        92,
+        22
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "All work →",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(115, 182, 230)"
+      ],
+      "shadow": "none",
+      "rect": [
+        476,
+        1567,
+        85,
+        22
+      ],
+      "hit": false
+    }
+  ],
+  "ax": [
+    {
+      "role": "link",
+      "name": "Skip to content",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "banner",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "main",
+      "name": "",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "contentinfo",
+      "name": "",
+      "properties": {}
+    },
+    {
+      "role": "link",
+      "name": "Andrew Chincea",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "navigation",
+      "name": "Main",
+      "properties": {}
+    },
+    {
+      "role": "button",
+      "name": "Dark theme",
+      "description": "Toggle dark theme",
+      "properties": {
+        "focusable": true,
+        "pressed": "true"
+      }
+    },
+    {
+      "role": "button",
+      "name": "Art settings",
+      "description": "Art settings",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "region",
+      "name": "Andrew Chincea",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Mission",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Recent work",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Research",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Open science",
+      "properties": {}
+    },
+    {
+      "role": "region",
+      "name": "Contact",
+      "properties": {}
+    },
+    {
+      "role": "heading",
+      "name": "Andrew Chincea",
+      "properties": {
+        "level": 1
+      }
+    },
+    {
+      "role": "link",
+      "name": "About",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "combobox",
+      "name": "Animation",
+      "value": "Rising water",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "button",
+      "name": "Animation settings",
+      "properties": {
+        "focusable": true,
+        "expanded": false
+      }
+    },
+    {
+      "role": "group",
+      "name": "Rising water animation",
+      "description": "When the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Mission",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Recent work",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Research",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Open science",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Contact",
+      "properties": {
+        "level": 2
+      }
+    },
+    {
+      "role": "link",
+      "name": "Mission",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Work",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Research",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Open science",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Garden",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Rising water",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "CV",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "Pause",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "button",
+      "name": "New terrain",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "See it on the Colorado River Basin →",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "All work ",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Source for this site ",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Data pipeline ",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Persistence engine ",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "achincea@students.kennesaw.edu",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "github.com/andrewc156",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "www.linkedin.com/in/andrewchincea",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Water-quality prediction on river networks",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Analytic number theory",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "heading",
+      "name": "Spectral analysis on fractals",
+      "properties": {
+        "level": 3
+      }
+    },
+    {
+      "role": "link",
+      "name": "OwlPath",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Personal portfolio",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Rising water",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Water-quality prediction on river networks",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Related work: Water-quality prediction on river networks",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Analytic number theory",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Related work: Analytic number theory",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Spectral analysis on fractals",
+      "properties": {
+        "focusable": true
+      }
+    },
+    {
+      "role": "link",
+      "name": "Related work: Spectral analysis on fractals",
+      "properties": {
+        "focusable": true
+      }
+    }
+  ],
+  "errors": [
+    "uncaught: Uncaught SyntaxError: Identifier '_e' has already been declared"
+  ]
+}

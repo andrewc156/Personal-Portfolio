@@ -1,0 +1,308 @@
+[
+  [
+    320,
+    "reduce",
+    "/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    320,
+    "reduce",
+    "/cv/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    320,
+    "reduce",
+    "/rising-water/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    320,
+    "no-preference",
+    "/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ],
+  [
+    320,
+    "no-preference",
+    "/cv/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ],
+  [
+    320,
+    "no-preference",
+    "/rising-water/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "reduce",
+    "/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "reduce",
+    "/cv/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "reduce",
+    "/rising-water/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": -78.375,
+      "transform": "matrix(1, 0, 0, 1, 0, -86.375)",
+      "transition": "1e-05s",
+      "reduce": true,
+      "focused": true,
+      "animations": [
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        },
+        {
+          "t": 0,
+          "s": "running"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "no-preference",
+    "/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "no-preference",
+    "/cv/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ],
+  [
+    1440,
+    "no-preference",
+    "/rising-water/",
+    {
+      "current": true,
+      "focus": true,
+      "fv": true,
+      "y": 8,
+      "transform": "none",
+      "transition": "all",
+      "reduce": false,
+      "focused": true,
+      "animations": [],
+      "errors": []
+    }
+  ]
+]

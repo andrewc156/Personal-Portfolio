@@ -1,0 +1,72 @@
+{
+  "portrait_sheet_open": [
+    "true",
+    [
+      [
+        "pointerdown",
+        "touch",
+        true
+      ],
+      [
+        "touchstart",
+        null,
+        true
+      ],
+      [
+        "touchend",
+        null,
+        true
+      ],
+      [
+        "click",
+        "touch",
+        true
+      ]
+    ],
+    []
+  ],
+  "portrait_sheet_scroll": [
+    260,
+    0,
+    []
+  ],
+  "portrait_sheet_closed": [
+    "false",
+    []
+  ],
+  "home_scroll": [
+    252,
+    -152.421875,
+    []
+  ],
+  "visualizer_toggle": [
+    "Play",
+    []
+  ],
+  "lakes_before_show": [
+    651,
+    2945,
+    null
+  ],
+  "lakes_after_show": [
+    651,
+    548,
+    null,
+    []
+  ],
+  "wide_before_mouse": [
+    true,
+    false,
+    "false"
+  ],
+  "wide_after_mouse": [
+    [
+      [
+        "mouse",
+        true
+      ]
+    ],
+    "true",
+    []
+  ]
+}

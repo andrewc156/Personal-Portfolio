@@ -1,0 +1,81 @@
+{
+  "risingBefore": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "rising",
+    "checked": true,
+    "loopVisible": true,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "408848",
+    "readout": "Level 501\u00a0m \u00b7 6 lakes",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "risingAfter": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "rising",
+    "checked": false,
+    "loopVisible": true,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "408848",
+    "readout": "Level 501\u00a0m \u00b7 6 lakes",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "collatzSettings": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "checked": false,
+    "loopVisible": false,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "408848",
+    "readout": "7 numbers within 5 steps of 1",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "collatzStart": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "checked": false,
+    "loopVisible": false,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "408848",
+    "readout": "Sampled branches \u00b7 7 steps",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "finished": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "checked": false,
+    "loopVisible": false,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "408848",
+    "readout": "Sampled branches \u00b7 120 steps",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "wrap": {
+    "elapsed": 11.21,
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "mode": "collatz",
+    "checked": false,
+    "loopVisible": false,
+    "vis": "visible",
+    "inViewport": true,
+    "seed": "781543",
+    "readout": "Sampled branches \u00b7 1 step",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  }
+}

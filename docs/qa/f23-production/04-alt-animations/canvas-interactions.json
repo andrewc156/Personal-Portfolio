@@ -1,0 +1,300 @@
+{
+  "pond": {
+    "visibility": "visible",
+    "initial": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 0 pebbles by you",
+      "summary": "Fractal pond. Playing. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. None has been dropped by clicking yet.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 2105829080,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "mouse-playing": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 1 pebble by you",
+      "summary": "Fractal pond. Playing. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. None has been dropped by clicking yet.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -535042558,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "touch-playing": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 1 pebble by you",
+      "summary": "Fractal pond. Playing. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. 1 was dropped by clicking.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1798837977,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-a": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 1 pebble by you",
+      "summary": "Fractal pond. Paused. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. 1 was dropped by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": 700335103,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-b": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 1 pebble by you",
+      "summary": "Fractal pond. Paused. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. 1 was dropped by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": 700335103,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "mouse-paused": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 2 pebbles by you",
+      "summary": "Fractal pond. Paused. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. 1 was dropped by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": 1512320786,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "resumed": {
+      "mode": "pond",
+      "readout": "Koch snowflake pond, level 4 \u00b7 2 pebbles by you",
+      "summary": "Fractal pond. Playing. Seed 1291. Ripples spread across a pond shaped like a level 4 Koch snowflake and reflect off its fixed walls. Pebbles fall on their own every few seconds. 2 were dropped by clicking.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1720041275,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  },
+  "dye": {
+    "visibility": "visible",
+    "initial": {
+      "mode": "dye",
+      "readout": "3,972 dye particles \u00b7 0 spills by you",
+      "summary": "Dye spill. Playing. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 3,600 dye particles are in the water. None has been spilled by clicking yet.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1569062395,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "mouse-playing": {
+      "mode": "dye",
+      "readout": "4,924 dye particles \u00b7 1 spill by you",
+      "summary": "Dye spill. Playing. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 3,600 dye particles are in the water. None has been spilled by clicking yet.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1320507212,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "touch-playing": {
+      "mode": "dye",
+      "readout": "5,936 dye particles \u00b7 2 spills by you",
+      "summary": "Dye spill. Playing. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 3,600 dye particles are in the water. None has been spilled by clicking yet.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1772026195,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-a": {
+      "mode": "dye",
+      "readout": "6,224 dye particles \u00b7 2 spills by you",
+      "summary": "Dye spill. Paused. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 6,224 dye particles are in the water. 2 spills were added by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -175152556,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-b": {
+      "mode": "dye",
+      "readout": "6,224 dye particles \u00b7 2 spills by you",
+      "summary": "Dye spill. Paused. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 6,224 dye particles are in the water. 2 spills were added by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -175152556,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "mouse-paused": {
+      "mode": "dye",
+      "readout": "6,924 dye particles \u00b7 3 spills by you",
+      "summary": "Dye spill. Paused. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 6,224 dye particles are in the water. 2 spills were added by clicking.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -2029464168,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "resumed": {
+      "mode": "dye",
+      "readout": "7,116 dye particles \u00b7 3 spills by you",
+      "summary": "Dye spill. Playing. Seed 1291. Dye leaks from one point and drifts on a swirling current while it spreads out. 6,924 dye particles are in the water. 3 spills were added by clicking.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1420474241,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  },
+  "rivers": {
+    "visibility": "visible",
+    "initial": {
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,266 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 1291. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,266 cells, 18% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -2094022903,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-a": {
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,266 of 7,232 cells",
+      "summary": "Random rivers. Paused. Seed 1291. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,266 cells, 18% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -2094022903,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-b": {
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,266 of 7,232 cells",
+      "summary": "Random rivers. Paused. Seed 1291. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,266 cells, 18% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -2094022903,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "resumed": {
+      "mode": "rivers",
+      "readout": "Strahler orders 1\u20135 \u00b7 largest river drains 1,266 of 7,232 cells",
+      "summary": "Random rivers. Playing. Seed 1291. A random river network on a 113 by 64 grid, flowing left to right. Every cell drains to one of two neighbours downstream, so paths merge into rivers. The highest Strahler order is 5, and the largest river drains 1,266 cells, 18% of the grid. Bigger rivers appear first.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 1546412074,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  },
+  "collatz": {
+    "visibility": "visible",
+    "initial": {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 11 steps",
+      "summary": "Collatz delta. Playing. Seed 1291. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 1 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 17 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": 309122030,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-a": {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 15 steps",
+      "summary": "Collatz delta. Paused. Seed 1291. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 15 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 17 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -250614646,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "paused-b": {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 15 steps",
+      "summary": "Collatz delta. Paused. Seed 1291. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 15 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 17 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Play",
+        "Play"
+      ],
+      "canvasHash": -250614646,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    },
+    "resumed": {
+      "mode": "collatz",
+      "readout": "Sampled branches \u00b7 28 steps",
+      "summary": "Collatz delta. Playing. Seed 1291. Sampled branches at the 120-step setting. The full drawing shows 9,937 sampled numbers, not a total. 15 of 120 levels are fully drawn. Each path bends 10 degrees one way after an even step and 17 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": [
+        "Pause",
+        "Pause"
+      ],
+      "canvasHash": -1363584827,
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  }
+}

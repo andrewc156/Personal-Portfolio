@@ -1,0 +1,173 @@
+[
+  [
+    "before tap",
+    [
+      "Point at or tap the map to read a cell’s elevation and coordinates.",
+      [],
+      357,
+      581
+    ]
+  ],
+  [
+    "touchStart",
+    [
+      "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry",
+      [
+        [
+          "pointerover",
+          "touch",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerenter",
+          "touch",
+          "DIV",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerdown",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "touchstart",
+          "",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ]
+      ],
+      357,
+      581
+    ]
+  ],
+  [
+    "touchEnd",
+    [
+      "Point at or tap the map to read a cell’s elevation and coordinates.",
+      [
+        [
+          "pointerover",
+          "touch",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerenter",
+          "touch",
+          "DIV",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerdown",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "touchstart",
+          "",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerup",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerout",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerleave",
+          "touch",
+          "DIV",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "touchend",
+          "",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "click",
+          "touch",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ]
+      ],
+      357,
+      581
+    ]
+  ],
+  [
+    "after 900ms",
+    [
+      "Point at or tap the map to read a cell’s elevation and coordinates.",
+      [
+        [
+          "pointerover",
+          "touch",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerenter",
+          "touch",
+          "DIV",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "pointerdown",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "touchstart",
+          "",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerup",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerout",
+          "touch",
+          "CANVAS",
+          "Elevation 2,681.0 m (8,796 ft) at 38.0204° N, 111.6396° W · dry"
+        ],
+        [
+          "pointerleave",
+          "touch",
+          "DIV",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "touchend",
+          "",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ],
+        [
+          "click",
+          "touch",
+          "CANVAS",
+          "Point at or tap the map to read a cell’s elevation and coordinates."
+        ]
+      ],
+      357,
+      581
+    ]
+  ]
+]

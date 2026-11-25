@@ -1,0 +1,336 @@
+[
+  {
+    "path": "/garden/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "Garden"
+    ],
+    "citations": [],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/garden/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/garden/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/research/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "Research",
+      "Water-quality prediction on river networks",
+      "Analytic number theory",
+      "Spectral analysis on fractals"
+    ],
+    "citations": [],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/research/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/research/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/research/water-quality/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "Water-quality prediction on river networks",
+      "About",
+      "Methods",
+      "Results",
+      "Related work"
+    ],
+    "citations": [
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "author": "Andrew Chincea and Yunus Kaya",
+        "date": [
+          "2026-12-04"
+        ],
+        "title": "RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin",
+        "venue": "KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA"
+      },
+      {
+        "id": "project-rising-water",
+        "author": "Andrew Chincea",
+        "date": [
+          "2026-11"
+        ],
+        "title": "Rising water"
+      }
+    ],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/research/water-quality/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/research/water-quality/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/research/number-theory/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "Analytic number theory",
+      "About",
+      "Methods",
+      "Related work"
+    ],
+    "citations": [
+      {
+        "id": "paper-kth-power-divisor",
+        "author": "Tsz Ho Chan and Andrew Chincea",
+        "date": [],
+        "title": "Largest kth-Power Divisor of a Random Integer",
+        "status": "Submitted"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "author": "Andrew Chincea and Michael Liu",
+        "date": [
+          "2026-03"
+        ],
+        "title": "Largest Square Divisor of a Random Integer",
+        "venue": "Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL"
+      }
+    ],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/research/number-theory/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/research/number-theory/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/research/spectral-fractals/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "Spectral analysis on fractals",
+      "About",
+      "Methods",
+      "Related work"
+    ],
+    "citations": [
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "author": "Andrew Chincea",
+        "date": [
+          "2025-03"
+        ],
+        "title": "Properties of Eigenvalues of Fractal Laplacian",
+        "venue": "104th MAA Southeastern Section Meeting, High Point University, High Point, NC"
+      }
+    ],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/research/spectral-fractals/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/research/spectral-fractals/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/about/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "About",
+      "Contact"
+    ],
+    "citations": [],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/about/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/about/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  },
+  {
+    "path": "/cv/",
+    "viewport": [
+      390,
+      844
+    ],
+    "width": 390,
+    "headings": [
+      "CV",
+      "Contact",
+      "Education",
+      "Research interests",
+      "Publications and preprints",
+      "Research experience",
+      "Presentations",
+      "Projects",
+      "Technical skills",
+      "Work experience"
+    ],
+    "citations": [
+      {
+        "id": "paper-kth-power-divisor",
+        "author": "Tsz Ho Chan and Andrew Chincea",
+        "date": [],
+        "title": "Largest kth-Power Divisor of a Random Integer",
+        "status": "Submitted"
+      },
+      {
+        "id": "poster-rivernets-analytics-day-2026",
+        "author": "Andrew Chincea and Yunus Kaya",
+        "date": [
+          "2026-12-04"
+        ],
+        "title": "RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin",
+        "venue": "KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA"
+      },
+      {
+        "id": "talk-maa-southeastern-2026",
+        "author": "Andrew Chincea and Michael Liu",
+        "date": [
+          "2026-03"
+        ],
+        "title": "Largest Square Divisor of a Random Integer",
+        "venue": "Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL"
+      },
+      {
+        "id": "poster-fractal-laplacian-2025",
+        "author": "Andrew Chincea",
+        "date": [
+          "2025-03"
+        ],
+        "title": "Properties of Eigenvalues of Fractal Laplacian",
+        "venue": "104th MAA Southeastern Section Meeting, High Point University, High Point, NC"
+      },
+      {
+        "id": "project-owlpath",
+        "author": "Andrew Chincea",
+        "date": [
+          "2026-11"
+        ],
+        "title": "OwlPath"
+      },
+      {
+        "id": "project-personal-portfolio",
+        "author": "Andrew Chincea",
+        "date": [
+          "2026-11"
+        ],
+        "title": "Personal portfolio"
+      },
+      {
+        "id": "project-rising-water",
+        "author": "Andrew Chincea",
+        "date": [
+          "2026-11"
+        ],
+        "title": "Rising water"
+      },
+      {
+        "id": "project-nyc-subway",
+        "author": "Andrew Chincea",
+        "date": [
+          "2026-01",
+          "2026-05"
+        ],
+        "title": "NYC Subway Incident Modeling"
+      },
+      {
+        "id": "project-askscrappy",
+        "author": "Andrew Chincea",
+        "date": [
+          "2024-08",
+          "2024-12"
+        ],
+        "title": "AskScrappy"
+      }
+    ],
+    "meta": [
+      [
+        "canonical",
+        "http://localhost:4321/cv/"
+      ],
+      [
+        "og:url",
+        "http://localhost:4321/cv/"
+      ],
+      [
+        "og:image",
+        "http://localhost:4321/og/social-card.png"
+      ]
+    ],
+    "err": []
+  }
+]

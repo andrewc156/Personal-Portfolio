@@ -1,0 +1,104 @@
+{
+  "initial": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "123456",
+    "steps": "30",
+    "readout": "13 numbers within 7 steps of 1",
+    "summary": "Collatz delta. Playing. Seed 123456. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 10 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "play": "Pause",
+    "loop": true,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "firstWrap": {
+    "elapsedAfterInitial": 10.35,
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "650283",
+    "steps": "30",
+    "readout": "2 numbers within 1 step of 1",
+    "summary": "Collatz delta. Playing. Seed 650283. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 9 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "play": "Pause",
+    "loop": true,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "risingLoopOff": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "650283",
+    "steps": "30",
+    "readout": "Level 129\u00a0m \u00b7 12 lakes",
+    "summary": "Playing. Terrain 650283. Water level 111\u00a0m, 11% of the way up. 6 lakes are present. The barcode shows 7 of 12 bars so far. The longest finite bar is Lake 7, persistence 57\u00a0m.",
+    "play": "Pause",
+    "loop": false,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "collatzLoopOffStart": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "650283",
+    "steps": "30",
+    "readout": "3 numbers within 2 steps of 1",
+    "summary": "Collatz delta. Playing. Seed 650283. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 9 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "play": "Pause",
+    "loop": false,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "keyboardHome": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "650283",
+    "steps": "30",
+    "readout": "5 numbers within 4 steps of 1",
+    "summary": "Collatz delta. Playing. Seed 650283. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 9 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "play": "Pause",
+    "loop": false,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "keyboardEnd": {
+    "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+    "seed": "650283",
+    "steps": "30",
+    "readout": "7 numbers within 5 steps of 1",
+    "summary": "Collatz delta. Playing. Seed 650283. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 9 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+    "play": "Pause",
+    "loop": false,
+    "loopVisible": false,
+    "visibility": "visible",
+    "errors": [
+      "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+    ]
+  },
+  "120ThenWrap": [
+    {
+      "elapsedAfterSettingEnd": 0.21,
+      "url": "https://andrewchincea.com/?mode=collatz&seed=123456",
+      "seed": "650283",
+      "steps": "30",
+      "readout": "7 numbers within 5 steps of 1",
+      "summary": "Collatz delta. Playing. Seed 650283. Exactly 3,518 numbers reach 1 within 30 Collatz steps, the largest 1,073,741,824. The full drawing shows 1,297 of those numbers. 1 of 30 levels are fully drawn. Each path bends 9 degrees one way after an even step and 18 degrees the other way after an odd step, and all paths join one trunk at 1.",
+      "play": "Pause",
+      "loop": false,
+      "loopVisible": false,
+      "visibility": "visible",
+      "errors": [
+        "resource: https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092"
+      ]
+    }
+  ]
+}

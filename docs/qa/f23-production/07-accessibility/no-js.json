@@ -1,0 +1,1237 @@
+{
+  "/": {
+    "page": {
+      "url": "https://andrewchincea.com/",
+      "title": "🐴 Andrew Chincea",
+      "w": 1440,
+      "h": 900,
+      "sx": 0,
+      "sy": 0,
+      "pw": 1440,
+      "ph": 2890
+    },
+    "dom": {
+      "result": {
+        "type": "object",
+        "value": {
+          "path": "/",
+          "background": "rgb(17, 19, 21)",
+          "hook": true,
+          "settings": true,
+          "h1": "Andrew Chincea",
+          "noscript": [],
+          "content": "Andrew Chincea\n\nWhat can the shape of a landscape tell us about the water that moves through it?\n\nwater quality\ntopological data analysis\nstatistics\nnumber theory\nAnimation\nRising water\nDye spill\nFractal pond\nRandom rivers\nCollatz delta\nSettings\nPlay\nNew terrain\n\n \n\nWhen the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.\n\nWater rises over a random landscape. Lakes form in the valleys, and when two meet, the older one carries on. The barcode gives each lake a bar from the level where it forms to the level where it merges. See it on the Colorado River Basin →\nMission\n\nI study mathematics (statistics concentration) and data science and analytics at Kennesaw State University. My main research is on RiverNets, a project in the KSU TDA Lab, where I use graph-Laplacian regression to predict water quality at river stations that have no data. I also work in analytic number theory; as a First-Year Scholar, I studied eigenvalues of the fractal Laplacian.\n\nRecent work\n\nPAPERTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.\n\nPOSTERAndrew Chincea and Yunus Kaya (Dec 2026). RiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin. KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA.\n\nPROJECTAndrew Chincea (Nov 2026 – Present). OwlPath.\n\nPROJECTAndrew Chincea (Nov 2026). Personal portfolio.\n\nPROJECTAndrew Chincea (Nov 2026). Rising water.\n\nAll work →\n\nResearch\nIllustration\nWater-quality predicti",
+          "controls": [
+            [
+              "Dark theme",
+              false
+            ],
+            [
+              "Art settings",
+              false
+            ],
+            [
+              "hero-mode",
+              true
+            ],
+            [
+              "Animation settings",
+              true
+            ],
+            [
+              "Play",
+              false
+            ],
+            [
+              "New terrain",
+              false
+            ]
+          ],
+          "links": [
+            [
+              "See it on the Colorado River Basin →",
+              "/rising-water/"
+            ],
+            [
+              "OwlPath",
+              "https://andrewc156.github.io/OwlPath/"
+            ],
+            [
+              "Personal portfolio",
+              "https://andrewchincea.com/"
+            ],
+            [
+              "Rising water",
+              "/rising-water/"
+            ],
+            [
+              "All work →",
+              "/garden/"
+            ],
+            [
+              "Water-quality prediction on river networks",
+              "/research/water-quality/"
+            ],
+            [
+              "Related work →",
+              "/garden/?tag=water-quality"
+            ],
+            [
+              "Analytic number theory",
+              "/research/number-theory/"
+            ],
+            [
+              "Related work →",
+              "/garden/?tag=number-theory"
+            ],
+            [
+              "Spectral analysis on fractals",
+              "/research/spectral-fractals/"
+            ]
+          ],
+          "rows": 0
+        }
+      }
+    },
+    "before": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "skip-link",
+        "role": null,
+        "label": "Skip to content",
+        "href": "#main",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          8,
+          8,
+          151,
+          43
+        ],
+        "hit": true
+      }
+    ],
+    "afterSkip": {
+      "tag": "MAIN",
+      "id": "main",
+      "cls": "",
+      "role": null,
+      "label": "Andrew Chincea\n\nWhat can the shape of a landscape tell us about t",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        61,
+        1440,
+        2758
+      ],
+      "hit": false
+    },
+    "tabs": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "cls": "hero__art",
+        "role": "group",
+        "label": "Rising water animation",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          689,
+          165,
+          567,
+          477
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn hero__btn",
+        "role": null,
+        "label": "Play",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          702,
+          597,
+          72,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "BUTTON",
+        "id": "",
+        "cls": "btn hero__btn",
+        "role": null,
+        "label": "New terrain",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          782,
+          597,
+          99,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "See it on the Colorado River Basin →",
+        "href": "/rising-water/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          829,
+          701,
+          229,
+          18
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "citation__title",
+        "role": null,
+        "label": "OwlPath",
+        "href": "https://andrewc156.github.io/OwlPath/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          848,
+          1411,
+          65,
+          22
+        ],
+        "hit": false
+      }
+    ]
+  },
+  "/rising-water/": {
+    "page": {
+      "url": "https://andrewchincea.com/rising-water/",
+      "title": "🐴 Rising water · Andrew Chincea",
+      "w": 1440,
+      "h": 900,
+      "sx": 0,
+      "sy": 0,
+      "pw": 1440,
+      "ph": 8299
+    },
+    "dom": {
+      "result": {
+        "type": "object",
+        "value": {
+          "path": "/rising-water/",
+          "background": "rgb(17, 19, 21)",
+          "hook": true,
+          "settings": false,
+          "h1": "Colorado River Basin study area (RiverNets coverage)",
+          "noscript": [],
+          "content": "RISING WATER\n\nColorado River Basin study area (RiverNets coverage)\n\nWater rises over the study area. Lakes form in the valleys. When two meet, the older one carries on. Each bar runs from the water level where its lake forms to the level where it merges. The lowest lake’s bar never ends. The water on the map and the barcode are computed in your browser from the same 326 × 414 elevation grid; the shaded relief under the water is precomputed.\n\nPoint at or tap the map to read a cell’s elevation and coordinates.\n\nThe lowest lake and the 11 longest-lived lakes each have their own colour and a label at their pit (“lowest”, 1–11). All other lakes share one colour.\n\nLoading the elevation grid…\n\nWater level\n–\nPercentile\n–\nLakes\n–\nArea flooded\n–\n\nNo lake selected\n\nClick a bar, or use a button in the “Longest-lived lakes” table, to see where a lake is born and where it spills.\n\nPlay\nSpeed\n0.25×\n0.5×\n1×\n2×\n4×\nPacing\nPercentile\nLinear (metres)\nWater level\n–\nMin persistence\n10.0 m\nTop bars\n40 bars\nUnits\nm\nft\nView\nBarcode\nDiagram\nBasin mask\n\nUSGS Watershed Boundary Dataset regions 14–15 (Upper Colorado Region and Lower Colorado Region). Off by default. It hatches the map outside the basin and marks each lake in the table below; the lakes and the barcode are still computed on the whole rectangle.\n\nPlace labels\n\nShow nearby names from GNIS. When labels would overlap, the map gives priority to selected landmarks. See all places and coordinates.\n\nWith the map focused: Space plays or pauses, Left and Right arrows move the water level (with Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the previous or next bar, and Escape clears the selection.\n\nLongest-l",
+          "controls": [
+            [
+              "Dark theme",
+              false
+            ],
+            [
+              "Play",
+              true
+            ],
+            [
+              "ex-speed",
+              true
+            ],
+            [
+              "ex-pacing",
+              true
+            ],
+            [
+              "ex-level",
+              true
+            ],
+            [
+              "ex-minp",
+              true
+            ],
+            [
+              "ex-topn",
+              true
+            ],
+            [
+              "m",
+              true
+            ],
+            [
+              "ft",
+              true
+            ],
+            [
+              "Barcode",
+              true
+            ],
+            [
+              "Diagram",
+              true
+            ],
+            [
+              "ex-basin",
+              true
+            ],
+            [
+              "ex-places",
+              true
+            ],
+            [
+              "Show\nlowest lake on the map",
+              true
+            ],
+            [
+              "Show\nlake 1 on the map",
+              true
+            ],
+            [
+              "Show\nlake 2 on the map",
+              true
+            ],
+            [
+              "Show\nlake 3 on the map",
+              true
+            ],
+            [
+              "Show\nlake 4 on the map",
+              true
+            ],
+            [
+              "Show\nlake 5 on the map",
+              true
+            ],
+            [
+              "Show\nlake 6 on the map",
+              true
+            ]
+          ],
+          "links": [
+            [
+              "all places and coordinates",
+              "#place-labels-source"
+            ],
+            [
+              "About the data",
+              "#about-data"
+            ],
+            [
+              "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoTIFF",
+              "https://registry.opendata.aws/copernicus-dem/"
+            ],
+            [
+              "Copernicus DEM GLO-90 free licence (ESA / Copernicus)",
+              "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM"
+            ],
+            [
+              "https://doi.org/10.5270/ESA-c5d3d65",
+              "https://doi.org/10.5270/ESA-c5d3d65"
+            ],
+            [
+              "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM",
+              "https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM"
+            ],
+            [
+              "https://registry.opendata.aws/copernicus-dem/",
+              "https://registry.opendata.aws/copernicus-dem/"
+            ],
+            [
+              "https://copernicus-dem-90m.s3.amazonaws.com/",
+              "https://copernicus-dem-90m.s3.amazonaws.com/"
+            ],
+            [
+              "https://doi.org/10.5270/ESA-c5d3d65",
+              "https://doi.org/10.5270/ESA-c5d3d65"
+            ],
+            [
+              "USGS Watershed Boundary Dataset (WBD), 2-digit hydrologic units (HU-2), National Map staged products, Shapefile",
+              "https://www.usgs.gov/national-hydrography/watershed-boundary-dataset"
+            ]
+          ],
+          "rows": 21
+        }
+      }
+    },
+    "before": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "skip-link",
+        "role": null,
+        "label": "Skip to content",
+        "href": "#main",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          8,
+          8,
+          151,
+          43
+        ],
+        "hit": true
+      }
+    ],
+    "afterSkip": {
+      "tag": "MAIN",
+      "id": "main",
+      "cls": "",
+      "role": null,
+      "label": "RISING WATER\n\nColorado River Basin study area (RiverNets coverage",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        61,
+        1440,
+        8167
+      ],
+      "hit": false
+    },
+    "tabs": [
+      {
+        "tag": "DIV",
+        "id": "",
+        "cls": "ex-stage",
+        "role": "group",
+        "label": "Rising water map",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          184,
+          327,
+          572,
+          908
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "all places and coordinates",
+        "href": "#place-labels-source",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          994,
+          1414,
+          152,
+          17
+        ],
+        "hit": false
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "About the data",
+        "href": "#about-data",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          301,
+          1711,
+          113,
+          22
+        ],
+        "hit": false
+      },
+      {
+        "tag": "DIV",
+        "id": "",
+        "cls": "lakes__scroll",
+        "role": "region",
+        "label": "Table of the longest-lived lakes",
+        "href": null,
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          184,
+          1752,
+          1072,
+          1171
+        ],
+        "hit": false
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "Copernicus DEM GLO-90 (COP-DEM_GLO-90-DGED), Cloud-Optimized GeoT",
+        "href": "https://registry.opendata.aws/copernicus-dem/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          388,
+          3875,
+          331,
+          40
+        ],
+        "hit": false
+      }
+    ]
+  },
+  "/garden/": {
+    "page": {
+      "url": "https://andrewchincea.com/garden/",
+      "title": "🐴 Garden · Andrew Chincea",
+      "w": 1440,
+      "h": 900,
+      "sx": 0,
+      "sy": 0,
+      "pw": 1440,
+      "ph": 1565
+    },
+    "dom": {
+      "result": {
+        "type": "object",
+        "value": {
+          "path": "/garden/",
+          "background": "rgb(17, 19, 21)",
+          "hook": true,
+          "settings": false,
+          "h1": "Garden",
+          "noscript": [
+            "Filtering needs JavaScript, so every item is shown below."
+          ],
+          "content": "Garden\n\nHere's some of my work. Submitted work has no date yet, so it comes first. The rest is newest first.\n\nTYPE\nAll types\nPapers\nPosters\nTalks\nProjects\nRESEARCH AREA\nAll areas\nWater-quality prediction on river networks\nAnalytic number theory\nSpectral analysis on fractals\n\nFiltering needs JavaScript, so every item is shown below.\n\n9 items\n\nPAPER\nLargest kth-Power Divisor of a Random Integer\nWe establish an asymptotic formula with an O(log x) error term for every integer k ≥ 2.\nSubmitted\nPOSTER\nRiverNets: Graph-Laplacian Regression on River Networks for Water Quality Prediction at Unmonitored Stations in the Colorado River Basin\nWe present graph-Laplacian regression for predicting water quality at unmonitored stations in the Colorado River Basin. · KSU Fall Analytics Day, Kennesaw State University, Kennesaw, GA\nDec 2026\nPROJECT\nOwlPath\nAn interactive prerequisite map for three KSU majors. Students mark the courses they've finished and see which classes they can take next term.\nNov 2026 – Present\nPROJECT\nPersonal portfolio\nMy academic site for research, projects and CV.\nNov 2026\nPROJECT\nRising water\nAn interactive explorer of persistent homology: water rises over Colorado River Basin terrain while a barcode updates live.\nNov 2026\nTALK\nLargest Square Divisor of a Random Integer\nWe presented the square-divisor case (k = 2) of the largest kth-power divisor of a random integer. · Statistics & Data Applications session, 105th MAA Southeastern Section Meeting, University of North Alabama, Florence, AL\nMar 2026\nPROJECT\nNYC Subway Incident Modeling\nRegression models in R and Quarto that relate weather and ridership to NYC subway disruptions, using MTA major-incident records for 2",
+          "controls": [
+            [
+              "Dark theme",
+              false
+            ]
+          ],
+          "links": [
+            [
+              "All types",
+              "/garden/"
+            ],
+            [
+              "Papers",
+              "/garden/?type=paper"
+            ],
+            [
+              "Posters",
+              "/garden/?type=poster"
+            ],
+            [
+              "Talks",
+              "/garden/?type=talk"
+            ],
+            [
+              "Projects",
+              "/garden/?type=project"
+            ],
+            [
+              "All areas",
+              "/garden/"
+            ],
+            [
+              "Water-quality prediction on river networks",
+              "/garden/?tag=water-quality"
+            ],
+            [
+              "Analytic number theory",
+              "/garden/?tag=number-theory"
+            ],
+            [
+              "Spectral analysis on fractals",
+              "/garden/?tag=spectral-fractals"
+            ],
+            [
+              "PAPER\nLargest kth-Power Divisor of a Random Integer\nWe establish an asymptotic formula with an O(log x) error term for every integer k ≥ 2.\nSubmitted",
+              "/research/number-theory/"
+            ]
+          ],
+          "rows": 0
+        }
+      }
+    },
+    "before": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "skip-link",
+        "role": null,
+        "label": "Skip to content",
+        "href": "#main",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          8,
+          8,
+          151,
+          43
+        ],
+        "hit": true
+      }
+    ],
+    "afterSkip": {
+      "tag": "MAIN",
+      "id": "main",
+      "cls": "",
+      "role": null,
+      "label": "Garden\n\nHere's some of my work. Submitted work has no date yet, s",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        61,
+        1440,
+        1433
+      ],
+      "hit": false
+    },
+    "tabs": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "chip",
+        "role": null,
+        "label": "All types",
+        "href": "/garden/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          332,
+          259,
+          80,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "chip",
+        "role": null,
+        "label": "Papers",
+        "href": "/garden/?type=paper",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          420,
+          259,
+          70,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "chip",
+        "role": null,
+        "label": "Posters",
+        "href": "/garden/?type=poster",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          498,
+          259,
+          73,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "chip",
+        "role": null,
+        "label": "Talks",
+        "href": "/garden/?type=talk",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          579,
+          259,
+          58,
+          36
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "chip",
+        "role": null,
+        "label": "Projects",
+        "href": "/garden/?type=project",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          646,
+          259,
+          77,
+          36
+        ],
+        "hit": true
+      }
+    ]
+  },
+  "/research/water-quality/": {
+    "page": {
+      "url": "https://andrewchincea.com/research/water-quality/",
+      "title": "🐴 Water-quality prediction on river networks · Andrew Chincea",
+      "w": 1440,
+      "h": 900,
+      "sx": 0,
+      "sy": 0,
+      "pw": 1440,
+      "ph": 1910
+    },
+    "dom": {
+      "result": {
+        "type": "object",
+        "value": {
+          "path": "/research/water-quality/",
+          "background": "rgb(17, 19, 21)",
+          "hook": true,
+          "settings": false,
+          "h1": "Water-quality prediction on river networks",
+          "noscript": [],
+          "content": "RESEARCH\n\nWater-quality prediction on river networks\nIllustration\nAbout\n\nI use graph-Laplacian regression on river networks to predict hourly water quality at stations that have no data.\n\nI work on RiverNets, a project in the TDA Lab at Kennesaw State University. The model predicts five measurements (water temperature, dissolved oxygen, specific conductance, pH and turbidity) with a smoothness penalty along the river network.\n\nPosition\nUndergraduate Research Assistant – RiverNets (TDA Lab), Kennesaw State University · Aug 2026 – Present\nAdvisor\nDr. Mehmet Aktas\n\nThe Rising water explorer uses elevation data for the same Colorado River Basin study area that RiverNets covers.\n\nMethods\nGraph-Laplacian regression with a smoothness penalty along the river network.\nHourly USGS continuous water-quality records from 28 Colorado River Basin stations, cleaned and audited for completeness by station and variable.\nRiver-network graphs built in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), plus graphs for the Chattahoochee basin.\nKron (Schur-complement) reduction that collapses the network exactly onto the station nodes, matching the full Laplacian to within 10⁻⁸ while running about 150× faster.\nBenchmarks against OLS, Ridge, Elastic Net, a spline GAM, random forest and gradient boosting under nested leave-one-station-out validation, plus three-station and whole-subbasin holdouts.\nResults\nAt unseen stations the graph model reached R² = 0.38 for specific conductance and 0.12 for pH, versus 0.02 for the best alternative.\nERA5-Land air temperature raised water-temperature R² from 0.863 to 0.892, and a graph–gradient-boosting blend",
+          "controls": [
+            [
+              "Dark theme",
+              false
+            ]
+          ],
+          "links": [
+            [
+              "RESEARCH",
+              "/research/"
+            ],
+            [
+              "Rising water explorer",
+              "/rising-water/"
+            ],
+            [
+              "Rising water",
+              "/rising-water/"
+            ],
+            [
+              "See this area in the Garden →",
+              "/garden/?tag=water-quality"
+            ]
+          ],
+          "rows": 0
+        }
+      }
+    },
+    "before": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "skip-link",
+        "role": null,
+        "label": "Skip to content",
+        "href": "#main",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          8,
+          8,
+          151,
+          43
+        ],
+        "hit": true
+      }
+    ],
+    "afterSkip": {
+      "tag": "MAIN",
+      "id": "main",
+      "cls": "",
+      "role": null,
+      "label": "RESEARCH\n\nWater-quality prediction on river networks\nIllustration",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        61,
+        1440,
+        1777
+      ],
+      "hit": false
+    },
+    "tabs": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "RESEARCH",
+        "href": "/research/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          184,
+          110,
+          69,
+          17
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "Rising water explorer",
+        "href": "/rising-water/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          217,
+          852,
+          161,
+          22
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "citation__title",
+        "role": null,
+        "label": "Rising water",
+        "href": "/rising-water/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          479,
+          1679,
+          92,
+          22
+        ],
+        "hit": false
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "See this area in the Garden →",
+        "href": "/garden/?tag=water-quality",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          184,
+          1730,
+          186,
+          18
+        ],
+        "hit": false
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "About",
+        "href": "/about/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          348,
+          1865,
+          38,
+          18
+        ],
+        "hit": false
+      }
+    ]
+  },
+  "/cv/": {
+    "page": {
+      "url": "https://andrewchincea.com/cv/",
+      "title": "🐴 CV · Andrew Chincea",
+      "w": 1440,
+      "h": 900,
+      "sx": 0,
+      "sy": 0,
+      "pw": 1440,
+      "ph": 3954
+    },
+    "dom": {
+      "result": {
+        "type": "object",
+        "value": {
+          "path": "/cv/",
+          "background": "rgb(17, 19, 21)",
+          "hook": true,
+          "settings": false,
+          "h1": "CV",
+          "noscript": [],
+          "content": "CV\n\nAndrew Dumitru Chincea\n\nContact\nEmail\nachincea@students.kennesaw.edu\nGitHub\ngithub.com/andrewc156\nLinkedIn\nwww.linkedin.com/in/andrewchincea\nEducation\n\nKennesaw State University\nMarietta, GA\n\nB.S. in Mathematics (Statistics concentration); B.S. in Data Science and Analytics\nExpected May 2028\n\nJunior in the 2026–27 academic year.\n\nMathematics\nCalculus I–III, Linear Algebra, Ordinary Differential Equations, Real Analysis, Topology\nStatistics & Data Science\nStatistical Methods I & II, Programming in R, Data Visualization\nComputing\nProgramming and Problem Solving I & II\nResearch interests\n\nAnalytic number theory; topological and graph-based data analysis; statistics and machine learning for scientific data.\n\nPublications and preprints\n\nTsz Ho Chan and Andrew Chincea. Largest kth-Power Divisor of a Random Integer. Submitted.\n\nResearch experience\nUndergraduate Research Assistant – RiverNets (TDA Lab)\nAug 2026 – Present\n\nKennesaw State University · Advisor: Dr. Mehmet Aktas\n\nDeveloped a graph-Laplacian regression model that predicts hourly water quality (water temperature, dissolved oxygen, specific conductance, pH, turbidity) at river stations with no data, using a smoothness penalty along the river network.\nDownloaded, cleaned, and audited hourly USGS continuous water-quality records from 28 Colorado River Basin stations, tracking data completeness by station and variable.\nBuilt river-network graphs in NetworkX from MERIT Hydro 90 m flow directions (67,401 nodes for the Colorado basin, compressed to 67), along with graphs for the Chattahoochee basin.\nApplied Kron (Schur-complement) reduction to collapse the network exactly onto the station nodes, matching the full Laplacia",
+          "controls": [
+            [
+              "Dark theme",
+              false
+            ]
+          ],
+          "links": [
+            [
+              "achincea@students.kennesaw.edu",
+              "mailto:achincea@students.kennesaw.edu"
+            ],
+            [
+              "github.com/andrewc156",
+              "https://github.com/andrewc156"
+            ],
+            [
+              "www.linkedin.com/in/andrewchincea",
+              "https://www.linkedin.com/in/andrewchincea"
+            ],
+            [
+              "Water-quality prediction on river networks",
+              "/research/water-quality/"
+            ],
+            [
+              "Analytic number theory",
+              "/research/number-theory/"
+            ],
+            [
+              "Spectral analysis on fractals",
+              "/research/spectral-fractals/"
+            ],
+            [
+              "OwlPath",
+              "https://andrewc156.github.io/OwlPath/"
+            ],
+            [
+              "Personal portfolio",
+              "https://andrewchincea.com/"
+            ],
+            [
+              "Rising water",
+              "/rising-water/"
+            ]
+          ],
+          "rows": 0
+        }
+      }
+    },
+    "before": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "skip-link",
+        "role": null,
+        "label": "Skip to content",
+        "href": "#main",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(232, 229, 223)"
+        ],
+        "shadow": "none",
+        "rect": [
+          8,
+          8,
+          151,
+          43
+        ],
+        "hit": true
+      }
+    ],
+    "afterSkip": {
+      "tag": "MAIN",
+      "id": "main",
+      "cls": "",
+      "role": null,
+      "label": "CV\n\nAndrew Dumitru Chincea\n\nContact\nEmail\nachincea@students.kenne",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "none",
+        "3px",
+        "rgb(232, 229, 223)"
+      ],
+      "shadow": "none",
+      "rect": [
+        0,
+        61,
+        1440,
+        3821
+      ],
+      "hit": false
+    },
+    "tabs": [
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "achincea@students.kennesaw.edu",
+        "href": "mailto:achincea@students.kennesaw.edu",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          292,
+          229,
+          264,
+          22
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "github.com/andrewc156",
+        "href": "https://github.com/andrewc156",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          292,
+          264,
+          188,
+          22
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "www.linkedin.com/in/andrewchincea",
+        "href": "https://www.linkedin.com/in/andrewchincea",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          292,
+          299,
+          284,
+          22
+        ],
+        "hit": true
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "Water-quality prediction on river networks",
+        "href": "/research/water-quality/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          281,
+          1719,
+          265,
+          18
+        ],
+        "hit": false
+      },
+      {
+        "tag": "A",
+        "id": "",
+        "cls": "",
+        "role": null,
+        "label": "Analytic number theory",
+        "href": "/research/number-theory/",
+        "focus": true,
+        "outline": [
+          "solid",
+          "2px",
+          "rgb(115, 182, 230)"
+        ],
+        "shadow": "none",
+        "rect": [
+          281,
+          1994,
+          147,
+          18
+        ],
+        "hit": false
+      }
+    ]
+  }
+}

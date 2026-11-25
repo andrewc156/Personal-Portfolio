@@ -1,0 +1,145 @@
+[
+  [
+    "Home shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "0",
+      "Play",
+      "Water level\n−2.9 m−9 ft\nPercentile\n0.0\nLakes\n1\nArea flooded\n0.0 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "ArrowRight shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "5",
+      "Play",
+      "Water level\n27.7 m91 ft\nPercentile\n0.5\nLakes\n3\nArea flooded\n0.5 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "ArrowRight shift=True",
+    [
+      "visible",
+      "ex-stage",
+      "55",
+      "Play",
+      "Water level\n324.8 m1,066 ft\nPercentile\n5.5\nLakes\n4\nArea flooded\n5.8 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "End shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "1000",
+      "Play",
+      "Water level\n3,697.8 m12,132 ft\nPercentile\n100.0\nLakes\n1\nArea flooded\n100.0 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "ArrowLeft shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "995",
+      "Play",
+      "Water level\n3,143.0 m10,312 ft\nPercentile\n99.5\nLakes\n3\nArea flooded\n99.5 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "ArrowDown shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "1000",
+      "Play",
+      "Water level\n3,697.8 m12,132 ft\nPercentile\n100.0\nLakes\n1\nArea flooded\n100.0 %",
+      "The lowest lake · birth cell 133025"
+    ]
+  ],
+  [
+    "ArrowUp shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "996",
+      "Play",
+      "Water level\n3,182.0 m10,440 ft\nPercentile\n99.6\nLakes\n2\nArea flooded\n99.6 %",
+      "Lake 9 · birth cell 27709"
+    ]
+  ],
+  [
+    "Escape shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "996",
+      "Play",
+      "Water level\n3,182.0 m10,440 ft\nPercentile\n99.6\nLakes\n2\nArea flooded\n99.6 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "Home shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "0",
+      "Play",
+      "Water level\n−2.9 m−9 ft\nPercentile\n0.0\nLakes\n1\nArea flooded\n0.0 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "  shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "7",
+      "Pause",
+      "Water level\n43.4 m142 ft\nPercentile\n0.8\nLakes\n9\nArea flooded\n0.8 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "  shift=False",
+    [
+      "visible",
+      "ex-stage",
+      "8",
+      "Play",
+      "Water level\n43.4 m142 ft\nPercentile\n0.8\nLakes\n9\nArea flooded\n0.8 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "Tab shift=False",
+    [
+      "visible",
+      "btn ex-play",
+      "8",
+      "Play",
+      "Water level\n43.4 m142 ft\nPercentile\n0.8\nLakes\n9\nArea flooded\n0.8 %",
+      "No lake selected"
+    ]
+  ],
+  [
+    "reload with prefers-reduced-motion: reduce",
+    [
+      "visible",
+      "",
+      "450",
+      "Play",
+      "Water level\n1,603.0 m5,259 ft\nPercentile\n45.0\nLakes\n13\nArea flooded\n45.7 %",
+      "No lake selected"
+    ]
+  ]
+]

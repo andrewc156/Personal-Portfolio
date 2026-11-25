@@ -1,0 +1,422 @@
+{
+  "initial": {
+    "width": 720,
+    "height": 450,
+    "doc": 720,
+    "body": 720,
+    "header": 99.578125,
+    "overflow": [
+      [
+        "rect",
+        "",
+        "",
+        731,
+        null
+      ],
+      [
+        "path",
+        "",
+        "",
+        731,
+        null
+      ],
+      [
+        "path",
+        "",
+        "",
+        731,
+        null
+      ],
+      [
+        "rect",
+        "",
+        "",
+        731,
+        null
+      ],
+      [
+        "path",
+        "",
+        "",
+        731,
+        null
+      ],
+      [
+        "path",
+        "",
+        "",
+        731,
+        null
+      ]
+    ],
+    "errors": []
+  },
+  "skip": {
+    "tag": "A",
+    "id": "",
+    "cls": "skip-link",
+    "role": null,
+    "label": "Skip to content",
+    "href": "#main",
+    "focus": true,
+    "outline": [
+      "solid",
+      "3px",
+      "rgb(255, 255, 255)"
+    ],
+    "shadow": "none",
+    "rect": [
+      8,
+      -78,
+      151,
+      43
+    ],
+    "hit": false
+  },
+  "skipLanding": {
+    "tag": "MAIN",
+    "id": "main",
+    "cls": "",
+    "role": null,
+    "label": "Andrew Chincea\n\nWhat can the shape of a landscape tell us about t",
+    "href": null,
+    "focus": true,
+    "outline": [
+      "none",
+      "3px",
+      "rgb(28, 27, 25)"
+    ],
+    "shadow": "none",
+    "rect": [
+      0,
+      0,
+      720,
+      2955
+    ],
+    "hit": false
+  },
+  "tasks": [
+    {
+      "tag": "SELECT",
+      "id": "hero-mode",
+      "cls": "",
+      "role": null,
+      "label": "Animation",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        101,
+        220,
+        192,
+        44
+      ],
+      "hit": true,
+      "scrollY": 100
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn",
+      "role": null,
+      "label": "Animation settings",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        301,
+        220,
+        101,
+        44
+      ],
+      "hit": true,
+      "scrollY": 100
+    },
+    {
+      "tag": "DIV",
+      "id": "",
+      "cls": "hero__art",
+      "role": "group",
+      "label": "Rising water animation",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        29,
+        -1,
+        662,
+        531
+      ],
+      "hit": true,
+      "scrollY": 377
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn hero__btn",
+      "role": null,
+      "label": "Play",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        42,
+        207,
+        72,
+        36
+      ],
+      "hit": true,
+      "scrollY": 655
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "btn hero__btn",
+      "role": null,
+      "label": "New terrain",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        122,
+        207,
+        99,
+        36
+      ],
+      "hit": true,
+      "scrollY": 655
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "See it on the Colorado River Basin →",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        170,
+        311,
+        229,
+        18
+      ],
+      "hit": true,
+      "scrollY": 655
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "OwlPath",
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        401,
+        214,
+        65,
+        22
+      ],
+      "hit": true,
+      "scrollY": 1435
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Personal portfolio",
+      "href": "https://andrewchincea.com/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        324,
+        266,
+        135,
+        22
+      ],
+      "hit": true,
+      "scrollY": 1435
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "citation__title",
+      "role": null,
+      "label": "Rising water",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        324,
+        318,
+        92,
+        22
+      ],
+      "hit": true,
+      "scrollY": 1435
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "All work →",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        29,
+        371,
+        85,
+        22
+      ],
+      "hit": true,
+      "scrollY": 1435
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Water-quality prediction on river networks",
+      "href": "/research/water-quality/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        29,
+        189,
+        169,
+        73
+      ],
+      "hit": true,
+      "scrollY": 1887
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Related work: Water-quality prediction on river networks",
+      "href": "/garden/?tag=water-quality",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        29,
+        419,
+        100,
+        18
+      ],
+      "hit": true,
+      "scrollY": 1887
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Analytic number theory",
+      "href": "/research/number-theory/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        256,
+        189,
+        152,
+        49
+      ],
+      "hit": true,
+      "scrollY": 1887
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Related work: Analytic number theory",
+      "href": "/garden/?tag=number-theory",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        256,
+        419,
+        100,
+        18
+      ],
+      "hit": true,
+      "scrollY": 1887
+    }
+  ]
+}

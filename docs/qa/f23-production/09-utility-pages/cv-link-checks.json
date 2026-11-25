@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://andrewchincea.com/research/water-quality/",
+    "final": "https://andrewchincea.com/research/water-quality/",
+    "status": 403,
+    "title": null,
+    "browser": {
+      "href": "https://andrewchincea.com/research/water-quality/",
+      "status": 200,
+      "title": "\ud83d\udc34 Water-quality prediction on river networks \u00b7 Andrew Chincea",
+      "heading": "Water-quality prediction on river networks"
+    }
+  },
+  {
+    "url": "https://andrewchincea.com/research/number-theory/",
+    "final": "https://andrewchincea.com/research/number-theory/",
+    "status": 403,
+    "title": null,
+    "browser": {
+      "href": "https://andrewchincea.com/research/number-theory/",
+      "status": 200,
+      "title": "\ud83d\udc34 Analytic number theory \u00b7 Andrew Chincea",
+      "heading": "Analytic number theory"
+    }
+  },
+  {
+    "url": "https://andrewchincea.com/research/spectral-fractals/",
+    "final": "https://andrewchincea.com/research/spectral-fractals/",
+    "status": 403,
+    "title": null,
+    "browser": {
+      "href": "https://andrewchincea.com/research/spectral-fractals/",
+      "status": 200,
+      "title": "\ud83d\udc34 Spectral analysis on fractals \u00b7 Andrew Chincea",
+      "heading": "Spectral analysis on fractals"
+    }
+  },
+  {
+    "url": "https://andrewc156.github.io/OwlPath/",
+    "final": "https://andrewc156.github.io/OwlPath/",
+    "status": 200,
+    "title": "OwlPath",
+    "browser": {
+      "href": "https://andrewc156.github.io/OwlPath/",
+      "status": 200,
+      "title": "\ud83d\udc34 OwlPath",
+      "heading": "OwlPath"
+    }
+  },
+  {
+    "url": "https://andrewchincea.com/rising-water/",
+    "final": "https://andrewchincea.com/rising-water/",
+    "status": 403,
+    "title": null,
+    "browser": {
+      "href": "https://andrewchincea.com/rising-water/",
+      "status": 200,
+      "title": "\ud83d\udc34 Rising water \u00b7 Andrew Chincea",
+      "heading": "Colorado River Basin study area (RiverNets coverage)"
+    }
+  }
+]

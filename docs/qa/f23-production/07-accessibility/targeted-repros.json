@@ -1,0 +1,553 @@
+{
+  "panelAfterReset": {
+    "html": "<select id=\"hero-mode\" name=\"hero-mode\" form=\"hero-settings\" data-astro-cid-fi6a2bfj=\"\"><option value=\"rising\" selected=\"\" data-astro-cid-fi6a2bfj=\"\">Rising water</option><option value=\"dye\" data-astro-cid-fi6a2bfj=\"\">Dye spill</option><option value=\"pond\" data-astro-cid-fi6a2bfj=\"\">Fractal pond</option><option value=\"rivers\" data-astro-cid-fi6a2bfj=\"\">Random rivers</",
+    "focus": true,
+    "coords": {
+      "x": 88.34375,
+      "y": 106.359375,
+      "width": 106.46875,
+      "height": 44,
+      "top": 106.359375,
+      "right": 194.8125,
+      "bottom": 150.359375,
+      "left": 88.34375
+    },
+    "center": "<div class=\"settings__head\" data-astro-cid-psic4rm5=\"\"><h2 id=\"settings-title\" class=\"settings__title\" tabindex=\"-1\" data-settings-title=\"\" data-astro-cid-psic4rm5=\"\">Art settings</h2><button type=\"button\" class=\"icon-btn\" data-settings-close=\"\" aria-label=\"Cl",
+    "header": {
+      "x": 0,
+      "y": -303,
+      "width": 320,
+      "height": 99.578125,
+      "top": -303,
+      "right": 320,
+      "bottom": -203.421875,
+      "left": 0
+    },
+    "overflow": "clip",
+    "opacity": "0.7",
+    "z": "auto",
+    "sy": 303,
+    "loading": false,
+    "panelOpen": "true",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/",
+    "errors": []
+  },
+  "afterEscape": {
+    "html": "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1",
+    "focus": true,
+    "coords": {
+      "x": 272,
+      "y": 9.59375,
+      "width": 40,
+      "height": 40,
+      "top": 9.59375,
+      "right": 312,
+      "bottom": 49.59375,
+      "left": 272
+    },
+    "center": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1.4 2.1-2.4 2.4-2.1-1.4-1.7.8-.5 2.4h-3.4l-.5-2.4-1.7-.8-2.1 1.4-2.4-2.4 1.4-2.1-",
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 0,
+    "loading": false,
+    "panelOpen": "false",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/",
+    "errors": []
+  },
+  "skipFirst": {
+    "html": "<a class=\"skip-link\" href=\"#main\" data-astro-cid-z4jru4n3=\"\">Skip to content</a>",
+    "focus": true,
+    "coords": {
+      "x": 8,
+      "y": -78.375,
+      "width": 151.046875,
+      "height": 43.1875,
+      "top": -78.375,
+      "right": 159.046875,
+      "bottom": -35.1875,
+      "left": 8
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "100",
+    "sy": 0,
+    "loading": false,
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/cv/",
+    "errors": []
+  },
+  "skipWrap": {
+    "html": "<a class=\"skip-link\" href=\"#main\" data-astro-cid-z4jru4n3=\"\">Skip to content</a>",
+    "focus": true,
+    "coords": {
+      "x": 8,
+      "y": 8,
+      "width": 151.046875,
+      "height": 43.1875,
+      "top": 8,
+      "right": 159.046875,
+      "bottom": 51.1875,
+      "left": 8
+    },
+    "center": "<a class=\"skip-link\" href=\"#main\" data-astro-cid-z4jru4n3=\"\">Skip to content</a>",
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 99.578125,
+      "top": 0,
+      "right": 320,
+      "bottom": 99.578125,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "100",
+    "sy": 0,
+    "loading": false,
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/cv/#main",
+    "errors": []
+  },
+  "noJsHeader": [
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "skip-link",
+      "role": null,
+      "label": "Skip to content",
+      "href": "#main",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(255, 255, 255)"
+      ],
+      "shadow": "none",
+      "rect": [
+        8,
+        -78,
+        151,
+        43
+      ],
+      "hit": false
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "wordmark",
+      "role": null,
+      "label": "Andrew Chincea",
+      "href": "/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(28, 27, 25)"
+      ],
+      "shadow": "none",
+      "rect": [
+        184,
+        8,
+        129,
+        43
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Mission",
+      "href": "/#mission",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        696,
+        11,
+        48,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Work",
+      "href": "/#work",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        760,
+        11,
+        33,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Research",
+      "href": "/#research",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        808,
+        11,
+        58,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Open science",
+      "href": "/#open-science",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        883,
+        11,
+        85,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Garden",
+      "href": "/garden/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        984,
+        11,
+        46,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "Rising water",
+      "href": "/rising-water/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1046,
+        11,
+        77,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "cls": "",
+      "role": null,
+      "label": "CV",
+      "href": "/cv/",
+      "focus": true,
+      "outline": [
+        "solid",
+        "3px",
+        "rgb(92, 87, 79)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1139,
+        11,
+        17,
+        38
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "icon-btn theme-toggle",
+      "role": null,
+      "label": "Dark theme",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1180,
+        10,
+        40,
+        40
+      ],
+      "hit": true
+    },
+    {
+      "tag": "BUTTON",
+      "id": "",
+      "cls": "icon-btn",
+      "role": null,
+      "label": "Art settings",
+      "href": null,
+      "focus": true,
+      "outline": [
+        "solid",
+        "2px",
+        "rgb(11, 79, 122)"
+      ],
+      "shadow": "none",
+      "rect": [
+        1224,
+        10,
+        40,
+        40
+      ],
+      "hit": true
+    }
+  ],
+  "noJsArt": {
+    "html": "<button type=\"button\" class=\"icon-btn\" data-settings-toggle=\"\" aria-label=\"Art settings\" aria-controls=\"settings-panel\" aria-expanded=\"false\" title=\"Art settings\" data-astro-cid-jr7posx5=\"\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1",
+    "focus": true,
+    "coords": {
+      "x": 1224,
+      "y": 10,
+      "width": 40,
+      "height": 40,
+      "top": 10,
+      "right": 1264,
+      "bottom": 50,
+      "left": 1224
+    },
+    "center": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-jr7posx5=\"\"><path d=\"M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1.4 2.1-2.4 2.4-2.1-1.4-1.7.8-.5 2.4h-3.4l-.5-2.4-1.7-.8-2.1 1.4-2.4-2.4 1.4-2.1-",
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 61,
+      "top": 0,
+      "right": 1440,
+      "bottom": 61,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 0,
+    "loading": false,
+    "panelOpen": "false",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/",
+    "errors": []
+  },
+  "noJsTheme": {
+    "html": "<button type=\"button\" class=\"icon-btn theme-toggle\" data-theme-toggle=\"\" aria-pressed=\"false\" aria-label=\"Dark theme\" title=\"Toggle dark theme\" data-astro-cid-xcti7gnb=\"\"><svg class=\"theme-toggle__moon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-xcti7gnb=\"\"><path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z\" fill=\"none\" stroke=\"current",
+    "focus": true,
+    "coords": {
+      "x": 1180,
+      "y": 10,
+      "width": 40,
+      "height": 40,
+      "top": 10,
+      "right": 1220,
+      "bottom": 50,
+      "left": 1180
+    },
+    "center": "<svg class=\"theme-toggle__moon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" focusable=\"false\" data-astro-cid-xcti7gnb=\"\"><path d=\"M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linejoin=\"round\" data-astro-",
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 61,
+      "top": 0,
+      "right": 1440,
+      "bottom": 61,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 0,
+    "loading": false,
+    "panelOpen": "false",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/",
+    "errors": []
+  },
+  "noJsHomeBeforePlay": {
+    "html": "<button type=\"button\" class=\"btn hero__btn\" data-hero-play=\"\" data-astro-cid-fi6a2bfj=\"\">Play</button>",
+    "focus": true,
+    "coords": {
+      "x": 701.71875,
+      "y": 536.15625,
+      "width": 72,
+      "height": 36,
+      "top": 536.15625,
+      "right": 773.71875,
+      "bottom": 572.15625,
+      "left": 701.71875
+    },
+    "center": "<button type=\"button\" class=\"btn hero__btn\" data-hero-play=\"\" data-astro-cid-fi6a2bfj=\"\">Play</button>",
+    "header": {
+      "x": 0,
+      "y": -61,
+      "width": 1440,
+      "height": 61,
+      "top": -61,
+      "right": 1440,
+      "bottom": 0,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 61,
+    "loading": false,
+    "panelOpen": "false",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/#main",
+    "errors": []
+  },
+  "noJsHomeAfterPlay": {
+    "html": "<button type=\"button\" class=\"btn hero__btn\" data-hero-play=\"\" data-astro-cid-fi6a2bfj=\"\">Play</button>",
+    "focus": true,
+    "coords": {
+      "x": 701.71875,
+      "y": 536.15625,
+      "width": 72,
+      "height": 36,
+      "top": 536.15625,
+      "right": 773.71875,
+      "bottom": 572.15625,
+      "left": 701.71875
+    },
+    "center": "<button type=\"button\" class=\"btn hero__btn\" data-hero-play=\"\" data-astro-cid-fi6a2bfj=\"\">Play</button>",
+    "header": {
+      "x": 0,
+      "y": -61,
+      "width": 1440,
+      "height": 61,
+      "top": -61,
+      "right": 1440,
+      "bottom": 0,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 61,
+    "loading": false,
+    "panelOpen": "false",
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/#main",
+    "errors": []
+  },
+  "noJsExplorer": {
+    "html": "<body data-astro-cid-z4jru4n3=\"\"><a class=\"skip-link\" href=\"#main\" data-astro-cid-z4jru4n3=\"\">Skip to content</a><header class=\"site-header\" data-astro-cid-jr7posx5=\"\"><div class=\"container site-header__inner\" data-astro-cid-jr7posx5=\"\"><a class=\"wordmark\" href=\"/\" data-astro-cid-jr7posx5=\"\">Andrew Chincea</a><nav class=\"site-nav\" aria-label=\"Main\" data-astro-cid-jr7p",
+    "focus": false,
+    "coords": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 8298.9375,
+      "top": 0,
+      "right": 1440,
+      "bottom": 8298.9375,
+      "left": 0
+    },
+    "header": {
+      "x": 0,
+      "y": 0,
+      "width": 1440,
+      "height": 61,
+      "top": 0,
+      "right": 1440,
+      "bottom": 61,
+      "left": 0
+    },
+    "overflow": "visible",
+    "opacity": "1",
+    "z": "auto",
+    "sy": 0,
+    "ex": true,
+    "loading": true,
+    "color": "rgb(247, 244, 238)",
+    "href": "https://andrewchincea.com/rising-water/",
+    "errors": []
+  },
+  "noJsGardenFilter": {
+    "url": "https://andrewchincea.com/garden/?type=paper",
+    "n": "9 items",
+    "fallback": "Filtering needs JavaScript, so every item is shown below."
+  }
+}
