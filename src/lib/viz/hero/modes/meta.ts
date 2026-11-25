@@ -16,7 +16,7 @@ export interface HeroModeMeta {
   label: string;
   /** The animation group's accessible name (the focusable hero box). */
   groupLabel: string;
-  /** Caption under the hero. Rising water keeps its §6.3 caption in Hero.astro. */
+  /** Caption under the hero (Rising water: RISING_CAPTION). */
   caption: string;
   /** Visually hidden key help, referenced by aria-describedby. */
   keys: string;
@@ -26,14 +26,21 @@ export interface HeroModeMeta {
   interactive: boolean;
 }
 
+/**
+ * Rising water's caption (spec §6.3 wording, edited for voice per DECISIONS #85). Every claim
+ * maps to §6.6: lakes start in valleys (item 2), the older lake carries on when two meet (the
+ * elder rule, item 2), and each lake gets one bar from birth level to death level (item 3).
+ */
+export const RISING_CAPTION =
+  'Water rises over a random landscape. Lakes form in the valleys, and when two meet, the older one carries on. The barcode gives each lake a bar from the level where it forms to the level where it merges.';
+
 export const HERO_MODES: readonly HeroModeMeta[] = [
   {
     id: 'rising',
     label: 'Rising water',
     groupLabel: 'Rising water animation',
-    caption:
-      "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.",
-    keys: 'With the animation focused: Space plays or pauses, Left and Right arrows move the water level, Home and End jump to the bottom and top, Up and Down pick a bar, Escape clears the picked bar, and N makes a new terrain.',
+    caption: RISING_CAPTION,
+    keys: 'When the animation has focus, Space plays or pauses. The Left and Right arrows lower and raise the water, and Home and End jump to the bottom and the top. Up and Down pick a bar, Escape clears it, and N makes new terrain.',
     shortcuts: 'Space ArrowLeft ArrowRight ArrowUp ArrowDown Home End Escape N',
     interactive: false,
   },
@@ -43,7 +50,7 @@ export const HERO_MODES: readonly HeroModeMeta[] = [
     groupLabel: 'Dye spill animation',
     caption:
       'Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more.',
-    keys: 'With the animation focused: Space plays or pauses, Enter spills dye at the centre, and N makes a new current.',
+    keys: 'When the animation has focus, Space plays or pauses, Enter spills dye at the centre, and N makes a new current.',
     shortcuts: 'Space Enter N',
     interactive: true,
   },
@@ -53,7 +60,7 @@ export const HERO_MODES: readonly HeroModeMeta[] = [
     groupLabel: 'Fractal pond animation',
     caption:
       'Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble.',
-    keys: 'With the animation focused: Space plays or pauses, Enter drops a pebble at the centre, and N makes a new pond.',
+    keys: 'When the animation has focus, Space plays or pauses, Enter drops a pebble at the centre, and N makes a new pond.',
     shortcuts: 'Space Enter N',
     interactive: true,
   },
@@ -63,7 +70,7 @@ export const HERO_MODES: readonly HeroModeMeta[] = [
     groupLabel: 'Random rivers animation',
     caption:
       'Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order.',
-    keys: 'With the animation focused: Space plays or pauses, and N grows a new network.',
+    keys: 'When the animation has focus, Space plays or pauses and N grows a new network.',
     shortcuts: 'Space N',
     interactive: false,
   },
@@ -73,7 +80,7 @@ export const HERO_MODES: readonly HeroModeMeta[] = [
     groupLabel: 'Collatz delta animation',
     caption:
       'Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk.',
-    keys: 'With the animation focused: Space plays or pauses, and N draws a new delta.',
+    keys: 'When the animation has focus, Space plays or pauses and N draws a new delta.',
     shortcuts: 'Space N',
     interactive: false,
   },

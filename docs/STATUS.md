@@ -37,6 +37,6 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F18 Cloudflare-only deployment | Andrew requested | done (`c9047a5`), PASS (docs/checks/F18/attempt-1.md) | Remove only the GitHub Pages deploy workflow. Keep CI. |
 | CI3 Place labels on Linux CI | hosted CI 45534748972 | done (`5c54ee2`), PASS_WITH_NOTES (docs/checks/CI3/attempt-1.md) | Priority-1 labels dropped at 375px under DejaVu metrics. Make label layout font-robust. |
 | F19a Copy voice | Andrew requested (DECISIONS #85) | done | Attempt 2 PASS (docs/checks/F19a/attempt-2.md). First-person, humanized copy across the site; no new facts. |
-| F19b Hero framing | Andrew requested | checking | Attempt 2 PASS (docs/checks/F19b/attempt-2.md); merge pending. The hero's first frame reads as terrain plus water, not a brown blur. |
+| F19b Hero framing | Andrew requested | done | Attempt 2 PASS (docs/checks/F19b/attempt-2.md); hosted candidate CI 45573412148 passed. The hero's first frame reads as terrain plus water, not a brown blur. |
 | F19c Visual polish | Andrew requested | todo | Type scale, spacing, section rhythm, distinct research thumbnails, contact. |
 | F9 attempt 4 | checker | done, PASS_WITH_NOTES (docs/checks/F9/attempt-4.md) | Post-stretch baseline before F19. |

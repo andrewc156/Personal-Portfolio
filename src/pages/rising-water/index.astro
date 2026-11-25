@@ -123,12 +123,12 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
         <li>
           Data pipeline: <code>pipeline/</code> (<code>build_colorado.py</code>,{' '}
           <code>colorado_dem.py</code>, <code>barcode.py</code>), with an independent Python
-          reference engine in <code>pipeline/tda_ref.py</code>.
+          reference engine in <code>pipeline/tda_ref.py</code>.{' '}
           {pipelineUrl && <a href={pipelineUrl}>Repository</a>}
         </li>
         <li>
           Persistence engine: <code>src/lib/tda/</code> (TypeScript, <code>computeH0</code> and{' '}
-          <code>Flood</code>), which this page runs in your browser.
+          <code>Flood</code>), which this page runs in your browser.{' '}
           {sourceUrl && <a href={sourceUrl}>Source</a>}
         </li>
         <li>

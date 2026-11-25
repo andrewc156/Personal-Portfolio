@@ -116,6 +116,105 @@ export function levelAt(
   return minH + q * (maxH - minH);
 }
 
+/** A lake counts as visible once the water in it is at least this deep. */
+export const START_MIN_DEPTH_M = 15;
+/** Preferred flooded share of the map at the start, and the most allowed. */
+export const START_TARGET_WET = 0.15;
+export const START_MAX_WET = 0.4;
+
+/**
+ * Pick a first frame with the most drawn, live lakes at least 15 m deep, keeping at least 60%
+ * land. Ties favor the wet share closest to 15%, then the earlier progress. If no level has
+ * several deep lakes, keep the best legal frame; if even the lowest level is too wet, start there.
+ * Reuse the engine's height order for binary searches, without copying or scanning the grid.
+ */
+export function pickStartProgress(
+  rows: readonly BarInterval[],
+  heights: ArrayLike<number>,
+  order: ArrayLike<number>,
+  pacing: Pacing,
+): number {
+  const n = order.length;
+  if (n < 2) return 0;
+  const heightAt = (rank: number) => heights[order[rank]];
+  const minH = heightAt(0);
+  const maxH = heightAt(n - 1);
+  const cap = Math.floor(n * START_MAX_WET);
+  const firstTooWet = heightAt(cap);
+  if (minH >= firstTooWet) return 0; // Even the minimum height floods a tied plateau.
+  const target = n * START_TARGET_WET;
+  let best = 0;
+  let bestVis = -1;
+  let bestGap = Infinity;
+
+  // Between bar events the visible-lake count is constant and wet share only grows. For each
+  // interval it suffices to consider its entry, its last wet-share step, and the two wet-share
+  // steps straddling the target. Include the cap as an exclusive right edge. There are only
+  // O(rows.length) candidates even when two merges are closer than any fixed progress step.
+  consider(minH);
+  considerBoundary(heightAt(Math.ceil(target) - 1));
+  considerBelow(firstTooWet);
+  for (const { birth, death } of rows) {
+    const deepEnough = birth + START_MIN_DEPTH_M;
+    if (deepEnough >= death) continue;
+    considerBoundary(deepEnough);
+    considerBoundary(death);
+  }
+  return best;
+
+  function considerBoundary(L: number): void {
+    if (L <= minH || L >= firstTooWet) return;
+    consider(L);
+    considerBelow(L);
+  }
+
+  function considerBelow(L: number): void {
+    const rank = countHeights(L, false) - 1;
+    if (rank >= 0) consider(heightAt(rank));
+  }
+
+  function consider(L: number): void {
+    let p: number;
+    let actual: number;
+    if (pacing === 'percentile') {
+      // Percentile pacing can only reach cell heights. Use the first cell at/above the
+      // candidate (the same rank convention as Flood.levelAtPercentile).
+      const rank = countHeights(L, false);
+      p = rank / (n - 1);
+      actual = heightAt(rank);
+    } else {
+      p = progressAt(L, minH, maxH);
+      actual = minH + p * (maxH - minH);
+      // Ensure round-tripping an inclusive threshold doesn't land just below it.
+      if (actual < L) {
+        p += Number.EPSILON * p;
+        actual = minH + p * (maxH - minH);
+      }
+    }
+    if (actual >= firstTooWet) return;
+    let vis = 0;
+    for (const b of rows) if (b.birth + START_MIN_DEPTH_M <= actual && actual < b.death) vis++;
+    const gap = Math.abs(countHeights(actual, true) - target);
+    if (vis > bestVis || (vis === bestVis && (gap < bestGap || (gap === bestGap && p < best)))) {
+      best = p;
+      bestVis = vis;
+      bestGap = gap;
+    }
+  }
+
+  function countHeights(L: number, includeEqual: boolean): number {
+    let lo = 0;
+    let hi = n;
+    while (lo < hi) {
+      const mid = (lo + hi) >>> 1;
+      const h = heightAt(mid);
+      if (h < L || (includeEqual && h === L)) lo = mid + 1;
+      else hi = mid;
+    }
+    return lo;
+  }
+}
+
 /** Inverse of levelAt for linear pacing (used to keep the scrubber in place when pacing changes). */
 export function progressAt(level: number, minH: number, maxH: number): number {
   if (maxH <= minH) return 1;
