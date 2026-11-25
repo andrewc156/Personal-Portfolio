@@ -59,6 +59,26 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
   </div>
 </header>
 
+<script>
+  // Mobile nav row: keep the focused link fully in view. Chromium only scrolls a
+  // focused element into its horizontal scroller when it is entirely hidden, so a
+  // partly clipped link (and its focus ring) would stay clipped. Reveal it with the
+  // list's scroll-padding on each side. Plain scrollLeft is instant (the list has no
+  // smooth scroll), so this also suits reduced motion.
+  const list = document.querySelector<HTMLUListElement>('.site-nav ul');
+  list?.addEventListener('focusin', (event) => {
+    const link = event.target;
+    if (!(link instanceof HTMLElement) || list.scrollWidth <= list.clientWidth) return;
+    const style = getComputedStyle(list);
+    const box = list.getBoundingClientRect();
+    const r = link.getBoundingClientRect();
+    const before = r.left - (box.left + (parseFloat(style.scrollPaddingLeft) || 0));
+    const after = r.right - (box.right - (parseFloat(style.scrollPaddingRight) || 0));
+    if (before < 0) list.scrollLeft += before;
+    else if (after > 0) list.scrollLeft += Math.min(after, before);
+  });
+</script>
+
 <style>
   .site-header {
     border-bottom: 1px solid var(--color-border);
@@ -140,7 +160,7 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
   /* Mobile and tablet: nav moves to its own single row. The row never wraps, so
      its height doesn't depend on which font has loaded (no shift when Plex swaps
      in over a wider fallback). If the links don't fit they scroll sideways: a
-     focused link is scrolled into view, touch and trackpads swipe, and soft
+     focused link is scrolled fully into view, touch and trackpads swipe, and soft
      edge shadows show there is more. */
   @media (max-width: 52rem) {
     .site-header__inner {
@@ -166,6 +186,9 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
       scrollbar-width: none;
       /* Room for the 2px focus ring (offset 2px) inside the scroll box. */
       padding: var(--space-1) var(--gutter);
+      /* A focused link is revealed this far from either edge: clear of the edge
+         shadows, focus ring included (see the script above). */
+      scroll-padding-inline: var(--gutter);
       background:
         linear-gradient(to right, var(--color-bg) 40%, transparent) left / 1.5rem 100% no-repeat
           local,

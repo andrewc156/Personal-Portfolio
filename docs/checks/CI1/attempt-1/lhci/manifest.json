@@ -1,0 +1,41 @@
+[
+  {
+    "url": "http://localhost:56849/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_04.report.html",
+    "jsonPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_04.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1,
+      "agentic-browsing": 1
+    }
+  },
+  {
+    "url": "http://localhost:56849/",
+    "isRepresentativeRun": false,
+    "htmlPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_25.report.html",
+    "jsonPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_25.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1,
+      "agentic-browsing": 1
+    }
+  },
+  {
+    "url": "http://localhost:56849/",
+    "isRepresentativeRun": true,
+    "htmlPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_15.report.html",
+    "jsonPath": "/Users/andrewchincea/personalPortfolio/docs/checks/CI1/attempt-1/lhci/localhost--2026_11_25_00_38_15.report.json",
+    "summary": {
+      "performance": 1,
+      "accessibility": 1,
+      "best-practices": 1,
+      "seo": 1,
+      "agentic-browsing": 1
+    }
+  }
+]

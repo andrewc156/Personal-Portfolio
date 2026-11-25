@@ -234,7 +234,8 @@ test.describe('header and navigation', () => {
     for (let i = 0; i < 6; i++) {
       await page.keyboard.press('Tab');
       await expect(links.nth(i)).toBeFocused();
-      await expect(links.nth(i)).toBeInViewport();
+      // ratio 1: fully visible, not just a sliver at the clipped edge of the row.
+      await expect(links.nth(i)).toBeInViewport({ ratio: 1 });
     }
     expect(
       await page

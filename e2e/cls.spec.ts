@@ -128,7 +128,11 @@ test.describe('font swap layout stability (mobile, fonts delayed)', () => {
 });
 
 test.describe('mobile nav row is font-independent and fully reachable', () => {
-  for (const width of [320, 412, 832]) {
+  const LABELS = ['Mission', 'Research', 'Work', 'Open science', 'Rising water', 'CV'];
+  // Focus ring: 2px outline at 2px offset (global.css :focus-visible).
+  const RING = 4;
+
+  for (const width of [320, 375, 412, 768, 832]) {
     test(`${width}px: one row in any font; all 6 links reachable by keyboard`, async ({
       browser,
     }) => {
@@ -142,36 +146,71 @@ test.describe('mobile nav row is font-independent and fully reachable', () => {
           const tops = [...nav.querySelectorAll('li')].map((li) => li.getBoundingClientRect().top);
           return { h: nav.getBoundingClientRect().height, rows: new Set(tops).size };
         });
+
+      // Where the focused link sits inside the nav list, measured synchronously after
+      // the key press (the reveal is an instant scrollLeft change, nothing to wait for).
+      const focused = () =>
+        page.evaluate((ring) => {
+          const a = document.activeElement as HTMLElement;
+          const ul = a.closest('ul');
+          const box = ul?.getBoundingClientRect();
+          const ar = a.getBoundingClientRect();
+          // When the list scrolls, the link and its focus ring must be inside its box;
+          // otherwise (desktop row, nothing clipped) the link itself must be.
+          const pad = ul && ul.scrollWidth > ul.clientWidth ? ring : 0;
+          return {
+            text: a.textContent?.trim() ?? '',
+            inNav: !!a.closest('.site-nav'),
+            visible: !!box && ar.left - pad >= box.left - 0.5 && ar.right + pad <= box.right + 0.5,
+            where: box
+              ? `link ${ar.left.toFixed(1)}–${ar.right.toFixed(1)}, list ${box.left.toFixed(1)}–${box.right.toFixed(1)}`
+              : 'no list',
+          };
+        }, RING);
+
+      // Tab from the wordmark visits the 6 links in order, Shift+Tab walks back; every
+      // focused link is fully visible inside the scrolling row.
+      const walk = async (font: string) => {
+        await page.evaluate(() => {
+          document.querySelector('.site-nav ul')!.scrollLeft = 0;
+        });
+        await page.locator('.wordmark').focus();
+        const forward: string[] = [];
+        for (let i = 0; i < LABELS.length; i++) {
+          await page.keyboard.press('Tab');
+          const r = await focused();
+          expect(r.inNav, `${font}: Tab ${i + 1} lands in the nav`).toBe(true);
+          expect(r.visible, `${font}: ${r.text} fully visible when focused (${r.where})`).toBe(
+            true,
+          );
+          forward.push(r.text);
+        }
+        expect(forward, `${font}: Tab order`).toEqual(LABELS);
+        const backward: string[] = [];
+        for (let i = LABELS.length - 2; i >= 0; i--) {
+          await page.keyboard.press('Shift+Tab');
+          const r = await focused();
+          expect(r.visible, `${font}: ${r.text} fully visible on Shift+Tab (${r.where})`).toBe(
+            true,
+          );
+          backward.push(r.text);
+        }
+        expect(backward, `${font}: Shift+Tab order`).toEqual(LABELS.slice(0, -1).reverse());
+      };
+
       const plex = await row();
       expect(plex.rows, 'links sit on one row').toBe(1);
-      // Force a much wider font (DejaVu Sans on Linux, Verdana elsewhere): same height.
+      await walk('IBM Plex Sans');
+
+      // Force a much wider font (DejaVu Sans on Linux, Verdana elsewhere): same height,
+      // still one row, still fully reachable.
       await page.addStyleTag({
         content: `:root { --font-sans: 'DejaVu Sans', Verdana, sans-serif !important; }`,
       });
       const wide = await row();
       expect(wide.rows, 'still one row in a wide font').toBe(1);
       expect(wide.h, 'nav height unchanged in a wide font').toBeCloseTo(plex.h, 0);
-
-      // Keyboard: Tab from the wordmark visits the 6 links in order, each scrolled into view.
-      await page.locator('.wordmark').focus();
-      const labels: string[] = [];
-      for (let i = 0; i < 6; i++) {
-        await page.keyboard.press('Tab');
-        const r = await page.evaluate(() => {
-          const a = document.activeElement as HTMLElement;
-          const box = a.closest('ul')?.getBoundingClientRect();
-          const ar = a.getBoundingClientRect();
-          return {
-            text: a.textContent?.trim() ?? '',
-            inNav: !!a.closest('.site-nav'),
-            visible: !!box && ar.left >= box.left - 1 && ar.right <= box.right + 1,
-          };
-        });
-        expect(r.inNav, `Tab ${i + 1} lands in the nav`).toBe(true);
-        expect(r.visible, `${r.text} is scrolled into view when focused`).toBe(true);
-        labels.push(r.text);
-      }
-      expect(labels).toEqual(['Mission', 'Research', 'Work', 'Open science', 'Rising water', 'CV']);
+      await walk('wide font');
       await ctx.close();
     });
   }
