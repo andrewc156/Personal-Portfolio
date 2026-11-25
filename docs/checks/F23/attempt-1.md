@@ -1,0 +1,20 @@
+# Check report — F23 Collatz default depth — attempt 1
+
+Verdict: PASS
+
+Gates: check ✅ (151 files, zero diagnostics) · lint ✅ (scoped ESLint, Prettier and `git diff --check`) · unit ✅ (253 visualization tests, including 14 Collatz) · pytest n/a · build ✅ (10 static pages) · e2e ✅ (4 scoped Chromium tests, including an independent probe) · axe n/a · Lighthouse n/a · links n/a · visual ✅ (scoped first-paint raster comparison) · content n/a · TDA n/a · data n/a. Full hosted CI is a separate post-push gate for Control.
+
+## Acceptance criteria
+
+- ✅ **Exact candidate scope.** Extracted `git archive 6601c196ab4bb8a5f74cdff4196cbb5f33bbf9bf` outside the repo, applied only `git diff --binary HEAD -- src/lib/viz/hero/modes/meta.ts e2e/hero.spec.ts tests/unit/viz/modes/collatz.test.ts`, and byte-compared all three files to the working candidate before and after testing. Patch SHA-256: `cf84c910d0fa7dbfeb8efccbc3985f1a46366fb4a2adc9fbcdc88a809a3daa8a`. The only production-source delta is `COLLATZ_DEFAULT_STEPS = 50` → `30` at `meta.ts:12`; slider bounds, startup, sampling, animation and timing checks are unchanged.
+- ✅ **Default and Settings Reset.** On production preview, direct `/?mode=collatz&seed=42` starts at one of 30 levels with the `2 numbers within 1 step of 1` readout. The Steps input and output start at `30`. After changing depth, Settings → Reset returns to Rising; selecting Collatz again restores input/output `30` and the same one-step startup readout. The case also passed mode-switch retention, new terrain and replay at `120` before Reset.
+- ✅ **First paint and reduced motion.** The repository E2E compared the autoplay first raster byte-for-byte with the first complete edge of a same-depth paused preview. The independent Chromium probe counted one nonzero drawn segment before the first visible composite completed, with no extra partial overlay; native normal and reduced-motion startup produced identical PNGs (SHA-256 prefix `c1fc08dc28155354`). Normal motion advanced after that raster; reduced motion remained paused with the same raster over 12 native animation frames and showed Play. No browser console errors or uncaught exceptions in the independent case.
+- ✅ **Slider and sampling.** Production keyboard Home/End select `1`/`120`, with native `min=1`, `max=120`, `step=1` and one-level arrow movement. Paused changes show full previews without starting playback. Depth `50` still reports `379,600` exact numbers; `51` begins `Sampled branches` wording, also present at `120`. Default `30` reports `3,518` exact numbers, with `1,297` drawn vs. `3,217` at depth `50` in the built simulation's source.
+- ✅ **Animation clock and timing baseline.** The default-depth unit test is unfinished at tick `539` and completes at `540` (9 s at 60 Hz/1×). Read the existing F22 checker report and raw hosted CI 45701214633 log (exact F22 candidate tree `20641444df47ca755b06fad2ee8aff021244bfa8`, Collatz assertion at log line 790): the Chromium default-depth p95 ≤22 ms gate at 1280×800 passed on F22. The log reports pass/fail, not measured p95. F23 renders fewer nodes by default and does not change the performance assertions, Playwright config or CI workflow. This is not a claim of a new F23 timing measurement; Control owns exact-candidate full hosted CI post-push.
+
+## Notes
+
+- Ran `npm ci`, `npm run check`, scoped ESLint/Prettier, `npm test -- tests/unit/viz`, `npm test -- tests/unit/viz/modes/collatz.test.ts --reporter=verbose`, `npm run build`, then `npm run e2e -- e2e/hero.spec.ts e2e/f23-checker.spec.ts --grep 'Collatz paints|Collatz Steps|selector: Rising|F23 independent' --reporter=list` in the archive. The independent spec exists only in scratch. No unrelated F9 rerun.
+- Port 4321 was clear before and after Playwright-managed preview, and checked again at the end. No source edits, commits, pushes or deploys; only this checker report was added to the repo.
+
+Artifacts: `~/.hermes/cache/scratch/f23-check.5uKGbE3y/` — exact patch, install/check/lint/unit/build/browser logs, `node-counts.log`, and `tree/e2e/f23-checker.spec.ts`. Historical timing log: `~/.hermes/cache/scratch/f22-check.Fg3RPOBZ/ci.log`.

@@ -928,21 +928,21 @@ test.describe('hero modes', () => {
     const first = await page.evaluate(() => (window as PaintWindow).collatzPaint.first);
     expect(first?.readout).toBe('2 numbers within 1 step of 1');
     expect(first?.summary).toContain('Playing. Seed 42.');
-    expect(first?.summary).toContain('1 of 50 levels are fully drawn');
+    expect(first?.summary).toContain('1 of 30 levels are fully drawn');
 
     await page.locator('.hero__bar').getByRole('button', { name: 'Pause', exact: true }).click();
     await page.getByRole('button', { name: 'Animation settings', exact: true }).click();
     const steps = page.getByRole('slider', { name: 'Steps', exact: true });
     await steps.press('ArrowLeft');
-    await expect(steps).toHaveValue('49');
-    // Arm and send the return to depth 50 in the same turn, before another frame can draw.
+    await expect(steps).toHaveValue('29');
+    // Arm and send the return to depth 30 in the same turn, before another frame can draw.
     await steps.evaluate((slider) => {
       (window as PaintWindow).collatzPaint.captureReference = true;
-      (slider as HTMLInputElement).value = '50';
+      (slider as HTMLInputElement).value = '30';
       slider.dispatchEvent(new Event('input', { bubbles: true }));
     });
     await expect(page.locator('[data-hero-readout]')).toContainText(
-      '379,600 numbers within 50 steps',
+      '3,518 numbers within 30 steps',
     );
     await expect
       .poll(() => page.evaluate(() => (window as PaintWindow).collatzPaint.reference))
@@ -953,7 +953,7 @@ test.describe('hero modes', () => {
     expect(visible).not.toBe(first?.pixels);
   });
 
-  test('Collatz Steps reaches 120 by keyboard, survives mode changes and replays, and resets to 50', async ({
+  test('Collatz Steps reaches 120 by keyboard, survives mode changes and replays, and resets to 30', async ({
     page,
   }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -965,11 +965,11 @@ test.describe('hero modes', () => {
     const steps = panel.getByRole('slider', { name: 'Steps', exact: true });
     const output = panel.locator('output[for="hero-collatz-steps"]');
     await expect(readout).toHaveText('2 numbers within 1 step of 1');
-    await expect(summary).toContainText('1 of 50 levels are fully drawn');
+    await expect(summary).toContainText('1 of 30 levels are fully drawn');
     const baseline = await mapHash(page);
     await page.getByRole('button', { name: 'Animation settings', exact: true }).click();
-    await expect(steps).toHaveValue('50');
-    await expect(output).toHaveText('50');
+    await expect(steps).toHaveValue('30');
+    await expect(output).toHaveText('30');
     await steps.press('Home');
     await expect(steps).toHaveValue('1');
     await expect(readout).toHaveText('2 numbers within 1 step of 1');
@@ -1007,10 +1007,10 @@ test.describe('hero modes', () => {
     await waitForMode(page, 'rising');
     await expect(steps).toBeHidden();
     await chooseMode(page, 'collatz');
-    await expect(steps).toHaveValue('50');
-    await expect(output).toHaveText('50');
+    await expect(steps).toHaveValue('30');
+    await expect(output).toHaveText('30');
     await expect(readout).toHaveText('2 numbers within 1 step of 1');
-    await expect(summary).toContainText('1 of 50 levels are fully drawn');
+    await expect(summary).toContainText('1 of 30 levels are fully drawn');
   });
 
   test('selector: Rising water is the default; each mode swaps chrome and draws; back again', async ({

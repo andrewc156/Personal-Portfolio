@@ -9,7 +9,7 @@
 export type HeroModeId = 'rising' | 'dye' | 'pond' | 'rivers' | 'collatz';
 
 export const DEFAULT_MODE: HeroModeId = 'rising';
-export const COLLATZ_DEFAULT_STEPS = 50;
+export const COLLATZ_DEFAULT_STEPS = 30;
 export const COLLATZ_MAX_STEPS = 120;
 
 export interface HeroModeMeta {

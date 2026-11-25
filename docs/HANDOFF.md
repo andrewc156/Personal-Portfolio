@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 16:20:48 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 16:27:34 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -39,6 +39,7 @@
 | F20 Hero Settings cog | done | PASS (attempt 1) | `9f9fb7c` |
 | F21 Collatz steps setting | done | PASS (attempt 1) | `a74ce65` (candidate `83d402f`) |
 | F22 Collatz starts at step one | done | PASS (attempt 1) | `614feef` (candidate `755a594`) |
+| F23 Collatz default 30 | done | PASS (attempt 1) | this commit |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -46,6 +47,7 @@
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md`, `docs/checks/F9/summary.md` | Exact hosted CI 45645398484 green; audit FAIL solely on unverified required browser matrix | Obtain a working multi-version runner and rerun the missing browser coverage. |
+| Production exploratory QA | Control + parallel reviewers | Live `andrewchincea.com`; report `docs/qa/f23-production/report.md` | Queued at Andrew’s request | Start only after F23 passes and the live build is verified by the Collatz default. Run 10 read-only reviewers: (1) desktop home/navigation, (2) mobile layout/touch, (3) Rising water hero mode, (4) alternate hero modes including Collatz, (5) Settings and state/keyboard flows, (6) Rising Water explorer and map/data controls, (7) keyboard/screen-reader/reduced-motion and no-JS fallbacks, (8) Garden/research/About content and links, (9) CV/downloads/contact/Open Science/404, (10) delivery/SEO/performance. Confirm and deduplicate findings into prioritized fixes and optional improvements; no code fixes in this pass. |
 
 ## Handoff vs repo (resume check)
 
@@ -59,6 +61,7 @@
 - There is an old Claude worktree at `.claude/worktrees/agent-a302a2e8cd44f54ea` (branch `worktree-agent-a302a2e8cd44f54ea`, at `dc8e61c`) with uncommitted C1-era edits. It is the historical snapshot the C1 notes describe, and the C1 content on main supersedes it. Per Andrew's instruction it stays untouched under `.claude/`. It is not a WIP branch to merge.
 
 ## Uncommitted changes
+
 
 
 

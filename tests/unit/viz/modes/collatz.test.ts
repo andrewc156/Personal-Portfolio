@@ -39,7 +39,7 @@ describe('Collatz delta', () => {
     expect(sim.front()).toBeLessThan(2);
   });
 
-  it('defaults to exactly 50 mathematical steps without changing the animation clock', () => {
+  it('defaults to exactly 30 mathematical steps without changing the animation clock', () => {
     const sim = new CollatzSim();
     sim.build(42, 1280, 450);
     sim.restart();
@@ -47,18 +47,17 @@ describe('Collatz delta', () => {
     expect(COLLATZ_STEP_HZ).toBe(60);
     for (let i = 0; i < 539; i++) sim.step();
     expect(sim.finished()).toBe(false);
-    expect(sim.shownDepth).toBe(49);
+    expect(sim.shownDepth).toBe(29);
     sim.step();
     expect(sim.finished()).toBe(true);
-    expect(sim.shownDepth).toBe(50);
-    expect(sim.readout()).toContain('379,600 numbers');
-    expect(sim.readout()).toContain('drawn');
-    expect(sim.summary()).toContain('379,600 numbers');
+    expect(sim.shownDepth).toBe(30);
+    expect(sim.readout()).toContain('3,518 numbers within 30 steps');
+    expect(sim.summary()).toContain('3,518 numbers');
   });
 
   it('draws connected, exact reverse paths at the bounded 120-step setting', () => {
     const shallow = new CollatzSim();
-    shallow.build(42, 1280, 450);
+    shallow.build(42, 1280, 450, 50);
     const deep = new CollatzSim();
     deep.build(42, 1280, 450, 1e9);
     deep.previewDepth();
@@ -93,6 +92,16 @@ describe('Collatz delta', () => {
       const total = Number(sim.readout().split(' ')[0].replaceAll(',', ''));
       expect(total).toBe(whole.levelStart[d + 1]);
     }
+    expect(sim.readout()).toContain('379,600 numbers within 50 steps');
+    expect(sim.readout()).toContain('drawn');
+    expect(sim.summary()).toContain('379,600 numbers');
+  });
+
+  it('switches to a sampled readout at 51 steps', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450, 51);
+    sim.previewDepth();
+    expect(sim.readout()).toBe('Sampled branches · 51 steps');
   });
 
   it('shows every node at the one-step minimum', () => {
