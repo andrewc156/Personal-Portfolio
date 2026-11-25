@@ -1,0 +1,2 @@
+D	.github/workflows/deploy-gh-pages.yml
+PASS: intended deployment workflow deletion, CI and base-path files identical to 9f28641, no remaining GitHub Pages deploy actions
