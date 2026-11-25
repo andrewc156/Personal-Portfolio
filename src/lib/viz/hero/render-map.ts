@@ -29,6 +29,8 @@ export interface PaintOptions {
 
 /** Depth in metres at which water reaches the deepest shade. */
 export const FULL_DEPTH_M = 220;
+/** Hillshade of flat ground: the sun's height, sin 45° (see hillshade in terrain.ts). */
+export const SHADE_FLAT = Math.SQRT1_2;
 const DEPTH_STEPS = 32;
 
 export class MapPainter {
@@ -89,12 +91,17 @@ export class MapPainter {
   setColors(theme: PaletteTheme, outline: string, halo: string, dark: boolean): void {
     const landStops = theme.land.map(hexToRgb);
     const span = this.maxH - this.minH;
+    const rankScale = 1 / Math.max(1, this.n - 1);
     for (let i = 0; i < this.n; i++) {
-      const t = (this.heights[i] - this.minH) / span;
+      // Elevation tint: half by height, half by height rank. Most cells sit at middle heights,
+      // so a purely linear ramp paints them all one colour; the rank half spreads the ramp
+      // over the whole map. Both halves rise with height, so the tint still reads low → high.
+      const t = 0.5 * ((this.heights[i] - this.minH) / span) + 0.5 * this.rank[i] * rankScale;
       const c = rampRgb(landStops, t);
-      // Hillshade: 0.5 is flat ground; brighten lit slopes and darken shaded ones.
-      const s = this.shade[i];
-      const k = dark ? 0.55 + 0.9 * s : 0.72 + 0.5 * s;
+      // Hillshade relative to flat ground (SHADE_FLAT): shaded slopes darken more than lit
+      // slopes brighten, so the light ramp keeps its relief instead of clipping to white.
+      const d = this.shade[i] - SHADE_FLAT;
+      const k = d < 0 ? 1 + (dark ? 1.5 : 1.4) * d : 1 + (dark ? 1.3 : 0.45) * d;
       this.land[i] = packRgb(clamp8(c[0] * k), clamp8(c[1] * k), clamp8(c[2] * k));
     }
     const K = theme.identity.length;

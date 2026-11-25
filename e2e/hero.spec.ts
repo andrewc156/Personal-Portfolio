@@ -27,6 +27,26 @@ async function heroState(page: Page): Promise<HeroState> {
   });
 }
 
+/** Rising water's caption (src/lib/viz/hero/modes/meta.ts, RISING_CAPTION). */
+const RISING_CAPTION =
+  'Water rises over a random landscape. Lakes form in the valleys, and when two meet, the older one carries on. The barcode gives each lake a bar from the level where it forms to the level where it merges.';
+
+/**
+ * Wait until a frame counter stops moving (two equal reads 250 ms apart, up to 5 s). Startup
+ * can paint a few settle frames (first paint, resize, theme) after the controller exists; tests
+ * that prove "no autoplay" measure only after these.
+ */
+async function framesSettled(page: Page, read: () => Promise<number>): Promise<void> {
+  let prev = await read();
+  for (let i = 0; i < 20; i++) {
+    await page.waitForTimeout(250);
+    const cur = await read();
+    if (cur === prev) return;
+    prev = cur;
+  }
+  throw new Error('Reduced-motion startup frames did not settle within 5 seconds');
+}
+
 async function waitForHero(page: Page): Promise<void> {
   await page.waitForFunction(() => !!document.querySelector<HTMLElement>('[data-hero]')?.__hero);
 }
@@ -148,9 +168,7 @@ test.describe('hero canvas', () => {
     await expect(map).toHaveAttribute('role', 'img');
     expect((await map.getAttribute('aria-label'))?.length).toBeGreaterThan(20);
     const cap = page.locator('.hero__caption');
-    await expect(cap).toContainText(
-      "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.",
-    );
+    await expect(cap).toContainText(RISING_CAPTION);
     await expect(
       cap.getByRole('link', { name: 'See it on the Colorado River Basin →' }),
     ).toHaveAttribute('href', '/rising-water/');
@@ -167,6 +185,57 @@ test.describe('hero canvas', () => {
     };
     expect(await grab()).toBe(await grab());
   });
+
+  for (const { seed, width, height } of [
+    { seed: 42, width: 1280, height: 800 },
+    { seed: 25, width: 375, height: 812 },
+  ]) {
+    test(`first frame has several lakes for seed ${seed} at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.emulateMedia({ reducedMotion: 'no-preference' });
+      await page.addInitScript(() => {
+        const observer = new MutationObserver(() => {
+          const root = document.querySelector<HTMLElement>('[data-hero]');
+          const h = root?.__hero;
+          if (!root || !h) return;
+          // The controller paints synchronously. Observe its state mutation before rAF can
+          // advance the water, rather than checking after navigation has settled.
+          const level = h.level();
+          const meaningful = h.drawnRows.filter((b) => b.birth + 15 <= level && level < b.death);
+          root.dataset.testFirstFrame = JSON.stringify({
+            frames: h.frames,
+            progress: h.progress,
+            lakes: h.lakeCount,
+            meaningful: meaningful.length,
+          });
+          observer.disconnect();
+        });
+        observer.observe(document, {
+          attributes: true,
+          attributeFilter: ['data-state'],
+          subtree: true,
+        });
+      });
+      const start = async () => {
+        await page.goto(`/?seed=${seed}`);
+        const root = page.locator('[data-hero]');
+        await expect(root).toHaveAttribute('data-test-first-frame', /.+/);
+        return JSON.parse((await root.getAttribute('data-test-first-frame'))!) as {
+          frames: number;
+          progress: number;
+          lakes: number;
+          meaningful: number;
+        };
+      };
+      const first = await start();
+      expect(first.frames).toBe(1);
+      expect(first.progress).toBeGreaterThan(0);
+      expect(first.progress).toBeLessThan(1);
+      expect(first.lakes).toBeGreaterThanOrEqual(3);
+      expect(first.meaningful).toBeGreaterThanOrEqual(seed === 25 ? 3 : 2);
+      expect(await start()).toEqual(first);
+    });
+  }
 });
 
 test.describe('controls', () => {
@@ -196,6 +265,51 @@ test.describe('controls', () => {
     const map = (await page.locator('[data-hero-map]').boundingBox())!;
     await page.mouse.move(map.x + map.width / 2, map.y + map.height / 2);
     await expect(page.locator('[data-hero-readout]')).toContainText(/^Height \d+\u00a0m · /);
+  });
+
+  test('mouse: the hovered lake highlights its bar, including after a merge', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    await waitForHero(page);
+    // Find a drawn lake that will merge (the essential lake is row 0), then hover it.
+    const target = await page.evaluate(() => {
+      const h = document.querySelector<HTMLElement>('[data-hero]')!.__hero!;
+      h.scrubTo(0.2);
+      const { W, H } = h.grid;
+      for (let i = 0; i < W * H; i++) {
+        const k = h.lakeRowAt(i);
+        if (k > 0) return { fx: ((i % W) + 0.5) / W, fy: (Math.floor(i / W) + 0.5) / H, k };
+      }
+      return null;
+    });
+    expect(target).not.toBeNull();
+    const map = (await page.locator('[data-hero-map]').boundingBox())!;
+    await page.mouse.move(map.x + target!.fx * map.width, map.y + target!.fy * map.height);
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () => document.querySelector<HTMLElement>('[data-hero]')!.__hero!.highlightedRow,
+        ),
+      )
+      .toBe(target!.k);
+    await page.evaluate(() =>
+      document.querySelector<HTMLElement>('[data-hero]')!.__hero!.scrubTo(1),
+    );
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () => document.querySelector<HTMLElement>('[data-hero]')!.__hero!.highlightedRow,
+        ),
+      )
+      .toBe(0);
+    await page.mouse.move(map.x - 20, map.y - 20);
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () => document.querySelector<HTMLElement>('[data-hero]')!.__hero!.highlightedRow,
+        ),
+      )
+      .toBe(-1);
   });
 
   test('keyboard: Space, arrows and N act only when the hero is focused', async ({ page }) => {
@@ -490,8 +604,10 @@ test.describe('motion and pausing', () => {
     const page = await ctx.newPage();
     await page.goto(URL);
     await waitForHero(page);
+    await framesSettled(page, async () => (await heroState(page)).frames);
     const a = await heroState(page);
     expect(a.state).toBe('paused');
+    expect(a.running).toBe('false');
     expect(a.progress).toBeCloseTo(0.45, 6);
     await page.waitForTimeout(800);
     const b = await heroState(page);
@@ -660,9 +776,6 @@ const EXTRA_MODES = [
   { id: 'rivers', label: 'Random rivers', interactive: false, caption: /^Every cell drains/ },
   { id: 'collatz', label: 'Collatz delta', interactive: false, caption: /^Numbers grow backwards/ },
 ] as const;
-
-const RISING_CAPTION =
-  "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.";
 
 interface ModeState {
   mode: string;
@@ -920,8 +1033,12 @@ test.describe('hero modes', () => {
       const page = await ctx.newPage();
       await page.goto(`/?seed=42&mode=${m.id}`);
       await waitForMode(page, m.id);
+      // Let the startup settle frames finish first (F9 attempt 4, note 1); autoplay would keep
+      // counting through the whole window below, so this doesn't weaken the check.
+      await framesSettled(page, async () => (await modeState(page)).frames);
       const a = await modeState(page);
       expect(a.state).toBe('paused');
+      expect(a.running).toBe('false');
       await page.waitForTimeout(800);
       const b = await modeState(page);
       expect(b.running).toBe('false');

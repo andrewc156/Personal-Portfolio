@@ -19,6 +19,7 @@ import {
   buildLakeTable,
   isAlive,
   levelAt,
+  pickStartProgress,
   selectBars,
   type LakeTable,
   type Pacing,
@@ -68,7 +69,7 @@ export const HERO_DEFAULTS: Omit<HeroSettings, 'seed'> = {
   loop: true,
   showBarcode: true,
   minPersistence: 10,
-  maxBars: 30,
+  maxBars: 12,
   view: 'barcode',
   palette: 'delta',
   colorBy: 'lake',
@@ -126,6 +127,11 @@ export class HeroController {
   frames = 0;
   /** Animation progress p ∈ [0, 1]. */
   progress = 0;
+  /**
+   * Where autoplay began on load (pickStartProgress), so the first frame already shows a few
+   * lakes; REDUCED_MOTION_PROGRESS under reduced motion. Read by tests.
+   */
+  startAt = 0;
   playing = false;
   /** Called on play/pause, seed change and (throttled) progress change. */
   onUi: (s: HeroUiState) => void = () => {};
@@ -148,6 +154,10 @@ export class HeroController {
   private running = false;
   /** Map cell under the pointer (−1 = none); its readout wins over the level readout. */
   private hoverCell = -1;
+  /** A mouse or pen hover tracks the current lake as the water level changes; a tap pins a row. */
+  private followMapHover = false;
+  /** True while the highlight was set by pointing at a lake on the map (not by the strip). */
+  private mapPicked = false;
   private lastReadoutAt = -Infinity;
   private readoutTimer = 0;
   private lastUiAt = 0;
@@ -203,8 +213,12 @@ export class HeroController {
       this.progress = REDUCED_MOTION_PROGRESS;
       this.playing = false;
     } else {
+      // Start part-way up so the first painted frame shows land and a few lakes. Loops and
+      // replays still start from the bottom, so the births are shown every cycle after this.
+      this.progress = this.startProgress();
       this.playing = true;
     }
+    this.startAt = this.progress;
     // First frame right away (not on the next rAF) so the canvas is never blank after hydration.
     this.render();
     this.dirty = false;
@@ -301,10 +315,17 @@ export class HeroController {
 
   /** Highlight the barcode row k (−1 clears). */
   highlightRow(k: number): void {
+    this.followMapHover = false;
+    this.mapPicked = false;
+    this.setHighlight(k);
+  }
+
+  private setHighlight(k: number, repaint = true): void {
     const next = k >= 0 && k < this.stripRows.length ? k : -1;
     if (next === this.highlight) return;
     this.highlight = next;
     this.highlightMaskFor = -1;
+    if (!repaint) return;
     this.dirty = true;
     this.updateReadout(true);
     this.schedule();
@@ -347,6 +368,11 @@ export class HeroController {
     this.setRunning(false);
   }
 
+  /** Index of the highlighted barcode row, or −1 (read by e2e). */
+  get highlightedRow(): number {
+    return this.highlight;
+  }
+
   /** Lake bars selected for the barcode and diagram. */
   get drawnRows(): readonly Bar[] {
     return this.rows;
@@ -377,6 +403,12 @@ export class HeroController {
   level(): number {
     const t = this.t;
     return levelAt(this.progress, this.settings.pacing, t.minH, t.maxH, t.pct);
+  }
+
+  /** First-frame progress for this terrain (see pickStartProgress in model.ts). */
+  private startProgress(): number {
+    const t = this.t;
+    return pickStartProgress(this.rows, t.heights, t.result.order, this.settings.pacing);
   }
 
   // ---- terrain and colours ---------------------------------------------------------------
@@ -429,6 +461,9 @@ export class HeroController {
     };
     this.highlight = -1;
     this.highlightMaskFor = -1;
+    this.hoverCell = -1;
+    this.followMapHover = false;
+    this.mapPicked = false;
     this.holdLeft = 0;
     this.islandBars = null;
     this.islandRows = [];
@@ -633,6 +668,9 @@ export class HeroController {
     const t = this.t;
     const level = this.level();
     t.flood.advanceTo(level);
+    if (this.followMapHover && this.settings.view !== 'islands') {
+      this.pickMapRow(this.floodedLakeRow(this.hoverCell), false);
+    }
     const hl = this.settings.view === 'islands' ? undefined : this.rows[this.highlight];
     let hlLake = -1;
     let mask: Uint8Array | null = null;
@@ -985,7 +1023,7 @@ export class HeroController {
           this.cycleHighlight(1);
           break;
         case 'Escape':
-          if (this.highlight < 0) return;
+          if (this.highlight < 0 && !this.followMapHover) return;
           this.highlightRow(-1);
           break;
         case 'n':
@@ -999,10 +1037,16 @@ export class HeroController {
     });
 
     // Map: height and lake id under the pointer.
-    on(map, 'pointermove', (e) => this.mapHover(e));
-    on(map, 'pointerdown', (e) => this.mapHover(e));
-    on(map, 'pointerleave', () => {
+    // Pointing at a lake also highlights its bar, the map-to-barcode half of the link (the
+    // strip handles barcode-to-map). Mouse: while hovering. Touch: a tap picks or clears it.
+    on(map, 'pointermove', (e) => this.mapHover(e, e.pointerType !== 'touch'));
+    on(map, 'pointerdown', (e) => this.mapHover(e, true));
+    on(map, 'pointerleave', (e) => {
       this.hoverCell = -1;
+      this.followMapHover = false;
+      if (e.pointerType !== 'touch' && this.mapPicked) {
+        this.highlightRow(-1);
+      }
       this.updateReadout(true);
     });
 
@@ -1031,14 +1075,43 @@ export class HeroController {
     return barcodeHit(x, y, this.stripRows, level, this.L);
   }
 
-  private mapHover(e: PointerEvent): void {
+  private mapHover(e: PointerEvent, pick: boolean): void {
     const r = this.els.map.getBoundingClientRect();
     const t = this.t;
     const gx = Math.floor(((e.clientX - r.left) / r.width) * t.W);
     const gy = Math.floor(((e.clientY - r.top) / r.height) * t.H);
     if (gx < 0 || gy < 0 || gx >= t.W || gy >= t.H) return;
     this.hoverCell = gy * t.W + gx;
+    if (pick && this.settings.view !== 'islands') {
+      this.followMapHover = e.pointerType !== 'touch';
+      this.pickMapRow(this.lakeRowAt(this.hoverCell), true);
+    }
     this.updateReadout(true);
+  }
+
+  private pickMapRow(k: number, repaint: boolean): void {
+    // Don't clear a bar picked on the strip just because the pointer crossed dry land.
+    if (k < 0 && !this.mapPicked) return;
+    this.mapPicked = k >= 0;
+    this.setHighlight(k, repaint);
+  }
+
+  /** Barcode row of the lake that covers `cell` at the current level, or −1 (dry or not drawn). */
+  lakeRowAt(cell: number): number {
+    this.t.flood.advanceTo(this.level());
+    return this.floodedLakeRow(cell);
+  }
+
+  /** Resolve a row after advancing Flood. The active hover can reuse the render's advance. */
+  private floodedLakeRow(cell: number): number {
+    const t = this.t;
+    if (cell < 0 || cell >= t.W * t.H) return -1;
+    // A lake's id is its birth cell, which is also its union-find root (elder rule).
+    const lake = t.flood.componentOf(cell);
+    if (lake < 0) return -1;
+    const rows = this.rows;
+    for (let k = 0; k < rows.length; k++) if (rows[k].birthCell === lake) return k;
+    return -1;
   }
 
   /** CSS size of the strip (exposed for tests). */
