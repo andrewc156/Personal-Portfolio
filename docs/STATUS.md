@@ -34,4 +34,4 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F15 Footer credit | Andrew requested removal | done (`9f28641`), PASS (docs/checks/F15/attempt-1.md) | Disable the existing footer credit profile flag. |
 | F16 Personal portfolio project | Andrew confirmed | checking | List the current website in the Garden and CV. |
 | F17 Garden nav and order | Andrew requested | checking | Add Garden and order the first four links by the homepage sections. |
-| F18 Cloudflare-only deployment | Andrew requested | accepted, PASS (docs/checks/F18/attempt-1.md) | Remove only the GitHub Pages deploy workflow. Keep CI. |
+| F18 Cloudflare-only deployment | Andrew requested | done (`c9047a5`), PASS (docs/checks/F18/attempt-1.md) | Remove only the GitHub Pages deploy workflow. Keep CI. |

@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:41 EST, Codex (Control)
+**Last updated:** 2026-11-25 EST, Claude Code (Control)
 
 ## Status
 
@@ -16,7 +16,7 @@
 | F6 Colorado explorer | done | PASS_WITH_NOTES | `3b3f7ab` |
 | F7 Polish and SEO | done | PASS_WITH_NOTES | `e5bdaf9` |
 | F8 Cloudflare Pages setup | done | PASS_WITH_NOTES | `dc8e61c` |
-| D1 GitHub Pages base path | done | PASS_WITH_NOTES | `71d5077` |
+| D1 GitHub Pages base path | done, automatic GitHub Pages deploy retired in F18 | PASS_WITH_NOTES | `71d5077` |
 | C1 CV content | done | PASS_WITH_NOTES (attempt 3) | `be62c1e`, `f8061b3`, `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
@@ -30,19 +30,18 @@
 | F15 Footer credit removal | done | PASS (attempt 1) | `9f28641` |
 | F16 Personal portfolio project entry | checking | — | — |
 | F17 Garden header link and section order | checking | — | — |
-| F18 Stop GitHub Pages uploads | accepted, commit pending | PASS (attempt 1) | — |
+| F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F16 personal portfolio project | checker | work YAML, e2e/site.spec.ts, docs/checks/F16/ | Builder finished. | Independent check delegated in /private/tmp/portfolio-recovery.RmJMcJ/F16-F18. |
-| F17 Garden nav and section order | checker | nav.ts, shell and CLS tests, docs/checks/F17/ | Builder finished. | Same isolated snapshot. Check exact order, base paths, focus and CLS. |
-| F18 stop Pages deployments | checker | Removed workflow and docs/checks/F18/ | Builder removed only the Pages deploy workflow. | PASS. CI and base-path support verified unchanged. Commit pending. |
-
-F15 footer flag and test are built and snapshotted in /private/tmp/portfolio-recovery.RmJMcJ/F15. F16 portfolio entry was delegated to site-builder. F17 Garden link and homepage section order are delegated to site-builder. The fresh full-site audit follows these features, the F18 GitHub Pages workflow removal, and CI2.
+| F16 personal portfolio project | checker (Claude Code) | work YAML, e2e/site.spec.ts, docs/checks/F16/ | Builder finished (docs/builds/F16/attempt-1.md). Codex check never finished (report was a PARTIAL stub). | Fresh check, attempt 1 rerun in the main working tree. |
+| F17 Garden nav and section order | checker (Claude Code) | nav.ts, e2e/shell.spec.ts, e2e/cls.spec.ts, docs/checks/F17/ | Builder finished (docs/builds/F17/attempt-1.md). Codex check never finished (PARTIAL stub). | Fresh check after F16. |
 
 ## Handoff vs repo (resume check)
+
+- Claude Code resume (2026-11-25): main = origin/main at `c9047a5`. The handoff protocol section in CLAUDE.md already exists (`e659d0a`), so it wasn't re-added. No `wip/codex-handoff` or other WIP branch exists locally or on origin. The committed HANDOFF still listed F18 as "commit pending". The working-tree copy was already corrected. The F16 and F17 check reports were PARTIAL stubs, so both get fresh checks. Codex's /private/tmp snapshot is ignored.
 
 - At Codex resume, main matched origin/main at `529dbdc`. Neither remote handoff branch exists. F10 attempt 2 and F13a attempt 1 were marked partial.
 
@@ -57,7 +56,6 @@ Unchecked feature candidates:
 
 - F16 built, unchecked: portfolio YAML entry in `src/content/work/`, `e2e/site.spec.ts`, and its build report.
 - F17 built, unchecked: shared navbar, related shell and CLS nav checks, and its build report.
-- F18 checking: `.github/workflows/deploy-gh-pages.yml` deletion and `docs/builds/F18/attempt-1.md`. CI workflow is intact.
 
 ## Open issues and "Needs Andrew"
 
@@ -77,12 +75,12 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Push F18 as soon as its workflow deletion passes.
-2. Finish F16 and F17 checks and push on acceptance.
-3. Run the fresh F9 full-site audit and check hosted CI for the accepted changes.
+1. Re-run the F16 and F17 checks (the Codex reports were PARTIAL), then commit and push each on PASS.
+2. Run the fresh F9 full-site audit and push its report and handoff.
+3. Check hosted CI for the final commit and verify the live canonical URL after the Cloudflare build setting is updated.
 
 ## WIP branch
 
 none
 
-Latest Control push: F15 `9f28641` to origin/main. CI2 hosted #37 was canceled by the next push. Verify the final hosted CI run. Unchecked candidates remain local.
+Latest Control push: F18 `c9047a5` to origin/main. CI2 hosted #37 was canceled by the next push. Verify the final hosted CI run. Unchecked candidates remain local.
