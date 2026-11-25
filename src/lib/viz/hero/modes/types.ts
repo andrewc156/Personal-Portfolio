@@ -36,6 +36,8 @@ export interface ModeSim {
   needsRebuild(cssW: number, cssH: number): boolean;
   /** Bring a fresh build to its first frame: the static frame if `still`, else the start. */
   warm(still: boolean): void;
+  /** Collatz only: show the full selected depth after a deliberate slider change while paused. */
+  previewDepth?(): void;
   /** Growth modes: back to the start with the same seed (Play after the end). */
   restart(): void;
   /** Growth modes report true once fully grown (the shell holds, then loops). */

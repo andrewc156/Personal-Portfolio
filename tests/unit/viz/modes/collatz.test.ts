@@ -12,12 +12,42 @@ import {
 } from '../../../../src/lib/viz/hero/modes/collatz.ts';
 
 describe('Collatz delta', () => {
+  it('starts normal playback with exactly one complete layer', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450);
+    sim.warm(false);
+    expect(sim.front()).toBe(1);
+    expect(sim.readout()).toBe('2 numbers within 1 step of 1');
+  });
+
+  it('opens reduced-motion Collatz on the first complete layer', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450, 120);
+    sim.warm(true);
+    expect(sim.front()).toBe(1);
+    expect(sim.summary()).toContain('1 of 120 levels are fully drawn');
+  });
+
+  it('replays from layer one and extends the next edge gradually at depth 120', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450, 120);
+    for (let i = 0; i < COLLATZ_GROW_S * COLLATZ_STEP_HZ; i++) sim.step();
+    sim.restart();
+    expect(sim.front()).toBe(1);
+    sim.step();
+    expect(sim.front()).toBeGreaterThan(1);
+    expect(sim.front()).toBeLessThan(2);
+  });
+
   it('defaults to exactly 50 mathematical steps without changing the animation clock', () => {
     const sim = new CollatzSim();
     sim.build(42, 1280, 450);
     sim.restart();
-    for (let i = 0; i < COLLATZ_GROW_S * COLLATZ_STEP_HZ - 1; i++) sim.step();
+    expect(COLLATZ_GROW_S).toBe(9);
+    expect(COLLATZ_STEP_HZ).toBe(60);
+    for (let i = 0; i < 539; i++) sim.step();
     expect(sim.finished()).toBe(false);
+    expect(sim.shownDepth).toBe(49);
     sim.step();
     expect(sim.finished()).toBe(true);
     expect(sim.shownDepth).toBe(50);
@@ -31,7 +61,7 @@ describe('Collatz delta', () => {
     shallow.build(42, 1280, 450);
     const deep = new CollatzSim();
     deep.build(42, 1280, 450, 1e9);
-    deep.warm(true);
+    deep.previewDepth();
     expect(deep.shownDepth).toBe(120);
     expect(deep.readout()).toMatch(/^Sampled branches · 120 steps/);
     expect(deep.summary()).toContain('not a total');
@@ -59,7 +89,7 @@ describe('Collatz delta', () => {
     const sim = new CollatzSim();
     for (let d = 1; d <= whole.maxDepth; d++) {
       sim.build(42, 1280, 450, d);
-      sim.warm(true);
+      sim.previewDepth();
       const total = Number(sim.readout().split(' ')[0].replaceAll(',', ''));
       expect(total).toBe(whole.levelStart[d + 1]);
     }
@@ -68,10 +98,15 @@ describe('Collatz delta', () => {
   it('shows every node at the one-step minimum', () => {
     const sim = new CollatzSim();
     sim.build(42, 1280, 450, -5);
-    sim.warm(true);
+    expect(sim.front()).toBe(1);
     expect(sim.shownDepth).toBe(1);
     expect(sim.tree.count).toBe(2);
     expect(sim.readout()).toBe('2 numbers within 1 step of 1');
+    for (let i = 0; i < 539; i++) sim.step();
+    expect(sim.finished()).toBe(false);
+    sim.step();
+    expect(sim.finished()).toBe(true);
+    expect(sim.front()).toBe(1);
   });
 });
 
