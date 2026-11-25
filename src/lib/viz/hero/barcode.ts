@@ -323,15 +323,29 @@ export function diagramHit(
   return best;
 }
 
-/** Row index of the barcode bar under (x, y), or −1. Only bars already born can be hit. */
+/** Horizontal slack (CSS px) around a drawn bar that still counts as a hit (QA-14). */
+export const BAR_HIT_TOLERANCE = 6;
+
+const hitExt: [number, number] = [0, 0];
+
+/**
+ * Row index of the barcode bar under (x, y), or −1. Only the part of a bar that is drawn at
+ * `level` (birth … min(death, level)) can be hit, plus `BAR_HIT_TOLERANCE` CSS px either side
+ * so short bars stay easy to pick; visibly blank space in the row returns −1 (QA-14).
+ */
 export function barcodeHit(
-  _x: number,
+  x: number,
   y: number,
   rows: readonly BarInterval[],
   level: number,
+  minH: number,
+  maxH: number,
   L: StripLayout,
 ): number {
   const k = rowAtY(y, rows.length, L);
-  if (k < 0 || level < rows[k].birth) return -1;
-  return k;
+  if (k < 0 || !barExtent(rows[k], level, hitExt)) return -1;
+  const tol = BAR_HIT_TOLERANCE * L.dpr;
+  const x0 = levelToX(hitExt[0], minH, maxH, L) - tol;
+  const x1 = levelToX(hitExt[1], minH, maxH, L) + tol;
+  return x >= x0 && x <= x1 ? k : -1;
 }

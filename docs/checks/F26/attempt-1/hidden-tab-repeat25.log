@@ -1,0 +1,250 @@
+
+Running 25 tests using 1 worker
+
+[1/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[2/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  1) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat1/error-context.md
+
+
+[3/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[4/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  2) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat3/error-context.md
+
+
+[5/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[6/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[7/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[8/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  3) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat7/error-context.md
+
+
+[9/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[10/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  4) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat9/error-context.md
+
+
+[11/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[12/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[13/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[14/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[15/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  5) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat14/error-context.md
+
+
+[16/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  6) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat15/error-context.md
+
+
+[17/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  7) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat16/error-context.md
+
+
+[18/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[19/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[20/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  8) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat19/error-context.md
+
+
+[21/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  9) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat20/error-context.md
+
+
+[22/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  10) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat21/error-context.md
+
+
+[23/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[24/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[25/25] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  11) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium-repeat24/error-context.md
+
+
+  11 failed
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+  14 passed (26.6s)

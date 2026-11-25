@@ -32,7 +32,7 @@ export function createMode(
   id: ExtraModeId,
   els: ModeElements,
   settings: ModeSettings,
-  opts: { reducedMotion: boolean },
+  opts: { reducedMotion: boolean; autoplay?: boolean },
 ): ModeController {
   return new ModeController(els, createSim(id), settings, opts);
 }

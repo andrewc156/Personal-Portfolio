@@ -198,6 +198,13 @@ textarea {
   opacity: 0.6;
 }
 
+/* Hero Play / New terrain are rendered disabled until hero-client runs (QA-16).
+   With JS on they must not flash dimmed before init; dim them only without JS. */
+:root.js .hero__btn:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
 .icon-btn {
   display: inline-grid;
   place-items: center;

@@ -1328,3 +1328,406 @@ test.describe('hero modes', () => {
     });
   }
 });
+
+/* -------------------------------------------------------------------------------------------
+ * F26 hero playback and accessibility fixes (docs/qa/f23-production/report.md, QA-04 … QA-16).
+ * ------------------------------------------------------------------------------------------- */
+
+async function heroIntentPaused(page: Page): Promise<boolean> {
+  return page.evaluate(
+    () => document.querySelector<HTMLElement>('[data-hero]')!.__heroIntent!.userPaused,
+  );
+}
+
+const heroPlay = (page: Page) => page.locator('.hero__bar [data-hero-play]');
+
+test.describe('F26 playback and accessibility', () => {
+  test('QA-04: turning on reduced motion mid-play pauses; Play still works', async ({ page }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect.poll(async () => (await heroState(page)).state).toBe('paused');
+    await expect(heroPlay(page)).toHaveText('Play');
+    await framesSettled(page, async () => (await heroState(page)).frames);
+    const a = await heroState(page);
+    await page.waitForTimeout(600);
+    const b = await heroState(page);
+    expect(b.frames).toBe(a.frames);
+    expect(b.progress).toBe(a.progress);
+    // A system pause is not a manual pause.
+    expect(await heroIntentPaused(page)).toBe(false);
+    // Explicit Play opts in.
+    await heroPlay(page).click();
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    await expect(heroPlay(page)).toHaveText('Pause');
+  });
+
+  test('QA-04: an extra mode also pauses when reduced motion turns on', async ({ page }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    await chooseMode(page, 'collatz');
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await expect.poll(async () => (await modeState(page)).state).toBe('paused');
+    await expect(heroPlay(page)).toHaveText('Play');
+    // Later switches under reduced motion don't autoplay either.
+    await chooseMode(page, 'rising');
+    await framesSettled(page, async () => (await heroState(page)).frames);
+    expect((await heroState(page)).state).toBe('paused');
+  });
+
+  test('QA-05: a manual pause survives mode switches and keeps the held level', async ({
+    page,
+  }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    await heroPlay(page).click();
+    await expect(heroPlay(page)).toHaveText('Play');
+    const held = (await heroState(page)).progress;
+    expect(await heroIntentPaused(page)).toBe(true);
+
+    for (const id of ['dye', 'pond', 'collatz']) {
+      await chooseMode(page, id);
+      await framesSettled(page, async () => (await modeState(page)).frames);
+      const m = await modeState(page);
+      expect(m.state, id).toBe('paused');
+      expect(m.running, id).toBe('false');
+      await expect(heroPlay(page)).toHaveText('Play');
+    }
+    await chooseMode(page, 'rising');
+    await framesSettled(page, async () => (await heroState(page)).frames);
+    const back = await heroState(page);
+    expect(back.state).toBe('paused');
+    expect(back.progress).toBeCloseTo(held, 6);
+
+    // Play clears the manual pause: the next mode autoplays again.
+    await heroPlay(page).click();
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    expect(await heroIntentPaused(page)).toBe(false);
+    await chooseMode(page, 'dye');
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+  });
+
+  test('QA-05: a keyboard pause (Space) and a scrub also count as manual pauses', async ({
+    page,
+  }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    const hero = page.locator('[data-hero]');
+    await hero.focus();
+    await hero.press(' ');
+    await expect.poll(async () => (await heroState(page)).state).toBe('paused');
+    await chooseMode(page, 'rivers');
+    await framesSettled(page, async () => (await modeState(page)).frames);
+    expect((await modeState(page)).state).toBe('paused');
+    await hero.focus();
+    await hero.press(' ');
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+    await chooseMode(page, 'rising');
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    await hero.focus();
+    await hero.press('ArrowRight');
+    expect((await heroState(page)).state).toBe('paused');
+    await chooseMode(page, 'dye');
+    await framesSettled(page, async () => (await modeState(page)).frames);
+    expect((await modeState(page)).state).toBe('paused');
+  });
+
+  test('QA-05: reaching the end is not a manual pause', async ({ page }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    await page.evaluate(() => {
+      const h = document.querySelector<HTMLElement>('[data-hero]')!.__hero!;
+      h.update({ loop: false });
+      h.progress = 0.995;
+    });
+    // Holds about 2.5 s at the top, then stops by itself.
+    await expect
+      .poll(async () => (await heroState(page)).state, { timeout: 10_000 })
+      .toBe('paused');
+    expect((await heroState(page)).progress).toBe(1);
+    expect(await heroIntentPaused(page)).toBe(false);
+    await chooseMode(page, 'pond');
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+  });
+
+  test('QA-09: the live summary follows playback at milestones, not every frame', async ({
+    page,
+  }) => {
+    await page.goto(URL);
+    await waitForHero(page);
+    await expect.poll(async () => (await heroState(page)).running).toBe('true');
+    const summary = page.locator('[data-hero-summary]');
+    await page.evaluate(() => {
+      const root = document.querySelector<HTMLElement>('[data-hero]')!;
+      const el = root.querySelector<HTMLElement>('[data-hero-summary]')!;
+      const w = window as unknown as { __summaryChanges: string[] };
+      w.__summaryChanges = [];
+      new MutationObserver((recs) => {
+        // One record per textContent assignment.
+        for (let i = 0; i < recs.length; i++) w.__summaryChanges.push(el.textContent ?? '');
+      }).observe(el, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+      const h = root.__hero!;
+      h.update({ loop: false, speed: 3 });
+      h.progress = 0.05;
+    });
+    // While still playing, the summary reports a level past the start.
+    await expect
+      .poll(
+        async () => {
+          const t = (await summary.textContent()) ?? '';
+          const pct = Number(/(\d+)% of the way up/.exec(t)?.[1] ?? -1);
+          return t.startsWith('Playing.') && pct >= 25;
+        },
+        { timeout: 10_000 },
+      )
+      .toBe(true);
+    // Ends with an accurate paused summary.
+    await expect
+      .poll(async () => (await heroState(page)).state, { timeout: 15_000 })
+      .toBe('paused');
+    await expect(summary).toContainText('Paused.');
+    await expect(summary).toContainText('100% of the way up');
+    const changes = await page.evaluate(
+      () => (window as unknown as { __summaryChanges: string[] }).__summaryChanges,
+    );
+    // A run at 3× takes ~4.4 s of frames: a handful of updates, not one per frame.
+    expect(changes.length).toBeGreaterThanOrEqual(2);
+    expect(changes.length).toBeLessThanOrEqual(8);
+  });
+
+  test('QA-09: keyboard and pointer selection of a bar is announced', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto(URL);
+    await waitForHero(page);
+    const hero = page.locator('[data-hero]');
+    const summary = page.locator('[data-hero-summary]');
+    await hero.focus();
+    await hero.press('End');
+    await hero.press('ArrowDown');
+    await hero.press('ArrowDown');
+    const label = await page.evaluate(() => {
+      const t = document.querySelector('[data-hero-readout]')!.textContent ?? '';
+      return /^Lake (\d+)/.exec(t)?.[1] ?? '';
+    });
+    expect(label).not.toBe('');
+    await expect(summary).toHaveText(new RegExp(`^Selected Lake ${label}: born at \\d+`));
+    // Escape returns to the level summary.
+    await hero.press('Escape');
+    await expect(summary).toContainText('Paused.');
+
+    // A click on a drawn bar is announced too.
+    const box = (await page.locator('[data-hero-strip]').boundingBox())!;
+    const r = await page.evaluate(() =>
+      document.querySelector<HTMLElement>('[data-hero]')!.__hero!.barRect(0),
+    );
+    await page.mouse.click(box.x + r!.x + r!.w / 2, box.y + r!.y + r!.h / 2);
+    await expect(summary).toHaveText(/^Selected Lake \d+: born at/);
+
+    // Islands view: the island is announced.
+    await page.evaluate(() =>
+      document.querySelector<HTMLElement>('[data-hero]')!.__hero!.update({
+        view: 'islands',
+        minPersistence: 0,
+      }),
+    );
+    await hero.focus();
+    await hero.press('ArrowDown');
+    await expect(summary).toHaveText(/^Selected island: appears at \d+/);
+  });
+
+  test('QA-14: blank barcode space does not select a distant bar', async ({ browser }) => {
+    for (const touch of [false, true]) {
+      const ctx = await browser.newContext({
+        viewport: touch ? { width: 390, height: 950 } : { width: 1200, height: 1000 },
+        hasTouch: touch,
+        isMobile: touch,
+        reducedMotion: 'reduce',
+      });
+      const page = await ctx.newPage();
+      await page.goto('/?seed=123456');
+      await waitForHero(page);
+      await page.evaluate(() => {
+        const h = document.querySelector<HTMLElement>('[data-hero]')!.__hero!;
+        h.update({ maxBars: 32 });
+        h.scrubTo(1);
+      });
+      const strip = page.locator('[data-hero-strip]');
+      await strip.scrollIntoViewIfNeeded();
+      const box = (await strip.boundingBox())!;
+      // A finite bar that ends well before the right edge.
+      const target = await page.evaluate(() => {
+        const h = document.querySelector<HTMLElement>('[data-hero]')!.__hero!;
+        const w = h.stripSize.w;
+        for (let k = 0; k < h.drawnRows.length; k++) {
+          const r = h.barRect(k);
+          if (r && Number.isFinite(h.drawnRows[k].death) && r.x + r.w < w - 80) return { k, r };
+        }
+        return null;
+      });
+      expect(target).not.toBeNull();
+      const { k, r } = target!;
+      const yMid = box.y + r.y + r.h / 2;
+      const hl = () =>
+        page.evaluate(
+          () => document.querySelector<HTMLElement>('[data-hero]')!.__hero!.highlightedRow,
+        );
+      const act = async (x: number) =>
+        touch ? page.touchscreen.tap(x, yMid) : page.mouse.move(x, yMid);
+      await act(box.x + r.x + r.w / 2);
+      await expect.poll(hl).toBe(k);
+      // Far to the right of the bar, same row: clears (mouse) or leaves no distant pick (touch).
+      await act(box.x + r.x + r.w + 60);
+      await expect.poll(hl).toBe(-1);
+      await act(box.x + r.x + r.w + 4); // within the small tolerance
+      await expect.poll(hl).toBe(k);
+      await ctx.close();
+    }
+  });
+
+  test('QA-15: the address bar follows mode and seed without new history entries', async ({
+    page,
+  }) => {
+    await page.goto('/?x=1&mode=collatz&seed=123456#hero-title');
+    await waitForMode(page, 'collatz');
+    const len = await page.evaluate(() => history.length);
+    const url = () => new globalThis.URL(page.url());
+    expect(url().searchParams.get('seed')).toBe('123456');
+
+    await chooseMode(page, 'rising');
+    await expect.poll(() => url().searchParams.get('mode')).toBe(null);
+    expect(url().searchParams.get('seed')).toBe('123456');
+    expect(url().searchParams.get('x')).toBe('1');
+    expect(url().hash).toBe('#hero-title');
+
+    await page.locator('.hero__bar [data-hero-new]').click();
+    const seed = await page.evaluate(
+      () => document.querySelector<HTMLElement>('[data-hero]')!.dataset.seed,
+    );
+    await expect.poll(() => url().searchParams.get('seed')).toBe(seed);
+
+    await chooseMode(page, 'dye');
+    await expect.poll(() => url().searchParams.get('mode')).toBe('dye');
+    expect(url().searchParams.get('seed')).toBe(seed);
+    expect(url().hash).toBe('#hero-title');
+    expect(await page.evaluate(() => history.length)).toBe(len);
+
+    // The written URL reopens the same state (drop the hash so this is a real navigation).
+    const reopen = url();
+    reopen.hash = '';
+    await page.goto(reopen.href);
+    await waitForMode(page, 'dye');
+    expect(
+      await page.evaluate(() => document.querySelector<HTMLElement>('[data-hero]')!.dataset.seed),
+    ).toBe(seed);
+  });
+
+  test('QA-15: a bare / load leaves the address alone until the state changes', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    await waitForHero(page);
+    await page.waitForTimeout(300);
+    expect(new globalThis.URL(page.url()).search).toBe('');
+    await chooseMode(page, 'pond');
+    await expect.poll(() => new globalThis.URL(page.url()).searchParams.get('mode')).toBe('pond');
+  });
+
+  test('QA-16: with JavaScript off the hero has no dead tab stops', async ({ browser }) => {
+    const ctx = await browser.newContext({ javaScriptEnabled: false });
+    const page = await ctx.newPage();
+    await page.goto(URL);
+    const fig = page.locator('.hero__figure');
+    for (const sel of [
+      '#hero-mode',
+      '[data-hero-play]',
+      '[data-hero-new]',
+      '.hero__toolbar button',
+    ]) {
+      await expect(fig.locator(sel).first(), sel).toBeDisabled();
+    }
+    expect(await page.locator('[data-hero]').getAttribute('tabindex')).toBeNull();
+    await expect(page.locator('[data-hero-readout]')).toContainText('needs JavaScript');
+    // Tab through the page: focus never lands on the hero's toolbar or animation box (the
+    // caption's Colorado link is a real link and may take focus).
+    for (let i = 0; i < 30; i++) {
+      await page.keyboard.press('Tab');
+      const inHero = await page.evaluate(
+        () => !!document.activeElement?.closest('.hero__toolbar, [data-hero]'),
+      );
+      expect(inHero, `Tab ${i + 1}`).toBe(false);
+    }
+    await ctx.close();
+  });
+
+  test('QA-16: with JavaScript the controls are enabled, and nothing shifts', async ({
+    browser,
+  }) => {
+    const boxes = async (js: boolean) => {
+      const ctx = await browser.newContext({
+        javaScriptEnabled: js,
+        viewport: { width: 390, height: 844 },
+        reducedMotion: 'reduce',
+      });
+      const page = await ctx.newPage();
+      await page.goto(URL);
+      if (js) await waitForHero(page);
+      // Relative to the hero figure, so header changes elsewhere don't matter here.
+      const out = await page.evaluate(() => {
+        const f = document.querySelector('.hero__figure')!.getBoundingClientRect();
+        return ['.hero__toolbar', '#hero-mode', '.hero__map', '.hero__bar', '.hero__caption'].map(
+          (s) => {
+            const r = document.querySelector(s)!.getBoundingClientRect();
+            return [r.x - f.x, r.y - f.y, r.width, r.height].map(Math.round);
+          },
+        );
+      });
+      if (js) {
+        await expect(page.locator('.hero__bar [data-hero-play]')).toBeEnabled();
+        await expect(page.locator('.hero__bar [data-hero-new]')).toBeEnabled();
+        await expect(page.locator('#hero-mode')).toBeEnabled();
+        await expect(page.locator('[data-hero]')).toHaveAttribute('tabindex', '0');
+      }
+      await ctx.close();
+      return out;
+    };
+    expect(await boxes(true)).toEqual(await boxes(false));
+  });
+
+  for (const width of [320, 375, 768, 1280]) {
+    test(`QA-13: the closed mode selector shows the longest mode name at ${width}px`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto(URL);
+      await waitForHero(page);
+      const r = await page.evaluate(() => {
+        const s = document.querySelector<HTMLSelectElement>('#hero-mode')!;
+        const cs = getComputedStyle(s);
+        const g = document.createElement('canvas').getContext('2d')!;
+        g.font = cs.font;
+        const text = Math.max(...[...s.options].map((o) => g.measureText(o.text).width));
+        const inner = s.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        const settings = document.querySelector('.hero__toolbar button')!.getBoundingClientRect();
+        return {
+          text,
+          inner,
+          right: settings.right,
+          overflow: document.documentElement.scrollWidth - window.innerWidth,
+        };
+      });
+      // Room for the text plus the native arrow (~20 px).
+      expect(r.inner - r.text).toBeGreaterThanOrEqual(20);
+      expect(r.right).toBeLessThanOrEqual(width);
+      expect(r.overflow).toBeLessThanOrEqual(0);
+    });
+  }
+});

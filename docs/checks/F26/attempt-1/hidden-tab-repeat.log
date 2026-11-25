@@ -1,0 +1,41 @@
+
+Running 16 tests using 1 worker
+
+[1/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[2/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  1) [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ─────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 2
+    Received: 3
+
+      650 |     const f0 = (await heroState(page)).frames;
+      651 |     await page.waitForTimeout(400);
+    > 652 |     expect((await heroState(page)).frames).toBe(f0);
+          |                                            ^
+      653 |     await setVis('visible');
+      654 |     await expect.poll(async () => (await heroState(page)).running).toBe('true');
+      655 |   });
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:652:44
+
+    Error Context: test-results/hero-motion-and-pausing-pauses-in-a-hidden-tab-chromium/error-context.md
+
+
+[3/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[4/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[5/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[6/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[7/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[8/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[9/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[10/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[11/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[12/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[13/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[14/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[15/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[16/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  1 failed
+    [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab ──────────────
+  15 passed (17.6s)

@@ -2,8 +2,11 @@ import { describe, expect, it } from 'vitest';
 import {
   barReadout,
   cellReadout,
+  islandsSummaryText,
   levelReadout,
   metres,
+  selectedIslandText,
+  selectedLakeText,
   stripLabel,
   summaryText,
 } from '../../../src/lib/viz/hero/text.ts';
@@ -53,5 +56,50 @@ describe('hero text', () => {
     expect(stripLabel('barcode')).toContain("lowest lake's bar never ends");
     expect(stripLabel('diagram')).toMatch(/^Persistence diagram:/);
     expect(stripLabel('diagram')).toContain('lowest lake never dies');
+  });
+
+  it('summary names the visible chart and leaves chart copy out when it is hidden (QA-09)', () => {
+    const base = {
+      playing: true,
+      progress: 0.5,
+      level: 400,
+      alive: 3,
+      shown: 5,
+      rows: 12,
+      longest: null,
+      seed: 7,
+    };
+    expect(summaryText({ ...base, view: 'diagram' })).toContain(
+      'The persistence diagram shows 5 of 12 points so far.',
+    );
+    const hidden = summaryText({ ...base, view: null });
+    expect(hidden).not.toMatch(/barcode|diagram/i);
+    expect(hidden).toBe(
+      'Playing. Terrain 7. Water level 400\u00a0m, 50% of the way up. 3 lakes are present.',
+    );
+    expect(islandsSummaryText({ ...base, chart: false })).not.toContain('barcode');
+    expect(summaryText({ ...base, selected: 'Selected Lake 3.' })).toMatch(/Selected Lake 3\.$/);
+  });
+
+  it('selection texts give the selected feature and its key values', () => {
+    expect(
+      selectedLakeText(
+        { birth: 171, death: 414, birthCell: 1, deathCell: 2, mergedInto: 0 },
+        24,
+        2,
+      ),
+    ).toBe(
+      'Selected Lake 24: born at 171\u00a0m, spills into Lake 2 at 414\u00a0m, persistence 243\u00a0m.',
+    );
+    expect(
+      selectedLakeText(
+        { birth: 0, death: Infinity, birthCell: 0, deathCell: -1, mergedInto: -1 },
+        1,
+        0,
+      ),
+    ).toContain('never dies');
+    expect(
+      selectedIslandText({ birth: 573, death: 596, peakCell: 1, saddleCell: 2 } as never),
+    ).toBe('Selected island: appears at 573\u00a0m, goes underwater at 596\u00a0m.');
   });
 });

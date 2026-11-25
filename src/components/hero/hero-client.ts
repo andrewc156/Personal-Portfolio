@@ -3,6 +3,10 @@
  * panel) to the running mode: HeroController for Rising water (the default, loaded with the
  * page) or a ModeController for the extra modes, which are loaded on demand with import().
  * Switching modes destroys the previous controller first (frame, timers, listeners, observers).
+ *
+ * F26: a manual pause survives mode switches (PlaybackIntent), turning on system reduced motion
+ * pauses whatever is playing, the address bar follows the mode and seed (replaceState only),
+ * and the hero's controls stay disabled / out of the tab order until this module has run.
  */
 import { syncSliderOutput } from '../site/settings';
 import { normalizeSeed, randomSeed } from '../../lib/viz/common/rng';
@@ -16,7 +20,9 @@ import {
 import type { BarcodeView } from '../../lib/viz/hero/barcode';
 import type { Pacing } from '../../lib/viz/hero/model';
 import type { ColorBy } from '../../lib/viz/hero/render-map';
+import { PlaybackIntent } from '../../lib/viz/hero/playback';
 import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
+import { heroHref } from '../../lib/viz/hero/url';
 import {
   COLLATZ_DEFAULT_STEPS,
   DEFAULT_MODE,
@@ -34,6 +40,7 @@ interface ArtController {
   readonly isRunning: boolean;
   readonly pendingTimers: number;
   onUi: (s: HeroUiState) => void;
+  onUserPlayback: (playing: boolean) => void;
   togglePlay(): void;
   setPlaying(on: boolean): void;
   newTerrain(seed?: number): void;
@@ -50,6 +57,8 @@ declare global {
     __art?: ArtController;
     /** Switch modes programmatically (e2e); resolves once the new mode has drawn. */
     __setHeroMode?: (id: HeroModeId) => Promise<void>;
+    /** The page's playback intent (read by e2e: is a manual pause in force?). */
+    __heroIntent?: PlaybackIntent;
   }
 }
 
@@ -103,6 +112,8 @@ function init(): void {
   const summary = root.querySelector<HTMLElement>('[data-hero-summary]');
   const keys = root.querySelector<HTMLElement>('[data-hero-keys]');
   if (!map || !strip || !stripBox || !readout || !summary) return;
+  // Drop the no-JS note ("needs JavaScript") at once; the running mode fills the readout.
+  readout.textContent = '\u00a0';
   const caption = document.querySelector<HTMLElement>('[data-hero-caption]');
   const captionLink = document.querySelector<HTMLElement>('[data-hero-caption-link]');
   const risingMapLabel = map.getAttribute('aria-label') ?? '';
@@ -127,13 +138,35 @@ function init(): void {
   const startMode: HeroModeId = isHeroMode(modeParam) ? modeParam : DEFAULT_MODE;
   if (modeInput) modeInput.value = startMode;
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Read live: a mode started after the preference changes follows the new value (QA-04).
+  const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const intent = new PlaybackIntent();
+  root.__heroIntent = intent;
+  const onUserPlayback = (playing: boolean) => intent.on(playing ? 'user-play' : 'user-pause');
   let current: ArtController | null = null;
   let mode: HeroModeId = DEFAULT_MODE;
+  /** Rising water's level when the user left it paused, restored on return (QA-05). */
+  let heldRising: number | undefined;
+  /** The mode and seed the address bar describes (QA-15). A bare `/` counts as describing
+   *  the first random seed, so nothing is written until the state actually changes. */
+  let urlMode: HeroModeId = startMode;
+  let urlSeed = seed;
+  const syncUrl = (id: HeroModeId, s: number) => {
+    if (id === urlMode && s === urlSeed) return;
+    urlMode = id;
+    urlSeed = s;
+    try {
+      const next = heroHref(location.href, id, s);
+      if (next !== location.href) history.replaceState(history.state, '', next);
+    } catch {
+      // Sandboxed or file: contexts can refuse replaceState; the hero keeps working.
+    }
+  };
   /** Bumped on every switch, so a slow import() for an abandoned mode is dropped. */
   let token = 0;
 
   const sync = (s: HeroUiState) => {
+    syncUrl(mode, s.seed);
     for (const b of playButtons) {
       const label = s.playing ? 'Pause' : 'Play';
       if (b.textContent !== label) b.textContent = label;
@@ -192,15 +225,14 @@ function init(): void {
     }
   };
 
-  const startRising = (s: number): boolean => {
+  const startRising = (s: number, progress?: number): boolean => {
     let hero: HeroController;
+    const reducedMotion = motionQuery.matches;
     try {
       hero = new HeroController(
         { root, map, strip, stripBox, readout, summary, islandsCopy },
         readForm(s),
-        {
-          reducedMotion,
-        },
+        { reducedMotion, autoplay: intent.shouldAutoplay(reducedMotion), progress },
       );
     } catch {
       return false; // No 2-D canvas: the static fallback illustration stays visible.
@@ -208,6 +240,7 @@ function init(): void {
     root.__hero = hero;
     root.__art = hero;
     hero.onUi = sync;
+    hero.onUserPlayback = onUserPlayback;
     current = hero;
     return true;
   };
@@ -215,6 +248,8 @@ function init(): void {
   const setMode = async (id: HeroModeId): Promise<void> => {
     const my = ++token;
     const s = current?.settings.seed ?? seed;
+    if (current instanceof HeroController)
+      heldRising = intent.userPaused ? current.progress : undefined;
     // Tear down first, so nothing from the old mode runs while the new one loads.
     current?.destroy();
     current = null;
@@ -225,7 +260,7 @@ function init(): void {
     if (modeInput && modeInput.value !== id) modeInput.value = id;
     applyChrome(id);
     if (id === 'rising') {
-      startRising(s);
+      startRising(s, intent.userPaused ? heldRising : undefined);
       syncNow();
       return;
     }
@@ -239,13 +274,16 @@ function init(): void {
     if (my !== token) return; // another switch happened while loading
     let ctl: ModeController;
     try {
+      const reducedMotion = motionQuery.matches;
       ctl = mod.createMode(id, { root, map, readout, summary }, readModeForm(id, s), {
         reducedMotion,
+        autoplay: intent.shouldAutoplay(reducedMotion),
       });
     } catch {
       return;
     }
     ctl.onUi = sync;
+    ctl.onUserPlayback = onUserPlayback;
     root.__heroMode = ctl;
     root.__art = ctl;
     current = ctl;
@@ -270,6 +308,18 @@ function init(): void {
 
   for (const b of playButtons) b.addEventListener('click', () => current?.togglePlay());
   for (const b of newButtons) b.addEventListener('click', () => current?.newTerrain());
+  // No-JS, these are disabled and the hero box is not a tab stop (QA-16): turn them on now.
+  for (const b of [...playButtons, ...newButtons]) b.disabled = false;
+  root.tabIndex = 0;
+
+  // Reduced motion switched on mid-play: pause, keep Play available (QA-04). Turning it off
+  // again does not resume by itself.
+  motionQuery.addEventListener('change', () => {
+    if (!motionQuery.matches || !current?.playing) return;
+    current.setPlaying(false);
+    intent.on('system-pause');
+    syncNow();
+  });
 
   if (form) {
     form.addEventListener('submit', (e) => e.preventDefault());

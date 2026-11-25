@@ -7,6 +7,8 @@ import {
   diagramHit,
   drawBarcode,
   drawDiagram,
+  levelToX,
+  rowPitch,
   stripFont,
   stripLayout,
   type BarcodeView,
@@ -25,6 +27,7 @@ import {
   type Pacing,
 } from './model.ts';
 import { clampMarker, placeLabel, separatePass, type Box, type Point } from './markers.ts';
+import { progressMilestone } from './playback.ts';
 import { MapPainter, type ColorBy } from './render-map.ts';
 import { generateTerrain, gridSize, heightRange, hillshade } from './terrain.ts';
 import {
@@ -35,6 +38,8 @@ import {
   islandsSummaryText,
   levelReadout,
   metres,
+  selectedIslandText,
+  selectedLakeText,
   stripLabel,
   summaryText,
 } from './text.ts';
@@ -83,6 +88,8 @@ export const HOLD_MS = 2500;
 /** Reduced motion: static frame at about 45 % of the rise. */
 export const REDUCED_MOTION_PROGRESS = 0.45;
 const DPR_CAP = 2;
+/** During playback the live summary refreshes at progress quarters, at most this often. */
+export const SUMMARY_MILESTONE_GAP_MS = 3000;
 
 export interface HeroElements {
   root: HTMLElement;
@@ -135,6 +142,12 @@ export class HeroController {
   playing = false;
   /** Called on play/pause, seed change and (throttled) progress change. */
   onUi: (s: HeroUiState) => void = () => {};
+  /**
+   * Called only for the user's own playback actions (Play/Pause button or Space via
+   * togglePlay, and scrubbing): true = play/replay, false = a manual pause. Automatic stops
+   * (the end of a run, reduced motion, off-screen) never call it (QA-05).
+   */
+  onUserPlayback: (playing: boolean) => void = () => {};
 
   private t!: Terrain;
   private rows: Bar[] = [];
@@ -162,6 +175,11 @@ export class HeroController {
   private readoutTimer = 0;
   private lastUiAt = 0;
   private summaryTimer = 0;
+  /** Last announced playback milestone (progressMilestone) and when the summary last changed. */
+  private milestone = 0;
+  private lastSummaryAt = -Infinity;
+  /** The next summary leads with the explicitly selected bar (keyboard, click, tap). */
+  private announceSelection = false;
   private theme: ThemeName = 'light';
   private colors = {
     text: '#1c1b19',
@@ -183,7 +201,16 @@ export class HeroController {
   /** Pass-marker position scratch (reused every highlight frame). */
   private passPt: Point = { x: 0, y: 0 };
 
-  constructor(els: HeroElements, settings: HeroSettings, opts: { reducedMotion: boolean }) {
+  /**
+   * opts.autoplay (default true) lets a mode switch start paused after a manual pause (QA-05);
+   * opts.progress restores a held water level. Reduced motion never autoplays and, without a
+   * held level, shows the static frame at REDUCED_MOTION_PROGRESS.
+   */
+  constructor(
+    els: HeroElements,
+    settings: HeroSettings,
+    opts: { reducedMotion: boolean; autoplay?: boolean; progress?: number },
+  ) {
     this.els = els;
     this.settings = { ...settings, seed: normalizeSeed(settings.seed) };
     const mc = els.map.getContext('2d');
@@ -209,16 +236,21 @@ export class HeroController {
     this.measure();
     this.build();
     this.labelStrip();
+    const held =
+      opts.progress !== undefined && Number.isFinite(opts.progress)
+        ? Math.min(1, Math.max(0, opts.progress))
+        : undefined;
     if (opts.reducedMotion) {
-      this.progress = REDUCED_MOTION_PROGRESS;
+      this.progress = held ?? REDUCED_MOTION_PROGRESS;
       this.playing = false;
     } else {
       // Start part-way up so the first painted frame shows land and a few lakes. Loops and
       // replays still start from the bottom, so the births are shown every cycle after this.
-      this.progress = this.startProgress();
-      this.playing = true;
+      this.progress = held ?? this.startProgress();
+      this.playing = opts.autoplay ?? true;
     }
     this.startAt = this.progress;
+    this.milestone = progressMilestone(this.progress);
     // First frame right away (not on the next rAF) so the canvas is never blank after hydration.
     this.render();
     this.dirty = false;
@@ -245,6 +277,7 @@ export class HeroController {
       // Replay from the bottom after the end.
       this.progress = 0;
       this.holdLeft = 0;
+      this.milestone = 0;
     }
     if (this.playing === on) return;
     this.playing = on;
@@ -256,14 +289,18 @@ export class HeroController {
     this.schedule();
   }
 
+  /** The user's Play/Pause (button or Space). */
   togglePlay(): void {
     this.setPlaying(!this.playing);
+    this.onUserPlayback(this.playing);
   }
 
-  /** Jump to progress p (pauses playback). */
+  /** Jump to progress p (pauses playback; a user scrub holds the level, QA-05). */
   scrubTo(p: number): void {
     this.progress = Math.min(1, Math.max(0, p));
     this.holdLeft = 0;
+    this.milestone = progressMilestone(this.progress);
+    this.onUserPlayback(false);
     if (this.playing) {
       this.playing = false;
       this.syncState();
@@ -309,7 +346,14 @@ export class HeroController {
     }
     this.dirty = true;
     if (viewChanged) this.labelStrip();
-    if (s.pacing !== prev.pacing || viewChanged || rowsChanged) this.queueSummary(300);
+    if (
+      s.pacing !== prev.pacing ||
+      viewChanged ||
+      rowsChanged ||
+      s.showBarcode !== prev.showBarcode
+    ) {
+      this.queueSummary(300);
+    }
     this.schedule();
   }
 
@@ -342,9 +386,19 @@ export class HeroController {
       k = k < 0 ? (dir > 0 ? 0 : n - 1) : (k + dir + n) % n;
       if (rows[k].birth <= level) {
         this.highlightRow(k);
+        this.announceSelected();
         return;
       }
     }
+  }
+
+  /**
+   * Explicit selection (keyboard, click or tap, not hover): the live summary leads with the
+   * selected bar, debounced so holding an arrow key announces only where it stops (QA-09).
+   */
+  private announceSelected(): void {
+    this.announceSelection = this.highlight >= 0;
+    this.queueSummary(150);
   }
 
   /**
@@ -629,6 +683,7 @@ export class HeroController {
       if (this.settings.loop) {
         this.newTerrain();
         this.progress = 0;
+        this.milestone = 0;
       } else {
         this.playing = false;
         this.syncState();
@@ -641,6 +696,14 @@ export class HeroController {
     if (this.progress >= 1) {
       this.progress = 1;
       this.holdLeft = HOLD_MS;
+    }
+    // Coarse milestones for the live summary (quarters, and the top), not every frame (QA-09).
+    const m = progressMilestone(this.progress);
+    if (m !== this.milestone) {
+      this.milestone = m;
+      if (m === 4 || performance.now() - this.lastSummaryAt >= SUMMARY_MILESTONE_GAP_MS) {
+        this.queueSummary(0);
+      }
     }
     this.emitUi(false);
   }
@@ -908,11 +971,40 @@ export class HeroController {
   }
 
   private updateSummary(): void {
+    const text = this.summaryNow();
+    this.announceSelection = false;
+    this.lastSummaryAt = performance.now();
+    if (this.els.summary.textContent !== text) this.els.summary.textContent = text;
+  }
+
+  /** Live-region text for the explicitly selected bar, or null. */
+  private selectedText(level: number): string | null {
+    if (this.highlight < 0) return null;
+    if (this.settings.view === 'islands') {
+      const island = this.islandRows[this.highlight];
+      return island && island.birth <= level ? selectedIslandText(island) : null;
+    }
+    const hl = this.rows[this.highlight];
+    if (!hl || hl.birth > level) return null;
+    const t = this.t;
+    return selectedLakeText(
+      hl,
+      t.lakes.labelOf[hl.birthCell],
+      hl.mergedInto >= 0 ? t.lakes.labelOf[hl.mergedInto] : 0,
+    );
+  }
+
+  private summaryNow(): string {
     const level = this.level();
+    const selected = this.selectedText(level);
+    // An explicit selection is announced on its own; later pause/scrub summaries mention it
+    // at the end. Playback milestones leave it out so they stay short.
+    if (this.announceSelection && selected) return selected;
+    const tail = this.playing ? null : selected;
     if (this.settings.view === 'islands') {
       let shown = 0;
       for (const bar of this.islandRows) if (bar.birth <= level) shown++;
-      const text = islandsSummaryText({
+      return islandsSummaryText({
         playing: this.playing,
         progress: this.progress,
         level,
@@ -920,9 +1012,9 @@ export class HeroController {
         shown,
         rows: this.islandRows.length,
         seed: this.settings.seed,
+        chart: this.settings.showBarcode,
+        selected: tail,
       });
-      if (this.els.summary.textContent !== text) this.els.summary.textContent = text;
-      return;
     }
     this.t.flood.advanceTo(level);
     let shown = 0;
@@ -937,7 +1029,7 @@ export class HeroController {
         longest = b;
       }
     }
-    const text = summaryText({
+    return summaryText({
       playing: this.playing,
       progress: this.progress,
       level,
@@ -946,8 +1038,13 @@ export class HeroController {
       rows: this.rows.length,
       longest: longest ? { bar: longest, label: this.t.lakes.labelOf[longest.birthCell] } : null,
       seed: this.settings.seed,
+      view: this.settings.showBarcode
+        ? this.settings.view === 'diagram'
+          ? 'diagram'
+          : 'barcode'
+        : null,
+      selected: tail,
     });
-    if (this.els.summary.textContent !== text) this.els.summary.textContent = text;
   }
 
   // ---- events ----------------------------------------------------------------------------
@@ -1025,6 +1122,7 @@ export class HeroController {
         case 'Escape':
           if (this.highlight < 0 && !this.followMapHover) return;
           this.highlightRow(-1);
+          this.announceSelected();
           break;
         case 'n':
         case 'N':
@@ -1040,7 +1138,11 @@ export class HeroController {
     // Pointing at a lake also highlights its bar, the map-to-barcode half of the link (the
     // strip handles barcode-to-map). Mouse: while hovering. Touch: a tap picks or clears it.
     on(map, 'pointermove', (e) => this.mapHover(e, e.pointerType !== 'touch'));
-    on(map, 'pointerdown', (e) => this.mapHover(e, true));
+    on(map, 'pointerdown', (e) => {
+      this.mapHover(e, true);
+      // A click or tap on a lake is an explicit selection: announce it (hover is not).
+      if (this.mapPicked && this.highlight >= 0) this.announceSelected();
+    });
     on(map, 'pointerleave', (e) => {
       this.hoverCell = -1;
       this.followMapHover = false;
@@ -1057,7 +1159,10 @@ export class HeroController {
     });
     on(strip, 'pointerdown', (e) => {
       const k = this.stripHit(e);
+      const before = this.highlight;
       this.highlightRow(e.pointerType === 'touch' && k === this.highlight ? -1 : k);
+      // Announce a click/tap selection; clearing in blank space only refreshes the summary.
+      if (this.highlight >= 0 || before >= 0) this.announceSelected();
     });
     on(strip, 'pointerleave', (e) => {
       if (e.pointerType !== 'touch') this.highlightRow(-1);
@@ -1072,7 +1177,7 @@ export class HeroController {
     if (this.settings.view === 'diagram') {
       return diagramHit(x, y, 10 * this.dpr, this.rows, level, this.t.minH, this.t.maxH, this.L);
     }
-    return barcodeHit(x, y, this.stripRows, level, this.L);
+    return barcodeHit(x, y, this.stripRows, level, this.t.minH, this.t.maxH, this.L);
   }
 
   private mapHover(e: PointerEvent, pick: boolean): void {
@@ -1112,6 +1217,29 @@ export class HeroController {
     const rows = this.rows;
     for (let k = 0; k < rows.length; k++) if (rows[k].birthCell === lake) return k;
     return -1;
+  }
+
+  /**
+   * Where barcode row k is drawn at the current level, in CSS px relative to the strip canvas,
+   * or null if nothing is drawn (exposed for tests of hit-testing).
+   */
+  barRect(k: number): { x: number; y: number; w: number; h: number } | null {
+    const rows = this.stripRows;
+    const bar = rows[k];
+    const level = this.level();
+    if (!bar || level < bar.birth) return null;
+    const L = this.L;
+    const pitch = rowPitch(rows.length, L);
+    const thick = Math.max(L.dpr, pitch * 0.62);
+    const x0 = levelToX(bar.birth, this.t.minH, this.t.maxH, L);
+    const x1 = levelToX(Math.min(bar.death, level), this.t.minH, this.t.maxH, L);
+    const d = this.dpr;
+    return {
+      x: x0 / d,
+      y: (L.top + k * pitch + (pitch - thick) / 2) / d,
+      w: (x1 - x0) / d,
+      h: thick / d,
+    };
   }
 
   /** CSS size of the strip (exposed for tests). */

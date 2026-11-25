@@ -233,8 +233,9 @@ describe('criterion 2: drawn bars equal the engine bars for the same seed', () =
     expect(y).toBe(-1);
     const pitch = Math.min((L.bottom - L.top) / rows.length, 9);
     const yk = L.top + k * pitch + pitch / 2;
-    expect(barcodeHit(0, yk, rows, rows[k].birth - 1, L)).toBe(-1);
-    expect(barcodeHit(0, yk, rows, maxH, L)).toBe(k);
+    const xb = levelToX(rows[k].birth, minH, maxH, L);
+    expect(barcodeHit(xb, yk, rows, rows[k].birth - 1, minH, maxH, L)).toBe(-1);
+    expect(barcodeHit(xb, yk, rows, maxH, minH, maxH, L)).toBe(k);
     expect(levelToX(minH, minH, maxH, L)).toBe(L.left);
   });
 });

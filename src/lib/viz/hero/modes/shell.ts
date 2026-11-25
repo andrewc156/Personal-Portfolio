@@ -49,6 +49,8 @@ export class ModeController {
   /** User pokes that hit (read by e2e). */
   pokes = 0;
   onUi: (s: ModeUiState) => void = () => {};
+  /** The user's own Play/Pause only (button or Space); automatic stops never call it (QA-05). */
+  onUserPlayback: (playing: boolean) => void = () => {};
 
   private ctx: CanvasRenderingContext2D;
   private raf = 0;
@@ -73,7 +75,8 @@ export class ModeController {
     els: ModeElements,
     sim: ModeSim,
     settings: ModeSettings,
-    opts: { reducedMotion: boolean },
+    /** autoplay (default true): false starts paused after a manual pause in another mode. */
+    opts: { reducedMotion: boolean; autoplay?: boolean },
   ) {
     this.els = els;
     this.sim = sim;
@@ -84,7 +87,7 @@ export class ModeController {
     this.ctx = ctx;
     this.colors = this.readColors();
     this.measure();
-    this.playing = !opts.reducedMotion;
+    this.playing = !opts.reducedMotion && (opts.autoplay ?? true);
     this.build(opts.reducedMotion);
     this.render();
     this.updateSummary();
@@ -120,6 +123,7 @@ export class ModeController {
 
   togglePlay(): void {
     this.setPlaying(!this.playing);
+    this.onUserPlayback(this.playing);
   }
 
   /** New state with `seed` (random if omitted); "New terrain" and N. */

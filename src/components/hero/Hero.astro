@@ -66,7 +66,6 @@ const rising = modeMeta(DEFAULT_MODE);
         data-state="paused"
         data-running="false"
         data-mode="rising"
-        tabindex="0"
         role="group"
         aria-label={rising.groupLabel}
         aria-describedby="hero-keys"
@@ -90,14 +89,16 @@ const rising = modeMeta(DEFAULT_MODE);
           ></canvas>
         </div>
         <div class="hero__bar">
-          <button type="button" class="btn hero__btn" data-hero-play>
+          {/* Disabled until hero-client.ts runs (it also makes the box a tab stop and clears
+              the no-JS note in the readout), so a no-JS visit has no dead focus stops (QA-16). */}
+          <button type="button" class="btn hero__btn" data-hero-play disabled>
             Play
           </button>
-          <button type="button" class="btn hero__btn" data-hero-new>
+          <button type="button" class="btn hero__btn" data-hero-new disabled>
             New terrain
           </button>
           <p class="hero__readout" data-hero-readout>
-            &nbsp;
+            A still picture. The animation needs JavaScript.
           </p>
         </div>
         <p id="hero-keys" class="visually-hidden" data-hero-keys>
@@ -185,6 +186,19 @@ const rising = modeMeta(DEFAULT_MODE);
     margin-bottom: var(--space-3);
     font-size: var(--fs-small);
     color: var(--color-text-muted);
+  }
+
+  /* Very narrow screens (below ≈350 px): the label takes its own line so the closed select is wide
+     enough for the longest mode name (QA-13). Pure CSS, fixed from first paint: no shift. */
+  @media (max-width: 22rem) {
+    .hero__toolbar {
+      grid-template-columns: minmax(0, 1fr) max-content;
+      row-gap: var(--space-1);
+    }
+
+    .hero__toolbar label {
+      grid-column: 1 / -1;
+    }
   }
 
   .hero__toolbar select {

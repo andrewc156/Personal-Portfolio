@@ -72,6 +72,10 @@ export interface SummaryInput {
   /** Longest finite bar among the rows, with its lake number. */
   longest: { bar: Bar; label: number } | null;
   seed: number;
+  /** Which chart is visible; omitted means the barcode. `null` = the chart is hidden. */
+  view?: 'barcode' | 'diagram' | null;
+  /** The explicitly selected bar, if any (appended as one short sentence). */
+  selected?: string | null;
 }
 
 function summaryStart(s: Pick<SummaryInput, 'playing' | 'seed' | 'level' | 'progress'>): string {
@@ -79,24 +83,53 @@ function summaryStart(s: Pick<SummaryInput, 'playing' | 'seed' | 'level' | 'prog
   return `${s.playing ? 'Playing' : 'Paused'}. Terrain ${s.seed}. Water level ${metres(s.level)}, ${pct}% of the way up.`;
 }
 
-export function islandsSummaryText(s: Omit<SummaryInput, 'longest'>): string {
+export function islandsSummaryText(
+  s: Omit<SummaryInput, 'longest' | 'view'> & { chart?: boolean },
+): string {
   const count = s.alive === 1 ? '1 island is' : `${s.alive} islands are`;
-  return `${summaryStart(s)} ${count} present. The islands barcode shows ${s.shown} of ${s.rows} bars so far.`;
+  const chart =
+    s.chart === false ? '' : ` The islands barcode shows ${s.shown} of ${s.rows} bars so far.`;
+  const sel = s.selected ? ` ${s.selected}` : '';
+  return `${summaryStart(s)} ${count} present.${chart}${sel}`;
 }
 
-/** Screen-reader summary, refreshed on pause, scrub and new terrain (not every frame). */
+/**
+ * Screen-reader summary, refreshed on pause, scrub, new terrain, explicit selection and a few
+ * coarse milestones during playback (not every frame).
+ */
 export function summaryText(s: SummaryInput): string {
   const parts = [
     summaryStart(s),
     `${s.alive === 1 ? '1 lake is' : `${s.alive} lakes are`} present.`,
-    `The barcode shows ${s.shown} of ${s.rows} bars so far.`,
   ];
-  if (s.longest) {
+  const view = s.view === undefined ? 'barcode' : s.view;
+  if (view === 'diagram') {
+    parts.push(`The persistence diagram shows ${s.shown} of ${s.rows} points so far.`);
+  } else if (view === 'barcode') {
+    parts.push(`The barcode shows ${s.shown} of ${s.rows} bars so far.`);
+  }
+  if (s.longest && view !== null) {
     parts.push(
       `The longest finite bar is Lake ${s.longest.label}, persistence ${metres(
         persistence(s.longest.bar),
       )}.`,
     );
   }
+  if (s.selected) parts.push(s.selected);
   return parts.join(' ');
+}
+
+/** Live-region text for an explicitly selected lake bar (keyboard, click or tap). */
+export function selectedLakeText(bar: Bar, label: number, intoLabel: number): string {
+  if (isEssential(bar)) {
+    return `Selected Lake ${label}: born at ${metres(bar.birth)}, never dies. It is the lowest lake, so its bar is infinite.`;
+  }
+  return `Selected Lake ${label}: born at ${metres(bar.birth)}, spills into Lake ${intoLabel} at ${metres(
+    bar.death,
+  )}, persistence ${metres(persistence(bar))}.`;
+}
+
+/** Live-region text for an explicitly selected island bar. */
+export function selectedIslandText(bar: IslandBar): string {
+  return `Selected island: appears at ${metres(bar.birth)}, goes underwater at ${metres(bar.death)}.`;
 }

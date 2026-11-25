@@ -1,0 +1,8 @@
+320 delay=0 {"cls":0,"shifts":[],"readoutH":55}
+320 delay=800 {"cls":0,"shifts":[],"readoutH":55}
+360 delay=0 {"cls":0,"shifts":[],"readoutH":55}
+360 delay=800 {"cls":0,"shifts":[],"readoutH":55}
+375 delay=0 {"cls":0,"shifts":[],"readoutH":55}
+375 delay=800 {"cls":0,"shifts":[],"readoutH":55}
+390 delay=0 {"cls":0,"shifts":[],"readoutH":55}
+390 delay=800 {"cls":0,"shifts":[],"readoutH":55}

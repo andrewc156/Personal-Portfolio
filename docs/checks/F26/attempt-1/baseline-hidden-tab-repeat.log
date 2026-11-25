@@ -1,0 +1,20 @@
+
+Running 16 tests using 1 worker
+
+[1/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[2/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[3/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[4/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[5/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[6/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[7/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[8/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[9/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[10/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[11/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[12/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[13/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[14/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+[15/16] [chromium] › e2e/hero.spec.ts:624:3 › motion and pausing › pauses when off-screen and resumes when back
+[16/16] [chromium] › e2e/hero.spec.ts:639:3 › motion and pausing › pauses in a hidden tab
+  16 passed (16.8s)
