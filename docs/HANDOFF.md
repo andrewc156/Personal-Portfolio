@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 16:27:34 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 (evening) EST, Hermes Agent / Claude Code (Control)
 
 ## Status
 
@@ -39,7 +39,11 @@
 | F20 Hero Settings cog | done | PASS (attempt 1) | `9f9fb7c` |
 | F21 Collatz steps setting | done | PASS (attempt 1) | `a74ce65` (candidate `83d402f`) |
 | F22 Collatz starts at step one | done | PASS (attempt 1) | `614feef` (candidate `755a594`) |
-| F23 Collatz default 30 | done | PASS (attempt 1) | this commit |
+| F23 Collatz default 30 | done and live | PASS (attempt 1) | `20d59f9` |
+| F24 Production delivery (QA-01/02/12/18) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 1; Control fixed deploy.md notes 1–3) | — | — |
+| F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 2) | — | — |
+| F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | committed on wip/f24-27; hosted CI pending (5 frame-time tests) | PASS_WITH_NOTES (attempt 1) | — | — |
+| F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 1) | — | — |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -47,7 +51,8 @@
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md`, `docs/checks/F9/summary.md` | Exact hosted CI 45645398484 green; audit FAIL solely on unverified required browser matrix | Obtain a working multi-version runner and rerun the missing browser coverage. |
-| Production exploratory QA | Control + parallel reviewers | Live `andrewchincea.com`; report `docs/qa/f23-production/report.md` | Queued at Andrew’s request | Start only after F23 passes and the live build is verified by the Collatz default. Run 10 read-only reviewers: (1) desktop home/navigation, (2) mobile layout/touch, (3) Rising water hero mode, (4) alternate hero modes including Collatz, (5) Settings and state/keyboard flows, (6) Rising Water explorer and map/data controls, (7) keyboard/screen-reader/reduced-motion and no-JS fallbacks, (8) Garden/research/About content and links, (9) CV/downloads/contact/Open Science/404, (10) delivery/SEO/performance. Confirm and deduplicate findings into prioritized fixes and optional improvements; no code fixes in this pass. |
+| Production exploratory QA | Control + 10 reviewers | `docs/qa/f23-production/report.md` and evidence | Complete on live F23; 18 distinct findings | Fixes split into F24–F27 (DECISIONS #88). |
+| F24–F27 QA fixes | 2 site-builders + 2 viz-builders in parallel (disjoint files), then one checker | see DECISIONS #88 and builder briefs in docs/builds/F24–F27 | Decisions recorded: keep Cloudflare analytics, Worker-script redirects, Worker name `personal-portfolio` | Builders finish → one checker verifies all four (docs/checks/F24–F27/attempt-1.md) → hosted CI on an isolated candidate branch → commit each feature. |
 
 ## Handoff vs repo (resume check)
 
@@ -61,6 +66,12 @@
 - There is an old Claude worktree at `.claude/worktrees/agent-a302a2e8cd44f54ea` (branch `worktree-agent-a302a2e8cd44f54ea`, at `dc8e61c`) with uncommitted C1-era edits. It is the historical snapshot the C1 notes describe, and the C1 content on main supersedes it. Per Andrew's instruction it stays untouched under `.claude/`. It is not a WIP branch to merge.
 
 ## Uncommitted changes
+
+- F24–F27 builder code (unverified until checker PASS): see docs/builds/F24–F27/attempt-1.md for file lists. Control edits: package.json `check:prod`, tsconfig/eslint ignore `docs/checks/**/test-results`, global.css `:root.js .hero__btn:disabled` (no dim flash pre-init). Deleted ignored docs/checks/**/test-results repo copies that broke lint/check.
+- `docs/HANDOFF.md`, `docs/DECISIONS.md` (#88), `docs/STATUS.md` (F24–F27 rows): Control.
+- `docs/qa/` (F23 production QA report + evidence): Control, to be committed with the F24–F27 docs.
+- Untracked stale F19 checker artifacts (`docs/checks/F19a/attempt-2/`, `docs/checks/F19b/attempt-2/`, `docs/checks/tools/f19-*`, `f21-independent.mjs`, `docs/builds/F19a/.Rhistory`): historical, not staged.
+- Deleted old checker scratch dirs in ~/.hermes/cache/scratch at Andrew's request (disk 2.6 → 7.2 GiB free).
 
 
 
@@ -81,7 +92,7 @@
 - CI3 notes (non-blocking): in 1 of 4,000 synthetic layouts, a rescue slot costs one priority-1 placement (labels.ts:283-290). Leaders run 70-125 px only at 320-335 px with widths ×1.1 or more. The `loadingdone` listener is never removed (place-labels-client.ts:77).
 - RESOLVED by CI3 (`5c54ee2`, CI run 45557116146 green). Earlier: hosted CI was RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder). Run 45551772489 on `6210515` confirms: only these 2 fail; hero tests pass on hosted CI.
 
-- Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://andrewchincea.com` and trigger a fresh build.
+- Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Andrew reports `SITE_URL` was already set. Investigate which build environment and deployed `dist` produced the live localhost metadata before recommending a configuration change.
 
 - Andrew deployed the site on Workers and connected `andrewchincea.com`. The remaining deployment setting is the canonical-origin build variable noted above.
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
@@ -97,14 +108,24 @@
 
 ## Next 3 actions
 
+Now: commits dd55b43 (docs QA), 827390c F24, 44835b7 F25, 8b871b8 F26, 8e2f839 F27, + docs commit on wip/f24-27, pushed with a draft PR. On green hosted CI, fast-forward main to the branch tip (same SHAs), push, delete wip/f24-27, then README commit, then run `npm run check:prod` after the Workers Build and confirm the analytics beacon loads. Non-blocking follow-ups: F27 Enter-on-Show during scroll can leave focus offscreen; F25 Tab 300–600 ms after Back can still jump; Worker per-path Cache-Control on non-2xx.
+Original plan: after F25 attempt-2 checker PASS, make the separate commits on wip/f24-27, open a draft PR for hosted CI on the exact tip, then fast-forward main (same SHAs) and push. CLAUDE.md updated for Workers + analytics exception (#88) — goes in the docs commit.
+Andrew's instruction: commit and push F24, F25, F26, F27 as SEPARATE commits (one per feature, `[checked]`), plus a separate docs commit (QA report, DECISIONS #88, STATUS, HANDOFF). Shared-file split: package.json check:prod + tsconfig/eslint ignores → F24; global.css F25 hunks → F25, `:root.js .hero__btn:disabled` hunk → F26 (use `git add -p`).
+After those commits: add a root README.md (Andrew requested; none exists, no LICENSE file). Facts only from spec §3/src/content and repo; own commit, pushed.
+
+1. Collect F24–F27 builder reports; run one fresh checker over all four (port 4321, serial gates).
+2. Push the candidate to an isolated branch/draft PR for hosted CI (hero timing gates), then commit each feature `[checked]`.
+3. After Andrew's next Workers Build: run the F24 production smoke check (canonical/sitemap origin, redirects, branded 404, analytics loads).
+
+Earlier:
 1. Obtain access to the missing Chrome, Firefox and real Safari/iOS versions and verify the exact `680aeac` build.
 2. Rerun the F9 checker to close the browser-matrix blocker; no F19 code change unless a test reproduces a site defect.
-3. Needs Andrew: set Cloudflare Workers build `SITE_URL=https://andrewchincea.com`, rebuild when authorized, and verify canonical URLs, robots and sitemap.
+3. Investigate live localhost metadata with the active Workers build evidence (Andrew reports `SITE_URL` was already set); verify canonical URLs, robots, and sitemap after any authorized fix.
 
 ## WIP branch
 
 None. F22 draft PR #3 merged on PASS; `wip/codex-handoff` was deleted locally and on origin.
 
-Latest verified main push: F22 `614feef` (candidate CI 45701214633 passed; merged main CI 45702534254 success (completed)). F21 `a74ce65` (exact candidate CI 45696088155 and merged main CI 45698726531 passed). F20 `9f9fb7c` passed hosted CI 45692029569. F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
+Latest verified main push: F23 `20d59f9` (CI 45704540528 and Workers Build succeeded; live Collatz slider default 30 verified). F22 `614feef` (candidate CI 45701214633 passed; merged main CI 45702534254 success (completed)). F21 `a74ce65` (exact candidate CI 45696088155 and merged main CI 45698726531 passed). F20 `9f9fb7c` passed hosted CI 45692029569. F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).

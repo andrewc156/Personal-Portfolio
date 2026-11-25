@@ -44,6 +44,10 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F21 Collatz Steps | Andrew requested | done | 50-step default with 1–120 slider; exact counts through 50, labeled sampling above 50. [PASS](checks/F21/attempt-1.md). |
 | F22 Collatz starts at step one | Andrew requested | done | First frame is step 1, including replay and reduced-motion entry. [PASS](checks/F22/attempt-1.md). |
 | F23 Collatz default depth | Andrew requested | done | Default and reset 30; slider stays 1–120 and startup stays at 1. [PASS](checks/F23/attempt-1.md). |
+| F24 Production delivery | QA-01, 02, 12, 18 (DECISIONS #88) | done | [PASS_WITH_NOTES](checks/F24/attempt-1.md). Production origin at build, Worker redirects, branded 404, analytics CSP, post-deploy smoke check. |
+| F25 Shell, Settings sheet, Garden | QA-03, 11, 16 (shell), 17 | done | [PASS_WITH_NOTES](checks/F25/attempt-2.md) (attempt 1 FAIL). Sheet focus containment/inert/return, Back focus, no-JS controls, Garden type chip. |
+| F26 Hero playback and a11y | QA-04, 05, 09, 13, 14, 15, 16 (hero) | done | [PASS_WITH_NOTES](checks/F26/attempt-1.md). Motion changes, manual pause across modes, live summary, 320 px selector, hit-testing, URL sync. |
+| F27 Explorer focus, touch, keyboard, no-JS | QA-06, 07, 08, 10 | done | [PASS_WITH_NOTES](checks/F27/attempt-1.md). Show moves focus, sticky tap readout, keyboard cell inspection, no-JS fallback. |
 
 ## Post-F19 audit
 
