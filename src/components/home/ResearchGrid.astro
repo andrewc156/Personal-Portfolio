@@ -10,7 +10,7 @@ const { id } = Astro.props;
 const areas = await getResearch();
 ---
 
-<section id={id} class="section" aria-labelledby={`${id}-title`}>
+<section id={id} class="section home-section" aria-labelledby={`${id}-title`}>
   <div class="container">
     <h2 id={`${id}-title`} class="section-title">
       Research
@@ -28,11 +28,22 @@ const areas = await getResearch();
 <style>
   .research-grid {
     display: grid;
-    gap: var(--space-6);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    gap: var(--space-6) clamp(var(--space-4), 2.5vw, var(--space-6));
+    grid-template-columns: minmax(0, 1fr);
     margin: 0;
     padding: 0;
     list-style: none;
     max-width: none;
+  }
+
+  .research-grid > li {
+    display: flex;
+    min-width: 0;
+  }
+
+  @media (min-width: 42rem) {
+    .research-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 </style>

@@ -9,13 +9,17 @@ const { id } = Astro.props;
 const mission = await getCopy('mission');
 ---
 
-<section id={id} class="section" aria-labelledby={`${id}-title`}>
+<section
+  id={id}
+  class="section home-section home-section--split home-mission"
+  aria-labelledby={`${id}-title`}
+>
   <div class="container">
     <h2 id={`${id}-title`} class="section-title">
       Mission
     </h2>
     {mission.text && (
-      <p class="mission" data-confirmed={String(mission.confirmed)}>
+      <p class="mission home-section__body" data-confirmed={String(mission.confirmed)}>
         {mission.text}
       </p>
     )}
@@ -24,6 +28,10 @@ const mission = await getCopy('mission');
 
 <style>
   .mission {
-    font-size: 1.1875rem;
+    max-width: 53ch;
+    margin: 0;
+    font-size: clamp(1.25rem, 1.02rem + 0.8vw, 1.625rem);
+    line-height: 1.48;
+    text-wrap: pretty;
   }
 </style>

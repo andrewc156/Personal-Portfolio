@@ -1,78 +1,74 @@
-/**
- * Deterministic generative thumbnail for a research area (spec §4.3). The slug seeds a
- * small PRNG; the output is plain SVG markup made at build time, so no runtime JS runs.
- * Colors are CSS custom properties, so the art follows the site theme.
- */
+/** Decorative, deterministic SVG art (spec §4.3). No coordinates from research, data, or results. */
+export const THUMB_VIEWBOX = '0 0 240 120';
 
-/** 32-bit FNV-1a hash of a string. */
-export function hashString(s: string): number {
-  let h = 0x811c9dc5;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
-  }
-  return h >>> 0;
+const paper = 'var(--color-surface-sunken)';
+const ink = 'var(--color-accent)';
+const wash = 'var(--color-accent-soft)';
+const rule = 'var(--color-control)';
+
+function riverNetwork(): string {
+  // An invented branching river, not a map of a study area or a plot of station locations.
+  return `<g class="thumb-river-network" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-8 47C29 54 34 80 66 78S113 52 141 61 186 94 248 57" stroke="${wash}" stroke-width="24"/>
+    <path d="M-8 32C30 39 39 66 65 65S109 43 131 46M-7 64C24 69 33 95 66 92S115 67 138 76 189 111 247 74M151 47C175 54 192 75 248 43" stroke="${rule}" opacity=".48"/>
+    <path d="M-8 47C29 54 34 80 66 78S113 52 141 61 186 94 248 57" stroke="${ink}" stroke-width="2.8"/>
+    <path d="M43 -5C40 33 81 32 80 48S70 66 66 78M109 110C117 89 83 82 99 65M169 -5C146 17 169 32 160 47L149 64M224 17C209 33 184 30 187 45S208 63 205 75M45 39C56 39 62 35 66 34" stroke="${ink}" stroke-width="1.6"/>
+    <path d="M175 79C163 87 166 101 146 106M55 77C50 86 47 98 30 104" stroke="${ink}" opacity=".66"/>
+  </g>`;
 }
 
-/** mulberry32: tiny seeded PRNG returning floats in [0, 1). */
-export function mulberry32(seed: number): () => number {
-  let a = seed >>> 0;
-  return () => {
-    a = (a + 0x6d2b79f5) >>> 0;
-    let t = a;
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+function nestedSquares(): string {
+  // Repeating square within square: a motif for powers, without plotting values or frequencies.
+  const square = (x: number, y: number, size: number) => `M${x} ${y}h${size}v${size}h-${size}z`;
+  const frames = [0, 1, 2, 3, 4].map((n) => square(86 + 8 * n, 22 + 8 * n, 72 - 16 * n)).join('');
+  return `<g class="thumb-nested-squares">
+    <path d="M70 22H22v48h48zM222 46h-48v48h48z" fill="none" stroke="${rule}" opacity=".64"/>
+    <path d="M30 30h32v32H30zM182 54h32v32h-32z" fill="none" stroke="${rule}" opacity=".64"/>
+    <path d="M38 38h16v16H38zM190 62h16v16h-16z" fill="${rule}" opacity=".36"/>
+    <rect x="86" y="22" width="72" height="72" fill="${wash}"/>
+    <path d="${frames}" fill="none" stroke="${ink}" stroke-width="1.5"/>
+  </g>`;
 }
 
-const W = 240;
-const H = 120;
-const r1 = (n: number) => Math.round(n * 10) / 10;
-
-/** A ridge line as a closed path: smooth sum of a few seeded sine waves. */
-function ridge(rand: () => number, base: number, amp: number): string {
-  const waves = Array.from({ length: 3 }, () => ({
-    f: 1 + Math.floor(rand() * 4),
-    p: rand() * Math.PI * 2,
-    a: amp * (0.3 + rand() * 0.7),
-  }));
-  const pts: string[] = [];
-  const steps = 24;
-  for (let i = 0; i <= steps; i++) {
-    const x = (i / steps) * W;
-    const y = waves.reduce((acc, w) => acc + w.a * Math.sin((x / W) * Math.PI * w.f + w.p), base);
-    pts.push(`${r1(x)} ${r1(y)}`);
-  }
-  return `M${pts.join(' L')} L${W} ${H} L0 ${H} Z`;
-}
-
-/** SVG inner markup (no outer <svg>) for the thumbnail of `slug`. Same slug → same markup. */
-export function thumbnailMarkup(slug: string): string {
-  const rand = mulberry32(hashString(slug));
-  const fills = ['var(--color-land-1)', 'var(--color-land-2)', 'var(--color-land-3)'];
-  const parts: string[] = [`<rect width="${W}" height="${H}" fill="var(--color-surface-sunken)"/>`];
-  const layers = 3;
-  for (let i = 0; i < layers; i++) {
-    const base = H * (0.38 + i * 0.17) + (rand() - 0.5) * 10;
-    parts.push(`<path d="${ridge(rand, base, 12 - i * 2)}" fill="${fills[i]}"/>`);
-    if (i === 1) {
-      const level = r1(base + 6 + rand() * 8);
-      parts.push(
-        `<rect x="0" y="${level}" width="${W}" height="${r1(H - level)}" fill="var(--color-water)" opacity="0.85"/>`,
-      );
-    }
-  }
-  // A few seeded "bars" along the bottom edge, a nod to a persistence barcode.
-  const bars = 3 + Math.floor(rand() * 4);
-  for (let i = 0; i < bars; i++) {
-    const x0 = r1(rand() * W * 0.6);
-    const len = r1(16 + rand() * (W - x0 - 16) * 0.8);
-    parts.push(
-      `<rect x="${x0}" y="${r1(H - 8 - i * 5)}" width="${len}" height="2.5" rx="1" fill="var(--color-water-deep)" opacity="0.7"/>`,
+function recursiveTriangles(): string {
+  // A self-similar silhouette, not an eigenfunction visualization.
+  function triangles(x: number, y: number, width: number, depth: number): string {
+    const height = width * 0.8;
+    const half = width / 2;
+    if (!depth) return `M${x} ${y}l${half} -${height} ${half} ${height}z`;
+    return (
+      triangles(x, y, half, depth - 1) +
+      triangles(x + half, y, half, depth - 1) +
+      triangles(x + half / 2, y - height / 2, half, depth - 1)
     );
   }
-  return parts.join('');
+  return `<g class="thumb-recursive-triangles" stroke-linejoin="round">
+    <path d="${triangles(19, 83, 40, 2)}${triangles(180, 83, 40, 2)}" fill="none" stroke="${rule}"/>
+    <path d="${triangles(70, 94, 100, 0)}" fill="${wash}" stroke="${ink}"/>
+    <path d="${triangles(70, 94, 100, 3)}" fill="${ink}"/>
+  </g>`;
 }
 
-export const THUMB_VIEWBOX = `0 0 ${W} ${H}`;
+function abstract(slug: string): string {
+  // Hash only feeds a rotation; never interpolate the slug itself into SVG markup.
+  let hash = 0x811c9dc5;
+  for (let i = 0; i < slug.length; i++) hash = Math.imul(hash ^ slug.charCodeAt(i), 0x01000193);
+  const angle = (hash >>> 0) % 180;
+  return `<g class="thumb-abstract" transform="rotate(${angle} 120 56)">
+    <ellipse cx="120" cy="56" rx="57" ry="23" fill="${wash}" stroke="${ink}"/>
+    <ellipse cx="120" cy="56" rx="23" ry="45" fill="none" stroke="${ink}"/>
+  </g>`;
+}
+
+/** SVG inner markup generated at build time; same slug gives the same illustration. */
+export function thumbnailMarkup(slug: string): string {
+  const motif =
+    slug === 'water-quality'
+      ? riverNetwork()
+      : slug === 'number-theory'
+        ? nestedSquares()
+        : slug === 'spectral-fractals'
+          ? recursiveTriangles()
+          : abstract(slug);
+  return `<rect width="240" height="120" fill="${paper}"/>${motif}`;
+}

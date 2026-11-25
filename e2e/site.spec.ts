@@ -309,7 +309,10 @@ test.describe('research', () => {
       await expect(related).toHaveAttribute('href', `/garden/?tag=${a.id}`);
       // Visible text is "Related work →"; the accessible name adds the area after a colon.
       await expect(related).toHaveAccessibleName(`Related work: ${a.data.title}`);
-      await expect(card.locator(`svg[data-thumb="${a.id}"]`)).toHaveCount(1);
+      const illustration = card.locator(`svg[data-thumb="${a.id}"]`);
+      await expect(illustration).toHaveAttribute('aria-hidden', 'true');
+      await expect(illustration).toHaveAttribute('focusable', 'false');
+      await expect(illustration.locator('text')).toHaveText('Illustration');
     }
     await expect(page.locator('#research img')).toHaveCount(0);
   });
@@ -665,6 +668,53 @@ test.describe('production build hygiene', () => {
           .map((e) => e.outerHTML.slice(0, 80)),
       );
       expect(empties, path).toEqual([]);
+    }
+  });
+});
+
+test.describe('F19c editorial polish', () => {
+  test('Rising water introduces formation and merging without losing grid provenance', async ({
+    page,
+  }) => {
+    await page.goto('/rising-water/');
+    const { width, height } = JSON.parse(
+      readFileSync(join(ROOT, 'public/data/colorado/meta.json'), 'utf8'),
+    ) as { width: number; height: number };
+    const lead = page.locator('.rw__lede');
+    await expect(lead).toContainText('Lakes form in the valleys. When two meet, the older one');
+    await expect(lead).toContainText('The lowest lake’s bar never ends.');
+    await expect(lead).toContainText(`same ${width} × ${height} elevation grid`);
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+      'content',
+      /barcode follows the lakes as they form in valleys and merge/,
+    );
+    await expect(page.locator('#how-to-read')).toContainText('sublevel-set filtration');
+  });
+
+  test('home Contact stays readable and keyboard navigable without JavaScript', async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, reducedMotion: 'reduce' });
+    try {
+      const page = await context.newPage();
+      await page.setViewportSize({ width: 375, height: 812 });
+      await page.goto('/#contact');
+      const contact = page.locator('#contact');
+      await expectContactLinks(contact);
+      const email = contact.getByRole('link', { name: PROFILE.contact.email, exact: true });
+      await email.focus();
+      await page.keyboard.press('Tab');
+      await expect(contact.locator(`a[href="${PROFILE.contact.github}"]`)).toBeFocused();
+      for (const width of [375, 768, 1280]) {
+        await page.setViewportSize({ width, height: 812 });
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - window.innerWidth,
+        );
+        expect(overflow, `home at ${width}px`).toBeLessThanOrEqual(0);
+        expect((await email.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+      }
+    } finally {
+      await context.close();
     }
   });
 });

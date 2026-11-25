@@ -1,5 +1,5 @@
 ---
-/** Generative SVG thumbnail, deterministic per slug, made at build time (no runtime JS). */
+/** Decorative SVG illustration, made at build time (no runtime JS). */
 import { THUMB_VIEWBOX, thumbnailMarkup } from './thumb';
 
 interface Props {
@@ -16,8 +16,13 @@ const { slug, class: className } = Astro.props;
   aria-hidden="true"
   focusable="false"
   data-thumb={slug}
-  set:html={thumbnailMarkup(slug)}
-/>
+>
+  <g set:html={thumbnailMarkup(slug)} />
+  <rect x="8" y="98" width="86" height="18" rx="2" fill="var(--color-surface-sunken)" />
+  <text x="12" y="111">
+    Illustration
+  </text>
+</svg>
 
 <style>
   .research-thumb {
@@ -25,5 +30,12 @@ const { slug, class: className } = Astro.props;
     width: 100%;
     height: auto;
     aspect-ratio: 2 / 1;
+  }
+
+  text {
+    fill: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: var(--tracking-caps);
   }
 </style>

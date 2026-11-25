@@ -13,13 +13,37 @@ const lead = await getCopy('contact');
 ---
 
 {links.length > 0 && (
-  <section id={id} class="section" aria-labelledby={`${id}-title`}>
+  <section id={id} class="section home-section home-contact" aria-labelledby={`${id}-title`}>
     <div class="container">
-      <h2 id={`${id}-title`} class="section-title">
-        Contact
-      </h2>
-      {lead.text && <p data-confirmed={String(lead.confirmed)}>{lead.text}</p>}
-      <ContactLinks links={links} />
+      <div class="contact-intro">
+        <h2 id={`${id}-title`} class="section-title">
+          Contact
+        </h2>
+        {lead.text && <p data-confirmed={String(lead.confirmed)}>{lead.text}</p>}
+      </div>
+      <ContactLinks links={links} directory />
     </div>
   </section>
 )}
+
+<style>
+  .home-contact > .container {
+    display: grid;
+    gap: var(--space-5);
+  }
+
+  .contact-intro p {
+    max-width: 42ch;
+    margin: 0;
+    font-size: clamp(var(--fs-body), 0.98rem + 0.35vw, 1.25rem);
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 48rem) {
+    .home-contact > .container {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: clamp(var(--space-6), 5vw, var(--space-8));
+      align-items: start;
+    }
+  }
+</style>

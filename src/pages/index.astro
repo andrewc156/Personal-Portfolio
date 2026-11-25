@@ -1,7 +1,7 @@
 ---
 /**
  * Home (spec §4.3). Composes the section components in order with their anchors.
- * F2 and F5 fill the components; this file stays as the composition point.
+ * The editorial rhythm below applies only to the home sections after the hero.
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/hero/Hero.astro';
@@ -21,11 +21,64 @@ const description = `${displayName} studies mathematics and data science at Kenn
 
 <BaseLayout description={description}>
   <Hero />
-  <Mission id={SECTION_IDS.mission} />
-  <RecentWork id={SECTION_IDS.work} />
-  <ResearchGrid id={SECTION_IDS.research} />
-  <OpenScience id={SECTION_IDS.openScience} />
-  <Teaching id={SECTION_IDS.teaching} />
-  <Contact id={SECTION_IDS.contact} />
+  <div class="home-editorial">
+    <Mission id={SECTION_IDS.mission} />
+    <RecentWork id={SECTION_IDS.work} />
+    <ResearchGrid id={SECTION_IDS.research} />
+    <OpenScience id={SECTION_IDS.openScience} />
+    <Teaching id={SECTION_IDS.teaching} />
+    <Contact id={SECTION_IDS.contact} />
+  </div>
   <HeroSettings slot="settings" />
 </BaseLayout>
+
+<style>
+  .home-editorial :global(.home-section.section) {
+    padding: 0;
+    border-top: 0;
+  }
+
+  .home-editorial :global(.home-section > .container) {
+    position: relative;
+    padding-block: clamp(var(--space-6), 5vw, var(--space-8));
+  }
+
+  .home-editorial :global(.home-section + .home-section > .container)::before {
+    content: '';
+    position: absolute;
+    inset: 0 var(--gutter) auto;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .home-editorial :global(.home-section .section-title) {
+    margin-block-end: clamp(var(--space-4), 2.5vw, var(--space-6));
+    font-size: clamp(var(--fs-h2), 1.2rem + 1.3vw, 2.25rem);
+    letter-spacing: -0.015em;
+  }
+
+  .home-editorial :global(.home-mission > .container) {
+    padding-block: clamp(var(--space-6), 5.5vw, var(--space-9));
+  }
+
+  .home-editorial :global(.home-contact > .container) {
+    padding-block-end: clamp(var(--space-7), 6vw, var(--space-9));
+  }
+
+  @media (min-width: 48rem) {
+    .home-editorial :global(.home-section--split > .container) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+      gap: var(--space-6);
+      align-items: start;
+    }
+
+    .home-editorial :global(.home-section--split .section-title) {
+      margin: 0;
+      text-wrap: wrap;
+    }
+
+    .home-editorial :global(.home-section--split .home-section__body) {
+      padding-block-start: var(--space-1);
+    }
+  }
+</style>

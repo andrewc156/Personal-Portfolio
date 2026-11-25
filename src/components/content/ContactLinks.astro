@@ -4,16 +4,24 @@ import type { ContactLink } from './contact';
 
 interface Props {
   links: ContactLink[];
+  directory?: boolean;
 }
-const { links } = Astro.props;
+const { links, directory = false } = Astro.props;
 ---
 
-<dl class="contact-links">
+<dl class:list={['contact-links', { 'contact-links--directory': directory }]}>
   {links.map((l) => (
     <div class="contact-links__row">
       <dt>{l.label}</dt>
       <dd>
-        <a href={l.href}>{l.text}</a>
+        <a href={l.href}>
+          <span>{l.text}</span>
+          {directory && (
+            <span class="contact-links__arrow" aria-hidden="true">
+              {l.href.startsWith('mailto:') ? '→' : '↗'}
+            </span>
+          )}
+        </a>
       </dd>
     </div>
   ))}
@@ -54,5 +62,47 @@ const { links } = Astro.props;
     margin: 0;
     min-width: 0;
     overflow-wrap: anywhere;
+  }
+
+  .contact-links--directory {
+    gap: 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .contact-links--directory .contact-links__row {
+    grid-template-columns: minmax(0, 1fr);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .contact-links--directory dt {
+    padding-block-start: var(--space-2);
+  }
+
+  .contact-links--directory a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-block-size: 2.75rem;
+    padding-inline-end: var(--space-1);
+  }
+
+  .contact-links--directory a[href^='mailto:'] {
+    font-weight: var(--fw-semibold);
+  }
+
+  .contact-links__arrow {
+    flex: none;
+  }
+
+  @media (min-width: 56rem) {
+    .contact-links--directory .contact-links__row {
+      grid-template-columns: 5.25rem minmax(0, 1fr);
+      align-items: center;
+    }
+
+    .contact-links--directory dt {
+      padding-block-start: 0;
+    }
   }
 </style>

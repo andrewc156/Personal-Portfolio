@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 03:24:36 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 10:27:33 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -34,15 +34,15 @@
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
 | F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | `e426d03` |
 | F19a Copy voice (first person, humanized) | done | PASS (check attempt 2) | `111f774` |
-| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `464da59` |
-| F19c Visual polish within the system | todo, after F19a | — | — |
+| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `637d2a6` (candidate `464da59`) |
+| F19c Visual polish within the system | checked; release commit | PASS (check attempt 1) | this release commit |
 | F9 re-audit after F19 | todo | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19b hero | same checker + GitHub CI | `docs/checks/F19b/attempt-2.md`, draft PR #1 | Seed 25 fixed; `docs/builds/F19b/attempt-3.md`; candidate `464da59` pushed | PASS; hosted CI 45573412148 passed all five timing cases. WIP merged locally; push and delete after F19a main CI finishes. |
+| F19c polish | checker `sa-0-20ce8386` | `docs/checks/F19c/attempt-1.md` | `docs/checks/F19c/attempt-1.md` PASS | Commit/push verified files; F9 audit next. |
 
 ## Handoff vs repo (resume check)
 
@@ -56,6 +56,8 @@
 - There is an old Claude worktree at `.claude/worktrees/agent-a302a2e8cd44f54ea` (branch `worktree-agent-a302a2e8cd44f54ea`, at `dc8e61c`) with uncommitted C1-era edits. It is the historical snapshot the C1 notes describe, and the C1 content on main supersedes it. Per Andrew's instruction it stays untouched under `.claude/`. It is not a WIP branch to merge.
 
 ## Uncommitted changes
+
+- F19c checked, ready for release commit: home/content component styles, thumbnail generator, Rising water intro/meta and scoped tests; see builder `docs/builds/F19c/attempt-1.md` for exact paths at completion. Local checker diagnostics and `.Rhistory` are excluded from commits.
 
 - Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
@@ -86,14 +88,14 @@
 
 ## Next 3 actions
 
-1. Push the checked F19b merge, verify main and remove WIP.
-2. F19c site-builder → checker (DECISIONS #85), including Rising water explainer wording alignment.
+1. Fresh independent F19c production check; if FAIL, fix and recheck.
+2. Commit and push F19c on PASS or PASS_WITH_NOTES; confirm hosted CI.
 3. Fresh F9 attempt 5 full-site audit; commit and push the report and final handoff.
 
 ## WIP branch
 
-`wip/codex-handoff` at `464da59` (F19b code only), verified on origin and draft PR #1 (hosted GitHub CI run 45573412148). Isolated worktree: `~/.hermes/cache/scratch/portfolio-f19b-ci.TrSu2TR8`. Independent checker PASS in attempt 2; integration and branch cleanup pending.
+None. `wip/codex-handoff` was merged on PASS and deleted locally and on origin; GitHub PR #1 reads MERGED.
 
-Latest verified main push: F19a `111f774` (hosted CI pending). Latest WIP push: `464da59` (candidate CI and checker PASS).
+Latest verified main push: F19b merge `637d2a6`; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).

@@ -40,7 +40,7 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
 
 <BaseLayout
   title="Rising water"
-  description={`Water rises over the ${meta.label}. Lakes are born, then merge, and the barcode records each lake's lifetime.`}
+  description={`Water rises over the ${meta.label}. The barcode follows the lakes as they form in valleys and merge.`}
 >
   <link
     slot="head"
@@ -55,10 +55,11 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
       <p class="eyebrow">Rising water</p>
       <h1>{meta.label}</h1>
       <p class="rw__lede">
-        Water rises over the study area. Lakes are born, then merge, and the barcode records each
-        lake’s lifetime. The water on the map and the barcode are computed in your browser from the
-        same {`${meta.width} × ${meta.height}`} elevation grid; the shaded relief under the water is
-        precomputed.
+        Water rises over the study area. Lakes form in the valleys. When two meet, the older one
+        carries on. Each bar runs from the water level where its lake forms to the level where it
+        merges. The lowest lake’s bar never ends. The water on the map and the barcode are computed
+        in your browser from the same {`${meta.width} × ${meta.height}`} elevation grid; the shaded
+        relief under the water is precomputed.
       </p>
     </header>
 

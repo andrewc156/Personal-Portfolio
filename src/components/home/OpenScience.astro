@@ -21,20 +21,39 @@ const own =
 const repos = [...(own ? [own] : []), ...listed.filter((r) => r !== own)];
 ---
 
-<section id={id} class="section" aria-labelledby={`${id}-title`}>
+<section id={id} class="section home-section home-section--split" aria-labelledby={`${id}-title`}>
   <div class="container">
     <h2 id={`${id}-title`} class="section-title">
       Open science
     </h2>
-    {copy.text && <p data-confirmed={String(copy.confirmed)}>{copy.text}</p>}
-    {repos.length > 0 && (
-      <ul class="repos" data-repos>
-        {repos.map((r) => (
-          <li>
-            <a href={r.url}>{r.label}</a>
-          </li>
-        ))}
-      </ul>
-    )}
+    <div class="home-section__body">
+      {copy.text && <p data-confirmed={String(copy.confirmed)}>{copy.text}</p>}
+      {repos.length > 0 && (
+        <ul class="repos" role="list" data-repos>
+          {repos.map((r) => (
+            <li>
+              <a href={r.url}>
+                {r.label} <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   </div>
 </section>
+
+<style>
+  p {
+    margin-block-end: var(--space-3);
+  }
+
+  .repos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+</style>
