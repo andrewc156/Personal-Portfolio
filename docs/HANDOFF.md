@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:30 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 21:45 EST, Claude Code (Control)
 
 ## Status
 
@@ -23,7 +23,7 @@
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
 | F10 Extra hero modes (S1) | checking: F10 checker attempt 1 running | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
-| F12 Basin mask (S3) | F12a data done; F12b explorer toggle building (viz-builder, attempt 1) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
+| F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
 | F13 Place labels (S4) | F13a built (39 GNIS labels, labels.json 9,962 B), checker queued after F10 | n/a | — |
 
 ## Current task (one checker and two builders in parallel, with no overlapping paths)
@@ -31,8 +31,8 @@
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F10 check | checker | docs/checks/F10/ only | started | full gates; investigate hero.spec :443/:521/:632/:842 → verdict |
-| F12b mask toggle | viz-builder | src/lib/viz/explorer/**, src/components/explorer/**, src/pages/rising-water/**, e2e/explorer.spec.ts, tests/unit/viz/explorer/**, docs/builds/F12b/ | delegated | lazy mask load, dim outside, credit in About, tests → checker |
-| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | built, report done | checker queued after F10 check |
+| F12b mask toggle | viz-builder | src/lib/viz/explorer/**, src/components/explorer/**, src/pages/rising-water/**, e2e/explorer.spec.ts, tests/unit/viz/explorer/**, docs/builds/F12b/ | built, report done | checker queued |
+| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | built; Control asked for an addendum: reader-facing basin-mask.json coverage strings (regenerate json + meta files entry, .bin unchanged) | addendum, then checker |
 
 Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explorer labels (viz-builder, after F12b + F13a), then a fresh F9 audit.
 
@@ -46,7 +46,7 @@ Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explore
 All unverified:
 - F10 (built, being checked): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
 - F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, public/data/colorado/labels.json, docs/data.md
-- F12b (building): its owned paths above.
+- F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
 ## Open issues and "Needs Andrew"
 
@@ -59,6 +59,7 @@ All unverified:
 - GitHub CI is GREEN again (run 45521148302 on `e473de0`, which includes CI1 `7e9b745`, the config fix `2d79120` and F12a). It had been red since `ef15630`. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
 - F12a notes: optional INEGI credit for the Mexican units (F12b); stale 1508 sentence in docs/data.md (F13a is fixing it).
 - F13b notes from F13a: show labels.json attribution.credit in About; 9 labels use anchor "mouth"; use `display` if present; Las Vegas at x=2 (place text east).
+- F12b check note: its e2e 3 MB transfer test fails only on the dev server (unminified). Must be confirmed on preview. F12b depends on F13a's basin-mask.json SHA, so check F13a before F12b if F13a's addendum changes the json. Order: F10 → F13a → F12b.
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
