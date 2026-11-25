@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:05 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 20:10 EST, Claude Code (Control)
 
 ## Status
 
@@ -21,16 +21,16 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | checking: built (real header bug: partly clipped focused links aren't scrolled into view); checker attempt 1 running; CI red since `ef15630` | n/a | — |
-| F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
+| F10 Extra hero modes (S1) | built, waiting for checker (queue: CI1 → F12a → F10) | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a built, waiting for checker (queued after CI1 check) | n/a | — |
 | F13 Place labels (S4) | todo (approved) | n/a | — |
 
-## Current task (three builders running in parallel, with no overlapping paths)
+## Current task: no builders running; CI1 checker running; F12a and F10 checks queued
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | four modes, tests, report → checker |
+| F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | built, report done | checker queued |
 | CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | built, report done | checker attempt 1 running → docs/checks/CI1/attempt-1.md |
 | F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | built, report done | checker queued (after CI1 checker finishes) |
 
@@ -44,7 +44,7 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 ## Uncommitted changes
 
 All are unverified builder work in progress, not yet checked:
-- F10 (building): src/lib/viz/hero/** (modes/), src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts
+- F10 (built, unchecked): src/lib/viz/hero/modes/** (new), src/components/hero/{hero-client.ts,HeroSettings.astro,Hero.astro}, tests/unit/viz/modes/**, e2e/hero.spec.ts
 - F12a (built, unchecked): pipeline/basin_mask.py, pipeline/build_colorado.py, pipeline/tests/test_basin_mask.py, public/data/colorado/{basin-mask.bin,basin-mask.json,meta.json}, docs/data.md
 - CI1 (built, checking): src/components/site/Header.astro, e2e/cls.spec.ts, e2e/shell.spec.ts
 
@@ -60,9 +60,9 @@ All are unverified builder work in progress, not yet checked:
 
 ## Next 3 actions
 
-1. Check CI1 first when it returns, commit and push, and confirm GitHub CI is green (`gh run list --workflow CI`). As each other builder returns, run a fresh checker on it (one at a time). On PASS, commit only its owned paths as `feat(F#): … [checked]` and push. On FAIL, run a fix round.
-2. Then F11b, F12b, F13a, F13b as above.
-3. Run a fresh F9 full-site audit and update the final report.
+1. CI1 checker → commit + push → confirm GitHub CI is green. Then the F12a checker, then the F10 checker, one at a time, committing only each feature's owned paths.
+2. After F10 PASS: F11b islands strip in the hero (viz-builder). After F12a PASS: F12b explorer mask toggle (viz-builder) and F13a GNIS labels data (data-engineer).
+3. F13b explorer labels, then a fresh F9 full-site audit.
 
 ## WIP branch
 
