@@ -1,5 +1,5 @@
-import { computeH0, Flood, isEssential, persistence } from '../../tda/index.ts';
-import type { Bar, H0Result } from '../../tda/index.ts';
+import { computeH0, computeH1Islands, Flood, isEssential, persistence } from '../../tda/index.ts';
+import type { Bar, H0Result, IslandBar } from '../../tda/index.ts';
 import { getPalette, type PaletteName, type ThemeName } from '../common/palettes.ts';
 import { normalizeSeed, randomSeed } from '../common/rng.ts';
 import {
@@ -13,9 +13,11 @@ import {
   type StripLayout,
   type StripState,
 } from './barcode.ts';
+import { selectIslandBars } from './islands.ts';
 import {
   basinMask,
   buildLakeTable,
+  isAlive,
   levelAt,
   selectBars,
   type LakeTable,
@@ -24,7 +26,17 @@ import {
 import { clampMarker, placeLabel, separatePass, type Box, type Point } from './markers.ts';
 import { MapPainter, type ColorBy } from './render-map.ts';
 import { generateTerrain, gridSize, heightRange, hillshade } from './terrain.ts';
-import { barReadout, cellReadout, levelReadout, metres, stripLabel, summaryText } from './text.ts';
+import {
+  barReadout,
+  cellReadout,
+  islandBarReadout,
+  islandLevelReadout,
+  islandsSummaryText,
+  levelReadout,
+  metres,
+  stripLabel,
+  summaryText,
+} from './text.ts';
 
 /**
  * Runtime for the home-page hero (spec §6.3): terrain, flood animation, map and barcode
@@ -78,6 +90,7 @@ export interface HeroElements {
   stripBox: HTMLElement;
   readout: HTMLElement;
   summary: HTMLElement;
+  islandsCopy: HTMLElement | null;
 }
 
 export interface HeroUiState {
@@ -119,6 +132,8 @@ export class HeroController {
 
   private t!: Terrain;
   private rows: Bar[] = [];
+  private islandBars: readonly IslandBar[] | null = null;
+  private islandRows: IslandBar[] = [];
   private fills: string[] = [];
   private ticks: number[] = [];
   private tickText: string[] = [];
@@ -201,7 +216,12 @@ export class HeroController {
 
   /** The strip canvas's accessible name follows the current view (§6.6 items 3–5). */
   private labelStrip(): void {
-    this.els.strip.setAttribute('aria-label', stripLabel(this.settings.view));
+    const { strip, islandsCopy } = this.els;
+    strip.setAttribute('aria-label', stripLabel(this.settings.view));
+    if (!islandsCopy) return;
+    islandsCopy.hidden = this.settings.view !== 'islands';
+    if (islandsCopy.hidden) strip.removeAttribute('aria-describedby');
+    else strip.setAttribute('aria-describedby', islandsCopy.id);
   }
 
   // ---- public controls -------------------------------------------------------------------
@@ -259,11 +279,14 @@ export class HeroController {
     const prev = this.settings;
     this.settings = { ...prev, ...next, seed: normalizeSeed(next.seed ?? prev.seed) };
     const s = this.settings;
+    const viewChanged = s.view !== prev.view;
+    const rowsChanged = s.minPersistence !== prev.minPersistence || s.maxBars !== prev.maxBars;
+    if (viewChanged) this.highlight = -1;
     if (s.seed !== prev.seed || s.scale !== prev.scale || s.roughness !== prev.roughness) {
       this.build();
       this.emitUi(true);
     } else {
-      if (s.minPersistence !== prev.minPersistence || s.maxBars !== prev.maxBars) this.selectRows();
+      if (rowsChanged || viewChanged) this.selectRows();
       if (s.palette !== prev.palette) this.applyColors();
       if (s.showBarcode !== prev.showBarcode) {
         this.els.stripBox.hidden = !s.showBarcode;
@@ -271,14 +294,14 @@ export class HeroController {
       }
     }
     this.dirty = true;
-    if (s.view !== prev.view) this.labelStrip();
-    if (s.pacing !== prev.pacing || s.view !== prev.view) this.queueSummary(300);
+    if (viewChanged) this.labelStrip();
+    if (s.pacing !== prev.pacing || viewChanged || rowsChanged) this.queueSummary(300);
     this.schedule();
   }
 
   /** Highlight the barcode row k (−1 clears). */
   highlightRow(k: number): void {
-    const next = k >= 0 && k < this.rows.length ? k : -1;
+    const next = k >= 0 && k < this.stripRows.length ? k : -1;
     if (next === this.highlight) return;
     this.highlight = next;
     this.highlightMaskFor = -1;
@@ -290,12 +313,13 @@ export class HeroController {
   /** Move the highlight to the next/previous bar that exists at the current level. */
   cycleHighlight(dir: 1 | -1): void {
     const level = this.level();
-    const n = this.rows.length;
+    const rows = this.stripRows;
+    const n = rows.length;
     if (n === 0) return;
     let k = this.highlight;
     for (let step = 0; step < n; step++) {
       k = k < 0 ? (dir > 0 ? 0 : n - 1) : (k + dir + n) % n;
-      if (this.rows[k].birth <= level) {
+      if (rows[k].birth <= level) {
         this.highlightRow(k);
         return;
       }
@@ -323,9 +347,18 @@ export class HeroController {
     this.setRunning(false);
   }
 
-  /** Bars the barcode currently draws (engine objects), for tests and debugging. */
+  /** Lake bars selected for the barcode and diagram. */
   get drawnRows(): readonly Bar[] {
     return this.rows;
+  }
+
+  /** The island engine rows used by the island view. */
+  get drawnIslandRows(): readonly IslandBar[] {
+    return this.islandRows;
+  }
+
+  private get stripRows(): readonly (Bar | IslandBar)[] {
+    return this.settings.view === 'islands' ? this.islandRows : this.rows;
   }
 
   get grid(): { W: number; H: number } {
@@ -397,6 +430,8 @@ export class HeroController {
     this.highlight = -1;
     this.highlightMaskFor = -1;
     this.holdLeft = 0;
+    this.islandBars = null;
+    this.islandRows = [];
     this.ticks.length = 0;
     this.tickText.length = 0;
     for (const v of [minH, (minH + maxH) / 2, maxH]) {
@@ -409,9 +444,18 @@ export class HeroController {
   }
 
   private selectRows(): void {
-    const prev = this.highlight >= 0 ? this.rows[this.highlight] : null;
+    const prev = this.stripRows[this.highlight];
     this.rows = selectBars(this.t.result, this.settings.minPersistence, this.settings.maxBars);
-    this.highlight = prev ? this.rows.indexOf(prev) : -1;
+    if (this.settings.view === 'islands') {
+      const t = this.t;
+      this.islandBars ??= computeH1Islands(t.heights, t.W, t.H, { order: t.result.order }).bars;
+      this.islandRows = selectIslandBars(
+        this.islandBars,
+        this.settings.minPersistence,
+        this.settings.maxBars,
+      );
+    }
+    this.highlight = prev ? this.stripRows.indexOf(prev) : -1;
     this.highlightMaskFor = -1;
     this.refreshFills();
   }
@@ -419,7 +463,10 @@ export class HeroController {
   private refreshFills(): void {
     const theme = getPalette(this.settings.palette)[this.theme];
     const t = this.t;
-    this.fills = this.rows.map((b) => theme.identity[t.painter.slot(b.birthCell)]);
+    this.fills =
+      this.settings.view === 'islands'
+        ? this.islandRows.map(() => this.colors.accent)
+        : this.rows.map((b) => theme.identity[t.painter.slot(b.birthCell)]);
   }
 
   private applyColors(): void {
@@ -586,7 +633,7 @@ export class HeroController {
     const t = this.t;
     const level = this.level();
     t.flood.advanceTo(level);
-    const hl = this.highlight >= 0 ? this.rows[this.highlight] : null;
+    const hl = this.settings.view === 'islands' ? undefined : this.rows[this.highlight];
     let hlLake = -1;
     let mask: Uint8Array | null = null;
     if (hl && level >= hl.birth) {
@@ -621,12 +668,25 @@ export class HeroController {
     const ch = this.els.map.height;
     ctx.imageSmoothingEnabled = true;
     ctx.drawImage(t.offscreen, 0, 0, cw, ch);
-    if (hl) this.drawMarkers(hl, level);
+    if (hl) {
+      this.drawMarkers(
+        hl.birthCell,
+        `Lake ${t.lakes.labelOf[hl.birthCell]} · pit`,
+        hl.deathCell,
+        level >= hl.death ? 'pass' : 'pass (spills here)',
+      );
+    }
+    if (this.settings.view === 'islands') {
+      const island = this.islandRows[this.highlight];
+      if (island && island.birth <= level) {
+        this.drawMarkers(island.peakCell, 'Island peak', island.saddleCell, 'Cut off here');
+      }
+    }
 
     if (this.settings.showBarcode) {
       const st = this.stripState;
       st.L = this.L;
-      st.rows = this.rows;
+      st.rows = this.stripRows;
       st.fills = this.fills;
       st.level = level;
       st.minH = t.minH;
@@ -646,8 +706,13 @@ export class HeroController {
     this.updateReadout(!this.playing);
   }
 
-  /** Pit (birth cell) and pass (death cell) markers with labels, so colour is never the only cue. */
-  private drawMarkers(bar: Bar, level: number): void {
+  /** A ring and optional diamond link a selected bar to its cells. */
+  private drawMarkers(
+    ringCell: number,
+    ringLabel: string,
+    diamondCell: number,
+    diamondLabel: string,
+  ): void {
     const t = this.t;
     const ctx = this.mapCtx;
     const cw = this.els.map.width;
@@ -655,19 +720,18 @@ export class HeroController {
     const sx = cw / t.W;
     const sy = chh / t.H;
     const d = this.dpr;
-    const label = t.lakes.labelOf[bar.birthCell];
     // Keep markers clear of the frame's rounded corners.
     const margin = 6 * d;
     const pitR = 5 * d;
     const passR = 6 * d;
-    const px = clampMarker(((bar.birthCell % t.W) + 0.5) * sx, cw, pitR, margin);
-    const py = clampMarker((Math.floor(bar.birthCell / t.W) + 0.5) * sy, chh, pitR, margin);
-    const hasPass = !isEssential(bar);
+    const px = clampMarker(((ringCell % t.W) + 0.5) * sx, cw, pitR, margin);
+    const py = clampMarker((Math.floor(ringCell / t.W) + 0.5) * sy, chh, pitR, margin);
+    const hasPass = diamondCell >= 0;
     let qx = 0;
     let qy = 0;
     if (hasPass) {
-      const rx = clampMarker(((bar.deathCell % t.W) + 0.5) * sx, cw, passR, margin);
-      const ry = clampMarker((Math.floor(bar.deathCell / t.W) + 0.5) * sy, chh, passR, margin);
+      const rx = clampMarker(((diamondCell % t.W) + 0.5) * sx, cw, passR, margin);
+      const ry = clampMarker((Math.floor(diamondCell / t.W) + 0.5) * sy, chh, passR, margin);
       // Adjacent pit and pass cells would put the markers on top of each other: move the
       // diamond just clear of the pit ring (a 3 px gap) so both stay visible.
       const q = separatePass(px, py, pitR, rx, ry, passR, 3 * d, cw, chh, margin, this.passPt);
@@ -725,8 +789,8 @@ export class HeroController {
       ctx.fillStyle = this.colors.text;
       ctx.fillText(s, tx, ty);
     };
-    draw(`Lake ${label} · pit`, px, py, pitR);
-    if (hasPass) draw(level >= bar.death ? 'pass' : 'pass (spills here)', qx, qy, passR);
+    draw(ringLabel, px, py, pitR);
+    if (hasPass) draw(diamondLabel, qx, qy, passR);
   }
 
   /**
@@ -765,6 +829,12 @@ export class HeroController {
       const lake = t.flood.componentOf(this.hoverCell);
       return cellReadout(t.heights[this.hoverCell], lake >= 0 ? t.lakes.labelOf[lake] : 0);
     }
+    if (this.settings.view === 'islands') {
+      const island = this.islandRows[this.highlight];
+      return island && island.birth <= level
+        ? islandBarReadout(island)
+        : islandLevelReadout(level, this.countIslands(level));
+    }
     const hl = this.highlight >= 0 ? this.rows[this.highlight] : null;
     if (hl) {
       return barReadout(
@@ -782,6 +852,14 @@ export class HeroController {
     return this.t.flood.alive();
   }
 
+  private countIslands(level: number): number {
+    let count = 0;
+    if (this.islandBars) {
+      for (const bar of this.islandBars) if (isAlive(bar, level)) count++;
+    }
+    return count;
+  }
+
   private queueSummary(delay: number): void {
     clearTimeout(this.summaryTimer);
     if (this.destroyed) return;
@@ -793,6 +871,21 @@ export class HeroController {
 
   private updateSummary(): void {
     const level = this.level();
+    if (this.settings.view === 'islands') {
+      let shown = 0;
+      for (const bar of this.islandRows) if (bar.birth <= level) shown++;
+      const text = islandsSummaryText({
+        playing: this.playing,
+        progress: this.progress,
+        level,
+        alive: this.countIslands(level),
+        shown,
+        rows: this.islandRows.length,
+        seed: this.settings.seed,
+      });
+      if (this.els.summary.textContent !== text) this.els.summary.textContent = text;
+      return;
+    }
     this.t.flood.advanceTo(level);
     let shown = 0;
     let longest: Bar | null = null;
@@ -935,7 +1028,7 @@ export class HeroController {
     if (this.settings.view === 'diagram') {
       return diagramHit(x, y, 10 * this.dpr, this.rows, level, this.t.minH, this.t.maxH, this.L);
     }
-    return barcodeHit(x, y, this.rows, level, this.L);
+    return barcodeHit(x, y, this.stripRows, level, this.L);
   }
 
   private mapHover(e: PointerEvent): void {

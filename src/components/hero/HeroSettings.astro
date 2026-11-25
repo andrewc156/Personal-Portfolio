@@ -14,6 +14,7 @@ import ButtonRow from '../site/ButtonRow.astro';
 import { PALETTES } from '../../lib/viz/common/palettes';
 import { MAX_SEED } from '../../lib/viz/common/rng';
 import { HERO_DEFAULTS as D } from '../../lib/viz/hero/controller';
+import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
 import { ROUGHNESS_RANGE, SCALE_RANGE } from '../../lib/viz/hero/terrain';
 import { DEFAULT_MODE, HERO_MODES } from '../../lib/viz/hero/modes/meta';
 
@@ -131,8 +132,12 @@ const modes = HERO_MODES.map((m) => ({ value: m.id, label: m.label }));
         options={[
           { value: 'barcode', label: 'Barcode' },
           { value: 'diagram', label: 'Persistence diagram' },
+          { value: 'islands', label: 'Islands barcode' },
         ]}
       />
+      <p id="hero-islands-explainer" class="hero-settings__note" data-hero-islands-copy hidden>
+        {ISLANDS_EXPLAINER}
+      </p>
     </SettingsGroup>
   </div>
 

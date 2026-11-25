@@ -7,6 +7,8 @@ import type { Bar, H0Result } from '../../tda/index.ts';
  * renderer (controller.ts, barcode.ts) only draws what these return.
  */
 
+export type BarInterval = Pick<Bar, 'birth' | 'death'>;
+
 export type Pacing = 'linear' | 'percentile';
 
 export interface LakeTable {
@@ -82,7 +84,7 @@ export function selectBars(result: H0Result, minPersistence: number, maxBars: nu
  * How much of `bar` exists at water level `level`: from its birth to min(death, level).
  * Returns false before the lake is born. `out` is reused to avoid allocation per frame.
  */
-export function barExtent(bar: Bar, level: number, out: [number, number]): boolean {
+export function barExtent(bar: BarInterval, level: number, out: [number, number]): boolean {
   if (level < bar.birth) return false;
   out[0] = bar.birth;
   out[1] = Math.min(bar.death, level);
@@ -90,7 +92,7 @@ export function barExtent(bar: Bar, level: number, out: [number, number]): boole
 }
 
 /** True while the lake is still its own lake at `level` (born, not yet merged). */
-export function isAlive(bar: Bar, level: number): boolean {
+export function isAlive(bar: BarInterval, level: number): boolean {
   return level >= bar.birth && level < bar.death;
 }
 

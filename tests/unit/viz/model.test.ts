@@ -1,8 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { computeH0, Flood, isEssential, persistence } from '../../../src/lib/tda/index.ts';
-import type { Bar } from '../../../src/lib/tda/index.ts';
+import {
+  computeH0,
+  computeH1Islands,
+  Flood,
+  isEssential,
+  persistence,
+} from '../../../src/lib/tda/index.ts';
+import type { Bar, IslandBar } from '../../../src/lib/tda/index.ts';
 import { PALETTES } from '../../../src/lib/viz/common/palettes.ts';
 import { packRgb, hexToRgb } from '../../../src/lib/viz/common/color.ts';
+import { selectIslandBars } from '../../../src/lib/viz/hero/islands.ts';
 import {
   barcodeHit,
   diagramPoint,
@@ -65,7 +72,7 @@ function recorder() {
   return { ctx, rects, arcs };
 }
 
-function state(rows: Bar[], level: number, minH: number, maxH: number): StripState {
+function state(rows: (Bar | IslandBar)[], level: number, minH: number, maxH: number): StripState {
   const L = stripLayout(640, 120, 2);
   return {
     L,
@@ -82,6 +89,43 @@ function state(rows: Bar[], level: number, minH: number, maxH: number): StripSta
     font: stripFont(2),
   };
 }
+
+describe('island barcode', () => {
+  it('draws the exact intervals from the H1 engine for the same terrain and level', () => {
+    for (const seed of SEEDS) {
+      const { W, H, heights, result, minH, maxH } = terrain(seed);
+      const { bars } = computeH1Islands(heights, W, H, { order: result.order });
+      expect(bars.length).toBeGreaterThan(0);
+      const rows = selectIslandBars(bars, 0, bars.length);
+      expect(new Set(rows)).toEqual(new Set(bars));
+      for (const level of [(minH + maxH) / 2, maxH]) {
+        const { ctx, rects } = recorder();
+        const s = state(rows, level, minH, maxH);
+        drawBarcode(ctx, s);
+        const shown = rows.filter((b) => b.birth <= level);
+        expect(rects).toHaveLength(shown.length);
+        for (const [k, b] of shown.entries()) {
+          expect(rects[k].x).toBeCloseTo(levelToX(b.birth, minH, maxH, s.L));
+          expect(rects[k].x + rects[k].w).toBeCloseTo(
+            levelToX(Math.min(b.death, level), minH, maxH, s.L),
+          );
+        }
+      }
+    }
+  });
+
+  it('drops zero-length bars and breaks persistence ties by birth level and cutoff cell', () => {
+    const bars: IslandBar[] = [
+      { birth: 2, death: 6, saddleCell: 8, peakCell: 12, mergedInto: -1 },
+      { birth: 3, death: 8, saddleCell: 5, peakCell: 18, mergedInto: -1 },
+      { birth: 2, death: 6, saddleCell: 6, peakCell: 11, mergedInto: -1 },
+      { birth: 1, death: 1, saddleCell: 7, peakCell: 10, mergedInto: -1 },
+    ];
+    expect(selectIslandBars(bars, 0, 5)).toEqual([bars[2], bars[0], bars[1]]);
+    expect(selectIslandBars(bars, 4, 2)).toEqual([bars[2], bars[1]]);
+    expect(selectIslandBars(bars, 5, 5)).toEqual([bars[1]]);
+  });
+});
 
 describe('selectBars (the bars the barcode draws)', () => {
   it('with no threshold and no cap, the rows are exactly the engine bars', () => {

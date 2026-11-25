@@ -288,6 +288,104 @@ test.describe('controls', () => {
   });
 });
 
+test('islands barcode shares the strip and supports keyboard inspection', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(URL);
+  await waitForHero(page);
+  const strip = page.locator('[data-hero-strip]');
+  const originalHeight = await strip.evaluate((el) => el.getBoundingClientRect().height);
+  await expect(strip).toHaveAttribute('aria-label', /^Barcode:/);
+
+  await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+  const panel = page.locator('#settings-panel');
+  const view = panel.getByLabel('View', { exact: true });
+  await view.selectOption('islands');
+  await panel.locator('#hero-min-persistence').fill('0');
+  await panel.locator('#hero-max-bars').fill('5');
+  await expect(panel.locator('[data-hero-islands-copy]')).toBeVisible();
+  await expect(strip).toHaveAttribute('aria-label', 'Islands barcode');
+  await expect(strip).toHaveAttribute('aria-describedby', 'hero-islands-explainer');
+  expect(await strip.evaluate((el) => el.getBoundingClientRect().height)).toBe(originalHeight);
+  const shown = await page.evaluate(() =>
+    document.querySelector<HTMLElement>('[data-hero]')!.__hero!.drawnIslandRows.map((bar) => ({
+      birth: bar.birth,
+      death: bar.death,
+    })),
+  );
+  expect(shown.length).toBeGreaterThan(0);
+  expect(shown.length).toBeLessThanOrEqual(5);
+  expect(shown.every((bar) => bar.death > bar.birth)).toBe(true);
+
+  await page.keyboard.press('Escape');
+  await expect(panel).toBeHidden();
+  const hero = page.locator('[data-hero]');
+  await hero.focus();
+  await hero.press('End');
+  await expect(page.locator('[data-hero-summary]')).toContainText(
+    `0 islands are present. The islands barcode shows ${shown.length} of ${shown.length} bars so far.`,
+  );
+  await hero.press('ArrowDown');
+  await expect(page.locator('[data-hero-readout]')).toContainText(
+    `Island · appears at ${Math.round(shown[0].birth)}\u00a0m · goes underwater at ${Math.round(shown[0].death)}\u00a0m`,
+  );
+  await hero.press('Escape');
+  await expect(page.locator('[data-hero-readout]')).toContainText('0 islands');
+
+  await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+  await view.selectOption('diagram');
+  await expect(panel.locator('[data-hero-islands-copy]')).toBeHidden();
+  await expect(strip).toHaveAttribute('aria-label', /^Persistence diagram:/);
+  await view.selectOption('barcode');
+  await expect(strip).toHaveAttribute('aria-label', /^Barcode:/);
+});
+
+test('islands barcode caption follows the visible strip across settings and modes', async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto(URL);
+  await waitForHero(page);
+  const caption = page.locator('[data-hero-caption]');
+  const link = page.locator('[data-hero-caption-link]').getByRole('link');
+  const islands =
+    'An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.';
+  const settings = page.getByRole('button', { name: 'Art settings', exact: true });
+  const panel = page.locator('#settings-panel');
+  const view = panel.getByLabel('View', { exact: true });
+  const show = panel.getByLabel('Show barcode', { exact: true });
+  await expect(caption).toHaveText(RISING_CAPTION);
+
+  await settings.click();
+  await view.selectOption('islands');
+  await page.keyboard.press('Escape');
+  await expect(panel).toBeHidden();
+  await expect(caption).toBeVisible();
+  await expect(caption).toHaveText(islands);
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAttribute('href', /\/rising-water\/$/);
+
+  await settings.click();
+  await show.uncheck();
+  await expect(caption).toHaveText(RISING_CAPTION);
+  await show.check();
+  await expect(caption).toHaveText(islands);
+  await chooseMode(page, 'pond');
+  await expect(caption).toHaveText(/^Ripples spread across a pond/);
+  await expect(link).toBeHidden();
+  await chooseMode(page, 'rising');
+  await expect(view).toHaveValue('islands');
+  await expect(caption).toHaveText(islands);
+
+  await view.selectOption('diagram');
+  await expect(caption).toHaveText(RISING_CAPTION);
+  await view.selectOption('barcode');
+  await expect(caption).toHaveText(RISING_CAPTION);
+  await view.selectOption('islands');
+  await panel.getByRole('button', { name: 'Reset', exact: true }).click();
+  await expect(view).toHaveValue('barcode');
+  await expect(caption).toHaveText(RISING_CAPTION);
+});
+
 test.describe('readout', () => {
   test('matches the true level and lake count after rapid ← presses', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });

@@ -16,6 +16,7 @@ import {
 import type { BarcodeView } from '../../lib/viz/hero/barcode';
 import type { Pacing } from '../../lib/viz/hero/model';
 import type { ColorBy } from '../../lib/viz/hero/render-map';
+import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
 import { DEFAULT_MODE, isHeroMode, modeMeta, type HeroModeId } from '../../lib/viz/hero/modes/meta';
 import type { ModeController } from '../../lib/viz/hero/modes/shell';
 
@@ -91,6 +92,7 @@ function init(): void {
   const risingMapLabel = map.getAttribute('aria-label') ?? '';
 
   const form = document.querySelector<HTMLFormElement>('[data-hero-settings]');
+  const islandsCopy = form?.querySelector<HTMLElement>('[data-hero-islands-copy]') ?? null;
   const seedInput = byId<HTMLInputElement>('hero-seed');
   const levelInput = byId<HTMLInputElement>('hero-level');
   const modeInput = byId<HTMLSelectElement>('hero-mode');
@@ -143,6 +145,15 @@ function init(): void {
     sync({ playing: current.playing, progress: p, seed: current.settings.seed });
   };
 
+  const setCaption = (text: string) => {
+    if (caption && caption.textContent !== text) caption.textContent = text;
+  };
+
+  const applyRisingStrip = ({ showBarcode, view }: HeroSettings) => {
+    stripBox.hidden = !showBarcode;
+    setCaption(showBarcode && view === 'islands' ? ISLANDS_EXPLAINER : modeMeta('rising').caption);
+  };
+
   /** Texts, labels and visible controls for `id`. */
   const applyChrome = (id: HeroModeId) => {
     const meta = modeMeta(id);
@@ -151,21 +162,28 @@ function init(): void {
     root.setAttribute('aria-label', meta.groupLabel);
     root.setAttribute('aria-keyshortcuts', meta.shortcuts);
     if (keys) keys.textContent = meta.keys;
-    if (caption) caption.textContent = meta.caption;
     if (captionLink) captionLink.hidden = !rising;
     for (const el of risingOnly) el.hidden = !rising;
     if (modeNote) modeNote.hidden = rising;
-    if (rising) map.setAttribute('aria-label', risingMapLabel);
-    // The barcode belongs to Rising water; hide it before the controller measures the canvas.
-    stripBox.hidden = rising ? !readForm(0).showBarcode : true;
+    if (rising) {
+      map.setAttribute('aria-label', risingMapLabel);
+      applyRisingStrip(readForm(0));
+    } else {
+      stripBox.hidden = true;
+      setCaption(meta.caption);
+    }
   };
 
   const startRising = (s: number): boolean => {
     let hero: HeroController;
     try {
-      hero = new HeroController({ root, map, strip, stripBox, readout, summary }, readForm(s), {
-        reducedMotion,
-      });
+      hero = new HeroController(
+        { root, map, strip, stripBox, readout, summary, islandsCopy },
+        readForm(s),
+        {
+          reducedMotion,
+        },
+      );
     } catch {
       return false; // No 2-D canvas: the static fallback illustration stays visible.
     }
@@ -249,7 +267,7 @@ function init(): void {
           return;
         }
         current.update(readForm(current.settings.seed));
-        stripBox.hidden = !current.settings.showBarcode;
+        applyRisingStrip(current.settings);
       } else {
         const f = readForm(current.settings.seed);
         (current as ModeController).update({ speed: f.speed, palette: f.palette });
@@ -276,7 +294,7 @@ function init(): void {
         }
         if (current instanceof HeroController) {
           current.update(readForm(s));
-          stripBox.hidden = !current.settings.showBarcode;
+          applyRisingStrip(current.settings);
         } else {
           const f = readForm(s);
           (current as ModeController).update({ speed: f.speed, palette: f.palette });

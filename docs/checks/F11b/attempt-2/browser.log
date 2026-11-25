@@ -1,0 +1,8 @@
+No-JavaScript home shows the static hero and keeps the islands explanation hidden.
+{"width":375,"colorScheme":"light","bars":23,"displayed":10,"geometry":{"viewport":375,"document":375}}
+{"width":375,"colorScheme":"dark","bars":23,"displayed":10,"geometry":{"viewport":375,"document":375}}
+{"width":768,"colorScheme":"light","bars":91,"displayed":17,"geometry":{"viewport":768,"document":768}}
+{"width":768,"colorScheme":"dark","bars":91,"displayed":17,"geometry":{"viewport":768,"document":768}}
+{"width":1280,"colorScheme":"light","bars":73,"displayed":17,"geometry":{"viewport":1280,"document":1280}}
+{"p95":16.700000000000728,"frames":300,"offscreen":"0 draws in 400 ms"}
+{"width":1280,"colorScheme":"dark","bars":73,"displayed":17,"geometry":{"viewport":1280,"document":1280}}

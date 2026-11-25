@@ -1,0 +1,5 @@
+localhost--2026_11_25_02_06_27.report.json [100, 100, 100, 100], CLS 0.000000, lazy modes fetched False
+localhost--2026_11_25_02_06_37.report.json [100, 100, 100, 100], CLS 0.000000, lazy modes fetched False
+localhost--2026_11_25_02_06_47.report.json [100, 100, 100, 100], CLS 0.000000, lazy modes fetched False
+localhost--2026_11_25_02_06_57.report.json [100, 100, 100, 100], CLS 0.000000, lazy modes fetched False
+3 measured medians (performance, accessibility, best practices, SEO, CLS): [100, 100, 100, 100, 0]

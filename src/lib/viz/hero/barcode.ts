@@ -1,5 +1,4 @@
-import type { Bar } from '../../tda/index.ts';
-import { barExtent, isAlive } from './model.ts';
+import { barExtent, isAlive, type BarInterval } from './model.ts';
 
 /**
  * Barcode strip and persistence diagram under the hero map (spec §6.3). Geometry helpers are
@@ -7,7 +6,7 @@ import { barExtent, isAlive } from './model.ts';
  * record exactly what gets drawn. Coordinates are device pixels.
  */
 
-export type BarcodeView = 'barcode' | 'diagram';
+export type BarcodeView = 'barcode' | 'diagram' | 'islands';
 
 export interface StripLayout {
   /** Canvas size in device px. */
@@ -51,7 +50,7 @@ export interface StripColors {
 
 export interface StripState {
   L: StripLayout;
-  rows: readonly Bar[];
+  rows: readonly BarInterval[];
   /** Fill colour per row (same length as rows). */
   fills: readonly string[];
   level: number;
@@ -202,7 +201,7 @@ const pt: [number, number] = [0, 0];
  * Returns false before birth.
  */
 export function diagramPoint(
-  bar: Bar,
+  bar: BarInterval,
   level: number,
   minH: number,
   maxH: number,
@@ -305,7 +304,7 @@ export function diagramHit(
   x: number,
   y: number,
   radius: number,
-  rows: readonly Bar[],
+  rows: readonly BarInterval[],
   level: number,
   minH: number,
   maxH: number,
@@ -328,7 +327,7 @@ export function diagramHit(
 export function barcodeHit(
   _x: number,
   y: number,
-  rows: readonly Bar[],
+  rows: readonly BarInterval[],
   level: number,
   L: StripLayout,
 ): number {

@@ -1,0 +1,6 @@
+Default visible caption: Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.
+Visible setting copy: An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.
+Panel open: false
+Canvas label: Islands barcode
+Islands-mode caption visible: true
+Islands-mode caption: Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.
