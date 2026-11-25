@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 15:50:10 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 15:50:34 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -37,7 +37,7 @@
 | F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `637d2a6` (candidate `464da59`) |
 | F19c Visual polish within the system | done | PASS (check attempt 1) | `680aeac` |
 | F20 Hero Settings cog | done | PASS (attempt 1) | `9f9fb7c` |
-| F21 Collatz steps setting | done | PASS (attempt 1) | this merge (candidate `83d402f`) |
+| F21 Collatz steps setting | done | PASS (attempt 1) | `a74ce65` (candidate `83d402f`) |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -98,8 +98,8 @@
 
 ## WIP branch
 
-F21 uses `wip/codex-handoff` at `83d402f`, draft PR #2, scratch worktree `~/.hermes/cache/scratch/portfolio-f21-ci.aoALMIlO`. Independent checker PASS and exact hosted CI 45696088155 passed; branch cleanup follows integration.
+None. F21 draft PR #2 merged on PASS; `wip/codex-handoff` was deleted locally and on origin.
 
-Latest verified main push: F20 `9f9fb7c` (hosted CI 45692029569 passed). F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
+Latest verified main push: F21 `a74ce65` (exact candidate CI 45696088155 and merged main CI 45698726531 passed). F20 `9f9fb7c` passed hosted CI 45692029569. F19c `680aeac` also passed CI 45645398484; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).
