@@ -1,0 +1,4 @@
+default {"playing0":true,"y0":2862,"trace":[[1932,-1437,true],[496,-1,true],[495,0,true],[495,0,true]]}
+paused-first {"playing0":true,"y0":2862,"trace":[[1932,-1437,true],[495,0,true],[495,0,true],[495,0,true]]}
+reduced-motion {"playing0":false,"y0":2862,"trace":[[495,0,true],[495,0,true],[495,0,true],[495,0,true]]}
+mouse-click {"playing0":true,"y0":2862,"trace":[[2746,-2251,true],[517,-22,true],[495,0,true],[495,0,true]]}

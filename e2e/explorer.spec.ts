@@ -993,3 +993,250 @@ test.describe('explorer: place labels', () => {
     }
   }
 });
+
+/** F27: fixes for production QA (docs/qa/f23-production/report.md QA-06, QA-07, QA-08, QA-10). */
+test.describe('explorer: F27 focus, touch, keyboard and no-JS', () => {
+  const elevation = (h: number) =>
+    `${h.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).replace('-', '−')} m`;
+  const heightAt = (page: Page, cell: number) =>
+    page.evaluate(
+      (c) => document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!.heights[c],
+      cell,
+    );
+  const defaultHint = (page: Page) =>
+    page.locator('[data-ex-hover]').getAttribute('data-default') as Promise<string>;
+
+  test('F27 QA-06: keyboard Show moves focus to the map, announced, and Tab continues', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    const lake = rankedFromFile(5);
+    const show = page.getByRole('button', { name: 'Show lake 5 on the map', exact: true });
+    await show.focus();
+    await page.keyboard.press('Enter');
+    expect((await state(page)).selected).toBe(String(lake.bi));
+    const stage = page.locator('[data-ex-stage]');
+    await expect(stage).toBeFocused();
+    // The map's description reads the selected lake's card first.
+    await expect(stage).toHaveAttribute('aria-describedby', 'ex-card-title ex-card-text ex-keys');
+    await expect(page.locator('#ex-card-title')).toHaveText(
+      `Lake${NBSP}5 · birth cell${NBSP}${lake.bi}`,
+    );
+    // Visible focus ring, and the map is in view after the scroll.
+    const outline = await stage.evaluate((el) => getComputedStyle(el).outlineStyle);
+    expect(outline).not.toBe('none');
+    await expect
+      .poll(() => stage.evaluate((el) => Math.round(el.getBoundingClientRect().top)), {
+        timeout: 3000,
+      })
+      .toBeLessThan(844);
+    await expect
+      .poll(() => stage.evaluate((el) => el.getBoundingClientRect().bottom > 0))
+      .toBe(true);
+    // Its shortcuts work from there, and Tab moves on to the controls, not back to the table.
+    await page.keyboard.press('ArrowDown');
+    expect((await state(page)).selected).not.toBe(String(lake.bi));
+    await page.keyboard.press('Tab');
+    await expect(page.locator('[data-ex-play]')).toBeFocused();
+  });
+
+  test('F27 QA-07: a tapped cell stays readable after release until another tap or dismissal', async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await ctx.newPage();
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    const map = page.locator('[data-ex-map]');
+    await map.scrollIntoViewIfNeeded();
+    const box = (await map.boundingBox())!;
+    const hover = page.locator('[data-ex-hover]');
+    const root = page.locator('[data-explorer]');
+
+    await page.touchscreen.tap(box.x + box.width * 0.45, box.y + box.height * 0.4);
+    await page.waitForTimeout(900);
+    const cell = Number(await root.getAttribute('data-hover-cell'));
+    expect(cell).toBeGreaterThanOrEqual(0);
+    await expect(hover).toContainText(elevation(await heightAt(page, cell)));
+    expect(plain(await hover.textContent())).toMatch(
+      /^Elevation .* at \d+\.\d{4}° N, \d+\.\d{4}° W/,
+    );
+    // The same reading goes to the polite cell live region.
+    await expect(page.locator('[data-ex-cell-live]')).toContainText(
+      elevation(await heightAt(page, cell)),
+    );
+
+    // Another tap replaces it.
+    await page.touchscreen.tap(box.x + box.width * 0.7, box.y + box.height * 0.75);
+    await page.waitForTimeout(600);
+    const cell2 = Number(await root.getAttribute('data-hover-cell'));
+    expect(cell2).not.toBe(cell);
+    await expect(hover).toContainText(elevation(await heightAt(page, cell2)));
+
+    // Tapping outside the map dismisses it.
+    const h1 = (await page.getByRole('heading', { level: 1, name: meta.label }).boundingBox())!;
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.touchscreen.tap(h1.x + 10, h1.y + h1.height / 2);
+    await expect(hover).toHaveText(await defaultHint(page));
+    await expect(root).toHaveAttribute('data-hover-cell', '');
+
+    // Escape on the focused map also dismisses a tapped reading.
+    await map.scrollIntoViewIfNeeded();
+    const box2 = (await map.boundingBox())!;
+    await page.touchscreen.tap(box2.x + box2.width * 0.5, box2.y + box2.height * 0.5);
+    await expect(hover).toContainText('Elevation');
+    await page.locator('[data-ex-stage]').focus();
+    await page.keyboard.press('Escape');
+    await expect(hover).toHaveText(await defaultHint(page));
+    await ctx.close();
+  });
+
+  test('F27 QA-07: mouse hover still clears when the pointer leaves the map', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    const map = page.locator('[data-ex-map]');
+    await map.scrollIntoViewIfNeeded();
+    const box = (await map.boundingBox())!;
+    await page.mouse.move(box.x + box.width * 0.4, box.y + box.height * 0.3);
+    await page.mouse.down();
+    await page.mouse.up();
+    await expect(page.locator('[data-ex-hover]')).toContainText('Elevation');
+    await page.mouse.move(box.x + box.width + 40, box.y + 10);
+    await expect(page.locator('[data-ex-hover]')).toHaveText(await defaultHint(page));
+  });
+
+  test('F27 QA-08: keyboard cell cursor moves, clamps, reads out from the data, Escape clears', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    const W = meta.width;
+    const H = (await page.evaluate(
+      () => document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!.geo.H,
+    )) as number;
+    const stage = page.locator('[data-ex-stage]');
+    const root = page.locator('[data-explorer]');
+    const hover = page.locator('[data-ex-hover]');
+    const live = page.locator('[data-ex-cell-live]');
+    await expect(stage).toHaveAttribute('aria-keyshortcuts', /Enter/);
+    await expect(page.locator('#ex-keys')).toContainText('Enter turns on a cell cursor');
+    await expect(hover).toContainText('press Enter for a cell cursor');
+    await stage.focus();
+    const cursor = async () => Number(await root.getAttribute('data-cursor-cell'));
+    const p0 = (await state(page)).progress;
+
+    await page.keyboard.press('Enter');
+    await expect(root).toHaveAttribute('data-cursor', 'on');
+    const start = await cursor();
+    expect(start).toBe(Math.floor(H / 2) * W + Math.floor(W / 2));
+    await page.keyboard.press('ArrowRight');
+    expect(await cursor()).toBe(start + 1);
+    await page.keyboard.press('Shift+ArrowDown');
+    expect(await cursor()).toBe(start + 1 + 10 * W);
+    await page.keyboard.press('PageUp');
+    expect(await cursor()).toBe(start + 1 + 10 * W - 50 * W);
+    await page.keyboard.press('Home');
+    const row = Math.floor((await cursor()) / W);
+    expect(await cursor()).toBe(row * W);
+    await page.keyboard.press('ArrowLeft'); // clamped at the west edge
+    expect(await cursor()).toBe(row * W);
+    await page.keyboard.press('End');
+    expect(await cursor()).toBe(row * W + W - 1);
+    // The arrows moved the cursor, not the water level.
+    expect((await state(page)).progress).toBe(p0);
+
+    const c = await cursor();
+    const h = await heightAt(page, c);
+    const text = plain(await hover.textContent());
+    expect(text).toContain(`Cursor at column ${W} of ${W}, row ${row + 1} of ${H}: Elevation`);
+    expect(text).toContain(elevation(h));
+    await expect(root).toHaveAttribute('data-hover-cell', String(c));
+    // Debounced, polite announcement of the final position.
+    await expect(live).toContainText(`column ${W} of ${W}, row ${row + 1} of ${H}`);
+    await expect(live).toContainText(elevation(h));
+    expect(await live.getAttribute('aria-live')).toBe('polite');
+
+    // The cursor is drawn: the map pixel at the cursor cell changes when it is on.
+    const pixel = () =>
+      page.evaluate((cell) => {
+        const e = document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!;
+        const cv = e.els.map;
+        const W = e.geo.W;
+        const x = cell % W;
+        const y = Math.floor(cell / W);
+        const px = Math.floor(((x + 0.5) / W) * cv.width * 0.999);
+        const py = Math.floor(((y + 0.5) / e.geo.H) * cv.height * 0.999);
+        return Array.from(cv.getContext('2d')!.getImageData(px, py, 1, 1).data).join(',');
+      }, c);
+    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => r(null))));
+    const on = await pixel();
+
+    await page.keyboard.press('Escape');
+    await expect(root).toHaveAttribute('data-cursor', 'off');
+    await expect(hover).toHaveText(await defaultHint(page));
+    await expect(live).toContainText('Cell cursor off');
+    await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => r(null))));
+    expect(await pixel()).not.toBe(on);
+    // Back to level mode: ArrowRight raises the water again.
+    await page.keyboard.press('ArrowRight');
+    expect((await state(page)).progress).toBeGreaterThan(p0);
+    // Enter toggles the cursor back on at the last inspected cell.
+    await page.keyboard.press('Enter');
+    expect(await cursor()).toBe(c);
+    await page.keyboard.press('Enter');
+    await expect(root).toHaveAttribute('data-cursor', 'off');
+  });
+
+  test('F27 QA-10: without JavaScript the explorer explains the fallback, no loading state', async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext({
+      javaScriptEnabled: false,
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await ctx.newPage();
+    await page.goto(URL);
+    const note = page.locator('.ex-noscript');
+    await expect(note).toBeVisible();
+    await expect(note).toContainText('need JavaScript, which is turned off');
+    await expect(note.getByRole('link', { name: 'Longest-lived lakes' })).toHaveAttribute(
+      'href',
+      '#lakes',
+    );
+    await expect(note.getByRole('link', { name: 'About the data' })).toHaveAttribute(
+      'href',
+      '#about-data',
+    );
+    await expect(page.getByText('Loading the elevation grid')).toBeHidden();
+    await expect(page.locator('[data-ex-controls]')).toBeHidden();
+    await expect(page.locator('[data-ex-hover]')).toBeHidden();
+    await expect(page.locator('.ex-readouts')).toBeHidden();
+    // No dead focus stop or advertised shortcuts on the map.
+    const stage = page.locator('[data-ex-stage]');
+    await expect(stage).not.toHaveAttribute('tabindex', /.*/);
+    await expect(stage).not.toHaveAttribute('aria-keyshortcuts', /.*/);
+    // The static relief and the table are there.
+    await expect(page.locator('.ex-map__shade')).toBeVisible();
+    await expect(page.locator('[data-lake-row]')).toHaveCount(21);
+    await ctx.close();
+  });
+
+  test('F27 QA-10: with JavaScript the no-script note is not shown', async ({ page }) => {
+    await page.goto(URL);
+    await ready(page);
+    await expect(page.locator('.ex-noscript')).toHaveCount(0);
+    await expect(page.locator('[data-ex-stage]')).toHaveAttribute('tabindex', '0');
+  });
+});

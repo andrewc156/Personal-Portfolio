@@ -33,7 +33,11 @@ const hsBlock = Math.round(hs.cellDeg / meta.native.pixelDeg);
 const hsW = ((hs.width * hsBlock) / meta.native.width) * 100;
 const hsH = ((hs.height * hsBlock) / meta.native.height) * 100;
 const D = EXPLORER_DEFAULTS;
-const keys = 'Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape';
+// The map's focus stop, its description and these shortcuts are added by explorer-client.ts once
+// the explorer runs, so without JavaScript (or after a data error) the map is not a dead tab stop.
+const keys = 'Space ArrowLeft ArrowRight Home End ArrowUp ArrowDown Escape Enter PageUp PageDown';
+const hoverHint =
+  'Point at or tap the map to read a cell’s elevation and coordinates. With the map focused, press Enter for a cell cursor that the arrow keys move.';
 const swatch = (theme: 'light' | 'dark', k: number) => IDENTITY[theme][k];
 // Data-derived sizes and the legend colours go in one inline <style> element (hashed into the CSP
 // by scripts/write-headers.mjs) instead of style="" attributes, so the CSP needs no 'unsafe-hashes'
@@ -65,15 +69,7 @@ const inlineCss =
   aria-label="Explorer"
 >
   <div class="explorer__map-col">
-    <div
-      class="ex-stage"
-      data-ex-stage
-      tabindex="0"
-      role="group"
-      aria-label="Rising water map"
-      aria-describedby="ex-keys"
-      aria-keyshortcuts={keys}
-    >
+    <div class="ex-stage" data-ex-stage data-keys={keys} role="group" aria-label="Rising water map">
       <div class="ex-map">
         <img
           class="ex-map__shade"
@@ -93,12 +89,8 @@ const inlineCss =
         {places && <PlaceLabels places={places} geo={geo} />}
       </div>
     </div>
-    <p
-      class="ex-hover"
-      data-ex-hover
-      data-default="Point at or tap the map to read a cell’s elevation and coordinates."
-    >
-      Point at or tap the map to read a cell’s elevation and coordinates.
+    <p class="ex-hover" data-ex-hover data-default={hoverHint}>
+      {hoverHint}
     </p>
     <p class="ex-legend">
       <span class="ex-swatches" aria-hidden="true">
@@ -114,6 +106,26 @@ const inlineCss =
   </div>
 
   <div class="explorer__side">
+    <noscript>
+      <div class="ex-noscript">
+        <p>
+          <strong>The interactive map and barcode need JavaScript, which is turned off.</strong> The
+          shaded relief shows the study area without water. The numbers are still on this page:
+        </p>
+        <ul>
+          <li>
+            <a href="#lakes">Longest-lived lakes</a>: where each of the lowest lake and the 20
+            longest-lived lakes is born and spills, from <code>barcode.json</code>.
+          </li>
+          <li>
+            <a href="#how-to-read">How to read the barcode</a>
+          </li>
+          <li>
+            <a href="#about-data">About the data</a>: sources, processing and limitations.
+          </li>
+        </ul>
+      </div>
+    </noscript>
     <p class="ex-status" data-ex-status data-kind="loading" role="status">
       Loading the elevation grid…
     </p>
@@ -150,10 +162,10 @@ const inlineCss =
     </div>
 
     <div class="ex-card" data-ex-card>
-      <p class="ex-card__title" data-ex-card-title>
+      <p class="ex-card__title" id="ex-card-title" data-ex-card-title>
         No lake selected
       </p>
-      <p class="ex-card__text" data-ex-card-text>
+      <p class="ex-card__text" id="ex-card-text" data-ex-card-text>
         Click a bar, or use a button in the “Longest-lived lakes” table, to see where a lake is born
         and where it spills.
       </p>
@@ -351,9 +363,13 @@ const inlineCss =
   <p id="ex-keys" class="visually-hidden">
     With the map focused: Space plays or pauses, Left and Right arrows move the water level (with
     Shift, in bigger steps), Home and End jump to the bottom and top, Up and Down select the
-    previous or next bar, and Escape clears the selection.
+    previous or next bar, and Escape clears the selection. Enter turns on a cell cursor: then the
+    arrow keys move it one cell (with Shift, ten), Page Up and Page Down move it 50 rows, Home and
+    End go to the ends of the row, and the cell’s elevation and coordinates are read out. Enter or
+    Escape turns the cursor off.
   </p>
   <p class="visually-hidden" aria-live="polite" data-ex-summary></p>
+  <p class="visually-hidden" aria-live="polite" data-ex-cell-live></p>
 </section>
 
 <script>
@@ -385,7 +401,9 @@ const inlineCss =
     background: var(--color-surface-sunken);
   }
 
-  .ex-stage:focus-visible {
+  /* data-focus-ring: focus moved here by a keyboard-activated "Show" (explorer-client.ts). */
+  .ex-stage:focus-visible,
+  .ex-stage[data-focus-ring]:focus {
     outline: 2px solid var(--color-focus);
     outline-offset: 3px;
   }
@@ -428,12 +446,32 @@ const inlineCss =
 
   .ex-hover {
     margin: var(--space-2) 0 0;
-    min-height: 2.8em;
+    min-height: 4.2em;
     font-family: var(--font-mono);
     font-size: var(--fs-xsmall);
     line-height: 1.4;
     color: var(--color-text-muted);
     font-variant-numeric: tabular-nums;
+  }
+
+  .ex-noscript {
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-text);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+    font-size: var(--fs-small);
+  }
+
+  .ex-noscript p,
+  .ex-noscript ul {
+    margin: 0;
+    max-width: none;
+  }
+
+  .ex-noscript ul {
+    margin-top: var(--space-2);
+    padding-left: 1.2em;
   }
 
   /* Error state (explorer-client.ts markInert): nothing suggests the map can be used. */
@@ -671,5 +709,23 @@ const inlineCss =
     color: var(--color-text);
     border-left: 3px solid var(--color-text);
     padding-left: var(--space-2);
+  }
+
+  /* No JavaScript (QA-10): drop the loading message and everything that only works when the
+     explorer runs; the <noscript> note points to the static table and sections instead. */
+  @media (scripting: none) {
+    .ex-hover,
+    .ex-legend,
+    .ex-status,
+    .ex-readouts,
+    .ex-strip,
+    .ex-card,
+    .ex-controls {
+      display: none;
+    }
+
+    .ex-map__water {
+      cursor: default;
+    }
   }
 </style>

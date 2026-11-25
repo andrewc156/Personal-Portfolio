@@ -66,6 +66,19 @@ function yieldToMain(): Promise<void> {
 }
 
 /**
+ * The map becomes a focus stop (with its description and shortcuts) only once the explorer runs:
+ * without JavaScript, while loading, or after a data error it would be a dead stop (QA-10).
+ * The description reads the selected lake's card before the key help, so moving focus here from
+ * a "Show" button announces the lake (QA-06).
+ */
+function makeFocusable(stage: HTMLElement): void {
+  stage.tabIndex = 0;
+  stage.setAttribute('aria-describedby', 'ex-card-title ex-card-text ex-keys');
+  if (stage.dataset.keys) stage.setAttribute('aria-keyshortcuts', stage.dataset.keys);
+  stage.addEventListener('blur', () => delete stage.dataset.focusRing);
+}
+
+/**
  * Error state: besides the status message, drop everything that implies the map is interactive:
  * the "Point at or tap the map…" hint (emptied and hidden by CSS, keeping its box so nothing
  * shifts), the crosshair cursor, and the map's focus stop and keyboard shortcuts.
@@ -148,6 +161,7 @@ async function load(root: HTMLElement): Promise<void> {
     lakes: q(root, '[data-ro-lakes]'),
     area: q(root, '[data-ro-area]'),
     hover: q(root, '[data-ex-hover]'),
+    cellLive: root.querySelector<HTMLElement>('[data-ex-cell-live]'),
     cardTitle: q(root, '[data-ex-card-title]'),
     cardText: q(root, '[data-ex-card-text]'),
     summary: q(root, '[data-ex-summary]'),
@@ -158,6 +172,7 @@ async function load(root: HTMLElement): Promise<void> {
   });
   root.dataset.setupMs = (performance.now() - t1).toFixed(1);
   root.__explorer = ex;
+  makeFocusable(els.stage);
   root.dataset.match = 'true';
   setStatus(
     root,
@@ -299,10 +314,16 @@ function wire(root: HTMLElement, ex: ExplorerController): void {
   }
   for (const b of lakeBtns) {
     b.disabled = false;
-    b.addEventListener('click', () => {
+    b.addEventListener('click', (e) => {
       const cell = Number(b.dataset.lakeCell);
       if (!ex.selectCell(cell)) return;
-      const r = ex.els.stage.getBoundingClientRect();
+      // Focus goes with the view (QA-06): to the map, whose description reads the selected lake
+      // and whose shortcuts work from there, so the next Tab continues to the controls. A
+      // keyboard activation (detail 0) always gets a visible ring.
+      const stage = ex.els.stage;
+      if (e.detail === 0) stage.dataset.focusRing = '';
+      stage.focus({ preventScroll: true });
+      const r = stage.getBoundingClientRect();
       if (r.bottom < 0 || r.top > window.innerHeight) {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         root.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });

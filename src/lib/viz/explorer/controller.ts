@@ -2,6 +2,7 @@ import { Flood, isEssential } from '../../tda/index.ts';
 import type { Bar, H0Result } from '../../tda/index.ts';
 import type { ThemeName } from '../common/palettes.ts';
 import { axisEdges, paintHatch, screenAxes, type BasinMask } from './basin.ts';
+import { cellPosition, isCursorKey, moveCursor, startCell, type CursorKey } from './cursor.ts';
 import { cellAreas, cellAtFraction, cellEdges, gridGeo, type GridGeo } from './geo.ts';
 import { basinMask, lakeMask, traceOutline, WaterPainter } from './map.ts';
 import {
@@ -74,6 +75,10 @@ export const SWEEP_SECONDS = 40;
 export const REDUCED_MOTION_PROGRESS = 0.45;
 const DPR_CAP = 2;
 const READOUT_MS = 150;
+/** Quiet time before the cell live region speaks, so holding an arrow key doesn't chatter. */
+const ANNOUNCE_MS = 400;
+/** Smallest drawn side of the keyboard cell cursor, in CSS px (a cell is about 2 px wide). */
+const CURSOR_MIN_CSS = 11;
 const NO_DASH: number[] = [];
 
 export interface ExplorerElements {
@@ -87,6 +92,8 @@ export interface ExplorerElements {
   lakes: HTMLElement;
   area: HTMLElement;
   hover: HTMLElement;
+  /** Polite live region for keyboard / touch cell readouts (null: none on the page). */
+  cellLive?: HTMLElement | null;
   cardTitle: HTMLElement;
   cardText: HTMLElement;
   summary: HTMLElement;
@@ -167,7 +174,16 @@ export class ExplorerController {
   private onscreen = true;
   private visible = true;
   private running = false;
+  /** Cell under a hovering pointer (cleared when it leaves the map). */
   private hoverCell = -1;
+  /** Last tapped cell (touch / pen): stays shown after release until dismissed (QA-07). */
+  private pinnedCell = -1;
+  /** Keyboard cell cursor (QA-08); −1 while the arrow keys move the water level. */
+  private cursorCell = -1;
+  /** Where the cursor was when last turned off (it comes back there). */
+  private lastCursor = -1;
+  private announceTimer = 0;
+  private pendingAnnounce = '';
   private lastReadoutAt = -Infinity;
   private readoutTimer = 0;
   private summaryTimer = 0;
@@ -362,7 +378,7 @@ export class ExplorerController {
     this.els.root.dataset.basin = show ? 'on' : 'off';
     this.dirty = true;
     this.updateCard();
-    if (this.hoverCell >= 0) set(this.els.hover, this.hoverReadout(this.hoverCell));
+    this.refreshInspect();
     this.queueSummary(0);
     this.schedule();
   }
@@ -402,6 +418,7 @@ export class ExplorerController {
     cancelAnimationFrame(this.raf);
     clearTimeout(this.readoutTimer);
     clearTimeout(this.summaryTimer);
+    clearTimeout(this.announceTimer);
     this.cleanup.forEach((f) => f());
   }
 
@@ -448,6 +465,112 @@ export class ExplorerController {
   /** The stage's map cell under fractional map coordinates (exposed for tests). */
   cellAt(fx: number, fy: number): number {
     return cellAtFraction(fx, fy, this.geo);
+  }
+
+  // ---- cell inspection (pointer, touch, keyboard cursor) -------------------------------------
+
+  /** The keyboard cursor's cell, or −1 when it is off. */
+  get cursor(): number {
+    return this.cursorCell;
+  }
+
+  /** The cell whose readout is shown (hover, then cursor, then last tap), or −1. */
+  shownCell(): number {
+    if (this.hoverCell >= 0) return this.hoverCell;
+    if (this.cursorCell >= 0) return this.cursorCell;
+    return this.pinnedCell;
+  }
+
+  /**
+   * Turn the keyboard cell cursor on (at the hovered or tapped cell, else where it was last, else
+   * the selected lake's pit, else the centre of the grid) or off. While it is on, the arrow keys move it instead of the
+   * water level.
+   */
+  setCursor(on: boolean): void {
+    if (on === this.cursorCell >= 0) return;
+    if (on) {
+      const last =
+        this.hoverCell >= 0
+          ? this.hoverCell
+          : this.pinnedCell >= 0
+            ? this.pinnedCell
+            : this.lastCursor;
+      this.cursorCell = startCell(
+        last,
+        this.selected ? this.selected.birthCell : -1,
+        this.geo.W,
+        this.geo.H,
+      );
+      this.pinnedCell = -1;
+    } else {
+      this.lastCursor = this.cursorCell;
+      this.cursorCell = -1;
+    }
+    this.els.root.dataset.cursor = on ? 'on' : 'off';
+    this.refreshInspect();
+    this.announce(
+      on
+        ? `Cell cursor on. ${this.inspectText(this.cursorCell)}`
+        : 'Cell cursor off. The arrow keys move the water level again.',
+      0,
+    );
+    this.dirty = true;
+    this.schedule();
+  }
+
+  /** Move the keyboard cursor as `key` does (turning it on first if needed). */
+  moveCursorKey(key: CursorKey, shift: boolean): void {
+    if (this.cursorCell < 0) this.setCursor(true);
+    const next = moveCursor(this.cursorCell, key, shift, this.geo.W, this.geo.H);
+    if (next === this.cursorCell) {
+      this.announce(`Edge of the grid. ${this.inspectText(next)}`, ANNOUNCE_MS);
+      return;
+    }
+    this.cursorCell = next;
+    this.refreshInspect();
+    this.announce(this.inspectText(next), ANNOUNCE_MS);
+    this.dirty = true;
+    this.schedule();
+  }
+
+  /** Forget the tapped cell (tap elsewhere / Escape). Returns whether anything was cleared. */
+  clearPinned(): boolean {
+    if (this.pinnedCell < 0) return false;
+    this.pinnedCell = -1;
+    this.refreshInspect();
+    return true;
+  }
+
+  private inspectText(cell: number): string {
+    const base = this.hoverReadout(cell);
+    if (cell !== this.cursorCell) return base;
+    return `Cursor at ${cellPosition(cell, this.geo.W, this.geo.H)}: ${base}`;
+  }
+
+  /** Visible readout under the map: the shown cell, or the default hint. */
+  private refreshInspect(): void {
+    const cell = this.shownCell();
+    this.flood.advanceTo(this.level);
+    set(
+      this.els.hover,
+      cell >= 0 ? this.inspectText(cell) : (this.els.hover.dataset.default ?? ''),
+    );
+    const v = cell >= 0 ? String(cell) : '';
+    if (this.els.root.dataset.hoverCell !== v) this.els.root.dataset.hoverCell = v;
+    const c = this.cursorCell >= 0 ? String(this.cursorCell) : '';
+    if (this.els.root.dataset.cursorCell !== c) this.els.root.dataset.cursorCell = c;
+  }
+
+  /** Polite, debounced announcement (keyboard and touch only; mouse hover never speaks). */
+  private announce(text: string, delay: number): void {
+    const live = this.els.cellLive;
+    if (!live) return;
+    this.pendingAnnounce = text;
+    clearTimeout(this.announceTimer);
+    this.announceTimer = window.setTimeout(() => {
+      this.announceTimer = 0;
+      set(live, this.pendingAnnounce);
+    }, delay);
   }
 
   // ---- internals: state ----------------------------------------------------------------------
@@ -683,6 +806,7 @@ export class ExplorerController {
     this.labelCount = 0;
     if (this.selected) this.drawSelected(this.selected);
     this.drawLakeLabels();
+    if (this.cursorCell >= 0) this.drawCursor(this.cursorCell);
 
     const st = this.stripState;
     st.level = this.level;
@@ -892,6 +1016,38 @@ export class ExplorerController {
       );
   }
 
+  /**
+   * Keyboard cell cursor: a square ring around the cell (at least CURSOR_MIN_CSS wide, since a
+   * cell is only about 2 CSS px), in the surface colour under the text colour so it reads on both
+   * the relief and the water, with the exact cell filled.
+   */
+  private drawCursor(cell: number): void {
+    const ctx = this.mapCtx;
+    const d = this.dpr;
+    const cw = this.els.map.width;
+    const chh = this.els.map.height;
+    const W = this.geo.W;
+    const y = Math.floor(cell / W);
+    const x = cell - y * W;
+    const x0 = this.edges.xs[x] * cw;
+    const x1 = this.edges.xs[x + 1] * cw;
+    const y0 = this.edges.ys[y] * chh;
+    const y1 = this.edges.ys[y + 1] * chh;
+    const cx = (x0 + x1) / 2;
+    const cy = (y0 + y1) / 2;
+    const half = Math.max(x1 - x0, y1 - y0, CURSOR_MIN_CSS * d) / 2;
+    ctx.setLineDash(NO_DASH);
+    ctx.lineJoin = 'miter';
+    ctx.strokeStyle = this.colors.bg;
+    ctx.lineWidth = 4 * d;
+    ctx.strokeRect(cx - half, cy - half, 2 * half, 2 * half);
+    ctx.strokeStyle = this.colors.text;
+    ctx.lineWidth = 2 * d;
+    ctx.strokeRect(cx - half, cy - half, 2 * half, 2 * half);
+    ctx.fillStyle = this.colors.text;
+    ctx.fillRect(x0, y0, Math.max(1, x1 - x0), Math.max(1, y1 - y0));
+  }
+
   /** Number labels at the pits of identity lakes that are alive now. */
   private drawLakeLabels(): void {
     const ctx = this.mapCtx;
@@ -992,7 +1148,7 @@ export class ExplorerController {
     set(e.percentile, r.percentile);
     set(e.lakes, r.lakes);
     set(e.area, r.area);
-    if (this.hoverCell >= 0) set(e.hover, this.hoverReadout(this.hoverCell));
+    if (this.shownCell() >= 0) this.refreshInspect();
   }
 
   private hoverReadout(cell: number): string {
@@ -1083,6 +1239,24 @@ export class ExplorerController {
     // Keyboard, scoped to the focused stage so it never hijacks form controls or page scrolling.
     on(stage, 'keydown', (e) => {
       if (e.target !== stage || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.key === 'Enter') {
+        this.setCursor(this.cursorCell < 0);
+        e.preventDefault();
+        return;
+      }
+      if (this.cursorCell >= 0) {
+        // Cell cursor on: arrows, Home/End and Page Up/Down move it; Escape turns it off.
+        if (isCursorKey(e.key)) {
+          this.moveCursorKey(e.key, e.shiftKey);
+          e.preventDefault();
+          return;
+        }
+        if (e.key === 'Escape') {
+          this.setCursor(false);
+          e.preventDefault();
+          return;
+        }
+      }
       const step = e.shiftKey ? 0.05 : 0.005;
       switch (e.key) {
         case ' ':
@@ -1108,8 +1282,8 @@ export class ExplorerController {
           this.cycleSelection(1);
           break;
         case 'Escape':
-          if (!this.selected) return;
-          this.select(null);
+          if (this.selected) this.select(null);
+          else if (!this.clearPinned()) return;
           break;
         default:
           return;
@@ -1118,12 +1292,23 @@ export class ExplorerController {
     });
 
     on(map, 'pointermove', (e) => this.mapHover(e));
-    on(map, 'pointerdown', (e) => this.mapHover(e));
+    on(map, 'pointerdown', (e) => {
+      this.mapHover(e);
+      // Touch and pen: keep the tapped cell's readout after release (QA-07).
+      if (e.pointerType !== 'mouse' && this.hoverCell >= 0) this.pin(this.hoverCell);
+    });
     on(map, 'pointerleave', () => {
       this.hoverCell = -1;
-      set(this.els.hover, this.els.hover.dataset.default ?? '');
-      this.els.root.dataset.hoverCell = '';
+      this.refreshInspect();
     });
+    // A tap or click anywhere else dismisses a tapped readout.
+    const outside = (e: PointerEvent) => {
+      if (this.pinnedCell >= 0 && !(e.target instanceof Node && map.contains(e.target))) {
+        this.clearPinned();
+      }
+    };
+    document.addEventListener('pointerdown', outside);
+    this.cleanup.push(() => document.removeEventListener('pointerdown', outside));
 
     on(strip, 'pointermove', (e) => {
       strip.style.cursor = this.stripHit(e) >= 0 ? 'pointer' : 'default';
@@ -1154,9 +1339,21 @@ export class ExplorerController {
     );
     if (cell < 0) return;
     this.hoverCell = cell;
-    this.els.root.dataset.hoverCell = String(cell);
-    this.flood.advanceTo(this.level);
-    set(this.els.hover, this.hoverReadout(cell));
+    this.refreshInspect();
+  }
+
+  private pin(cell: number): void {
+    if (this.cursorCell >= 0) {
+      // Keyboard cursor on: the tap moves it, so the arrow keys continue from there.
+      this.cursorCell = cell;
+      this.pinnedCell = -1;
+      this.dirty = true;
+      this.schedule();
+    } else {
+      this.pinnedCell = cell;
+    }
+    this.refreshInspect();
+    this.announce(this.inspectText(cell), 0);
   }
 
   /** Row index under a strip point in CSS px (for tests). */
