@@ -342,8 +342,12 @@ export class CollatzSim implements ModeSim {
     return false;
   }
 
-  warm(still: boolean): void {
-    this.steps = still ? this.totalSteps : Math.round(this.totalSteps * 0.3);
+  warm(_still: boolean): void {
+    this.restart();
+  }
+
+  previewDepth(): void {
+    this.steps = this.totalSteps;
   }
 
   restart(): void {
@@ -359,10 +363,10 @@ export class CollatzSim implements ModeSim {
     if (this.steps < this.totalSteps) this.steps++;
   }
 
-  /** Growth front in levels (fractional). Eased so the sparse first levels don't dawdle. */
+  /** A complete first layer at tick zero; ease out over the remaining fractional levels. */
   front(): number {
     const p = Math.min(1, this.steps / this.totalSteps);
-    return this.tree.maxDepth * Math.sqrt(p);
+    return 1 + (this.tree.maxDepth - 1) * (p * (2 - p));
   }
 
   setColors(c: ModeColors): void {

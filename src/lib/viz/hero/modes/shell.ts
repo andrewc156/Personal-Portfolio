@@ -97,10 +97,15 @@ export class ModeController {
 
   setPlaying(on: boolean): void {
     if (this.destroyed) return;
-    if (on && this.sim.finished()) {
+    const replay = on && this.sim.finished();
+    if (replay) {
       this.sim.restart();
       this.holdLeft = 0;
       this.dirty = true;
+      if (this.mode === 'collatz') {
+        this.acc = 0;
+        this.lastReadoutAt = -Infinity;
+      }
     }
     if (this.playing === on) return;
     this.playing = on;
@@ -108,7 +113,8 @@ export class ModeController {
     this.dirty = true;
     this.syncState();
     this.emitUi();
-    this.queueSummary(0);
+    if (replay && this.mode === 'collatz') this.updateSummary();
+    else this.queueSummary(0);
     this.schedule();
   }
 
@@ -120,10 +126,11 @@ export class ModeController {
   newTerrain(seed?: number): void {
     if (this.destroyed) return;
     this.settings.seed = normalizeSeed(seed ?? randomSeed());
-    this.build(this.mode === 'collatz' && !this.playing);
+    this.build(false);
     this.dirty = true;
     this.emitUi();
-    this.queueSummary(300);
+    if (this.mode === 'collatz') this.updateSummary();
+    else this.queueSummary(300);
     this.schedule();
   }
 
@@ -138,7 +145,8 @@ export class ModeController {
       return;
     }
     if (this.mode === 'collatz' && this.settings.collatzSteps !== prev.collatzSteps) {
-      this.build(!this.playing);
+      this.build(false);
+      if (!this.playing) this.sim.previewDepth?.();
       this.dirty = true;
       this.updateReadout(true);
       this.updateSummary();
@@ -212,6 +220,11 @@ export class ModeController {
     this.stepsTaken = 0;
     this.holdLeft = 0;
     this.acc = 0;
+    if (this.mode === 'collatz') {
+      // Paint layer one before taking any ticks after a control-triggered build.
+      this.last = -1;
+      this.lastReadoutAt = -Infinity;
+    }
     this.els.root.dataset.seed = String(this.settings.seed);
     const label = this.sim.label();
     if (this.els.map.getAttribute('aria-label') !== label) {
