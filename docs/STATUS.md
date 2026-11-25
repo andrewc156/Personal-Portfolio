@@ -27,5 +27,5 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | CI1 Fix failing GitHub CI | — | checking (built; checker attempt 1) | e2e/cls.spec.ts:171 fails on ubuntu at 412px ("Rising water is scrolled into view when focused"), red since `ef15630`; passes on macOS. Checked and committed first. |
 | F10 Extra hero modes | S1 | building (viz-builder, attempt 1) | Add Dye spill, Fractal pond, Random rivers, and Collatz delta to the hero. |
 | F11 Islands barcode | S2 | F11a engine done, PASS_WITH_NOTES (docs/checks/F11a/attempt-1.md, `248ebae`); F11b hero strip todo after F10 | Show when islands appear and disappear during flooding using an H1 barcode. |
-| F12 Basin mask | S3 | building (F12a data: data-engineer, attempt 1) | Add an optional explorer mask using USGS Watershed Boundary Dataset regions 14 and 15. Document the coverage gap in Mexico. |
+| F12 Basin mask | S3 | F12a built, checker queued | Add an optional explorer mask using USGS Watershed Boundary Dataset regions 14 and 15. Document the coverage gap in Mexico. |
 | F13 Place labels | S4 | todo | Add explorer place labels using coordinates from USGS GNIS and cite the source. |

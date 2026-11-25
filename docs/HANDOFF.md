@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 19:50 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 20:05 EST, Claude Code (Control)
 
 ## Status
 
@@ -23,7 +23,7 @@
 | CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | checking: built (real header bug: partly clipped focused links aren't scrolled into view); checker attempt 1 running; CI red since `ef15630` | n/a | — |
 | F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
-| F12 Basin mask (S3) | building: F12a mask data (data-engineer, attempt 1) | n/a | — |
+| F12 Basin mask (S3) | F12a built, waiting for checker (queued after CI1 check) | n/a | — |
 | F13 Place labels (S4) | todo (approved) | n/a | — |
 
 ## Current task (three builders running in parallel, with no overlapping paths)
@@ -32,7 +32,7 @@
 |---|---|---|---|---|
 | F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | four modes, tests, report → checker |
 | CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | built, report done | checker attempt 1 running → docs/checks/CI1/attempt-1.md |
-| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | delegated | WBD 14+15 rasterized to grid, tests, report → checker |
+| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | built, report done | checker queued (after CI1 checker finishes) |
 
 After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12b mask toggle in the explorer (viz-builder), F13a GNIS labels data (data-engineer, after F12a), F13b explorer labels (viz-builder), then a fresh F9 audit. Checkers run one at a time.
 
@@ -45,7 +45,7 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 
 All are unverified builder work in progress, not yet checked:
 - F10 (building): src/lib/viz/hero/** (modes/), src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts
-- F12a (building): pipeline/basin_mask.py and others, public/data/colorado/meta.json
+- F12a (built, unchecked): pipeline/basin_mask.py, pipeline/build_colorado.py, pipeline/tests/test_basin_mask.py, public/data/colorado/{basin-mask.bin,basin-mask.json,meta.json}, docs/data.md
 - CI1 (built, checking): src/components/site/Header.astro, e2e/cls.spec.ts, e2e/shell.spec.ts
 
 ## Open issues and "Needs Andrew"
@@ -55,6 +55,7 @@ All are unverified builder work in progress, not yet checked:
 - GitHub CI `npm run verify` has failed on every push since `ef15630`: `e2e/cls.spec.ts:171` says "Rising water is scrolled into view when focused" at 412px. It is Linux-only; the F9 checker passed on macOS. Being fixed as CI1. Andrew is preparing a Cloudflare Pages deploy.
 - §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
+- Needs Andrew (F12): keep WBD 14+15 as built, or exclude HU-4 1508 Sonora? WBD does cover Mexico, so the spec's "gap" premise is false; see DECISIONS #78.
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions

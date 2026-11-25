@@ -21,3 +21,4 @@ The supplied CV resolves the profile, education, research, presentation and proj
 - [ ] Open science sentence in `src/data/copy.yaml`.
 - [ ] Keep the current hero keywords after merging water quality and RiverNets?
 - [ ] After confirming the tagline, regenerate the social card with `scripts/og-image.mjs`.
+- [ ] Basin mask (F12): keep WBD regions 14 + 15 exactly as the spec says (current build), or exclude HU-4 1508 "Sonora", whose 634 sub-watersheds drain to the ocean or closed basins in Mexico rather than to the Colorado (1,609 of 97,311 masked cells)?
