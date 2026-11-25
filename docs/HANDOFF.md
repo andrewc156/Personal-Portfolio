@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 10:27:33 EST, Hermes Agent / Codex (Control)
+**Last updated:** 2026-11-25 10:56:44 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -35,14 +35,14 @@
 | F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | `e426d03` |
 | F19a Copy voice (first person, humanized) | done | PASS (check attempt 2) | `111f774` |
 | F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | done (WIP integrated) | PASS (check attempt 2) | `637d2a6` (candidate `464da59`) |
-| F19c Visual polish within the system | checked; release commit | PASS (check attempt 1) | this release commit |
-| F9 re-audit after F19 | todo | — | — |
+| F19c Visual polish within the system | done | PASS (check attempt 1) | `680aeac` |
+| F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19c polish | checker `sa-0-20ce8386` | `docs/checks/F19c/attempt-1.md` | `docs/checks/F19c/attempt-1.md` PASS | Commit/push verified files; F9 audit next. |
+| F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md`, `docs/checks/F9/summary.md` | Exact hosted CI 45645398484 green; audit FAIL solely on unverified required browser matrix | Obtain a working multi-version runner and rerun the missing browser coverage. |
 
 ## Handoff vs repo (resume check)
 
@@ -57,11 +57,12 @@
 
 ## Uncommitted changes
 
-- F19c checked, ready for release commit: home/content component styles, thumbnail generator, Rising water intro/meta and scoped tests; see builder `docs/builds/F19c/attempt-1.md` for exact paths at completion. Local checker diagnostics and `.Rhistory` are excluded from commits.
 
 - Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
 ## Open issues and "Needs Andrew"
+
+- F9 blocker: last two Chrome, Firefox and Safari releases including actual iOS are not all verified. Firefox failed even on a blank page; iPhone WebKit emulation is not actual Safari/iOS. Control preflight found one desktop Safari (27.2) and no `simctl` available. No source fix is indicated by these results. Need access to a suitable real-browser/device runner.
 
 - F19b exact WIP candidate passed all five unchanged ≤22 ms tests in hosted CI 45573412148. Local Chromium timing and two pre-existing explorer/hidden-tab races are documented in checker reports; don’t weaken those gates.
 - 11 GiB free at resume; recheck before full Lighthouse audit.
@@ -88,14 +89,14 @@
 
 ## Next 3 actions
 
-1. Fresh independent F19c production check; if FAIL, fix and recheck.
-2. Commit and push F19c on PASS or PASS_WITH_NOTES; confirm hosted CI.
-3. Fresh F9 attempt 5 full-site audit; commit and push the report and final handoff.
+1. Obtain access to the missing Chrome, Firefox and real Safari/iOS versions and verify the exact `680aeac` build.
+2. Rerun the F9 checker to close the browser-matrix blocker; no F19 code change unless a test reproduces a site defect.
+3. Needs Andrew: set Cloudflare Workers build `SITE_URL=https://andrewchincea.com`, rebuild when authorized, and verify canonical URLs, robots and sitemap.
 
 ## WIP branch
 
 None. `wip/codex-handoff` was merged on PASS and deleted locally and on origin; GitHub PR #1 reads MERGED.
 
-Latest verified main push: F19b merge `637d2a6`; hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
+Latest verified main push: F19c `680aeac` (hosted CI 45645398484 passed); hosted candidate CI 45573412148 passed. Main CI 45643294552 passed on F19b; prior F19a main CI 45575890659 passed.
 
 Discarded the two PARTIAL checker reports; moved the interrupted F19b logs to Hermes scratch (not repository evidence for the fresh verdict).
