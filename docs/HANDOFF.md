@@ -33,8 +33,8 @@
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
 | F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | reports in this commit |
-| F19a Copy voice (first person, humanized) | todo, after F9 attempt 4 | — | — |
-| F19b Hero first frame and framing | todo, after F9 attempt 4 | — | — |
+| F19a Copy voice (first person, humanized) | building (site-builder) | — | — |
+| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | building (viz-builder) | — | — |
 | F19c Visual polish within the system | todo, after F19a | — | — |
 | F9 re-audit after F19 | todo | — | — |
 
@@ -42,8 +42,8 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19a copy voice | site-builder | src/data/copy.yaml, profile.yaml, home/about/research copy, content YAML descriptions, docs/builds/F19a/ | — | Delegating now |
-| F19b hero framing + F9a4 note 2 spacing | viz-builder | src/components/hero/**, src/lib/viz/hero/**, e2e/hero.spec.ts, LakesTable.astro, rising-water/index.astro (spacing only), docs/builds/F19b/ | — | Delegating now, in parallel with F19a (no file overlap) |
+| F19a copy voice | site-builder | src/data/copy.yaml, profile.yaml, home/about/research copy, content YAML descriptions, docs/builds/F19a/ | Delegated | Build, then report (docs/builds/F19a/attempt-1.md) |
+| F19b hero framing + F9a4 note 2 spacing | viz-builder | src/components/hero/**, src/lib/viz/hero/**, e2e/hero.spec.ts, LakesTable.astro, rising-water/index.astro (spacing only), docs/builds/F19b/ | Delegated in parallel with F19a | Build, then report (docs/builds/F19b/attempt-1.md) |
 
 ## Handoff vs repo (resume check)
 
