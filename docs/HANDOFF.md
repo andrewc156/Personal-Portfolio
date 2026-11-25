@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:10 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 20:15 EST, Claude Code (Control)
 
 ## Status
 
@@ -55,7 +55,7 @@ All are unverified builder work in progress, not yet checked:
 - GitHub CI `npm run verify` has failed on every push since `ef15630`: `e2e/cls.spec.ts:171` says "Rising water is scrolled into view when focused" at 412px. It is Linux-only; the F9 checker passed on macOS. Being fixed as CI1. Andrew is preparing a Cloudflare Pages deploy.
 - §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
-- Needs Andrew (F12): keep WBD 14+15 as built, or exclude HU-4 1508 Sonora? WBD does cover Mexico, so the spec's "gap" premise is false; see DECISIONS #78.
+- Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
