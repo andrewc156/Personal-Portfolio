@@ -32,7 +32,11 @@
 | F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
-| F9 Final audit (post-stretch) | checking (attempt 4) | — | — |
+| F9 Final audit (post-stretch) | checking (attempt 4, baseline before F19) | — | — |
+| F19a Copy voice (first person, humanized) | todo, after F9 attempt 4 | — | — |
+| F19b Hero first frame and framing | todo, after F9 attempt 4 | — | — |
+| F19c Visual polish within the system | todo, after F19a | — | — |
+| F9 re-audit after F19 | todo | — | — |
 
 ## Current task
 
@@ -77,9 +81,9 @@
 
 ## Next 3 actions
 
-1. F9 attempt 4 audit (running).
-2. On FAIL: fix rounds through the owning builders, then re-audit.
-3. Commit and push the F9 report and summary, confirm hosted CI, and write the final handoff.
+1. F9 attempt 4 audit (running; baseline). Commit its report. Fold any FAIL fixes into the F19 rounds.
+2. Start F19a (site-builder, copy) and F19b (viz-builder, hero) in parallel; their files don't overlap. Then F19c (site-builder, visual polish). Each one goes to the checker and is committed on PASS. Andrew's choices are in DECISIONS #85.
+3. Fresh F9 re-audit after F19, then a final handoff.
 
 ## WIP branch
 

@@ -36,3 +36,6 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F17 Garden nav and order | Andrew requested | done (`51133cd`), PASS_WITH_NOTES (docs/checks/F17/attempt-1.md) | Add Garden and order the first four links by the homepage sections. |
 | F18 Cloudflare-only deployment | Andrew requested | done (`c9047a5`), PASS (docs/checks/F18/attempt-1.md) | Remove only the GitHub Pages deploy workflow. Keep CI. |
 | CI3 Place labels on Linux CI | hosted CI 45534748972 | done (`5c54ee2`), PASS_WITH_NOTES (docs/checks/CI3/attempt-1.md) | Priority-1 labels dropped at 375px under DejaVu metrics. Make label layout font-robust. |
+| F19a Copy voice | Andrew requested (DECISIONS #85) | todo | First-person, humanized copy across the site; no new facts. |
+| F19b Hero framing | Andrew requested | todo | The hero's first frame reads as terrain plus water, not a brown blur. |
+| F19c Visual polish | Andrew requested | todo | Type scale, spacing, section rhythm, distinct research thumbnails, contact. |
