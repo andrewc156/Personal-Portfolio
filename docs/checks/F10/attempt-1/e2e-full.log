@@ -1,0 +1,195 @@
+
+Running 159 tests using 1 worker
+
+  ✓    1 [chromium] › e2e/cls.spec.ts:114:5 › font swap layout stability (mobile, fonts delayed) › /: CLS < 0.05 when IBM Plex arrives after first paint (2.7s)
+  ✓    2 [chromium] › e2e/cls.spec.ts:114:5 › font swap layout stability (mobile, fonts delayed) › /garden/: CLS < 0.05 when IBM Plex arrives after first paint (2.5s)
+  ✓    3 [chromium] › e2e/cls.spec.ts:114:5 › font swap layout stability (mobile, fonts delayed) › /cv/: CLS < 0.05 when IBM Plex arrives after first paint (2.5s)
+  ✓    4 [chromium] › e2e/cls.spec.ts:114:5 › font swap layout stability (mobile, fonts delayed) › /rising-water/: CLS < 0.05 when IBM Plex arrives after first paint (2.5s)
+  ✓    5 [chromium] › e2e/cls.spec.ts:136:5 › mobile nav row is font-independent and fully reachable › 320px: one row in any font; all 6 links reachable by keyboard (231ms)
+  ✓    6 [chromium] › e2e/cls.spec.ts:136:5 › mobile nav row is font-independent and fully reachable › 375px: one row in any font; all 6 links reachable by keyboard (208ms)
+  ✓    7 [chromium] › e2e/cls.spec.ts:136:5 › mobile nav row is font-independent and fully reachable › 412px: one row in any font; all 6 links reachable by keyboard (222ms)
+  ✓    8 [chromium] › e2e/cls.spec.ts:136:5 › mobile nav row is font-independent and fully reachable › 768px: one row in any font; all 6 links reachable by keyboard (228ms)
+  ✓    9 [chromium] › e2e/cls.spec.ts:136:5 › mobile nav row is font-independent and fully reachable › 832px: one row in any font; all 6 links reachable by keyboard (224ms)
+  ✓   10 [chromium] › e2e/explorer.spec.ts:82:3 › explorer: load and verification › loads, shows the exact label, live barcode matches barcode.json, no console errors (179ms)
+  ✓   11 [chromium] › e2e/explorer.spec.ts:123:3 › explorer: load and verification › data transferred ≤ 3 MB and no third-party requests (659ms)
+  ✓   12 [chromium] › e2e/explorer.spec.ts:195:5 › explorer: corrupted data are rejected › low mantissa bit (hash only): visible error, one console.error, nothing drawn (800ms)
+  ✓   13 [chromium] › e2e/explorer.spec.ts:195:5 › explorer: corrupted data are rejected › exponent byte of a top lake’s pit: visible error, one console.error, nothing drawn (719ms)
+  ✓   14 [chromium] › e2e/explorer.spec.ts:195:5 › explorer: corrupted data are rejected › grid truncated by 4 bytes (size check): visible error, one console.error, nothing drawn (710ms)
+  ✓   15 [chromium] › e2e/explorer.spec.ts:195:5 › explorer: corrupted data are rejected › barcode.json with one bar’s di altered (barcode comparison): visible error, one console.error, nothing drawn (724ms)
+  ✓   16 [chromium] › e2e/explorer.spec.ts:262:3 › explorer: interaction › clicking a bar jumps below its death level, highlights it and fills the card (445ms)
+  ✓   17 [chromium] › e2e/explorer.spec.ts:299:3 › explorer: interaction › table buttons do the same as a bar click; the lowest lake never merges (1.2s)
+  ✓   18 [chromium] › e2e/explorer.spec.ts:315:3 › explorer: interaction › hovering the map shows elevation and lat/lon (219ms)
+  ✓   19 [chromium] › e2e/explorer.spec.ts:332:3 › explorer: interaction › units toggle switches readouts, card and table to feet (290ms)
+  ✓   20 [chromium] › e2e/explorer.spec.ts:347:3 › explorer: interaction › view toggle switches barcode and diagram, and the strip label follows (241ms)
+  ✓   21 [chromium] › e2e/explorer.spec.ts:362:3 › explorer: interaction › keyboard on the focused map: Space, arrows, Home/End, Up/Down, Escape; scoped (209ms)
+  ✓   22 [chromium] › e2e/explorer.spec.ts:387:3 › explorer: interaction › the hidden summary updates on pause and scrub (977ms)
+  ✓   23 [chromium] › e2e/explorer.spec.ts:397:3 › explorer: motion and pausing › reduced motion: no autoplay, static frame, Play button (1.2s)
+  ✓   24 [chromium] › e2e/explorer.spec.ts:412:3 › explorer: motion and pausing › plays by default and pauses off-screen and in a hidden tab (3.9s)
+  ✓   25 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 375 light (1.2s)
+  ✓   26 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 375 dark (1.1s)
+  ✓   27 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 768 light (1.2s)
+  ✓   28 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 768 dark (1.2s)
+  ✓   29 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 1280 light (1.2s)
+  ✓   30 [chromium] › e2e/explorer.spec.ts:441:7 › explorer: layout and accessibility › no horizontal overflow, map aspect within 1% of meta, axe clean at 1280 dark (1.4s)
+  ✓   31 [chromium] › e2e/explorer.spec.ts:469:3 › explorer: layout and accessibility › DPR is capped at 2 (186ms)
+  ✓   32 [chromium] › e2e/explorer.spec.ts:485:3 › explorer: layout and accessibility › About the data is generated from meta.json and ATTRIBUTION.md (89ms)
+  -   33 [chromium] › e2e/headers.spec.ts:87:3 › response headers › HTML pages: security headers, CSP, revalidated
+  -   34 [chromium] › e2e/headers.spec.ts:97:3 › response headers › /_astro/* is immutable for a year
+  -   35 [chromium] › e2e/headers.spec.ts:109:3 › response headers › /data/*, /og/* and the favicon: one day, then revalidate
+  -   36 [chromium] › e2e/headers.spec.ts:124:3 › response headers › unknown route: custom 404 page with status 404 and the same headers
+  -   37 [chromium] › e2e/headers.spec.ts:135:3 › CSP in the browser › every page renders with zero CSP violations
+  -   38 [chromium] › e2e/headers.spec.ts:144:3 › CSP in the browser › theme script runs: a stored theme is applied on load
+  -   39 [chromium] › e2e/headers.spec.ts:153:3 › CSP in the browser › explorer verifies its data and handles form submissions under the CSP
+  -   40 [chromium] › e2e/headers.spec.ts:177:3 › CSP in the browser › negative control: injected inline script and style are blocked
+  ✓   41 [chromium] › e2e/hero.spec.ts:88:3 › hero canvas › non-blank within 500 ms of hydration, and no console errors (1.6s)
+  ✓   42 [chromium] › e2e/hero.spec.ts:145:3 › hero canvas › canvas has role="img" and a label; caption and link are exact (96ms)
+  ✓   43 [chromium] › e2e/hero.spec.ts:159:3 › hero canvas › same seed gives the same terrain and barcode (125ms)
+  ✓   44 [chromium] › e2e/hero.spec.ts:173:3 › controls › mouse: Play/Pause and New terrain buttons (185ms)
+  ✓   45 [chromium] › e2e/hero.spec.ts:186:3 › controls › mouse: hovering a bar highlights its lake (readout names the lake) (162ms)
+  ✓   46 [chromium] › e2e/hero.spec.ts:201:3 › controls › keyboard: Space, arrows and N act only when the hero is focused (185ms)
+  ✓   47 [chromium] › e2e/hero.spec.ts:235:3 › controls › touch: tap Play and tap a bar (200ms)
+  ✓   48 [chromium] › e2e/hero.spec.ts:255:3 › controls › settings live in the F1 panel and drive the hero (709ms)
+  ✓   49 [chromium] › e2e/hero.spec.ts:292:3 › readout › matches the true level and lake count after rapid ← presses (1.0s)
+  ✓   50 [chromium] › e2e/hero.spec.ts:312:3 › readout › matches the truth after dragging the level slider (1.3s)
+  ✓   51 [chromium] › e2e/hero.spec.ts:338:3 › readout › reduced-motion static frame has a correct, non-empty readout (2.2s)
+  ✓   52 [chromium] › e2e/hero.spec.ts:357:5 › readout › bar highlight readout is not clipped at 375px (125ms)
+  ✓   53 [chromium] › e2e/hero.spec.ts:357:5 › readout › bar highlight readout is not clipped at 768px (145ms)
+  ✓   54 [chromium] › e2e/hero.spec.ts:357:5 › readout › bar highlight readout is not clipped at 1280px (131ms)
+  ✓   55 [chromium] › e2e/hero.spec.ts:390:3 › motion and pausing › reduced motion: no autoplay, static frame at ~45 %, Play button (927ms)
+  ✓   56 [chromium] › e2e/hero.spec.ts:410:3 › motion and pausing › pauses when off-screen and resumes when back (957ms)
+  ✓   57 [chromium] › e2e/hero.spec.ts:425:3 › motion and pausing › pauses in a hidden tab (520ms)
+  ✓   58 [chromium] › e2e/hero.spec.ts:443:3 › motion and pausing › p95 frame time ≤ 22 ms during play at 1280×800 (4.6s)
+  ✓   59 [chromium] › e2e/hero.spec.ts:471:3 › lifecycle › destroy() clears every pending timer: no callback runs afterwards (843ms)
+  ✓   60 [chromium] › e2e/hero.spec.ts:521:5 › accessibility › axe: 0 serious/critical on / (light), settings closed and open (1.4s)
+  ✓   61 [chromium] › e2e/hero.spec.ts:521:5 › accessibility › axe: 0 serious/critical on / (dark), settings closed and open (1.4s)
+  ✓   62 [chromium] › e2e/hero.spec.ts:632:3 › hero modes › selector: Rising water is the default; each mode swaps chrome and draws; back again (3.4s)
+  ✓   63 [chromium] › e2e/hero.spec.ts:689:3 › hero modes › switching tears the old mode down: no frames, timers or listeners left (837ms)
+  ✓   64 [chromium] › e2e/hero.spec.ts:730:3 › hero modes › extra modes are lazy-loaded: not in the initial scripts, fetched on first switch (645ms)
+  ✓   65 [chromium] › e2e/hero.spec.ts:751:5 › hero modes › dye: deterministic per seed, N regenerates, Space pauses (348ms)
+  ✓   66 [chromium] › e2e/hero.spec.ts:781:5 › hero modes › dye: reduced motion shows a static frame and a Play button (953ms)
+  ✓   67 [chromium] › e2e/hero.spec.ts:751:5 › hero modes › pond: deterministic per seed, N regenerates, Space pauses (219ms)
+  ✓   68 [chromium] › e2e/hero.spec.ts:781:5 › hero modes › pond: reduced motion shows a static frame and a Play button (927ms)
+  ✓   69 [chromium] › e2e/hero.spec.ts:751:5 › hero modes › rivers: deterministic per seed, N regenerates, Space pauses (216ms)
+  ✓   70 [chromium] › e2e/hero.spec.ts:781:5 › hero modes › rivers: reduced motion shows a static frame and a Play button (928ms)
+  ✓   71 [chromium] › e2e/hero.spec.ts:751:5 › hero modes › collatz: deterministic per seed, N regenerates, Space pauses (215ms)
+  ✓   72 [chromium] › e2e/hero.spec.ts:781:5 › hero modes › collatz: reduced motion shows a static frame and a Play button (926ms)
+  ✓   73 [chromium] › e2e/hero.spec.ts:801:5 › hero modes › dye: click/tap and Enter act at the canvas (1.1s)
+  ✓   74 [chromium] › e2e/hero.spec.ts:801:5 › hero modes › pond: click/tap and Enter act at the canvas (1.0s)
+  ✓   75 [chromium] › e2e/hero.spec.ts:827:3 › hero modes › touch: tapping the pond drops a pebble (122ms)
+  ✘   76 [chromium] › e2e/hero.spec.ts:842:3 › hero modes › extra modes pause off-screen and in a hidden tab (771ms)
+  ✓   77 [chromium] › e2e/hero.spec.ts:871:5 › hero modes › dye: p95 frame time ≤ 22 ms at 1280×800 (4.6s)
+  ✓   78 [chromium] › e2e/hero.spec.ts:871:5 › hero modes › pond: p95 frame time ≤ 22 ms at 1280×800 (4.5s)
+  ✓   79 [chromium] › e2e/hero.spec.ts:871:5 › hero modes › rivers: p95 frame time ≤ 22 ms at 1280×800 (4.5s)
+  ✓   80 [chromium] › e2e/hero.spec.ts:871:5 › hero modes › collatz: p95 frame time ≤ 22 ms at 1280×800 (4.5s)
+  ✓   81 [chromium] › e2e/hero.spec.ts:897:5 › hero modes › no horizontal overflow in any mode at 375px (248ms)
+  ✓   82 [chromium] › e2e/hero.spec.ts:897:5 › hero modes › no horizontal overflow in any mode at 768px (313ms)
+  ✓   83 [chromium] › e2e/hero.spec.ts:897:5 › hero modes › no horizontal overflow in any mode at 1280px (313ms)
+  ✓   84 [chromium] › e2e/hero.spec.ts:921:5 › hero modes › axe: 0 serious/critical in every extra mode (light) (3.2s)
+  ✓   85 [chromium] › e2e/hero.spec.ts:921:5 › hero modes › axe: 0 serious/critical in every extra mode (dark) (2.8s)
+  ✓   86 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › / has canonical, description, Open Graph and Twitter tags (162ms)
+  ✓   87 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /garden/ has canonical, description, Open Graph and Twitter tags (111ms)
+  ✓   88 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /research/ has canonical, description, Open Graph and Twitter tags (104ms)
+  ✓   89 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /research/water-quality/ has canonical, description, Open Graph and Twitter tags (112ms)
+  ✓   90 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /research/number-theory/ has canonical, description, Open Graph and Twitter tags (113ms)
+  ✓   91 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /research/spectral-fractals/ has canonical, description, Open Graph and Twitter tags (106ms)
+  ✓   92 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /cv/ has canonical, description, Open Graph and Twitter tags (122ms)
+  ✓   93 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /about/ has canonical, description, Open Graph and Twitter tags (102ms)
+  ✓   94 [chromium] › e2e/seo.spec.ts:54:5 › page metadata › /rising-water/ has canonical, description, Open Graph and Twitter tags (193ms)
+  ✓   95 [chromium] › e2e/seo.spec.ts:103:3 › not found › an unknown route returns 404, without noindex or a canonical (72ms)
+  ✓   96 [chromium] › e2e/seo.spec.ts:115:3 › merged research area › the old RiverNets slug is gone (merged into water-quality, DECISIONS #68) (56ms)
+  ✓   97 [chromium] › e2e/seo.spec.ts:124:3 › sitemap and robots.txt › sitemap lists every public page on the site origin and no 404 (6ms)
+  ✓   98 [chromium] › e2e/seo.spec.ts:143:3 › sitemap and robots.txt › robots.txt allows crawling and points to the sitemap (3ms)
+  ✓   99 [chromium] › e2e/shell.spec.ts:36:3 › theme › follows the OS preference by default (221ms)
+  ✓  100 [chromium] › e2e/shell.spec.ts:48:3 › theme › light and dark themes use different backgrounds (197ms)
+  ✓  101 [chromium] › e2e/shell.spec.ts:60:3 › theme › toggle switches theme and persists across reloads and pages (273ms)
+  ✓  102 [chromium] › e2e/shell.spec.ts:85:3 › theme › no flash: stored theme is applied before the body is parsed (191ms)
+  ✓  103 [chromium] › e2e/shell.spec.ts:116:3 › theme › theme bootstrap is an inline script in <head> before any stylesheet (98ms)
+  ✓  104 [chromium] › e2e/shell.spec.ts:130:3 › header and navigation › has wordmark, nav items and gear on home (115ms)
+  ✓  105 [chromium] › e2e/shell.spec.ts:150:3 › header and navigation › section anchors exist in §4.3 order and nav scrolls to them (3.9s)
+  ✓  106 [chromium] › e2e/shell.spec.ts:227:3 › header and navigation › nav stays usable on mobile (202ms)
+  ✓  107 [chromium] › e2e/shell.spec.ts:248:3 › header and navigation › skip link is the first tab stop and moves focus to main (114ms)
+  ✓  108 [chromium] › e2e/shell.spec.ts:259:3 › header and navigation › focus is visible on interactive elements (96ms)
+  ✓  109 [chromium] › e2e/shell.spec.ts:274:3 › header and navigation › footer line shows © year, name, credit and the Source link (100ms)
+  ✓  110 [chromium] › e2e/shell.spec.ts:287:3 › settings panel › opens, closes on Esc, returns focus to the gear (603ms)
+  ✓  111 [chromium] › e2e/shell.spec.ts:320:3 › settings panel › slider readout updates live in monospace (173ms)
+  ✓  112 [chromium] › e2e/shell.spec.ts:334:3 › settings panel › open/closed state is remembered (211ms)
+  ✓  113 [chromium] › e2e/shell.spec.ts:349:3 › settings panel › right drawer on desktop, bottom sheet on mobile (647ms)
+  ✓  114 [chromium] › e2e/shell.spec.ts:376:5 › settings panel › header tools stay usable while the drawer is open at 768px (522ms)
+  ✓  115 [chromium] › e2e/shell.spec.ts:376:5 › settings panel › header tools stay usable while the drawer is open at 1280px (499ms)
+  ✓  116 [chromium] › e2e/shell.spec.ts:402:3 › settings panel › keyboard order runs gear → panel (113ms)
+  ✓  117 [chromium] › e2e/shell.spec.ts:417:3 › settings panel › gear is absent on pages without settings (63ms)
+  ✓  118 [chromium] › e2e/shell.spec.ts:425:3 › 404 › unknown route shows the friendly 404 page (69ms)
+  ✓  119 [chromium] › e2e/shell.spec.ts:439:3 › requests and fonts › zero third-party requests; fonts are self-hosted (1.6s)
+  ✓  120 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 375px (light) (103ms)
+  ✓  121 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 768px (light) (109ms)
+  ✓  122 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 1280px (light) (114ms)
+  ✓  123 [chromium] › e2e/shell.spec.ts:485:5 › layout and accessibility › axe: 0 serious/critical (light) (1.7s)
+  ✓  124 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 375px (dark) (107ms)
+  ✓  125 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 768px (dark) (118ms)
+  ✓  126 [chromium] › e2e/shell.spec.ts:468:7 › layout and accessibility › no horizontal overflow at 1280px (dark) (119ms)
+  ✓  127 [chromium] › e2e/shell.spec.ts:485:5 › layout and accessibility › axe: 0 serious/critical (dark) (1.8s)
+  ✓  128 [chromium] › e2e/shell.spec.ts:500:3 › layout and accessibility › respects prefers-reduced-motion (no smooth scrolling) (99ms)
+  ✓  129 [chromium] › e2e/shell.spec.ts:511:3 › layout and accessibility › body text is 17px with line-height 1.6 (94ms)
+  ✓  130 [chromium] › e2e/site.spec.ts:121:3 › content files › the CV work items exist exactly once and drafts have empty [A] fields (1ms)
+  ✓  131 [chromium] › e2e/site.spec.ts:146:3 › content files › three research areas (water quality and RiverNets merged, DECISIONS #68) (0ms)
+  ✓  132 [chromium] › e2e/site.spec.ts:154:3 › garden › lists every published item once, with rows per §4.1 (181ms)
+  ✓  133 [chromium] › e2e/site.spec.ts:188:3 › garden › type chips filter and update ?type= (236ms)
+  ✓  134 [chromium] › e2e/site.spec.ts:205:3 › garden › area chips filter and update ?tag=, combined with type (183ms)
+  ✓  135 [chromium] › e2e/site.spec.ts:216:3 › garden › deep links ?type= and ?tag= open filtered, and back/forward restores (231ms)
+  ✓  136 [chromium] › e2e/site.spec.ts:245:3 › garden › unknown filter values are ignored (72ms)
+  ✓  137 [chromium] › e2e/site.spec.ts:250:3 › garden › works without JavaScript: every item is shown, even with a filter in the URL (80ms)
+  ✓  138 [chromium] › e2e/site.spec.ts:266:3 › garden › keyboard operable: Tab to a chip, Enter filters, focus stays on the chip (130ms)
+  ✓  139 [chromium] › e2e/site.spec.ts:291:3 › research › home cards: linked heading, one-liner, Related work → /garden/?tag=<slug>, SVG thumbnail (131ms)
+  ✓  140 [chromium] › e2e/site.spec.ts:313:3 › research › Related work link filters the Garden (163ms)
+  ✓  141 [chromium] › e2e/site.spec.ts:327:3 › research › thumbnails are deterministic per slug and distinct between slugs (174ms)
+  ✓  142 [chromium] › e2e/site.spec.ts:339:3 › research › topic pages name the advisor only when the CV gives one (126ms)
+  ✓  143 [chromium] › e2e/site.spec.ts:352:3 › research › topic pages have description, related work, and no empty Methods section (162ms)
+  ✓  144 [chromium] › e2e/site.spec.ts:377:3 › research › the water-quality (RiverNets) page links to /rising-water/ (75ms)
+  ✓  145 [chromium] › e2e/site.spec.ts:384:3 › citations › Andrew in bold, Mon YYYY dates, venue italic, buttons only for existing links (554ms)
+  ✓  146 [chromium] › e2e/site.spec.ts:430:3 › citations › home recent work shows the latest items and links to the Garden (105ms)
+  ✓  147 [chromium] › e2e/site.spec.ts:443:3 › cv and about › CV is generated from content, in CV section order (142ms)
+  ✓  148 [chromium] › e2e/site.spec.ts:522:3 › cv and about › CV PDF link appears only if the file exists (77ms)
+  ✓  149 [chromium] › e2e/site.spec.ts:536:3 › cv and about › About shows the bio and the contact links (82ms)
+  ✓  150 [chromium] › e2e/site.spec.ts:546:3 › cv and about › home shows Contact with the profile links and hides empty Teaching (118ms)
+  ✓  151 [chromium] › e2e/site.spec.ts:554:3 › cv and about › CV shows the contact links and no PDF link (92ms)
+  ✓  152 [chromium] › e2e/site.spec.ts:563:3 › production build hygiene › no draft items or Draft badges in the build (289ms)
+  ✓  153 [chromium] › e2e/site.spec.ts:580:3 › production build hygiene › OwlPath links to its published project from the Garden and CV (107ms)
+  ✓  154 [chromium] › e2e/site.spec.ts:589:3 › production build hygiene › no phone number, tel: link or References section on any page (DECISIONS #68) (566ms)
+  ✓  155 [chromium] › e2e/site.spec.ts:609:3 › production build hygiene › visible text in dist/ has no TODO, TBD, lorem or placeholder (2ms)
+  ✓  156 [chromium] › e2e/site.spec.ts:632:3 › production build hygiene › pages have no empty labels or empty list items (331ms)
+  ✓  157 [chromium] › e2e/site.spec.ts:651:5 › accessibility › axe: 0 serious/critical on F2 pages (light) (3.5s)
+  ✓  158 [chromium] › e2e/site.spec.ts:651:5 › accessibility › axe: 0 serious/critical on F2 pages (dark) (3.5s)
+  ✓  159 [chromium] › e2e/site.spec.ts:662:3 › accessibility › no horizontal overflow at 375px (197ms)
+
+
+  1) [chromium] › e2e/hero.spec.ts:842:3 › hero modes › extra modes pause off-screen and in a hidden tab 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 5
+    Received: 6
+
+      850 |     const f0 = (await modeState(page)).frames;
+      851 |     await page.waitForTimeout(500);
+    > 852 |     expect((await modeState(page)).frames).toBe(f0);
+          |                                            ^
+      853 |     await page.evaluate(() => window.scrollTo(0, 0));
+      854 |     await expect.poll(async () => (await modeState(page)).running).toBe('true');
+      855 |
+        at /Users/andrewchincea/personalPortfolio/e2e/hero.spec.ts:852:44
+
+    Error Context: test-results/hero-hero-modes-extra-mode-df856--screen-and-in-a-hidden-tab-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/hero-hero-modes-extra-mode-df856--screen-and-in-a-hidden-tab-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/hero-hero-modes-extra-mode-df856--screen-and-in-a-hidden-tab-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/hero.spec.ts:842:3 › hero modes › extra modes pause off-screen and in a hidden tab 
+  8 skipped
+  150 passed (2.0m)
+EXIT 1

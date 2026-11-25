@@ -1,0 +1,21 @@
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server on port 60707...
+Running Lighthouse 3 time(s) on http://localhost:60707/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Done running Lighthouse!
+
+Checking assertions against 1 URL(s), 3 total run(s)
+
+All results processed!
+
+Dumping 3 reports to disk at /Users/andrewchincea/personalPortfolio/docs/checks/F10/attempt-1/lhci...
+Done writing reports to disk.
+
+Done running autorun.

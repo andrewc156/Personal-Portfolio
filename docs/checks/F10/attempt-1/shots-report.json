@@ -1,0 +1,512 @@
+[
+ {
+  "mode": "rising",
+  "width": 375,
+  "theme": "light",
+  "doc": 375,
+  "win": 375,
+  "readout": "Level 86 m · 3 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "rising",
+  "width": 375,
+  "theme": "dark",
+  "doc": 375,
+  "win": 375,
+  "readout": "Level 85 m · 3 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "rising",
+  "width": 768,
+  "theme": "light",
+  "doc": 768,
+  "win": 768,
+  "readout": "Level 85 m · 4 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "rising",
+  "width": 768,
+  "theme": "dark",
+  "doc": 768,
+  "win": 768,
+  "readout": "Level 86 m · 4 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "rising",
+  "width": 1280,
+  "theme": "light",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Level 86 m · 4 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "rising",
+  "width": 1280,
+  "theme": "dark",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Level 86 m · 4 lakes",
+  "roClip": false,
+  "caption": "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime. See it on the Colorado River Basin →",
+  "mapLabel": "Map of a random landscape. Water rises over it; lakes appear in valleys and merge as the water spills over passes."
+ },
+ {
+  "mode": "dye",
+  "width": 375,
+  "theme": "light",
+  "doc": 375,
+  "win": 375,
+  "readout": "4,332 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 375,
+  "theme": "light",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "dye",
+  "width": 375,
+  "theme": "dark",
+  "doc": 375,
+  "win": 375,
+  "readout": "4,332 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 375,
+  "theme": "dark",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "dye",
+  "width": 768,
+  "theme": "light",
+  "doc": 768,
+  "win": 768,
+  "readout": "4,332 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 768,
+  "theme": "light",
+  "panel": {
+   "doc": 768,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "dye",
+  "width": 768,
+  "theme": "dark",
+  "doc": 768,
+  "win": 768,
+  "readout": "4,332 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 768,
+  "theme": "dark",
+  "panel": {
+   "doc": 768,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "dye",
+  "width": 1280,
+  "theme": "light",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "4,344 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 1280,
+  "theme": "light",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "dye",
+  "width": 1280,
+  "theme": "dark",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "4,344 dye particles · 0 spills by you",
+  "roClip": false,
+  "caption": "Dye leaks into a swirling current, drifts along it and slowly spreads out. Click or tap the water to spill more. See it on the Colorado River Basin →",
+  "mapLabel": "Animated dye plume drifting and spreading on a swirling current. Click, tap, or press Enter to spill more dye."
+ },
+ {
+  "mode": "dye",
+  "width": 1280,
+  "theme": "dark",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "pond",
+  "width": 375,
+  "theme": "light",
+  "doc": 375,
+  "win": 375,
+  "readout": "Koch snowflake pond, level 3 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 3 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 375,
+  "theme": "light",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "pond",
+  "width": 375,
+  "theme": "dark",
+  "doc": 375,
+  "win": 375,
+  "readout": "Koch snowflake pond, level 3 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 3 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 375,
+  "theme": "dark",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "pond",
+  "width": 768,
+  "theme": "light",
+  "doc": 768,
+  "win": 768,
+  "readout": "Koch snowflake pond, level 4 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 4 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 768,
+  "theme": "dark",
+  "doc": 768,
+  "win": 768,
+  "readout": "Koch snowflake pond, level 4 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 4 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 1280,
+  "theme": "light",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Koch snowflake pond, level 4 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 4 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 1280,
+  "theme": "light",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "pond",
+  "width": 1280,
+  "theme": "dark",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Koch snowflake pond, level 4 · 0 pebbles by you",
+  "roClip": false,
+  "caption": "Ripples spread across a pond shaped like a Koch snowflake and bounce off its walls. Click or tap the pond to drop a pebble. See it on the Colorado River Basin →",
+  "mapLabel": "Animated pond shaped like a level 4 Koch snowflake, with ripples reflecting off its walls. Click, tap, or press Enter to drop a pebble."
+ },
+ {
+  "mode": "pond",
+  "width": 1280,
+  "theme": "dark",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "rivers",
+  "width": 375,
+  "theme": "light",
+  "doc": 375,
+  "win": 375,
+  "readout": "Strahler orders 1–4 · largest river drains 198 of 1,292 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 4."
+ },
+ {
+  "mode": "rivers",
+  "width": 375,
+  "theme": "light",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "rivers",
+  "width": 375,
+  "theme": "dark",
+  "doc": 375,
+  "win": 375,
+  "readout": "Strahler orders 1–4 · largest river drains 198 of 1,292 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 4."
+ },
+ {
+  "mode": "rivers",
+  "width": 375,
+  "theme": "dark",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "rivers",
+  "width": 768,
+  "theme": "light",
+  "doc": 768,
+  "win": 768,
+  "readout": "Strahler orders 1–5 · largest river drains 946 of 5,460 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 5."
+ },
+ {
+  "mode": "rivers",
+  "width": 768,
+  "theme": "dark",
+  "doc": 768,
+  "win": 768,
+  "readout": "Strahler orders 1–5 · largest river drains 946 of 5,460 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 5."
+ },
+ {
+  "mode": "rivers",
+  "width": 1280,
+  "theme": "light",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Strahler orders 1–5 · largest river drains 568 of 3,591 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 5."
+ },
+ {
+  "mode": "rivers",
+  "width": 1280,
+  "theme": "light",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "rivers",
+  "width": 1280,
+  "theme": "dark",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "Strahler orders 1–5 · largest river drains 568 of 3,591 cells",
+  "roClip": false,
+  "caption": "Every cell drains to one of its two neighbours downstream, chosen at random, so paths merge into rivers. Colour and width show Strahler stream order. See it on the Colorado River Basin →",
+  "mapLabel": "River network grown from random drainage, flowing left to right. Streams are coloured and widened by Strahler order, from 1 up to 5."
+ },
+ {
+  "mode": "rivers",
+  "width": 1280,
+  "theme": "dark",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "collatz",
+  "width": 375,
+  "theme": "light",
+  "doc": 375,
+  "win": 375,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 375,
+  "theme": "light",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "collatz",
+  "width": 375,
+  "theme": "dark",
+  "doc": 375,
+  "win": 375,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 375,
+  "theme": "dark",
+  "panel": {
+   "doc": 375,
+   "pw": 375,
+   "pcw": 375
+  }
+ },
+ {
+  "mode": "collatz",
+  "width": 768,
+  "theme": "light",
+  "doc": 768,
+  "win": 768,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 768,
+  "theme": "dark",
+  "doc": 768,
+  "win": 768,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 1280,
+  "theme": "light",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 1280,
+  "theme": "light",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ },
+ {
+  "mode": "collatz",
+  "width": 1280,
+  "theme": "dark",
+  "doc": 1280,
+  "win": 1280,
+  "readout": "546 numbers within 22 steps of 1 · even steps turn 9°, odd steps 20°",
+  "roClip": false,
+  "caption": "Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk. See it on the Colorado River Basin →",
+  "mapLabel": "Collatz delta: 3,518 numbers drawn as bending paths that join one trunk at 1."
+ },
+ {
+  "mode": "collatz",
+  "width": 1280,
+  "theme": "dark",
+  "panel": {
+   "doc": 1280,
+   "pw": 351,
+   "pcw": 351
+  }
+ }
+]

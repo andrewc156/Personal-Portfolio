@@ -1,0 +1,10 @@
+draw @ -42
+draw @ -39
+resizeObserver @ -37
+resizeObserver @ -37
+draw @ -29
+draw @ -16
+OFFSCREEN @ 0
+timer(200ms) @ 164
+draw @ 165
+timer(600ms) @ 602

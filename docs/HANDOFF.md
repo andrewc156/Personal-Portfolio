@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:55 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 22:15 EST, Claude Code (Control)
 
 ## Status
 
@@ -21,20 +21,20 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
-| F10 Extra hero modes (S1) | checking: F10 checker attempt 1 running | n/a | — |
+| F10 Extra hero modes (S1) | fix round: attempt 2 building (viz-builder) | FAIL (attempt 1) | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
 | F13 Place labels (S4) | F13a built (39 GNIS labels, labels.json 9,962 B), checker queued after F10 | n/a | — |
 
-## Current task (one checker and two builders in parallel, with no overlapping paths)
+## Current task (one checker and one builder in parallel, with no overlapping paths)
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 check | checker | docs/checks/F10/ only | started | full gates; investigate hero.spec :443/:521/:632/:842 → verdict |
-| F12b mask toggle | viz-builder | src/lib/viz/explorer/**, src/components/explorer/**, src/pages/rising-water/**, e2e/explorer.spec.ts, tests/unit/viz/explorer/**, docs/builds/F12b/ | built, report done | checker queued |
-| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | built + addendum done (basin-mask.json reworded, SHA f9f3e4d6…; .bin unchanged) | checker queued after F10 |
+| F10 attempt 2 | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | blocking: (1) shell.ts:268–288, a dirty-only frame is drawn off-screen (hero.spec :842 fails 4/4); (2) rivers.ts:113 COL_PX 9 → 4–6 px. Also: CLS ≈0.045 on ?mode= deep links; Collatz label count. Then checker attempt 2 |
+| F13a check | checker | docs/checks/F13a/ only | started | verdict |
+| F12b | — | (built, unchecked) | built | checker after F13a |
 
-Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explorer labels (viz-builder, after F12b + F13a), then a fresh F9 audit.
+Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (after F12b + F13a), then a fresh F9 audit.
 
 ## Handoff vs repo (resume check, 2026-11-24)
 
@@ -44,7 +44,7 @@ Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explore
 ## Uncommitted changes
 
 All unverified:
-- F10 (built, being checked): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
+- F10 (attempt 1 FAILED; attempt 2 in progress): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
 - F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
@@ -64,9 +64,9 @@ All unverified:
 
 ## Next 3 actions
 
-1. Record the F10 verdict, then commit and push on PASS (or run a fix round with viz-builder).
-2. Check F12b and F13a as they return, one checker at a time.
-3. F11b, then F13b, then a fresh F9 full-site audit.
+1. F13a verdict, then commit and push on PASS. Then the F12b checker.
+2. When F10 attempt 2 returns: run a fresh checker (attempt 2), then commit and push on PASS.
+3. F11b, F13b, then a fresh F9 full-site audit.
 
 ## WIP branch
 
