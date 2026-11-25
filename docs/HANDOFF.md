@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 18:58 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 19:02 EST, Claude Code (Control)
 
 ## Status
 
@@ -21,16 +21,19 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
-| F11 Islands barcode (S2) | todo (approved) | n/a | — |
-| F12 Basin mask (S3) | todo (approved) | n/a | — |
+| F11 Islands barcode (S2) | building: F11a H1 engine (tda-engineer, attempt 1) | n/a | — |
+| F12 Basin mask (S3) | building: F12a mask data (data-engineer, attempt 1) | n/a | — |
 | F13 Place labels (S4) | todo (approved) | n/a | — |
 
-## Current task
+## Current task (three builders running in parallel, with no overlapping paths)
 
-- **Role:** viz-builder, F10 attempt 1 (Andrew approved F10–F13 on 2026-11-24).
-- **Files:** src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/.
-- **Done:** delegated.
-- **Left:** build the four modes, then report to docs/builds/F10/attempt-1.md. After that, Control runs a fresh checker.
+| Task | Role | Files | Done | Left |
+|---|---|---|---|---|
+| F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | four modes, tests, report → checker |
+| F11a H1 islands engine | tda-engineer | src/lib/tda/**, tests/unit/tda/**, tests/fixtures/tda/**, pipeline/tda_ref.py, pipeline/tests/test_tda_ref.py, scripts/bench-tda.mjs, docs/tda.md, docs/builds/F11a/ | delegated | engine + Python ref + oracle tests, report → checker |
+| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | delegated | WBD 14+15 rasterized to grid, tests, report → checker |
+
+After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12b mask toggle in the explorer (viz-builder), F13a GNIS labels data (data-engineer, after F12a), F13b explorer labels (viz-builder), then a fresh F9 audit. Checkers run one at a time.
 
 ## Handoff vs repo (resume check, 2026-11-24)
 
@@ -49,9 +52,9 @@ None.
 
 ## Next 3 actions
 
-1. When viz-builder returns F10, run a fresh checker on F10. On PASS, commit `feat(F10): … [checked]` and push. On FAIL, run a fix round.
-2. F11 Islands barcode (tda-engineer for H1 engine, then viz-builder for the strip) → checker.
-3. F12 Basin mask, then F13 Place labels (data-engineer then viz-builder) → checker. Then a fresh F9 audit.
+1. As each builder returns, run a fresh checker on it (one at a time). On PASS, commit only its owned paths as `feat(F#): … [checked]` and push. On FAIL, run a fix round.
+2. Then F11b, F12b, F13a, F13b as above.
+3. Run a fresh F9 full-site audit and update the final report.
 
 ## WIP branch
 
