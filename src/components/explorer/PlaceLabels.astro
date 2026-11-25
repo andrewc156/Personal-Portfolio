@@ -73,9 +73,8 @@ const { places, geo } = Astro.props;
 
   text {
     fill: var(--color-text);
-    font:
-      600 11px system-ui,
-      sans-serif;
+    /* The site's self-hosted Plex stack, so placard widths match on every OS (CI3). */
+    font: 600 11px var(--font-sans);
     dominant-baseline: central;
   }
 </style>

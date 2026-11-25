@@ -1,5 +1,8 @@
 import { LABEL_TEXT_PAD, labelAttachment, placeLabelBoxes } from '../../lib/viz/explorer/labels.ts';
 
+// Must match the placard text rule in PlaceLabels.astro (family from --font-sans).
+const LABEL_FONT = "600 11px 'IBM Plex Sans'";
+
 export function wirePlaceLabels(root: HTMLElement): void {
   const checkbox = root.querySelector<HTMLInputElement>('[data-ex-place-labels]');
   const layer = root.querySelector<SVGSVGElement>('[data-ex-place-layer]');
@@ -61,12 +64,24 @@ export function wirePlaceLabels(root: HTMLElement): void {
   };
 
   const observer = new ResizeObserver(layout);
+  // Placard widths are measured from the drawn text, so lay out again once the webfont is
+  // in use. A font swap doesn't resize the layer, so the ResizeObserver won't catch it.
+  const fonts = document.fonts as FontFaceSet | undefined;
+  const relayout = () => {
+    if (checkbox.checked) layout();
+  };
+  const fontsReady = () => {
+    fonts?.load(LABEL_FONT).then(relayout, () => {});
+    fonts?.ready.then(relayout, () => {});
+  };
+  fonts?.addEventListener('loadingdone', relayout);
   checkbox.checked = false;
   checkbox.addEventListener('change', () => {
     root.dataset.placeLabels = checkbox.checked ? 'on' : 'off';
     if (checkbox.checked) {
       layout();
       observer.observe(layer);
+      fontsReady();
     } else {
       observer.disconnect();
       status.textContent = 'Place labels hidden.';

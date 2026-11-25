@@ -1,0 +1,2162 @@
+[
+ {
+  "width": 320,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Grand Canyon(p1) 50.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Grand Canyon(p1) 50.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Grand Canyon(p1) 50.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Grand Canyon(p1) 50.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 20,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "20 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 21,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "21 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 21,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "21 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 21,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "21 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 21,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "21 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 320,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "286.0x454.8",
+  "placed": 22,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Salt Lake City(p1) 26.9"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 240.1371617966256,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "22 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.5"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 59,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.5"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 59,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.5"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 59,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.5"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 59,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 24,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Great Salt Lake Desert(p1) 34.0",
+   "Grand Canyon(p1) 34.0",
+   "Lake Mead(p1) 19.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 290.739418954355,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "24 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 62,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 62,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 62,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 62,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.2"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 61,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.2"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 61,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.2"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 61,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 375,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "341.0x542.2",
+  "placed": 25,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Las Vegas(p1) 34.0",
+   "Great Salt Lake Desert(p1) 34.0",
+   "St. George(p3) 7.2"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 347.739418954355,
+   "w": 61,
+   "leader": "34.0"
+  },
+  "status": "25 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 34,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "34 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 768,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "704.6x1120.3",
+  "placed": 35,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 655.2549656465093,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "35 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex (site default)",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex (site default)",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "IBM Plex Sans SemiBold",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 59,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 33,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Bonneville Salt Flats(p2) 19.0",
+   "Bingham Canyon(p2) 9.9",
+   "Colorado River(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "33 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 33,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Bonneville Salt Flats(p2) 19.0",
+   "Bingham Canyon(p2) 9.9",
+   "Colorado River(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "33 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 33,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Bonneville Salt Flats(p2) 19.0",
+   "Bingham Canyon(p2) 9.9",
+   "Colorado River(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "33 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "DejaVu Sans Bold",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "DejaVu Sans",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 33,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Bonneville Salt Flats(p2) 19.0",
+   "Bingham Canyon(p2) 9.9",
+   "Colorado River(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 71,
+   "leader": "7.0"
+  },
+  "status": "33 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Verdana",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Verdana",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Verdana",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 70,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Arial",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Arial",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 62,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "light",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": true,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ },
+ {
+  "width": 1280,
+  "font": "Plex blocked → fallback stack",
+  "colorScheme": "dark",
+  "mask": false,
+  "platformFont": "Arial",
+  "foreign": 0,
+  "layer": "570.0x906.4",
+  "placed": 32,
+  "total": 39,
+  "p1Placed": 14,
+  "p1": 14,
+  "p1Missing": [],
+  "issues": [],
+  "maxLeader": [
+   "Colorado River(p1) 7.0",
+   "Lake Powell(p1) 7.0",
+   "Lake Mead(p1) 7.0"
+  ],
+  "lasVegas": {
+   "x": 3,
+   "y": 531.4390085668051,
+   "w": 61,
+   "leader": "7.0"
+  },
+  "status": "32 of 39 place labels shown. See the full list in About the data."
+ }
+]

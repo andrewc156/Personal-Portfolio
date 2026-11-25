@@ -1,0 +1,258 @@
+[
+ {
+  "width": 320,
+  "colorScheme": "light",
+  "font": "default (site stack)",
+  "platformFont": "IBM Plex Sans SemiBold",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 22,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2807
+ },
+ {
+  "width": 320,
+  "colorScheme": "dark",
+  "font": "default (site stack)",
+  "platformFont": "IBM Plex Sans SemiBold",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 22,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2807
+ },
+ {
+  "width": 320,
+  "colorScheme": "light",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 21,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 320,
+  "colorScheme": "dark",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 21,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 320,
+  "colorScheme": "light",
+  "font": "DejaVu Sans Bold",
+  "platformFont": "DejaVu Sans",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 20,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 320,
+  "colorScheme": "dark",
+  "font": "DejaVu Sans Bold",
+  "platformFont": "DejaVu Sans",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 20,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 320,
+  "colorScheme": "light",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 20,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3403
+ },
+ {
+  "width": 320,
+  "colorScheme": "dark",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": [
+   286,
+   454.765625
+  ],
+  "total": 39,
+  "placed": 20,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3403
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "default (site stack)",
+  "platformFont": "IBM Plex Sans SemiBold",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2807
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "default (site stack)",
+  "platformFont": "IBM Plex Sans SemiBold",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2807
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "Arial",
+  "platformFont": "Arial",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 25,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 2922
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "DejaVu Sans Bold",
+  "platformFont": "DejaVu Sans",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "DejaVu Sans Bold",
+  "platformFont": "DejaVu Sans",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3424
+ },
+ {
+  "width": 375,
+  "colorScheme": "light",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3403
+ },
+ {
+  "width": 375,
+  "colorScheme": "dark",
+  "font": "Verdana",
+  "platformFont": "Verdana",
+  "layer": [
+   341,
+   542.21875
+  ],
+  "total": 39,
+  "placed": 24,
+  "p1": 14,
+  "p1Placed": 14,
+  "p1Missing": [],
+  "sumTextWidth": 3403
+ }
+]

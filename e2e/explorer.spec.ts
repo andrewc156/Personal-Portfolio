@@ -868,7 +868,7 @@ test.describe('explorer: place labels', () => {
     await expect(about.getByRole('link', { name: 'USGS FAQ on GNIS coordinates' })).toBeVisible();
   });
 
-  for (const width of [375, 768, 1280]) {
+  for (const width of [320, 375, 768, 1280]) {
     for (const colorScheme of ['light', 'dark'] as const) {
       test(`map labels, markers, and leaders stay separated at ${width}px (${colorScheme})`, async ({
         browser,
@@ -884,6 +884,25 @@ test.describe('explorer: place labels', () => {
           await page.getByRole('checkbox', { name: 'Place labels' }).check();
           const layer = page.locator('[data-ex-place-layer]');
           await expect(layer.locator('[data-place-id][data-placed]').first()).toBeVisible();
+          // CI3: placards are drawn in the self-hosted Plex Sans on every OS, and laid out
+          // from the drawn text once the webfont is in use.
+          await page.evaluate(() => document.fonts.ready);
+          await expect
+            .poll(() =>
+              layer.evaluate((svg) => {
+                const text = svg.querySelector('[data-place-placards] text')!;
+                const family = getComputedStyle(text).fontFamily;
+                const loaded = document.fonts.check("600 11px 'IBM Plex Sans'");
+                const stale = Array.from(
+                  svg.querySelectorAll<SVGGElement>('[data-place-id][data-placed]'),
+                ).filter((node) => {
+                  const drawn = Math.ceil(node.querySelector('text')!.getComputedTextLength()) + 8;
+                  return Math.abs(node.querySelector('rect')!.width.baseVal.value - drawn) > 0.01;
+                }).length;
+                return { plexFirst: family.startsWith('"IBM Plex Sans"'), loaded, stale };
+              }),
+            )
+            .toEqual({ plexFirst: true, loaded: true, stale: 0 });
           const geometry = await layer.evaluate((svg) => {
             const { width, height } = svg.getBoundingClientRect();
             const markers = svg.querySelector('[data-place-markers]')!;
