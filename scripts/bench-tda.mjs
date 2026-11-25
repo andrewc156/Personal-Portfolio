@@ -6,12 +6,15 @@
 //   - Flood per frame: advanceTo(next level) + a recolor-equivalent pass over every cell
 //     (isWet + componentOf per cell, writing a packed RGBA Uint32Array), for 600 frames per sweep
 //     from the minimum to the maximum level, under both linear and percentile pacing.
+//   - Islands (H1, stretch S2): computeH1Islands cold + warm, and an Islands frame
+//     (advanceTo + islandOf for every cell) under linear pacing, at 326×414 and at 200×200
+//     (40k cells), next to computeH0 on the same grid for comparison.
 // Terrains: seeded fractal value noise (hero-like), white noise (worst case: most minima), and
 // the Colorado grid if public/data/colorado/grid.f32 exists.
 import { existsSync, readFileSync } from 'node:fs';
 import { cpus } from 'node:os';
 import { performance } from 'node:perf_hooks';
-import { computeH0, Flood } from '../src/lib/tda/index.ts';
+import { computeH0, computeH1Islands, Flood, Islands } from '../src/lib/tda/index.ts';
 
 const W = 326;
 const H = 414;
@@ -161,5 +164,75 @@ for (const [name, heights] of terrains()) {
   }
   console.log('');
 }
+function benchIslands(heights, w, h) {
+  const n = w * h;
+  const order = computeH0(heights, w, h).order;
+  const t0 = performance.now();
+  const first = computeH1Islands(heights, w, h);
+  const cold = performance.now() - t0;
+  const times = [];
+  const h0times = [];
+  for (let k = 0; k < H0_RUNS; k++) {
+    let t = performance.now();
+    computeH1Islands(heights, w, h);
+    times.push(performance.now() - t);
+    t = performance.now();
+    computeH0(heights, w, h);
+    h0times.push(performance.now() - t);
+  }
+  const isl = new Islands(heights, w, h, { order });
+  const lo = heights[order[0]];
+  const hi = heights[order[n - 1]];
+  const frames = [];
+  let checksum = 0;
+  for (let sweep = 0; sweep < SWEEPS + 1; sweep++) {
+    isl.reset();
+    for (let f = 1; f <= FRAMES; f++) {
+      const t = performance.now();
+      isl.advanceTo(lo + ((hi - lo) * f) / FRAMES);
+      for (let i = 0; i < n; i++) checksum = (checksum + isl.islandOf(i)) | 0;
+      const dt = performance.now() - t;
+      if (sweep > 0) frames.push(dt);
+    }
+  }
+  return {
+    cold,
+    warm: stats(times),
+    h0: stats(h0times),
+    frame: stats(frames),
+    result: first,
+    checksum,
+  };
+}
+
+function crop(heights, w, h) {
+  const out = new Float32Array(w * h);
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) out[y * w + x] = heights[y * W + x];
+  return out;
+}
+
+console.log('# Islands (H1)\n');
+for (const [name, heights] of terrains()) {
+  for (const [w, h] of [
+    [W, H],
+    [200, 200],
+  ]) {
+    const g = w === W && h === H ? heights : crop(heights, w, h);
+    const b = benchIslands(g, w, h);
+    const s = b.result.stats;
+    console.log(
+      `## ${name} ${w}×${h}: ${s.births} hill births, ${b.result.bars.length} island bars > 0, ${s.zeroLength} zero-length`,
+    );
+    console.log(
+      `computeH1Islands cold ${fmt(b.cold)} ms | warm median ${fmt(b.warm.median)} ms  p95 ${fmt(b.warm.p95)} ms  (computeH0 same grid: median ${fmt(b.h0.median)} ms  p95 ${fmt(b.h0.p95)} ms)`,
+    );
+    console.log(
+      `Islands/frame (advanceTo + islandOf ×${w * h}) median ${fmt(b.frame.median)} ms  p95 ${fmt(b.frame.p95)} ms  max ${fmt(b.frame.max)} ms  (n=${b.frame.n})`,
+    );
+    ok &&= b.cold <= 300 && b.warm.p95 <= 300 && b.frame.p95 <= 6;
+  }
+  console.log('');
+}
+
 console.log(ok ? 'PASS: all targets met (cold/p95)' : 'FAIL: a target was missed');
 process.exitCode = ok ? 0 : 1;

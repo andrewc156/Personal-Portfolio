@@ -1,0 +1,14 @@
+import { computeH0, computeH1Islands, Islands } from '../../../src/lib/tda/index.ts';
+const out = (k, f) => { try { console.log(k, JSON.stringify(f())); } catch (e) { console.log(k, 'throws', e.constructor.name, e.message); } };
+const h = Float32Array.from([1,1,1,1,1, 1,2,2,2,1, 1,2,3,2,1.5, 1,2,2,2,1, 1,1,1,1,1]);
+out('conn 6', () => computeH1Islands(h, 5, 5, { connectivity: 6 }));
+out('bad size', () => computeH1Islands(h, 4, 5));
+out('NaN cell', () => computeH1Islands(Float32Array.from([0, NaN, 0, 0]), 2, 2));
+const isl = new Islands(h, 5, 5);
+out('+inf', () => [isl.advanceTo(Infinity), isl.alive()]);
+out('-inf after', () => [isl.advanceTo(-Infinity), isl.alive()]);
+out('1.5', () => [isl.advanceTo(1.5), isl.alive(), isl.islandOf(12), isl.islandOf(14), isl.islandOf(0)]);
+out('NaN level', () => isl.advanceTo(NaN));
+const o = computeH0(h, 5, 5).order;
+out('order reuse', () => JSON.stringify(computeH1Islands(h, 5, 5, { order: o }).bars) === JSON.stringify(computeH1Islands(h, 5, 5).bars));
+out('1x1', () => { const i = new Islands(Float32Array.from([3]), 1, 1); return [i.advanceTo(10), i.alive(), i.islandOf(0)]; });

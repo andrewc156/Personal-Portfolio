@@ -21,6 +21,15 @@ CLI::
     python -m pipeline.tda_ref grid.f32 WIDTH HEIGHT [--connectivity 8] [--min-persistence 1]
 
 prints JSON ``{"b": [...], "d": [...], "bi": [...], "di": [...]}`` (``d = null`` when essential).
+
+Islands (spec stretch S2, ``compute_islands``)
+----------------------------------------------
+An island at water level ``t`` is a component of the land ``{h > t}`` that contains no border
+cell. Land uses the complement of the water connectivity (8 when water is 4). Computed as H0 of
+the superlevel filtration relative to the border: cells are visited in descending
+``(h[i], i)`` order with a virtual mainland node (eldest, at +inf) joined to every border cell;
+a component born at peak ``p`` that dies at cell ``s`` is the island bar ``[h[s], h[p])``.
+Docs: docs/tda.md, "Islands (H1)".
 """
 
 from __future__ import annotations
@@ -33,7 +42,15 @@ from dataclasses import dataclass, field
 
 import numpy as np
 
-__all__ = ["Bar", "H0Result", "compute_h0", "sweep_order"]
+__all__ = [
+    "Bar",
+    "H0Result",
+    "IslandBar",
+    "IslandsResult",
+    "compute_h0",
+    "compute_islands",
+    "sweep_order",
+]
 
 
 @dataclass(frozen=True)
@@ -156,6 +173,118 @@ def compute_h0(heights: np.ndarray, connectivity: int = 4) -> H0Result:
     roots = {find(i) for i in range(n)}
     ess = sorted((eldest[r] for r in roots), key=lambda c: rank[c])
     result.essential = [Bar(values[c], math.inf, c, -1, -1) for c in ess]
+    return result
+
+
+@dataclass(frozen=True)
+class IslandBar:
+    birth: float  # h[saddle_cell]: the level at which the water cut the island off
+    death: float  # h[peak_cell]: the level at which the hilltop goes under
+    peak_cell: int
+    saddle_cell: int
+    merged_into: int  # peak of the taller island it split from; -1 = the mainland
+
+    @property
+    def persistence(self) -> float:
+        return self.death - self.birth
+
+
+@dataclass
+class IslandsResult:
+    width: int
+    height: int
+    connectivity: int  # water connectivity
+    land_connectivity: int
+    bars: list[IslandBar] = field(
+        default_factory=list
+    )  # reverse-sweep order, incl. zero-length
+    births: int = 0
+
+    @property
+    def visible(self) -> list[IslandBar]:
+        return [b for b in self.bars if b.death > b.birth]
+
+    @property
+    def zero_length(self) -> list[IslandBar]:
+        return [b for b in self.bars if b.death == b.birth]
+
+    def alive_at(self, level: float) -> int:
+        return sum(1 for b in self.bars if b.birth <= level < b.death)
+
+
+def compute_islands(heights: np.ndarray, connectivity: int = 4) -> IslandsResult:
+    """Islands (H1) barcode of the flooded region of a 2-D grid of shape (H, W).
+
+    ``connectivity`` is the water's (4 by default); land uses the other one.
+    """
+    grid = np.asarray(heights)
+    if grid.ndim != 2 or grid.size == 0:
+        raise ValueError(
+            f"heights must be a non-empty 2-D array, got shape {grid.shape}"
+        )
+    if connectivity not in (4, 8):
+        raise ValueError(f"connectivity must be 4 or 8, got {connectivity}")
+    grid = grid.astype(np.float32, copy=False)
+    if not np.isfinite(grid).all():
+        raise ValueError("heights must be finite (no NaN or infinity)")
+    nrows, ncols = grid.shape
+    flat = grid.ravel()
+    n = flat.size
+    descending = sweep_order(flat)[::-1].tolist()
+    pos = [0] * n  # pos[i] = step at which cell i becomes land (0 = first)
+    for step, cell in enumerate(descending):
+        pos[cell] = step
+    values = flat.astype(np.float64).tolist()
+    land = 8 if connectivity == 4 else 4
+    offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    if land == 8:
+        offsets += [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+
+    mainland = n
+    # Union-find (union by size, path halving). Each root stores its component's peak, i.e.
+    # its earliest cell in the descending sweep; the mainland's "peak" is itself, at step -1.
+    parent = list(range(n + 1))
+    size = [1] * (n + 1)
+    peak = list(range(n + 1))
+    step_of = pos + [-1]
+
+    def find(a: int) -> int:
+        while parent[a] != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+
+    result = IslandsResult(
+        width=ncols, height=nrows, connectivity=connectivity, land_connectivity=land
+    )
+    for step, i in enumerate(descending):
+        y, x = divmod(i, ncols)
+        comps: dict[int, int] = {}  # root -> peak
+        if y in (0, nrows - 1) or x in (0, ncols - 1):
+            r = find(mainland)
+            comps[r] = peak[r]
+        for dy, dx in offsets:
+            yy, xx = y + dy, x + dx
+            if 0 <= yy < nrows and 0 <= xx < ncols:
+                j = yy * ncols + xx
+                if pos[j] < step:
+                    r = find(j)
+                    comps[r] = peak[r]
+        if not comps:
+            result.births += 1
+            continue
+        ranked = sorted(comps.items(), key=lambda item: step_of[item[1]])
+        eldest = ranked[0][1]
+        into = -1 if eldest == mainland else eldest
+        for _root, p in ranked[1:]:
+            result.bars.append(IslandBar(values[i], values[p], p, i, into))
+        members = [i] + [root for root, _ in ranked]
+        big = max(members, key=lambda r: size[r])
+        for r in members:
+            if r != big:
+                parent[r] = big
+                size[big] += size[r]
+        peak[big] = eldest
     return result
 
 

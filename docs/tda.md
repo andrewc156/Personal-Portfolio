@@ -1,6 +1,6 @@
-# Persistence engine (F3)
+# Persistence engine (F3, islands: F11a)
 
-The engine computes 0-dimensional persistent homology (H0) of the sublevel-set filtration of a height grid. In plain terms: water rises over a landscape, lakes are born and merge, and the barcode records each lake's lifetime.
+The engine computes 0-dimensional persistent homology (H0) of the sublevel-set filtration of a height grid. In plain terms: water rises over a landscape, lakes are born and merge, and the barcode records each lake's lifetime. It also computes the islands barcode (H1 of the flooded region, stretch S2); see [Islands (H1)](#islands-h1-stretch-s2).
 
 - TypeScript engine: `src/lib/tda/` (`index.ts` re-exports everything)
 - Independent Python reference: `pipeline/tda_ref.py`
@@ -165,3 +165,110 @@ Machine: Apple M3 (8 cores, 16 GB), macOS 27.2, Node v26.13.0 (darwin/arm64). Gr
 Targets: computeH0 ≤ 300 ms, met with about 10× headroom. Flood frame ≤ 6 ms, met at p95 with about 6× headroom.
 
 A few isolated frames (0–4 of 3,000 per run) exceeded 6 ms. They don't recur at the same frame across sweeps and don't line up with GC (checked with `--trace-gc`), so they look like OS scheduling noise. These are Node numbers; the spec's target environment is Chromium on a mid-range laptop.
+
+## Islands (H1), stretch S2
+
+**Definition.** As the water rises, an island is born when the water closes a ring around a hill, which cuts that land off from the land connected to the grid border. It dies when its hilltop goes under.
+
+Precisely, at water level `t`:
+- **Water** is `{x : h(x) ≤ t}`, with the H0 connectivity: 4 by default, 8 if `{ connectivity: 8 }`.
+- **Land** is `{x : h(x) > t}`, with the *complementary* connectivity: 8 when the water is 4, 4 when the water is 8. In the default mode, two land cells that touch only at a corner stay joined, because 4-connected water cannot pass between them. This pairing (4/8 or 8/4) is the one for which every land component enclosed by water is a hole in the water and vice versa.
+- **Mainland** is any land component that contains a border cell (row 0, row H−1, column 0 or column W−1). The land beyond the grid edge is treated as mainland.
+- **An island** is a land component with no border cell. The number of islands at `t` equals the number of holes (β1) of the flooded region. A test checks this through the Euler characteristic: islands = lakes − χ(water).
+
+**Level convention.** An island bar `[birth, death)` is alive at `t` iff `birth ≤ t < death`. This is the same half-open convention as the H0 lakes, where a cell is wet iff `h ≤ t`. So at `t = birth`, the saddle cell is already wet and the island exists. At `t = death`, the hilltop is wet and the island is gone.
+
+**Method (Alexander duality).** The engine runs H0 of the *superlevel* filtration relative to the border:
+- Cells are added in the exact reverse of ≺, by descending `(h[i], i)`. With tied heights, the higher index goes first.
+- A virtual **mainland node** at +∞ is joined to every border cell, so it is always the eldest component.
+- When cell `i` is added, the engine collects the distinct roots of its already-added land neighbours, plus the mainland if `i` is on the border.
+  - **No roots:** a hill component is born with peak `i`. This only happens for a non-border cell with no ≻-later land neighbour.
+  - **One or more roots:** `i` joins the eldest. The mainland is eldest of all. Otherwise the eldest is the root whose peak is ≺-greatest: the higher peak, or the higher index on a tie. Every other root dies at `i` (the elder rule).
+- A hill with peak `p` that dies at cell `s` gives the island bar `(birth = h[s], death = h[p], peakCell = p, saddleCell = s)`. `mergedInto` is the peak it joined, or −1 for the mainland.
+- In water-rising terms, there are two kinds of birth:
+  - `mergedInto = −1`: the island is cut off from the mainland when the water reaches `s`;
+  - `mergedInto = q`: when the water reaches `s`, the island splits from a taller island `q`. Island `q` continues and keeps its identity, the elder rule run in reverse.
+- Every island dies at its own hilltop, so `death = h[peakCell]` always.
+- The grid is connected and every component eventually reaches the border, so every hill component dies. **There is no essential island bar.** `stats.finite == stats.births`.
+- **Zero-length bars** (`death == birth`) happen on plateaus, when a tied cell starts a component that is absorbed at the same height. As with H0, they are left out of `bars`, kept in `zeroLength`, and counted in `stats.zeroLength`. They are never alive at any level.
+
+**Why this mapping is correct.** At level `t`, the reverse sweep has added exactly the cells with `h > t` (all of them come before any cell with `h ≤ t` in descending order, ties included). So its components, minus the mainland, are exactly the islands at `t`. A component is alive in that state iff its peak has been added (`h[p] > t`) and its death cell has not (`h[s] ≤ t`). That is `birth ≤ t < death`. The tests check this against brute force at every distinct level and at every single cell step.
+
+**Edge cases.**
+- **A hill whose peak is on the border** is never an island: the peak keeps it on the mainland until the peak floods.
+- **A hill that touches the border at lower cells** is not an island while any of its land still includes a border cell. It is born when the last such link floods (golden "hill touching the border").
+- **A central cone** is an island once every border cell is wet: born at the height of the highest border link, dead at the apex. A cone only produces no island when its apex sits on the border (golden "cone with apex on the border").
+- **Grids with no interior cells** (W ≤ 2 or H ≤ 2, including 1×1 and strips) have no islands, and neither do constant grids.
+- **Diagonal contact:** with water 4, a corner-only contact joins two pieces of land, or joins land to a border cell. With water 8, it does not (goldens "diagonal-only land contact" and "diagonal contact with the mainland"). On the dual checkerboard `[[2,0,2],[0,3,0],[2,0,2]]`, water 4 gives one island `[2, 3)`, because the centre touches the corner 2s diagonally. Water 8 gives `[0, 3)`.
+
+**Order of bars (both implementations).** Reverse-sweep order: by descending ≺-rank of the saddle cell. When several islands are cut off at one cell, the eldest (≺-greatest peak) comes first. `bars` and `zeroLength` each keep that order. Python's `IslandsResult.bars` holds both kinds interleaved in that order.
+
+### API
+
+```ts
+import { computeH1Islands, Islands } from '../lib/tda/index.ts';
+
+computeH1Islands(heights, W, H, opts?: { connectivity?: 4 | 8 /* water */, order?: Uint32Array }): IslandsResult
+
+interface IslandBar { birth; death; peakCell; saddleCell; mergedInto }  // alive for birth ≤ t < death
+interface IslandsResult {
+  bars: IslandBar[];       // death > birth, reverse-sweep order
+  zeroLength: IslandBar[]; // death == birth (debug only)
+  order; rank;             // as in H0 (pass computeH0().order via opts.order to skip the sort)
+  joined: Int32Array;      // merge tree: component (peak, or W·H = mainland) each cell joined
+  saddleOf: Int32Array;    // for a peak: the cell where it died (−1 for non-peaks)
+  intoOf: Int32Array;      // for a peak: the peak it joined (−1 = mainland / non-peak)
+  stats: { cells, connectivity, landConnectivity, births, finite, zeroLength };
+}
+islandPersistence(bar)     // death − birth: how far the hilltop rises above the cut-off level
+
+const isl = new Islands(heights, W, H, opts?);  // computes the barcode once
+isl.reset();               // level −∞: all land, all mainland, no islands
+isl.advanceTo(level);      // → IslandEvent[] { type: 'birth' | 'death', level, peak, cell }, sorted by level
+isl.alive();               // islands at the current level
+isl.islandOf(i);           // island id (peak cell) of cell i now; −1 if wet or mainland
+isl.level; isl.result;
+```
+
+- `advanceTo` only moves two pointers through the bars sorted by birth and by death. Lowering the level resets and replays.
+- `islandOf` walks the precomputed merge tree (`joined` → `intoOf` while the saddle is still land) and memoises per level in typed arrays. A full per-cell pass is therefore O(cells + islands) per frame, with no allocation beyond the event array.
+- Events cover display bars only.
+
+Python: `compute_islands(grid_2d, connectivity=4)` returns `IslandsResult` with `.bars` (every bar, reverse-sweep order), `.visible`, `.zero_length`, `.births` and `.alive_at(t)`. `IslandBar(birth, death, peak_cell, saddle_cell, merged_into)`. It is written independently: `lexsort` reversed, union by size with path halving, and roots storing the component's peak separately. The mainland is node `W·H`.
+
+### Islands verification
+
+- **Goldens** (`tests/fixtures/tda/islands_golden.json`, checked by Vitest and pytest):
+  - cone with its apex on the border (no island);
+  - central cone (`[1.5, 3)`);
+  - ring ridge around a basin with a central peak (`[2, 5)`, peak 24, saddle 9, the gap in the basin floor);
+  - two hills under a saddle (`[0, 9)` for peak 20 via border cell 44, and `[4, 7)` for peak 24 split from 20 at saddle 22, so 1 → 2 → 1 → 0 islands);
+  - hill touching the border (`[3, 8)`);
+  - a strip;
+  - diagonal-only contact and diagonal contact with the mainland, at both connectivities;
+  - the dual checkerboard.
+- **Brute-force oracle** (Vitest): 80 seeded grids of 1×1 to 11×11 cells, with ties, plateaus, tie-free and bumpy grids, for both water connectivities.
+  - At every distinct level (and −∞), the set of live bars' peaks equals the set of ≺-maxima of the BFS land components with no border cell.
+  - Rebuilding the components by BFS from scratch at every cell step of the reverse sweep gives the same multiset of `(peakCell, saddleCell, mergedInto)`, zero-length bars included, and the same number of births.
+  - Also checked: births = non-border cells with no ≻-later land neighbour; pairs are invariant under a strictly increasing transform; islands = `Flood.alive()` − χ(water complex) at every level.
+- **`Islands` class:** `islandOf` for every cell and `alive()` are checked against BFS at all distinct and random levels on 60 grids × 2 connectivities, including lowering the level. Events sum to `alive()`.
+- **TS ↔ Python:** `tests/fixtures/tda/islands.json` holds 250 seeded grids (seed 20261125): 200 with water 4 and 50 with water 8. Their kinds are int, plateau, walk, bumps, quarter-step, constant, thin strips and 2×2 / 3×3 grids. In total there are 4,128 bars, of which 606 are zero-length. Both suites require the full `(peakCell, saddleCell, mergedInto)` list in order, plus births and zero-length counts. To regenerate: `pipeline/.venv/bin/python tests/fixtures/tda/generate_islands_fixtures.py`.
+- **GUDHI 3.13.0 H1:** the construction's connectivity was confirmed on the dual checkerboard first. `CubicalComplex(vertices=)` gives `[(2, 3)]`, which matches water 4. `top_dimensional_cells=` gives `[(0, 3)]`, which matches water 8. Then 100 tie-free random grids per connectivity agree with GUDHI's dimension-1 intervals as multisets, to within 1e-9.
+
+### Islands benchmark (`node scripts/bench-tda.mjs`)
+
+Machine: Apple M3 (8 cores, 16 GB), macOS 27.2, Node v26.13.0 (darwin/arm64). Measured 2026-11-24.
+- 25 warm runs of each function.
+- Islands frame = `advanceTo(next level)` plus `islandOf(i)` for every cell. There are 600 frames per sweep and 5 measured sweeps after a warm-up, with linear pacing.
+- The 200×200 grids are the north-west crop of the same terrains.
+
+| terrain, grid | computeH1Islands cold | warm median / p95 | computeH0 same grid, median / p95 | Islands frame median / p95 / max |
+|---|---|---|---|---|
+| value noise, 326×414 | 27.4 ms | 21.9 / 26.0 ms | 18.5 / 19.1 ms | 0.41 / 0.56 / 21.1 ms |
+| value noise, 200×200 | 6.2 ms | 5.5 / 6.7 ms | 4.9 / 5.2 ms | 0.12 / 0.16 / 0.62 ms |
+| white noise, 326×414 | 26.2 ms | 26.7 / 27.6 ms | 25.3 / 25.8 ms | 1.30 / 1.77 / 11.8 ms |
+| white noise, 200×200 | 9.1 ms | 8.9 / 27.9 ms | 8.3 / 36.1 ms | 0.26 / 0.36 / 1.15 ms |
+| Colorado `grid.f32`, 326×414 | 27.4 ms | 27.2 / 30.1 ms | 24.7 / 34.6 ms | 0.48 / 0.64 / 1.20 ms |
+| Colorado `grid.f32`, 200×200 | 7.8 ms | 7.3 / 7.7 ms | 6.6 / 7.1 ms | 0.10 / 0.17 / 0.28 ms |
+
+`computeH1Islands` costs about 1.1–1.2× `computeH0` on the same grid. The bench applies the H0 targets to it, ≤ 300 ms per call and ≤ 6 ms per frame at p95, and all are met. The isolated max outliers look like the same scheduling noise noted for H0. The white-noise 200×200 p95 of about 28–36 ms appears for both engines in the same run, so it is machine noise rather than anything specific to islands.

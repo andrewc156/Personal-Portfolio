@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from pipeline.tda_ref import _main, compute_h0
+from pipeline.tda_ref import _main, compute_h0, compute_islands
 
 FIXTURES = Path(__file__).resolve().parents[2] / "tests" / "fixtures" / "tda"
 
@@ -247,3 +247,136 @@ def test_gudhi_agreement_8_connectivity() -> None:
             if math.isfinite(i[1])
         ]
         assert_multisets_close(finite_multiset(compute_h0(grid, 8)), ref)
+
+
+# --- islands (H1), spec stretch S2 ---------------------------------------------------------
+
+
+def _grid(case: dict) -> np.ndarray:
+    return np.array(case["heights"], dtype=np.float32).reshape(case["H"], case["W"])
+
+
+@pytest.mark.parametrize(
+    "case", load("islands_golden.json")["cases"], ids=lambda c: c["name"]
+)
+def test_islands_golden(case: dict) -> None:
+    res = compute_islands(_grid(case), case["connectivity"])
+    got = [
+        [b.birth, b.death, b.peak_cell, b.saddle_cell, b.merged_into]
+        for b in res.visible
+    ]
+    assert got == case["bars"]
+    assert res.births == case["births"] == len(res.bars)
+    assert len(res.zero_length) == case["zeroLength"]
+
+
+def test_islands_two_hills_levels() -> None:
+    case = next(
+        c
+        for c in load("islands_golden.json")["cases"]
+        if c["name"].startswith("two hills")
+    )
+    res = compute_islands(_grid(case))
+    assert [res.alive_at(t) for t in (-1, 0, 3.9, 4, 6.9, 7, 8.9, 9)] == [
+        0, 1, 1, 2, 2, 1, 1, 0,
+    ]  # fmt: skip
+
+
+ISLANDS = load("islands.json")["cases"]
+
+
+@pytest.mark.parametrize(
+    "case", ISLANDS, ids=lambda c: f"case{c['id']}-c{c['connectivity']}"
+)
+def test_islands_fixture_agreement(case: dict) -> None:
+    grid = _grid(case)
+    res = compute_islands(grid, case["connectivity"])
+    assert [[b.peak_cell, b.saddle_cell, b.merged_into] for b in res.bars] == case[
+        "bars"
+    ]
+    assert res.births == case["births"]
+    assert len(res.zero_length) == case["zeroLength"]
+    flat = grid.ravel()
+    for b in res.bars:
+        assert b.birth == flat[b.saddle_cell] and b.death == flat[b.peak_cell]
+
+
+def _bfs_islands(grid: np.ndarray, level: float, land_conn: int) -> set[int]:
+    """Peaks (max by (h, index)) of land components {h > level} with no border cell."""
+    h, w = grid.shape
+    flat = grid.ravel()
+    land = flat > level
+    seen = np.zeros(flat.size, dtype=bool)
+    steps = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    if land_conn == 8:
+        steps += [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+    peaks = set()
+    for s in range(flat.size):
+        if seen[s] or not land[s]:
+            continue
+        stack, comp, seen[s] = [s], [], True
+        while stack:
+            c = stack.pop()
+            comp.append(c)
+            y, x = divmod(c, w)
+            for dy, dx in steps:
+                yy, xx = y + dy, x + dx
+                if 0 <= yy < h and 0 <= xx < w:
+                    j = yy * w + xx
+                    if land[j] and not seen[j]:
+                        seen[j] = True
+                        stack.append(j)
+        if not any(c // w in (0, h - 1) or c % w in (0, w - 1) for c in comp):
+            peaks.add(max(comp, key=lambda c: (flat[c], c)))
+    return peaks
+
+
+@pytest.mark.parametrize("connectivity", [4, 8])
+def test_islands_bfs_oracle(connectivity: int) -> None:
+    rng = np.random.default_rng(99 + connectivity)
+    for _ in range(60):
+        h, w = rng.integers(1, 12, size=2)
+        grid = rng.integers(0, int(rng.integers(2, 7)), size=(h, w)).astype(np.float32)
+        res = compute_islands(grid, connectivity)
+        for t in [-math.inf, *np.unique(grid).tolist()]:
+            live = {b.peak_cell for b in res.bars if b.birth <= t < b.death}
+            assert live == _bfs_islands(grid, t, 8 if connectivity == 4 else 4)
+            assert res.alive_at(t) == len(live)
+
+
+def gudhi_h1(gudhi, grid: np.ndarray, construction: str) -> list[tuple[float, float]]:
+    cc = gudhi.CubicalComplex(**{construction: grid.astype(np.float64)})
+    cc.compute_persistence(min_persistence=0)
+    return [
+        (float(b), float(d))
+        for b, d in cc.persistence_intervals_in_dimension(1)
+        if d > b
+    ]
+
+
+def test_gudhi_h1_construction_connectivity() -> None:
+    """Dual checkerboard: vertices= holes match 4-connected water, pixels= match 8."""
+    gudhi = pytest.importorskip("gudhi")
+    board = np.array([[2, 0, 2], [0, 3, 0], [2, 0, 2]], dtype=np.float32)
+    assert gudhi_h1(gudhi, board, "vertices") == [(2.0, 3.0)]
+    assert gudhi_h1(gudhi, board, "top_dimensional_cells") == [(0.0, 3.0)]
+    assert [(b.birth, b.death) for b in compute_islands(board, 4).visible] == [(2, 3)]
+    assert [(b.birth, b.death) for b in compute_islands(board, 8).visible] == [(0, 3)]
+
+
+@pytest.mark.parametrize(
+    ("connectivity", "construction"),
+    [(4, "vertices"), (8, "top_dimensional_cells")],
+)
+def test_gudhi_h1_agreement(connectivity: int, construction: str) -> None:
+    gudhi = pytest.importorskip("gudhi")
+    for grid in tie_free_grids(100, seed=3030 + connectivity):
+        mine = [(b.birth, b.death) for b in compute_islands(grid, connectivity).visible]
+        assert_multisets_close(mine, gudhi_h1(gudhi, grid, construction))
+
+
+def test_islands_large_grid() -> None:
+    grid = np.random.default_rng(5).random((200, 200)).astype(np.float32)
+    res = compute_islands(grid)
+    assert res.births == len(res.bars) > 0
+    assert all(b.death >= b.birth for b in res.bars)
