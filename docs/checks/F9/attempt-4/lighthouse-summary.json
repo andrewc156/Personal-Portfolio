@@ -1,0 +1,144 @@
+{
+ "54348/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54348/garden/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54348/research/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54348/research/water-quality/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54348/research/number-theory/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54639/research/spectral-fractals/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54639/rising-water/": {
+  "n": 3,
+  "perf": 96.0,
+  "a11y": 100,
+  "bp": 96.0,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   96.0,
+   96.0,
+   96.0
+  ],
+  "failedBP": [
+   "image-aspect-ratio"
+  ]
+ },
+ "54639/cv/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54639/about/": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ },
+ "54639/404.html": {
+  "n": 3,
+  "perf": 100,
+  "a11y": 100,
+  "bp": 100,
+  "seo": 100,
+  "clsMax": 0,
+  "perfAll": [
+   100,
+   100,
+   100
+  ],
+  "failedBP": []
+ }
+}

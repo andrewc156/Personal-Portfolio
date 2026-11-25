@@ -32,7 +32,7 @@
 | F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
-| F9 Final audit (post-stretch) | checking (attempt 4, baseline before F19) | — | — |
+| F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | reports in this commit |
 | F19a Copy voice (first person, humanized) | todo, after F9 attempt 4 | — | — |
 | F19b Hero first frame and framing | todo, after F9 attempt 4 | — | — |
 | F19c Visual polish within the system | todo, after F19a | — | — |
@@ -42,7 +42,8 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F9 full-site audit, attempt 4 | checker (fresh) | docs/checks/F9/attempt-4.md, docs/checks/F9/attempt-4/, docs/checks/F9/summary.md | Delegated at `5c54ee2` with hosted CI green. The first run stopped mid-Lighthouse; the report is still PARTIAL with 81 evidence files. The same agent was resumed to finish. | Finish Lighthouse and the remaining gates, then the report. On FAIL: fix rounds through the owning builders (at most 2). |
+| F19a copy voice | site-builder | src/data/copy.yaml, profile.yaml, home/about/research copy, content YAML descriptions, docs/builds/F19a/ | — | Delegating now |
+| F19b hero framing + F9a4 note 2 spacing | viz-builder | src/components/hero/**, src/lib/viz/hero/**, e2e/hero.spec.ts, LakesTable.astro, rising-water/index.astro (spacing only), docs/builds/F19b/ | — | Delegating now, in parallel with F19a (no file overlap) |
 
 ## Handoff vs repo (resume check)
 
@@ -59,6 +60,9 @@
 - Stray `astro dev --port 4411` (pid 23366, started 2026-11-24 15:37) is still running from an earlier session. Harmless; left alone.
 
 ## Open issues and "Needs Andrew"
+
+- The disk is nearly full: 261 MB free on 2026-11-25, 1.7 GB after `npm cache clean`. ~/Library/Caches holds 19 GB and the Playwright cache has 4 Chromium revisions (2.2 GB). Andrew should free space; a full verify plus Lighthouse needs more than 1 GB.
+- F9 attempt-4 notes: missing spaces on /rising-water/ at LakesTable.astro:36-37 and rising-water/index.astro:126-127 and :131-132 (folded into F19b); the hero reduced-motion e2e has a startup race at hero.spec.ts:918-928 (folded into F19b).
 
 - F16 notes (Andrew's call): the description is in the first person ("for my research"); it overlaps with the "Rising water" project; and it lacks `ongoing: true`. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
 - Local hero.spec.ts frame-time tests fail on this Mac even on AC power. Headless Chromium runs requestAnimationFrame at about 33 ms on a blank page, likely because the display is asleep or covered. They pass on hosted CI, which is the authority for these tests.

@@ -1,0 +1,16 @@
+{
+ "gridRuns": 320,
+ "tiedGrids": 80,
+ "islandGridRuns": 320,
+ "islandBarsChecked": 313,
+ "failures": [],
+ "failureCount": 0,
+ "golden": "5->6(5,4) 3->8(3,2) 1->Infinity(1,-1)",
+ "checkerboard4": [
+  "0->1",
+  "0->Infinity"
+ ],
+ "checkerboard8": [
+  "0->Infinity"
+ ]
+}

@@ -1,0 +1,110 @@
+
+ ⛅️ wrangler 4.167.0
+────────────────────
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNo compatibility_date was specified. Using the default compatibility date: 2026-11-23.[0m
+
+  ❯❯ Add one to your Wrangler configuration file: compatibility_date = "2026-11-23", or
+  ❯❯ Pass it in your terminal: wrangler pages dev [<DIRECTORY>] --compatibility-date=2026-11-23
+  
+  See [4mhttps://developers.cloudflare.com/workers/platform/compatibility-dates/[0m for more information.
+
+
+No Functions. Shimming...
+✨ Parsed 5 valid header rules.
+Your Worker has access to the following bindings:
+Binding                                                                   Resource                  Mode
+env.CF_PAGES ("1")                                                        Environment Variable      local
+env.CF_PAGES_BRANCH ("main")                                              Environment Variable      local
+env.CF_PAGES_COMMIT_SHA ("12c03fce321e6483fdd63433ebec7cbba3c8d...")      Environment Variable      local
+env.CF_PAGES_URL ("https://12c03fc.personalPortfolio.pag...")             Environment Variable      local
+
+⎔ Starting local server...
+[wrangler:info] Ready on http://localhost:4321
+[wrangler:info] GET / 200 OK (18ms)
+[wrangler:info] GET / 200 OK (4ms)
+[wrangler:info] GET /garden/ 200 OK (3ms)
+[wrangler:info] GET /research/ 200 OK (4ms)
+[wrangler:info] GET /research/water-quality/ 200 OK (2ms)
+[wrangler:info] GET /research/number-theory/ 200 OK (2ms)
+[wrangler:info] GET /research/spectral-fractals/ 200 OK (2ms)
+[wrangler:info] GET /cv/ 200 OK (3ms)
+[wrangler:info] GET /about/ 200 OK (2ms)
+[wrangler:info] GET /rising-water/ 200 OK (2ms)
+[wrangler:info] GET / 200 OK (3ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (2ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2 200 OK (3ms)
+[wrangler:info] GET /_astro/BaseLayout.CPGn5Zzt.css 200 OK (3ms)
+[wrangler:info] GET /_astro/index.DMu-uhzI.css 200 OK (2ms)
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.BoUnzYrT.js 200 OK (2ms)
+[wrangler:info] GET /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (2ms)
+[wrangler:info] GET /data/colorado/meta.json 200 OK (3ms)
+[wrangler:info] GET /data/colorado/barcode.json 200 OK (2ms)
+[wrangler:info] GET /data/colorado/grid.f32 200 OK (3ms)
+[wrangler:info] GET /data/colorado/hillshade.webp 200 OK (3ms)
+[wrangler:info] GET /og/social-card.png 200 OK (2ms)
+[wrangler:info] GET /favicon.svg 200 OK (2ms)
+[wrangler:info] GET /no-such-page-f8/ 404 Not Found (3ms)
+[wrangler:info] GET / 200 OK (3ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (3ms)
+[wrangler:info] GET /_astro/BaseLayout.CPGn5Zzt.css 200 OK (4ms)
+[wrangler:info] GET /_astro/index.DMu-uhzI.css 200 OK (4ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2 200 OK (5ms)
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.BoUnzYrT.js 200 OK (6ms)
+[wrangler:info] GET /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (6ms)
+[wrangler:info] GET /_astro/settings.D649Pdqp.js 200 OK (4ms)
+[wrangler:info] GET /_astro/color.BAcvsT9T.js 200 OK (5ms)
+[wrangler:info] GET /_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2 200 OK (4ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2 200 OK (4ms)
+[wrangler:info] GET /garden/ 200 OK (2ms)
+[wrangler:info] GET /research/ 200 OK (2ms)
+[wrangler:info] GET /research/water-quality/ 200 OK (3ms)
+[wrangler:info] GET /research/number-theory/ 200 OK (3ms)
+[wrangler:info] GET /research/spectral-fractals/ 200 OK (2ms)
+[wrangler:info] GET /cv/ 200 OK (2ms)
+[wrangler:info] GET /about/ 200 OK (3ms)
+[wrangler:info] GET /rising-water/ 200 OK (2ms)
+[wrangler:info] GET /_astro/index.CmVcPBNB.css 200 OK (4ms)
+[wrangler:info] GET /data/colorado/hillshade.webp 200 OK (4ms)
+[wrangler:info] GET /_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js 200 OK (4ms)
+[wrangler:info] GET /data/colorado/meta.json 200 OK (5ms)
+[wrangler:info] GET /data/colorado/barcode.json 200 OK (6ms)
+[wrangler:info] GET /data/colorado/grid.f32 200 OK (7ms)
+[wrangler:info] GET /no-such-page-f8/ 404 Not Found (2ms)
+[wrangler:info] GET /about/ 200 OK (3ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (5ms)
+[wrangler:info] GET /_astro/BaseLayout.CPGn5Zzt.css 200 OK (4ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2 200 OK (4ms)
+[wrangler:info] GET /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (5ms)
+[wrangler:info] GET /_astro/settings.D649Pdqp.js 200 OK (2ms)
+[wrangler:info] GET /_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2 200 OK (2ms)
+[wrangler:info] GET /about/ 304 Not Modified (3ms)
+[wrangler:info] GET /rising-water/ 200 OK (2ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (5ms)
+[wrangler:info] GET /_astro/BaseLayout.CPGn5Zzt.css 200 OK (6ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2 200 OK (6ms)
+[wrangler:info] GET /_astro/index.CmVcPBNB.css 200 OK (5ms)
+[wrangler:info] GET /data/colorado/hillshade.webp 200 OK (6ms)
+[wrangler:info] GET /_astro/Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js 200 OK (6ms)
+[wrangler:info] GET /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (4ms)
+[wrangler:info] GET /_astro/color.BAcvsT9T.js 200 OK (3ms)
+[wrangler:info] GET /_astro/settings.D649Pdqp.js 200 OK (3ms)
+[wrangler:info] GET /_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2 200 OK (3ms)
+[wrangler:info] GET /data/colorado/meta.json 200 OK (3ms)
+[wrangler:info] GET /data/colorado/barcode.json 200 OK (3ms)
+[wrangler:info] GET /data/colorado/grid.f32 200 OK (4ms)
+[wrangler:info] GET / 200 OK (3ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-normal.CDDApCn2.woff2 200 OK (4ms)
+[wrangler:info] GET /_astro/BaseLayout.CPGn5Zzt.css 200 OK (4ms)
+[wrangler:info] GET /_astro/index.DMu-uhzI.css 200 OK (5ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-600-normal.CuJfVYMP.woff2 200 OK (4ms)
+[wrangler:info] GET /_astro/Hero.astro_astro_type_script_index_0_lang.BoUnzYrT.js 200 OK (5ms)
+[wrangler:info] GET /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (5ms)
+[wrangler:info] GET /_astro/settings.D649Pdqp.js 200 OK (2ms)
+[wrangler:info] GET /_astro/color.BAcvsT9T.js 200 OK (2ms)
+[wrangler:info] GET /_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2 200 OK (2ms)
+[wrangler:info] GET /_astro/ibm-plex-sans-latin-400-italic.CZTNEAuW.woff2 200 OK (4ms)
+[wrangler:info] HEAD / 200 OK (3ms)
+[wrangler:info] HEAD /_astro/BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js 200 OK (2ms)
+[wrangler:info] HEAD /data/colorado/meta.json 200 OK (2ms)
+[wrangler:info] GET /no-such-page/ 404 Not Found (2ms)
+[wrangler:info] GET /no-such-page/ 404 Not Found (2ms)

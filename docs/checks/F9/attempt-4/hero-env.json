@@ -1,0 +1,163 @@
+{
+ "blank": {
+  "median": 50,
+  "p95": 66.7
+ },
+ "play": {
+  "rising": {
+   "running": "true",
+   "median": 50,
+   "p95": 66.7
+  },
+  "dye": {
+   "running": "true",
+   "median": 16.7,
+   "p95": 66.7
+  },
+  "pond": {
+   "running": "true",
+   "median": 50,
+   "p95": 66.7
+  },
+  "rivers": {
+   "running": "true",
+   "median": 33.4,
+   "p95": 83.3
+  },
+  "collatz": {
+   "running": "true",
+   "median": 33.3,
+   "p95": 66.7
+  }
+ },
+ "reduced": {
+  "dye": [
+   {
+    "t": 300,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 700,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 1500,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 3000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 5000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   }
+  ],
+  "pond": [
+   {
+    "t": 300,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 700,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 1500,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 3000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 5000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   }
+  ],
+  "rivers": [
+   {
+    "t": 300,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 700,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 1500,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 3000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 5000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   }
+  ],
+  "collatz": [
+   {
+    "t": 300,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 700,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 1500,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 3000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   },
+   {
+    "t": 5000,
+    "state": "paused",
+    "running": "false",
+    "frames": 4
+   }
+  ]
+ }
+}

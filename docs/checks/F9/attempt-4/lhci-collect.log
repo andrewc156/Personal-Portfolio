@@ -1,0 +1,40 @@
+Started a web server on port 53836...
+Running Lighthouse 4 time(s) on http://localhost:53836/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/garden/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/research/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/research/water-quality/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/research/number-theory/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/research/spectral-fractals/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Running Lighthouse 4 time(s) on http://localhost:53836/rising-water/
+Run #1...failed!
+Error: ENOSPC: no space left on device, open '/Users/andrewchincea/personalPortfolio/.lighthouseci/lhr-1795588081842-198333.json'
+    at Object.writeFileSync (node:fs:3028:20)
+    at saveLHR (/Users/andrewchincea/personalPortfolio/node_modules/@lhci/utils/src/saved-reports.js:54:6)
+    at runOnUrl (/Users/andrewchincea/personalPortfolio/node_modules/@lhci/cli/src/collect/collect.js:137:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async Object.runCommand (/Users/andrewchincea/personalPortfolio/node_modules/@lhci/cli/src/collect/collect.js:255:7)
+    at async run (/Users/andrewchincea/personalPortfolio/node_modules/@lhci/cli/src/cli.js:100:7)

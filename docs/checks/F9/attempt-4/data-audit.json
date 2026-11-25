@@ -1,0 +1,62 @@
+{
+ "bboxExact": true,
+ "dims": [
+  326,
+  414,
+  true
+ ],
+ "min": [
+  -2.885450839996338,
+  133025,
+  17,
+  408,
+  true
+ ],
+ "max": [
+  3697.83447265625,
+  56383,
+  311,
+  172,
+  true
+ ],
+ "minLatLon": [
+  31.945416667000003,
+  -114.764583333
+ ],
+ "mask": {
+  "bytes": 33742,
+  "basinCells": 97311,
+  "statsBasinCells": 97311,
+  "plane1OutsideZero": true,
+  "minCellInBasin": 1,
+  "padding0": true
+ },
+ "wbdSample": {
+  "n": 40,
+  "agree": 40,
+  "disagree": []
+ },
+ "gnis": {
+  "labels": 39,
+  "recordsLoaded": 114444,
+  "mismatches": [],
+  "mouthCount": 9
+ },
+ "peaks": [
+  [
+   "Uncompahgre Peak",
+   38.0714529,
+   -107.4625289
+  ],
+  [
+   "Kings Peak",
+   40.7763756,
+   -110.3728037
+  ],
+  [
+   "Humphreys Peak",
+   35.3463151,
+   -111.6779884
+  ]
+ ]
+}

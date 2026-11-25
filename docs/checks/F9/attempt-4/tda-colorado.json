@@ -1,0 +1,39 @@
+{
+ "sha256": "7775c4fd6800862b3ed79942f96fe6f96b59e2dc25aee358f23e09fed145e08a",
+ "sha256MatchesBarcode": true,
+ "nan": false,
+ "min": {
+  "cell": 133025,
+  "v": -2.885450839996338,
+  "x": 17,
+  "y": 408
+ },
+ "max": {
+  "cell": 56383,
+  "v": 3697.83447265625,
+  "x": 311,
+  "y": 172
+ },
+ "computeH0ms": 29.9,
+ "engineBarsAll": 1217,
+ "engineEqualsMineSorted": true,
+ "engineEqualsPythonInOrder": false,
+ "engineEqualsPythonSorted": true,
+ "barcodeJson": {
+  "count": 600,
+  "engineFiltered": 600,
+  "pairsIdenticalInOrder": true,
+  "valuesExact": true,
+  "essentialAtGlobalMin": true
+ },
+ "bfsLevelChecks": {
+  "levels": 400,
+  "mismatches": 0
+ },
+ "islands": {
+  "tsBars": 2993,
+  "tsZero": 7,
+  "pyAll": 3000,
+  "tsEqualsPySorted": true
+ }
+}

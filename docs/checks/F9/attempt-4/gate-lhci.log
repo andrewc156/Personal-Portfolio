@@ -1,0 +1,48 @@
+
+> andrew-chincea-portfolio@0.0.1 lhci
+> lhci autorun --config=./lighthouserc.cjs
+
+✅  .lighthouseci/ directory writable
+✅  Configuration file found
+✅  Chrome installation found
+⚠️   GitHub token not set
+Healthcheck passed!
+
+Started a web server on port 53681...
+Running Lighthouse 1 time(s) on http://localhost:53681/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/garden/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/research/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/research/water-quality/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/research/number-theory/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/research/spectral-fractals/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/rising-water/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/cv/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/about/
+Run #1...done.
+Running Lighthouse 1 time(s) on http://localhost:53681/404.html
+Run #1...done.
+Done running Lighthouse!
+
+Checking assertions against 10 URL(s), 10 total run(s)
+
+1 result(s) for [1mhttp://localhost:53681/rising-water/[0m :
+
+  ⚠️  [1mcategories[0m.performance warning for [1mminScore[0m assertion
+        expected: >=[32m0.9[0m
+           found: [31m0.81[0m
+      [2mall values: 0.81[0m
+
+All results processed!
+
+Dumping 10 reports to disk at /Users/andrewchincea/personalPortfolio/.lighthouseci...
+Done writing reports to disk.
+
+Done running autorun.

@@ -1,0 +1,98 @@
+{
+ "pages": {
+  "dist/404.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/about/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/cv/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/garden/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 2.4,
+   "withAllLazyGzipKB": 2.4,
+   "files": 2
+  },
+  "dist/index.html": {
+   "entries": [
+    "Hero.astro_astro_type_script_index_0_lang.BoUnzYrT.js",
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 18.2,
+   "withAllLazyGzipKB": 18.2,
+   "files": 4
+  },
+  "dist/research/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/research/number-theory/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/research/spectral-fractals/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/research/water-quality/index.html": {
+   "entries": [
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 1.7,
+   "withAllLazyGzipKB": 1.7,
+   "files": 2
+  },
+  "dist/rising-water/index.html": {
+   "entries": [
+    "Explorer.astro_astro_type_script_index_0_lang.BFJPWZ-G.js",
+    "BaseLayout.astro_astro_type_script_index_0_lang.D2muHUBk.js"
+   ],
+   "initialGzipKB": 20.3,
+   "withAllLazyGzipKB": 20.3,
+   "files": 4
+  }
+ },
+ "dataBytes": {
+  "labels.json": 9962,
+  "basin-mask.json": 13882,
+  "ATTRIBUTION.md": 1003,
+  "hillshade.webp": 179574,
+  "grid.f32": 539856,
+  "barcode.json": 33492,
+  "basin-mask.bin": 33742,
+  "meta.json": 9372
+ },
+ "dataTotalBytes": 820883,
+ "allAstroJsGzipKB": 44.4
+}

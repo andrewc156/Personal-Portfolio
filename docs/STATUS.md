@@ -39,3 +39,4 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F19a Copy voice | Andrew requested (DECISIONS #85) | todo | First-person, humanized copy across the site; no new facts. |
 | F19b Hero framing | Andrew requested | todo | The hero's first frame reads as terrain plus water, not a brown blur. |
 | F19c Visual polish | Andrew requested | todo | Type scale, spacing, section rhythm, distinct research thumbnails, contact. |
+| F9 attempt 4 | checker | done, PASS_WITH_NOTES (docs/checks/F9/attempt-4.md) | Post-stretch baseline before F19. |
