@@ -1,0 +1,5 @@
+0.96 1 0.96 1 0
+0.96 1 0.96 1 0
+0.96 1 0.96 1 0
+0.96 1 0.96 1 0
+3-run medians after warm-up (performance/accessibility/best-practices/SEO/CLS) 0.96 1 0.96 1 0

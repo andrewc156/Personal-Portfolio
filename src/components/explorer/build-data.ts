@@ -4,6 +4,7 @@
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { checkPlaceLabels, type PlaceLabelsFile } from '../../lib/viz/explorer/labels.ts';
 import type { BarcodeFile, BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types.ts';
 
 const DIR = join(process.cwd(), 'public', 'data', 'colorado');
@@ -18,6 +19,14 @@ export function readBarcode(): BarcodeFile {
 
 export function readAttribution(): string {
   return readFileSync(join(DIR, 'ATTRIBUTION.md'), 'utf8');
+}
+
+export function readPlaceLabels(meta: ColoradoMeta): PlaceLabelsFile | null {
+  const path = join(DIR, 'labels.json');
+  if (!existsSync(path)) return null;
+  const places = JSON.parse(readFileSync(path, 'utf8')) as PlaceLabelsFile;
+  checkPlaceLabels(places, meta);
+  return places;
 }
 
 /** basin-mask.json (stretch S3), or null if meta.json doesn't list a mask (the toggle is omitted). */

@@ -826,3 +826,151 @@ test.describe('explorer: basin mask', () => {
     await expect(page.locator('body')).not.toContainText(/US portion only/i);
   });
 });
+
+test.describe('explorer: place labels', () => {
+  test('keyboard toggle presents the source, preserves the mask, and leaves the grid unchanged', async ({
+    page,
+  }) => {
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    const root = page.locator('[data-explorer]');
+    const layer = root.locator('[data-ex-place-layer]');
+    const toggle = page.getByRole('checkbox', { name: 'Place labels' });
+    await expect(toggle).not.toBeChecked();
+    await expect(layer).toBeHidden();
+    const before = await state(page);
+
+    await toggle.focus();
+    await page.keyboard.press('Space');
+    await expect(toggle).toBeChecked();
+    await expect(layer).toBeVisible();
+    await expect(layer.locator('[data-placed]').first()).toBeVisible();
+    await expect(root.locator('[data-ex-place-status]')).toContainText('place labels shown');
+
+    await page.getByRole('checkbox', { name: 'Basin mask' }).check();
+    await expect(root).toHaveAttribute('data-basin', 'on');
+    await expect(layer).toBeVisible();
+    const after = await state(page);
+    for (const key of ['match', 'level', 'lakes', 'selected'] as const) {
+      expect(after[key]).toBe(before[key]);
+    }
+
+    await toggle.uncheck();
+    await expect(layer).toBeHidden();
+    await expect(root).toHaveAttribute('data-basin', 'on');
+
+    const about = page.locator('#place-labels-source');
+    await expect(about.locator('[data-place-credit]')).toContainText('U.S. Geological Survey');
+    await about.getByText(/All \d+ places and coordinates/).click();
+    await expect(about.locator('[data-place-list]')).toContainText('Colorado River (mouth)');
+    await expect(about.locator('[data-place-list]')).toContainText('Roosevelt Lake');
+    await expect(about.getByRole('link', { name: 'USGS FAQ on GNIS coordinates' })).toBeVisible();
+  });
+
+  for (const width of [375, 768, 1280]) {
+    for (const colorScheme of ['light', 'dark'] as const) {
+      test(`map labels, markers, and leaders stay separated at ${width}px (${colorScheme})`, async ({
+        browser,
+      }) => {
+        const context = await browser.newContext({ viewport: { width, height: 900 }, colorScheme });
+        try {
+          const page = await context.newPage();
+          await page.goto(URL);
+          await ready(page);
+          await pause(page);
+          await page.getByRole('checkbox', { name: 'Basin mask' }).check();
+          await expect(page.locator('[data-explorer]')).toHaveAttribute('data-basin', 'on');
+          await page.getByRole('checkbox', { name: 'Place labels' }).check();
+          const layer = page.locator('[data-ex-place-layer]');
+          await expect(layer.locator('[data-place-id][data-placed]').first()).toBeVisible();
+          const geometry = await layer.evaluate((svg) => {
+            const { width, height } = svg.getBoundingClientRect();
+            const markers = svg.querySelector('[data-place-markers]')!;
+            const placards = svg.querySelector('[data-place-placards]')!;
+            return {
+              width,
+              height,
+              markersBehind: Boolean(
+                markers.compareDocumentPosition(placards) & Node.DOCUMENT_POSITION_FOLLOWING,
+              ),
+              allPriorityNames: placards.querySelectorAll('[data-priority="1"]').length,
+              placed: Array.from(
+                placards.querySelectorAll<SVGGElement>('[data-place-id][data-placed]'),
+                (node) => {
+                  const rect = node.querySelector('rect')!.getBBox();
+                  const marker = markers.querySelector(
+                    `[data-place-marker="${node.dataset.placeId}"][data-placed]`,
+                  )!;
+                  const dot = marker.querySelector('circle')!;
+                  const line = marker.querySelector('line')!;
+                  return {
+                    topPriority: node.dataset.priority === '1',
+                    x: dot.cx.baseVal.value,
+                    y: dot.cy.baseVal.value,
+                    radius: dot.r.baseVal.value + 0.625,
+                    lineX: line.x1.baseVal.value,
+                    lineY: line.y1.baseVal.value,
+                    tipX: line.x2.baseVal.value,
+                    tipY: line.y2.baseVal.value,
+                    expectedX: width * Number(node.dataset.x),
+                    expectedY: height * Number(node.dataset.y),
+                    left: rect.x,
+                    top: rect.y,
+                    right: rect.x + rect.width,
+                    bottom: rect.y + rect.height,
+                  };
+                },
+              ),
+            };
+          });
+          const { placed } = geometry;
+
+          expect(geometry.markersBehind).toBe(true);
+          expect(geometry.allPriorityNames).toBeGreaterThan(0);
+          expect(placed.filter((p) => p.topPriority)).toHaveLength(geometry.allPriorityNames);
+          for (const box of placed) {
+            expect(box.x).toBeCloseTo(box.expectedX, 3);
+            expect(box.y).toBeCloseTo(box.expectedY, 3);
+            expect(box.lineX).toBeCloseTo(box.x, 3);
+            expect(box.lineY).toBeCloseTo(box.y, 3);
+            expect(box.tipX).toBeCloseTo(Math.max(box.left, Math.min(box.x, box.right)), 3);
+            expect(box.tipY).toBeCloseTo(Math.max(box.top, Math.min(box.y, box.bottom)), 3);
+            expect(box.left).toBeGreaterThanOrEqual(0);
+            expect(box.top).toBeGreaterThanOrEqual(0);
+            expect(box.right).toBeLessThanOrEqual(geometry.width);
+            expect(box.bottom).toBeLessThanOrEqual(geometry.height);
+            const dx = box.tipX - box.x;
+            const dy = box.tipY - box.y;
+            const steps = Math.ceil(Math.hypot(dx, dy));
+            const crossesPlacard = placed.some((other) => {
+              if (other === box) return false;
+              const placardsOverlap =
+                box.left < other.right &&
+                other.left < box.right &&
+                box.top < other.bottom &&
+                other.top < box.bottom;
+              const markerOverlaps =
+                box.x - box.radius < other.right &&
+                box.x + box.radius > other.left &&
+                box.y - box.radius < other.bottom &&
+                box.y + box.radius > other.top;
+              if (placardsOverlap || markerOverlaps) return true;
+              for (let i = 1; i <= steps; i++) {
+                const x = box.x + (dx * i) / steps;
+                const y = box.y + (dy * i) / steps;
+                if (x >= other.left && x <= other.right && y >= other.top && y <= other.bottom) {
+                  return true;
+                }
+              }
+              return false;
+            });
+            expect(crossesPlacard).toBe(false);
+          }
+        } finally {
+          await context.close();
+        }
+      });
+    }
+  }
+});

@@ -1,0 +1,24 @@
+grid bbox (Decimal('-115.201667'), Decimal('31.817500'), Decimal('-107.060833'), Decimal('42.157500')), 326 × 414, minimum cell 133025, height -2.885 m, all meta.json listed file sizes/hashes match
+GNIS AZ: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS CO: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS NV: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS UT: archive length, SHA, sidecar, publication, datum, and credit request match
+GNIS WY: archive length, SHA, sidecar, publication, datum, and credit request match
+39/39 exact archive records and cell positions; categories {'water': 12, 'basin': 4, 'canyon': 5, 'peak': 7, 'city': 11}
+Uncompahgre Peak matches raw-max grid cell (309, 163); Colorado River primary location (Decimal('31.9'), Decimal('-114.9508333'))
+Basin bitplanes unchanged semantically: 97,311 mask cells, 55,355 in HU2 15; grid minimum inside; baseline JSON changes only coverage and metadata digest
+mask bitplanes: 97311 55355 41956
+mask bytes: 33742 gzip: 2062 metadata: 13882
+Uncompahgre Peak 53447 14
+Grand Junction 40364 14
+Moab 46844 14
+Lake Mead 77944 15
+Las Vegas 77916 15
+Phoenix 113573 15
+Flagstaff 90770 15
+Salt Lake City 18062 out
+Great Salt Lake 12820 out
+Ely NV 37828 out
+coordinate checks: {'14': 3, '15': 4, 'out': 3}
+Official staged region 14 archive bytes/digest and credit request match
+Official staged region 15 archive bytes/digest and credit request match

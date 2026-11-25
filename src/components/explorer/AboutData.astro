@@ -6,6 +6,7 @@
  */
 import { attributionBlocks, dataFacts } from '../../lib/viz/explorer/about';
 import { basinFacts, inegiNote } from '../../lib/viz/explorer/about';
+import { placeName, type PlaceLabelsFile } from '../../lib/viz/explorer/labels';
 import type { BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types';
 
 interface Props {
@@ -13,9 +14,10 @@ interface Props {
   attribution: string;
   /** basin-mask.json (stretch S3), or null. */
   basin: BasinMaskFile | null;
+  places: PlaceLabelsFile | null;
   id: string;
 }
-const { meta, attribution, basin, id } = Astro.props;
+const { meta, attribution, basin, places, id } = Astro.props;
 const facts = dataFacts(meta);
 const blocks = attributionBlocks(attribution, meta);
 const bFacts = basin ? basinFacts(basin, meta) : [];
@@ -25,12 +27,15 @@ const inegi = basin ? inegiNote(basin) : null;
 <section class="section about-data" id={id} aria-labelledby={`${id}-title`}>
   <h2 id={`${id}-title`}>About the data</h2>
   <p class="about-data__lede">
-    Generated from <code>meta.json</code>, <code>ATTRIBUTION.md</code>
-    {basin && (
-      <>
-        and <code>{meta.basinMask?.metaFile}</code>
-      </>
-    )}{' '}
+    Generated from{' '}
+    {['meta.json', 'ATTRIBUTION.md', meta.basinMask?.metaFile, places && 'labels.json']
+      .filter(Boolean)
+      .map((file, i) => (
+        <>
+          {i > 0 && ', '}
+          <code>{file}</code>
+        </>
+      ))}{' '}
     in <code>/data/colorado/</code>.
   </p>
 
@@ -90,6 +95,34 @@ const inegi = basin ? inegiNote(basin) : null;
           <li>{c}</li>
         ))}
       </ul>
+    </div>
+  )}
+  {places && (
+    <div id="place-labels-source">
+      <h3>Place labels</h3>
+      <p class="about-data__text" data-place-credit>
+        {places.attribution.credit}
+      </p>
+      <p class="about-data__text">
+        Labels marked “mouth” use the downstream point recorded by GNIS.{' '}
+        <a href={places.source.page}>GNIS Domestic Names data</a> ·{' '}
+        <a href="https://www.usgs.gov/us-board-on-geographic-names/what-geographic-names-information-system-gnis">
+          USGS FAQ on GNIS coordinates
+        </a>
+      </p>
+      <details>
+        <summary>All {places.count} places and coordinates</summary>
+        <ul class="about-data__list" data-place-list>
+          {places.labels.map((place) => (
+            <li>
+              {placeName(place)}
+              {place.anchor === 'mouth' && ' (mouth)'}
+              {' · '}
+              {place.lat}, {place.lon}
+            </li>
+          ))}
+        </ul>
+      </details>
     </div>
   )}
 </section>

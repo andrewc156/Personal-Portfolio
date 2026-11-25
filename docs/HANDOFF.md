@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:08 EST, Codex (Control)
+**Last updated:** 2026-11-24 21:20 EST, Codex (Control)
 
 ## Status
 
@@ -22,18 +22,19 @@
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
 | F10 Extra hero modes (S1) | done | PASS_WITH_NOTES (attempt 2) | `0454256` |
-| F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b accepted, commit pending | PASS_WITH_NOTES (F11b attempt 2 and F11a) | `248ebae` |
+| F11 Islands barcode (S2) | done | PASS_WITH_NOTES (F11a attempt 1, F11b attempt 2) | `248ebae`, `0dd1ea1` |
 | F12 Basin mask (S3) | done | PASS_WITH_NOTES (F12a and F12b attempt 1) | `4c32017`, `f0060bb` |
-| F13 Place labels (S4) | F13a done, F13b attempt 2 built, checker queued | FAIL (F13b attempt 1); PASS_WITH_NOTES (F13a) | `7aa2244` |
+| F13 Place labels (S4) | F13a done, F13b accepted, commit pending | PASS_WITH_NOTES (F13b attempt 2 and F13a) | `7aa2244` |
+| F14 Homepage animation toolbar | building | — | — |
 
-## Current task (one checker and one builder in parallel, with no overlapping paths)
+## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F11b islands barcode attempt 2 | checker | docs/checks/F11b/ and isolated F11b-r2 candidate | Viz-builder fixed visible caption, preserves link and restores copy on switch/reset. | PASS_WITH_NOTES. 166 browser passes, exact visible caption in all six configurations, CLS within budget. Commit pending. |
-| F13b place labels attempt 2 | viz-builder | Label layout, overlay and regression tests | Attempt 1 FAIL: some leaders and markers crossed unrelated text. All other gates passed. | Same builder completed the overlap fix and report. Astro check, lint and 84 explorer tests passed. Independent check queued after F11b. |
+| F13b place labels attempt 2 | checker | docs/checks/F13b/ | PASS_WITH_NOTES. 173 browser tests, zero marker collisions, all priority labels present. | Commit pending. |
+| F14 homepage animation toolbar | viz-builder | Hero and applicable settings panel components and tests | Andrew chose option 1, an Animation dropdown and Settings button above the canvas. | Builder delegated and independent check queued. |
 
-A fresh full-site audit follows the stretch work.
+The fresh full-site audit follows F13b and the approved F14 toolbar.
 
 ## Handoff vs repo (resume check)
 
@@ -47,14 +48,13 @@ A fresh full-site audit follows the stretch work.
 - F8 documentation clarification was reviewed by Control against Cloudflare’s official build and deployment instructions. No application or hosting configuration changed.
 
 Unchecked feature candidates:
-- F11b accepted, commit pending: `e2e/hero.spec.ts`, `src/components/hero/{HeroSettings.astro,hero-client.ts}`, `src/lib/viz/hero/{barcode,controller,islands,model,text}.ts`, `tests/unit/viz/model.test.ts` and `docs/builds/F11b/attempt-{1,2}.md`. Archived attempt-1 FAIL evidence is under `docs/checks/F11b/` and `docs/checks/tools/f11b-*`.
-- F13b candidate: `e2e/explorer.spec.ts`, `src/components/explorer/{AboutData.astro,Explorer.astro,PlaceLabels.astro,build-data.ts,explorer-client.ts,place-labels-client.ts}`, `src/lib/viz/explorer/labels.ts`, `src/pages/rising-water/index.astro`, `tests/unit/viz/explorer/labels.test.ts`, and `docs/builds/F13b/attempt-1.md`.
+- F13b accepted, commit pending: `e2e/explorer.spec.ts`, `src/components/explorer/{AboutData.astro,Explorer.astro,PlaceLabels.astro,build-data.ts,explorer-client.ts,place-labels-client.ts}`, `src/lib/viz/explorer/labels.ts`, `src/pages/rising-water/index.astro`, `tests/unit/viz/explorer/labels.test.ts`, and `docs/builds/F13b/attempt-1.md`.
 
 ## Open issues and "Needs Andrew"
 
-- Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://personal-portfolio.chinceaandrew509.workers.dev` and rebuild, or use the final custom domain if already chosen.
+- Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://andrewchincea.com` and trigger a fresh build.
 
-- Before deployment: domain, hosting method, and explicit deployment approval (`docs/deploy.md`).
+- Andrew deployed the site on Workers and connected `andrewchincea.com`. The remaining deployment setting is the canonical-origin build variable noted above.
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
 - CI1 fixed (`7e9b745`). Confirm that the next GitHub CI run on main is green. CI1 note: the header script is inlined and hashed into the CSP by write-headers.mjs (one more inline hash on every page). Optional: PW_BASE_URL override in playwright.config.ts (Control file).
 - Andrew approved F11b copy: “An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.”
@@ -68,12 +68,12 @@ Unchecked feature candidates:
 
 ## Next 3 actions
 
-1. Finish the F11b caption fix check and commit/push on acceptance.
-2. Check the finished F13b overlap fix and commit/push on acceptance.
-3. Run and record the fresh F9 full-site audit.
+1. Commit and push the accepted F13b explorer labels.
+2. Finish and independently check the F14 toolbar, then commit and push on acceptance.
+3. Run the fresh F9 full-site audit and push the final report and handoff.
 
 ## WIP branch
 
 none
 
-Latest Control push: Cloudflare troubleshooting docs `d11e026` to origin/main. Unchecked candidates remain local.
+Latest Control push: F11b `0dd1ea1` to origin/main. Unchecked candidates remain local.

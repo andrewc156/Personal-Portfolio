@@ -1,0 +1,8 @@
+{"width":375,"theme":"light","labels":34,"priority1":14,"contrast":16.65,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+{"width":375,"theme":"dark","labels":34,"priority1":14,"contrast":13.47,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+{"width":768,"theme":"light","labels":37,"priority1":14,"contrast":16.65,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+{"width":768,"theme":"dark","labels":37,"priority1":14,"contrast":13.47,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+animation 319 intervals p95 16.80 ms, 327 renders p95 1.00 ms, zero overlay mutations
+{"width":1280,"theme":"light","labels":37,"priority1":14,"contrast":16.65,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+{"width":1280,"theme":"dark","labels":37,"priority1":14,"contrast":13.47,"offBytes":770162,"onBytes":809137,"gzipBytes":19798,"runtimeOrigins":1}
+All 39 named coordinate rows and links visible without JavaScript after opening native disclosure

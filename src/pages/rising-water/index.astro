@@ -14,6 +14,7 @@ import {
   readBarcode,
   readBasinMaskInfo,
   readMeta,
+  readPlaceLabels,
 } from '../../components/explorer/build-data';
 import { profile } from '../../components/site/profile';
 import reposRaw from '../../data/open-science.yaml?raw';
@@ -23,6 +24,7 @@ const meta = readMeta();
 const barcode = readBarcode();
 const attribution = readAttribution();
 const basin = readBasinMaskInfo(meta);
+const places = readPlaceLabels(meta);
 
 interface Repo {
   id?: string;
@@ -60,7 +62,7 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
       </p>
     </header>
 
-    <Explorer meta={meta} basin={basin} />
+    <Explorer meta={meta} basin={basin} places={places} />
 
     <LakesTable meta={meta} barcode={barcode} basin={basin} id="lakes" />
 
@@ -107,7 +109,13 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
       </ul>
     </section>
 
-    <AboutData meta={meta} attribution={attribution} basin={basin} id="about-data" />
+    <AboutData
+      meta={meta}
+      attribution={attribution}
+      basin={basin}
+      places={places}
+      id="about-data"
+    />
 
     <section class="section" id="code" aria-labelledby="code-title">
       <h2 id="code-title">Code</h2>

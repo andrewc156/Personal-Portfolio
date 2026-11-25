@@ -1,0 +1,81 @@
+---
+import {
+  LABEL_MARKER_RADIUS,
+  placeFraction,
+  placeName,
+  type PlaceLabelsFile,
+} from '../../lib/viz/explorer/labels';
+import type { GridGeo } from '../../lib/viz/explorer/geo';
+
+interface Props {
+  places: PlaceLabelsFile;
+  geo: GridGeo;
+}
+const { places, geo } = Astro.props;
+---
+
+<svg class="ex-place-labels" data-ex-place-layer aria-hidden="true">
+  <g data-place-markers>
+    {places.labels.map((place) => (
+      <g data-place-marker={place.id}>
+        <line />
+        <circle r={LABEL_MARKER_RADIUS} />
+      </g>
+    ))}
+  </g>
+  <g data-place-placards>
+    {places.labels.map((place) => {
+      const { x, y } = placeFraction(place, geo);
+      return (
+        <g data-place-id={place.id} data-x={x} data-y={y} data-priority={place.priority}>
+          <rect rx="3" />
+          <text>{placeName(place)}</text>
+        </g>
+      );
+    })}
+  </g>
+</svg>
+
+<style>
+  .ex-place-labels {
+    position: absolute;
+    inset: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  :global([data-place-labels='on']) .ex-place-labels {
+    display: block;
+  }
+
+  .ex-place-labels :is([data-place-id], [data-place-marker]):not([data-placed]) {
+    visibility: hidden;
+  }
+
+  line,
+  circle {
+    stroke: var(--color-text);
+    stroke-width: 1.25;
+  }
+
+  circle,
+  rect {
+    fill: var(--color-surface);
+  }
+
+  rect {
+    stroke: var(--color-control);
+    stroke-width: 1;
+  }
+
+  text {
+    fill: var(--color-text);
+    font:
+      600 11px system-ui,
+      sans-serif;
+    dominant-baseline: central;
+  }
+</style>

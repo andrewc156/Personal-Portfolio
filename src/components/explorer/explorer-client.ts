@@ -33,6 +33,7 @@ import {
 import type { Pacing, StripView, Units } from '../../lib/viz/explorer/model.ts';
 import { fmt, length, lengthBoth } from '../../lib/viz/explorer/text.ts';
 import type { BarcodeFile, BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types.ts';
+import { wirePlaceLabels } from './place-labels-client.ts';
 
 declare global {
   interface HTMLElement {
@@ -165,6 +166,7 @@ async function load(root: HTMLElement): Promise<void> {
   );
   wire(root, ex);
   wireBasin(root, ex, meta);
+  wirePlaceLabels(root);
   root.dataset.ready = 'true';
 }
 
