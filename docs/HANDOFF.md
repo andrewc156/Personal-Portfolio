@@ -31,6 +31,7 @@
 | F16 Personal portfolio project entry | checking | — | — |
 | F17 Garden header link and section order | checking | — | — |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
+| CI3 Hosted CI red: place-label 375px tests | todo, diagnosing (the F16/F17 checker also reports it) | — | — |
 
 ## Current task
 
@@ -59,6 +60,8 @@ Unchecked feature candidates:
 
 ## Open issues and "Needs Andrew"
 
+- Hosted CI is RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder), queued after the F16/F17 check.
+
 - Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://andrewchincea.com` and trigger a fresh build.
 
 - Andrew deployed the site on Workers and connected `andrewchincea.com`. The remaining deployment setting is the canonical-origin build variable noted above.
@@ -76,8 +79,9 @@ Unchecked feature candidates:
 ## Next 3 actions
 
 1. Re-run the F16 and F17 checks (the Codex reports were PARTIAL), then commit and push each on PASS.
-2. Run the fresh F9 full-site audit and push its report and handoff.
-3. Check hosted CI for the final commit and verify the live canonical URL after the Cloudflare build setting is updated.
+2. CI3: viz-builder fixes the place-label failure on hosted CI, then checker, then push, then confirm green CI.
+3. Run the fresh F9 full-site audit (attempt 4) and push its report and handoff.
+
 
 ## WIP branch
 
