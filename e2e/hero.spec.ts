@@ -879,6 +879,56 @@ async function mapHash(page: Page): Promise<number> {
 }
 
 test.describe('hero modes', () => {
+  test('Collatz Steps reaches 120 by keyboard, survives mode changes and replays, and resets to 50', async ({
+    page,
+  }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/?seed=42&mode=collatz');
+    await waitForMode(page, 'collatz');
+    const readout = page.locator('[data-hero-readout]');
+    const summary = page.locator('[data-hero-summary]');
+    const panel = page.locator('#settings-panel');
+    const steps = panel.getByRole('slider', { name: 'Steps', exact: true });
+    const output = panel.locator('output[for="hero-collatz-steps"]');
+    await expect(readout).toContainText('379,600 numbers within 50 steps');
+    const baseline = await mapHash(page);
+    await page.getByRole('button', { name: 'Animation settings', exact: true }).click();
+    await expect(steps).toHaveValue('50');
+    await expect(output).toHaveText('50');
+    await steps.press('Home');
+    await expect(steps).toHaveValue('1');
+    await expect(readout).toHaveText('2 numbers within 1 step of 1');
+    await expect.poll(() => mapHash(page)).not.toBe(baseline);
+    const shallow = await mapHash(page);
+    await steps.press('End');
+    await expect(steps).toHaveValue('120');
+    await expect(output).toHaveText('120');
+    await expect(readout).toHaveText('Sampled branches · 120 steps');
+    await expect(summary).toContainText('120 of 120 levels are fully drawn');
+    await expect.poll(async () => [baseline, shallow].includes(await mapHash(page))).toBe(false);
+    await expect(page.locator('[data-hero]')).toHaveAttribute('data-state', 'paused');
+
+    await chooseMode(page, 'pond');
+    await expect(steps).toBeHidden();
+    await chooseMode(page, 'collatz');
+    await expect(steps).toHaveValue('120');
+    await expect(readout).toHaveText('Sampled branches · 120 steps');
+    await panel.getByRole('button', { name: 'New terrain', exact: true }).click();
+    await expect(readout).toHaveText('Sampled branches · 120 steps');
+    await panel.getByRole('button', { name: 'Play', exact: true }).click();
+    await panel.getByRole('button', { name: 'Pause', exact: true }).click();
+    await expect(steps).toHaveValue('120');
+    await steps.press('ArrowLeft');
+    await expect(readout).toHaveText('Sampled branches · 119 steps');
+    await panel.getByRole('button', { name: 'Reset', exact: true }).click();
+    await waitForMode(page, 'rising');
+    await expect(steps).toBeHidden();
+    await chooseMode(page, 'collatz');
+    await expect(steps).toHaveValue('50');
+    await expect(output).toHaveText('50');
+    await expect(readout).toContainText('379,600 numbers within 50 steps');
+  });
+
   test('selector: Rising water is the default; each mode swaps chrome and draws; back again', async ({
     page,
   }) => {

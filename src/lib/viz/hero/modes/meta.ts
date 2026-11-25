@@ -9,6 +9,8 @@
 export type HeroModeId = 'rising' | 'dye' | 'pond' | 'rivers' | 'collatz';
 
 export const DEFAULT_MODE: HeroModeId = 'rising';
+export const COLLATZ_DEFAULT_STEPS = 50;
+export const COLLATZ_MAX_STEPS = 120;
 
 export interface HeroModeMeta {
   id: HeroModeId;
@@ -79,7 +81,7 @@ export const HERO_MODES: readonly HeroModeMeta[] = [
     label: 'Collatz delta',
     groupLabel: 'Collatz delta animation',
     caption:
-      'Numbers grow backwards from 1 along Collatz steps. Each path bends one way after an even step and the other way after an odd one, and all of them join one trunk.',
+      'Numbers grow backwards from 1 along Collatz steps. Paths bend in opposite directions for even and odd steps and join at 1. Dense levels show a sample of the branches.',
     keys: 'When the animation has focus, Space plays or pauses and N draws a new delta.',
     shortcuts: 'Space N',
     interactive: false,

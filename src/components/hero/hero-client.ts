@@ -17,8 +17,14 @@ import type { BarcodeView } from '../../lib/viz/hero/barcode';
 import type { Pacing } from '../../lib/viz/hero/model';
 import type { ColorBy } from '../../lib/viz/hero/render-map';
 import { ISLANDS_EXPLAINER } from '../../lib/viz/hero/text';
-import { DEFAULT_MODE, isHeroMode, modeMeta, type HeroModeId } from '../../lib/viz/hero/modes/meta';
-import type { ModeController } from '../../lib/viz/hero/modes/shell';
+import {
+  COLLATZ_DEFAULT_STEPS,
+  DEFAULT_MODE,
+  isHeroMode,
+  modeMeta,
+  type HeroModeId,
+} from '../../lib/viz/hero/modes/meta';
+import type { ModeController, ModeSettings } from '../../lib/viz/hero/modes/shell';
 
 /** What the buttons, keyboard and tests need from either kind of controller. */
 interface ArtController {
@@ -77,6 +83,16 @@ function readForm(seed: number): HeroSettings {
   };
 }
 
+function readModeForm(id: HeroModeId, seed: number): ModeSettings {
+  const { speed, palette } = readForm(seed);
+  const settings: ModeSettings = { seed, speed, palette };
+  if (id === 'collatz') {
+    settings.collatzSteps =
+      byId<HTMLInputElement>('hero-collatz-steps')?.valueAsNumber ?? COLLATZ_DEFAULT_STEPS;
+  }
+  return settings;
+}
+
 function init(): void {
   const root = document.querySelector<HTMLElement>('[data-hero]');
   if (!root) return;
@@ -98,6 +114,7 @@ function init(): void {
   const modeInput = byId<HTMLSelectElement>('hero-mode');
   const modeNote = document.querySelector<HTMLElement>('[data-mode-note]');
   const risingOnly = document.querySelectorAll<HTMLElement>('[data-rising-only]');
+  const collatzOnly = form?.querySelector<HTMLElement>('[data-collatz-only]');
   const playButtons = document.querySelectorAll<HTMLButtonElement>('[data-hero-play]');
   const newButtons = document.querySelectorAll<HTMLButtonElement>('[data-hero-new]');
   const panel = document.getElementById('settings-panel');
@@ -164,6 +181,7 @@ function init(): void {
     if (keys) keys.textContent = meta.keys;
     if (captionLink) captionLink.hidden = !rising;
     for (const el of risingOnly) el.hidden = !rising;
+    if (collatzOnly) collatzOnly.hidden = id !== 'collatz';
     if (modeNote) modeNote.hidden = rising;
     if (rising) {
       map.setAttribute('aria-label', risingMapLabel);
@@ -221,13 +239,9 @@ function init(): void {
     if (my !== token) return; // another switch happened while loading
     let ctl: ModeController;
     try {
-      const f = readForm(s);
-      ctl = mod.createMode(
-        id,
-        { root, map, readout, summary },
-        { seed: s, speed: f.speed, palette: f.palette },
-        { reducedMotion },
-      );
+      ctl = mod.createMode(id, { root, map, readout, summary }, readModeForm(id, s), {
+        reducedMotion,
+      });
     } catch {
       return;
     }
@@ -272,8 +286,7 @@ function init(): void {
         current.update(readForm(current.settings.seed));
         applyRisingStrip(current.settings);
       } else {
-        const f = readForm(current.settings.seed);
-        (current as ModeController).update({ speed: f.speed, palette: f.palette });
+        (current as ModeController).update(readModeForm(mode, current.settings.seed));
       }
     });
     form.addEventListener('change', (e) => {
@@ -298,8 +311,7 @@ function init(): void {
           current.update(readForm(s));
           applyRisingStrip(current.settings);
         } else {
-          const f = readForm(s);
-          (current as ModeController).update({ speed: f.speed, palette: f.palette });
+          (current as ModeController).update(readModeForm(mode, s));
         }
         syncNow();
       }, 0);

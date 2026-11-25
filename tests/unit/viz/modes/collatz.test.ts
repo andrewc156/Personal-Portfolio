@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
+  COLLATZ_GROW_S,
+  COLLATZ_STEP_HZ,
+  CollatzSim,
   collatzStep,
   layoutTree,
   reverseChildren,
@@ -7,6 +10,70 @@ import {
   stoppingTime,
   subtreeSizes,
 } from '../../../../src/lib/viz/hero/modes/collatz.ts';
+
+describe('Collatz delta', () => {
+  it('defaults to exactly 50 mathematical steps without changing the animation clock', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450);
+    sim.restart();
+    for (let i = 0; i < COLLATZ_GROW_S * COLLATZ_STEP_HZ - 1; i++) sim.step();
+    expect(sim.finished()).toBe(false);
+    sim.step();
+    expect(sim.finished()).toBe(true);
+    expect(sim.shownDepth).toBe(50);
+    expect(sim.readout()).toContain('379,600 numbers');
+    expect(sim.readout()).toContain('drawn');
+    expect(sim.summary()).toContain('379,600 numbers');
+  });
+
+  it('draws connected, exact reverse paths at the bounded 120-step setting', () => {
+    const shallow = new CollatzSim();
+    shallow.build(42, 1280, 450);
+    const deep = new CollatzSim();
+    deep.build(42, 1280, 450, 1e9);
+    deep.warm(true);
+    expect(deep.shownDepth).toBe(120);
+    expect(deep.readout()).toMatch(/^Sampled branches · 120 steps/);
+    expect(deep.summary()).toContain('not a total');
+    expect(deep.summary()).not.toContain('379,600');
+    const t = deep.tree;
+    expect(t.value.slice(0, shallow.tree.count)).toEqual(shallow.tree.value);
+    expect(t.parent.slice(0, shallow.tree.count)).toEqual(shallow.tree.parent);
+    expect(t.value.some((v) => v > BigInt(Number.MAX_SAFE_INTEGER) && v % 2n === 1n)).toBe(true);
+    for (let d = 1; d <= t.maxDepth; d++) {
+      const start = t.levelStart[d];
+      const end = t.levelStart[d + 1];
+      expect(end - start).toBeLessThanOrEqual(96);
+      expect(t.value[start]).toBe(2n ** BigInt(d));
+      for (let i = start; i < end; i++) {
+        const v = t.value[i];
+        expect(v % 2n === 0n ? v / 2n : 3n * v + 1n).toBe(t.value[t.parent[i]]);
+        expect(t.depth[t.parent[i]]).toBe(d - 1);
+      }
+    }
+  });
+
+  it('reports the exact number at each reachable level through 50 regardless of sampling', () => {
+    const whole = reverseTree(50, 379_600);
+    expect(whole.maxDepth).toBe(50);
+    const sim = new CollatzSim();
+    for (let d = 1; d <= whole.maxDepth; d++) {
+      sim.build(42, 1280, 450, d);
+      sim.warm(true);
+      const total = Number(sim.readout().split(' ')[0].replaceAll(',', ''));
+      expect(total).toBe(whole.levelStart[d + 1]);
+    }
+  });
+
+  it('shows every node at the one-step minimum', () => {
+    const sim = new CollatzSim();
+    sim.build(42, 1280, 450, -5);
+    sim.warm(true);
+    expect(sim.shownDepth).toBe(1);
+    expect(sim.tree.count).toBe(2);
+    expect(sim.readout()).toBe('2 numbers within 1 step of 1');
+  });
+});
 
 describe('reverse Collatz generator', () => {
   it('children: 2n always, (n − 1)/3 only when it is an odd integer > 1', () => {
