@@ -31,13 +31,14 @@
 | F16 Personal portfolio project entry | done | PASS_WITH_NOTES (attempt 1) | `49befc5` |
 | F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
-| CI3 Hosted CI red: place-label 375px tests | built, checking | — | — |
+| CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
+| F9 Final audit (post-stretch) | checking (attempt 4) | — | — |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| CI3 place labels on Linux CI | checker (was viz-builder) | src/components/explorer/PlaceLabels.astro, src/components/explorer/place-labels-client.ts, src/lib/**/labels.ts, label unit tests, docs/builds/CI3/ | Cause found by the F16/F17 checker. Labels use `600 11px system-ui`. DejaVu Sans on Ubuntu is about 14% wider, so priority-1 Las Vegas (x=2) doesn't fit at 375px and is silently dropped. See docs/checks/F16/attempt-1.md "Pre-existing CI issue". | Builder done (docs/builds/CI3/attempt-1.md): Plex font, re-layout after font load, priority-1 retry and edge slots, 11 new unit tests; 811 unit tests pass. Checker running (docs/checks/CI3/attempt-1.md). Then commit, push, and a green hosted CI. |
+| F9 full-site audit, attempt 4 | checker (fresh) | docs/checks/F9/attempt-4.md, docs/checks/F9/attempt-4/, docs/checks/F9/summary.md | Delegated at `5c54ee2` with hosted CI green | Audit. On FAIL: fix rounds through the owning builders (at most 2). |
 
 ## Handoff vs repo (resume check)
 
@@ -50,14 +51,15 @@
 
 ## Uncommitted changes
 
-- CI3 (unchecked): labels.ts, PlaceLabels.astro, place-labels-client.ts, e2e/explorer.spec.ts, tests/unit/viz/explorer/label-metrics.test.ts and place-label-widths.json, docs/builds/CI3/.
+- None.
 - Stray `astro dev --port 4411` (pid 23366, started 2026-11-24 15:37) is still running from an earlier session. Harmless; left alone.
 
 ## Open issues and "Needs Andrew"
 
 - F16 notes (Andrew's call): the description is in the first person ("for my research"); it overlaps with the "Rising water" project; and it lacks `ongoing: true`. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
-- Local hero.spec.ts frame-time tests fail when the laptop is on battery (Chromium throttles rAF). They pass on hosted CI. Run the hero gates on AC power.
-- Hosted CI is RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder). Run 45551772489 on `6210515` confirms: only these 2 fail; hero tests pass on hosted CI.
+- Local hero.spec.ts frame-time tests fail on this Mac even on AC power. Headless Chromium runs requestAnimationFrame at about 33 ms on a blank page, likely because the display is asleep or covered. They pass on hosted CI, which is the authority for these tests.
+- CI3 notes (non-blocking): in 1 of 4,000 synthetic layouts, a rescue slot costs one priority-1 placement (labels.ts:283-290). Leaders run 70-125 px only at 320-335 px with widths ×1.1 or more. The `loadingdone` listener is never removed (place-labels-client.ts:77).
+- RESOLVED by CI3 (`5c54ee2`, CI run 45557116146 green). Earlier: hosted CI was RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder). Run 45551772489 on `6210515` confirms: only these 2 fail; hero tests pass on hosted CI.
 
 - Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Needs Andrew: set the Workers build variable `SITE_URL=https://andrewchincea.com` and trigger a fresh build.
 
@@ -75,12 +77,12 @@
 
 ## Next 3 actions
 
-1. CI3: viz-builder fix, then checker, then commit and push, then confirm green hosted CI.
-2. Fresh F9 full-site audit (docs/checks/F9/attempt-4.md plus summary.md), then fix rounds if it FAILs.
-3. Commit and push the F9 report and the final HANDOFF/STATUS.
+1. F9 attempt 4 audit (running).
+2. On FAIL: fix rounds through the owning builders, then re-audit.
+3. Commit and push the F9 report and summary, confirm hosted CI, and write the final handoff.
 
 ## WIP branch
 
 none
 
-Latest Control push: F17 `51133cd` to origin/main.
+Latest Control push: CI3 `5c54ee2` to origin/main.
