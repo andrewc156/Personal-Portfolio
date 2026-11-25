@@ -118,13 +118,13 @@ function visibleRows(page: Page) {
 }
 
 test.describe('content files', () => {
-  test('the CV work items exist exactly once and drafts have empty [A] fields', () => {
-    expect(ALL_WORK).toHaveLength(8);
+  test('the confirmed work items exist exactly once and drafts have empty [A] fields', () => {
+    expect(ALL_WORK).toHaveLength(9);
     const byType = ALL_WORK.reduce<Record<string, number>>((acc, w) => {
       acc[w.data.type] = (acc[w.data.type] ?? 0) + 1;
       return acc;
     }, {});
-    expect(byType).toEqual({ paper: 1, poster: 2, talk: 1, project: 4 });
+    expect(byType).toEqual({ paper: 1, poster: 2, talk: 1, project: 5 });
     expect(DRAFT_WORK).toHaveLength(0);
     for (const w of ALL_WORK) {
       if (!w.data.draft) {
@@ -577,14 +577,22 @@ test.describe('production build hygiene', () => {
     }
   });
 
-  test('OwlPath links to its published project from the Garden and CV', async ({ page }) => {
-    const url = 'https://andrewc156.github.io/OwlPath/';
-    for (const path of ['/garden/', '/cv/']) {
-      await page.goto(path);
-      const projectLink = page.locator(`[data-id="project-owlpath"] a[href="${url}"]`);
-      await expect(projectLink).toHaveCount(1);
-    }
-  });
+  for (const { id, name, url } of [
+    { id: 'project-owlpath', name: 'OwlPath', url: 'https://andrewc156.github.io/OwlPath/' },
+    {
+      id: 'project-personal-portfolio',
+      name: 'Personal portfolio',
+      url: 'https://andrewchincea.com/',
+    },
+  ]) {
+    test(`${name} links to its published project from the Garden and CV`, async ({ page }) => {
+      for (const path of ['/garden/', '/cv/']) {
+        await page.goto(path);
+        const projectLink = page.locator(`[data-id="${id}"] a[href="${url}"]`);
+        await expect(projectLink).toBeVisible();
+      }
+    });
+  }
 
   test('no phone number, tel: link or References section on any page (DECISIONS #68)', async ({
     page,

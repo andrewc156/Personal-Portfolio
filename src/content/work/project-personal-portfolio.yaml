@@ -1,0 +1,12 @@
+# Project and live domain confirmed by Andrew. Date is the launch month.
+type: project
+title: Personal portfolio
+date: '2026-11'
+description: An academic website for my research, projects, and CV, with interactive terrain animations and a Colorado River Basin explorer.
+authors:
+  - Andrew Chincea
+links:
+  site: https://andrewchincea.com/
+tags: []
+draft: false
+confirmed: true

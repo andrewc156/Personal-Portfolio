@@ -1,0 +1,6 @@
+
+> andrew-chincea-portfolio@0.0.1 links
+> node scripts/check-links.mjs
+
+→ crawling http://localhost:4321/
+✓ Successfully scanned 27 links in 0.051 seconds.
