@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 19:35 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 19:50 EST, Claude Code (Control)
 
 ## Status
 
@@ -20,7 +20,7 @@
 | C1 CV content | done | PASS_WITH_NOTES (attempt 3) | `be62c1e`, `f8061b3`, `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
-| CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | building (site-builder, attempt 1); CI red since `ef15630` | n/a | — |
+| CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | checking: built (real header bug: partly clipped focused links aren't scrolled into view); checker attempt 1 running; CI red since `ef15630` | n/a | — |
 | F10 Extra hero modes (S1) | building (viz-builder, attempt 1) | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | building: F12a mask data (data-engineer, attempt 1) | n/a | — |
@@ -31,7 +31,7 @@
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | four modes, tests, report → checker |
-| CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | delegated | root cause + fix, report → checker (priority: check first) |
+| CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | built, report done | checker attempt 1 running → docs/checks/CI1/attempt-1.md |
 | F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | delegated | WBD 14+15 rasterized to grid, tests, report → checker |
 
 After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12b mask toggle in the explorer (viz-builder), F13a GNIS labels data (data-engineer, after F12a), F13b explorer labels (viz-builder), then a fresh F9 audit. Checkers run one at a time.
@@ -46,7 +46,7 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 All are unverified builder work in progress, not yet checked:
 - F10 (building): src/lib/viz/hero/** (modes/), src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts
 - F12a (building): pipeline/basin_mask.py and others, public/data/colorado/meta.json
-- CI1 (building): header/styles/e2e cls+shell
+- CI1 (built, checking): src/components/site/Header.astro, e2e/cls.spec.ts, e2e/shell.spec.ts
 
 ## Open issues and "Needs Andrew"
 
