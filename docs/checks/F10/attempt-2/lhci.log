@@ -1,0 +1,9 @@
+Started a web server on port 62217...
+Running Lighthouse 4 time(s) on http://localhost:62217/
+Run #1...done.
+Run #2...done.
+Run #3...done.
+Run #4...done.
+Done running Lighthouse!
+Dumping 4 reports to disk at /private/tmp/portfolio-recovery.RmJMcJ/F10/docs/checks/F10/attempt-2/lhci...
+Done writing reports to disk.

@@ -25,7 +25,7 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | Feature | Spec item | State | Scope |
 |---|---|---|---|
 | CI1 Fix failing GitHub CI | site-builder | done | 1 | docs/checks/CI1/attempt-1.md | PASS_WITH_NOTES (`7e9b745`): real a11y bug: Chromium doesn't scroll partly clipped focused links; focusin fix + stricter tests. Script is inlined and CSP-hashed. Unit tests in tda flood/properties can time out under heavy load. |
-| F10 Extra hero modes | S1 | building (attempt 2 after FAIL: off-screen draw in shell.ts, rivers spacing; docs/checks/F10/attempt-1.md) | Add Dye spill, Fractal pond, Random rivers, and Collatz delta to the hero. |
+| F10 Extra hero modes | S1 | accepted (attempt 2 PASS_WITH_NOTES, docs/checks/F10/attempt-2.md) | Add Dye spill, Fractal pond, Random rivers, and Collatz delta to the hero. |
 | F11 Islands barcode | S2 | F11a engine done, PASS_WITH_NOTES (docs/checks/F11a/attempt-1.md, `248ebae`); F11b hero strip todo after F10 | Show when islands appear and disappear during flooding using an H1 barcode. |
 | F12 Basin mask | S3 | F12a done, PASS_WITH_NOTES (docs/checks/F12a/attempt-1.md, `4c32017`); F12b built, checker queued | Add an optional explorer mask using USGS Watershed Boundary Dataset regions 14 and 15. Document the coverage gap in Mexico. |
 | F13 Place labels | S4 | checking (F13a checker attempt 1) | Add explorer place labels using coordinates from USGS GNIS and cite the source. |

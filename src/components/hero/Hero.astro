@@ -3,11 +3,17 @@
  * Home hero (spec §4.3 item 1, §6.3): name, hero question, keywords, and the synthetic Rising
  * water canvas with its barcode strip. The static terrain illustration sits under the canvas
  * as a no-JS fallback; every box has a fixed size before hydration so nothing shifts.
- * Behaviour: hero-client.ts → src/lib/viz/hero/controller.ts. Settings: HeroSettings.astro.
+ * Behaviour: hero-client.ts → src/lib/viz/hero/controller.ts (Rising water) or, lazily,
+ * src/lib/viz/hero/modes/ (Dye spill, Fractal pond, Random rivers, Collatz delta).
+ * Settings: HeroSettings.astro.
  */
 import TerrainArt from '../site/TerrainArt.astro';
 import { displayName, profile } from '../site/profile';
 import { withBase } from '../../lib/url';
+import { modeMeta } from '../../lib/viz/hero/modes/meta';
+
+// Rising water is the default mode; hero-client.ts swaps these texts when another mode runs.
+const rising = modeMeta('rising');
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -29,11 +35,12 @@ import { withBase } from '../../lib/url';
         data-hero
         data-state="paused"
         data-running="false"
+        data-mode="rising"
         tabindex="0"
         role="group"
-        aria-label="Rising water animation"
+        aria-label={rising.groupLabel}
         aria-describedby="hero-keys"
-        aria-keyshortcuts="Space ArrowLeft ArrowRight ArrowUp ArrowDown Home End Escape N"
+        aria-keyshortcuts={rising.shortcuts}
       >
         <div class="hero__map">
           <TerrainArt class="hero__fallback" />
@@ -63,17 +70,17 @@ import { withBase } from '../../lib/url';
             &nbsp;
           </p>
         </div>
-        <p id="hero-keys" class="visually-hidden">
-          With the animation focused: Space plays or pauses, Left and Right arrows move the water
-          level, Home and End jump to the bottom and top, Up and Down pick a bar, Escape clears the
-          picked bar, and N makes a new terrain.
+        <p id="hero-keys" class="visually-hidden" data-hero-keys>
+          {rising.keys}
         </p>
         <p class="visually-hidden" aria-live="polite" data-hero-summary></p>
       </div>
       <figcaption class="hero__caption">
-        Water rises over a random landscape. Lakes are born, then merge, and the barcode records
-        each lake's lifetime.{' '}
-        <a href={withBase('/rising-water/')}>See it on the Colorado River Basin →</a>
+        <span data-hero-caption>{rising.caption}</span>
+        <span data-hero-caption-link>
+          {' '}
+          <a href={withBase('/rising-water/')}>See it on the Colorado River Basin →</a>
+        </span>
       </figcaption>
     </figure>
   </div>
@@ -168,6 +175,11 @@ import { withBase } from '../../lib/url';
     touch-action: manipulation;
   }
 
+  .hero__art[data-mode='rivers'] .hero__canvas,
+  .hero__art[data-mode='collatz'] .hero__canvas {
+    cursor: default;
+  }
+
   .hero__strip {
     height: 7.5rem;
     border-top: 1px solid var(--color-border);
@@ -226,5 +238,9 @@ import { withBase } from '../../lib/url';
 
   .hero__caption a {
     white-space: nowrap;
+  }
+
+  .hero__caption [hidden] {
+    display: none;
   }
 </style>

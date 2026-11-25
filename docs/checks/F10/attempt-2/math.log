@@ -1,0 +1,46 @@
+PASS  curl: max |div u| = 2.35e-11 (max |∂u/∂x| 3.343)
+PASS  curl: normal-velocity jump across edges ≤ 6.76e-7
+PASS  curl: wall-normal velocity ≤ 0.00e+0
+PASS  curl: per-cell net boundary flux (own quadrature) ≤ 5.68e-14
+PASS  brownian: per-axis var 1.980 vs 2DΔt·n 2.000 (n=700)
+PASS  wave: chosen C = 0.5, limit 0.7071067811865476
+PASS  wave: von Neumann max|g| at C=0.5 is 1
+PASS  wave: von Neumann max|g| at C=0.75 is 2.000 (> 1, unstable)
+PASS  wave: own discrete energy drift over 20,000 steps 4.44e-15
+PASS  wave: builder field vs own float64 leapfrog, max diff 8.13e-7
+PASS  wave: wall cells stay exactly 0 (max 0)
+PASS  wave: amplitude bounded (max |u| 0.812)
+PASS  wave: damped energy non-increasing (100-step samples), final 1.68e-3
+PASS  wave: constructor rejects C = 0.72 > 1/√2
+PASS  koch level 0: verts 3, edge 1.732051…1.732051 (want 1.732051), perimeter 5.196152, area 1.299038 vs 1.299038
+PASS  koch level 0: 120° symmetry error 6.16e-16
+PASS  koch level 0: no self-intersections (0)
+PASS  koch level 1: verts 12, edge 0.577350…0.577350 (want 0.577350), perimeter 6.928203, area 1.732051 vs 1.732051
+PASS  koch level 1: 120° symmetry error 6.16e-16
+PASS  koch level 1: no self-intersections (0)
+PASS  koch level 2: verts 48, edge 0.192450…0.192450 (want 0.192450), perimeter 9.237604, area 1.924501 vs 1.924501
+PASS  koch level 2: 120° symmetry error 6.16e-16
+PASS  koch level 2: no self-intersections (0)
+PASS  koch level 3: verts 192, edge 0.064150…0.064150 (want 0.064150), perimeter 12.316806, area 2.010034 vs 2.010034
+PASS  koch level 3: 120° symmetry error 6.47e-16
+PASS  koch level 3: no self-intersections (0)
+PASS  koch level 4: verts 768, edge 0.021383…0.021383 (want 0.021383), perimeter 16.422408, area 2.048049 vs 2.048049
+PASS  koch level 4: 120° symmetry error 6.76e-16
+PASS  koch level 5: verts 3072, edge 0.007128…0.007128 (want 0.007128), perimeter 21.896544, area 2.064945 vs 2.064945
+PASS  koch level 5: 120° symmetry error 7.45e-16
+PASS  koch raster: 0 cells differ from own winding test (5582 inside of 15000)
+PASS  strahler hand tree [-1]: builder [1] own [1] (my hand expectation [1])
+PASS  strahler hand tree [2,2,-1]: builder [1,1,2] own [1,1,2] (my hand expectation [1,1,2])
+PASS  strahler hand tree [1,-1]: builder [1,1] own [1,1] (my hand expectation [1,1])
+PASS  strahler hand tree [2,2,6,5,5,6,-1,6]: builder [1,1,2,1,1,2,3,1] own [1,1,2,1,1,2,3,1] (my hand expectation [1,1,2,1,1,2,3,1])
+PASS  strahler hand tree [3,3,3,-1]: builder [1,1,1,2] own [1,1,1,2] (my hand expectation [1,1,1,2])
+PASS  strahler hand tree [2,2,4,4,7,7,7,-1,7]: builder [1,1,2,1,2,1,1,2,1] own [1,1,2,1,2,1,1,2,1] (my hand expectation [1,1,2,1,2,1,1,2,1])
+PASS  strahler: 300 random forests vs own recursion, 0 mismatches
+PASS  scheidegger 60×40 seed 1: bad receivers 0, bad outlet walks 0, outlets 30, strahler mismatches 0
+PASS  scheidegger 142×160 seed 42: bad receivers 0, bad outlet walks 0, outlets 120, strahler mismatches 0
+PASS  scheidegger 9×4 seed 3: bad receivers 0, bad outlet walks 0, outlets 2, strahler mismatches 0
+PASS  collatz: 3518 nodes to depth 30; forward map gives parent on all (bad 0/0)
+PASS  collatz: levels 0…22 equal brute-force stopping-time sets (0 bad)
+PASS  collatz: no duplicates (3518/3518), ≤ 5000
+
+ALL PASS

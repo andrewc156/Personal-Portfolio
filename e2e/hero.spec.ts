@@ -541,3 +541,402 @@ test.describe('accessibility', () => {
     });
   }
 });
+
+/* ---------------------------------------------------------------------------------------------
+ * F10 extra hero modes (stretch S1): Dye spill, Fractal pond, Random rivers, Collatz delta.
+ * ------------------------------------------------------------------------------------------- */
+
+const EXTRA_MODES = [
+  {
+    id: 'dye',
+    label: 'Dye spill',
+    interactive: true,
+    caption: /^Dye leaks into a swirling current/,
+  },
+  {
+    id: 'pond',
+    label: 'Fractal pond',
+    interactive: true,
+    caption: /^Ripples spread across a pond/,
+  },
+  { id: 'rivers', label: 'Random rivers', interactive: false, caption: /^Every cell drains/ },
+  { id: 'collatz', label: 'Collatz delta', interactive: false, caption: /^Numbers grow backwards/ },
+] as const;
+
+const RISING_CAPTION =
+  "Water rises over a random landscape. Lakes are born, then merge, and the barcode records each lake's lifetime.";
+
+interface ModeState {
+  mode: string;
+  state: string;
+  running: string;
+  frames: number;
+  seed: string;
+  pokes: number;
+}
+
+async function modeState(page: Page): Promise<ModeState> {
+  return page.evaluate(() => {
+    const r = document.querySelector<HTMLElement>('[data-hero]')!;
+    const a = r.__art!;
+    return {
+      mode: r.dataset.mode ?? '',
+      state: r.dataset.state ?? '',
+      running: r.dataset.running ?? '',
+      frames: a.frames,
+      seed: r.dataset.seed ?? '',
+      pokes: r.__heroMode?.pokes ?? 0,
+    };
+  });
+}
+
+async function waitForMode(page: Page, id: string): Promise<void> {
+  await page.waitForFunction(
+    (m) => {
+      const r = document.querySelector<HTMLElement>('[data-hero]');
+      return r?.dataset.mode === m && !!r.__art && (m === 'rising' ? !!r.__hero : !!r.__heroMode);
+    },
+    id,
+    { timeout: 10_000 },
+  );
+}
+
+/** Pick a mode with the real settings-panel select. */
+async function chooseMode(page: Page, id: string): Promise<void> {
+  const panel = page.locator('#settings-panel');
+  if (!(await panel.isVisible())) {
+    await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+    await expect(panel).toBeVisible();
+  }
+  await panel.getByLabel('Animation', { exact: true }).selectOption(id);
+  await waitForMode(page, id);
+}
+
+/** Cheap FNV hash of the map canvas pixels at 128×64 (for determinism checks). */
+async function mapHash(page: Page): Promise<number> {
+  return page.evaluate(() => {
+    const c = document.querySelector<HTMLCanvasElement>('[data-hero-map]')!;
+    const x = document.createElement('canvas');
+    x.width = 128;
+    x.height = 64;
+    const g = x.getContext('2d')!;
+    g.drawImage(c, 0, 0, 128, 64);
+    const d = g.getImageData(0, 0, 128, 64).data;
+    let h = 2166136261;
+    for (let i = 0; i < d.length; i++) h = Math.imul(h ^ d[i], 16777619);
+    return h >>> 0;
+  });
+}
+
+test.describe('hero modes', () => {
+  test('selector: Rising water is the default; each mode swaps chrome and draws; back again', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    page.on('console', (m) => {
+      if (m.type() === 'error') errors.push(m.text());
+    });
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    await waitForHero(page);
+    await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+    const panel = page.locator('#settings-panel');
+    const select = panel.getByLabel('Animation', { exact: true });
+    await expect(select).toHaveValue('rising');
+    await expect(page.locator('[data-hero]')).toHaveAttribute('data-mode', 'rising');
+
+    for (const m of EXTRA_MODES) {
+      await chooseMode(page, m.id);
+      const root = page.locator('[data-hero]');
+      await expect(root).toHaveAttribute('aria-label', `${m.label} animation`);
+      await expect(page.locator('[data-hero-strip-box]')).toBeHidden();
+      // Rising-water-only controls are hidden; shared ones stay.
+      for (const id of ['#hero-level', '#hero-pacing', '#hero-show-barcode', '#hero-color-by']) {
+        await expect(panel.locator(id)).toBeHidden();
+      }
+      for (const id of ['#hero-seed', '#hero-speed', '#hero-palette']) {
+        await expect(panel.locator(id)).toBeVisible();
+      }
+      await expect(page.locator('[data-hero-caption]')).toHaveText(m.caption);
+      await expect(page.locator('[data-hero-caption-link]')).toBeHidden();
+      const label = (await page.locator('[data-hero-map]').getAttribute('aria-label')) ?? '';
+      expect(label.length).toBeGreaterThan(20);
+      expect(label).not.toMatch(/\blakes?\b|barcode|persisten/i);
+      await expect(page.locator('[data-hero-summary]')).toContainText(`${m.label}.`);
+      await page.waitForTimeout(m.interactive ? 300 : 1200);
+      expect(await mapVariance(page), `${m.id} canvas is blank`).toBeGreaterThan(50);
+      expect((await modeState(page)).state).toBe('playing');
+    }
+
+    await chooseMode(page, 'rising');
+    await expect(page.locator('[data-hero-strip-box]')).toBeVisible();
+    await expect(page.locator('.hero__caption')).toContainText(RISING_CAPTION);
+    await expect(
+      page
+        .locator('.hero__caption')
+        .getByRole('link', { name: 'See it on the Colorado River Basin →' }),
+    ).toBeVisible();
+    await expect(page.locator('[data-hero]')).toHaveAttribute(
+      'aria-label',
+      'Rising water animation',
+    );
+    await expect(panel.locator('#hero-level')).toBeVisible();
+    expect(await mapVariance(page)).toBeGreaterThan(50);
+    expect(errors).toEqual([]);
+  });
+
+  test('switching tears the old mode down: no frames, timers or listeners left', async ({
+    page,
+  }) => {
+    await page.goto('/?seed=42&mode=dye');
+    await waitForMode(page, 'dye');
+    // Keep handles to the old controllers, switch away, and watch them stay silent.
+    await page.evaluate(() => {
+      const r = document.querySelector<HTMLElement>('[data-hero]')!;
+      (window as unknown as { __old: unknown[] }).__old = [r.__heroMode];
+    });
+    await chooseMode(page, 'pond');
+    await page.evaluate(() => {
+      const r = document.querySelector<HTMLElement>('[data-hero]')!;
+      (window as unknown as { __old: unknown[] }).__old.push(r.__heroMode);
+    });
+    await chooseMode(page, 'rising');
+    await page.evaluate(() => {
+      const r = document.querySelector<HTMLElement>('[data-hero]')!;
+      (window as unknown as { __old: unknown[] }).__old.push(r.__hero);
+    });
+    await chooseMode(page, 'collatz');
+    const r = await page.evaluate(async () => {
+      type Old = { frames: number; pendingTimers: number; isRunning: boolean; attached?: number };
+      const old = (window as unknown as { __old: Old[] }).__old;
+      const f0 = old.map((o) => o.frames);
+      // Events the old controllers listened to must no longer reach them.
+      document.dispatchEvent(new Event('visibilitychange'));
+      await new Promise((res) => setTimeout(res, 600));
+      return old.map((o, i) => ({
+        framesDelta: o.frames - f0[i],
+        timers: o.pendingTimers,
+        running: o.isRunning,
+        attached: o.attached ?? 0,
+      }));
+    });
+    for (const o of r) {
+      expect(o).toEqual({ framesDelta: 0, timers: 0, running: false, attached: 0 });
+    }
+    expect((await modeState(page)).mode).toBe('collatz');
+  });
+
+  test('extra modes are lazy-loaded: not in the initial scripts, fetched on first switch', async ({
+    page,
+  }) => {
+    const bodies: string[] = [];
+    page.on('response', async (res) => {
+      const t = res.request().resourceType();
+      if (t === 'script' || /\.(m?js|ts)(\?|$)/.test(res.url())) {
+        bodies.push(await res.text().catch(() => ''));
+      }
+    });
+    await page.goto(URL);
+    await waitForHero(page);
+    await page.waitForLoadState('networkidle');
+    // A string that only exists in the pond simulation module.
+    const marker = 'breaks the 2-D CFL limit';
+    expect(bodies.some((b) => b.includes(marker))).toBe(false);
+    await chooseMode(page, 'pond');
+    await expect.poll(() => bodies.some((b) => b.includes(marker))).toBe(true);
+  });
+
+  for (const m of EXTRA_MODES) {
+    test(`${m.id}: deterministic per seed, N regenerates, Space pauses`, async ({ browser }) => {
+      const ctx = await browser.newContext({
+        reducedMotion: 'reduce',
+        viewport: { width: 1280, height: 800 },
+      });
+      const page = await ctx.newPage();
+      await page.goto(`/?seed=42&mode=${m.id}`);
+      await waitForMode(page, m.id);
+      const h1 = await mapHash(page);
+      await page.reload();
+      await waitForMode(page, m.id);
+      expect(await mapHash(page)).toBe(h1);
+      await page.goto(`/?seed=43&mode=${m.id}`);
+      await waitForMode(page, m.id);
+      expect(await mapHash(page)).not.toBe(h1);
+
+      await noSmoothScroll(page);
+      await page.locator('[data-hero]').focus();
+      const s0 = (await modeState(page)).seed;
+      await page.keyboard.press('n');
+      expect((await modeState(page)).seed).not.toBe(s0);
+      await page.keyboard.press('Space');
+      expect((await modeState(page)).state).toBe('playing');
+      await page.keyboard.press('Space');
+      expect((await modeState(page)).state).toBe('paused');
+      await expect(page.locator('[data-hero-summary]')).toContainText(`${m.label}. Paused.`);
+      expect(await page.evaluate(() => window.scrollY)).toBe(0);
+      await ctx.close();
+    });
+
+    test(`${m.id}: reduced motion shows a static frame and a Play button`, async ({ browser }) => {
+      const ctx = await browser.newContext({ reducedMotion: 'reduce' });
+      const page = await ctx.newPage();
+      await page.goto(`/?seed=42&mode=${m.id}`);
+      await waitForMode(page, m.id);
+      const a = await modeState(page);
+      expect(a.state).toBe('paused');
+      await page.waitForTimeout(800);
+      const b = await modeState(page);
+      expect(b.running).toBe('false');
+      expect(b.frames - a.frames).toBeLessThanOrEqual(2);
+      expect(await mapVariance(page)).toBeGreaterThan(50);
+      await expect(
+        page.locator('.hero__bar').getByRole('button', { name: 'Play', exact: true }),
+      ).toBeVisible();
+      await ctx.close();
+    });
+  }
+
+  for (const id of ['dye', 'pond'] as const) {
+    test(`${id}: click/tap and Enter act at the canvas`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(`/?seed=42&mode=${id}`);
+      await waitForMode(page, id);
+      await noSmoothScroll(page);
+      const box = (await page.locator('[data-hero-map]').boundingBox())!;
+      const before = await mapHash(page);
+      // Pause first, so any change in the picture comes from the click alone.
+      await page.locator('.hero__bar').getByRole('button', { name: 'Pause', exact: true }).click();
+      const paused = await mapHash(page);
+      await page.mouse.click(box.x + box.width / 2 + 10, box.y + box.height / 2);
+      await expect.poll(async () => (await modeState(page)).pokes).toBe(1);
+      await expect.poll(() => mapHash(page)).not.toBe(paused);
+      await expect(page.locator('[data-hero-readout]')).toContainText(
+        id === 'dye' ? '1 spill by you' : '1 pebble by you',
+      );
+      await page.locator('[data-hero]').focus();
+      await page.keyboard.press('Enter');
+      expect((await modeState(page)).pokes).toBe(2);
+      await expect(page.locator('[data-hero-summary]')).toContainText(
+        id === 'dye' ? '2 spills were added by clicking' : '2 were dropped by clicking',
+      );
+      expect(before).not.toBe(0);
+    });
+  }
+
+  test('touch: tapping the pond drops a pebble', async ({ browser }) => {
+    const ctx = await browser.newContext({
+      hasTouch: true,
+      isMobile: true,
+      viewport: { width: 390, height: 844 },
+    });
+    const page = await ctx.newPage();
+    await page.goto('/?seed=42&mode=pond');
+    await waitForMode(page, 'pond');
+    const box = (await page.locator('[data-hero-map]').boundingBox())!;
+    await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2);
+    await expect.poll(async () => (await modeState(page)).pokes).toBe(1);
+    await ctx.close();
+  });
+
+  test('extra modes pause off-screen and in a hidden tab', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/?seed=42&mode=dye');
+    await waitForMode(page, 'dye');
+    await noSmoothScroll(page);
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await expect.poll(async () => (await modeState(page)).running).toBe('false');
+    const f0 = (await modeState(page)).frames;
+    await page.waitForTimeout(500);
+    expect((await modeState(page)).frames).toBe(f0);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+
+    const setVis = (v: string) =>
+      page.evaluate((vis) => {
+        Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => vis });
+        document.dispatchEvent(new Event('visibilitychange'));
+      }, v);
+    await setVis('hidden');
+    await expect.poll(async () => (await modeState(page)).running).toBe('false');
+    const f1 = (await modeState(page)).frames;
+    await page.waitForTimeout(400);
+    expect((await modeState(page)).frames).toBe(f1);
+    await setVis('visible');
+    await expect.poll(async () => (await modeState(page)).running).toBe('true');
+  });
+
+  for (const m of EXTRA_MODES) {
+    test(`${m.id}: p95 frame time ≤ 22 ms at 1280×800`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.goto(`/?seed=42&mode=${m.id}`);
+      await waitForMode(page, m.id);
+      await expect.poll(async () => (await modeState(page)).running).toBe('true');
+      await page.waitForTimeout(400);
+      const deltas = await page.evaluate(
+        () =>
+          new Promise<number[]>((resolve) => {
+            const d: number[] = [];
+            let last = performance.now();
+            const f = (t: number) => {
+              d.push(t - last);
+              last = t;
+              if (d.length < 240) requestAnimationFrame(f);
+              else resolve(d);
+            };
+            requestAnimationFrame(f);
+          }),
+      );
+      const sorted = deltas.slice(1).sort((a, b) => a - b);
+      expect(sorted[Math.floor(0.95 * (sorted.length - 1))]).toBeLessThanOrEqual(22);
+    });
+  }
+
+  for (const width of [375, 768, 1280]) {
+    test(`no horizontal overflow in any mode at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      for (const m of EXTRA_MODES) {
+        await page.goto(`/?seed=42&mode=${m.id}`);
+        await waitForMode(page, m.id);
+        const fit = await page.evaluate(() => {
+          const ro = document.querySelector<HTMLElement>('[data-hero-readout]')!;
+          return {
+            doc: document.documentElement.scrollWidth,
+            win: window.innerWidth,
+            sw: ro.scrollWidth,
+            cw: ro.clientWidth,
+            sh: ro.scrollHeight,
+            ch: ro.clientHeight,
+          };
+        });
+        expect(fit.doc, m.id).toBeLessThanOrEqual(fit.win);
+        expect(fit.sw, m.id).toBeLessThanOrEqual(fit.cw);
+        expect(fit.sh, m.id).toBeLessThanOrEqual(fit.ch);
+      }
+    });
+  }
+
+  for (const colorScheme of ['light', 'dark'] as const) {
+    test(`axe: 0 serious/critical in every extra mode (${colorScheme})`, async ({ browser }) => {
+      const ctx = await browser.newContext({ colorScheme });
+      const page = await ctx.newPage();
+      for (const m of EXTRA_MODES) {
+        await page.goto(`/?seed=42&mode=${m.id}`);
+        await waitForMode(page, m.id);
+        const r = await new AxeBuilder({ page }).analyze();
+        const bad = r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+        expect(
+          bad.map((v) => `${m.id}: ${v.id} ${v.nodes.map((n) => n.target).join(', ')}`),
+        ).toEqual([]);
+      }
+      await page.getByRole('button', { name: 'Art settings', exact: true }).click();
+      await animationsSettled(page, '#settings-panel');
+      const r = await new AxeBuilder({ page }).analyze();
+      expect(r.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical')).toEqual(
+        [],
+      );
+      await ctx.close();
+    });
+  }
+});

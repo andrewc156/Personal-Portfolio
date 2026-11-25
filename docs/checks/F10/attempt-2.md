@@ -1,0 +1,26 @@
+# Check report — F10 Extra hero modes (stretch S1) — attempt 2
+Verdict: PASS_WITH_NOTES
+
+Gates: check ✅ (0 errors, warnings, hints) · lint ✅ · unit ✅ (779/779, 24 files) · pytest ✅ (593 passed, one raw DEM cache test skipped) · Ruff ✅ · build ✅ (10 pages) · e2e ✅ (151 passed, eight Wrangler-only tests skipped by the preview suite, plus five repeated off-screen passes) · axe ✅ · Lighthouse ✅ (100 performance/accessibility/best practices/SEO, CLS 0 in four runs) · links ✅ (27) · visual ✅ (52 screenshots) · content ✅ · TDA n/a (S1 numeric oracles ✅) · data n/a
+
+Checked the candidate in an isolated snapshot based on `529dbdc` with the F10 changes only. Its hero components, mode modules and tests matched the worktree at completion.
+
+## Acceptance criteria
+
+1. ✅ **Selector, default and teardown.** Production Playwright verifies the Animation selector, default Rising water and teardown. The instrumented `f10-leaks.mjs` probe counted rAF, timers, observers and listeners during 36 ordinary switches and 20 quick switches. Every mode's counts were stable, and the final Rising water counts matched its baseline. Paused rivers made zero rAF calls over one second. No page errors.
+2. ✅ **Sizing, determinism and pausing.** Deterministic seed, reseed, keyboard and hidden-tab assertions passed. The off-screen test passed in the full suite and 5/5 additional runs. The independent draw/step probe saw zero late draws or steps in 24 scrolls across the four modes, including scroll before the resize timer settled. Rivers measured 5.00–5.02 CSS px across and 4.93–5.03 down across six test sizes. Dye and pond remained near 4 px. Even at DPR 3, backing buffers were capped at 2×. The largest sampled rivers lattice was 9,870 nodes.
+3. ✅ **Mode chrome and copy.** Browser tests passed the visibility, labels, caption and key-help assertions when entering each mode and returning to Rising water. The settings panels retain the shared controls. No extra-mode text makes a TDA claim. Visible HTML text across the ten generated pages contained no draft badge or unfinished-copy sentinel.
+4. ✅ **Accessibility.** Production axe passed in both themes, with settings open and closed. The independent mutation monitor detected no summary or canvas-label changes during 240 play frames per mode. Space paused, N changed seeds, and Enter poked only dye and pond. Reduced-motion screenshots show a static drawing and a Play button in each mode.
+5. ✅ **Simulation correctness.** Rebuilt and reran the checker-owned numeric oracle. It confirms dye divergence, boundary flux and Brownian variance, Koch geometry and rasterization, the wave update against an independent float64 reference, Strahler order on 300 generated forests and three river lattices, and the 3,518-node reverse Collatz tree against forward steps and enumerated stopping-time sets.
+6. ✅ **Performance and isolation.** Independent Chromium rAF sampling over 300 frames per mode at 1280×800 gave p95 16.7–16.8 ms, within 22 ms. Rivers step + draw measured p95 0.30 ms and dye 3.40 ms. Initial home JavaScript referenced by HTML totals 14,462 gzip bytes. The lazy modes chunk is 10,184 gzip bytes and is absent from the default homepage's Lighthouse requests. There were zero foreign runtime requests in the per-mode production probe.
+7. ✅ **Browser coverage.** The complete preview suite passed 151 tests. All eight skips were the separate Wrangler header suite. Playwright's off-screen test was repeated without changing its expectations.
+8. ✅ **Visual review.** Opened contact sheets covering all 52 PNGs. The five modes were captured at 375×812, 768×1024 and 1280×800 in both themes, with 18 additional settings-panel screenshots and four reduced-motion screenshots. No blank canvases, overflow, clipped readouts or broken fonts. Geometry checks agreed with the visual review.
+9. ✅ **Originality.** The four modes use their own density-field, wave, river-network and reverse-iteration drawings and copy. The inspiration site's canvas modes are Vector and Voronoi, with a separate set of controls. [Rich Pauloo home page](https://www.richpauloo.com/)
+
+## Notes
+
+- In 45 fresh Chromium contexts, direct mode links had maximum CLS 0.037715 at 375 px, 0.028882 at 768 px and 0.045173 at 1280 px. These meet the strict 0.05 requirement. The shift comes from replacing the server-rendered Rising water strip and caption after hydration. Keep checking direct links when the islands strip changes the default layout.
+- The shared Terrain and Water group labels still appear in settings for extra modes. The headings are legible, and the mode-specific captions and key help explain the interactions.
+- The raw DEM recomputation test requires cached tiles that were absent from this isolated snapshot. The four WBD cache tests passed after copying their cache into the snapshot. No F10 changes touch the data pipeline. Browser measurements were collected in Chromium.
+
+Artifacts: `docs/checks/F10/attempt-2/` contains the 52 PNGs and their contact sheets, browser and repeat logs, `offscreen.log`, `perf-size.log`, `cls.log`, `leaks.log`, `math.log`, `bundle.log`, `shots-report.json`, and the Lighthouse export under `lhci/`. Reproduction tools are under `docs/checks/tools/f10-*`.

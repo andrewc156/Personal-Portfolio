@@ -1,0 +1,31 @@
+--- frame time @1280×800 (dpr 1)
+rising p95 16.8 ms, p50 16.7, max 16.8  | state playing | foreign requests 0
+dye p95 16.7 ms, p50 16.7, max 16.8 | sim step+draw p95 3.40 ms max 3.80 | state playing | foreign requests 0
+pond p95 16.8 ms, p50 16.7, max 16.8 | sim step+draw p95 0.30 ms max 0.40 | state playing | foreign requests 0
+rivers p95 16.7 ms, p50 16.7, max 16.8 | sim step+draw p95 0.30 ms max 0.80 | state playing | foreign requests 0
+collatz p95 16.7 ms, p50 16.7, max 16.8 | sim step+draw p95 0.40 ms max 2.60 | state playing | foreign requests 0
+--- sizing
+320×700@3 dye: css 286,143 dev 572,286 (×2.00) grid 72×36 = 2592 cells, px/cell 3.97,3.97
+320×700@3 pond: css 286,143 dev 572,286 (×2.00) grid 72×36 = 2592 cells, px/cell 3.97,3.97
+320×700@3 rivers: css 286,143 dev 572,286 (×2.00) grid 57×29 = 1653 cells, px/cell 5.02,4.93
+320×700@3 collatz: css 286,143 dev 572,286 (×2.00) grid null×null = null cells, px/cell null
+375×812@3 dye: css 341,171 dev 682,341 (×2.00) grid 85×43 = 3655 cells, px/cell 4.01,3.98
+375×812@3 pond: css 341,171 dev 682,341 (×2.00) grid 85×43 = 3655 cells, px/cell 4.01,3.98
+375×812@3 rivers: css 341,171 dev 682,341 (×2.00) grid 68×34 = 2312 cells, px/cell 5.01,5.03
+375×812@3 collatz: css 341,171 dev 682,341 (×2.00) grid null×null = null cells, px/cell null
+768×1024@2 dye: css 705,352 dev 1409,705 (×2.00) grid 176×88 = 15488 cells, px/cell 4.01,4.00
+768×1024@2 pond: css 705,352 dev 1409,705 (×2.00) grid 176×88 = 15488 cells, px/cell 4.01,4.00
+768×1024@2 rivers: css 705,352 dev 1409,705 (×2.00) grid 141×70 = 9870 cells, px/cell 5.00,5.03
+768×1024@2 collatz: css 705,352 dev 1409,705 (×2.00) grid null×null = null cells, px/cell null
+1280×800@1 dye: css 565,283 dev 565,283 (×1.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+1280×800@1 pond: css 565,283 dev 565,283 (×1.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+1280×800@1 rivers: css 565,283 dev 565,283 (×1.00) grid 113×57 = 6441 cells, px/cell 5.00,4.96
+1280×800@1 collatz: css 565,283 dev 565,283 (×1.00) grid null×null = null cells, px/cell null
+1920×1080@2 dye: css 565,283 dev 1131,565 (×2.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+1920×1080@2 pond: css 565,283 dev 1131,565 (×2.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+1920×1080@2 rivers: css 565,283 dev 1131,565 (×2.00) grid 113×57 = 6441 cells, px/cell 5.00,4.96
+1920×1080@2 collatz: css 565,283 dev 1131,565 (×2.00) grid null×null = null cells, px/cell null
+2560×1440@1 dye: css 565,283 dev 565,283 (×1.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+2560×1440@1 pond: css 565,283 dev 565,283 (×1.00) grid 141×71 = 10011 cells, px/cell 4.01,3.99
+2560×1440@1 rivers: css 565,283 dev 565,283 (×1.00) grid 113×57 = 6441 cells, px/cell 5.00,4.96
+2560×1440@1 collatz: css 565,283 dev 565,283 (×1.00) grid null×null = null cells, px/cell null

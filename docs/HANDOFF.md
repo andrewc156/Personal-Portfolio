@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:14 EST, Codex (Control)
+**Last updated:** 2026-11-24 20:26 EST, Codex (Control)
 
 ## Status
 
@@ -21,7 +21,7 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
-| F10 Extra hero modes (S1) | attempt 2 built, independent check running | FAIL (attempt 1) | — |
+| F10 Extra hero modes (S1) | accepted, commit pending | PASS_WITH_NOTES (attempt 2) | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
 | F13 Place labels (S4) | F13a built (39 GNIS labels, labels.json 9,962 B), checker queued after F10 | n/a | — |
@@ -30,9 +30,9 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 attempt 2 | checker | docs/checks/F10/ and isolated snapshot at /private/tmp/portfolio-recovery.RmJMcJ/F10 | Builder fixed off-screen redraws and rivers spacing. Astro check, lint and 39 mode tests pass. | Fresh checker is running with exclusive port 4321. |
-| F13a check | checker | docs/checks/F13a/ only | Claude left a partial report with no verdict. Codex delegated review of the uncommitted data changes to data-engineer. | Restart checker on an isolated F13a snapshot after builder review. |
-| F12b | viz-builder | Explorer files listed below | Codex delegated review of Claude’s completed build. | Checker after accepted F13a data. |
+| F10 attempt 2 | checker | docs/checks/F10/ and isolated snapshot at /private/tmp/portfolio-recovery.RmJMcJ/F10 | Builder fixed off-screen redraws and rivers spacing. Astro check, lint and 39 mode tests pass. | PASS_WITH_NOTES. 151 browser passes, 5/5 repeat, Lighthouse 100s, max direct-link CLS 0.045173. Commit pending. |
+| F13a check | checker | docs/checks/F13a/ only | Data-engineer finished recovery and verified cached output. Replaced Python 3.11-only UTC alias in three pipeline files for §7 Python 3.10 compatibility. | Fresh checker delegated in /private/tmp/portfolio-recovery.RmJMcJ/F13a and owns port 4321. |
+| F12b | viz-builder | Explorer files listed below | Review complete. Viz-builder guarded stale mask requests and added a regression. Astro check, lint and 80 explorer unit tests passed. | Independent checker after accepted F13a data. |
 
 Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (after F12b + F13a), then a fresh F9 audit.
 
@@ -46,7 +46,7 @@ Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (aft
 ## Uncommitted changes
 
 All unverified:
-- F10 (attempt 1 FAILED; attempt 2 built, checking): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
+- F10 (attempt 2 PASS_WITH_NOTES, commit pending): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
 - F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
@@ -73,3 +73,5 @@ All unverified:
 ## WIP branch
 
 none
+
+Latest Control push: `b44b8c1` to origin/main. Unchecked candidates remain local.
