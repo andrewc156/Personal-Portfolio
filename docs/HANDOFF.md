@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:45 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 21:55 EST, Claude Code (Control)
 
 ## Status
 
@@ -32,7 +32,7 @@
 |---|---|---|---|---|
 | F10 check | checker | docs/checks/F10/ only | started | full gates; investigate hero.spec :443/:521/:632/:842 → verdict |
 | F12b mask toggle | viz-builder | src/lib/viz/explorer/**, src/components/explorer/**, src/pages/rising-water/**, e2e/explorer.spec.ts, tests/unit/viz/explorer/**, docs/builds/F12b/ | built, report done | checker queued |
-| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | built; Control asked for an addendum: reader-facing basin-mask.json coverage strings (regenerate json + meta files entry, .bin unchanged) | addendum, then checker |
+| F13a labels data | data-engineer | pipeline/**, public/data/colorado/** (labels.json; no mask changes), docs/data.md, docs/builds/F13a/ | built + addendum done (basin-mask.json reworded, SHA f9f3e4d6…; .bin unchanged) | checker queued after F10 |
 
 Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explorer labels (viz-builder, after F12b + F13a), then a fresh F9 audit.
 
@@ -45,7 +45,7 @@ Then: F11b islands strip in the hero (viz-builder, after F10 PASS), F13b explore
 
 All unverified:
 - F10 (built, being checked): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
-- F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, public/data/colorado/labels.json, docs/data.md
+- F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
 ## Open issues and "Needs Andrew"

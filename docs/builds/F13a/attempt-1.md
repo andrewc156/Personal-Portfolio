@@ -51,3 +51,27 @@ Known limitations:
 - The "mouth" convention for Stream/Valley primary points comes from an archived USGS GNIS FAQ (2009 snapshot). The current GNIS format doc (2 Oct 2026) does not state it explicitly, but the records agree with it: the Colorado River's source point is in Rocky Mountain National Park and its primary point is at the mouth.
 - NAD 83 coordinates are used as WGS 84 without a shift, as for the basin mask.
 - The GNIS access date is 2026-11-25 in UTC (2026-11-24 local).
+
+## Addendum (Control request)
+
+Rewrote the `coverage[]` strings in `basin-mask.json` for public readers. The F12b explorer shows them word for word in "About the data". The maintainer detail (the one-off WBD map-service check, the 12 disagreeing cells, the brief's expectation, DECISIONS #78) stays in docs/data.md only.
+- Generator: `pipeline/basin_mask.py` `build_meta()` → `coverage`.
+  - Nothing in the strings refers to the S3 brief, `docs/data.md`, `meta.min`, or `stats.*` paths.
+  - Every number still comes from `stats`.
+  - Kept facts:
+    - WBD region 15 continues into Mexico (WBD metadata quote, "in collaboration with Mexico's INEGI"; `inegiNote()` still matches it).
+    - 1039 basin cells are in all-Mexico units.
+    - The grid's lowest cell is in HU-12 150301080302 (downstream code OCEAN) and is inside the mask.
+    - 4 south-west cells (around 31.87° N, 115.19° W) are in no WBD unit and are outside the mask.
+    - Subregion 1508 Sonora: 634 HU-12s end at CLOSED BASIN (22), MEXICO (117), OCEAN (495), and none drains to the Colorado.
+    - Great Divide Closed Basin.
+    - Cells: Sonora 1609, Great Divide Closed Basin 1426.
+    - Region 18 along the west edge.
+    - Edge shares and resolution.
+- `basin-mask.json`: 14,056 B → 13,882 B. New SHA-256 `f9f3e4d60b6cc1583a827e66431a9180b2436f9f424e23e170afec8f959d578f` (was `d1658674358c605b6662bc6adb2769cdbd81897e35b7efcfbba6267f7e06012e`). meta.json `files["basin-mask.json"]` is updated to match.
+- Unchanged: `basin-mask.bin` (byte-identical), `meta.basinMask`, all other meta.json keys, `labels.json`. No test pinned the old wording. `test_basin_mask` still checks for "Mexico", "INEGI" and "1508", and it passes.
+- Checks:
+  - pytest: 606 passed.
+  - ruff check: clean.
+  - `npx vitest run tests/unit/viz/explorer`: 6 files, 80 tests passed.
+  - `npm run data -- --out-dir <scratch>`: all outputs, including the new basin-mask.json and labels.json, are byte-identical to the committed files except meta.json `generatedAt`/`gitCommit`.
