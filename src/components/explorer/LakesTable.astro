@@ -9,14 +9,16 @@ import { barsFromFile } from '../../lib/viz/explorer/data';
 import { edgeOf, gridGeo } from '../../lib/viz/explorer/geo';
 import { indexLakes } from '../../lib/viz/explorer/model';
 import { lakeRows, NBSP } from '../../lib/viz/explorer/text';
-import type { BarcodeFile, ColoradoMeta } from '../../lib/viz/explorer/types';
+import type { BarcodeFile, BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types';
 
 interface Props {
   meta: ColoradoMeta;
   barcode: BarcodeFile;
+  /** basin-mask.json (stretch S3): adds the "Pit in basin" column, hidden until the mask is on. */
+  basin: BasinMaskFile | null;
   id: string;
 }
-const { meta, barcode, id } = Astro.props;
+const { meta, barcode, basin, id } = Astro.props;
 const geo = gridGeo(meta);
 const index = indexLakes(barsFromFile(barcode));
 const TOP = 20;
@@ -32,6 +34,12 @@ const edgeTop10 = top10.filter((b) => edgeOf(b.birthCell, geo.W, geo.H) !== '').
     The lowest lake and the {TOP} lakes with the longest bars (persistence = death level − birth
     level), from <code>barcode.json</code>. Positions are cell centres. “Show” selects the lake, as
     clicking its bar does.
+    {basin && (
+      <>
+        With the basin mask on, a “Pit in basin” column says whether each lake’s pit (its birth
+        cell) is inside the mask. The rows are the same either way.
+      </>
+    )}
   </p>
   <p>
     {edgeTop10} of the 10 longest-lived lakes are born on the edge of the rectangle. Water cannot
@@ -53,6 +61,11 @@ const edgeTop10 = top10.filter((b) => edgeOf(b.birthCell, geo.W, geo.H) !== '').
           <th scope="col">Spills at</th>
           <th scope="col">Merges into</th>
           <th scope="col">Birth cell</th>
+          {basin && (
+            <th scope="col" data-basin-col hidden>
+              Pit in basin
+            </th>
+          )}
           <th scope="col">
             <span class="visually-hidden">Select</span>
           </th>
@@ -88,6 +101,7 @@ const edgeTop10 = top10.filter((b) => edgeOf(b.birthCell, geo.W, geo.H) !== '').
                 <span class="mono">{r.birthCell}</span>
                 {r.edge && <span class="lakes__where">{r.edge}</span>}
               </td>
+              {basin && <td class="lakes__basin" data-basin-cell={r.birthCell} hidden />}
               <td>
                 <button type="button" class="btn lakes__btn" data-lake-cell={r.birthCell} disabled>
                   Show
@@ -162,6 +176,10 @@ const edgeTop10 = top10.filter((b) => edgeOf(b.birthCell, geo.W, geo.H) !== '').
     color: var(--color-text-muted);
     font-family: var(--font-mono);
     font-size: var(--fs-xsmall);
+    white-space: nowrap;
+  }
+
+  .lakes__basin {
     white-space: nowrap;
   }
 

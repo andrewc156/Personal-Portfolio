@@ -5,23 +5,33 @@
  * isn't), the processing steps and the limitations, all as recorded in the data files.
  */
 import { attributionBlocks, dataFacts } from '../../lib/viz/explorer/about';
-import type { ColoradoMeta } from '../../lib/viz/explorer/types';
+import { basinFacts, inegiNote } from '../../lib/viz/explorer/about';
+import type { BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types';
 
 interface Props {
   meta: ColoradoMeta;
   attribution: string;
+  /** basin-mask.json (stretch S3), or null. */
+  basin: BasinMaskFile | null;
   id: string;
 }
-const { meta, attribution, id } = Astro.props;
+const { meta, attribution, basin, id } = Astro.props;
 const facts = dataFacts(meta);
 const blocks = attributionBlocks(attribution, meta);
+const bFacts = basin ? basinFacts(basin, meta) : [];
+const inegi = basin ? inegiNote(basin) : null;
 ---
 
 <section class="section about-data" id={id} aria-labelledby={`${id}-title`}>
   <h2 id={`${id}-title`}>About the data</h2>
   <p class="about-data__lede">
-    Generated from <code>meta.json</code> and <code>ATTRIBUTION.md</code> in{' '}
-    <code>/data/colorado/</code>.
+    Generated from <code>meta.json</code>, <code>ATTRIBUTION.md</code>
+    {basin && (
+      <>
+        and <code>{meta.basinMask?.metaFile}</code>
+      </>
+    )}{' '}
+    in <code>/data/colorado/</code>.
   </p>
 
   <dl class="about-data__facts">
@@ -56,6 +66,32 @@ const blocks = attributionBlocks(attribution, meta);
       <li>{l}</li>
     ))}
   </ul>
+
+  {basin && (
+    <div data-basin-about>
+      <h3>Basin mask</h3>
+      <p class="about-data__text">{basin.description}</p>
+      <p class="about-data__text" data-basin-credit>
+        {basin.attribution.credit}
+      </p>
+      <dl class="about-data__facts">
+        {bFacts.map((f) => (
+          <div>
+            <dt>{f.label}</dt>
+            <dd>{f.href ? <a href={f.href}>{f.value}</a> : f.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="about-data__text">{basin.attribution.originatorsNote}</p>
+      {inegi && <p class="about-data__text">{inegi}</p>}
+      <p class="about-data__subhead">Coverage notes</p>
+      <ul class="about-data__list" data-basin-coverage>
+        {basin.coverage.map((c) => (
+          <li>{c}</li>
+        ))}
+      </ul>
+    </div>
+  )}
 </section>
 
 <style>
@@ -107,6 +143,14 @@ const blocks = attributionBlocks(attribution, meta);
     padding: var(--space-2) var(--space-4);
     border-left: 3px solid var(--color-accent);
     background: var(--color-surface);
+  }
+
+  .about-data__text {
+    max-width: var(--measure);
+  }
+
+  .about-data__facts + .about-data__text {
+    margin-top: var(--space-4);
   }
 
   .about-data__list {

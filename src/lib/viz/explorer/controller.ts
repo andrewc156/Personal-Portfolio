@@ -1,6 +1,7 @@
 import { Flood, isEssential } from '../../tda/index.ts';
 import type { Bar, H0Result } from '../../tda/index.ts';
 import type { ThemeName } from '../common/palettes.ts';
+import { axisEdges, paintHatch, screenAxes, type BasinMask } from './basin.ts';
 import { cellAreas, cellAtFraction, cellEdges, gridGeo, type GridGeo } from './geo.ts';
 import { basinMask, lakeMask, traceOutline, WaterPainter } from './map.ts';
 import {
@@ -34,6 +35,7 @@ import {
   hoverText,
   infoCard,
   length,
+  NBSP,
   readouts,
   stripLabel,
   summaryText,
@@ -179,6 +181,20 @@ export class ExplorerController {
   private labelBoxes = new Float64Array(4 * (IDENTITY_K + 2));
   private labelCount = 0;
   private readonly dash = [5, 4];
+  /** Basin mask (F12b): display-only; null until the client has loaded and verified it. */
+  private basin: BasinMask | null = null;
+  private basinOn = false;
+  /** Set by the client from basin-mask.json (basin.regionsLabel). */
+  basinLabel = 'the basin mask';
+  private basinLayer: HTMLCanvasElement | null = null;
+  /** Size and colours the cached layer was built for; rebuilt when any changes. */
+  private basinStale = true;
+  private basinW = 0;
+  private basinH = 0;
+  private basinBg = '';
+  private basinMuted = '';
+  private basinEdgeX: Int32Array = new Int32Array(0);
+  private basinEdgeY: Int32Array = new Int32Array(0);
 
   constructor(
     els: ExplorerElements,
@@ -331,6 +347,36 @@ export class ExplorerController {
     this.select(this.rows[next]);
   }
 
+  /**
+   * Hand over the verified basin mask (or null) and show or hide it. The mask only changes what is
+   * drawn over the map and the text that mentions it; the flood and the barcode never use it.
+   */
+  setBasin(mask: BasinMask | null, on: boolean): void {
+    if (mask && mask !== this.basin) {
+      this.basin = mask;
+      this.basinStale = true;
+    }
+    const show = on && !!this.basin;
+    if (show === this.basinOn && !mask) return;
+    this.basinOn = show;
+    this.els.root.dataset.basin = show ? 'on' : 'off';
+    this.dirty = true;
+    this.updateCard();
+    if (this.hoverCell >= 0) set(this.els.hover, this.hoverReadout(this.hoverCell));
+    this.queueSummary(0);
+    this.schedule();
+  }
+
+  get basinShown(): boolean {
+    return this.basinOn;
+  }
+
+  /** 14 or 15 inside the basin, 0 outside, −1 if the mask isn't loaded. */
+  basinAt(cell: number): number {
+    if (!this.basin || cell < 0 || cell >= this.basin.region.length) return -1;
+    return this.basin.region[cell];
+  }
+
   update(next: Partial<ExplorerSettings>): void {
     const prev = this.settings;
     this.settings = { ...prev, ...next };
@@ -447,11 +493,23 @@ export class ExplorerController {
     const card = this.card();
     const title = card ? card.title : 'No lake selected';
     const text = card
-      ? card.text
+      ? card.text + this.basinNote(this.selected!.birthCell, 'card')
       : 'Click a bar, or use a button in the “Longest-lived lakes” table, to see where a lake is born and where it spills.';
     if (this.els.cardTitle.textContent !== title) this.els.cardTitle.textContent = title;
     if (this.els.cardText.textContent !== text) this.els.cardText.textContent = text;
     this.els.root.dataset.selected = this.selected ? String(this.selected.birthCell) : '';
+  }
+
+  /** " Its pit is inside the basin mask (WBD region 15)." etc., or "" while the mask is off. */
+  private basinNote(cell: number, where: 'card' | 'hover'): string {
+    if (!this.basinOn) return '';
+    const r = this.basinAt(cell);
+    if (r < 0) return '';
+    if (where === 'hover')
+      return r ? ` · inside the basin mask (region${NBSP}${r})` : ' · outside the basin mask';
+    return r
+      ? ` Its pit is inside the basin mask (WBD region${NBSP}${r}).`
+      : ' Its pit is outside the basin mask.';
   }
 
   /** The info card for the selected lake, or null. */
@@ -500,6 +558,7 @@ export class ExplorerController {
     this.readTheme();
     if (before === this.theme && text === this.colors.text) return;
     this.applyColors();
+    this.basinStale = true;
     this.schedule();
   };
 
@@ -620,6 +679,7 @@ export class ExplorerController {
       ((g.W * g.block) / g.nativeW) * cw,
       ((g.H * g.block) / g.nativeH) * ch,
     );
+    if (this.basinOn) this.drawBasin(cw, ch);
     this.labelCount = 0;
     if (this.selected) this.drawSelected(this.selected);
     this.drawLakeLabels();
@@ -632,6 +692,88 @@ export class ExplorerController {
     this.renderMs[this.renderCount % this.renderMs.length] = performance.now() - t0;
     this.renderCount++;
     this.updateReadout(!this.playing);
+  }
+
+  /**
+   * Basin mask over the water: hatching outside, a line along the boundary. The layer is rasterised
+   * once per canvas size and theme at device resolution (each device pixel takes the cell under its
+   * centre, the same rule as the water and hover), then copied 1:1 each frame.
+   */
+  private drawBasin(cw: number, ch: number): void {
+    // Compared field by field (no per-frame string building).
+    if (
+      this.basinStale ||
+      cw !== this.basinW ||
+      ch !== this.basinH ||
+      this.basinBg !== this.colors.bg ||
+      this.basinMuted !== this.colors.muted
+    ) {
+      this.buildBasinLayer(cw, ch);
+      this.basinStale = false;
+      this.basinW = cw;
+      this.basinH = ch;
+      this.basinBg = this.colors.bg;
+      this.basinMuted = this.colors.muted;
+    }
+    if (this.basinLayer) this.mapCtx.drawImage(this.basinLayer, 0, 0);
+  }
+
+  /** Last basin-layer rasterisation time in ms (read by e2e / the checker). */
+  basinBuildMs = 0;
+
+  private buildBasinLayer(cw: number, ch: number): void {
+    const mask = this.basin;
+    if (!mask) return;
+    const t0 = performance.now();
+    const g = this.geo;
+    const d = this.dpr;
+    const layer = this.basinLayer ?? document.createElement('canvas');
+    this.basinLayer = layer;
+    layer.width = cw;
+    layer.height = ch;
+    const lc = layer.getContext('2d');
+    if (!lc) return;
+    const { cols, rows } = screenAxes(cw, ch, g);
+    const img = new ImageData(cw, ch);
+    const dark = this.theme === 'dark';
+    paintHatch(new Uint32Array(img.data.buffer), mask.inside, g.W, cols, rows, {
+      dim: packRgba(this.colors.bg, dark ? 150 : 130),
+      hatch: packRgba(this.colors.muted, dark ? 170 : 150),
+      period: Math.max(4, Math.round(7 * d)),
+      width: Math.max(1, Math.round(d)),
+    });
+    lc.putImageData(img, 0, 0);
+    // Boundary on the device-pixel grid lines between inside and outside pixels. Segments on the
+    // study-area rectangle are skipped: that is the edge of the data, not of the basin.
+    this.basinEdgeX = axisEdges(
+      cols,
+      g.W,
+      this.basinEdgeX.length === g.W + 1 ? this.basinEdgeX : undefined,
+    );
+    this.basinEdgeY = axisEdges(
+      rows,
+      g.H,
+      this.basinEdgeY.length === g.H + 1 ? this.basinEdgeY : undefined,
+    );
+    const ex = this.basinEdgeX;
+    const ey = this.basinEdgeY;
+    lc.beginPath();
+    traceOutline(mask.inside, g.W, g.H, (x0, y0, x1, y1) => {
+      if ((x0 === x1 && (x0 === 0 || x0 === g.W)) || (y0 === y1 && (y0 === 0 || y0 === g.H))) {
+        return;
+      }
+      lc.moveTo(ex[x0], ey[y0]);
+      lc.lineTo(ex[x1], ey[y1]);
+    });
+    lc.lineCap = 'square';
+    lc.lineJoin = 'miter';
+    lc.strokeStyle = this.colors.bg;
+    lc.lineWidth = 4 * d;
+    lc.stroke();
+    lc.strokeStyle = this.colors.accent;
+    lc.lineWidth = 2 * d;
+    lc.stroke();
+    this.basinBuildMs = performance.now() - t0;
   }
 
   private cellX(i: number): number {
@@ -855,12 +997,14 @@ export class ExplorerController {
 
   private hoverReadout(cell: number): string {
     const lake = this.flood.componentOf(cell);
-    return hoverText(
-      cell,
-      this.heights[cell],
-      this.geo,
-      lake >= 0 ? { rank: this.index.rankOf.get(lake), cell: lake } : null,
-      this.settings.units,
+    return (
+      hoverText(
+        cell,
+        this.heights[cell],
+        this.geo,
+        lake >= 0 ? { rank: this.index.rankOf.get(lake), cell: lake } : null,
+        this.settings.units,
+      ) + this.basinNote(cell, 'hover')
     );
   }
 
@@ -883,6 +1027,7 @@ export class ExplorerController {
       view: this.settings.view,
       rows: this.rows.length,
       selected: this.card(),
+      basin: this.basinOn ? this.basinLabel : null,
     });
     set(this.els.summary, text);
   }

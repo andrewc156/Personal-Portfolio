@@ -1,0 +1,15 @@
+mask bitplanes: 97311 55355 41956
+mask bytes: 33742 gzip: 2062 metadata: 13882
+Uncompahgre Peak 53447 14
+Grand Junction 40364 14
+Moab 46844 14
+Lake Mead 77944 15
+Las Vegas 77916 15
+Phoenix 113573 15
+Flagstaff 90770 15
+Salt Lake City 18062 out
+Great Salt Lake 12820 out
+Ely NV 37828 out
+coordinate checks: {'14': 3, '15': 4, 'out': 3}
+Official staged region 14 archive bytes/digest and credit request match
+Official staged region 15 archive bytes/digest and credit request match

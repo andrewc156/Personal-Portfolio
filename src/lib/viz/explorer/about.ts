@@ -1,4 +1,4 @@
-import type { ColoradoMeta } from './types.ts';
+import type { BasinMaskFile, ColoradoMeta } from './types.ts';
 
 /**
  * "About the data" (spec §6.4) is generated at build time from meta.json and ATTRIBUTION.md.
@@ -97,4 +97,42 @@ export function dataFacts(meta: ColoradoMeta): Fact[] {
     { label: 'Tie-break', value: meta.tieBreak },
     { label: 'Generated', value: meta.generatedAt },
   ];
+}
+
+/**
+ * Key facts about the basin mask (stretch S3) from basin-mask.json and meta.json: source, release,
+ * public-domain statement, cell rule and cell counts. Every value is copied from the files.
+ */
+export function basinFacts(info: BasinMaskFile, meta: ColoradoMeta): Fact[] {
+  const n = (v: number) => v.toLocaleString('en-US');
+  const facts: Fact[] = [
+    { label: 'Source', value: info.source.name, href: info.source.productPage },
+  ];
+  for (const r of info.source.regions) {
+    facts.push({ label: `Region ${r.huc2}`, value: `${r.name}: ${r.title}`, href: r.url });
+  }
+  facts.push(
+    { label: 'Use', value: info.attribution.publicDomain, href: info.attribution.creditSource },
+    { label: 'Cell rule', value: info.cellRule },
+    {
+      label: 'Basin cells',
+      value: `${n(info.stats.basinCells)} of ${n(meta.cells)} (${(100 * info.stats.basinFraction).toFixed(1)} %)`,
+    },
+    { label: 'Coordinates', value: info.source.crs ?? '' },
+  );
+  return facts.filter((f) => f.value !== '');
+}
+
+/**
+ * One sentence on the Mexican units, only if basin-mask.json's coverage notes record that WBD's
+ * border units were harmonized with INEGI (DECISIONS #78). Null otherwise: nothing is inferred.
+ */
+export function inegiNote(info: BasinMaskFile): string | null {
+  for (const c of info.coverage) {
+    const m = /areas along the border "([^"]+)"/.exec(c);
+    if (m && /in collaboration with Mexico's INEGI/.test(c)) {
+      return `Region 15 continues into Mexico. WBD metadata: areas along the border “${m[1]}”, in collaboration with Mexico’s INEGI. The mask includes those units; it is not limited to the United States.`;
+    }
+  }
+  return null;
 }

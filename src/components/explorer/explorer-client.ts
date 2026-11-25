@@ -2,8 +2,20 @@
  * /rising-water/ client: loads grid.f32, meta.json and barcode.json after the first paint, checks
  * the grid (byte length, SHA-256), runs the F3 engine on it in the browser, compares the live
  * barcode with barcode.json, then starts ExplorerController and wires the page's controls.
+ * The basin mask (F12b) is fetched only when its toggle is first switched on (or the URL hash asks
+ * for it), and is verified against meta.json before it is shown.
  */
 import { computeH0 } from '../../lib/tda/index.ts';
+import {
+  checkMaskFiles,
+  checkMaskHashes,
+  checkPlanes,
+  decodeMask,
+  maskHash,
+  parseMaskHash,
+  regionsLabel,
+  type BasinMask,
+} from '../../lib/viz/explorer/basin.ts';
 import {
   checkGridBytes,
   checkGridHash,
@@ -20,7 +32,7 @@ import {
 } from '../../lib/viz/explorer/controller.ts';
 import type { Pacing, StripView, Units } from '../../lib/viz/explorer/model.ts';
 import { fmt, length, lengthBoth } from '../../lib/viz/explorer/text.ts';
-import type { BarcodeFile, ColoradoMeta } from '../../lib/viz/explorer/types.ts';
+import type { BarcodeFile, BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types.ts';
 
 declare global {
   interface HTMLElement {
@@ -152,6 +164,7 @@ async function load(root: HTMLElement): Promise<void> {
     'ok',
   );
   wire(root, ex);
+  wireBasin(root, ex, meta);
   root.dataset.ready = 'true';
 }
 
@@ -308,6 +321,133 @@ function wire(root: HTMLElement, ex: ExplorerController): void {
     units: units(),
     selected: ex.selected,
   });
+}
+
+/** A failed basin-mask check: the reason shown to the reader, plus details for the console. */
+class MaskError extends Error {
+  constructor(
+    readonly reason: string,
+    readonly problems: string[] = [],
+  ) {
+    super(reason);
+  }
+}
+
+/** Fetch basin-mask.bin and basin-mask.json, verify both against meta.json, decode the planes. */
+async function loadBasin(meta: ColoradoMeta): Promise<{ mask: BasinMask; info: BasinMaskFile }> {
+  const bm = meta.basinMask;
+  if (!bm) throw new MaskError('meta.json does not list a basin mask');
+  let bin: ArrayBuffer;
+  let raw: ArrayBuffer;
+  try {
+    [bin, raw] = await Promise.all([
+      fetchData(bm.file, 'buffer'),
+      fetchData(bm.metaFile, 'buffer'),
+    ]);
+  } catch (e) {
+    throw new MaskError('the mask files could not be downloaded', [String(e)]);
+  }
+  let info: BasinMaskFile;
+  try {
+    info = JSON.parse(new TextDecoder().decode(raw)) as BasinMaskFile;
+  } catch (e) {
+    throw new MaskError(`${bm.metaFile} is not valid JSON`, [String(e)]);
+  }
+  const files = checkMaskFiles(bin.byteLength, info, meta);
+  if (!files.ok) throw new MaskError('the mask does not match the elevation grid', files.problems);
+  const [binHash, jsonHash] = await Promise.all([sha256Hex(bin), sha256Hex(raw)]);
+  const hashes = checkMaskHashes(binHash, jsonHash, meta);
+  if (!hashes.ok) {
+    throw new MaskError('the mask’s SHA-256 checksum is not the published one', hashes.problems);
+  }
+  const bytes = new Uint8Array(bin);
+  const planes = checkPlanes(bytes, meta.cells, bm.basinCells);
+  if (!planes.ok) throw new MaskError('the mask’s bit planes are inconsistent', planes.problems);
+  return { mask: decodeMask(bytes, meta.cells), info };
+}
+
+/**
+ * The "Basin mask" toggle: off by default; lazy, verified load; URL hash "#mask=basin"; the
+ * lakes table's "Pit in basin" column. A failed load is reported next to the toggle and leaves
+ * everything else running.
+ */
+function wireBasin(root: HTMLElement, ex: ExplorerController, meta: ColoradoMeta): void {
+  const box = root.querySelector<HTMLInputElement>('[data-ex-basin]');
+  const status = root.querySelector<HTMLElement>('[data-ex-basin-status]');
+  if (!box || !status) return;
+  const cols = document.querySelectorAll<HTMLElement>('[data-basin-col]');
+  const cells = document.querySelectorAll<HTMLElement>('[data-basin-cell]');
+  // Off unless the hash asks for it (ignore any checked state the browser restores on reload).
+  box.checked = false;
+  let loaded: Promise<{ mask: BasinMask; info: BasinMaskFile }> | null = null;
+  let revision = 0;
+  let filled = false;
+  const okText = (n: number) => {
+    const pct = ((100 * n) / meta.cells).toFixed(1);
+    return `Shown: ${n.toLocaleString('en-US')} of ${meta.cells.toLocaleString('en-US')} cells (${pct}\u00a0%) are inside the basin. Hatched cells are outside; the line is the boundary.`;
+  };
+  const setMsg = (text: string, kind: 'idle' | 'loading' | 'ok' | 'error') => {
+    if (status.textContent !== text) status.textContent = text;
+    status.dataset.kind = kind;
+  };
+  const showColumn = (on: boolean) => {
+    if (on && !filled) {
+      for (const td of cells) {
+        const r = ex.basinAt(Number(td.dataset.basinCell));
+        td.textContent = r < 0 ? '–' : r ? `yes (region\u00a0${r})` : 'no';
+      }
+      filled = true;
+    }
+    for (const el of cols) el.hidden = !on;
+    for (const el of cells) el.hidden = !on;
+  };
+  const writeHash = (on: boolean) => {
+    const next = maskHash(on, location.hash);
+    if (next === location.hash || (next === '' && location.hash === '')) return;
+    history.replaceState(history.state, '', location.pathname + location.search + next);
+  };
+  const apply = async (on: boolean, fromHash: boolean) => {
+    const current = ++revision;
+    if (box.checked !== on) box.checked = on;
+    root.dataset.basin = on ? 'loading' : 'off';
+    if (!fromHash) writeHash(on);
+    if (!on) {
+      ex.setBasin(null, false);
+      showColumn(false);
+      setMsg('', 'idle');
+      return;
+    }
+    setMsg('Loading the basin mask…', 'loading');
+    const pending = (loaded ??= loadBasin(meta));
+    try {
+      const { mask, info } = await pending;
+      if (current !== revision) return;
+      ex.basinLabel = regionsLabel(info.source.regions);
+      ex.setBasin(mask, true);
+      showColumn(true);
+      setMsg(okText(mask.count), 'ok');
+    } catch (e) {
+      if (loaded === pending) loaded = null; // allow a retry
+      if (current !== revision) return;
+      const reason = e instanceof MaskError ? e.reason : 'it could not be read';
+      console.error(`${LOG} basin mask failed: ${reason}`, e instanceof MaskError ? e.problems : e);
+      box.checked = false;
+      ex.setBasin(null, false);
+      root.dataset.basin = 'error';
+      showColumn(false);
+      writeHash(false);
+      setMsg(
+        `The basin mask failed to load (${reason}), so it is not shown. The map, the barcode and the table work as before.`,
+        'error',
+      );
+    }
+  };
+  box.addEventListener('change', () => void apply(box.checked, false));
+  window.addEventListener('hashchange', () => {
+    const want = parseMaskHash(location.hash);
+    if (want !== null && want !== box.checked) void apply(want, true);
+  });
+  if (parseMaskHash(location.hash) === true) void apply(true, true);
 }
 
 function fail(root: HTMLElement, err: unknown): void {

@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:26 EST, Codex (Control)
+**Last updated:** 2026-11-24 20:31 EST, Codex (Control)
 
 ## Status
 
@@ -22,19 +22,18 @@
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
 | F10 Extra hero modes (S1) | done | PASS_WITH_NOTES (attempt 2) | `0454256` |
-| F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip delegated to viz-builder | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
-| F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
-| F13 Place labels (S4) | F13a accepted, F13b queued after F12b | PASS_WITH_NOTES (F13a attempt 1) | — |
+| F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip built, checker queued | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
+| F12 Basin mask (S3) | F12a data done. F12b accepted, commit pending. | PASS_WITH_NOTES (F12a and F12b attempt 1) | `4c32017` |
+| F13 Place labels (S4) | F13a done, F13b queued after F12b | PASS_WITH_NOTES (F13a attempt 1) | `7aa2244` |
 
 ## Current task (one checker and one builder in parallel, with no overlapping paths)
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F11b islands barcode attempt 1 | viz-builder | Hero components, hero viz, unit/browser tests, docs/builds/F11b/attempt-1.md | Delegated with approved explainer wording. | Builder report and fresh checker. |
-| F13a check | checker | docs/checks/F13a/ only | Data-engineer finished recovery and verified cached output. Replaced Python 3.11-only UTC alias in three pipeline files for §7 Python 3.10 compatibility. | PASS_WITH_NOTES. All 39 labels checked against primary archives. Commit pending. |
-| F12b | viz-builder | Explorer files listed below | Review complete. Viz-builder guarded stale mask requests and added a regression. Astro check, lint and 80 explorer unit tests passed. | Independent checker after accepted F13a data. |
+| F11b islands barcode attempt 1 | viz-builder | Hero components, hero viz, unit/browser tests, docs/builds/F11b/attempt-1.md | Built with approved wording. Astro check, lint and 27 focused tests passed. | Snapshot ready at /private/tmp/portfolio-recovery.RmJMcJ/F11b. Check after F12b. |
+| F12b attempt 1 | checker | docs/checks/F12b/ and isolated F12b snapshot | Builder reviewed, fixed stale mask requests, and passed fast gates. | PASS_WITH_NOTES: all 164 browser tests that ran passed. Lighthouse median performance 96, CLS 0. Commit pending. |
 
-Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (after F12b + F13a), then a fresh F9 audit.
+F13b follows accepted F12b and F13a. A fresh full-site audit follows the stretch work.
 
 ## Handoff vs repo (resume check)
 
@@ -46,8 +45,7 @@ Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (aft
 ## Uncommitted changes
 
 All unverified:
-- F11b build may touch the hero components, hero viz files, unit/browser tests and attempt-1 report. F10 is committed.
-- F13a (PASS_WITH_NOTES, commit pending): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
+- F11b built, unchecked: `e2e/hero.spec.ts`, `src/components/hero/{HeroSettings.astro,hero-client.ts}`, `src/lib/viz/hero/{barcode,controller,islands,model,text}.ts`, `tests/unit/viz/model.test.ts` and `docs/builds/F11b/attempt-1.md`.
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
 ## Open issues and "Needs Andrew"
@@ -59,19 +57,19 @@ All unverified:
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
 - Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
 - GitHub CI is GREEN again (run 45521148302 on `e473de0`, which includes CI1 `7e9b745`, the config fix `2d79120` and F12a). It had been red since `ef15630`. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
-- F12a notes: optional INEGI credit for the Mexican units (F12b); stale 1508 sentence in docs/data.md (F13a is fixing it).
+- F13a updated the Sonora wording in `docs/data.md` and made the basin coverage text ready for the F12b About panel.
 - F13b notes from F13a: show labels.json attribution.credit in About; 9 labels use anchor "mouth"; use `display` if present; Las Vegas at x=2 (place text east).
 - F12b check note: its e2e 3 MB transfer test fails only on the dev server (unminified). Must be confirmed on preview. F12b depends on F13a's basin-mask.json SHA, so check F13a before F12b if F13a's addendum changes the json. Order: F10 → F13a → F12b.
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
 
-1. Finish the fresh F13a check and commit/push on acceptance.
-2. Check the F11b builder result and F12b explorer mask in sequence on port 4321, then commit/push each accepted feature.
+1. Finish the independent F12b check and commit/push on acceptance.
+2. Run the independent F11b check once its builder finishes and port 4321 is free. Commit/push on acceptance.
 3. Build and check F13b, then run the fresh F9 full-site audit.
 
 ## WIP branch
 
 none
 
-Latest Control push: F10 `0454256` to origin/main. Unchecked candidates remain local.
+Latest Control push: F13a `7aa2244` to origin/main. Unchecked candidates remain local.

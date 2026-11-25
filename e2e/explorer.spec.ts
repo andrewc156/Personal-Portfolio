@@ -120,11 +120,19 @@ test.describe('explorer: load and verification', () => {
     expect(errors).toEqual([]);
   });
 
-  test('data transferred ≤ 3 MB and no third-party requests', async ({ page }) => {
+  test('data transferred ≤ 3 MB, no third-party requests, basin mask not fetched', async ({
+    page,
+    baseURL,
+  }) => {
     let bytes = 0;
     const offsite: string[] = [];
+    const masks: string[] = [];
+    const origin = new globalThis.URL(baseURL ?? 'http://localhost:4321').origin;
+    page.on('request', (r) => {
+      if (r.url().includes('basin-mask')) masks.push(r.url());
+    });
     page.on('requestfinished', async (r) => {
-      if (!r.url().startsWith('http://localhost:4321')) offsite.push(r.url());
+      if (!r.url().startsWith(origin)) offsite.push(r.url());
       const s = await r.sizes();
       bytes += s.responseBodySize + s.responseHeadersSize;
     });
@@ -133,6 +141,8 @@ test.describe('explorer: load and verification', () => {
     await page.waitForTimeout(500);
     expect(offsite).toEqual([]);
     expect(bytes).toBeLessThanOrEqual(3 * 1024 * 1024);
+    // The basin mask (F12b) is off by default and is not on the critical path.
+    expect(masks).toEqual([]);
   });
 });
 
@@ -492,5 +502,327 @@ test.describe('explorer: layout and accessibility', () => {
     await expect(page.locator('[data-required-notice]')).toHaveText(m.licence.requiredNotice);
     await expect(page.locator('[data-processing] li')).toHaveText(m.processing);
     await expect(page.locator('[data-limitations] li')).toHaveText(m.limitations);
+  });
+});
+
+// ---- F12b: basin mask (stretch S3) ----------------------------------------------------------
+
+const basinInfo = JSON.parse(readFileSync('public/data/colorado/basin-mask.json', 'utf8')) as {
+  attribution: { credit: string };
+  coverage: string[];
+  grid: { extent: [number, number, number, number] };
+};
+
+/** docs/data.md GNIS sanity point (parsed, not retyped). */
+function gnis(place: string): { lat: number; lon: number } {
+  const md = readFileSync('docs/data.md', 'utf8');
+  const line = md.split('\n').find((l) => l.startsWith(`| ${place} |`))!;
+  const [lat, lon] = line
+    .split('|')[3]
+    .split(',')
+    .map((v) => Number(v.trim().replace('−', '-')));
+  return { lat, lon };
+}
+
+/** Fractional map position of a lat/lon on the native footprint. */
+function mapFraction(p: { lat: number; lon: number }): { fx: number; fy: number } {
+  const [w, s, e, n] = basinInfo.grid.extent;
+  return { fx: (p.lon - w) / (e - w), fy: (n - p.lat) / (n - s) };
+}
+
+async function basinState(page: Page): Promise<string> {
+  return page.evaluate(
+    () => document.querySelector<HTMLElement>('[data-explorer]')!.dataset.basin ?? '',
+  );
+}
+
+test.describe('explorer: basin mask', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+  });
+
+  test('toggle on/off by keyboard: lazy verified load, hatching aligned with known places', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('console', (m) => {
+      if (m.type() === 'error') errors.push(m.text());
+    });
+    const masks: string[] = [];
+    page.on('request', (r) => {
+      if (r.url().includes('basin-mask')) masks.push(r.url());
+    });
+    await page.goto(URL);
+    await ready(page);
+    await pause(page);
+    expect(masks).toEqual([]);
+    const box = page.getByRole('checkbox', { name: 'Basin mask' });
+    await expect(box).toBeEnabled();
+    await expect(box).not.toBeChecked();
+    await expect(page.locator('#ex-basin-desc')).toContainText(
+      'USGS Watershed Boundary Dataset regions 14–15',
+    );
+    await expect(page.locator('[data-basin-col]')).toBeHidden();
+
+    await box.focus();
+    await page.keyboard.press('Space');
+    await expect.poll(() => basinState(page)).toBe('on');
+    await expect(box).toBeChecked();
+    expect(masks.some((u) => u.endsWith('/basin-mask.bin'))).toBe(true);
+    await expect(page.locator('[data-ex-basin-status]')).toContainText('97,311 of 134,964');
+
+    // Known cells: Lake Mead inside (region 15), Great Salt Lake outside.
+    const mead = mapFraction(gnis('Lake Mead'));
+    const gsl = mapFraction(gnis('Great Salt Lake'));
+    const probe = await page.evaluate(
+      ({ mead, gsl }) => {
+        const e = document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!;
+        e.scrubTo(0); // only the lowest cell is wet
+        const c = document.querySelector<HTMLCanvasElement>('[data-ex-map]')!;
+        return new Promise<{ cells: number[]; alpha: number[]; regions: number[] }>((res) =>
+          requestAnimationFrame(() =>
+            requestAnimationFrame(() => {
+              const ctx = c.getContext('2d')!;
+              const at = (p: { fx: number; fy: number }) =>
+                ctx.getImageData(Math.floor(p.fx * c.width), Math.floor(p.fy * c.height), 1, 1)
+                  .data[3];
+              const cells = [e.cellAt(mead.fx, mead.fy), e.cellAt(gsl.fx, gsl.fy)];
+              res({
+                cells,
+                regions: cells.map((k) => e.basinAt(k)),
+                alpha: [at(mead), at(gsl)],
+              });
+            }),
+          ),
+        );
+      },
+      { mead, gsl },
+    );
+    expect(probe.regions).toEqual([15, 0]);
+    expect(probe.alpha[0]).toBe(0); // inside: nothing drawn over the relief
+    expect(probe.alpha[1]).toBeGreaterThan(0); // outside: dimmed / hatched
+
+    // Table column and hover note.
+    await expect(page.locator('[data-basin-col]')).toBeVisible();
+    const lowest = page.locator(`[data-basin-cell="${meta.min.cell}"]`);
+    await expect(lowest).toHaveText(`yes (region${NBSP}15)`);
+    const map = page.locator('[data-ex-map]');
+    await map.scrollIntoViewIfNeeded();
+    const mb = (await map.boundingBox())!;
+    await page.mouse.move(mb.x + gsl.fx * mb.width, mb.y + gsl.fy * mb.height);
+    await expect(page.locator('[data-ex-hover]')).toContainText('outside the basin mask');
+    await page.evaluate(() =>
+      document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!.setPlaying(false),
+    );
+    await expect(page.locator('[data-ex-summary]')).toContainText('Basin mask on');
+
+    // Off again: nothing drawn at the outside point, column hidden, no refetch on the next on.
+    await box.focus();
+    await page.keyboard.press('Space');
+    await expect.poll(() => basinState(page)).toBe('off');
+    await expect(page.locator('[data-basin-col]')).toBeHidden();
+    const alphaOff = await page.evaluate((p) => {
+      const c = document.querySelector<HTMLCanvasElement>('[data-ex-map]')!;
+      return new Promise<number>((res) =>
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() =>
+            res(
+              c
+                .getContext('2d')!
+                .getImageData(Math.floor(p.fx * c.width), Math.floor(p.fy * c.height), 1, 1)
+                .data[3],
+            ),
+          ),
+        ),
+      );
+    }, gsl);
+    expect(alphaOff).toBe(0);
+    const n = masks.length;
+    await box.check();
+    await expect.poll(() => basinState(page)).toBe('on');
+    expect(masks.length).toBe(n);
+    // The barcode is unchanged by the mask.
+    const live = await page.evaluate(() => {
+      const e = document.querySelector<HTMLElement>('[data-explorer]')!.__explorer!;
+      return e.result.bars.filter((b) => b.death === Infinity || b.death - b.birth >= 1).length;
+    });
+    expect(live).toBe(barcode.count);
+    expect(errors).toEqual([]);
+  });
+
+  test('URL hash round trip; section anchors still work', async ({ page }) => {
+    await page.goto(URL);
+    await ready(page);
+    await page.getByRole('checkbox', { name: 'Basin mask' }).check();
+    await expect.poll(() => basinState(page)).toBe('on');
+    expect(new globalThis.URL(page.url()).hash).toBe('#mask=basin');
+
+    await page.reload();
+    await ready(page);
+    await expect.poll(() => basinState(page)).toBe('on');
+    await expect(page.getByRole('checkbox', { name: 'Basin mask' })).toBeChecked();
+
+    await page.getByRole('checkbox', { name: 'Basin mask' }).uncheck();
+    await expect.poll(() => basinState(page)).toBe('off');
+    expect(new globalThis.URL(page.url()).hash).toBe('');
+
+    // Hash changes drive the toggle too.
+    await page.evaluate(() => (location.hash = '#mask=basin'));
+    await expect.poll(() => basinState(page)).toBe('on');
+    // An anchor hash (backward compatible) neither turns the mask off nor breaks navigation.
+    await page.evaluate(() => (location.hash = '#about-data'));
+    await page.waitForTimeout(200);
+    expect(await basinState(page)).toBe('on');
+
+    const masks: string[] = [];
+    page.on('request', (r) => {
+      if (r.url().includes('basin-mask')) masks.push(r.url());
+    });
+    await page.goto('about:blank');
+    await page.goto(URL + '#lakes');
+    await ready(page);
+    await expect(page.getByRole('checkbox', { name: 'Basin mask' })).not.toBeChecked();
+    await page.waitForTimeout(300);
+    expect(masks).toEqual([]);
+    expect(new globalThis.URL(page.url()).hash).toBe('#lakes');
+  });
+
+  const broken: { name: string; status: number; body: () => Buffer | string; reason: RegExp }[] = [
+    {
+      name: 'missing (404)',
+      status: 404,
+      body: () => 'not found',
+      reason: /could not be downloaded/,
+    },
+    {
+      name: 'one flipped bit (SHA-256)',
+      status: 200,
+      body: () => {
+        const b = Buffer.from(readFileSync('public/data/colorado/basin-mask.bin'));
+        b[4000] ^= 0x08;
+        return b;
+      },
+      reason: /SHA-256 checksum/,
+    },
+    {
+      name: 'truncated',
+      status: 200,
+      body: () => readFileSync('public/data/colorado/basin-mask.bin').subarray(0, 1000),
+      reason: /does not match the elevation grid/,
+    },
+  ];
+  for (const c of broken) {
+    test(`mask ${c.name}: clear error, mask off, explorer keeps working`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on('console', (m) => {
+        if (m.type() === 'error') errors.push(m.text());
+      });
+      page.on('pageerror', (e) => errors.push(e.message));
+      await page.route('**/data/colorado/basin-mask.bin', (route) =>
+        route.fulfill({
+          status: c.status,
+          contentType: 'application/octet-stream',
+          body: c.body(),
+        }),
+      );
+      await page.goto(URL + '#mask=basin');
+      await ready(page);
+      await expect.poll(() => basinState(page)).toBe('error');
+      const status = page.locator('[data-ex-basin-status]');
+      await expect(status).toBeVisible();
+      await expect(status).toHaveAttribute('role', 'status');
+      await expect(status).toHaveAttribute('data-kind', 'error');
+      await expect(status).toContainText('The basin mask failed to load');
+      await expect(status).toContainText(c.reason);
+      const box = page.getByRole('checkbox', { name: 'Basin mask' });
+      await expect(box).not.toBeChecked();
+      await expect(box).toBeEnabled();
+      expect(new globalThis.URL(page.url()).hash).toBe('');
+      await expect(page.locator('[data-basin-col]')).toBeHidden();
+      // The rest of the explorer is untouched.
+      expect((await state(page)).match).toBe('true');
+      await pause(page);
+      await page.locator('[data-ex-play]').click();
+      expect((await state(page)).state).toBe('playing');
+      await pause(page);
+      await page.getByRole('button', { name: 'Show lake 1 on the map', exact: true }).click();
+      expect((await state(page)).selected).not.toBe('');
+      // One console.error from the explorer (plus the browser's own line for an HTTP 404).
+      const ours = errors.filter((e) => !e.startsWith('Failed to load resource'));
+      expect(ours).toHaveLength(1);
+      expect(ours[0]).toContain('basin mask failed');
+    });
+  }
+
+  test('switching the mask off and on while loading reports a failed request once', async ({
+    page,
+  }) => {
+    const errors: string[] = [];
+    page.on('console', (message) => {
+      if (message.type() === 'error' && message.text().includes('basin mask failed')) {
+        errors.push(message.text());
+      }
+    });
+    let release!: () => void;
+    const response = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    await page.route(
+      '**/data/colorado/basin-mask.bin',
+      async (route) => {
+        await response;
+        await route.fulfill({ status: 404, body: 'not found' });
+      },
+      { times: 1 },
+    );
+    await page.goto(URL);
+    await ready(page);
+    const box = page.getByRole('checkbox', { name: 'Basin mask' });
+    await box.check();
+    await box.uncheck();
+    await box.check();
+    await expect(page.locator('[data-ex-basin-status]')).toHaveAttribute('data-kind', 'loading');
+    release();
+    await expect.poll(() => basinState(page)).toBe('error');
+    await expect(box).not.toBeChecked();
+    expect(errors).toHaveLength(1);
+
+    await box.check();
+    await expect.poll(() => basinState(page)).toBe('on');
+  });
+
+  for (const width of [375, 768, 1280]) {
+    for (const colorScheme of ['light', 'dark'] as const) {
+      test(`mask on: no overflow, axe clean at ${width} ${colorScheme}`, async ({ browser }) => {
+        const ctx = await browser.newContext({ viewport: { width, height: 900 }, colorScheme });
+        const page = await ctx.newPage();
+        await page.goto(URL + '#mask=basin');
+        await ready(page);
+        await pause(page);
+        await expect.poll(() => basinState(page)).toBe('on');
+        await page.getByRole('button', { name: 'Show lake 3 on the map', exact: true }).click();
+        await settled(page);
+        const m = await page.evaluate(() => ({
+          sw: document.documentElement.scrollWidth,
+          cw: document.documentElement.clientWidth,
+        }));
+        expect(m.sw).toBeLessThanOrEqual(m.cw);
+        await expect(page.locator('[data-ex-card-text]')).toContainText('basin mask');
+        const axe = await new AxeBuilder({ page }).analyze();
+        const bad = axe.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+        expect(bad.map((v) => v.id)).toEqual([]);
+        await ctx.close();
+      });
+    }
+  }
+
+  test('About the data shows the WBD credit and coverage notes from basin-mask.json', async ({
+    page,
+  }) => {
+    await page.goto(URL);
+    await expect(page.locator('[data-basin-credit]')).toHaveText(basinInfo.attribution.credit);
+    await expect(page.locator('[data-basin-coverage] li')).toHaveText(basinInfo.coverage);
+    await expect(page.locator('[data-basin-about]')).toContainText('INEGI');
+    await expect(page.locator('body')).not.toContainText(/US portion only/i);
   });
 });

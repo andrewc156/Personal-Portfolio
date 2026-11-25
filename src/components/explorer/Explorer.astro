@@ -8,14 +8,19 @@
 import { EXPLORER_DEFAULTS } from '../../lib/viz/explorer/controller';
 import { displayAspect, gridGeo } from '../../lib/viz/explorer/geo';
 import { IDENTITY, NEUTRAL_WATER } from '../../lib/viz/explorer/palette';
-import type { ColoradoMeta } from '../../lib/viz/explorer/types';
+import type { BasinMaskFile, ColoradoMeta } from '../../lib/viz/explorer/types';
+import { regionsLabel } from '../../lib/viz/explorer/basin';
 import { length } from '../../lib/viz/explorer/text';
 import { withBase } from '../../lib/url';
 
 interface Props {
   meta: ColoradoMeta;
+  /** basin-mask.json (stretch S3); null hides the toggle. */
+  basin: BasinMaskFile | null;
 }
-const { meta } = Astro.props;
+const { meta, basin } = Astro.props;
+const basinLabel = basin ? regionsLabel(basin.source.regions) : '';
+const basinNames = basin ? basin.source.regions.map((r) => r.name).join(' and ') : '';
 const geo = gridGeo(meta);
 const aspect = displayAspect(geo);
 // The hillshade's last column / row are partial 30″ blocks: scale it so its pixels line up with the
@@ -293,6 +298,28 @@ const inlineCss =
           </button>
         </div>
       </div>
+
+      {basin && (
+        <div class="ex-basin" data-basin-wrap>
+          <div class="ex-basin__row">
+            <input
+              type="checkbox"
+              id="ex-basin"
+              data-ex-basin
+              data-ex-control
+              disabled
+              aria-describedby="ex-basin-desc"
+            />
+            <label for="ex-basin">Basin mask</label>
+          </div>
+          <p id="ex-basin-desc" class="ex-basin__desc">
+            {basinLabel} ({basinNames}). Off by default. It hatches the map outside the basin and
+            marks each lake in the table below; the lakes and the barcode are still computed on the
+            whole rectangle.
+          </p>
+          <p class="ex-basin__status" data-ex-basin-status data-kind="idle" role="status" />
+        </div>
+      )}
     </form>
   </div>
 
@@ -578,5 +605,46 @@ const inlineCss =
 
   .ex-seg__label {
     margin-right: var(--space-1);
+  }
+
+  .ex-basin {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .ex-basin__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ex-basin__row input {
+    width: 1.15rem;
+    height: 1.15rem;
+    margin: 0;
+    accent-color: var(--color-accent);
+  }
+
+  .ex-basin__row label {
+    font-weight: var(--fw-semibold);
+  }
+
+  .ex-basin__desc,
+  .ex-basin__status {
+    margin: 0;
+    font-size: var(--fs-xsmall);
+    line-height: 1.4;
+    color: var(--color-text-muted);
+    max-width: none;
+  }
+
+  .ex-basin__status:empty {
+    display: none;
+  }
+
+  .ex-basin__status[data-kind='error'] {
+    color: var(--color-text);
+    border-left: 3px solid var(--color-text);
+    padding-left: var(--space-2);
   }
 </style>

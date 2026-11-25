@@ -142,6 +142,8 @@ export interface SummaryInput {
   view: StripView;
   rows: number;
   selected: InfoCard | null;
+  /** The basin mask's label (F12b) when it is shown, e.g. "USGS Watershed Boundary Dataset regions 14–15". */
+  basin?: string | null;
 }
 
 /** Hidden live summary; updated on pause, scrub and selection, never every frame. */
@@ -152,6 +154,11 @@ export function summaryText(s: SummaryInput): string {
     `${fmt(s.lakes, 0)} ${s.lakes === 1 ? 'lake' : 'lakes'}; ${fmt(s.areaPct, 1)}${NBSP}% of the area flooded.`,
     `${s.view === 'diagram' ? 'Persistence diagram' : 'Barcode'} showing ${s.rows} ${s.rows === 1 ? 'lake' : 'lakes'}, paced by ${s.pacing === 'percentile' ? 'percentile' : 'metres'}.`,
   ];
+  if (s.basin) {
+    parts.push(
+      `Basin mask on: cells outside ${s.basin} are hatched; the lakes and the barcode still cover the whole rectangle.`,
+    );
+  }
   if (s.selected) parts.push(`Selected: ${s.selected.title}. ${s.selected.text}`);
   return parts.join(' ');
 }

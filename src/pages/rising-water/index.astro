@@ -9,7 +9,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Explorer from '../../components/explorer/Explorer.astro';
 import LakesTable from '../../components/explorer/LakesTable.astro';
 import AboutData from '../../components/explorer/AboutData.astro';
-import { readAttribution, readBarcode, readMeta } from '../../components/explorer/build-data';
+import {
+  readAttribution,
+  readBarcode,
+  readBasinMaskInfo,
+  readMeta,
+} from '../../components/explorer/build-data';
 import { profile } from '../../components/site/profile';
 import reposRaw from '../../data/open-science.yaml?raw';
 import { withBase } from '../../lib/url';
@@ -17,6 +22,7 @@ import { withBase } from '../../lib/url';
 const meta = readMeta();
 const barcode = readBarcode();
 const attribution = readAttribution();
+const basin = readBasinMaskInfo(meta);
 
 interface Repo {
   id?: string;
@@ -54,9 +60,9 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
       </p>
     </header>
 
-    <Explorer meta={meta} />
+    <Explorer meta={meta} basin={basin} />
 
-    <LakesTable meta={meta} barcode={barcode} id="lakes" />
+    <LakesTable meta={meta} barcode={barcode} basin={basin} id="lakes" />
 
     <section class="section" id="how-to-read" aria-labelledby="how-to-read-title">
       <h2 id="how-to-read-title">How to read the barcode</h2>
@@ -101,7 +107,7 @@ const pipelineUrl = repos.find((r) => r.id === 'data-pipeline')?.url || '';
       </ul>
     </section>
 
-    <AboutData meta={meta} attribution={attribution} id="about-data" />
+    <AboutData meta={meta} attribution={attribution} basin={basin} id="about-data" />
 
     <section class="section" id="code" aria-labelledby="code-title">
       <h2 id="code-title">Code</h2>

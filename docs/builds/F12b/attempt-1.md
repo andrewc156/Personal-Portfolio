@@ -8,14 +8,14 @@ Files changed:
 - src/lib/viz/explorer/text.ts: `SummaryInput.basin` (label) adds one sentence to the summary
 - src/lib/viz/explorer/types.ts: `ColoradoMeta.basinMask?`, `BasinMaskFile`
 - src/lib/viz/explorer/about.ts: `basinFacts`, `inegiNote`
-- src/components/explorer/explorer-client.ts: `loadBasin` (lazy, verified), `wireBasin` (toggle, status, hash, table column, error state)
+- src/components/explorer/explorer-client.ts: `loadBasin` (lazy, verified), `wireBasin` (toggle, status, hash, table column, error state). During recovery, added a revision guard so that only the latest toggle can update the UI after a shared request settles. A failed request clears its cached promise for retry.
 - src/components/explorer/Explorer.astro: the toggle, its description and its status line, plus CSS
 - src/components/explorer/LakesTable.astro: hidden "Pit in basin" column and one explanatory sentence
 - src/components/explorer/AboutData.astro: "Basin mask" subsection
 - src/components/explorer/build-data.ts: `readBasinMaskInfo` (build fails if meta lists a mask file that is missing, or if the credit lines differ)
 - src/pages/rising-water/index.astro: passes `basin` to the three components
 - tests/unit/viz/explorer/basin.test.ts (new, 15 tests)
-- e2e/explorer.spec.ts: 13 new tests in "explorer: basin mask"; the third-party check now uses `baseURL`'s origin instead of a hard-coded 4321 and asserts that basin-mask is not fetched on load
+- e2e/explorer.spec.ts: 14 new tests in "explorer: basin mask", including a delayed request failure after rapid off/on and a successful retry. The third-party check uses `baseURL`'s origin and confirms the basin mask does not load by default.
 
 How to verify:
 - `npm run check`: 0 errors, 0 warnings
@@ -35,6 +35,7 @@ Acceptance criteria (self-check):
 - ✅ Verified against meta.json. Checks cover size, the files entry, SHA-256 of both .bin and .json, the basin-mask.json grid (size, bbox, extent, cellDeg, grid.f32 SHA-256), padding bits, plane 1 ⊆ plane 0, and plane-0 popcount = meta.basinMask.basinCells. Unit test: the committed file passes; region counts equal stats (41,956 and 55,355).
 - ✅ Plane 0 is decoded with `(byte[i >> 3] >> (i & 7)) & 1` (unit test with a hand-built buffer).
 - ✅ Corrupt or missing mask shows a clear error and the explorer keeps working. e2e covers 404, one flipped bit (SHA-256) and truncation (size). In each case the status is shown, the checkbox is unchecked, the hash is cleared, and Play and the table buttons still work.
+- Pending checker: the new delayed-failure test exercises rapid off/on during one request, checks for a single reported error, and confirms a retry loads the mask.
 - ✅ Alignment. Unit test: all 10 on-grid GNIS points from docs/data.md (parsed, not retyped) have the expected 14, 15 or outside value, including Lake Mead = 15 and Great Salt Lake = outside. e2e: on the rendered canvas the Lake Mead pixel has alpha 0 and the Great Salt Lake pixel alpha > 0; `basinAt` returns [15, 0]; with the mask off, alpha is 0 again.
 - ✅ Light and dark are readable (self-screenshots at 1280 light, 1280 dark, 768 dark and 375 light). In dark mode the accent boundary is closer in hue to the neutral water; the hatching is the main cue there.
 - ✅ Nothing overflows at 375, 768 or 1280, and axe reports no serious or critical violations with the mask on. Six e2e tests (3 widths × 2 themes) pass against the dev server.
@@ -42,7 +43,7 @@ Acceptance criteria (self-check):
 - ✅ No third-party requests (e2e, origin taken from baseURL).
 - ✅ Unit tests cover decoding, checks, upsampling (hillshade and screen), hatching, the hash, and the copy helpers.
 - ✅ Copy: "USGS Watershed Boundary Dataset regions 14–15"; "US portion" appears nowhere (e2e asserts this). The credit comes from basin-mask.json (e2e `[data-basin-credit]`). The INEGI note is rendered only when the coverage notes record it, and it quotes the WBD metadata from them. No TDA claims beyond §6.6.
-- e2e run against my dev server (`PW_BASE_URL=http://localhost:4412`, private `--output` dir): 34 of 35 passed. The one failure is "data transferred ≤ 3 MB", at 3.25 MB in dev. Of that, 1.83 MB is unminified Vite deps and the dev toolbar; the data alone is 0.76 MB, unchanged because the mask is not loaded. That test is meant for preview. One earlier run also hit a Playwright artifact ENOENT, because another agent was writing to the shared `test-results/`; it passed on rerun with a private output dir.
+- The original builder recorded 34 of 35 tests passing on dev. The transfer test measured 3.25 MB there, including 1.83 MB of unminified Vite dependencies and the dev toolbar. The checker should measure the production build on preview. During recovery, `npm run check`, `npm run lint`, and all 80 explorer unit tests passed. The recovery did not run the browser suite.
 
 Needs Andrew: nothing new. DECISIONS #78 (keep 14 + 15 including 1508 Sonora) is followed as built.
 

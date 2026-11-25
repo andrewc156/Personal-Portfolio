@@ -1,0 +1,5 @@
+http://localhost:65324/rising-water/ 0.97 1 0.96 1 0
+http://localhost:65324/rising-water/ 0.96 1 0.96 1 0
+http://localhost:65324/rising-water/ 0.96 1 0.96 1 0
+http://localhost:65324/rising-water/ 0.96 1 0.96 1 0
+3-run medians after warm-up (performance/accessibility/best-practices/SEO/CLS) 0.96 1 0.96 1 0

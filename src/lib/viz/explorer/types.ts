@@ -56,7 +56,54 @@ export interface ColoradoMeta {
   };
   files: Record<string, { bytes: number; sha256?: string }>;
   barcode: { file: string; count: number; minPersistence: number; gridSha256: string };
+  /** Stretch S3 (F12a): the WBD basin mask; absent in older builds. */
+  basinMask?: {
+    file: string;
+    metaFile: string;
+    format: string;
+    source: string;
+    credit: string;
+    basinCells: number;
+  };
   generatedAt: string;
+}
+
+/** basin-mask.json (docs/data.md "Basin mask (stretch S3)"). Only the fields the explorer reads. */
+export interface BasinMaskFile {
+  format: { name: string; file: string; planeBytes: number; bytes: number; bitOrder: string };
+  description: string;
+  grid: {
+    file: string;
+    sha256: string;
+    bbox: [number, number, number, number];
+    width: number;
+    height: number;
+    cells: number;
+    cellDeg: number;
+    extent: [number, number, number, number];
+  };
+  cellRule: string;
+  source: {
+    name: string;
+    productPage: string;
+    accessPage: string;
+    regions: { huc2: string; name: string; url: string; title: string; pubdate: string }[];
+    originators: string[];
+    crs?: string;
+  };
+  attribution: {
+    credit: string;
+    publicDomain: string;
+    creditSource: string;
+    originatorsNote: string;
+  };
+  coverage: string[];
+  stats: {
+    cells: number;
+    basinCells: number;
+    basinFraction: number;
+    regions: Record<string, { name: string; cells: number }>;
+  };
 }
 
 /** barcode.json: columnar bars (see docs/data.md "barcode.json format"). */
