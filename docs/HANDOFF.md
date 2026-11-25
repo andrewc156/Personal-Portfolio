@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 EST, Claude Code (Control)
+**Last updated:** 2026-11-25 02:22:15 EST, Hermes Agent / Codex (Control)
 
 ## Status
 
@@ -32,9 +32,9 @@
 | F17 Garden header link and section order | done | PASS_WITH_NOTES (attempt 1) | `51133cd` |
 | F18 Stop GitHub Pages uploads | done | PASS (attempt 1) | `c9047a5` |
 | CI3 Place labels robust to font metrics | done; hosted CI green (run 45557116146) | PASS_WITH_NOTES (attempt 1) | `5c54ee2` |
-| F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | reports in this commit |
-| F19a Copy voice (first person, humanized) | built, checking | — | — |
-| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | built, checking | — | — |
+| F9 Final audit (post-stretch) | done (baseline before F19) | PASS_WITH_NOTES (attempt 4) | `e426d03` |
+| F19a Copy voice (first person, humanized) | building (recovery review) | no verdict (interrupted) | — |
+| F19b Hero first frame and framing, plus /rising-water/ spacing and hero reduced-motion race | building (recovery review) | no verdict (interrupted) | — |
 | F19c Visual polish within the system | todo, after F19a | — | — |
 | F9 re-audit after F19 | todo | — | — |
 
@@ -42,9 +42,12 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F19a + F19b check | checker (one agent, two reports) | docs/checks/F19a/attempt-1.md, docs/checks/F19b/attempt-1.md | Both builds done (docs/builds/F19a and F19b/attempt-1.md); 818 unit tests | Check. Then commit F19a and F19b separately on PASS. Then F19c (visual polish), which also needs the /rising-water/ lines 43/58 "Lakes are born" wording aligned with the new caption. |
+| F19a recovery | site-builder | copy/content and site e2e, `docs/builds/F19a/attempt-2.md` | Prior build report committed in `f65c6d0` | Review and finish or safely revert owned diff; then fresh checker. |
+| F19b recovery | viz-builder | hero, spacing and hero tests, `docs/builds/F19b/attempt-2.md` | Prior build report committed in `f65c6d0` | Review and finish or safely revert owned diff; then fresh checker. |
 
 ## Handoff vs repo (resume check)
+
+- Hermes resume: pull/fetch found `main = origin/main` at `f65c6d0`; CI run 45564236156 passed. Origin has only `main`; the old Claude worktree stays untouched. The F19 builds are complete on paper, but both checker reports were PARTIAL. F9 attempt 4 is already committed in `e426d03`; `docs/STATUS.md` had stale F19a/b todo rows. Disk check: 11 GiB free.
 
 - Claude Code resume (2026-11-25): main = origin/main at `c9047a5`. The handoff protocol section in CLAUDE.md already exists (`e659d0a`), so it wasn't re-added. No `wip/codex-handoff` or other WIP branch exists locally or on origin. The committed HANDOFF still listed F18 as "commit pending". The working-tree copy was already corrected. The F16 and F17 check reports were PARTIAL stubs, so both get fresh checks. Codex's /private/tmp snapshot is ignored.
 
@@ -55,13 +58,13 @@
 
 ## Uncommitted changes
 
-- F19a (unchecked): src/data/copy.yaml, src/content/research/*.yaml and src/content/work/*.yaml (descriptions only), src/components/content/{work.ts,ResearchCard.astro}, src/components/home/Contact.astro, src/pages/{about,garden}/index.astro, src/pages/research/[slug].astro, e2e/site.spec.ts, docs/builds/F19a/.
+- F19a (unchecked): src/data/copy.yaml, src/content/research/*.yaml and src/content/work/*.yaml (descriptions only), src/components/content/{work.ts,ResearchCard.astro}, src/components/home/Contact.astro, src/pages/{about,garden}/index.astro, src/pages/research/[slug].astro, e2e/site.spec.ts, docs/builds/F19a/.Rhistory (untracked, excluded from commits).
 - F19b (unchecked): src/lib/viz/hero/{controller,model,render-map}.ts, src/lib/viz/hero/modes/meta.ts, src/components/hero/Hero.astro, tests/unit/viz/start.test.ts, tests/unit/viz/modes/meta.test.ts, e2e/hero.spec.ts, src/components/explorer/LakesTable.astro and src/pages/rising-water/index.astro (spacing only), docs/builds/F19b/.
 - Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
 ## Open issues and "Needs Andrew"
 
-- The disk is nearly full: 261 MB free on 2026-11-25, 1.7 GB after `npm cache clean`. ~/Library/Caches holds 19 GB and the Playwright cache has 4 Chromium revisions (2.2 GB). Andrew should free space; a full verify plus Lighthouse needs more than 1 GB.
+- 11 GiB free at resume; recheck before full Lighthouse audit.
 - F9 attempt-4 notes: missing spaces on /rising-water/ at LakesTable.astro:36-37 and rising-water/index.astro:126-127 and :131-132 (folded into F19b); the hero reduced-motion e2e has a startup race at hero.spec.ts:918-928 (folded into F19b).
 
 - F16 notes (Andrew's call): the description is in the first person ("for my research"); it overlaps with the "Rising water" project; and it lacks `ongoing: true`. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
@@ -85,12 +88,12 @@
 
 ## Next 3 actions
 
-1. F9 attempt 4 audit (running; baseline). Commit its report. Fold any FAIL fixes into the F19 rounds.
-2. Start F19a (site-builder, copy) and F19b (viz-builder, hero) in parallel; their files don't overlap. Then F19c (site-builder, visual polish). Each one goes to the checker and is committed on PASS. Andrew's choices are in DECISIONS #85. F19a must include the new fact in DECISIONS #86 (interested in PhD programs and in math and data science REUs).
-3. Fresh F9 re-audit after F19, then a final handoff.
+1. Recover F19a/F19b with the owning builders; discard the two incomplete reports and rerun independent checks from scratch. Commit the checked features separately.
+2. F19c site-builder → checker (DECISIONS #85), including Rising water explainer wording alignment.
+3. Fresh F9 attempt 5 full-site audit; commit and push the report and final handoff.
 
 ## WIP branch
 
 none
 
-Latest Control push: CI3 `5c54ee2` to origin/main.
+Latest observed origin/main at resume: `f65c6d0` (CI green).
