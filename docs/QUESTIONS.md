@@ -20,7 +20,7 @@ The supplied CV resolves the profile, education, research, presentation and proj
 - [ ] Mission paragraph (first-person rewrite, F19a)
 - [ ] About bio (first-person rewrite, F19a)
 - [ ] Open science sentence in `src/data/copy.yaml`.
-- [ ] Contact lead-in in src/data/copy.yaml (contact), from DECISIONS #86. Draft: "I'm interested in mathematics and data science REUs and, later, PhD programs. If you'd like to talk about either, here's how to reach me." Keep the invitation, or only the first sentence?
+- [ ] Contact lead-in in src/data/copy.yaml (contact), from DECISIONS #86. Draft: "I'm interested in PhD programs and in mathematics and data science REUs. If you'd like to talk about either, here's how to reach me." Keep the invitation, or only the first sentence?
 - [ ] Is "My main research is on RiverNets" still accurate? (F19a mission)
 - [ ] Hero caption (F19b, DECISIONS #87): 38 words. Keep it, or drop the barcode sentence?
 - [ ] Hero relief in the light theme is now strong. Keep it, or soften it (render-map.ts:104)?
