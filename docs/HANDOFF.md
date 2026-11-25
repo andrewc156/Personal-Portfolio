@@ -40,10 +40,10 @@
 | F21 Collatz steps setting | done | PASS (attempt 1) | `a74ce65` (candidate `83d402f`) |
 | F22 Collatz starts at step one | done | PASS (attempt 1) | `614feef` (candidate `755a594`) |
 | F23 Collatz default 30 | done and live | PASS (attempt 1) | `20d59f9` |
-| F24 Production delivery (QA-01/02/12/18) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 1; Control fixed deploy.md notes 1–3) | — | — |
-| F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 2) | — | — |
-| F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | committed on wip/f24-27; hosted CI pending (5 frame-time tests) | PASS_WITH_NOTES (attempt 1) | — | — |
-| F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | committed on wip/f24-27; hosted CI pending | PASS_WITH_NOTES (attempt 1) | — | — |
+| F24 Production delivery (QA-01/02/12/18) | done | PASS_WITH_NOTES (attempt 1; Control fixed deploy.md notes 1–3) | — | — |
+| F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | done | PASS_WITH_NOTES (attempt 2) | — | — |
+| F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
+| F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -108,7 +108,7 @@
 
 ## Next 3 actions
 
-Now: commits dd55b43 (docs QA), 827390c F24, 44835b7 F25, 8b871b8 F26, 8e2f839 F27, + docs commit on wip/f24-27, pushed with a draft PR. On green hosted CI, fast-forward main to the branch tip (same SHAs), push, delete wip/f24-27, then README commit, then run `npm run check:prod` after the Workers Build and confirm the analytics beacon loads. Non-blocking follow-ups: F27 Enter-on-Show during scroll can leave focus offscreen; F25 Tab 300–600 ms after Back can still jump; Worker per-path Cache-Control on non-2xx.
+DONE: candidate CI 45720189475 green (PR #4); main fast-forwarded to 5e189c9 and pushed; wip/f24-27 deleted; README cf78609. Production after Workers Build: `npm run check:prod` 178 passed / 0 failed (apex canonicals, http/www 301 with path+query, branded 404), Cloudflare Web Analytics beacon loads under the CSP. Previous plan: commits dd55b43 (docs QA), 827390c F24, 44835b7 F25, 8b871b8 F26, 8e2f839 F27, + docs commit on wip/f24-27, pushed with a draft PR. On green hosted CI, fast-forward main to the branch tip (same SHAs), push, delete wip/f24-27, then README commit, then run `npm run check:prod` after the Workers Build and confirm the analytics beacon loads. Non-blocking follow-ups: F27 Enter-on-Show during scroll can leave focus offscreen; F25 Tab 300–600 ms after Back can still jump; Worker per-path Cache-Control on non-2xx.
 Original plan: after F25 attempt-2 checker PASS, make the separate commits on wip/f24-27, open a draft PR for hosted CI on the exact tip, then fast-forward main (same SHAs) and push. CLAUDE.md updated for Workers + analytics exception (#88) — goes in the docs commit.
 Andrew's instruction: commit and push F24, F25, F26, F27 as SEPARATE commits (one per feature, `[checked]`), plus a separate docs commit (QA report, DECISIONS #88, STATUS, HANDOFF). Shared-file split: package.json check:prod + tsconfig/eslint ignores → F24; global.css F25 hunks → F25, `:root.js .hero__btn:disabled` hunk → F26 (use `git add -p`).
 After those commits: add a root README.md (Andrew requested; none exists, no LICENSE file). Facts only from spec §3/src/content and repo; own commit, pushed.
