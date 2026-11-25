@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 21:05 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 21:10 EST, Claude Code (Control)
 
 ## Status
 
@@ -20,7 +20,7 @@
 | C1 CV content | done | PASS_WITH_NOTES (attempt 3) | `be62c1e`, `f8061b3`, `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
-| CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI confirmation pending | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
+| CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
 | F10 Extra hero modes (S1) | checking: F10 checker attempt 1 running | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a data done; F12b explorer toggle building (viz-builder, attempt 1) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
@@ -55,13 +55,13 @@ All unverified:
 - §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
 - Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
-- CI: `2d79120` makes Playwright skip its preview server for the wrangler headers step. Waiting for GitHub CI to confirm green. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
+- GitHub CI is GREEN again (run 45521148302 on `e473de0`, which includes CI1 `7e9b745`, the config fix `2d79120` and F12a). It had been red since `ef15630`. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
 - F12a notes: optional INEGI credit for the Mexican units (F12b); stale 1508 sentence in docs/data.md (F13a is fixing it).
 - Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
 
-1. Record the F10 verdict, then commit and push on PASS (or run a fix round with viz-builder). Confirm GitHub CI is green.
+1. Record the F10 verdict, then commit and push on PASS (or run a fix round with viz-builder).
 2. Check F12b and F13a as they return, one checker at a time.
 3. F11b, then F13b, then a fresh F9 full-site audit.
 
