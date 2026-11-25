@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 22:15 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 20:14 EST, Codex (Control)
 
 ## Status
 
@@ -21,7 +21,7 @@
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
 | CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI green (run 45521148302) | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
-| F10 Extra hero modes (S1) | fix round: attempt 2 building (viz-builder) | FAIL (attempt 1) | — |
+| F10 Extra hero modes (S1) | attempt 2 built, independent check running | FAIL (attempt 1) | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
 | F12 Basin mask (S3) | F12a data done; F12b built, checker queued (after F10, before F13a) | PASS_WITH_NOTES (F12a attempt 1) | `4c32017` |
 | F13 Place labels (S4) | F13a built (39 GNIS labels, labels.json 9,962 B), checker queued after F10 | n/a | — |
@@ -30,13 +30,15 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F10 attempt 2 | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | delegated | blocking: (1) shell.ts:268–288, a dirty-only frame is drawn off-screen (hero.spec :842 fails 4/4); (2) rivers.ts:113 COL_PX 9 → 4–6 px. Also: CLS ≈0.045 on ?mode= deep links; Collatz label count. Then checker attempt 2 |
-| F13a check | checker | docs/checks/F13a/ only | started | verdict |
-| F12b | — | (built, unchecked) | built | checker after F13a |
+| F10 attempt 2 | checker | docs/checks/F10/ and isolated snapshot at /private/tmp/portfolio-recovery.RmJMcJ/F10 | Builder fixed off-screen redraws and rivers spacing. Astro check, lint and 39 mode tests pass. | Fresh checker is running with exclusive port 4321. |
+| F13a check | checker | docs/checks/F13a/ only | Claude left a partial report with no verdict. Codex delegated review of the uncommitted data changes to data-engineer. | Restart checker on an isolated F13a snapshot after builder review. |
+| F12b | viz-builder | Explorer files listed below | Codex delegated review of Claude’s completed build. | Checker after accepted F13a data. |
 
 Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (after F12b + F13a), then a fresh F9 audit.
 
-## Handoff vs repo (resume check, 2026-11-24)
+## Handoff vs repo (resume check)
+
+- At Codex resume, main matched origin/main at `529dbdc`. Neither remote handoff branch exists. F10 attempt 2 and F13a attempt 1 were marked partial.
 
 - Codex's "Uncommitted changes" list was stale. Those paths were committed in `ef15630`, and the tree was clean on resume.
 - There is an old Claude worktree at `.claude/worktrees/agent-a302a2e8cd44f54ea` (branch `worktree-agent-a302a2e8cd44f54ea`, at `dc8e61c`) with uncommitted C1-era edits. It is the historical snapshot the C1 notes describe, and the C1 content on main supersedes it. Per Andrew's instruction it stays untouched under `.claude/`. It is not a WIP branch to merge.
@@ -44,7 +46,7 @@ Then: F11b islands strip in the hero (after F10 PASS), F13b explorer labels (aft
 ## Uncommitted changes
 
 All unverified:
-- F10 (attempt 1 FAILED; attempt 2 in progress): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
+- F10 (attempt 1 FAILED; attempt 2 built, checking): e2e/hero.spec.ts, src/components/hero/{Hero.astro,HeroSettings.astro,hero-client.ts}, src/lib/viz/hero/modes/**, tests/unit/viz/modes/**
 - F13a (built, unchecked): pipeline/labels.py, pipeline/tests/test_labels.py, pipeline/build_colorado.py, pipeline/basin_mask.py, public/data/colorado/{labels.json,basin-mask.json,meta.json}, docs/data.md
 - F12b (built, unchecked): src/lib/viz/explorer/{basin.ts,controller.ts,text.ts,types.ts,about.ts}, src/components/explorer/{explorer-client.ts,Explorer.astro,LakesTable.astro,AboutData.astro,build-data.ts}, src/pages/rising-water/index.astro, tests/unit/viz/explorer/basin.test.ts, e2e/explorer.spec.ts
 
@@ -53,7 +55,7 @@ All unverified:
 - Before deployment: domain, hosting method, and explicit deployment approval (`docs/deploy.md`).
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
 - CI1 fixed (`7e9b745`). Confirm that the next GitHub CI run on main is green. CI1 note: the header script is inlined and hashed into the CSP by write-headers.mjs (one more inline hash on every page). Optional: PW_BASE_URL override in playwright.config.ts (Control file).
-- §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
+- Andrew approved F11b copy: “An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.”
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
 - Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
 - GitHub CI is GREEN again (run 45521148302 on `e473de0`, which includes CI1 `7e9b745`, the config fix `2d79120` and F12a). It had been red since `ef15630`. Follow-up: scripts/check-links.mjs may orphan `astro preview` (DECISIONS #79).
@@ -64,8 +66,8 @@ All unverified:
 
 ## Next 3 actions
 
-1. F13a verdict, then commit and push on PASS. Then the F12b checker.
-2. When F10 attempt 2 returns: run a fresh checker (attempt 2), then commit and push on PASS.
+1. Finish the F10 attempt 2 check. Commit and push on acceptance.
+2. Rerun the interrupted F13a check from scratch and commit and push on acceptance. Then verify F12b against the accepted F13a data.
 3. F11b, F13b, then a fresh F9 full-site audit.
 
 ## WIP branch
