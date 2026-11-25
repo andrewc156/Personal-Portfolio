@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-24 20:15 EST, Claude Code (Control)
+**Last updated:** 2026-11-24 20:45 EST, Claude Code (Control)
 
 ## Status
 
@@ -20,19 +20,18 @@
 | C1 CV content | done | PASS_WITH_NOTES (attempt 3) | `be62c1e`, `f8061b3`, `c7bdc7c` |
 | F9 Final audit | done | PASS_WITH_NOTES (attempt 3) | `c7bdc7c`, reports in `ef15630` |
 | Handoff protocol in CLAUDE.md | done | n/a | `e659d0a` |
-| CI1 Fix failing GitHub CI (e2e/cls.spec.ts:171, 412px nav focus) | checking: built (real header bug: partly clipped focused links aren't scrolled into view); checker attempt 1 running; CI red since `ef15630` | n/a | — |
+| CI1 Fix failing GitHub CI (mobile nav focus) | done; GitHub CI confirmation pending | PASS_WITH_NOTES (attempt 1) | `7e9b745` |
 | F10 Extra hero modes (S1) | built, waiting for checker (queue: CI1 → F12a → F10) | n/a | — |
 | F11 Islands barcode (S2) | F11a engine done (PASS_WITH_NOTES); F11b hero strip todo (after F10) | PASS_WITH_NOTES (F11a attempt 1) | `248ebae` |
-| F12 Basin mask (S3) | F12a built, waiting for checker (queued after CI1 check) | n/a | — |
+| F12 Basin mask (S3) | checking: F12a checker attempt 1 running | n/a | — |
 | F13 Place labels (S4) | todo (approved) | n/a | — |
 
-## Current task: no builders running; CI1 checker running; F12a and F10 checks queued
+## Current task: no builders running; F12a checker running; F10 check queued
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
 | F10 Extra hero modes | viz-builder | src/lib/viz/common/**, src/lib/viz/hero/**, src/components/hero/**, tests/unit/viz/**, e2e/hero.spec.ts, docs/builds/F10/ | built, report done | checker queued |
-| CI1 CI test fix | site-builder | src/components/site/Header.astro, src/styles/**, e2e/cls.spec.ts, e2e/shell.spec.ts, docs/builds/CI1/ | built, report done | checker attempt 1 running → docs/checks/CI1/attempt-1.md |
-| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | built, report done | checker queued (after CI1 checker finishes) |
+| F12a Basin mask data | data-engineer | pipeline/** (not tda_ref), public/data/colorado/**, docs/data.md, docs/builds/F12a/ | built | checker attempt 1 running → docs/checks/F12a/attempt-1.md |
 
 After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12b mask toggle in the explorer (viz-builder), F13a GNIS labels data (data-engineer, after F12a), F13b explorer labels (viz-builder), then a fresh F9 audit. Checkers run one at a time.
 
@@ -46,13 +45,12 @@ After these: F11b islands strip in the hero (viz-builder, after F10 + F11a), F12
 All are unverified builder work in progress, not yet checked:
 - F10 (built, unchecked): src/lib/viz/hero/modes/** (new), src/components/hero/{hero-client.ts,HeroSettings.astro,Hero.astro}, tests/unit/viz/modes/**, e2e/hero.spec.ts
 - F12a (built, unchecked): pipeline/basin_mask.py, pipeline/build_colorado.py, pipeline/tests/test_basin_mask.py, public/data/colorado/{basin-mask.bin,basin-mask.json,meta.json}, docs/data.md
-- CI1 (built, checking): src/components/site/Header.astro, e2e/cls.spec.ts, e2e/shell.spec.ts
 
 ## Open issues and "Needs Andrew"
 
 - Before deployment: domain, hosting method, and explicit deployment approval (`docs/deploy.md`).
 - Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
-- GitHub CI `npm run verify` has failed on every push since `ef15630`: `e2e/cls.spec.ts:171` says "Rising water is scrolled into view when focused" at 412px. It is Linux-only; the F9 checker passed on macOS. Being fixed as CI1. Andrew is preparing a Cloudflare Pages deploy.
+- CI1 fixed (`7e9b745`). Confirm that the next GitHub CI run on main is green. CI1 note: the header script is inlined and hashed into the CSP by write-headers.mjs (one more inline hash on every page). Optional: PW_BASE_URL override in playwright.config.ts (Control file).
 - §6.6 has no H1 statements. Any islands UI copy (F11b) needs explainer wording Andrew approves.
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.
 - Resolved: Andrew confirmed the F12 basin mask stays WBD 14 + 15 as built (DECISIONS #78).
@@ -60,7 +58,7 @@ All are unverified builder work in progress, not yet checked:
 
 ## Next 3 actions
 
-1. CI1 checker → commit + push → confirm GitHub CI is green. Then the F12a checker, then the F10 checker, one at a time, committing only each feature's owned paths.
+1. Confirm GitHub CI is green for `7e9b745`. F12a checker (running), then the F10 checker (CI1 checker saw 5 hero.spec failures from F10, incl. :842 off-screen pause), one at a time, committing only each feature's owned paths.
 2. After F10 PASS: F11b islands strip in the hero (viz-builder). After F12a PASS: F12b explorer mask toggle (viz-builder) and F13a GNIS labels data (data-engineer).
 3. F13b explorer labels, then a fresh F9 full-site audit.
 
