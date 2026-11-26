@@ -44,7 +44,7 @@
 | F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | done | PASS_WITH_NOTES (attempt 2) | — | — |
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
-| F28 Natural UI pass (setup) | F28b + F28c dispatched in parallel (DECISIONS #90, #91) | n/a | `c86d3f0` |
+| F28 Natural UI pass (setup) | F28b + F28c built (uncommitted); checker attempt 1 running | n/a | `c86d3f0` |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -99,8 +99,8 @@
 
 ## Next 3 actions
 
-1. IN PROGRESS: F28b (site-builder) and F28c (viz-builder) building in parallel.
-2. Review both build reports and the diffs for scope (owned paths only).
+1. IN PROGRESS: one fresh checker on F28b + F28c (reports → docs/checks/F28b|F28c/attempt-1.md). Builds are done (docs/builds/F28b|F28c/attempt-1.md); the source changes are uncommitted in the working tree; scope checked by Control (owned paths only).
+2. On PASS: isolated candidate branch → hosted CI → one [checked] commit per feature → fast-forward main.
 3. One fresh checker on F28b/F28c using review-animations STANDARDS.md and the §11 gates → candidate-branch CI → per-feature commits.
 
 Previous round (done): F24–F27 merged through candidate CI 45720189475; production `npm run check:prod` 178/0.
