@@ -48,6 +48,10 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F25 Shell, Settings sheet, Garden | QA-03, 11, 16 (shell), 17 | done | [PASS_WITH_NOTES](checks/F25/attempt-2.md) (attempt 1 FAIL). Sheet focus containment/inert/return, Back focus, no-JS controls, Garden type chip. |
 | F26 Hero playback and a11y | QA-04, 05, 09, 13, 14, 15, 16 (hero) | done | [PASS_WITH_NOTES](checks/F26/attempt-1.md). Motion changes, manual pause across modes, live summary, 320 px selector, hit-testing, URL sync. |
 | F27 Explorer focus, touch, keyboard, no-JS | QA-06, 07, 08, 10 | done | [PASS_WITH_NOTES](checks/F27/attempt-1.md). Show moves focus, sticky tap readout, keyboard cell inspection, no-JS fallback. |
+| F28a Motion and feel audit | Emil skills (DECISIONS #89) | todo | Read-only audit by the checker role → docs/checks/F28a/audit.md + plans/. |
+| F28b Shell and content feel | accepted F28a plans (site) | todo | site-builder; Settings drawer/sheet, hover/touch, tokens, Garden. |
+| F28c Hero and explorer UI feel | accepted F28a plans (viz) | todo | viz-builder; non-canvas UI only; frame-time gate unchanged. |
+| F28d NumberFlow readouts | optional | todo | viz-builder after F28c; dependency + CSP hash by Control; drop if not worth it. |
 
 ## Post-F19 audit
 

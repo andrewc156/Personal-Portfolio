@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-25 (evening) EST, Hermes Agent / Claude Code (Control)
+**Last updated:** 2026-11-26 EST, Hermes Agent / Claude Code (Control)
 
 ## Status
 
@@ -44,15 +44,15 @@
 | F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | done | PASS_WITH_NOTES (attempt 2) | — | — |
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
+| F28 Natural UI pass (setup) | set up; F28a audit not dispatched | n/a | this docs commit |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md`, `docs/checks/F9/summary.md` | Exact hosted CI 45645398484 green; audit FAIL solely on unverified required browser matrix | Obtain a working multi-version runner and rerun the missing browser coverage. |
-| Production exploratory QA | Control + 10 reviewers | `docs/qa/f23-production/report.md` and evidence | Complete on live F23; 18 distinct findings | Fixes split into F24–F27 (DECISIONS #88). |
-| F24–F27 QA fixes | 2 site-builders + 2 viz-builders in parallel (disjoint files), then one checker | see DECISIONS #88 and builder briefs in docs/builds/F24–F27 | Decisions recorded: keep Cloudflare analytics, Worker-script redirects, Worker name `personal-portfolio` | Builders finish → one checker verifies all four (docs/checks/F24–F27/attempt-1.md) → hosted CI on an isolated candidate branch → commit each feature. |
+| F28 Natural UI pass | Control | `docs/builds/F28/plan.md`, `docs/design-skills/emil-kowalski/**`, DECISIONS #89, STATUS | Library review done; Emil's skills vendored; plan, ownership and acceptance criteria written | Dispatch F28a (checker role, read-only audit) → triage into DECISIONS #90 → F28b and F28c in parallel → optional F28d → one fresh checker. |
+| F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md` | FAIL only on the unverified browser matrix | Still needs a multi-version browser runner. |
 
 ## Handoff vs repo (resume check)
 
@@ -67,17 +67,8 @@
 
 ## Uncommitted changes
 
-- F24–F27 builder code (unverified until checker PASS): see docs/builds/F24–F27/attempt-1.md for file lists. Control edits: package.json `check:prod`, tsconfig/eslint ignore `docs/checks/**/test-results`, global.css `:root.js .hero__btn:disabled` (no dim flash pre-init). Deleted ignored docs/checks/**/test-results repo copies that broke lint/check.
-- `docs/HANDOFF.md`, `docs/DECISIONS.md` (#88), `docs/STATUS.md` (F24–F27 rows): Control.
-- `docs/qa/` (F23 production QA report + evidence): Control, to be committed with the F24–F27 docs.
+- None for features. F24–F27 were committed and pushed (`827390c`, `44835b7`, `8b871b8`, `8e2f839`, docs `5e189c9`, `217bd79`).
 - Untracked stale F19 checker artifacts (`docs/checks/F19a/attempt-2/`, `docs/checks/F19b/attempt-2/`, `docs/checks/tools/f19-*`, `f21-independent.mjs`, `docs/builds/F19a/.Rhistory`): historical, not staged.
-- Deleted old checker scratch dirs in ~/.hermes/cache/scratch at Andrew's request (disk 2.6 → 7.2 GiB free).
-
-
-
-
-
-- Stray `astro dev --port 4411` (pid 23366) is still running; builders use `--ignore-lock` on their own ports.
 
 ## Open issues and "Needs Andrew"
 
@@ -108,19 +99,11 @@
 
 ## Next 3 actions
 
-DONE: candidate CI 45720189475 green (PR #4); main fast-forwarded to 5e189c9 and pushed; wip/f24-27 deleted; README cf78609. Production after Workers Build: `npm run check:prod` 178 passed / 0 failed (apex canonicals, http/www 301 with path+query, branded 404), Cloudflare Web Analytics beacon loads under the CSP. Previous plan: commits dd55b43 (docs QA), 827390c F24, 44835b7 F25, 8b871b8 F26, 8e2f839 F27, + docs commit on wip/f24-27, pushed with a draft PR. On green hosted CI, fast-forward main to the branch tip (same SHAs), push, delete wip/f24-27, then README commit, then run `npm run check:prod` after the Workers Build and confirm the analytics beacon loads. Non-blocking follow-ups: F27 Enter-on-Show during scroll can leave focus offscreen; F25 Tab 300–600 ms after Back can still jump; Worker per-path Cache-Control on non-2xx.
-Original plan: after F25 attempt-2 checker PASS, make the separate commits on wip/f24-27, open a draft PR for hosted CI on the exact tip, then fast-forward main (same SHAs) and push. CLAUDE.md updated for Workers + analytics exception (#88) — goes in the docs commit.
-Andrew's instruction: commit and push F24, F25, F26, F27 as SEPARATE commits (one per feature, `[checked]`), plus a separate docs commit (QA report, DECISIONS #88, STATUS, HANDOFF). Shared-file split: package.json check:prod + tsconfig/eslint ignores → F24; global.css F25 hunks → F25, `:root.js .hero__btn:disabled` hunk → F26 (use `git add -p`).
-After those commits: add a root README.md (Andrew requested; none exists, no LICENSE file). Facts only from spec §3/src/content and repo; own commit, pushed.
+1. Dispatch F28a: the checker role does the read-only audit with improve-animations, mobile-native, remove-animations and emil-design-eng (brief in docs/builds/F28/plan.md) and writes to docs/checks/F28a/.
+2. Triage the F28a plans into DECISIONS #90 (look-changing plans → Needs Andrew), then dispatch F28b (site-builder) and F28c (viz-builder) in parallel.
+3. Decide on F28d (NumberFlow) from the audit. If it goes ahead, add `number-flow@0.6.2` and the shadow-style CSP hash, then dispatch the viz-builder.
 
-1. Collect F24–F27 builder reports; run one fresh checker over all four (port 4321, serial gates).
-2. Push the candidate to an isolated branch/draft PR for hosted CI (hero timing gates), then commit each feature `[checked]`.
-3. After Andrew's next Workers Build: run the F24 production smoke check (canonical/sitemap origin, redirects, branded 404, analytics loads).
-
-Earlier:
-1. Obtain access to the missing Chrome, Firefox and real Safari/iOS versions and verify the exact `680aeac` build.
-2. Rerun the F9 checker to close the browser-matrix blocker; no F19 code change unless a test reproduces a site defect.
-3. Investigate live localhost metadata with the active Workers build evidence (Andrew reports `SITE_URL` was already set); verify canonical URLs, robots, and sitemap after any authorized fix.
+Previous round (done): F24–F27 merged through candidate CI 45720189475; production `npm run check:prod` 178/0.
 
 ## WIP branch
 
