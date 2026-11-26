@@ -1,0 +1,21 @@
+{
+  "tablet-768-light": {
+    "role": "complementary",
+    "modal": false
+  },
+  "tablet-768-dark": {
+    "role": "complementary",
+    "modal": false
+  },
+  "reduced-sheet-first-frame": {
+    "op": "0",
+    "tf": "matrix(1, 0, 0, 1, 0, 24)",
+    "anims": [
+      [
+        "settings-in-up",
+        0.01
+      ]
+    ]
+  },
+  "reduced-hero-state": "paused"
+}

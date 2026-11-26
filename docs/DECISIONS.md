@@ -154,3 +154,10 @@ The hero caption becomes "Water rises over a random landscape. Lakes form in the
 - **Rejected:** shadcn/ui, Radix, Base UI, Sonner, Vaul, cmdk, Magic UI, Aceternity UI, RareUI and 21st.dev all need React (and mostly Tailwind/Motion); spec §7 says no UI framework and plain CSS. Beautiful UI targets AI-chat interfaces. Radix, Base UI and Vaul may be read as behaviour references only. The `pick-ui-library` skill isn't vendored because its picks are React libraries.
 - **Scope:** feel, not look. Colours, fonts, accent, layout and copy stay as in DECISIONS #85; any audit plan that would change them needs Andrew. Reduced motion means no movement. The settled F25, F26 and F19b behaviours stand.
 - **Split:** F28a read-only audit (checker role) → Control triage (#90) → F28b site-builder and F28c viz-builder in parallel (disjoint paths) → optional F28d NumberFlow (viz-builder) → one fresh checker → per-feature commits through hosted CI.
+
+90. F28a triage (2026-11-26; audit docs/checks/F28a/audit.md: 10 findings, 12 plans).
+- **Accepted, site-builder (F28b):** 01 motion tokens, 02 interruptible Settings drawer/sheet transitions, 03 hover only on devices with a mouse, 04 press feedback and no tap flash, 05 theme switch without transitions, 06 reduced motion turns transitions off, 07 `svh` body min-height, 11 Garden don't-animate guards. Order: 01 first, since 02 and 04 depend on it.
+- **Accepted, viz-builder (F28c):** 12 readout don't-animate guards.
+- **Pending Andrew (they change the look):** 08 and 09 (16 px control text on touch devices only), 10 (dim layer behind the phone sheet), and the `viewport-fit=cover` observation (layout on every page; needs a real iPhone).
+- **F28d NumberFlow dropped:** the audit found the readouts change almost entirely every frame or every input; the only discrete case is selecting a lake. Plan 12 locks them as plain text. The #89 conditional adoption ends here; no dependency gets added.
+- **theme-color meta rejected:** Safari already tints from the page background, and a fixed value would fight the manual theme toggle.

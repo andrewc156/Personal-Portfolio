@@ -1,0 +1,683 @@
+{
+  "drawer-open-anims-light": [
+    {
+      "type": "CSSAnimation",
+      "name": "settings-in-right",
+      "target": "settings",
+      "dur": 220,
+      "easing": "linear"
+    }
+  ],
+  "drawer-close-light": {
+    "anims": [],
+    "hidden": true,
+    "display": "none"
+  },
+  "drawer-interrupt-light": {
+    "before": {
+      "op": 0.79608,
+      "tf": "matrix(1, 0, 0, 1, 4.89409, 0)"
+    },
+    "mid": {
+      "display": "none"
+    },
+    "after": {
+      "op": 0,
+      "tf": "matrix(1, 0, 0, 1, 24, 0)"
+    }
+  },
+  "drawer-open-anims-dark": [
+    {
+      "type": "CSSAnimation",
+      "name": "settings-in-right",
+      "target": "settings",
+      "dur": 220,
+      "easing": "linear"
+    }
+  ],
+  "drawer-close-dark": {
+    "anims": [],
+    "hidden": true,
+    "display": "none"
+  },
+  "drawer-interrupt-dark": {
+    "before": {
+      "op": 0.689536,
+      "tf": "matrix(1, 0, 0, 1, 7.45113, 0)"
+    },
+    "mid": {
+      "display": "none"
+    },
+    "after": {
+      "op": 0,
+      "tf": "matrix(1, 0, 0, 1, 24, 0)"
+    }
+  },
+  "media-375-light": {
+    "hover": false,
+    "fine": false,
+    "coarse": true
+  },
+  "sheet-375-light": {
+    "role": "dialog",
+    "top": 284.203125,
+    "height": 527.796875,
+    "bodyBg": "rgb(247, 244, 238)",
+    "behindTop": "BODY.",
+    "controls": [
+      {
+        "tag": "BUTTON:button",
+        "id": "",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:number",
+        "id": "hero-seed",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "New terrain",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-scale",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-roughness",
+        "fontPx": 17
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "Pause",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-speed",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-level",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-pacing",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-loop",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-show-barcode",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-min-persistence",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-max-bars",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-view",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-collatz-steps",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-palette",
+        "fontPx": 14
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-color-by",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-shoreline",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:reset",
+        "id": "Reset",
+        "fontPx": 14
+      }
+    ],
+    "padBottom": "0px"
+  },
+  "sheet-backdrop-close-375-light": {
+    "hidden": true,
+    "anims": 0
+  },
+  "media-375-dark": {
+    "hover": false,
+    "fine": false,
+    "coarse": true
+  },
+  "sheet-375-dark": {
+    "role": "dialog",
+    "top": 284.203125,
+    "height": 527.796875,
+    "bodyBg": "rgb(17, 19, 21)",
+    "behindTop": "BODY.",
+    "controls": [
+      {
+        "tag": "BUTTON:button",
+        "id": "",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:number",
+        "id": "hero-seed",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "New terrain",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-scale",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-roughness",
+        "fontPx": 17
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "Pause",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-speed",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-level",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-pacing",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-loop",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-show-barcode",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-min-persistence",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-max-bars",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-view",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-collatz-steps",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-palette",
+        "fontPx": 14
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-color-by",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-shoreline",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:reset",
+        "id": "Reset",
+        "fontPx": 14
+      }
+    ],
+    "padBottom": "0px"
+  },
+  "sheet-backdrop-close-375-dark": {
+    "hidden": true,
+    "anims": 0
+  },
+  "media-390-light": {
+    "hover": false,
+    "fine": false,
+    "coarse": true
+  },
+  "sheet-390-light": {
+    "role": "dialog",
+    "top": 295.40625,
+    "height": 548.59375,
+    "bodyBg": "rgb(247, 244, 238)",
+    "behindTop": "BODY.",
+    "controls": [
+      {
+        "tag": "BUTTON:button",
+        "id": "",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:number",
+        "id": "hero-seed",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "New terrain",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-scale",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-roughness",
+        "fontPx": 17
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "Pause",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-speed",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-level",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-pacing",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-loop",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-show-barcode",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-min-persistence",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-max-bars",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-view",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-collatz-steps",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-palette",
+        "fontPx": 14
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-color-by",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-shoreline",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:reset",
+        "id": "Reset",
+        "fontPx": 14
+      }
+    ],
+    "padBottom": "0px"
+  },
+  "sheet-backdrop-close-390-light": {
+    "hidden": true,
+    "anims": 0
+  },
+  "media-390-dark": {
+    "hover": false,
+    "fine": false,
+    "coarse": true
+  },
+  "sheet-390-dark": {
+    "role": "dialog",
+    "top": 295.40625,
+    "height": 548.59375,
+    "bodyBg": "rgb(17, 19, 21)",
+    "behindTop": "BODY.",
+    "controls": [
+      {
+        "tag": "BUTTON:button",
+        "id": "",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:number",
+        "id": "hero-seed",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "New terrain",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-scale",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-roughness",
+        "fontPx": 17
+      },
+      {
+        "tag": "BUTTON:button",
+        "id": "Pause",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-speed",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-level",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-pacing",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-loop",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-show-barcode",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-min-persistence",
+        "fontPx": 17
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-max-bars",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-view",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:range",
+        "id": "hero-collatz-steps",
+        "fontPx": 17
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-palette",
+        "fontPx": 14
+      },
+      {
+        "tag": "SELECT:select-one",
+        "id": "hero-color-by",
+        "fontPx": 14
+      },
+      {
+        "tag": "INPUT:checkbox",
+        "id": "hero-shoreline",
+        "fontPx": 14
+      },
+      {
+        "tag": "BUTTON:reset",
+        "id": "Reset",
+        "fontPx": 14
+      }
+    ],
+    "padBottom": "0px"
+  },
+  "sheet-backdrop-close-390-dark": {
+    "hidden": true,
+    "anims": 0
+  },
+  "theme-flip-anims": [
+    "CSSTransition background-color 120 on btn",
+    "CSSTransition border-bottom-color 120 on btn",
+    "CSSTransition border-left-color 120 on btn",
+    "CSSTransition border-right-color 120 on btn",
+    "CSSTransition border-top-color 120 on btn",
+    "CSSTransition background-color 120 on btn hero__btn",
+    "CSSTransition border-bottom-color 120 on btn hero__btn",
+    "CSSTransition border-left-color 120 on btn hero__btn",
+    "CSSTransition border-right-color 120 on btn hero__btn",
+    "CSSTransition border-top-color 120 on btn hero__btn",
+    "CSSTransition background-color 120 on btn hero__btn",
+    "CSSTransition border-bottom-color 120 on btn hero__btn",
+    "CSSTransition border-left-color 120 on btn hero__btn",
+    "CSSTransition border-right-color 120 on btn hero__btn",
+    "CSSTransition border-top-color 120 on btn hero__btn"
+  ],
+  "reduced-open-1280": {
+    "anims": [
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-left-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-right-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-left-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-right-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-color",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-offset",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-width",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "target": "",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "max-width",
+        "target": "hero__readout",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "settings-in-right",
+        "target": "settings",
+        "dur": 0.01,
+        "easing": "linear"
+      }
+    ],
+    "scrollBehavior": "auto"
+  },
+  "reduced-open-375": {
+    "anims": [
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-left-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-right-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-left-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-right-radius",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-color",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-offset",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "outline-width",
+        "target": "settings__title",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "target": "",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "max-width",
+        "target": "hero__readout",
+        "dur": 0.01,
+        "easing": "ease"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "settings-in-up",
+        "target": "settings",
+        "dur": 0.01,
+        "easing": "linear"
+      }
+    ],
+    "scrollBehavior": "auto"
+  },
+  "smooth-scroll-nav-open-science": {
+    "ms": 954,
+    "y": 2005
+  }
+}

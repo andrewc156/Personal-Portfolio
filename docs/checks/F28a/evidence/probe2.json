@@ -1,0 +1,222 @@
+{
+  "chromium-zoom-/": [
+    {
+      "sel": "input#hero-seed[number]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-pacing[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-view[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-palette[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-color-by[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-mode[select-one]",
+      "fontPx": 14
+    }
+  ],
+  "chromium-zoom-/rising-water/": [
+    {
+      "sel": "select#ex-speed[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#ex-pacing[select-one]",
+      "fontPx": 14
+    }
+  ],
+  "chromium-zoom-/garden/": [],
+  "chromium-meta": {
+    "themeColor": [],
+    "viewport": "width=device-width, initial-scale=1",
+    "tapHighlight": "rgba(51, 181, 229, 0.4)",
+    "btnTapHighlight": "rgba(51, 181, 229, 0.4)",
+    "touchActionBtn": "auto",
+    "userSelectBtn": "auto",
+    "innerH": 812,
+    "bodyMinH": "812px",
+    "hover": false
+  },
+  "chromium-chip-tap": {
+    "before": {
+      "bg": "rgb(253, 251, 247)",
+      "txt": "Papers"
+    },
+    "after": {
+      "txt": "Papers",
+      "hover": true,
+      "bg": "rgb(11, 79, 122)",
+      "current": "true"
+    }
+  },
+  "chromium-btn-tap-sticky": {
+    "bgBefore": "rgb(253, 251, 247)",
+    "after": {
+      "hover": false,
+      "bg": "rgb(253, 251, 247)",
+      "border": "rgb(138, 131, 120)"
+    }
+  },
+  "chromium-gear-tap-focus": {
+    "active": "settings__title",
+    "focusVisible": false,
+    "outline": "none"
+  },
+  "webkit-zoom-/": [
+    {
+      "sel": "input#hero-seed[number]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-pacing[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-view[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-palette[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-color-by[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#hero-mode[select-one]",
+      "fontPx": 14
+    }
+  ],
+  "webkit-zoom-/rising-water/": [
+    {
+      "sel": "select#ex-speed[select-one]",
+      "fontPx": 14
+    },
+    {
+      "sel": "select#ex-pacing[select-one]",
+      "fontPx": 14
+    }
+  ],
+  "webkit-zoom-/garden/": [],
+  "webkit-meta": {
+    "themeColor": [],
+    "viewport": "width=device-width, initial-scale=1",
+    "tapHighlight": "rgba(0, 0, 0, 0.4)",
+    "btnTapHighlight": "rgba(0, 0, 0, 0.4)",
+    "touchActionBtn": "auto",
+    "userSelectBtn": "text",
+    "innerH": 664,
+    "bodyMinH": "664px",
+    "hover": false
+  },
+  "webkit-chip-tap": {
+    "before": {
+      "bg": "rgb(253, 251, 247)",
+      "txt": "Papers"
+    },
+    "after": {
+      "txt": "Papers",
+      "hover": true,
+      "bg": "rgb(11, 79, 122)",
+      "current": "true"
+    }
+  },
+  "webkit-btn-tap-sticky": {
+    "bgBefore": "rgb(253, 251, 247)",
+    "after": {
+      "hover": true,
+      "bg": "rgb(220, 232, 240)",
+      "border": "rgb(11, 79, 122)"
+    }
+  },
+  "webkit-gear-tap-focus": {
+    "active": "settings__title",
+    "focusVisible": false,
+    "outline": "none"
+  },
+  "explorer-play-2s-mutations": {
+    "[data-ex-level-out]": 2,
+    "[data-ro-level]": 2,
+    "[data-ro-level-alt]": 2,
+    "[data-ro-pct]": 1,
+    "[data-ro-lakes]": 2,
+    "[data-ro-area]": 1
+  },
+  "explorer-scrub-30-inputs-mutations": {
+    "[data-ex-level-out]": 30,
+    "[data-ro-level]": 1,
+    "[data-ro-level-alt]": 1,
+    "[data-ro-pct]": 1,
+    "[data-ro-lakes]": 1,
+    "[data-ro-area]": 1
+  },
+  "explorer-topn-10-inputs-mutations": {
+    "[data-ex-topn-out]": 10
+  },
+  "explorer-lake-click": {
+    "mutations": {
+      "[data-ex-card-title]": 1,
+      "[data-ex-level-out]": 1,
+      "[data-ro-level]": 1,
+      "[data-ro-level-alt]": 1,
+      "[data-ro-pct]": 1,
+      "[data-ro-lakes]": 1,
+      "[data-ro-area]": 1
+    },
+    "before": [
+      "1,595.5 m",
+      "44.5",
+      "14",
+      "45.2 %"
+    ],
+    "after": [
+      "3,697.8 m",
+      "100.0",
+      "1",
+      "100.0 %"
+    ]
+  },
+  "explorer-units-toggle-mutations": {
+    "[data-ro-level]": 1,
+    "[data-ro-level-alt]": 1,
+    "[data-ex-level-out]": 1,
+    "[data-ex-minp-out]": 1
+  },
+  "explorer-controls": {
+    "playW": 80,
+    "playTxt": "Play",
+    "selects": [
+      "14px",
+      "14px"
+    ]
+  },
+  "explorer-play-width-playing": [
+    80,
+    "Pause"
+  ],
+  "hero-play-width": [
+    [
+      72,
+      "Pause"
+    ],
+    [
+      72,
+      "Play"
+    ]
+  ],
+  "hero-readout-mutations-1s": {
+    "state": "playing",
+    "n": 5
+  }
+}

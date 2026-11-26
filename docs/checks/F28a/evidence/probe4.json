@@ -1,0 +1,48 @@
+{
+  "chromium-reduced-sheet": [
+    {
+      "ms": 0,
+      "hidden": false,
+      "op": "0",
+      "tf": "matrix(1, 0, 0, 1, 0, 24)",
+      "display": "flex"
+    },
+    {
+      "ms": 50,
+      "hidden": false,
+      "op": "0",
+      "tf": "matrix(1, 0, 0, 1, 0, 24)",
+      "display": "flex"
+    },
+    {
+      "ms": 300,
+      "hidden": false,
+      "op": "1",
+      "tf": "none",
+      "display": "flex"
+    }
+  ],
+  "webkit-reduced-sheet": [
+    {
+      "ms": 0,
+      "hidden": false,
+      "op": "0",
+      "tf": "matrix(1, 0, 0, 1, 0, 24)",
+      "display": "flex"
+    },
+    {
+      "ms": 50,
+      "hidden": false,
+      "op": "1",
+      "tf": "none",
+      "display": "flex"
+    },
+    {
+      "ms": 300,
+      "hidden": false,
+      "op": "1",
+      "tf": "none",
+      "display": "flex"
+    }
+  ]
+}

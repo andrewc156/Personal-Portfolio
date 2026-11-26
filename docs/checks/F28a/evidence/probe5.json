@@ -1,0 +1,26 @@
+{
+  "plan03-ungated-hover-today": [
+    "a:hover",
+    ".btn:hover",
+    ".icon-btn:hover:not(:disabled)",
+    ".wordmark[data-astro-cid-jr7posx5]:hover",
+    ".site-nav[data-astro-cid-jr7posx5] a[data-astro-cid-jr7posx5]:hover, .site-nav[data-astro-cid-jr7posx5] a[data-astro-cid-jr7posx5][aria-current=\"page\"]",
+    ".link-btn:hover",
+    ".research-card__title[data-astro-cid-igb72r7l] a[data-astro-cid-igb72r7l]:hover"
+  ],
+  "plan11-garden-guard": {
+    "chip": "Papers",
+    "before": 9,
+    "after": 1,
+    "anims": 0
+  },
+  "plan12-explorer-guard": {
+    "changed": 6,
+    "anims": 0,
+    "custom": 0
+  },
+  "plan07-svh-today": false,
+  "plan07-body-rules": [
+    "body { background-color: var(--gray-10); color: var(--gray-80); font-family: ui-monospace, Menlo, Monaco, \"Cascadia Mono"
+  ]
+}

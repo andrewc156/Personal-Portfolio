@@ -44,14 +44,14 @@
 | F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | done | PASS_WITH_NOTES (attempt 2) | — | — |
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
-| F28 Natural UI pass (setup) | set up; F28a audit dispatched (checker role, read-only) | n/a | `c86d3f0` |
+| F28 Natural UI pass (setup) | F28a audit done; triaged (DECISIONS #90); F28b/F28c not dispatched | n/a | `c86d3f0` |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F28 Natural UI pass | Control | `docs/builds/F28/plan.md`, `docs/design-skills/emil-kowalski/**`, DECISIONS #89, STATUS | Library review done; Emil's skills vendored; plan written (`c86d3f0`); F28a audit dispatched 2026-11-26 (Hermes subagent sa-0-663574b3; writes docs/checks/F28a/; port 4321 in use by it) | Wait for F28a (checker role, read-only audit) → triage into DECISIONS #90 → F28b and F28c in parallel → optional F28d → one fresh checker. |
+| F28 Natural UI pass | Control | `docs/builds/F28/plan.md`, `docs/design-skills/emil-kowalski/**`, DECISIONS #89, STATUS | Library review done; Emil's skills vendored; plan written (`c86d3f0`); F28a audit done (docs/checks/F28a/), triaged in DECISIONS #90; F28d dropped | Andrew decides plans 08/09/10 and viewport-fit → dispatch F28b (site plans 01–07, 11 + any approved) and F28c (plan 12 + 09 if approved) in parallel → one fresh checker. |
 | F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md` | FAIL only on the unverified browser matrix | Still needs a multi-version browser runner. |
 
 ## Handoff vs repo (resume check)
@@ -99,9 +99,9 @@
 
 ## Next 3 actions
 
-1. IN PROGRESS: F28a audit. If the session drops, treat docs/checks/F28a/ as unverified when it still starts with PARTIAL and re-dispatch. The checker role does the read-only audit with improve-animations, mobile-native, remove-animations and emil-design-eng (brief in docs/builds/F28/plan.md) and writes to docs/checks/F28a/.
-2. Triage the F28a plans into DECISIONS #90 (look-changing plans → Needs Andrew), then dispatch F28b (site-builder) and F28c (viz-builder) in parallel.
-3. Decide on F28d (NumberFlow) from the audit. If it goes ahead, add `number-flow@0.6.2` and the shadow-style CSP hash, then dispatch the viz-builder.
+1. Get Andrew's call on the look-changing plans 08, 09, 10 and viewport-fit=cover (DECISIONS #90).
+2. Dispatch F28b (site-builder: plans 01→02–07, 11, plus approved 08/10) and F28c (viz-builder: plan 12, plus 09 if approved) in parallel; their files don't overlap.
+3. One fresh checker on F28b/F28c using review-animations STANDARDS.md and the §11 gates → candidate-branch CI → per-feature commits.
 
 Previous round (done): F24–F27 merged through candidate CI 45720189475; production `npm run check:prod` 178/0.
 
