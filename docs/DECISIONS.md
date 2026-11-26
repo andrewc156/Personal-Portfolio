@@ -161,3 +161,8 @@ The hero caption becomes "Water rises over a random landscape. Lakes form in the
 - **Pending Andrew (they change the look):** 08 and 09 (16 px control text on touch devices only), 10 (dim layer behind the phone sheet), and the `viewport-fit=cover` observation (layout on every page; needs a real iPhone).
 - **F28d NumberFlow dropped:** the audit found the readouts change almost entirely every frame or every input; the only discrete case is selecting a lake. Plan 12 locks them as plain text. The #89 conditional adoption ends here; no dependency gets added.
 - **theme-color meta rejected:** Safari already tints from the page background, and a fixed value would fight the manual theme toggle.
+
+91. Andrew's calls on the F28 look items (2026-11-26).
+- **Approved:** plans 08 and 09 (16 px control text, on touch devices only, e.g. `@media (pointer: coarse)`; desktop unchanged) and plan 10 (dim layer behind the phone Settings sheet only; the wide drawer stays undimmed).
+- **Deferred:** `viewport-fit=cover`, until it can be checked on a real iPhone. It's out of F28.
+- So F28b = plans 01–08, 10, 11 (site-builder) and F28c = plans 09, 12 (viz-builder), built in parallel.

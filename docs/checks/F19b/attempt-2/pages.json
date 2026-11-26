@@ -1,0 +1,504 @@
+[
+ {
+  "name": "home",
+  "path": "/",
+  "w": 375,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 375,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 341,
+    "h": 192,
+    "variance": 13330
+   },
+   {
+    "w": 341,
+    "h": 103,
+    "variance": 3921
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "li.",
+   "a.",
+   "li.",
+   "a."
+  ],
+  "title": "Andrew Chincea",
+  "height": 4091,
+  "file": "docs/checks/F19b/attempt-2/home-375-light.png"
+ },
+ {
+  "name": "home",
+  "path": "/",
+  "w": 375,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 375,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 341,
+    "h": 192,
+    "variance": 10356
+   },
+   {
+    "w": 341,
+    "h": 103,
+    "variance": 9966
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "li.",
+   "a.",
+   "li.",
+   "a."
+  ],
+  "title": "Andrew Chincea",
+  "height": 4091,
+  "file": "docs/checks/F19b/attempt-2/home-375-dark.png"
+ },
+ {
+  "name": "home",
+  "path": "/",
+  "w": 768,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 768,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 705,
+    "h": 396,
+    "variance": 14050
+   },
+   {
+    "w": 705,
+    "h": 103,
+    "variance": 3065
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Andrew Chincea",
+  "height": 3293,
+  "file": "docs/checks/F19b/attempt-2/home-768-light.png"
+ },
+ {
+  "name": "home",
+  "path": "/",
+  "w": 768,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 768,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 705,
+    "h": 396,
+    "variance": 9423
+   },
+   {
+    "w": 705,
+    "h": 103,
+    "variance": 6899
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Andrew Chincea",
+  "height": 3293,
+  "file": "docs/checks/F19b/attempt-2/home-768-dark.png"
+ },
+ {
+  "name": "home",
+  "path": "/",
+  "w": 1280,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 1280,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 565,
+    "h": 318,
+    "variance": 13842
+   },
+   {
+    "w": 565,
+    "h": 103,
+    "variance": 2781
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Andrew Chincea",
+  "height": 2666,
+  "file": "docs/checks/F19b/attempt-2/home-1280-light.png"
+ },
+ {
+  "name": "home",
+  "path": "/",
+  "w": 1280,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 1280,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 565,
+    "h": 318,
+    "variance": 9173
+   },
+   {
+    "w": 565,
+    "h": 103,
+    "variance": 6626
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Andrew Chincea",
+  "height": 2666,
+  "file": "docs/checks/F19b/attempt-2/home-1280-dark.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 375,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 375,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 341,
+    "h": 542,
+    "variance": 1998
+   },
+   {
+    "w": 341,
+    "h": 238,
+    "variance": 8167
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "li.",
+   "a.",
+   "li.",
+   "a.",
+   "table.lakes__table",
+   "thead.",
+   "tr.",
+   "th."
+  ],
+  "title": "Rising water · Andrew Chincea",
+  "height": 13582,
+  "file": "docs/checks/F19b/attempt-2/rising-water-375-light.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 375,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 375,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 341,
+    "h": 542,
+    "variance": 2892
+   },
+   {
+    "w": 341,
+    "h": 238,
+    "variance": 14863
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "li.",
+   "a.",
+   "li.",
+   "a.",
+   "table.lakes__table",
+   "thead.",
+   "tr.",
+   "th."
+  ],
+  "title": "Rising water · Andrew Chincea",
+  "height": 13582,
+  "file": "docs/checks/F19b/attempt-2/rising-water-375-dark.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 768,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 768,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 705,
+    "h": 1120,
+    "variance": 1036
+   },
+   {
+    "w": 705,
+    "h": 270,
+    "variance": 6262
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "table.lakes__table",
+   "thead.",
+   "tr.",
+   "th.",
+   "th.",
+   "tbody.",
+   "tr.",
+   "td."
+  ],
+  "title": "Rising water · Andrew Chincea",
+  "height": 9904,
+  "file": "docs/checks/F19b/attempt-2/rising-water-768-light.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 768,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 768,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 705,
+    "h": 1120,
+    "variance": 2850
+   },
+   {
+    "w": 705,
+    "h": 270,
+    "variance": 11088
+   }
+  ],
+  "clipped": [],
+  "outside": [
+   "table.lakes__table",
+   "thead.",
+   "tr.",
+   "th.",
+   "th.",
+   "tbody.",
+   "tr.",
+   "td."
+  ],
+  "title": "Rising water · Andrew Chincea",
+  "height": 9904,
+  "file": "docs/checks/F19b/attempt-2/rising-water-768-dark.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 1280,
+  "scheme": "light",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 1280,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 570,
+    "h": 906,
+    "variance": 1300
+   },
+   {
+    "w": 466,
+    "h": 270,
+    "variance": 6347
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Rising water · Andrew Chincea",
+  "height": 8245,
+  "file": "docs/checks/F19b/attempt-2/rising-water-1280-light.png"
+ },
+ {
+  "name": "rising-water",
+  "path": "/rising-water/",
+  "w": 1280,
+  "scheme": "dark",
+  "status": 200,
+  "errors": [],
+  "third": [],
+  "failed": [],
+  "theme": "",
+  "overflowX": false,
+  "scrollW": 1280,
+  "fonts": [
+   "IBM Plex Mono 400",
+   "IBM Plex Mono Fallback 400",
+   "IBM Plex Sans 400",
+   "IBM Plex Sans 600",
+   "IBM Plex Sans Fallback 400"
+  ],
+  "canvases": [
+   {
+    "w": 570,
+    "h": 906,
+    "variance": 3257
+   },
+   {
+    "w": 466,
+    "h": 270,
+    "variance": 11563
+   }
+  ],
+  "clipped": [],
+  "outside": [],
+  "title": "Rising water · Andrew Chincea",
+  "height": 8245,
+  "file": "docs/checks/F19b/attempt-2/rising-water-1280-dark.png"
+ }
+]
