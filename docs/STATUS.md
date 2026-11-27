@@ -49,8 +49,8 @@ F9 has passed. The following plan follows the order of the megaprompt's stretch 
 | F26 Hero playback and a11y | QA-04, 05, 09, 13, 14, 15, 16 (hero) | done | [PASS_WITH_NOTES](checks/F26/attempt-1.md). Motion changes, manual pause across modes, live summary, 320 px selector, hit-testing, URL sync. |
 | F27 Explorer focus, touch, keyboard, no-JS | QA-06, 07, 08, 10 | done | [PASS_WITH_NOTES](checks/F27/attempt-1.md). Show moves focus, sticky tap readout, keyboard cell inspection, no-JS fallback. |
 | F28a Motion and feel audit | Emil skills (DECISIONS #89) | done | [audit](checks/F28a/audit.md): 10 findings, 12 plans; triage DECISIONS #90. |
-| F28b Shell and content feel | accepted F28a plans (site) | todo | site-builder; Settings drawer/sheet, hover/touch, tokens, Garden. |
-| F28c Hero and explorer UI feel | accepted F28a plans (viz) | todo | viz-builder; non-canvas UI only; frame-time gate unchanged. |
+| F28b Shell and content feel | F28a plans 01–08, 10, 11 | done | [PASS_WITH_NOTES](checks/F28b/attempt-2.md) (attempt 1 FAIL: WebKit Tab into the closing panel + 3 test bugs). `b014217`, PR #6. |
+| F28c Hero and explorer UI feel | F28a plans 09, 12 | done | [PASS_WITH_NOTES](checks/F28c/attempt-1.md). `869cec0`, PR #5. |
 | F28d NumberFlow readouts | optional | dropped | DECISIONS #90: readouts are continuous; guarded as plain text by plan 12. |
 
 ## Post-F19 audit

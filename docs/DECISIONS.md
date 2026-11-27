@@ -166,3 +166,9 @@ The hero caption becomes "Water rises over a random landscape. Lakes form in the
 - **Approved:** plans 08 and 09 (16 px control text, on touch devices only, e.g. `@media (pointer: coarse)`; desktop unchanged) and plan 10 (dim layer behind the phone Settings sheet only; the wide drawer stays undimmed).
 - **Deferred:** `viewport-fit=cover`, until it can be checked on a real iPhone. It's out of F28.
 - So F28b = plans 01–08, 10, 11 (site-builder) and F28c = plans 09, 12 (viz-builder), built in parallel.
+
+92. F28b attempt 1 FAIL, F28c PASS_WITH_NOTES (2026-11-26; docs/checks/F28b|F28c/attempt-1.md).
+- **Approved:** the site-builder may edit `src/components/site/settings.ts` for checker fix 1: set `panel.inert = !open` before `panel.hidden`, so WebKit can't Tab into the closing panel during the 200 ms exit. This lifts plan 02's "don't touch settings.ts" for this line only; it stays in site-builder ownership.
+- **F28b attempt 2:** checker fixes 1–4. Fixes 2–4 are test bugs: minified token strings, a duration read in seconds vs. ms, and a press test that depends on timing.
+- **F28c** is committed on its own through a candidate branch. Its checker run with only the F28c diff applied: 133 passed; the only failures are the local hero p95 tests, which fail on the pre-change build too, so hosted CI decides.
+- **Logged, not in F28:** a WebKit Tab-wrap leak in the Settings sheet that already exists before F28 (QA-19), and /rising-water/ light-theme mobile Lighthouse performance at 81 against the 80 budget (no change from F28; watch it).

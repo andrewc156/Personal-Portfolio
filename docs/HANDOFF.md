@@ -44,14 +44,14 @@
 | F25 Shell, Settings sheet, Garden (QA-03/11/16/17) | done | PASS_WITH_NOTES (attempt 2) | — | — |
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
-| F28 Natural UI pass (setup) | F28b + F28c built (uncommitted); checker attempt 1 running | n/a | `c86d3f0` |
+| F28 Natural UI pass | done (F28a audit, F28b, F28c; F28d dropped) | F28b PASS_WITH_NOTES (attempt 2), F28c PASS_WITH_NOTES | F28c `869cec0`, F28b `b014217` |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
-| F28 Natural UI pass | Control | `docs/builds/F28/plan.md`, `docs/design-skills/emil-kowalski/**`, DECISIONS #89, STATUS | Library review done; Emil's skills vendored; plan written (`c86d3f0`); F28a audit done (docs/checks/F28a/), triaged in DECISIONS #90; F28d dropped | Andrew approved 08/09/10, deferred viewport-fit (#91). F28b (site, plans 01–08, 10, 11) and F28c (viz, plans 09, 12) dispatched 2026-11-26; reports go to docs/builds/F28b|F28c/attempt-1.md. If the session drops, check those reports and git diff before re-dispatching → one fresh checker. |
+| F28 Natural UI pass | Control | — | Merged through hosted CI (PRs #5, #6); main = `b014217` + this docs commit | Real-iPhone pass (see Open issues). |
 | F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md` | FAIL only on the unverified browser matrix | Still needs a multi-version browser runner. |
 
 ## Handoff vs repo (resume check)
@@ -71,6 +71,12 @@
 - Untracked stale F19 checker artifacts (`docs/checks/F19a/attempt-2/`, `docs/checks/F19b/attempt-2/`, `docs/checks/tools/f19-*`, `f21-independent.mjs`, `docs/builds/F19a/.Rhistory`): historical, not staged.
 
 ## Open issues and "Needs Andrew"
+
+- F28 real-iPhone checks still open (emulation only so far): no zoom on Settings/hero/explorer fields, no stuck hover, sheet feel and scrim in dark, /about/ and 404 with toolbar, sheet's last row vs. home indicator (`viewport-fit=cover` deferred, DECISIONS #91).
+- QA-19: WebKit Tab wrap leaks out of the Settings sheet (5/38 Tabs), already present before F28. Not fixed.
+- /rising-water/ mobile Lighthouse performance in light is 81 against the 80 budget (F28 didn't change it).
+- F28 notes: the header unpins while the drawer slides out; the interrupt test checks the duration token, not the actual transition.
+- F28 checker evidence (`docs/checks/F28b/attempt-1/`, `attempt-2/`, about 30 MB of Lighthouse and probe output) is local only and not committed; the reports and tools are.
 
 - F9 blocker: last two Chrome, Firefox and Safari releases including actual iOS are not all verified. Firefox failed even on a blank page; iPhone WebKit emulation is not actual Safari/iOS. Control preflight found one desktop Safari (27.2) and no `simctl` available. No source fix is indicated by these results. Need access to a suitable real-browser/device runner.
 
@@ -99,11 +105,9 @@
 
 ## Next 3 actions
 
-1. IN PROGRESS: one fresh checker on F28b + F28c (reports → docs/checks/F28b|F28c/attempt-1.md). Builds are done (docs/builds/F28b|F28c/attempt-1.md); the source changes are uncommitted in the working tree; scope checked by Control (owned paths only).
-2. On PASS: isolated candidate branch → hosted CI → one [checked] commit per feature → fast-forward main.
-3. One fresh checker on F28b/F28c using review-animations STANDARDS.md and the §11 gates → candidate-branch CI → per-feature commits.
-
-Previous round (done): F24–F27 merged through candidate CI 45720189475; production `npm run check:prod` 178/0.
+1. Andrew does a real-iPhone pass on F28 (list under Open issues); fix anything found as F28e.
+2. Decide on QA-19 (WebKit sheet Tab wrap) and `viewport-fit=cover`, both best checked on the same iPhone.
+3. F9 blocker stays: multi-version browser runner.
 
 ## WIP branch
 
