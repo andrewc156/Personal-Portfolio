@@ -8,6 +8,7 @@ export const SETTINGS_STORAGE_KEY = 'settings-open';
 export const SETTINGS_TOGGLE_EVENT = 'settings:toggle';
 
 let opener: HTMLButtonElement | undefined;
+let panelExit: Animation | undefined;
 
 /** Same breakpoint as the bottom-sheet layout in SettingsPanel.astro. */
 const SHEET_QUERY = '(max-width: 40rem)';
@@ -101,6 +102,32 @@ export function isSettingsOpen(): boolean {
   return document.getElementById('settings-panel')?.hidden === false;
 }
 
+/** Keep the header pinned while the browser still renders the closed drawer. */
+function syncHeaderPin(panel: HTMLElement, open: boolean): void {
+  const root = document.documentElement;
+  const exit = open
+    ? undefined
+    : panel
+        .getAnimations()
+        .find(
+          (animation) =>
+            'transitionProperty' in animation && animation.transitionProperty === 'display',
+        );
+  panelExit = exit;
+  root.toggleAttribute('data-settings-exiting', !!exit);
+  root.toggleAttribute('data-settings-open', open);
+
+  if (!exit) return;
+  const unpin = () => {
+    // An interrupted exit must not unpin a reopened drawer or a later exit.
+    if (panelExit !== exit) return;
+    panelExit = undefined;
+    root.removeAttribute('data-settings-exiting');
+  };
+  // Theme changes and other motion overrides cancel the transition.
+  void exit.finished.then(unpin, unpin);
+}
+
 /** Move focus into the open panel and return it to its opener on close. */
 export function setSettingsOpen(open: boolean, moveFocus = true): void {
   const els = elements();
@@ -110,7 +137,7 @@ export function setSettingsOpen(open: boolean, moveFocus = true): void {
   // inert keeps it out of the tab order and the AX tree; cleared before focus moves in.
   panel.inert = !open;
   panel.hidden = !open;
-  document.documentElement.toggleAttribute('data-settings-open', open);
+  syncHeaderPin(panel, open);
   for (const toggle of toggles) toggle.setAttribute('aria-expanded', String(open));
   syncModal(panel);
   store(open);

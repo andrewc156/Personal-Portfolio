@@ -178,3 +178,7 @@ The hero caption becomes "Water rises over a random landscape. Lakes form in the
 - Approve the F19a copy, including the contact invitation, and keep the hero keywords, full hero caption and existing social card.
 - Soften the light-theme hero relief from #87.
 - Rising water is a completed personal project. RiverNets remains Andrew’s main research and is ongoing.
+
+94. Issue #11 Settings drawer exit.
+- Keep the wide header pinned until the drawer is no longer rendered. Close semantics and focus restoration take effect as soon as closing starts.
+- Run the Settings exit tests in both Chromium and WebKit. The theme switch continues to suspend transitions briefly.

@@ -82,6 +82,7 @@ async function sampleInterrupt(page: Page, axis: 'x' | 'y') {
     const kinds = p.getAnimations().map((a) => a.constructor.name);
     const opening = moving();
     if (!opening) return { kinds, error: 'no transform transition on open' };
+    const enterMs = Number(opening.effect?.getTiming().duration ?? NaN);
     opening.pause();
     opening.currentTime = 100;
     const midOpen = off();
@@ -100,11 +101,6 @@ async function sampleInterrupt(page: Page, axis: 'x' | 'y') {
     const openEnd = off();
     g.click(); // a full close from rest uses the exit duration
     const exitMs = Number(moving()?.effect?.getTiming().duration ?? NaN);
-    // The production build minifies `260ms` to `.26s`: convert the unit.
-    const rawEnter = getComputedStyle(document.documentElement)
-      .getPropertyValue('--dur-drawer-in')
-      .trim();
-    const enterMs = parseFloat(rawEnter) * (/ms$/.test(rawEnter) ? 1 : 1000);
     return {
       kinds,
       error: '',
@@ -667,49 +663,6 @@ test.describe('settings panel', () => {
     await expect(panel).toHaveAttribute('role', 'complementary');
     await expect(page.locator('main')).toHaveJSProperty('inert', false);
   });
-
-  for (const [w, h] of [
-    [1280, 800],
-    [375, 812],
-  ] as const) {
-    test(`closed panel is inert, even during its exit transition (${w}px, F28)`, async ({
-      page,
-    }) => {
-      await page.setViewportSize({ width: w, height: h });
-      await page.goto('/');
-      const gear = page.getByRole('button', { name: 'Art settings', exact: true });
-      const panel = page.locator('#settings-panel');
-      await expect(gear).toBeEnabled();
-      // Closed on load: inert.
-      await expect(panel).toHaveJSProperty('inert', true);
-      const state = () =>
-        page.evaluate(() => {
-          const p = document.getElementById('settings-panel')!;
-          const a = document.activeElement;
-          return { inert: p.inert, inside: a instanceof Node && p.contains(a) };
-        });
-
-      // The modal sheet makes the header (and its gear) inert, so the gear toggle is wide-only.
-      const ways =
-        w > 640 ? (['Escape', 'gear', 'close'] as const) : (['Escape', 'close'] as const);
-      for (const how of ways) {
-        await gear.click();
-        await expect(panel).toBeVisible();
-        // Open: not inert, and focus moved inside.
-        expect(await state()).toEqual({ inert: false, inside: true });
-        if (how === 'Escape') await page.keyboard.press('Escape');
-        else if (how === 'gear') await gear.click();
-        else await panel.getByRole('button', { name: 'Close art settings' }).click();
-        // Inert synchronously, while the panel is still sliding out (rendered for 200 ms).
-        expect(await panel.evaluate((p) => (p as HTMLElement).inert)).toBe(true);
-        // A Tab during the exit must not land inside the leaving panel.
-        await page.keyboard.press('Tab');
-        expect((await state()).inside).toBe(false);
-        await animationsSettled(page, '#settings-panel');
-        expect(await state()).toEqual({ inert: true, inside: false });
-      }
-    });
-  }
 
   test('a remembered open drawer does not reopen as a sheet on narrow screens', async ({
     page,

@@ -45,7 +45,7 @@ const { title = 'Art settings' } = Astro.props;
   .settings {
     position: fixed;
     z-index: 50;
-    /* Starts below the header (pinned while open, see Header.astro) so the
+    /* Starts below the header (pinned through the drawer exit, see Header.astro) so the
        gear and theme toggle stay visible and clickable. */
     inset: var(--shell-header-h, var(--header-h)) 0 0 auto;
     width: min(var(--panel-w), 100vw);

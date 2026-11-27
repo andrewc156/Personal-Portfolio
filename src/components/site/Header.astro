@@ -89,10 +89,9 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     background: var(--color-bg);
   }
 
-  /* While the art settings drawer is open (desktop/tablet), pin the header
-     above it so the gear can close it and the theme toggle stays usable. */
-  @media (min-width: 40.0625rem) {
-    :global(:root[data-settings-open]) .site-header {
+  /* Keep the gear and theme toggle in view above the wide drawer until its exit finishes. */
+  @media (width > 40rem) {
+    :global(:root:is([data-settings-open], [data-settings-exiting])) .site-header {
       position: sticky;
       top: 0;
       z-index: 60;
