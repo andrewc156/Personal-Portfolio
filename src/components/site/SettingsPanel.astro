@@ -55,11 +55,32 @@ const { title = 'Art settings' } = Astro.props;
     color: var(--color-text);
     border-left: 1px solid var(--color-border);
     box-shadow: var(--shadow-panel);
-    animation: settings-in-right var(--dur-med) var(--ease);
+    /* F28: enter/exit are transitions so they retarget when interrupted. These values
+       apply while opening (the destination state's transition is the one used). Only
+       transform moves; the surface stays opaque. Browsers without @starting-style or
+       transition-behavior simply show and hide the panel instantly. */
+    transform: none;
+    transition:
+      transform var(--dur-drawer-in) var(--ease-drawer),
+      display var(--dur-drawer-in) allow-discrete;
+  }
+
+  @starting-style {
+    .settings {
+      /* The extra 2rem hides the panel shadow off-screen. */
+      transform: translateX(calc(100% + 2rem));
+    }
   }
 
   .settings[hidden] {
     display: none;
+    transform: translateX(calc(100% + 2rem));
+    /* A tap on the leaving panel does nothing. */
+    pointer-events: none;
+    /* Values used when closing: a little faster than the enter. */
+    transition:
+      transform var(--dur-drawer-out) var(--ease-drawer),
+      display var(--dur-drawer-out) allow-discrete;
   }
 
   .settings__head {
@@ -108,22 +129,52 @@ const { title = 'Art settings' } = Astro.props;
       border-left: 0;
       border-top: 1px solid var(--color-border);
       border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-      animation-name: settings-in-up;
       padding-bottom: env(safe-area-inset-bottom, 0);
     }
-  }
 
-  @keyframes settings-in-right {
-    from {
-      transform: translateX(1.5rem);
-      opacity: 0;
+    @starting-style {
+      .settings {
+        transform: translateY(calc(100% + 2rem));
+      }
+    }
+
+    .settings[hidden] {
+      transform: translateY(calc(100% + 2rem));
     }
   }
 
-  @keyframes settings-in-up {
-    from {
-      transform: translateY(1.5rem);
-      opacity: 0;
+  /* F28: dim the page behind the modal sheet (narrow screens only: settings.ts sets
+     data-settings-modal for the sheet, never for the wide drawer). Opacity only. Pointer
+     events pass through to <body>, so the backdrop-click handler in settings.ts keeps
+     working unchanged. */
+  :global(body)::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 49; /* just under the panel (50) */
+    background: var(--color-scrim);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-drawer-out) var(--ease-out);
+  }
+
+  :global(:root[data-settings-modal]) :global(body)::after {
+    opacity: 1;
+    transition-duration: var(--dur-drawer-in);
+  }
+
+  /* Reduced motion: no movement at all. The panel appears and disappears in place
+     (durations are already 0 through tokens.css and the global reset). */
+  @media (prefers-reduced-motion: reduce) {
+    .settings,
+    .settings[hidden] {
+      transform: none;
+    }
+
+    @starting-style {
+      .settings {
+        transform: none;
+      }
     }
   }
 </style>

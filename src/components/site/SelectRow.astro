@@ -47,4 +47,12 @@ const { id, label, options, value, name, disabled = false } = Astro.props;
     font-size: var(--fs-small);
     cursor: pointer;
   }
+
+  /* F28: iOS zooms into fields under 16px on focus; touch devices get 16px
+     (DECISIONS #91). Desktop keeps --fs-small. */
+  @media (pointer: coarse) {
+    select {
+      font-size: 1rem;
+    }
+  }
 </style>

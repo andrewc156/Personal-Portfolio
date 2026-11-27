@@ -89,15 +89,22 @@ const Tag = href ? 'a' : 'div';
     }
   }
 
-  a.work-row__inner:hover {
-    background: var(--color-surface-sunken);
-    color: var(--color-text);
+  @media (hover: hover) and (pointer: fine) {
+    a.work-row__inner:hover {
+      background: var(--color-surface-sunken);
+      color: var(--color-text);
+    }
+
+    a.work-row__inner:hover .work-row__title {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
   }
 
-  a.work-row__inner:hover .work-row__title {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 0.18em;
+  /* F28: pressed state for every input type; colour only, no movement. */
+  a.work-row__inner:active {
+    background: var(--color-surface-sunken);
   }
 
   .work-row__type {

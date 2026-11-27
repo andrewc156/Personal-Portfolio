@@ -342,6 +342,32 @@ test.describe('garden', () => {
     const outline = await chip.evaluate((el) => getComputedStyle(el).outlineStyle);
     expect(outline).not.toBe('none');
   });
+  test('filtering is instant: rows change in the same task, nothing animates (F28)', async ({
+    page,
+  }) => {
+    await page.goto('/garden/');
+    const r = await page.evaluate(() => {
+      const rows = () =>
+        Array.from(document.querySelectorAll<HTMLElement>('.garden-list > li')).filter(
+          (li) => !li.hidden,
+        ).length;
+      const before = rows();
+      // A visible type/topic chip that isn't active and isn't an "All …" chip.
+      const chip = Array.from(document.querySelectorAll<HTMLAnchorElement>('a.chip')).find(
+        (c) =>
+          c.getAttribute('aria-current') !== 'true' &&
+          c.getClientRects().length > 0 &&
+          !/all/i.test(c.textContent ?? ''),
+      )!;
+      chip.click();
+      const after = rows(); // same task: no waiting for an animation
+      const list = document.querySelector('.garden-list')!;
+      const anims = list.getAnimations({ subtree: true }).length;
+      return { before, after, anims };
+    });
+    expect(r.after).not.toBe(r.before);
+    expect(r.anims).toBe(0);
+  });
 });
 
 test.describe('research', () => {

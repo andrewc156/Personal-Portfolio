@@ -116,8 +116,10 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     padding-block: var(--space-2);
   }
 
-  .wordmark:hover {
-    color: var(--color-accent);
+  @media (hover: hover) and (pointer: fine) {
+    .wordmark:hover {
+      color: var(--color-accent);
+    }
   }
 
   .site-nav {
@@ -144,11 +146,18 @@ const isCurrent = (href: string) => !href.includes('#') && path === href;
     white-space: nowrap;
   }
 
-  .site-nav a:hover,
   .site-nav a[aria-current='page'] {
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 0.3em;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .site-nav a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+      text-underline-offset: 0.3em;
+    }
   }
 
   .site-header__tools {

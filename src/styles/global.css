@@ -15,6 +15,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* F28: no grey/blue tap flash; controls give their own :active feedback. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -26,6 +28,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   background: var(--color-bg);
@@ -82,9 +85,11 @@ a {
   text-underline-offset: 0.18em;
 }
 
-a:hover {
-  color: var(--color-accent-hover);
-  text-decoration-thickness: 2px;
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--color-accent-hover);
+    text-decoration-thickness: 2px;
+  }
 }
 
 code,
@@ -177,14 +182,20 @@ textarea {
   font-size: var(--fs-small);
   line-height: 1.2;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
   transition:
     background-color var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-press) var(--ease-out);
 }
 
-.btn:hover {
-  border-color: var(--color-accent);
-  background: var(--color-accent-soft);
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
 }
 
 .btn[aria-pressed='true'] {
@@ -216,14 +227,28 @@ textarea {
   background: transparent;
   color: var(--color-text);
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
   transition:
     background-color var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-press) var(--ease-out);
 }
 
-.icon-btn:hover:not(:disabled) {
-  background: var(--color-surface-sunken);
-  border-color: var(--color-border);
+@media (hover: hover) and (pointer: fine) {
+  .icon-btn:hover:not(:disabled) {
+    background: var(--color-surface-sunken);
+    border-color: var(--color-border);
+  }
+}
+
+/* F28: press feedback. Scale only when motion is welcome. */
+@media (prefers-reduced-motion: no-preference) {
+  .btn:active:not(:disabled),
+  .icon-btn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
 }
 
 /* Shell buttons are rendered disabled until their script runs. Only look unavailable
@@ -239,13 +264,21 @@ textarea {
   height: 1.25rem;
 }
 
+/* F28: a theme switch lands in one frame; nothing cross-fades on its own schedule. */
+:root[data-theme-switching] *,
+:root[data-theme-switching] *::before,
+:root[data-theme-switching] *::after {
+  transition: none !important;
+}
+
+/* No transitions at all under reduced motion: never wait for transitionend. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition: none !important;
     scroll-behavior: auto !important;
   }
 }

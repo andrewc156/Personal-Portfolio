@@ -106,6 +106,9 @@ export function setSettingsOpen(open: boolean, moveFocus = true): void {
   const els = elements();
   if (!els) return;
   const { panel, toggles } = els;
+  // The closed panel stays rendered for its exit transition (display allow-discrete), so
+  // inert keeps it out of the tab order and the AX tree; cleared before focus moves in.
+  panel.inert = !open;
   panel.hidden = !open;
   document.documentElement.toggleAttribute('data-settings-open', open);
   for (const toggle of toggles) toggle.setAttribute('aria-expanded', String(open));
@@ -158,6 +161,8 @@ export function initSettingsPanel(): void {
   const els = elements();
   if (!els) return;
   const { panel, toggles } = els;
+  // A closed panel is inert from the start, matching what setSettingsOpen(false) leaves.
+  panel.inert = panel.hidden !== false;
 
   for (const toggle of toggles) {
     toggle.disabled = false;

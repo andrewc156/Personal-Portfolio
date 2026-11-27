@@ -24,6 +24,71 @@ async function animationsSettled(page: Page, selector: string): Promise<void> {
   });
 }
 
+/**
+ * F28: open, close mid-open, then reopen mid-close. Each running transform transition is
+ * paused and seeked (Web Animations API), so the sample points don't depend on frame timing
+ * (headless Chromium can skip ~80 ms between frames). Offsets are read synchronously right
+ * after each interrupting click: a retargeting transition starts from where the panel was,
+ * a keyframe restart would jump back to the off-screen start.
+ */
+async function sampleInterrupt(page: Page, axis: 'x' | 'y') {
+  return page.evaluate(async (axis) => {
+    const p = document.getElementById('settings-panel')!;
+    const g = document.querySelector<HTMLButtonElement>('[data-settings-toggle]')!;
+    const off = () => {
+      const m = new DOMMatrix(getComputedStyle(p).transform);
+      return axis === 'x' ? m.m41 : m.m42;
+    };
+    const moving = () =>
+      p
+        .getAnimations()
+        .find(
+          (a): a is CSSTransition =>
+            a instanceof CSSTransition && a.transitionProperty === 'transform',
+        );
+    g.click(); // open
+    const kinds = p.getAnimations().map((a) => a.constructor.name);
+    const opening = moving();
+    if (!opening) return { kinds, error: 'no transform transition on open' };
+    opening.pause();
+    opening.currentTime = 100;
+    const midOpen = off();
+    g.click(); // close mid-open
+    const afterClose = off();
+    const shownWhileClosing = getComputedStyle(p).display !== 'none';
+    const closing = moving();
+    if (!closing) return { kinds, error: 'no transform transition on close' };
+    closing.pause();
+    closing.currentTime = 60;
+    const midClose = off();
+    g.click(); // reopen mid-close
+    const afterReopen = off();
+    const size = axis === 'x' ? p.offsetWidth : p.offsetHeight;
+    await moving()?.finished;
+    const openEnd = off();
+    g.click(); // a full close from rest uses the exit duration
+    const exitMs = Number(moving()?.effect?.getTiming().duration ?? NaN);
+    // The production build minifies `260ms` to `.26s`: convert the unit.
+    const rawEnter = getComputedStyle(document.documentElement)
+      .getPropertyValue('--dur-drawer-in')
+      .trim();
+    const enterMs = parseFloat(rawEnter) * (/ms$/.test(rawEnter) ? 1 : 1000);
+    return {
+      kinds,
+      error: '',
+      midOpen,
+      afterClose,
+      shownWhileClosing,
+      midClose,
+      afterReopen,
+      size,
+      openEnd,
+      exitMs,
+      enterMs,
+    };
+  }, axis);
+}
+
 async function expectNoSeriousAxe(page: Page, label: string): Promise<void> {
   const results = await new AxeBuilder({ page }).analyze();
   const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
@@ -123,6 +188,23 @@ test.describe('theme', () => {
       return first ? `${first.tagName}:${first.hasAttribute('src') ? 'src' : 'inline'}` : '';
     });
     expect(order).toBe('SCRIPT:inline');
+  });
+  test('switching theme starts no transitions (F28)', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    const toggle = page.locator('[data-theme-toggle]');
+    await expect(toggle).toBeEnabled();
+    const n = await page.evaluate(() => {
+      document.querySelector<HTMLButtonElement>('[data-theme-toggle]')!.click();
+      return document.getAnimations().filter((a) => a.constructor.name === 'CSSTransition').length;
+    });
+    expect(n).toBe(0);
+    // Transitions come back afterwards (hover colour fades still work).
+    await expect
+      .poll(() =>
+        page.evaluate(() => document.documentElement.hasAttribute('data-theme-switching')),
+      )
+      .toBe(false);
   });
 });
 
@@ -473,7 +555,11 @@ test.describe('settings panel', () => {
       await page.keyboard.press('Escape');
       await expect(panel).toBeHidden();
       await expect(button).toBeFocused();
-      expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+      // Only the closed panel itself stays inert; nothing in the background does.
+      expect(
+        await page.evaluate(() => document.querySelectorAll('[inert]:not(#settings-panel)').length),
+      ).toBe(0);
+      await expect(page.locator('#settings-panel')).toHaveJSProperty('inert', true);
       await expect(panel).not.toHaveAttribute('aria-modal', 'true');
 
       // Close button.
@@ -492,7 +578,11 @@ test.describe('settings panel', () => {
       await page.mouse.click(195, Math.max(5, Math.round((box?.y ?? 100) / 2)));
       await expect(panel).toBeHidden();
       await expect(button).toBeFocused();
-      expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+      // Only the closed panel itself stays inert; nothing in the background does.
+      expect(
+        await page.evaluate(() => document.querySelectorAll('[inert]:not(#settings-panel)').length),
+      ).toBe(0);
+      await expect(page.locator('#settings-panel')).toHaveJSProperty('inert', true);
     });
   }
 
@@ -521,6 +611,49 @@ test.describe('settings panel', () => {
     await expect(page.locator('main')).toHaveJSProperty('inert', false);
   });
 
+  for (const [w, h] of [
+    [1280, 800],
+    [375, 812],
+  ] as const) {
+    test(`closed panel is inert, even during its exit transition (${w}px, F28)`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto('/');
+      const gear = page.getByRole('button', { name: 'Art settings', exact: true });
+      const panel = page.locator('#settings-panel');
+      await expect(gear).toBeEnabled();
+      // Closed on load: inert.
+      await expect(panel).toHaveJSProperty('inert', true);
+      const state = () =>
+        page.evaluate(() => {
+          const p = document.getElementById('settings-panel')!;
+          const a = document.activeElement;
+          return { inert: p.inert, inside: a instanceof Node && p.contains(a) };
+        });
+
+      // The modal sheet makes the header (and its gear) inert, so the gear toggle is wide-only.
+      const ways =
+        w > 640 ? (['Escape', 'gear', 'close'] as const) : (['Escape', 'close'] as const);
+      for (const how of ways) {
+        await gear.click();
+        await expect(panel).toBeVisible();
+        // Open: not inert, and focus moved inside.
+        expect(await state()).toEqual({ inert: false, inside: true });
+        if (how === 'Escape') await page.keyboard.press('Escape');
+        else if (how === 'gear') await gear.click();
+        else await panel.getByRole('button', { name: 'Close art settings' }).click();
+        // Inert synchronously, while the panel is still sliding out (rendered for 200 ms).
+        expect(await panel.evaluate((p) => (p as HTMLElement).inert)).toBe(true);
+        // A Tab during the exit must not land inside the leaving panel.
+        await page.keyboard.press('Tab');
+        expect((await state()).inside).toBe(false);
+        await animationsSettled(page, '#settings-panel');
+        expect(await state()).toEqual({ inert: true, inside: false });
+      }
+    });
+  }
+
   test('a remembered open drawer does not reopen as a sheet on narrow screens', async ({
     page,
   }) => {
@@ -530,10 +663,126 @@ test.describe('settings panel', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.reload();
     await expect(page.locator('#settings-panel')).toBeHidden();
-    expect(await page.evaluate(() => document.querySelectorAll('[inert]').length)).toBe(0);
+    // Only the closed panel itself stays inert; nothing in the background does.
+    expect(
+      await page.evaluate(() => document.querySelectorAll('[inert]:not(#settings-panel)').length),
+    ).toBe(0);
+    await expect(page.locator('#settings-panel')).toHaveJSProperty('inert', true);
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.reload();
     await expect(page.locator('#settings-panel')).toBeVisible();
+  });
+
+  for (const [w, h, axis] of [
+    [1280, 800, 'x'],
+    [375, 812, 'y'],
+  ] as const) {
+    test(`enter/exit are interruptible transitions, no jumps (${w}px, F28)`, async ({ page }) => {
+      await page.setViewportSize({ width: w, height: h });
+      await page.goto('/');
+      await expect(page.getByRole('button', { name: 'Art settings', exact: true })).toBeEnabled();
+      const r = await sampleInterrupt(page, axis);
+      expect(r.error).toBe('');
+      expect(r.kinds).not.toContain('CSSAnimation');
+      expect(r.kinds).toContain('CSSTransition');
+      expect(r.shownWhileClosing).toBe(true);
+      const midOpen = r.midOpen!;
+      const midClose = r.midClose!;
+      // Genuinely mid-travel when interrupted.
+      expect(midOpen).toBeGreaterThan(0);
+      expect(midOpen).toBeLessThan(r.size!);
+      expect(midClose).toBeGreaterThan(r.afterClose!);
+      // An interruption continues from where the panel was: no jump.
+      expect(Math.abs(r.afterClose! - midOpen)).toBeLessThan(1);
+      expect(Math.abs(r.afterReopen! - midClose)).toBeLessThan(1);
+      expect(r.openEnd).toBe(0);
+      // Exit is a little faster than enter (200 ms vs 260 ms).
+      expect(r.exitMs).toBe(200);
+      expect(r.enterMs).toBeCloseTo(260, 6);
+      expect(r.exitMs!).toBeLessThan(r.enterMs!);
+      await animationsSettled(page, '#settings-panel');
+    });
+  }
+
+  test('reduced motion: the panel never moves (F28)', async ({ browser }) => {
+    for (const [w, h] of [
+      [1280, 800],
+      [375, 812],
+    ]) {
+      const ctx = await browser.newContext({
+        viewport: { width: w, height: h },
+        reducedMotion: 'reduce',
+      });
+      const page = await ctx.newPage();
+      await page.goto('/');
+      await expect(page.getByRole('button', { name: 'Art settings', exact: true })).toBeEnabled();
+      const t = await page.evaluate(async () => {
+        const p = document.getElementById('settings-panel')!;
+        document.querySelector<HTMLButtonElement>('[data-settings-toggle]')!.click();
+        const out: string[] = [];
+        for (let i = 0; i < 3; i++) {
+          out.push(getComputedStyle(p).transform);
+          await new Promise((r) => requestAnimationFrame(r));
+        }
+        return out;
+      });
+      expect(
+        t.every((v) => v === 'none'),
+        `${w}px: ${t.join(' | ')}`,
+      ).toBe(true);
+      await ctx.close();
+    }
+  });
+
+  test('touch: Settings selects are at least 16px (no iOS focus zoom) (F28)', async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 375, height: 812 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    // The 16px rule is keyed on (pointer: coarse); make sure the emulation provides it.
+    expect(await page.evaluate(() => matchMedia('(pointer: coarse)').matches)).toBe(true);
+    const sizes = await page.$$eval('#settings-panel .select-row select', (els) =>
+      els.map((e) => parseFloat(getComputedStyle(e).fontSize)),
+    );
+    expect(sizes.length).toBeGreaterThan(0);
+    for (const s of sizes) expect(s).toBeGreaterThanOrEqual(16);
+    await ctx.close();
+  });
+
+  test('desktop: Settings selects keep the small control size (F28)', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    const sizes = await page.$$eval('#settings-panel .select-row select', (els) =>
+      els.map((e) => getComputedStyle(e).fontSize),
+    );
+    expect(sizes.length).toBeGreaterThan(0);
+    for (const s of sizes) expect(s).toBe('14px');
+  });
+
+  test('modal sheet dims the page; the wide drawer does not (F28)', async ({ page }) => {
+    const scrim = () => page.evaluate(() => getComputedStyle(document.body, '::after').opacity);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/');
+    const gear = page.getByRole('button', { name: 'Art settings', exact: true });
+    await expect(gear).toBeEnabled();
+    expect(await scrim()).toBe('0');
+    await gear.click();
+    await animationsSettled(page, 'body');
+    await expect.poll(scrim).toBe('1');
+    // Backdrop tap still closes it (F25) and the scrim goes away.
+    await page.mouse.click(187, 40);
+    await expect(page.locator('#settings-panel')).toBeHidden();
+    await expect.poll(scrim).toBe('0');
+
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await gear.click();
+    await animationsSettled(page, '#settings-panel');
+    expect(await scrim()).toBe('0');
   });
 
   test('gear is absent on pages without settings', async ({ page }) => {
@@ -807,6 +1056,175 @@ test.describe('layout and accessibility', () => {
     );
     expect(behavior).toBe('auto');
     await ctx.close();
+  });
+
+  test('motion tokens exist (F28)', async ({ page }) => {
+    await page.goto('/');
+    const v = await page.evaluate(() => {
+      const s = getComputedStyle(document.documentElement);
+      return [
+        '--ease-out',
+        '--ease-drawer',
+        '--dur-press',
+        '--dur-drawer-in',
+        '--dur-drawer-out',
+      ].map((n) => s.getPropertyValue(n).trim());
+    });
+    // Compare values, not strings: the production build minifies `160ms` to `.16s` and
+    // `cubic-bezier(0.23, 1, 0.32, 1)` to `cubic-bezier(.23, 1, .32, 1)`.
+    const ms = (d: string) => {
+      const m = /^(-?[\d.]+)(ms|s)$/.exec(d);
+      return m ? parseFloat(m[1]!) * (m[2] === 's' ? 1000 : 1) : NaN;
+    };
+    const bezier = (e: string) => {
+      const m = /^cubic-bezier\(([^)]*)\)$/.exec(e);
+      return m ? m[1]!.split(',').map((n) => parseFloat(n)) : [];
+    };
+    const close = (got: number[], want: number[]) => {
+      expect(got).toHaveLength(want.length);
+      got.forEach((g, i) => expect(g).toBeCloseTo(want[i]!, 6));
+    };
+    close(bezier(v[0]!), [0.23, 1, 0.32, 1]);
+    close(bezier(v[1]!), [0.32, 0.72, 0, 1]);
+    close(v.slice(2).map(ms), [160, 260, 200]);
+  });
+
+  test('every :hover rule is gated by (hover: hover) and (pointer: fine) (F28)', async ({
+    page,
+  }) => {
+    for (const path of ['/', '/garden/', '/research/', '/rising-water/']) {
+      await page.goto(path);
+      const ungated = await page.evaluate(() => {
+        const bad: string[] = [];
+        const walk = (rules: CSSRuleList, gated: boolean) => {
+          for (const r of Array.from(rules)) {
+            if (r instanceof CSSMediaRule) {
+              const c = r.conditionText.replace(/\s+/g, ' ');
+              walk(
+                r.cssRules,
+                gated || (c.includes('hover: hover') && c.includes('pointer: fine')),
+              );
+            } else if (r instanceof CSSStyleRule) {
+              if (r.selectorText.includes(':hover') && !gated) bad.push(r.selectorText);
+              if (r.cssRules?.length) walk(r.cssRules, gated);
+            } else if ('cssRules' in r) {
+              walk((r as CSSGroupingRule).cssRules, gated);
+            }
+          }
+        };
+        for (const s of Array.from(document.styleSheets)) {
+          try {
+            walk(s.cssRules, false);
+          } catch {
+            /* cross-origin: none expected */
+          }
+        }
+        return bad;
+      });
+      expect(ungated, path).toEqual([]);
+    }
+  });
+
+  test('a tapped button keeps no hover fill on touch (F28)', async ({ browser }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 375, height: 812 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    const btn = page.locator('.hero__btn[data-hero-new]');
+    await expect(btn).toBeEnabled();
+    await btn.scrollIntoViewIfNeeded();
+    const before = await btn.evaluate((b) => getComputedStyle(b).backgroundColor);
+    await btn.tap();
+    await page.waitForTimeout(300);
+    expect(await btn.evaluate((b) => getComputedStyle(b).backgroundColor)).toBe(before);
+    await ctx.close();
+  });
+
+  test('press feedback: no tap flash, buttons scale on press, not under reduced motion (F28)', async ({
+    browser,
+  }) => {
+    for (const reducedMotion of ['no-preference', 'reduce'] as const) {
+      const ctx = await browser.newContext({
+        viewport: { width: 1280, height: 800 },
+        reducedMotion,
+      });
+      const page = await ctx.newPage();
+      await page.goto('/');
+      expect(
+        await page.evaluate(() =>
+          getComputedStyle(document.documentElement).getPropertyValue(
+            '-webkit-tap-highlight-color',
+          ),
+        ),
+      ).toBe('rgba(0, 0, 0, 0)');
+      const btn = page.locator('.hero__btn[data-hero-new]');
+      await expect(btn).toBeEnabled();
+      const box = (await btn.boundingBox())!;
+      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+      await page.mouse.down();
+      // Wait for the press transition to finish instead of a fixed delay (slow hosts can
+      // be mid-transition after 250 ms), then compare the scale with a tolerance.
+      const t = await btn.evaluate(async (b) => {
+        await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+        await Promise.all(b.getAnimations().map((a) => a.finished.catch(() => undefined)));
+        return getComputedStyle(b).transform;
+      });
+      await page.mouse.up();
+      if (reducedMotion === 'reduce') expect(t).toBe('none');
+      else {
+        expect(t).toMatch(/^matrix\(/);
+        const m = t
+          .slice(7, -1)
+          .split(',')
+          .map((n) => parseFloat(n));
+        expect(m[0]).toBeCloseTo(0.97, 2);
+        expect(m[3]).toBeCloseTo(0.97, 2);
+        expect(m[1]).toBeCloseTo(0, 6);
+        expect(m[2]).toBeCloseTo(0, 6);
+      }
+      await ctx.close();
+    }
+  });
+
+  test('reduced motion: opening Settings and switching theme start no transitions (F28)', async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 1280, height: 800 },
+      reducedMotion: 'reduce',
+    });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    await expect(page.getByRole('button', { name: 'Art settings', exact: true })).toBeEnabled();
+    const n = await page.evaluate(() => {
+      document.querySelector<HTMLButtonElement>('[data-settings-toggle]')!.click();
+      document.querySelector<HTMLButtonElement>('[data-theme-toggle]')!.click();
+      return document.getAnimations().filter((a) => a.constructor.name === 'CSSTransition').length;
+    });
+    expect(n).toBe(0);
+    await ctx.close();
+  });
+
+  test('body min-height uses small-viewport units (F28)', async ({ page }) => {
+    await page.goto('/'); // site CSS (note: `astro preview` serves its own page for a bare /404)
+    const ok = await page.evaluate(() =>
+      Array.from(document.styleSheets).some((s) => {
+        try {
+          return Array.from(s.cssRules).some(
+            (r) =>
+              r instanceof CSSStyleRule &&
+              r.selectorText === 'body' &&
+              r.cssText.includes('100svh'),
+          );
+        } catch {
+          return false;
+        }
+      }),
+    );
+    expect(ok).toBe(true);
   });
 
   test('body text is 17px with line-height 1.6', async ({ page }) => {

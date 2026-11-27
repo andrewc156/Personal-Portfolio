@@ -14,8 +14,22 @@ export function currentTheme(): Theme {
   return media().matches ? 'dark' : 'light';
 }
 
+/** Apply a colour change with transitions suspended for that frame (F28). */
+function withoutTransitions(change: () => void): void {
+  const root = document.documentElement;
+  root.setAttribute('data-theme-switching', '');
+  change();
+  // Commit the new colours with transitions off, then restore them two frames later.
+  void getComputedStyle(root).backgroundColor;
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => root.removeAttribute('data-theme-switching')),
+  );
+}
+
 export function setTheme(theme: Theme): void {
-  document.documentElement.dataset.theme = theme;
+  withoutTransitions(() => {
+    document.documentElement.dataset.theme = theme;
+  });
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme);
   } catch {
@@ -37,6 +51,7 @@ export function initThemeToggle(): void {
     btn.disabled = false;
     btn.addEventListener('click', () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark'));
   });
-  media().addEventListener('change', sync);
+  // An OS theme change (when following the OS) also lands in one frame.
+  media().addEventListener('change', () => withoutTransitions(sync));
   sync();
 }

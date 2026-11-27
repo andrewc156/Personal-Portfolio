@@ -76,6 +76,13 @@
   --dur-fast: 120ms;
   --dur-med: 220ms;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  /* F28: strong ease-out for UI responses (press feedback, fades). */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  /* F28: iOS-like drawer/sheet curve. */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 160ms;
+  --dur-drawer-in: 260ms;
+  --dur-drawer-out: 200ms;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -130,5 +137,8 @@
   :root {
     --dur-fast: 0ms;
     --dur-med: 0ms;
+    --dur-press: 0ms;
+    --dur-drawer-in: 0ms;
+    --dur-drawer-out: 0ms;
   }
 }

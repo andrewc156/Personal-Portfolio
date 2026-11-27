@@ -220,15 +220,28 @@ const description = typeList
     color: var(--color-text);
     font-size: var(--fs-small);
     text-decoration: none;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
     transition:
       background-color var(--dur-fast) var(--ease),
-      border-color var(--dur-fast) var(--ease);
+      border-color var(--dur-fast) var(--ease),
+      transform var(--dur-press) var(--ease-out);
   }
 
-  .chip:hover {
-    border-color: var(--color-accent);
-    background: var(--color-accent-soft);
-    color: var(--color-text);
+  @media (hover: hover) and (pointer: fine) {
+    .chip:hover {
+      border-color: var(--color-accent);
+      background: var(--color-accent-soft);
+      color: var(--color-text);
+    }
+  }
+
+  /* F28: press feedback. Scale only when motion is welcome. */
+  @media (prefers-reduced-motion: no-preference) {
+    .chip:active {
+      transform: scale(0.97);
+    }
   }
 
   .chips__unlisted:not([hidden]) {

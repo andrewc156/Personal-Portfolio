@@ -30,9 +30,18 @@
   font-family: var(--font-mono);
   font-size: var(--fs-xsmall);
   text-decoration: none;
+  touch-action: manipulation;
 }
 
-.link-btn:hover {
+@media (hover: hover) and (pointer: fine) {
+  .link-btn:hover {
+    background: var(--color-accent-soft);
+    border-color: var(--color-accent);
+  }
+}
+
+/* F28: pressed state for every input type; colour only, no movement. */
+.link-btn:active {
   background: var(--color-accent-soft);
   border-color: var(--color-accent);
 }

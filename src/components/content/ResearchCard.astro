@@ -56,9 +56,11 @@ const Heading = `h${headingLevel}` as 'h2' | 'h3';
     text-decoration-color: var(--color-control);
   }
 
-  .research-card__title a:hover {
-    color: var(--color-accent);
-    text-decoration-color: currentColor;
+  @media (hover: hover) and (pointer: fine) {
+    .research-card__title a:hover {
+      color: var(--color-accent);
+      text-decoration-color: currentColor;
+    }
   }
 
   .research-card__summary,
