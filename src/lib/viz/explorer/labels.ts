@@ -172,19 +172,34 @@ function overlaps(a: LabelBox, b: LabelBox): boolean {
 // farther when crowded.
 const DISTANCES = [7, 19];
 const TOP_DISTANCES = [7, 19, 34, 50];
-// Rescue slots, tried only for a priority-1 label once its standard slots are exhausted
-// (an edge marker, or wider font metrics than expected). The placard slides along each
-// side of the marker so a marker hard against the map edge still has room inward.
-const RESCUE_DISTANCES = [7, 19, 34, 50, 70, 95, 125];
+// Rescue slots slide placards along a side of the marker, so an anchor hard against
+// the map edge can still be labeled inward.
+const NEAR_RESCUE_DISTANCES = [7, 19, 34, 50];
+const WIDE_RESCUE_DISTANCES = [...NEAR_RESCUE_DISTANCES, 70, 95, 125];
 const RESCUE_SLIDES = [0, 0.25, 0.5, 0.75, 1];
+const MAX_COMPACT_LEADER = 65;
+// Try intermediate offsets when the normal slots would need a long leader.
+const COMPACT_RESCUE_DISTANCES = [
+  ...NEAR_RESCUE_DISTANCES,
+  ...Array.from({ length: 28 }, (_, i) => 11 + i * 2),
+];
+const COMPACT_SEARCH_LIMIT = 2500;
 
-interface Layout {
-  placed: LabelBox[];
-  markers: LabelBox[];
-  leaders: Leader[];
+interface Placement {
+  box: LabelBox;
+  leader: Leader;
 }
 
-function slots({ priority, x, y }: LabelCandidate, boxWidth: number): [number, number][] {
+interface Layout {
+  placements: Placement[];
+  markers: LabelBox[];
+}
+
+function slots(
+  { priority, x, y }: LabelCandidate,
+  boxWidth: number,
+  rescueDistances: readonly number[],
+): [number, number][] {
   const out: [number, number][] = [];
   for (const distance of priority === 1 ? TOP_DISTANCES : DISTANCES) {
     const left = x - boxWidth - distance;
@@ -205,7 +220,7 @@ function slots({ priority, x, y }: LabelCandidate, boxWidth: number): [number, n
     );
   }
   if (priority !== 1) return out;
-  for (const distance of RESCUE_DISTANCES) {
+  for (const distance of rescueDistances) {
     const left = x - boxWidth - distance;
     const right = x + distance;
     for (const slide of RESCUE_SLIDES) {
@@ -222,52 +237,127 @@ function slots({ priority, x, y }: LabelCandidate, boxWidth: number): [number, n
   return out;
 }
 
+function* placements(
+  candidate: LabelCandidate,
+  width: number,
+  height: number,
+  rescueDistances: readonly number[],
+  maxLeaderLength = Infinity,
+): Generator<Placement> {
+  const { id, x, y, textWidth } = candidate;
+  const boxWidth = Math.ceil(textWidth) + LABEL_TEXT_PAD * 2;
+  if (boxWidth > width - PAD * 2 || LABEL_HEIGHT > height - PAD * 2) return;
+
+  for (const [left, top] of slots(candidate, boxWidth, rescueDistances)) {
+    const box = {
+      id,
+      left: Math.max(PAD, Math.min(left, width - PAD - boxWidth)),
+      top: Math.max(PAD, Math.min(top, height - PAD - LABEL_HEIGHT)),
+      width: boxWidth,
+      height: LABEL_HEIGHT,
+    };
+    const to = labelAttachment(candidate, box);
+    if ((to.x - x) ** 2 + (to.y - y) ** 2 <= maxLeaderLength ** 2 + 1e-9) {
+      yield { box, leader: { from: candidate, to } };
+    }
+  }
+}
+
+function clearsMarkers({ box, leader }: Placement, marker: LabelBox, markers: LabelBox[]) {
+  return (
+    !overlaps(box, marker) &&
+    !markers.some(
+      (point) => overlaps(box, point) || (point.id !== marker.id && leaderHits(leader, point)),
+    )
+  );
+}
+
+function compatible(a: Placement, b: Placement) {
+  return !overlaps(a.box, b.box) && !leaderHits(a.leader, b.box) && !leaderHits(b.leader, a.box);
+}
+
 /** Try the candidate's slots in order; on success, record its placard, leader and marker. */
 function placeOne(
   candidate: LabelCandidate,
   width: number,
   height: number,
   layout: Layout,
+  rescueDistances: readonly number[],
+  maxLeaderLength = Infinity,
 ): boolean {
-  const { placed, markers, leaders } = layout;
-  const { id, priority, textWidth } = candidate;
   const marker = markerBox(candidate);
   // A label whose anchor is covered by an earlier placard would be misleading.
-  if (placed.some((box) => overlaps(marker, box))) return false;
-  if (leaders.some((leader) => leaderHits(leader, marker))) return false;
-  const boxWidth = Math.ceil(textWidth) + LABEL_TEXT_PAD * 2;
-  if (boxWidth > width - PAD * 2 || LABEL_HEIGHT > height - PAD * 2) return false;
+  if (
+    layout.placements.some(({ box, leader }) => overlaps(marker, box) || leaderHits(leader, marker))
+  ) {
+    return false;
+  }
 
-  for (const [l, t] of slots(candidate, boxWidth)) {
-    const box = {
-      id,
-      left: Math.max(PAD, Math.min(l, width - PAD - boxWidth)),
-      top: Math.max(PAD, Math.min(t, height - PAD - LABEL_HEIGHT)),
-      width: boxWidth,
-      height: LABEL_HEIGHT,
-    };
-    const leader = { from: candidate, to: labelAttachment(candidate, box) };
+  for (const placement of placements(candidate, width, height, rescueDistances, maxLeaderLength)) {
     if (
-      !placed.some((other) => overlaps(box, other) || leaderHits(leader, other)) &&
-      !markers.some((point) => overlaps(box, point)) &&
-      !overlaps(box, marker) &&
-      !leaders.some((other) => leaderHits(other, box)) &&
-      !markers.some((point) => point.id !== id && leaderHits(leader, point))
+      clearsMarkers(placement, marker, layout.markers) &&
+      layout.placements.every((other) => compatible(placement, other))
     ) {
-      placed.push(box);
-      leaders.push(leader);
-      if (priority !== 1) markers.push(marker);
+      layout.placements.push(placement);
+      if (candidate.priority !== 1) layout.markers.push(marker);
       return true;
     }
   }
   return false;
 }
 
+/** Retry compact placement with the most constrained anchors first. */
+function compactLayout(
+  top: LabelCandidate[],
+  topMarkers: LabelBox[],
+  width: number,
+  height: number,
+): Layout | undefined {
+  const options = top.map((candidate, i) => {
+    const seen = new Set<string>();
+    const available: Placement[] = [];
+    for (const placement of placements(
+      candidate,
+      width,
+      height,
+      COMPACT_RESCUE_DISTANCES,
+      MAX_COMPACT_LEADER,
+    )) {
+      const { left, top } = placement.box;
+      const key = `${left},${top}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      if (clearsMarkers(placement, topMarkers[i], topMarkers)) available.push(placement);
+    }
+    return available;
+  });
+
+  const chosen: Placement[] = [];
+  let remaining = COMPACT_SEARCH_LIMIT;
+  const fit = (available: Placement[][]): boolean => {
+    if (!available.length) return true;
+    available.sort((a, b) => a.length - b.length);
+    const [next, ...rest] = available;
+    for (const placement of next) {
+      if (remaining === 0) return false;
+      remaining--;
+      const narrowed = rest.map((options) =>
+        options.filter((other) => compatible(placement, other)),
+      );
+      if (narrowed.some((options) => !options.length)) continue;
+      chosen.push(placement);
+      if (fit(narrowed)) return true;
+      chosen.pop();
+    }
+    return false;
+  };
+  return fit(options) ? { placements: chosen, markers: [...topMarkers] } : undefined;
+}
+
 /**
  * Lay out priority groups in order, with stable feature-ID ties and in-bounds label boxes.
- * Every priority-1 label is placed whenever the greedy search can find room for all of
- * them: if one is left out, the ones left out are moved to the front and priority 1 is laid
- * out again (bounded, deterministic). Lower priorities then fill the gaps greedily.
+ * Try compact leaders first, then consider wider or standard-only slots if necessary
+ * to keep more priority-1 labels. Lower priorities fill the gaps greedily.
  */
 export function placeLabelBoxes(
   candidates: readonly LabelCandidate[],
@@ -278,23 +368,35 @@ export function placeLabelBoxes(
   const top = sorted.filter((p) => p.priority === 1);
   const topMarkers = top.map(markerBox);
 
-  let order = top;
-  let best: Layout | undefined;
-  let bestMissing = Infinity;
-  for (let attempt = 0; attempt <= top.length; attempt++) {
-    const layout: Layout = { placed: [], markers: [...topMarkers], leaders: [] };
-    const missing = order.filter((candidate) => !placeOne(candidate, width, height, layout));
-    if (missing.length < bestMissing) {
-      best = layout;
-      bestMissing = missing.length;
+  const search = (rescueDistances: readonly number[], maxLeaderLength = Infinity) => {
+    let order = top;
+    let best: Layout = { placements: [], markers: [...topMarkers] };
+    for (let attempt = 0; attempt <= top.length; attempt++) {
+      const layout: Layout = { placements: [], markers: [...topMarkers] };
+      const missing = order.filter(
+        (candidate) =>
+          !placeOne(candidate, width, height, layout, rescueDistances, maxLeaderLength),
+      );
+      if (layout.placements.length > best.placements.length) best = layout;
+      if (!missing.length) break;
+      order = [...missing, ...order.filter((candidate) => !missing.includes(candidate))];
     }
-    if (!missing.length) break;
-    order = [...missing, ...order.filter((candidate) => !missing.includes(candidate))];
+    return best;
+  };
+
+  let layout = search(NEAR_RESCUE_DISTANCES, MAX_COMPACT_LEADER);
+  if (layout.placements.length < top.length) {
+    layout = compactLayout(top, topMarkers, width, height) ?? layout;
   }
-  const layout = best ?? { placed: [], markers: topMarkers, leaders: [] };
+  if (layout.placements.length < top.length) {
+    const standard = search([]);
+    const wide = search(WIDE_RESCUE_DISTANCES);
+    if (standard.placements.length > layout.placements.length) layout = standard;
+    if (wide.placements.length > layout.placements.length) layout = wide;
+  }
   for (const candidate of sorted) {
-    if (candidate.priority !== 1) placeOne(candidate, width, height, layout);
+    if (candidate.priority !== 1) placeOne(candidate, width, height, layout, []);
   }
   const rank = new Map(sorted.map((candidate, k) => [candidate.id, k]));
-  return layout.placed.sort((a, b) => rank.get(a.id)! - rank.get(b.id)!);
+  return layout.placements.map(({ box }) => box).sort((a, b) => rank.get(a.id)! - rank.get(b.id)!);
 }

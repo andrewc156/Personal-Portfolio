@@ -870,6 +870,51 @@ test.describe('explorer: basin mask', () => {
 });
 
 test.describe('explorer: place labels', () => {
+  test('listens for late fonts only while place labels are shown', async ({ page }) => {
+    await page.addInitScript(() => {
+      const fonts = document.fonts;
+      const listeners = new Set<EventListenerOrEventListenerObject>();
+      const add = EventTarget.prototype.addEventListener.bind(fonts);
+      const remove = EventTarget.prototype.removeEventListener.bind(fonts);
+      fonts.addEventListener = (...args: Parameters<EventTarget['addEventListener']>) => {
+        if (args[0] === 'loadingdone' && args[1]) listeners.add(args[1]);
+        add(...args);
+      };
+      fonts.removeEventListener = (...args: Parameters<EventTarget['removeEventListener']>) => {
+        if (args[0] === 'loadingdone' && args[1]) listeners.delete(args[1]);
+        remove(...args);
+      };
+      Object.assign(window, { labelFontListeners: () => listeners.size });
+    });
+    const listenerCount = () =>
+      page.evaluate(() =>
+        (window as Window & { labelFontListeners?: () => number }).labelFontListeners!(),
+      );
+
+    await page.goto(URL);
+    await ready(page);
+    expect(await listenerCount()).toBe(0);
+
+    const toggle = page.getByRole('checkbox', { name: 'Place labels' });
+    await toggle.check();
+    expect(await listenerCount()).toBe(1);
+    await toggle.uncheck();
+    expect(await listenerCount()).toBe(0);
+    await toggle.check();
+    expect(await listenerCount()).toBe(1);
+
+    const label = page.locator('[data-place-id][data-placed]').first();
+    const width = await label.evaluate((node) => {
+      const rect = node.querySelector('rect')!;
+      rect.setAttribute('width', '0');
+      document.fonts.dispatchEvent(new Event('loadingdone'));
+      return rect.width.baseVal.value;
+    });
+    expect(width).toBeGreaterThan(0);
+    await toggle.uncheck();
+    expect(await listenerCount()).toBe(0);
+  });
+
   test('keyboard toggle presents the source, preserves the mask, and leaves the grid unchanged', async ({
     page,
   }) => {

@@ -74,16 +74,17 @@ export function wirePlaceLabels(root: HTMLElement): void {
     fonts?.load(LABEL_FONT).then(relayout, () => {});
     fonts?.ready.then(relayout, () => {});
   };
-  fonts?.addEventListener('loadingdone', relayout);
   checkbox.checked = false;
   checkbox.addEventListener('change', () => {
     root.dataset.placeLabels = checkbox.checked ? 'on' : 'off';
     if (checkbox.checked) {
       layout();
       observer.observe(layer);
+      fonts?.addEventListener('loadingdone', relayout);
       fontsReady();
     } else {
       observer.disconnect();
+      fonts?.removeEventListener('loadingdone', relayout);
       status.textContent = 'Place labels hidden.';
     }
   });
