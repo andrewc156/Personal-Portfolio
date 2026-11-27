@@ -72,6 +72,8 @@
 
 ## Open issues and "Needs Andrew"
 
+GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pass, #8 viewport-fit, #9 QA-19, #10 /rising-water/ Lighthouse, #11 F28 follow-ups, #12 F9 browser matrix, #13 check-links orphan, #14 CI3 notes, #15 content questions.
+
 - F28 real-iPhone checks still open (emulation only so far): no zoom on Settings/hero/explorer fields, no stuck hover, sheet feel and scrim in dark, /about/ and 404 with toolbar, sheet's last row vs. home indicator (`viewport-fit=cover` deferred, DECISIONS #91).
 - QA-19: WebKit Tab wrap leaks out of the Settings sheet (5/38 Tabs), already present before F28. Not fixed.
 - /rising-water/ mobile Lighthouse performance in light is 81 against the 80 budget (F28 didn't change it).
