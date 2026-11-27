@@ -443,6 +443,48 @@ test.describe('explorer: motion and pausing', () => {
     await page.waitForTimeout(600);
     expect((await state(page)).frames).toBe(f1);
   });
+
+  // F28c plan 12 (DECISIONS #90): readouts and slider outputs are continuous functional data, so
+  // they change as plain text at once. A CSS/WAAPI animation or a custom element (e.g.
+  // <number-flow>) on any of them fails here.
+  test('readouts and slider outputs update as plain text with no animation (F28)', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    await ready(page);
+    const r = await page.evaluate(() => {
+      const sel = [
+        '[data-ro-level]',
+        '[data-ro-pct]',
+        '[data-ro-lakes]',
+        '[data-ro-area]',
+        '[data-ex-level-out]',
+        '[data-ex-minp-out]',
+        '[data-ex-topn-out]',
+      ];
+      const before = sel.map((s) => document.querySelector(s)!.textContent);
+      const level = document.querySelector<HTMLInputElement>('#ex-level')!;
+      for (let i = 0; i < 10; i++) {
+        level.value = String(200 + i * 40);
+        level.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+      const topn = document.querySelector<HTMLInputElement>('#ex-topn')!;
+      topn.value = String(Number(topn.value) + 10);
+      topn.dispatchEvent(new Event('input', { bubbles: true }));
+      const after = sel.map((s) => document.querySelector(s)!.textContent);
+      const anims = sel.flatMap((s) =>
+        document.querySelector(s)!.getAnimations({ subtree: true }),
+      ).length;
+      const custom = sel.filter((s) =>
+        document.querySelector(s)!.querySelector('*:not(span)'),
+      ).length;
+      return { changed: after.filter((t, i) => t !== before[i]).length, anims, custom };
+    });
+    expect(r.changed).toBeGreaterThan(0); // the text updated synchronously
+    expect(r.anims).toBe(0); // no CSS or WAAPI animation on any readout
+    expect(r.custom).toBe(0); // no custom element (e.g. <number-flow>) inside them
+  });
 });
 
 test.describe('explorer: layout and accessibility', () => {
@@ -1238,5 +1280,49 @@ test.describe('explorer: F27 focus, touch, keyboard and no-JS', () => {
     await ready(page);
     await expect(page.locator('.ex-noscript')).toHaveCount(0);
     await expect(page.locator('[data-ex-stage]')).toHaveAttribute('tabindex', '0');
+  });
+
+  // F28c plan 09 (DECISIONS #91): iOS Safari zooms into fields under 16 px on focus. Touch
+  // devices (pointer: coarse) get 16 px; a mouse keeps the 14 px look.
+  test('touch: explorer selects are at least 16px (no iOS focus zoom) (F28)', async ({
+    browser,
+  }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 375, height: 812 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await ctx.newPage();
+    await page.goto(URL);
+    expect(await page.evaluate(() => matchMedia('(pointer: coarse)').matches)).toBe(true);
+    for (const sel of ['#ex-speed', '#ex-pacing']) {
+      const px = await page.$eval(sel, (e) => parseFloat(getComputedStyle(e).fontSize));
+      expect(px, sel).toBeGreaterThanOrEqual(16);
+    }
+    // "Linear (metres)" still fits its row at 375 px: the Pacing label and select share one line.
+    await ready(page);
+    await page.selectOption('#ex-pacing', 'linear');
+    const fit = await page.$eval('#ex-pacing', (e) => {
+      const row = e.closest('label')!;
+      const span = row.querySelector('span')!;
+      const a = span.getBoundingClientRect();
+      const b = e.getBoundingClientRect();
+      return {
+        sameLine: Math.abs(a.top + a.height / 2 - (b.top + b.height / 2)) <= 2,
+        right: b.right,
+      };
+    });
+    expect(fit.sameLine).toBe(true);
+    expect(fit.right).toBeLessThanOrEqual(375);
+    await ctx.close();
+  });
+
+  test('desktop: explorer selects keep their 14px size (F28)', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    for (const sel of ['#ex-speed', '#ex-pacing']) {
+      const px = await page.$eval(sel, (e) => parseFloat(getComputedStyle(e).fontSize));
+      expect(px, sel).toBe(14);
+    }
   });
 });

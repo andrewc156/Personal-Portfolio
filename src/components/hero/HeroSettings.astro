@@ -219,4 +219,11 @@ const palettes = PALETTES.map((p) => ({ value: p.name, label: p.label }));
     font-family: var(--font-mono);
     font-size: var(--fs-small);
   }
+
+  /* F28 (plan 09, DECISIONS #91): 16 px on touch devices so iOS doesn't zoom on focus. */
+  @media (pointer: coarse) {
+    .number-row input {
+      font-size: 1rem;
+    }
+  }
 </style>

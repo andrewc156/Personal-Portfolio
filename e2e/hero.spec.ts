@@ -366,6 +366,33 @@ test.describe('controls', () => {
     await ctx.close();
   });
 
+  // F28c plan 09 (DECISIONS #91): iOS Safari zooms into fields under 16 px on focus. Touch
+  // devices (pointer: coarse) get 16 px; a mouse keeps the 14 px look.
+  test('touch: hero fields are at least 16px (no iOS focus zoom) (F28)', async ({ browser }) => {
+    const ctx = await browser.newContext({
+      viewport: { width: 375, height: 812 },
+      hasTouch: true,
+      isMobile: true,
+    });
+    const page = await ctx.newPage();
+    await page.goto('/');
+    expect(await page.evaluate(() => matchMedia('(pointer: coarse)').matches)).toBe(true);
+    for (const sel of ['#hero-mode', '#hero-seed']) {
+      const px = await page.$eval(sel, (e) => parseFloat(getComputedStyle(e).fontSize));
+      expect(px, sel).toBeGreaterThanOrEqual(16);
+    }
+    await ctx.close();
+  });
+
+  test('desktop: hero fields keep their 14px size (F28)', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    for (const sel of ['#hero-mode', '#hero-seed']) {
+      const px = await page.$eval(sel, (e) => parseFloat(getComputedStyle(e).fontSize));
+      expect(px, sel).toBe(14);
+    }
+  });
+
   test('settings live in the F1 panel and drive the hero', async ({ page }) => {
     await page.goto(URL);
     await waitForHero(page);
@@ -599,6 +626,40 @@ test.describe('readout', () => {
 });
 
 test.describe('motion and pausing', () => {
+  // F28c plan 12 (DECISIONS #90): the readout is per-frame-derived text, so it changes as plain
+  // text at once. A CSS/WAAPI animation or any child element (e.g. <number-flow>) fails here.
+  test('the readout updates as plain text with no animation during play (F28)', async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto(URL);
+    await waitForHero(page);
+    expect((await heroState(page)).state).toBe('playing');
+    const r = await page.locator('[data-hero-readout]').evaluate(async (el) => {
+      let writes = 0;
+      let anims = 0;
+      const seen = new Set<string>([el.textContent ?? '']);
+      const mo = new MutationObserver(() => {
+        writes++;
+        seen.add(el.textContent ?? '');
+        anims += el.getAnimations({ subtree: true }).length;
+      });
+      mo.observe(el, { childList: true, characterData: true, subtree: true });
+      await new Promise((res) => setTimeout(res, 1500));
+      mo.disconnect();
+      return {
+        writes,
+        distinct: seen.size,
+        anims: anims + el.getAnimations({ subtree: true }).length,
+        children: el.children.length,
+      };
+    });
+    expect(r.writes).toBeGreaterThan(0); // it kept updating while playing
+    expect(r.distinct).toBeGreaterThan(1);
+    expect(r.anims).toBe(0); // no CSS or WAAPI animation on the readout
+    expect(r.children).toBe(0); // plain text: no custom element or wrapper inside it
+  });
+
   test('reduced motion: no autoplay, static frame at ~45 %, Play button', async ({ browser }) => {
     const ctx = await browser.newContext({ reducedMotion: 'reduce' });
     const page = await ctx.newPage();
@@ -1728,6 +1789,43 @@ test.describe('F26 playback and accessibility', () => {
       expect(r.inner - r.text).toBeGreaterThanOrEqual(20);
       expect(r.right).toBeLessThanOrEqual(width);
       expect(r.overflow).toBeLessThanOrEqual(0);
+    });
+  }
+
+  // F28c plan 09: on touch devices the select is 16 px; the longest mode name must still fit.
+  for (const width of [320, 375, 390]) {
+    test(`QA-13 (F28, touch 16px): the closed mode selector shows the longest mode name at ${width}px`, async ({
+      browser,
+    }) => {
+      const ctx = await browser.newContext({
+        viewport: { width, height: 800 },
+        hasTouch: true,
+        isMobile: true,
+      });
+      const page = await ctx.newPage();
+      await page.goto(URL);
+      await waitForHero(page);
+      const r = await page.evaluate(() => {
+        const s = document.querySelector<HTMLSelectElement>('#hero-mode')!;
+        const cs = getComputedStyle(s);
+        const g = document.createElement('canvas').getContext('2d')!;
+        g.font = cs.font;
+        const text = Math.max(...[...s.options].map((o) => g.measureText(o.text).width));
+        const inner = s.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        const settings = document.querySelector('.hero__toolbar button')!.getBoundingClientRect();
+        return {
+          px: parseFloat(cs.fontSize),
+          text,
+          inner,
+          right: settings.right,
+          overflow: document.documentElement.scrollWidth - window.innerWidth,
+        };
+      });
+      expect(r.px).toBeGreaterThanOrEqual(16);
+      expect(r.inner - r.text).toBeGreaterThanOrEqual(20);
+      expect(r.right).toBeLessThanOrEqual(width);
+      expect(r.overflow).toBeLessThanOrEqual(0);
+      await ctx.close();
     });
   }
 });

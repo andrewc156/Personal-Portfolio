@@ -210,6 +210,14 @@ const rising = modeMeta(DEFAULT_MODE);
     color: var(--color-text);
   }
 
+  /* F28 (plan 09, DECISIONS #91): iOS Safari zooms into fields under 16 px on focus, so touch
+     devices get 16 px. Desktop (fine pointer) keeps the toolbar's 14 px. */
+  @media (pointer: coarse) {
+    .hero__toolbar select {
+      font-size: 1rem;
+    }
+  }
+
   .hero__toolbar :is(select, button) {
     min-height: 2.75rem;
   }

@@ -639,6 +639,13 @@ const inlineCss =
     font-size: var(--fs-small);
   }
 
+  /* F28 (plan 09, DECISIONS #91): 16 px on touch devices so iOS doesn't zoom on focus. */
+  @media (pointer: coarse) {
+    .ex-controls select {
+      font-size: 1rem;
+    }
+  }
+
   .ex-slider__top {
     display: flex;
     justify-content: space-between;
