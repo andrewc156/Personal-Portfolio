@@ -19,7 +19,7 @@ export default defineConfig({
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     {
       name: 'webkit',
-      testMatch: '**/select-controls.spec.ts',
+      testMatch: ['**/select-controls.spec.ts', '**/settings-focus.spec.ts'],
       use: { ...devices['Desktop Safari'] },
     },
   ],
