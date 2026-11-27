@@ -133,6 +133,47 @@ describe('explorer place labels under different font metrics', () => {
     expect(missed).toEqual([]);
   });
 
+  it('keeps narrow-map leaders short even with wider fallback font metrics', () => {
+    for (const viewport of [320, 325, 330, 335]) {
+      const { width, height } = layerFor(viewport);
+      for (const scale of [1.1, 1.2, 1.3]) {
+        const candidates = candidatesFor(width, height, dejaVu, scale);
+        const boxes = placeLabelBoxes(candidates, width, height);
+        const placed = new Set(boxes.map((box) => box.id));
+        expect(topIds.every((id) => placed.has(id))).toBe(true);
+        for (const box of boxes) {
+          const point = candidates.find(({ id }) => id === box.id)!;
+          const tip = labelAttachment(point, box);
+          expect(Math.hypot(tip.x - point.x, tip.y - point.y)).toBeLessThan(70);
+        }
+        expectSeparated(candidates, boxes, width, height);
+      }
+    }
+  });
+
+  it('retains the priority-1 count available without rescue slots', () => {
+    // Seed 1100 from the CI3 checker: standard slots fit 13, while the old rescue pass fit 12.
+    let seed = 1100;
+    const random = () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
+    const width = 80 + Math.floor(random() * 500);
+    const height = 80 + Math.floor(random() * 700);
+    const count = 2 + Math.floor(random() * 30);
+    const candidates = Array.from({ length: count }, (_, index) => ({
+      id: 1 + Math.floor(random() * 100000) * 100 + index,
+      priority: 1 + Math.floor(random() * 3),
+      x: random() * width,
+      y: random() * height,
+      textWidth: 20 + random() * 110,
+    }));
+    const boxes = placeLabelBoxes(candidates, width, height);
+    const placed = new Set(boxes.map((box) => box.id));
+    expect(
+      candidates.filter(({ id, priority }) => priority === 1 && placed.has(id)).length,
+    ).toBeGreaterThanOrEqual(13);
+    expectSeparated(candidates, boxes, width, height);
+    expect(placeLabelBoxes([...candidates].reverse(), width, height)).toEqual(boxes);
+  });
+
   // Small layouts found by search where the previous greedy pass dropped a priority-1 label.
   it('rescues a priority-1 marker near the map edge by sliding its placard inward', () => {
     // Only the rescue slots fit id 2 (5 px from the west edge); reordering alone does not.
