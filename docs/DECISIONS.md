@@ -172,3 +172,9 @@ The hero caption becomes "Water rises over a random landscape. Lakes form in the
 - **F28b attempt 2:** checker fixes 1–4. Fixes 2–4 are test bugs: minified token strings, a duration read in seconds vs. ms, and a press test that depends on timing.
 - **F28c** is committed on its own through a candidate branch. Its checker run with only the F28c diff applied: 133 passed; the only failures are the local hero p95 tests, which fail on the pre-change build too, so hosted CI decides.
 - **Logged, not in F28:** a WebKit Tab-wrap leak in the Settings sheet that already exists before F28 (QA-19), and /rising-water/ light-theme mobile Lighthouse performance at 81 against the 80 budget (no change from F28; watch it).
+
+93. Andrew confirmed the [Issue #15 content decisions](QUESTIONS.md) on 2026-11-26.
+- Keep “Mathematics, statistics, and water.” and use “How do we measure the structure hidden in water data?” as the hero question.
+- Approve the F19a copy, including the contact invitation, and keep the hero keywords, full hero caption and existing social card.
+- Soften the light-theme hero relief from #87.
+- Rising water is a completed personal project. RiverNets remains Andrew’s main research and is ongoing.

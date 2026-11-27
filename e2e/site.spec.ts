@@ -146,7 +146,7 @@ test.describe('content files', () => {
   test('three research areas (water quality and RiverNets merged, DECISIONS #68)', () => {
     expect(AREAS.map((a) => a.id)).toEqual(['water-quality', 'number-theory', 'spectral-fractals']);
     const rising = ALL_WORK.find((w) => w.id === 'project-rising-water');
-    expect(rising?.data.tags).toEqual(['water-quality']);
+    expect(rising?.data.tags).toEqual([]);
   });
 });
 
@@ -641,7 +641,7 @@ test.describe('cv and about', () => {
     await page.goto('/');
     await expect(page.locator('#contact')).toBeVisible();
     await expectContactLinks(page.locator('#contact'));
-    await expect(page.locator('#contact p[data-confirmed="false"]')).toHaveText(
+    await expect(page.locator('#contact p[data-confirmed="true"]')).toHaveText(
       "I'm interested in PhD programs and in mathematics and data science REUs. If you'd like to talk about either, here's how to reach me.",
     );
     // No teaching content exists, so the section is not rendered at all.

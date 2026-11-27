@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-26 EST, Hermes Agent / Claude Code (Control)
+**Last updated:** 2026-11-26 20:54 EST, Codex (Control)
 
 ## Status
 
@@ -45,6 +45,7 @@
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F28 Natural UI pass | done (F28a audit, F28b, F28c; F28d dropped) | F28b PASS_WITH_NOTES (attempt 2), F28c PASS_WITH_NOTES | F28c `869cec0`, F28b `b014217` |
+| Issue #15 content decisions and light hero relief | done | PASS (attempt 1) | Issue #15 content commit |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
 ## Current task
@@ -86,7 +87,7 @@ GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pa
 - 11 GiB free at resume; recheck before full Lighthouse audit.
 - F9 attempt-4 notes: missing spaces on /rising-water/ at LakesTable.astro:36-37 and rising-water/index.astro:126-127 and :131-132 (folded into F19b); the hero reduced-motion e2e has a startup race at hero.spec.ts:918-928 (folded into F19b).
 
-- F16 notes (Andrew's call): the description is in the first person ("for my research"); it overlaps with the "Rising water" project; and it lacks `ongoing: true`. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
+- F16: the current Personal portfolio description covers research, projects and CV. Andrew confirmed that Rising water is completed and RiverNets is ongoing. F17 note: spec §4.3 still lists the old nav order (superseded by DECISIONS #83).
 - Local hero.spec.ts frame-time tests fail on this Mac even on AC power. Headless Chromium runs requestAnimationFrame at about 33 ms on a blank page, likely because the display is asleep or covered. They pass on hosted CI, which is the authority for these tests.
 - CI3 notes (non-blocking): in 1 of 4,000 synthetic layouts, a rescue slot costs one priority-1 placement (labels.ts:283-290). Leaders run 70-125 px only at 320-335 px with widths ×1.1 or more. The `loadingdone` listener is never removed (place-labels-client.ts:77).
 - RESOLVED by CI3 (`5c54ee2`, CI run 45557116146 green). Earlier: hosted CI was RED on main. Runs 45532297932 (F13b `aa6b3da`) and 45534748972 (F18 `c9047a5`) both fail. e2e/explorer.spec.ts:873, the place labels test at 375px light and dark, gets fewer than 14 priority labels at line 931. It passed in local checks. Tracked as CI3 (owner viz-builder). Run 45551772489 on `6210515` confirms: only these 2 fail; hero tests pass on hosted CI.
@@ -94,7 +95,7 @@ GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pa
 - Cloudflare log dated 2026-11-25 01:39 UTC: the normal static build succeeded. Workers Builds then ran `npx wrangler deploy`, auto-added the Cloudflare Astro adapter, and failed prerendering `/rising-water/` when the Workers runtime could not read `/public/data/colorado/meta.json`. The project is specified for Cloudflare Pages Git integration. The site-builder completed the docs-only `docs/deploy.md` clarification and `docs/builds/F8/attempt-2.md`. Control verified the documentation against the supplied log and official Cloudflare references. A second Workers log confirmed explicit `--assets ./dist` bypasses the adapter, then failed because the CLI lacked `--compatibility-date`. Add `--compatibility-date 2026-11-23` to both Workers commands. Andrew supplied a third log confirming Workers deployed version `52c665f3-3ea4-4b4e-9313-0953cff7ca8b` using the explicit assets path and date. Read-only checks returned HTTP 200 on the homepage, explorer, and metadata and 404 on an unknown route. The live canonical URL uses localhost. Andrew confirmed the custom domain `andrewchincea.com` is live. Read-only checks with a browser user agent returned HTTP 200 on the custom-domain homepage, explorer and metadata. The homepage canonical and sitemap still use localhost. Andrew reports `SITE_URL` was already set. Investigate which build environment and deployed `dist` produced the live localhost metadata before recommending a configuration change.
 
 - Andrew deployed the site on Workers and connected `andrewchincea.com`. The remaining deployment setting is the canonical-origin build variable noted above.
-- Content decisions in `docs/QUESTIONS.md`: ORCID and photo, site copy and hero keywords, footer/header, fractals advisor and poster details, Rising water tagging, teaching/outreach. Regenerate the social card once the tagline is confirmed.
+- Issue #15 decisions are recorded in `docs/QUESTIONS.md`. The existing social card stays.
 - CI1 fixed (`7e9b745`). Confirm that the next GitHub CI run on main is green. CI1 note: the header script is inlined and hashed into the CSP by write-headers.mjs (one more inline hash on every page). Optional: PW_BASE_URL override in playwright.config.ts (Control file).
 - Andrew approved F11b copy: “An island appears when rising water cuts a hill off from land connected to the edge of the grid. It disappears when its last dry cell goes underwater. Each bar spans those two water levels.”
 - F11a note: 2,993 Colorado island bars, so F11b needs a display threshold.

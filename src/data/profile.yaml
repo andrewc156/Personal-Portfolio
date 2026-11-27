@@ -28,11 +28,11 @@ domain: ''
 
 tagline:
   text: Mathematics, statistics, and water.
-  confirmed: false
+  confirmed: true
 
 hero_question:
-  text: What can the shape of a landscape tell us about the water that moves through it?
-  confirmed: false
+  text: How do we measure the structure hidden in water data?
+  confirmed: true
 
 keywords:
   - water quality

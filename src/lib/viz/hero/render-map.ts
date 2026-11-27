@@ -92,6 +92,8 @@ export class MapPainter {
     const landStops = theme.land.map(hexToRgb);
     const span = this.maxH - this.minH;
     const rankScale = 1 / Math.max(1, this.n - 1);
+    const shadowStrength = dark ? 1.5 : 1.05;
+    const highlightStrength = dark ? 1.3 : 0.35;
     for (let i = 0; i < this.n; i++) {
       // Elevation tint: half by height, half by height rank. Most cells sit at middle heights,
       // so a purely linear ramp paints them all one colour; the rank half spreads the ramp
@@ -101,7 +103,7 @@ export class MapPainter {
       // Hillshade relative to flat ground (SHADE_FLAT): shaded slopes darken more than lit
       // slopes brighten, so the light ramp keeps its relief instead of clipping to white.
       const d = this.shade[i] - SHADE_FLAT;
-      const k = d < 0 ? 1 + (dark ? 1.5 : 1.4) * d : 1 + (dark ? 1.3 : 0.45) * d;
+      const k = 1 + (d < 0 ? shadowStrength : highlightStrength) * d;
       this.land[i] = packRgb(clamp8(c[0] * k), clamp8(c[1] * k), clamp8(c[2] * k));
     }
     const K = theme.identity.length;

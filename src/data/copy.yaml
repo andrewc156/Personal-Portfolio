@@ -9,7 +9,7 @@ mission:
     project in the KSU TDA Lab, where I use graph-Laplacian regression to predict
     water quality at river stations that have no data. I also work in analytic number
     theory; as a First-Year Scholar, I studied eigenvalues of the fractal Laplacian.
-  confirmed: false
+  confirmed: true
 
 about_bio:
   text: >-
@@ -18,13 +18,13 @@ about_bio:
     I work in analytic number theory and on predicting water quality on river networks.
     As a First-Year Scholar, I studied spectral analysis on fractals. I'm interested
     in PhD programs and in mathematics and data science REUs.
-  confirmed: false
+  confirmed: true
 
 open_science:
   text: >-
     The code for my site is public, including the data pipeline and the
     persistence engine behind the Rising water explorer.
-  confirmed: false
+  confirmed: true
 
 # Contact lead-in on the home page. The only new fact is DECISIONS #86 (interest, not an
 # application; no PhD field, schools or dates).
@@ -32,4 +32,4 @@ contact:
   text: >-
     I'm interested in PhD programs and in mathematics and data science REUs. If you'd
     like to talk about either, here's how to reach me.
-  confirmed: false
+  confirmed: true
