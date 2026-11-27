@@ -60,16 +60,16 @@ function syncModal(panel: HTMLElement): void {
   }
 }
 
-/** Keyboard-reachable controls inside the panel, in tab order (rendered ones only). */
+/** Keyboard-reachable controls inside the panel, in DOM order. */
 function tabbables(panel: HTMLElement): HTMLElement[] {
-  const sel =
-    'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"]), [contenteditable="true"]';
+  const sel = 'a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]';
   return Array.from(panel.querySelectorAll<HTMLElement>(sel)).filter(
     (el) =>
-      !(el as HTMLButtonElement).disabled &&
+      !el.matches(':disabled') &&
       !el.closest('[inert]') &&
       el.tabIndex >= 0 &&
-      el.getClientRects().length > 0,
+      el.getClientRects().length > 0 &&
+      getComputedStyle(el).visibility === 'visible',
   );
 }
 
@@ -182,26 +182,24 @@ export function initSettingsPanel(): void {
       setSettingsOpen(false);
       return;
     }
-    // Modal sheet: Tab and Shift+Tab wrap around inside the panel.
-    if (e.key !== 'Tab' || !isSettingsOpen() || !isSheet()) return;
-    const items = tabbables(panel);
-    const first = items[0];
-    const last = items[items.length - 1];
-    const active = document.activeElement;
-    if (!first || !last) {
-      e.preventDefault();
-      panel.querySelector<HTMLElement>('[data-settings-title]')?.focus();
+    if (
+      e.key !== 'Tab' ||
+      e.defaultPrevented ||
+      e.ctrlKey ||
+      e.metaKey ||
+      !isSettingsOpen() ||
+      !isSheet()
+    ) {
       return;
     }
-    const inside = active instanceof Node && panel.contains(active);
-    const atStart = active === first || active === panel.querySelector('[data-settings-title]');
-    if (e.shiftKey && (atStart || !inside)) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && (active === last || !inside)) {
-      e.preventDefault();
-      first.focus();
-    }
+    // WebKit can skip buttons in its native Tab order, including the wrap points.
+    // Move focus on each Tab so every visible control is reachable in the modal sheet.
+    e.preventDefault();
+    const items = tabbables(panel);
+    const active = document.activeElement;
+    const index = items.findIndex((item) => item === active);
+    const next = e.shiftKey ? (items[index - 1] ?? items.at(-1)) : (items[index + 1] ?? items[0]);
+    (next ?? panel.querySelector<HTMLElement>('[data-settings-title]'))?.focus();
   });
 
   // Modal sheet: a tap or click on the covered page (the backdrop) dismisses it and
