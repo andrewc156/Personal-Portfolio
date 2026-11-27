@@ -185,7 +185,7 @@ const inlineCss =
         </button>
         <label class="ex-inline">
           <span>Speed</span>
-          <select id="ex-speed" data-ex-control disabled>
+          <select id="ex-speed" class="select-field" data-ex-control disabled>
             {[0.25, 0.5, 1, 2, 4].map((v) => (
               <option value={v} selected={v === D.speed}>
                 {v}×
@@ -195,7 +195,7 @@ const inlineCss =
         </label>
         <label class="ex-inline">
           <span>Pacing</span>
-          <select id="ex-pacing" data-ex-control disabled>
+          <select id="ex-pacing" class="select-field" data-ex-control disabled>
             <option value="percentile" selected={D.pacing === 'percentile'}>
               Percentile
             </option>
@@ -628,22 +628,6 @@ const inlineCss =
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
-  }
-
-  .ex-controls select {
-    min-height: 2.25rem;
-    padding: var(--space-1) var(--space-2);
-    border: 1px solid var(--color-control);
-    border-radius: var(--radius-sm);
-    background: var(--color-surface);
-    font-size: var(--fs-small);
-  }
-
-  /* F28 (plan 09, DECISIONS #91): 16 px on touch devices so iOS doesn't zoom on focus. */
-  @media (pointer: coarse) {
-    .ex-controls select {
-      font-size: 1rem;
-    }
   }
 
   .ex-slider__top {

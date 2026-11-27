@@ -15,7 +15,14 @@ export default defineConfig({
     baseURL: process.env.PW_BASE_URL ?? 'http://localhost:4321',
     trace: 'retain-on-failure',
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+    {
+      name: 'webkit',
+      testMatch: '**/select-controls.spec.ts',
+      use: { ...devices['Desktop Safari'] },
+    },
+  ],
   webServer: external
     ? undefined
     : {

@@ -1785,15 +1785,15 @@ test.describe('F26 playback and accessibility', () => {
           overflow: document.documentElement.scrollWidth - window.innerWidth,
         };
       });
-      // Room for the text plus the native arrow (~20 px).
-      expect(r.inner - r.text).toBeGreaterThanOrEqual(20);
+      // The custom chevron is already accounted for in the select's right padding.
+      expect(r.inner).toBeGreaterThanOrEqual(r.text);
       expect(r.right).toBeLessThanOrEqual(width);
       expect(r.overflow).toBeLessThanOrEqual(0);
     });
   }
 
   // F28c plan 09: on touch devices the select is 16 px; the longest mode name must still fit.
-  for (const width of [320, 375, 390]) {
+  for (const width of [320, 360, 375, 390]) {
     test(`QA-13 (F28, touch 16px): the closed mode selector shows the longest mode name at ${width}px`, async ({
       browser,
     }) => {
@@ -1822,7 +1822,7 @@ test.describe('F26 playback and accessibility', () => {
         };
       });
       expect(r.px).toBeGreaterThanOrEqual(16);
-      expect(r.inner - r.text).toBeGreaterThanOrEqual(20);
+      expect(r.inner).toBeGreaterThanOrEqual(r.text);
       expect(r.right).toBeLessThanOrEqual(width);
       expect(r.overflow).toBeLessThanOrEqual(0);
       await ctx.close();

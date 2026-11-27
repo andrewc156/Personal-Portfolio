@@ -32,7 +32,7 @@ const rising = modeMeta(DEFAULT_MODE);
     <figure class="hero__figure">
       <div class="hero__toolbar">
         <label for="hero-mode">Animation</label>
-        <select id="hero-mode" name="hero-mode" form="hero-settings" disabled>
+        <select id="hero-mode" class="select-field" name="hero-mode" form="hero-settings" disabled>
           {HERO_MODES.map(({ id, label }) => (
             <option value={id} selected={id === DEFAULT_MODE}>
               {label}
@@ -47,7 +47,7 @@ const rising = modeMeta(DEFAULT_MODE);
           aria-expanded="false"
           disabled
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path
               d="M10.3 2.8h3.4l.5 2.4 1.7.8 2.1-1.4 2.4 2.4-1.4 2.1.8 1.7 2.4.5v3.4l-2.4.5-.8 1.7 1.4 2.1-2.4 2.4-2.1-1.4-1.7.8-.5 2.4h-3.4l-.5-2.4-1.7-.8-2.1 1.4-2.4-2.4 1.4-2.1-.8-1.7-2.4-.5v-3.4l2.4-.5.8-1.7-1.4-2.1 2.4-2.4 2.1 1.4 1.7-.8Z"
               fill="none"
@@ -188,9 +188,9 @@ const rising = modeMeta(DEFAULT_MODE);
     color: var(--color-text-muted);
   }
 
-  /* Very narrow screens (below ≈350 px): the label takes its own line so the closed select is wide
-     enough for the longest mode name (QA-13). Pure CSS, fixed from first paint: no shift. */
-  @media (max-width: 22rem) {
+  /* The label takes its own line when space is tight so the select can fit the chevron and
+     longest mode name at the touch font size (QA-13). */
+  @media (max-width: 23rem) {
     .hero__toolbar {
       grid-template-columns: minmax(0, 1fr) max-content;
       row-gap: var(--space-1);
@@ -203,27 +203,10 @@ const rising = modeMeta(DEFAULT_MODE);
 
   .hero__toolbar select {
     min-width: 0;
-    padding: var(--space-1) var(--space-2);
-    border: 1px solid var(--color-control);
-    border-radius: var(--radius-sm);
-    background: var(--color-surface);
-    color: var(--color-text);
-  }
-
-  /* F28 (plan 09, DECISIONS #91): iOS Safari zooms into fields under 16 px on focus, so touch
-     devices get 16 px. Desktop (fine pointer) keeps the toolbar's 14 px. */
-  @media (pointer: coarse) {
-    .hero__toolbar select {
-      font-size: 1rem;
-    }
   }
 
   .hero__toolbar :is(select, button) {
     min-height: 2.75rem;
-  }
-
-  .hero__toolbar select:enabled {
-    cursor: pointer;
   }
 
   .hero__art {
