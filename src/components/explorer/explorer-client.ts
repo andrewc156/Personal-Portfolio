@@ -494,9 +494,19 @@ function init(): void {
   const start = () => {
     load(root).catch((e) => fail(root, e));
   };
-  // Off the critical path: after the page (and the hillshade) has loaded, when the browser is idle.
-  if (document.readyState === 'complete') idle(start);
-  else window.addEventListener('load', () => idle(start), { once: true });
+  const afterLoad = async () => {
+    const shade = root.querySelector<HTMLImageElement>('[data-ex-shade]');
+    try {
+      await shade?.decode();
+    } catch {
+      // The water and barcode still work if the hillshade is unavailable.
+    }
+    // The window load event can precede the async image's first paint. Give the decoded image
+    // a rendering opportunity before requesting the grid. Frames resume when a hidden tab opens.
+    requestAnimationFrame(() => requestAnimationFrame(() => idle(start)));
+  };
+  if (document.readyState === 'complete') void afterLoad();
+  else window.addEventListener('load', afterLoad, { once: true });
 }
 
 init();

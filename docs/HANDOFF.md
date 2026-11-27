@@ -1,6 +1,6 @@
 # Handoff
 
-**Last updated:** 2026-11-26 20:54 EST, Codex (Control)
+**Last updated:** 2026-11-26 22:15 EST, Codex (Control)
 
 ## Status
 
@@ -45,6 +45,7 @@
 | F26 Hero playback and a11y (QA-04/05/09/13/14/15/16) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F27 Explorer focus/touch/keyboard/no-JS (QA-06/07/08/10) | done | PASS_WITH_NOTES (attempt 1) | — | — |
 | F28 Natural UI pass | done (F28a audit, F28b, F28c; F28d dropped) | F28b PASS_WITH_NOTES (attempt 2), F28c PASS_WITH_NOTES | F28c `869cec0`, F28b `b014217` |
+| Issue #10 Rising water mobile Lighthouse | verified on fix branch, pending manual merge | PASS (attempt 3) | `fix/issue-10-rising-water-lighthouse` |
 | Issue #15 content decisions and light hero relief | done | PASS (attempt 1) | Issue #15 content commit |
 | F9 re-audit after F19 | blocked on browser coverage | FAIL (attempt 5) | audited `680aeac`; report in this docs checkpoint |
 
@@ -52,6 +53,7 @@
 
 | Task | Role | Files | Done | Left |
 |---|---|---|---|---|
+| Issue #10 Rising water mobile Lighthouse | Control, viz-builder, checker | `src/components/explorer/Explorer.astro`, `src/components/explorer/explorer-client.ts`, `docs/{builds,checks}/Issue10/` | The hillshade passes the aspect audit. The grid starts after the map paints in all six reports. | Review and merge the PR manually. |
 | F28 Natural UI pass | Control | — | Merged through hosted CI (PRs #5, #6); main = `b014217` + this docs commit | Real-iPhone pass (see Open issues). |
 | F9 post-F19 audit | Control / checker | `docs/checks/F9/attempt-5.md` | FAIL only on the unverified browser matrix | Still needs a multi-version browser runner. |
 
@@ -77,7 +79,7 @@ GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pa
 
 - F28 real-iPhone checks still open (emulation only so far): no zoom on Settings/hero/explorer fields, no stuck hover, sheet feel and scrim in dark, /about/ and 404 with toolbar, sheet's last row vs. home indicator (`viewport-fit=cover` deferred, DECISIONS #91).
 - QA-19: WebKit Tab wrap leaks out of the Settings sheet (5/38 Tabs), already present before F28. Not fixed.
-- /rising-water/ mobile Lighthouse performance in light is 81 against the 80 budget (F28 didn't change it).
+- Issue #10: the former 81 light score did not recur on the current baseline. The fix measured 96 performance and 100 best practices in all six runs and passed all 54 explorer tests. See `docs/checks/Issue10/attempt-3.md`.
 - F28 notes: the header unpins while the drawer slides out; the interrupt test checks the duration token, not the actual transition.
 - F28 checker evidence (`docs/checks/F28b/attempt-1/`, `attempt-2/`, about 30 MB of Lighthouse and probe output) is local only and not committed; the reports and tools are.
 
@@ -104,7 +106,6 @@ GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pa
 - F13a updated the Sonora wording in `docs/data.md` and made the basin coverage text ready for the F12b About panel.
 - F13b notes from F13a: show labels.json attribution.credit in About; 9 labels use anchor "mouth"; use `display` if present; Las Vegas at x=2 (place text east).
 - F12b production transfer is within 3 MB. The checker noted a one-time overlay rasterization cost and the existing image aspect ratio finding.
-- Non-blocking: Lighthouse image-aspect-ratio note on `/rising-water/` (score is within budget).
 
 ## Next 3 actions
 
@@ -113,6 +114,8 @@ GitHub Issues #7–#15 track the open items below (2026-11-26): #7 F28 iPhone pa
 3. F9 blocker stays: multi-version browser runner.
 
 ## WIP branch
+
+Issue #10 uses `fix/issue-10-rising-water-lighthouse` from `87b84f1`. The branch carries the independently verified candidate for manual review and merge.
 
 None. F22 draft PR #3 merged on PASS; `wip/codex-handoff` was deleted locally and on origin.
 

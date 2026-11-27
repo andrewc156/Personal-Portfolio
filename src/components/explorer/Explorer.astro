@@ -26,12 +26,12 @@ const basinLabel = basin ? regionsLabel(basin.source.regions) : '';
 const basinNames = basin ? basin.source.regions.map((r) => r.name).join(' and ') : '';
 const geo = gridGeo(meta);
 const aspect = displayAspect(geo);
-// The hillshade's last column / row are partial 30″ blocks: scale it so its pixels line up with the
-// native footprint the grid covers (docs/data.md step 4).
 const hs = meta.hillshade;
 const hsBlock = Math.round(hs.cellDeg / meta.native.pixelDeg);
-const hsW = ((hs.width * hsBlock) / meta.native.width) * 100;
-const hsH = ((hs.height * hsBlock) / meta.native.height) * 100;
+// Keep the raster at its intrinsic aspect ratio, then apply the same horizontal projection as the
+// map. Drawing whole 30″ pixels lets the map clip the partial last row and column (docs/data.md).
+const shadeHeight = ((hs.height * hsBlock) / meta.native.height) * 100;
+const shadeScaleX = (aspect * meta.native.height) / meta.native.width;
 const D = EXPLORER_DEFAULTS;
 // The map's focus stop, its description and these shortcuts are added by explorer-client.ts once
 // the explorer runs, so without JavaScript (or after a data error) the map is not a dead tab stop.
@@ -50,7 +50,7 @@ const swatchRules = IDENTITY.light
   .join('');
 const inlineCss =
   `.explorer .ex-map{aspect-ratio:${aspect.toFixed(5)}}` +
-  `.explorer .ex-map__shade{width:${hsW.toFixed(4)}%;height:${hsH.toFixed(4)}%}` +
+  `.explorer .ex-map__shade{height:${shadeHeight.toFixed(4)}%;transform:scaleX(${shadeScaleX.toFixed(6)})}` +
   swatchRules +
   `.explorer .ex-swatch[data-sw="neutral"]{--sw-l:${NEUTRAL_WATER.light};--sw-d:${NEUTRAL_WATER.dark}}`;
 ---
@@ -73,6 +73,7 @@ const inlineCss =
       <div class="ex-map">
         <img
           class="ex-map__shade"
+          data-ex-shade
           src={withBase(`/data/colorado/${hs.file}`)}
           width={hs.width}
           height={hs.height}
@@ -418,8 +419,10 @@ const inlineCss =
     position: absolute;
     top: 0;
     left: 0;
+    width: auto;
     max-width: none;
     display: block;
+    transform-origin: top left;
     user-select: none;
     pointer-events: none;
   }
