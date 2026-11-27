@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 /** F1 site shell: theme, header/nav, skip link, settings panel, 404, requests, layout. */
@@ -9,6 +9,38 @@ const THEMES = ['light', 'dark'] as const;
 
 async function bgColor(page: Page): Promise<string> {
   return page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+}
+
+async function iconInkBounds(svg: Locator) {
+  return svg.evaluate((icon: SVGSVGElement) => {
+    const button = icon.closest('button')!.getBoundingClientRect();
+    const matrix = icon.getScreenCTM()!;
+    const shapes = [...icon.querySelectorAll<SVGGeometryElement>('path, circle')];
+    const ink = shapes.map((shape) => {
+      const box = shape.getBBox();
+      // getBBox measures geometry. Round strokes extend its edges by half the stroke width.
+      const radius = parseFloat(getComputedStyle(shape).strokeWidth) / 2;
+      return {
+        left: box.x - radius,
+        right: box.x + box.width + radius,
+        top: box.y - radius,
+        bottom: box.y + box.height + radius,
+      };
+    });
+    const left = Math.min(...ink.map((box) => box.left));
+    const right = Math.max(...ink.map((box) => box.right));
+    const top = Math.min(...ink.map((box) => box.top));
+    const bottom = Math.max(...ink.map((box) => box.bottom));
+    const centerX = ((left + right) / 2) * matrix.a + matrix.e;
+    const centerY = ((top + bottom) / 2) * matrix.d + matrix.f;
+    return {
+      width: (right - left) * matrix.a,
+      height: (bottom - top) * matrix.d,
+      offsetX: centerX - (button.left + button.width / 2),
+      offsetY: centerY - (button.top + button.height / 2),
+      centerY,
+    };
+  });
 }
 
 /** Resolve once every CSS animation/transition on the element (and its subtree) has finished. */
@@ -209,6 +241,31 @@ test.describe('theme', () => {
 });
 
 test.describe('header and navigation', () => {
+  for (const colorScheme of THEMES) {
+    test(`theme and Settings icon ink aligns in ${colorScheme} mode`, async ({ page }) => {
+      await page.setViewportSize({ width: 1280, height: 800 });
+      await page.emulateMedia({ colorScheme });
+      await page.goto('/');
+
+      const toggle = page.locator('[data-theme-toggle]');
+      await expect(toggle).toHaveAttribute('aria-pressed', String(colorScheme === 'dark'));
+      const themeIcon = toggle.locator('svg:visible');
+      const gearIcon = page
+        .getByRole('button', { name: 'Art settings', exact: true })
+        .locator('svg');
+      await expect(themeIcon).toBeVisible();
+      await expect(gearIcon).toBeVisible();
+
+      const [theme, gear] = await Promise.all([iconInkBounds(themeIcon), iconInkBounds(gearIcon)]);
+      for (const measure of ['width', 'height', 'offsetX', 'offsetY', 'centerY'] as const) {
+        expect(
+          Math.abs(theme[measure] - gear[measure]),
+          `${measure} difference in CSS px`,
+        ).toBeLessThanOrEqual(1);
+      }
+    });
+  }
+
   test('has wordmark, nav items and gear on home', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('header .wordmark')).toHaveText('Andrew Chincea');
